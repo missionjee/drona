@@ -280,15 +280,16 @@ function getSubjectLabel(key) { const s = getActiveSubjects().find(s => s.key ==
 let currentUser = null;
 let profile = {};
 let allTests = [];
+let chartInstances = {};
 let currentMarkTestId = null;
 let testFilter = 'all';
-let selectedDoubtSubject = 'general';
+let testArsenalTab = 'tests';
 let chatAttachment = null;
 
 let chatMessages = [
   {
     sender: 'assistant',
-    text: "Namaste! I am **Aacharya AI**, your dedicated IIT-JEE & NEET Academic Doubts Solver. 🚀\n\nAsk me any concept query, tricky numerical problem, formula derivation, or reaction mechanism. You can also upload question diagrams or PDFs using the 📎 button below!",
+    text: "Namaste! I am **Aacharya AI**, your personal IIT-JEE & NEET Academic Mentor and Doubt Solver. 🚀\n\nAsk me any concept query, numerical problem, formula derivation, or reaction mechanism. You can use the **📐 Math Keypad** for symbols and fractions, or upload question diagrams using **📎**!\n\nWhat doubt are we cracking today?",
     timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
   }
 ];
@@ -336,7 +337,6 @@ function goSection(secId, btn) {
     if (sbBtn) sbBtn.classList.add('active');
   }
   
-  // Set bottom nav button active
   const bns = ['tests', 'doubts', 'settings'];
   const bnIdx = bns.indexOf(secId);
   if (bnIdx !== -1) {
@@ -368,7 +368,11 @@ function triggerActiveSectionRefresh() {
   
   const id = activeSec.id;
   if (id === 'sec-tests') {
-    renderTestArsenal();
+    if (testArsenalTab === 'analysis') {
+      renderTestAnalysis();
+    } else {
+      renderTestArsenal();
+    }
   } else if (id === 'sec-doubts') {
     renderDoubtQuickStarters();
     renderChatMessages();
@@ -378,7 +382,6 @@ function triggerActiveSectionRefresh() {
 }
 
 function updateExamModeUI() {
-  const mode = getExamMode();
   const subs = getActiveSubjects();
   
   // Update test table subject headers
@@ -404,15 +407,31 @@ function updateExamModeUI() {
   if (m1 && subs[0]) m1.textContent = subs[0].label;
   if (m2 && subs[1]) m2.textContent = subs[1].label;
   if (m3 && subs[2]) m3.textContent = subs[2].label;
+}
 
-  // Update doubt subject chip 3
-  const chip3 = document.getElementById('chipSub3');
-  if (chip3 && subs[2]) {
-    chip3.textContent = `${subs[2].icon} ${subs[2].label}`;
+// === 8. TEST ARSENAL & ANALYTICS LOGIC ===
+function setTestArsenalTab(tab) {
+  testArsenalTab = tab;
+  const viewTests = document.getElementById('testsViewTests');
+  const viewAnalysis = document.getElementById('testsViewAnalysis');
+  const btnTests = document.getElementById('btn-tab-tests');
+  const btnAnalysis = document.getElementById('btn-tab-test-analysis');
+
+  if (tab === 'tests') {
+    if (viewTests) viewTests.style.display = 'block';
+    if (viewAnalysis) viewAnalysis.style.display = 'none';
+    if (btnTests) btnTests.classList.add('active');
+    if (btnAnalysis) btnAnalysis.classList.remove('active');
+    renderTestArsenal();
+  } else {
+    if (viewTests) viewTests.style.display = 'none';
+    if (viewAnalysis) viewAnalysis.style.display = 'block';
+    if (btnTests) btnTests.classList.remove('active');
+    if (btnAnalysis) btnAnalysis.classList.add('active');
+    renderTestAnalysis();
   }
 }
 
-// === 8. TEST ARSENAL LOGIC ===
 function filterTests(type, btn) {
   testFilter = type;
   document.querySelectorAll('#filter-btn-all, #filter-btn-upcoming, #filter-btn-completed').forEach(b => b.classList.remove('active'));
@@ -501,6 +520,180 @@ function renderTestArsenal() {
   }).join('');
 }
 
+// Restored Test Analytics Engine
+function renderTestAnalysis() {
+  const completedTests = allTests.filter(t => t.marks && Object.keys(t.marks).length > 0)
+    .sort((a, b) => new Date(a.date) - new Date(b.date));
+  
+  const totalTests = completedTests.length;
+  const subs = getActiveSubjects();
+
+  // 1. KPI Calculations
+  const elTotal = document.getElementById('taTotalTests');
+  if (elTotal) elTotal.textContent = totalTests;
+
+  if (totalTests === 0) {
+    const elStatus = document.getElementById('taStatus'); if (elStatus) elStatus.textContent = 'No Graded Mocks';
+    const elTrend = document.getElementById('taTrend'); if (elTrend) elTrend.textContent = '--';
+    const elAvg = document.getElementById('taAvgScore'); if (elAvg) elAvg.textContent = '0%';
+    const emptyTrend = document.getElementById('chartTestTrendEmpty'); if (emptyTrend) emptyTrend.classList.remove('hidden');
+    const emptyBal = document.getElementById('chartSubjectBalanceEmpty'); if (emptyBal) emptyBal.classList.remove('hidden');
+    return;
+  }
+
+  // Calculate scores per test
+  const normalizedTests = completedTests.map(t => {
+    let obt = 0, max = 0;
+    Object.keys(t.marks).forEach(k => {
+      obt += parseFloat(t.marks[k] || 0);
+      max += parseFloat((t.maxMarks && t.maxMarks[k]) || 100);
+    });
+    const pct = max > 0 ? Math.round((obt / max) * 100) : 0;
+    return { ...t, obtained: obt, max: max, pct: pct };
+  });
+
+  const scores = normalizedTests.map(t => t.pct);
+  const avg = Math.round(scores.reduce((a, b) => a + b, 0) / scores.length);
+
+  const elAvg = document.getElementById('taAvgScore');
+  if (elAvg) elAvg.textContent = `${avg}%`;
+
+  const elStatus = document.getElementById('taStatus');
+  if (elStatus) {
+    if (avg >= 75) elStatus.textContent = '🟢 Excellent Rank Pace';
+    else if (avg >= 50) elStatus.textContent = '🟡 Steady Progress';
+    else elStatus.textContent = '🔴 Needs Revision Focus';
+  }
+
+  const elTrend = document.getElementById('taTrend');
+  if (elTrend) {
+    if (scores.length >= 2) {
+      const diff = scores[scores.length - 1] - scores[scores.length - 2];
+      elTrend.textContent = diff >= 0 ? `+${diff}% (Up)` : `${diff}% (Down)`;
+      elTrend.style.color = diff >= 0 ? 'var(--green-l)' : 'var(--red-l)';
+    } else {
+      elTrend.textContent = 'First Mock Recorded';
+      elTrend.style.color = 'var(--blue-l)';
+    }
+  }
+
+  // 2. Score Progression Chart
+  const ctxTrend = document.getElementById('chartTestTrend');
+  const emptyTrend = document.getElementById('chartTestTrendEmpty');
+  if (emptyTrend) emptyTrend.classList.add('hidden');
+
+  if (ctxTrend && typeof Chart !== 'undefined') {
+    if (chartInstances['trend']) chartInstances['trend'].destroy();
+    
+    chartInstances['trend'] = new Chart(ctxTrend, {
+      type: 'line',
+      data: {
+        labels: normalizedTests.map(t => `${t.number} (${t.date})`),
+        datasets: [{
+          label: 'Aggregate Score %',
+          data: scores,
+          borderColor: '#818cf8',
+          backgroundColor: 'rgba(99, 102, 241, 0.12)',
+          fill: true,
+          tension: 0.35,
+          pointBackgroundColor: '#818cf8',
+          pointRadius: 5,
+          pointHoverRadius: 7
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: { min: 0, max: 100, ticks: { callback: v => v + '%' }, grid: { color: 'rgba(255,255,255,0.05)' } },
+          x: { grid: { display: false } }
+        },
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: ctx => `Aggregate: ${ctx.parsed.y}% (${normalizedTests[ctx.dataIndex].obtained}/${normalizedTests[ctx.dataIndex].max})`
+            }
+          }
+        }
+      }
+    });
+  }
+
+  // 3. Subject Balance Radar / Bar Chart
+  const ctxBal = document.getElementById('chartSubjectBalance');
+  const emptyBal = document.getElementById('chartSubjectBalanceEmpty');
+  if (emptyBal) emptyBal.classList.add('hidden');
+
+  const subTotals = {}, subCounts = {};
+  subs.forEach(s => { subTotals[s.key] = 0; subCounts[s.key] = 0; });
+  
+  completedTests.forEach(t => {
+    subs.forEach(s => {
+      if (t.marks && t.marks[s.key] !== undefined) {
+        subTotals[s.key] += parseFloat(t.marks[s.key] || 0);
+        subCounts[s.key] += parseFloat((t.maxMarks && t.maxMarks[s.key]) || 100);
+      }
+    });
+  });
+
+  const subAvgs = subs.map(s => subCounts[s.key] > 0 ? Math.round((subTotals[s.key] / subCounts[s.key]) * 100) : 0);
+
+  if (ctxBal && typeof Chart !== 'undefined') {
+    if (chartInstances['balance']) chartInstances['balance'].destroy();
+    
+    chartInstances['balance'] = new Chart(ctxBal, {
+      type: 'radar',
+      data: {
+        labels: subs.map(s => s.label),
+        datasets: [{
+          label: 'Subject Mastery %',
+          data: subAvgs,
+          borderColor: '#34d399',
+          backgroundColor: 'rgba(52, 211, 153, 0.2)',
+          pointBackgroundColor: '#34d399',
+          pointRadius: 4
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          r: {
+            min: 0, max: 100,
+            ticks: { display: false, stepSize: 25 },
+            grid: { color: 'rgba(255,255,255,0.06)' },
+            angleLines: { color: 'rgba(255,255,255,0.06)' },
+            pointLabels: { color: '#eef2ff', font: { size: 11, weight: '700' } }
+          }
+        },
+        plugins: { legend: { display: false } }
+      }
+    });
+  }
+
+  // 4. Detailed Subject Breakdown Cards
+  const cardsContainer = document.getElementById('taSubjectCards');
+  if (cardsContainer) {
+    cardsContainer.innerHTML = subs.map((s, idx) => {
+      const sPct = subAvgs[idx];
+      let advice = sPct >= 75 ? '🔥 High accuracy! Maintain revision pace with PYQs.' : (sPct >= 50 ? '⚡ Good foundation! Focus on speed and high-weightage topics.' : '⚠️ Core gap detected. Solve concept doubts in Aacharya AI.');
+      return `
+        <div class="card" style="border-left: 4px solid ${s.color}; padding: 14px 18px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+            <div style="display:flex; align-items:center; gap:8px;">
+              <span style="font-size:18px;">${s.icon}</span>
+              <strong style="color:var(--txt-1); font-size:13px;">${s.label}</strong>
+            </div>
+            <span class="mono" style="font-size:16px; font-weight:800; color:${s.color};">${sPct}%</span>
+          </div>
+          <p style="font-size:11px; color:var(--txt-2); margin:0; line-height:1.4;">${advice}</p>
+        </div>
+      `;
+    }).join('');
+  }
+}
+
 function saveTest() {
   const number = (document.getElementById('ts-number').value || '').trim();
   const type = document.getElementById('ts-type').value;
@@ -552,6 +745,7 @@ function deleteTest(testId) {
       .then(() => {
         toast('Test deleted.', 'info');
         renderTestArsenal();
+        if (testArsenalTab === 'analysis') renderTestAnalysis();
       })
       .catch(e => toast('Error deleting test', 'error'));
   }
@@ -633,6 +827,7 @@ function submitMarks() {
       closeModal('marksModal');
       toast('Marks saved successfully!', 'success');
       renderTestArsenal();
+      if (testArsenalTab === 'analysis') renderTestAnalysis();
     })
     .catch(e => {
       console.error(e);
@@ -729,12 +924,30 @@ function clearLocalPhoto() {
   toast('Photo removed', 'info');
 }
 
-// === 10. AACHARYA AI — ACADEMIC DOUBTS SOLVER ===
-function selectDoubtSubject(subject, btn) {
-  selectedDoubtSubject = subject;
-  document.querySelectorAll('.subject-chip-btn').forEach(b => b.classList.remove('active'));
-  if (btn) btn.classList.add('active');
-  renderDoubtQuickStarters();
+// === 10. AACHARYA AI — OPTIMIZED ACADEMIC DOUBTS SOLVER & MENTOR ===
+function toggleMathCalculator(forceState) {
+  const pad = document.getElementById('mathCalculatorPad');
+  const btn = document.getElementById('calcToggleBtn');
+  if (!pad) return;
+  
+  const shouldOpen = forceState !== undefined ? forceState : (pad.style.display === 'none');
+  pad.style.display = shouldOpen ? 'block' : 'none';
+  if (btn) {
+    btn.classList.toggle('active', shouldOpen);
+    btn.textContent = shouldOpen ? '✕ Close Keypad' : '📐 Math Keypad';
+  }
+}
+
+function insertMathSymbol(sym) {
+  const input = document.getElementById('chatInput');
+  if (!input) return;
+  const start = input.selectionStart !== undefined ? input.selectionStart : input.value.length;
+  const end = input.selectionEnd !== undefined ? input.selectionEnd : input.value.length;
+  const text = input.value;
+  input.value = text.substring(0, start) + sym + text.substring(end);
+  input.focus();
+  const newPos = start + sym.length;
+  input.setSelectionRange(newPos, newPos);
 }
 
 function renderDoubtQuickStarters() {
@@ -745,57 +958,24 @@ function renderDoubtQuickStarters() {
   let starters = [];
   
   if (mode === 'jee') {
-    if (selectedDoubtSubject === 'physics') {
-      starters = [
-        { title: "Lenz's Law & Direction of Induced EMF", sub: "Derivation & signs", prompt: "Explain Lenz's Law and how to find the direction of induced current with 2 numerical examples." },
-        { title: "Rotational Dynamics: Rolling without Slipping", sub: "Acceleration & friction", prompt: "Derive the acceleration of a cylinder rolling down an inclined plane of angle θ without slipping." }
-      ];
-    } else if (selectedDoubtSubject === 'chemistry') {
-      starters = [
-        { title: "Aldol Condensation Mechanism", sub: "Organic Chemistry", prompt: "Explain the step-by-step mechanism of Base-catalyzed Aldol Condensation with cross-aldol examples." },
-        { title: "Nernst Equation & Cell EMF", sub: "Electrochemistry", prompt: "Derive and solve a numerical using the Nernst Equation for a Daniel Cell with unequal ion concentrations." }
-      ];
-    } else if (selectedDoubtSubject === 'math-bio') {
-      starters = [
-        { title: "Tricky Integration by Substitution", sub: "Calculus", prompt: "Solve the indefinite integral: \\int \\frac{dx}{1 + \\sin x} showing complete steps." },
-        { title: "Coordinate Geometry: Tangents to Parabola", sub: "Conics", prompt: "Derive the condition of tangency \\(y = mx + \\frac{a}{m}\\) for the parabola \\(y^2 = 4ax\\)." }
-      ];
-    } else {
-      starters = [
-        { title: "Solve a Tough Numerical", sub: "Physics / Chem / Math", prompt: "I have a challenging numerical problem. Can you break down the solution step-by-step?" },
-        { title: "Reaction Mechanism Walkthrough", sub: "Organic Chemistry", prompt: "Walk me through the reaction mechanism and major product for Electrophilic Aromatic Substitution." },
-        { title: "Calculus Concept Clarity", sub: "Mathematics", prompt: "Explain the application of Rolle's Theorem and Lagrange's Mean Value Theorem with graphs and examples." }
-      ];
-    }
+    starters = [
+      { title: "⚡ Rotational Dynamics Numerical", sub: "Physics", prompt: "A solid cylinder of mass m and radius r rolls down an incline of angle θ without slipping. Calculate its acceleration and friction force step-by-step." },
+      { title: "🧪 Aldol & Cannizzaro Mechanisms", sub: "Organic Chemistry", prompt: "Explain the step-by-step mechanism of Base-catalyzed Aldol Condensation vs Cannizzaro Reaction, showing all intermediates." },
+      { title: "📐 Tricky Definite Integration", sub: "Mathematics", prompt: "Solve the definite integral \\int_{0}^{\\pi/2} \\frac{\\sqrt{\\sin x}}{\\sqrt{\\sin x} + \\sqrt{\\cos x}} dx using properties of definite integrals." }
+    ];
   } else {
     // NEET Mode
-    if (selectedDoubtSubject === 'physics') {
-      starters = [
-        { title: "Bernoulli's Equation & Torricelli's Law", sub: "Fluids", prompt: "Explain Bernoulli's Principle and derive the velocity of efflux from an open tank." },
-        { title: "Doppler Effect for Sound Waves", sub: "Waves", prompt: "Provide the apparent frequency formulas when source and observer move towards and away from each other." }
-      ];
-    } else if (selectedDoubtSubject === 'chemistry') {
-      starters = [
-        { title: "Markovnikov vs Anti-Markovnikov", sub: "Hydrocarbons", prompt: "Explain Markovnikov and Peroxide effect with free radical mechanism in HBr addition." },
-        { title: "Coordination Compounds Hybridization", sub: "Inorganic", prompt: "Explain CFT and how to find magnetic moment & hybridization for octahedral complexes." }
-      ];
-    } else if (selectedDoubtSubject === 'math-bio') {
-      starters = [
-        { title: "Hardy-Weinberg Equilibrium", sub: "Genetics / Evolution", prompt: "Explain Hardy-Weinberg Principle and calculate allele frequency \\(p^2 + 2pq + q^2 = 1\\) for a sample population." },
-        { title: "DNA Replication Fork & Enzymes", sub: "Molecular Biology", prompt: "List all enzymes in prokaryotic DNA replication (Helicase, Primase, DNA Pol III, Ligase) and their exact functions." }
-      ];
-    } else {
-      starters = [
-        { title: "NEET High-Yield Biology Question", sub: "NCERT Biology", prompt: "Explain the Light Reaction of Photosynthesis (Z-scheme and Photophosphorylation) based on NCERT." },
-        { title: "Physical Chemistry Numerical", sub: "Thermodynamics", prompt: "Solve Gibbs Free Energy change \\(\\Delta G = \\Delta H - T\\Delta S\\) calculation for reaction spontaneity." }
-      ];
-    }
+    starters = [
+      { title: "🧬 Hardy-Weinberg Calculation", sub: "Genetics / NEET PYQ", prompt: "Explain the Hardy-Weinberg equilibrium formula \\(p^2 + 2pq + q^2 = 1\\) and solve a numerical calculating the carrier frequency." },
+      { title: "⚛️ Bernoulli Principle & Efflux", sub: "Physics", prompt: "Derive Torricelli's Law from Bernoulli's Equation and calculate the horizontal range of the efflux stream from a tank." },
+      { title: "🧪 Markovnikov vs Peroxide Effect", sub: "Chemistry", prompt: "Explain Markovnikov addition vs Kharasch (peroxide) effect with free radical mechanism for HBr addition." }
+    ];
   }
 
   container.innerHTML = starters.map(s => `
-    <button class="btn btn-ghost" onclick="triggerQuickDoubt('${escapeHtml(s.prompt)}')" style="height:auto; padding:10px 14px; text-align:left; display:flex; flex-direction:column; align-items:flex-start; gap:3px; font-size:11.5px; background:rgba(255,255,255,0.02); border-color:var(--border);">
-      <strong style="color:var(--txt-1); font-size:12px;">${s.title}</strong>
-      <span style="font-size:10px; color:var(--blue-l);">${s.sub}</span>
+    <button class="btn btn-ghost" onclick="triggerQuickDoubt('${escapeHtml(s.prompt)}')" style="height:auto; padding:8px 12px; text-align:left; display:flex; flex-direction:column; align-items:flex-start; gap:2px; font-size:11px; background:rgba(255,255,255,0.02); border-color:var(--border);">
+      <strong style="color:var(--txt-1); font-size:11.5px;">${s.title}</strong>
+      <span style="font-size:9.5px; color:var(--blue-l);">${s.sub}</span>
     </button>
   `).join('');
 }
@@ -806,17 +986,6 @@ function triggerQuickDoubt(promptText) {
     input.value = promptText;
     document.getElementById('chatForm').dispatchEvent(new Event('submit'));
   }
-}
-
-function insertMathSymbol(sym) {
-  const input = document.getElementById('chatInput');
-  if (!input) return;
-  const start = input.selectionStart || input.value.length;
-  const end = input.selectionEnd || input.value.length;
-  const text = input.value;
-  input.value = text.substring(0, start) + sym + text.substring(end);
-  input.focus();
-  input.setSelectionRange(start + sym.length, start + sym.length);
 }
 
 function handleChatFileUpload(event) {
@@ -861,7 +1030,7 @@ function clearDoubtChat() {
   chatMessages = [
     {
       sender: 'assistant',
-      text: "Namaste! I am **Aacharya AI**, your dedicated IIT-JEE & NEET Academic Doubts Solver. 🚀\n\nAsk me any concept query, tricky numerical problem, formula derivation, or reaction mechanism. You can also upload question diagrams or PDFs using the 📎 button below!",
+      text: "Namaste! I am **Aacharya AI**, your personal IIT-JEE & NEET Academic Mentor and Doubt Solver. 🚀\n\nAsk me any concept query, numerical problem, formula derivation, or reaction mechanism. You can use the **📐 Math Keypad** for symbols and fractions, or upload question diagrams using **📎**!\n\nWhat doubt are we cracking today?",
       timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
     }
   ];
@@ -905,11 +1074,11 @@ function parseTeacherSolutionSteps(text) {
   if (!text) return '';
   const headings = [
     { key: 'concept', label: 'Concept Overview', pattern: /Concept\s*Overview/i, color: 'var(--blue-l)', bg: 'rgba(99, 102, 241, 0.04)' },
-    { key: 'given', label: 'Given Parameters', pattern: /Given\s*Parameters/i, color: 'var(--purple-l)', bg: 'rgba(139, 92, 246, 0.04)' },
-    { key: 'formula', label: 'Core Formula / Theorem', pattern: /Core\s*Formula/i, color: 'var(--yellow-l)', bg: 'rgba(245, 158, 11, 0.04)' },
-    { key: 'steps', label: 'Step-by-Step Calculation', pattern: /Step-by-Step\s*(?:Derivation|Calculation|Solution)/i, color: 'var(--cyan)', bg: 'rgba(6, 182, 212, 0.04)' },
-    { key: 'boxed', label: 'Final Solution', pattern: /Final\s*(?:boxed\s*)?Solution|Final\s*Answer/i, color: 'var(--green-l)', bg: 'rgba(16, 185, 129, 0.06)' },
-    { key: 'tip', label: 'Student Pitfalls / Exam Tip', pattern: /Student\s*Pitfalls|Exam\s*Tip|Common\s*Mistake/i, color: 'var(--red-l)', bg: 'rgba(239, 68, 68, 0.04)' }
+    { key: 'given', label: 'Given Parameters', pattern: /Given\s*Parameters|Given\s*Values/i, color: 'var(--purple-l)', bg: 'rgba(139, 92, 246, 0.04)' },
+    { key: 'formula', label: 'Core Formula / Principle', pattern: /Core\s*Formula|Key\s*Theorem|Reaction\s*Principle/i, color: 'var(--yellow-l)', bg: 'rgba(245, 158, 11, 0.04)' },
+    { key: 'steps', label: 'Step-by-Step Solution / Mechanism', pattern: /Step-by-Step\s*(?:Derivation|Calculation|Solution|Mechanism)/i, color: 'var(--cyan)', bg: 'rgba(6, 182, 212, 0.04)' },
+    { key: 'boxed', label: 'Final Answer', pattern: /Final\s*(?:boxed\s*)?Solution|Final\s*Answer|Major\s*Product/i, color: 'var(--green-l)', bg: 'rgba(16, 185, 129, 0.06)' },
+    { key: 'tip', label: 'JEE / NEET Pitfall & Tip', pattern: /Student\s*Pitfalls|Exam\s*Tip|Common\s*Mistake|Trap\s*Alert/i, color: 'var(--red-l)', bg: 'rgba(239, 68, 68, 0.04)' }
   ];
 
   const lines = text.split('\n');
@@ -993,7 +1162,7 @@ function formatMarkdownAndMath(text) {
     return id;
   });
   
-  processed = processed.replace(/(\\\(|\\\$|\$)(.+?)(\\\)|\\\$|\$)/g, (match, open, math) => {
+  processed = processed.replace(/(\(\s*.+?\s*\)|\\$$|\$)(.+?)(\\\)|\\\$|\$)/g, (match, open, math) => {
     const id = `__MATH_INLINE_${mathInlines.length}__`;
     mathInlines.push(math);
     return id;
@@ -1059,6 +1228,9 @@ async function sendChatMessage(event) {
   removeChatAttachment();
   inputEl.value = '';
   
+  // Close calculator if open
+  toggleMathCalculator(false);
+
   const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
   chatMessages.push({ sender: 'user', text: text, timestamp: time, attachment: attachmentToSend });
   renderChatMessages();
@@ -1108,22 +1280,39 @@ async function sendChatMessage(event) {
     });
     
     const examMode = getExamMode();
-    const systemPrompt = `You are Aacharya AI, an elite academic teacher and specialized Doubt Solver for IIT-JEE (Main + Advanced) and NEET UG.
-Your mission is to resolve the student's academic doubts with extreme clarity, step-by-step mathematical calculations, and deep conceptual precision.
+    const systemPrompt = `You are Aacharya AI, an elite Kota-level Senior Faculty and empathetic Study Mentor for ${examMode.toUpperCase()} aspirants (IIT-JEE Main/Advanced & NEET UG).
 
-The student's target exam stream is: ${examMode.toUpperCase()}
-Subject focus: ${selectedDoubtSubject.toUpperCase()}
+## CORE TEACHER PERSONALITY & MENTOR ROLE
+- You speak with profound clarity, warmth, scientific precision, and encouraging mentorship.
+- You treat every student doubt with deep attention, explaining BOTH the intuitive 'Why' and the mathematical/chemical 'How'.
+- Whether the query is in Physics, Physical/Organic/Inorganic Chemistry, Mathematics, or Biology, resolve it seamlessly without demanding the user choose a subject.
 
-## TEACHER-STYLE STEP-BY-STEP SOLUTION PROTOCOL
-Always structure your solution using this exact framework:
-1. 💡 **Concept Overview**: A crisp 1-2 sentence explanation of the underlying physics, chemistry, mathematics, or biology concept.
-2. 📋 **Given Parameters**: Clearly identify all variables with symbols, units, and given numerical values (e.g. \\(m = 2\\text{ kg}\\), \\(v_0 = 15\\text{ m/s}\\)).
-3. 📐 **Core Formula / Theorem**: State the fundamental formula, theorem, or chemical principle used.
-4. ⚙️ **Step-by-Step Calculation**: Solve systematically step-by-step. Show mathematical substitution and algebraic simplifications clearly.
-5. 🎯 **Final Solution**: Clearly state and highlight the final boxed numerical answer with units.
-6. ⚠️ **Student Pitfalls / Exam Tip**: Point out common silly mistakes, sign errors, or NCERT/JEE trap points to watch out for.
+## ADAPTIVE DOUBT-SOLVING PROTOCOL
 
-Use LaTeX for all math and formulas (inline: $...$, block: $$...$$ or \\[...\\]). Keep the tone encouraging, highly academic, and structured.`;
+### 1. For Numerical & Calculation-Heavy Problems:
+1. 💡 **Concept Overview**: 1-2 sentences explaining the core law/phenomenon involved.
+2. 📋 **Given Parameters**: List variables with symbols, units, and values in clean LaTeX (e.g. \\(m = 2\\text{ kg}\\), \\(v = 10\\text{ m/s}\\)).
+3. 📐 **Core Formula / Principle**: State the master formula or theorem applied.
+4. ⚙️ **Step-by-Step Calculation**: Show clear algebraic substitutions and calculation steps.
+5. 🎯 **Final Answer**: Clearly stated, boxed answer with correct units.
+6. ⚠️ **JEE / NEET Pitfall & Tip**: Point out common calculation traps, negative marking traps, or shortcut tips.
+
+### 2. For Conceptual & Theoretical Doubts:
+1. 💡 **Concept Overview**: Intuitive analogy or fundamental visualization.
+2. 🔬 **Deep Technical Rigor**: Exact NCERT/Advanced explanation with laws and diagrams/equations.
+3. 🎯 **Key Rules & Exceptions**: Any anomalies or vital edge-cases tested in JEE/NEET.
+4. ⚠️ **JEE / NEET Pitfall & Tip**: High-yield memory takeaway or mnemonic.
+
+### 3. For Organic / Inorganic Chemistry Mechanisms:
+1. 🧪 **Reaction Overview**: Substrate, reagent, reaction type (e.g., $S_N1$, $E2$, Electrophilic Addition).
+2. 🔄 **Step-by-Step Mechanism**: Electron flow, arrows, intermediates (carbocation, transition state), and rate-determining step.
+3. 🎯 **Final Major / Minor Products**: Regioselectivity (Markovnikov, Zaitsev) and stereochemistry.
+4. ⚠️ **Exam Pitfall**: Common reagent tricks (e.g., cold dil. vs hot conc. $KMnO_4$).
+
+### 4. For Mentorship, Exam Strategy & Low-Score Recovery:
+- Provide high-energy, actionable, and empathetic guidance. Give specific time-table and revision blueprints.
+
+Always write all equations, variables, and math formulas using LaTeX ($...$ inline or $$...$$ block).`;
 
     const currentParts = [];
     if (attachmentToSend) {
@@ -1137,8 +1326,8 @@ Use LaTeX for all math and formulas (inline: $...$, block: $$...$$ or \\[...\\])
 
     const payload = {
       contents: [
-        { role: 'user', parts: [{ text: `System Instructions: ${systemPrompt}\n\nPlease acknowledge and prepare to solve doubts.` }] },
-        { role: 'model', parts: [{ text: "Understood! I am ready to resolve all IIT-JEE and NEET doubts with clear step-by-step solutions." }] },
+        { role: 'user', parts: [{ text: `System Instructions: ${systemPrompt}\n\nPlease acknowledge and prepare to solve all JEE/NEET doubts.` }] },
+        { role: 'model', parts: [{ text: "Understood! I am ready to resolve all IIT-JEE and NEET doubts with master faculty precision and step-by-step guidance." }] },
         ...geminiHistory,
         { role: 'user', parts: currentParts }
       ],
@@ -1273,6 +1462,7 @@ function subscribeToData() {
   uDoc('tests').orderBy('date', 'desc').onSnapshot(snap => {
     allTests = snap.docs.map(d => ({ id: d.id, ...d.data() }));
     renderTestArsenal();
+    if (testArsenalTab === 'analysis') renderTestAnalysis();
   });
 }
 

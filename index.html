@@ -15,6 +15,9 @@
   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
   
+  <!-- ChartJS -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
   <!-- KaTeX Math Rendering -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
@@ -32,7 +35,7 @@
     body, .sidebar, .topbar, .card, .main, .content, .modal, .modal-bg,
     .auth-screen, .auth-card, .bottom-nav { transition: background 0.4s ease, color 0.4s ease, border-color 0.4s ease; }
 
-    /* Doubts Tab Specific UI */
+    /* Doubts Tab Layout */
     .doubts-layout {
       display: flex;
       flex-direction: column;
@@ -48,44 +51,13 @@
       background: linear-gradient(90deg, rgba(20,20,32,0.95) 0%, rgba(10,10,16,0.8) 100%);
       border: 1px solid var(--border);
       border-radius: var(--r);
-      padding: 16px 20px;
+      padding: 14px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
       gap: 12px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-    }
-    .subject-chips-bar {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-    .subject-chip-btn {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 6px 14px;
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--txt-2);
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: var(--ease);
-    }
-    .subject-chip-btn:hover {
-      background: rgba(99, 102, 241, 0.1);
-      border-color: var(--blue-l);
-      color: var(--txt-1);
-    }
-    .subject-chip-btn.active {
-      background: rgba(99, 102, 241, 0.25);
-      border-color: var(--blue-l);
-      color: #fff;
-      box-shadow: 0 0 12px rgba(99, 102, 241, 0.3);
     }
     .doubts-chat-window {
       flex: 1;
@@ -106,7 +78,7 @@
       gap: 16px;
     }
     .doubts-starters-wrap {
-      padding: 12px 18px;
+      padding: 10px 18px;
       border-top: 1px solid var(--border);
       background: rgba(10, 10, 15, 0.6);
     }
@@ -114,34 +86,74 @@
       border-top: 1px solid var(--border);
       background: rgba(14, 14, 20, 0.95);
       padding: 12px 18px;
+      position: relative;
     }
-    .math-symbol-toolbar {
-      display: flex;
-      gap: 6px;
-      overflow-x: auto;
-      padding-bottom: 8px;
+
+    /* Math Calculator Keypad Panel */
+    .math-calc-panel {
+      background: #09090f;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 10px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.7);
+      animation: fadeIn 0.2s ease;
+    }
+    .calc-category-title {
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--blue-l);
+      margin-bottom: 6px;
+    }
+    .calc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(44px, 1fr));
+      gap: 4px;
       margin-bottom: 8px;
-      border-bottom: 1px solid rgba(255,255,255,0.03);
     }
-    .math-symbol-toolbar::-webkit-scrollbar {
-      height: 3px;
-    }
-    .math-symbol-btn {
+    .calc-btn {
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 3px 8px;
+      border-radius: 5px;
+      padding: 6px 2px;
       font-size: 11px;
       font-family: 'JetBrains Mono', monospace;
-      color: var(--txt-2);
-      cursor: pointer;
-      white-space: nowrap;
-      transition: var(--ease);
-    }
-    .math-symbol-btn:hover {
-      background: rgba(99, 102, 241, 0.15);
       color: var(--txt-1);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--ease);
+      user-select: none;
+    }
+    .calc-btn:hover {
+      background: rgba(99, 102, 241, 0.2);
       border-color: var(--blue-l);
+      color: #fff;
+      transform: translateY(-1px);
+    }
+    .calc-btn:active {
+      transform: translateY(0);
+    }
+    .calc-btn.accent {
+      background: rgba(99, 102, 241, 0.12);
+      color: var(--blue-l);
+      font-weight: 700;
+    }
+    .calc-preview-bar {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px dashed var(--border);
+      border-radius: 4px;
+      padding: 6px 10px;
+      font-size: 11px;
+      min-height: 24px;
+      display: flex;
+      align-items: center;
+      color: #a78bfa;
+      font-family: 'JetBrains Mono', monospace;
+      overflow-x: auto;
     }
   </style>
 </head>
@@ -156,7 +168,7 @@
       <div style="font-size: 40px; margin-bottom: 12px; text-align: center;">🚀</div>
       <div class="auth-tagline">EXAM PREPARATION COMMAND CENTER</div>
       <h2 class="auth-title">Mission Jeet</h2>
-      <p class="auth-sub">Your personal command center for cracking your dream exam. Track tests, conquer doubts, and excel.</p>
+      <p class="auth-sub">Your personal command center for cracking your dream exam. Track tests, solve doubts, and excel.</p>
       
       <button class="auth-google-btn" id="googleSignInBtn" onclick="signInWithGoogle()">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
@@ -213,7 +225,7 @@
         <button class="nav-btn" data-sec="doubts" onclick="goSection('doubts',this)">
           <span class="nav-icon">✨</span>
           <span class="nav-text">Aacharya AI</span>
-          <span class="nav-tooltip">Doubts Support</span>
+          <span class="nav-tooltip">Doubts Solver</span>
         </button>
         <button class="nav-btn" data-sec="settings" onclick="goSection('settings',this)">
           <span class="nav-icon">⚙️</span>
@@ -250,77 +262,135 @@
         
         <!-- SECTION 1: TEST ARSENAL -->
         <section id="sec-tests" class="section active">
-          <!-- Hero Header -->
-          <div class="mission-hero" style="margin-bottom: 20px; position: relative; overflow: hidden; background: linear-gradient(90deg, rgba(16,16,24,0.95) 35%, rgba(10,10,12,0.5) 100%), url('banner.jpg'); background-size: cover; background-position: center; border: 1px solid var(--border); box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
-            <div class="mission-hero-top" style="align-items: center; justify-content: space-between;">
-              <div>
-                <h2 class="mission-hero-heading" style="font-family: 'Playfair Display', serif; font-style: italic; font-weight: 800; font-size: 26px; letter-spacing: -0.5px;">Test Arsenal</h2>
-                <p style="font-size: 12px; color: var(--txt-2); margin-top: 4px;">Schedule upcoming mocks, enter subject marks, and monitor your score readiness.</p>
+          
+          <!-- Segmented Tab Control: Tests Schedule vs Analytics Dashboard -->
+          <div class="seg-control" style="margin-bottom: 20px;">
+            <button class="seg-btn active" id="btn-tab-tests" onclick="setTestArsenalTab('tests')">📅 Tests Schedule</button>
+            <button class="seg-btn" id="btn-tab-test-analysis" onclick="setTestArsenalTab('analysis')">📊 Analytics Dashboard</button>
+          </div>
+
+          <!-- TAB A: Tests Schedule View -->
+          <div id="testsViewTests">
+            <!-- Hero Header -->
+            <div class="mission-hero" style="margin-bottom: 20px; position: relative; overflow: hidden; background: linear-gradient(90deg, rgba(16,16,24,0.95) 35%, rgba(10,10,12,0.5) 100%), url('banner.jpg'); background-size: cover; background-position: center; border: 1px solid var(--border); box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+              <div class="mission-hero-top" style="align-items: center; justify-content: space-between;">
+                <div>
+                  <h2 class="mission-hero-heading" style="font-family: 'Playfair Display', serif; font-style: italic; font-weight: 800; font-size: 26px; letter-spacing: -0.5px;">Test Schedule</h2>
+                  <p style="font-size: 12px; color: var(--txt-2); margin-top: 4px;">Schedule upcoming mocks, enter subject marks, and record performance.</p>
+                </div>
+                <div>
+                  <button class="btn btn-primary" onclick="openModal('testModal')">+ Schedule New Mock</button>
+                </div>
               </div>
-              <div>
-                <button class="btn btn-primary" onclick="openModal('testModal')">+ Schedule New Mock</button>
+            </div>
+
+            <!-- Schedule Filter Bar -->
+            <div class="card" style="margin-bottom:20px;">
+              <div class="card-body" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+                <div style="display:flex; gap:8px;">
+                  <button class="btn btn-ghost btn-sm active" id="filter-btn-all" onclick="filterTests('all',this)">All Tests</button>
+                  <button class="btn btn-ghost btn-sm" id="filter-btn-upcoming" onclick="filterTests('upcoming',this)">Upcoming</button>
+                  <button class="btn btn-ghost btn-sm" id="filter-btn-completed" onclick="filterTests('completed',this)">Completed</button>
+                </div>
+                <div id="testCountBadge" style="font-size:11px; font-weight:700; color:var(--txt-3); font-family:'JetBrains Mono';">
+                  0 Tests Scheduled
+                </div>
+              </div>
+            </div>
+
+            <!-- Tests Table -->
+            <div class="card">
+              <div class="card-body" style="overflow-x:auto; padding:0;">
+                <table class="tbl">
+                  <thead>
+                    <tr>
+                      <th>Test Number / Name</th>
+                      <th>Format</th>
+                      <th>Target Date</th>
+                      <th id="th-sub1-pct" style="text-align:center">Physics</th>
+                      <th id="th-sub2-pct" style="text-align:center">Chemistry</th>
+                      <th id="th-sub3-pct" style="text-align:center">Mathematics</th>
+                      <th style="text-align:center">Overall Aggregate</th>
+                      <th>Status</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="testTableBody"></tbody>
+                </table>
               </div>
             </div>
           </div>
 
-          <!-- Schedule Filter Bar -->
-          <div class="card" style="margin-bottom:20px;">
-            <div class="card-body" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
-              <div style="display:flex; gap:8px;">
-                <button class="btn btn-ghost btn-sm active" id="filter-btn-all" onclick="filterTests('all',this)">All Tests</button>
-                <button class="btn btn-ghost btn-sm" id="filter-btn-upcoming" onclick="filterTests('upcoming',this)">Upcoming</button>
-                <button class="btn btn-ghost btn-sm" id="filter-btn-completed" onclick="filterTests('completed',this)">Completed</button>
+          <!-- TAB B: Analytics Dashboard View (Restored Test Analysis) -->
+          <div id="testsViewAnalysis" style="display:none;">
+            <!-- Score Progression Trend (Large Wide Graph) -->
+            <div class="card" style="margin-bottom:20px;">
+              <div class="card-header"><h3 class="card-title">Score Progression Trend</h3></div>
+              <div class="card-body">
+                <div class="chart-container" style="min-height: 320px; position:relative;">
+                  <canvas id="chartTestTrend"></canvas>
+                  <div id="chartTestTrendEmpty" class="hidden" style="text-align:center; padding:50px 0; color:var(--txt-3)">No graded mock tests recorded yet. Complete and grade a mock test to view the progression trend.</div>
+                </div>
               </div>
-              <div id="testCountBadge" style="font-size:11px; font-weight:700; color:var(--txt-3); font-family:'JetBrains Mono';">
-                0 Tests Scheduled
+            </div>
+
+            <!-- Summary KPI boxes -->
+            <div class="analytics-kpi" style="margin-bottom: 20px;">
+              <div class="kpi-card" style="border-left: 3px solid var(--purple-l);">
+                <div class="kpi-val" id="taTotalTests">0</div>
+                <div class="kpi-label">Total Mock Tests Taken</div>
+              </div>
+              <div class="kpi-card" style="border-left: 3px solid var(--blue-l);">
+                <div class="kpi-val" id="taStatus">Loading...</div>
+                <div class="kpi-label">Performance Status</div>
+              </div>
+              <div class="kpi-card" style="border-left: 3px solid var(--green-l);">
+                <div class="kpi-val" id="taTrend">--</div>
+                <div class="kpi-label">Improvement Trend</div>
+              </div>
+              <div class="kpi-card" style="border-left: 3px solid var(--yellow-l);">
+                <div class="kpi-val" id="taAvgScore">0%</div>
+                <div class="kpi-label">Average Score</div>
+              </div>
+            </div>
+
+            <!-- Subject Balance & detail cards side-by-side -->
+            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap:20px; margin-bottom:20px;">
+              <div class="card">
+                <div class="card-header"><h3 class="card-title">Subject Balance</h3></div>
+                <div class="card-body">
+                  <div class="chart-container" style="min-height: 250px; position:relative;">
+                    <canvas id="chartSubjectBalance"></canvas>
+                    <div id="chartSubjectBalanceEmpty" class="hidden" style="text-align:center; padding:40px 0; color:var(--txt-3)">No graded mock tests recorded.</div>
+                  </div>
+                </div>
+              </div>
+              
+              <div style="display:flex; flex-direction:column; gap:12px;" id="taSubjectCards">
+                <!-- Subject Performance Cards Injected in JS -->
               </div>
             </div>
           </div>
 
-          <!-- Tests Table -->
-          <div class="card">
-            <div class="card-body" style="overflow-x:auto; padding:0;">
-              <table class="tbl">
-                <thead>
-                  <tr>
-                    <th>Test Number / Name</th>
-                    <th>Format</th>
-                    <th>Target Date</th>
-                    <th id="th-sub1-pct" style="text-align:center">Physics</th>
-                    <th id="th-sub2-pct" style="text-align:center">Chemistry</th>
-                    <th id="th-sub3-pct" style="text-align:center">Mathematics</th>
-                    <th style="text-align:center">Overall Aggregate</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody id="testTableBody"></tbody>
-              </table>
-            </div>
-          </div>
         </section>
 
         <!-- SECTION 2: AACHARYA AI (DOUBTS SUPPORT) -->
         <section id="sec-doubts" class="section">
           <div class="doubts-layout">
             
-            <!-- Top Controls Card -->
+            <!-- Top Header Card (Unified - No Subject Split) -->
             <div class="doubts-header-card">
               <div style="display:flex; align-items:center; gap:12px;">
                 <div style="width:42px; height:42px; border-radius:50%; background:#1c1c24; border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:22px;">🤖</div>
                 <div>
                   <h3 style="font-family:'Playfair Display', serif; font-style:italic; font-weight:800; font-size:18px; color:var(--txt-1); margin:0;">Aacharya AI — Doubts Solver</h3>
-                  <p style="font-size:11px; color:var(--blue-l); font-weight:700; text-transform:uppercase; letter-spacing:0.5px; margin:2px 0 0 0;">Dedicated 24/7 IIT-JEE & NEET Academic Tutor</p>
+                  <p style="font-size:11px; color:var(--blue-l); font-weight:700; text-transform:uppercase; letter-spacing:0.5px; margin:2px 0 0 0;">Dedicated 24/7 IIT-JEE & NEET Academic Mentor</p>
                 </div>
               </div>
 
-              <!-- Subject Chips -->
-              <div class="subject-chips-bar" id="doubtSubjectChips">
-                <button class="subject-chip-btn active" data-subject="general" onclick="selectDoubtSubject('general', this)">🌟 General</button>
-                <button class="subject-chip-btn" data-subject="physics" onclick="selectDoubtSubject('physics', this)">⚛️ Physics</button>
-                <button class="subject-chip-btn" data-subject="chemistry" onclick="selectDoubtSubject('chemistry', this)">🧪 Chemistry</button>
-                <button class="subject-chip-btn" data-subject="math-bio" id="chipSub3" onclick="selectDoubtSubject('math-bio', this)">📐 Mathematics</button>
-                <button class="btn btn-ghost btn-sm" onclick="clearDoubtChat()" title="Clear Chat History">🗑️ Clear</button>
+              <div style="display:flex; align-items:center; gap:8px;">
+                <button class="btn btn-ghost btn-sm" id="calcToggleBtn" onclick="toggleMathCalculator()" title="Toggle Math/Formula Calculator Keypad">📐 Math Keypad</button>
+                <button class="btn btn-ghost btn-sm" onclick="clearDoubtChat()" title="Clear Chat History">🗑️ Clear Chat</button>
               </div>
             </div>
 
@@ -333,7 +403,7 @@
 
               <!-- Quick Doubt Starters -->
               <div class="doubts-starters-wrap" id="chatQuickActions">
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                   <span style="font-size:10px; font-weight:700; text-transform:uppercase; color:var(--blue-l); letter-spacing:0.5px;">💡 Instant Concept & Numerical Starters</span>
                 </div>
                 <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:8px;" id="quickStartersGrid">
@@ -344,23 +414,65 @@
               <!-- Input Console -->
               <div class="doubts-input-console">
                 
-                <!-- Math Symbol Shortcut Toolbar -->
-                <div class="math-symbol-toolbar">
-                  <span style="font-size:10px; font-weight:700; color:var(--txt-3); margin-right:4px; display:inline-flex; align-items:center;">Formula Tools:</span>
-                  <button type="button" class="math-symbol-btn" onclick="insertMathSymbol('\sqrt{x}')">√x</button>
-                  <button type="button" class="math-symbol-btn" onclick="insertMathSymbol('\frac{a}{b}')">a/b</button>
-                  <button type="button" class="math-symbol-btn" onclick="insertMathSymbol('x^{2}')">x²</button>
-                  <button type="button" class="math-symbol-btn" onclick="insertMathSymbol('x_{1}')">x₁</button>
-                  <button type="button" class="math-symbol-btn" onclick="insertMathSymbol('\int')">∫</button>
-                  <button type="button" class="math-symbol-btn" onclick="insertMathSymbol('\Delta')">Δ</button>
-                  <button type="button" class="math-symbol-btn" onclick="insertMathSymbol('\theta')">θ</button>
-                  <button type="button" class="math-symbol-btn" onclick="insertMathSymbol('\pi')">π</button>
-                  <button type="button" class="math-symbol-btn" onclick="insertMathSymbol('\to')">→</button>
-                  <button type="button" class="math-symbol-btn" onclick="insertMathSymbol('\pm')">±</button>
-                  <button type="button" class="math-symbol-btn" onclick="insertMathSymbol('\infty')">∞</button>
-                  <button type="button" class="math-symbol-btn" onclick="insertMathSymbol('\lambda')">λ</button>
-                  <button type="button" class="math-symbol-btn" onclick="insertMathSymbol('\alpha')">α</button>
-                  <button type="button" class="math-symbol-btn" onclick="insertMathSymbol('\beta')">β</button>
+                <!-- Scientific Math & Formula Calculator Pad (Expandable Keypad) -->
+                <div class="math-calc-panel" id="mathCalculatorPad" style="display:none;">
+                  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                    <span class="calc-category-title">📐 Scientific Math & Formula Keypad</span>
+                    <button type="button" onclick="toggleMathCalculator(false)" style="background:none; border:none; color:var(--txt-3); cursor:pointer; font-size:12px;">✕ Close</button>
+                  </div>
+                  
+                  <!-- Keypad Rows -->
+                  <div class="calc-grid">
+                    <!-- Powers & Roots -->
+                    <button type="button" class="calc-btn accent" onclick="insertMathSymbol('\\sqrt{x}')">√x</button>
+                    <button type="button" class="calc-btn accent" onclick="insertMathSymbol('\\sqrt[n]{x}')">ⁿ√x</button>
+                    <button type="button" class="calc-btn accent" onclick="insertMathSymbol('x^{2}')">x²</button>
+                    <button type="button" class="calc-btn accent" onclick="insertMathSymbol('x^{n}')">xⁿ</button>
+                    <button type="button" class="calc-btn accent" onclick="insertMathSymbol('x_{1}')">x₁</button>
+                    <button type="button" class="calc-btn accent" onclick="insertMathSymbol('\\frac{a}{b}')">a/b</button>
+                    <button type="button" class="calc-btn" onclick="insertMathSymbol('|x|')">|x|</button>
+                    <button type="button" class="calc-btn" onclick="insertMathSymbol('\\log_{10}(x)')">log</button>
+                    <button type="button" class="calc-btn" onclick="insertMathSymbol('\\ln(x)')">ln</button>
+                    
+                    <!-- Calculus & Limits -->
+                    <button type="button" class="calc-btn accent" onclick="insertMathSymbol('\\int')">∫</button>
+                    <button type="button" class="calc-btn accent" onclick="insertMathSymbol('\\int_{a}^{b}')">∫ₐᵇ</button>
+                    <button type="button" class="calc-btn accent" onclick="insertMathSymbol('\\frac{d}{dx}')">d/dx</button>
+                    <button type="button" class="calc-btn" onclick="insertMathSymbol('\\frac{\\partial}{\\partial x}')">∂/∂x</button>
+                    <button type="button" class="calc-btn" onclick="insertMathSymbol('\\lim_{x \\to 0}')">lim</button>
+                    <button type="button" class="calc-btn" onclick="insertMathSymbol('\\sum')">∑</button>
+                    <button type="button" class="calc-btn" onclick="insertMathSymbol('\\infty')">∞</button>
+                    
+                    <!-- Trigonometry -->
+                    <button type="button" class="calc-btn" onclick="insertMathSymbol('\\sin(\\theta)')">sin</button>
+                    <button type="button" class="calc-btn" onclick="insertMathSymbol('\\cos(\\theta)')">cos</button>
+                    <button type="button" class="calc-btn" onclick="insertMathSymbol('\\tan(\\theta)')">tan</button>
+                    <button type="button" class="calc-btn" onclick="insertMathSymbol('\\theta')">θ</button>
+                    <button type="button" class="calc-btn" onclick="insertMathSymbol('\\phi')">ϕ</button>
+                    <button type="button" class="calc-btn" onclick="insertMathSymbol('\\omega')">ω</button>
+                    <button type="button" class="calc-btn" onclick="insertMathSymbol('\\pi')">π</button>
+                    <button type="button" class="calc-btn" onclick="insertMathSymbol('^\\circ')">°</button>
+
+                    <!-- Physics / Chemistry Symbols -->
+                    <button type="button" class="calc-btn" onclick="insertMathSymbol('\\Delta')">Δ</button>
+                    <button type="button" class="calc-btn" onclick="insertMathSymbol('\\vec{v}')">v⃗</button>
+                    <button type="button" class="calc-btn" onclick="insertMathSymbol('\\lambda')">λ</button>
+                    <button type="button" class="calc-btn" onclick="insertMathSymbol('\\alpha')">α</button>
+                    <button type="button" class="calc-btn" onclick="insertMathSymbol('\\beta')">β</button>
+                    <button type="button" class="calc-btn" onclick="insertMathSymbol('\\gamma')">γ</button>
+                    <button type="button" class="calc-btn" onclick="insertMathSymbol('\\mu')">μ</button>
+                    <button type="button" class="calc-btn" onclick="insertMathSymbol('\\rho')">ρ</button>
+                    <button type="button" class="calc-btn" onclick="insertMathSymbol('\\sigma')">σ</button>
+                    <button type="button" class="calc-btn" onclick="insertMathSymbol('\\tau')">τ</button>
+                    <button type="button" class="calc-btn" onclick="insertMathSymbol('\\Omega')">Ω</button>
+                    <button type="button" class="calc-btn" onclick="insertMathSymbol('\\to')">→</button>
+                    <button type="button" class="calc-btn" onclick="insertMathSymbol('\\rightleftharpoons')">⇌</button>
+                    <button type="button" class="calc-btn" onclick="insertMathSymbol('\\pm')">±</button>
+                    <button type="button" class="calc-btn" onclick="insertMathSymbol('\\approx')">≈</button>
+                    <button type="button" class="calc-btn" onclick="insertMathSymbol('\\neq')">≠</button>
+                    <button type="button" class="calc-btn" onclick="insertMathSymbol('\\le')">≤</button>
+                    <button type="button" class="calc-btn" onclick="insertMathSymbol('\\ge')">≥</button>
+                  </div>
                 </div>
 
                 <!-- Attachment Preview Indicator -->
@@ -378,7 +490,10 @@
                     📎
                     <input type="file" id="chatFileInput" accept="image/*,application/pdf" onchange="handleChatFileUpload(event)" style="display:none;">
                   </label>
-                  <input type="text" id="chatInput" placeholder="Ask Aacharya a doubt (e.g. Solve numerical, explain reaction mechanism, derive formula)..." style="flex:1; background:#06060a; border:1px solid var(--border); border-radius:6px; padding:12px 14px; color:var(--txt-1); font-size:13px; outline:none;" required>
+                  <button type="button" onclick="toggleMathCalculator()" style="height:42px; width:42px; background:#06060a; border:1px solid var(--border); border-radius:6px; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:16px; flex-shrink:0; color:var(--blue-l); transition:var(--ease);" title="Open Math & Formula Keypad">
+                    📐
+                  </button>
+                  <input type="text" id="chatInput" placeholder="Ask Aacharya any academic doubt (e.g. solve numerical, explain mechanism, derive formula)..." style="flex:1; background:#06060a; border:1px solid var(--border); border-radius:6px; padding:12px 14px; color:var(--txt-1); font-size:13px; outline:none;" required>
                   <button type="submit" class="btn btn-primary" style="height:42px; padding:0 18px; display:flex; align-items:center; justify-content:center; font-size:14px; flex-shrink:0; font-weight:700; gap:6px;">
                     <span>Solve</span>
                     <span>➔</span>
