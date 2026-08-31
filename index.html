@@ -483,10 +483,13 @@
   <div class="modal-bg" id="marksModal">
     <div class="modal">
       <div class="modal-header">
-        <h3 class="modal-title">Submit Obtained Scores</h3>
+        <h3 class="modal-title" id="marksModalTitle">Submit Obtained Scores</h3>
         <button class="modal-close" onclick="closeModal('marksModal')">✕</button>
       </div>
       <div class="modal-body">
+        <div id="marksLockNotice" style="display:none; background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.3); border-radius:6px; padding:8px 12px; margin-bottom:12px; font-size:11px; color:var(--red-l);">
+          🔒 <strong>Permanent Record:</strong> This mock test score has been finalized and locked. Editing and deleting are disabled.
+        </div>
         <p style="font-size:11px; color:var(--txt-3); margin-bottom:12px;" id="marksTestInfo">Loading test info...</p>
         
         <div style="display:grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap:6px; font-weight:700; font-size:10px; color:var(--txt-3); margin-bottom:6px; text-transform:uppercase;">
@@ -520,7 +523,9 @@
           <span class="mono"><span id="marksTotalDisplay">0</span>/<span id="marksMaxDisplay">300</span> (<span id="marksPctDisplay">0%</span>)</span>
         </div>
 
-        <button class="btn btn-primary" style="width:100%; margin-top:10px;" onclick="submitMarks()">Submit Obtained Marks</button>
+        <div id="marksSubmitWrap">
+          <button class="btn btn-primary" id="marksSubmitBtn" style="width:100%; margin-top:10px;" onclick="submitMarks()">Submit & Lock Obtained Marks</button>
+        </div>
       </div>
     </div>
   </div>

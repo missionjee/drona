@@ -756,6 +756,7 @@ function renderTestArsenal() {
 
     let totalScoreDisplay = '<span style="color:var(--txt-3); font-size:11px;">Pending</span>';
     let statusBadge = '<span class="badge badge-yellow">Upcoming</span>';
+    let actionButtons = '';
 
     if (isCompleted) {
       let obtained = 0, totalMax = 0;
@@ -765,7 +766,20 @@ function renderTestArsenal() {
       });
       const pct = totalMax > 0 ? Math.round((obtained / totalMax) * 100) : 0;
       totalScoreDisplay = `<strong>${obtained}</strong>/${totalMax} <span style="color:var(--blue-l); font-size:11px; font-weight:700;">(${pct}%)</span>`;
-      statusBadge = '<span class="badge badge-green">Graded</span>';
+      statusBadge = '<span class="badge badge-green">🔒 Graded & Locked</span>';
+      actionButtons = `
+        <div style="display:flex; gap:6px; align-items:center;">
+          <button class="btn btn-ghost btn-sm" onclick="openMarksModal('${t.id}')">👁️ View Marks</button>
+          <span class="badge badge-ghost" style="font-size:10px; opacity:0.6; cursor:not-allowed;" title="Permanently Locked: Graded mock scores cannot be edited or deleted">🔒 Locked</span>
+        </div>
+      `;
+    } else {
+      actionButtons = `
+        <div style="display:flex; gap:6px; align-items:center;">
+          <button class="btn btn-primary btn-sm" onclick="openMarksModal('${t.id}')">+ Enter Marks</button>
+          <button class="btn btn-ghost btn-sm" style="color:var(--red-l);" onclick="deleteTest('${t.id}')" title="Delete Upcoming Mock">🗑️</button>
+        </div>
+      `;
     }
 
     return `
@@ -778,12 +792,7 @@ function renderTestArsenal() {
         <td style="text-align:center;" class="mono">${m3} <span style="font-size:10px; color:var(--txt-3)">/${max3}</span></td>
         <td style="text-align:center;" class="mono">${totalScoreDisplay}</td>
         <td>${statusBadge}</td>
-        <td>
-          <div style="display:flex; gap:6px;">
-            <button class="btn btn-ghost btn-sm" onclick="openMarksModal('${t.id}')">${isCompleted ? 'Edit Score' : '+ Enter Score'}</button>
-            <button class="btn btn-ghost btn-sm" style="color:var(--red-l);" onclick="deleteTest('${t.id}')" title="Delete Test">🗑️</button>
-          </div>
-        </td>
+        <td>${actionButtons}</td>
       </tr>
     `;
   }).join('');
@@ -1018,14 +1027,21 @@ async function saveTest() {
 }
 
 async function deleteTest(testId) {
-  if (!confirm('Are you sure you want to delete this test?')) return;
   const cleanId = String(testId).replace('drona_test_', '');
+  const test = allTests.find(t => t && (t.id === testId || t.id === cleanId || t.id === `drona_test_${cleanId}`));
+  
+  if (test && (test.completed || test.locked)) {
+    toast('🔒 Permanent Record: Finalized test scores cannot be deleted.', 'error');
+    return;
+  }
+
+  if (!confirm('Are you sure you want to delete this upcoming test?')) return;
   const email = (currentUser && currentUser.email) || 'diveshsah2@gmail.com';
 
   allTests = allTests.filter(t => t && t.id !== testId && t.id !== cleanId && t.id !== `drona_test_${cleanId}`);
   renderTestArsenal();
   if (testArsenalTab === 'analysis') renderTestAnalysis();
-  toast('Test deleted successfully.', 'info');
+  toast('Upcoming test deleted.', 'info');
 
   try {
     await DronaDB.deleteTest(email, testId);
@@ -1035,16 +1051,20 @@ async function deleteTest(testId) {
 }
 
 async function clearAllUserTests() {
-  if (!confirm('Are you sure you want to delete ALL mock tests from your arsenal? This will reset your test schedule to a clean slate.')) return;
+  if (!confirm('Are you sure you want to clear upcoming mock tests? (Finalized/graded tests will remain safely recorded).')) return;
   const email = (currentUser && currentUser.email) || 'diveshsah2@gmail.com';
 
-  allTests = [];
+  // Only delete uncompleted/upcoming tests
+  const upcomingTests = allTests.filter(t => !t.completed);
+  allTests = allTests.filter(t => t.completed);
   renderTestArsenal();
   if (testArsenalTab === 'analysis') renderTestAnalysis();
-  toast('All mock tests removed.', 'info');
+  toast('Upcoming mock tests cleared.', 'info');
 
   try {
-    await DronaDB.clearAllTests(email);
+    for (const t of upcomingTests) {
+      await DronaDB.deleteTest(email, t.id);
+    }
   } catch (e) {
     console.error('[ClearAll] Error:', e);
   }
@@ -1056,9 +1076,16 @@ function openMarksModal(testId) {
 
   currentMarkTestId = testId;
   const subs = getActiveSubjects();
+  const isLocked = Boolean(test.completed && test.marks && Object.keys(test.marks).length > 0);
+
+  const titleEl = document.getElementById('marksModalTitle');
+  if (titleEl) titleEl.textContent = isLocked ? 'Mock Score Record (Locked)' : 'Submit Obtained Scores';
+
+  const lockNotice = document.getElementById('marksLockNotice');
+  if (lockNotice) lockNotice.style.display = isLocked ? 'block' : 'none';
 
   const infoEl = document.getElementById('marksTestInfo');
-  if (infoEl) infoEl.textContent = `Submitting score for "${test.number}" (${test.type}) - ${test.date}`;
+  if (infoEl) infoEl.textContent = `Test: "${test.number}" (${test.type}) - Target Date: ${test.date || 'N/A'}`;
 
   const max1 = (test.maxMarks && test.maxMarks[subs[0].key]) || 100;
   const max2 = (test.maxMarks && test.maxMarks[subs[1].key]) || 100;
@@ -1068,9 +1095,27 @@ function openMarksModal(testId) {
   document.getElementById('m-sub2-max').textContent = max2;
   document.getElementById('m-sub3-max').textContent = max3;
 
-  document.getElementById('m-sub1').value = (test.marks && test.marks[subs[0].key] !== undefined) ? test.marks[subs[0].key] : '';
-  document.getElementById('m-sub2').value = (test.marks && test.marks[subs[1].key] !== undefined) ? test.marks[subs[1].key] : '';
-  document.getElementById('m-sub3').value = (test.marks && test.marks[subs[2].key] !== undefined) ? test.marks[subs[2].key] : '';
+  const inp1 = document.getElementById('m-sub1');
+  const inp2 = document.getElementById('m-sub2');
+  const inp3 = document.getElementById('m-sub3');
+
+  inp1.value = (test.marks && test.marks[subs[0].key] !== undefined) ? test.marks[subs[0].key] : '';
+  inp2.value = (test.marks && test.marks[subs[1].key] !== undefined) ? test.marks[subs[1].key] : '';
+  inp3.value = (test.marks && test.marks[subs[2].key] !== undefined) ? test.marks[subs[2].key] : '';
+
+  inp1.disabled = isLocked;
+  inp2.disabled = isLocked;
+  inp3.disabled = isLocked;
+
+  const submitBtn = document.getElementById('marksSubmitBtn');
+  if (submitBtn) {
+    if (isLocked) {
+      submitBtn.style.display = 'none';
+    } else {
+      submitBtn.style.display = 'block';
+      submitBtn.textContent = 'Submit & Lock Obtained Marks';
+    }
+  }
 
   updateModalTotals();
   openModal('marksModal');
@@ -1104,11 +1149,23 @@ function updateModalTotals() {
 
 async function submitMarks() {
   if (!currentMarkTestId) return;
-  const subs = getActiveSubjects();
+  const testIdx = allTests.findIndex(t => t.id === currentMarkTestId);
+  if (testIdx < 0) return;
 
+  const test = allTests[testIdx];
+  if (test.completed || test.locked) {
+    toast('🔒 Permanent Record: Score is finalized and cannot be edited.', 'error');
+    closeModal('marksModal');
+    return;
+  }
+
+  const subs = getActiveSubjects();
   const s1 = parseFloat(document.getElementById('m-sub1').value) || 0;
   const s2 = parseFloat(document.getElementById('m-sub2').value) || 0;
   const s3 = parseFloat(document.getElementById('m-sub3').value) || 0;
+
+  const confirmMsg = "⚠️ PERMANENT RECORD LOCK:\n\nAre you sure you want to finalize and submit these marks?\n\nOnce submitted, this mock test score will be PERMANENTLY LOCKED and cannot be edited or deleted.";
+  if (!confirm(confirmMsg)) return;
 
   const updatedMarks = {
     [subs[0].key]: s1,
@@ -1116,23 +1173,22 @@ async function submitMarks() {
     [subs[2].key]: s3
   };
 
-  const testIdx = allTests.findIndex(t => t.id === currentMarkTestId);
-  if (testIdx >= 0) {
-    allTests[testIdx].marks = updatedMarks;
-    allTests[testIdx].completed = true;
-    allTests[testIdx].updatedAt = new Date().toISOString();
+  allTests[testIdx].marks = updatedMarks;
+  allTests[testIdx].completed = true;
+  allTests[testIdx].locked = true;
+  allTests[testIdx].submittedAt = new Date().toISOString();
+  allTests[testIdx].updatedAt = new Date().toISOString();
 
-    closeModal('marksModal');
-    toast('Marks saved in Supabase database!', 'success');
-    renderTestArsenal();
-    if (testArsenalTab === 'analysis') renderTestAnalysis();
+  closeModal('marksModal');
+  toast('Score permanently finalized and locked!', 'success');
+  renderTestArsenal();
+  if (testArsenalTab === 'analysis') renderTestAnalysis();
 
-    const email = (currentUser && currentUser.email) || 'diveshsah2@gmail.com';
-    try {
-      await DronaDB.saveTest(email, allTests[testIdx]);
-    } catch (e) {
-      console.error('[SubmitMarks] Error:', e);
-    }
+  const email = (currentUser && currentUser.email) || 'diveshsah2@gmail.com';
+  try {
+    await DronaDB.saveTest(email, allTests[testIdx]);
+  } catch (e) {
+    console.error('[SubmitMarks] Error:', e);
   }
 }
 
