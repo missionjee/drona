@@ -1,0 +1,13 @@
+{
+  "name": "drona",
+  "version": "3.0.0",
+  "private": true,
+  "description": "Mission Jeet (Drona) — Exam Preparation & Academic Doubts Command Center",
+  "scripts": {
+    "start": "npx serve .",
+    "seed": "node seed-drona-data.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.112.4"
+  }
+}

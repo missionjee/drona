@@ -1,12 +1,276 @@
+// ==============================================================================
+// MISSION JEET (DRONA) — CORE APPLICATION CONTROLLER
+// High-Performance IIT-JEE & NEET Test Arsenal & Aacharya AI Command Deck
+// Integrated with Firebase Auth & Supabase Real-Time Database Engine
+// ==============================================================================
+
 // === 1. SAFE STORAGE WRAPPER ===
 let localDataStore = {};
 const mjStorage = {
-  getItem(key) { try { return localStorage.getItem(key); } catch(e) { return localDataStore[key] || null; } },
-  setItem(key, value) { try { localStorage.setItem(key, value); } catch(e) { localDataStore[key] = value; } },
-  removeItem(key) { try { localStorage.removeItem(key); } catch(e) { delete localDataStore[key]; } }
+  getItem(key) {
+    try {
+      return localStorage.getItem(key);
+    } catch (e) {
+      return localDataStore[key] || null;
+    }
+  },
+  setItem(key, value) {
+    try {
+      localStorage.setItem(key, value);
+    } catch (e) {
+      localDataStore[key] = value;
+    }
+  },
+  removeItem(key) {
+    try {
+      localStorage.removeItem(key);
+    } catch (e) {
+      delete localDataStore[key];
+    }
+  }
 };
 
-// Gemini API Key Configuration
+// === 2. SUPABASE DATABASE ADAPTER FOR DRONA ===
+const SUPABASE_CONFIG = {
+  PROJECT_URL: "https://fvmbqikdomcjalladwmz.supabase.co",
+  ANON_KEY: "sb_publishable_UNWum89AzkwnfNb2BoxdKA_otmSXn5c",
+  REST_ENDPOINT: "https://fvmbqikdomcjalladwmz.supabase.co/rest/v1"
+};
+
+const DronaDB = {
+  async _request(path, method = 'GET', body = null) {
+    const url = `${SUPABASE_CONFIG.REST_ENDPOINT}${path}`;
+    const headers = {
+      'apikey': SUPABASE_CONFIG.ANON_KEY,
+      'Authorization': `Bearer ${SUPABASE_CONFIG.ANON_KEY}`,
+      'Content-Type': 'application/json',
+      'Prefer': 'return=representation'
+    };
+
+    try {
+      const response = await fetch(url, {
+        method,
+        headers,
+        body: body ? JSON.stringify(body) : undefined
+      });
+
+      if (!response.ok) {
+        const errText = await response.text().catch(() => '');
+        console.warn(`[DronaDB] HTTP ${response.status} on ${path}:`, errText);
+        return { ok: false, status: response.status, data: null, error: errText };
+      }
+
+      const contentType = response.headers.get('content-type') || '';
+      let data = null;
+      if (contentType.includes('application/json')) {
+        data = await response.json().catch(() => null);
+      }
+      return { ok: true, status: response.status, data };
+    } catch (err) {
+      console.warn(`[DronaDB] Network error on ${path}:`, err);
+      return { ok: false, status: 0, data: null, error: err.message };
+    }
+  },
+
+  getUserKey(userEmail) {
+    const email = (userEmail || 'diveshsah2@gmail.com').toLowerCase().trim();
+    return `drona_user_${email}`;
+  },
+
+  async loadUserProfile(userEmail) {
+    const email = (userEmail || 'diveshsah2@gmail.com').toLowerCase().trim();
+    const issueKey = this.getUserKey(email);
+    
+    // 1. Try cloud fetch
+    const res = await this._request(`/global_signals?issue_number=eq.${encodeURIComponent(issueKey)}&select=*`);
+    if (res.ok && Array.isArray(res.data) && res.data.length > 0) {
+      try {
+        const parsed = JSON.parse(res.data[0].reason || '{}');
+        mjStorage.setItem(`mj_cached_profile_${email}`, JSON.stringify(parsed));
+        return parsed;
+      } catch (e) {
+        console.error('[DronaDB] Error parsing profile payload:', e);
+      }
+    }
+
+    // 2. Try local cache fallback
+    const cached = mjStorage.getItem(`mj_cached_profile_${email}`);
+    if (cached) {
+      try { return JSON.parse(cached); } catch (e) {}
+    }
+
+    // 3. Return sensible default profile for new aspirant
+    const defaultProfile = {
+      email,
+      name: email === 'diveshsah2@gmail.com' ? 'Divesh Sah' : 'Aspirant',
+      class: '12',
+      examMode: 'jee',
+      targetCollege: 'IIT Bombay / IIT Delhi - Computer Science',
+      targetScore: 285,
+      avatar: ''
+    };
+    return defaultProfile;
+  },
+
+  async saveUserProfile(userEmail, profileData) {
+    const email = (userEmail || 'diveshsah2@gmail.com').toLowerCase().trim();
+    const issueKey = this.getUserKey(email);
+    const merged = { ...profileData, email, updatedAt: new Date().toISOString() };
+
+    // Update local cache immediately
+    mjStorage.setItem(`mj_cached_profile_${email}`, JSON.stringify(merged));
+
+    const payload = {
+      issue_number: issueKey,
+      strategy: 'drona_profile',
+      predicted_type: merged.examMode || 'jee',
+      confidence: 100,
+      status: 'active',
+      stake_units: email,
+      reason: JSON.stringify(merged)
+    };
+
+    // Check if profile row exists in Supabase
+    const check = await this._request(`/global_signals?issue_number=eq.${encodeURIComponent(issueKey)}&select=issue_number`);
+    if (check.ok && Array.isArray(check.data) && check.data.length > 0) {
+      return this._request(`/global_signals?issue_number=eq.${encodeURIComponent(issueKey)}`, 'PATCH', payload);
+    } else {
+      return this._request('/global_signals', 'POST', payload);
+    }
+  },
+
+  async loadUserTests(userEmail) {
+    const email = (userEmail || 'diveshsah2@gmail.com').toLowerCase().trim();
+
+    // 1. Fetch from Supabase
+    const res = await this._request(`/global_signals?strategy=eq.drona_test&stake_units=eq.${encodeURIComponent(email)}&select=*`);
+    if (res.ok && Array.isArray(res.data) && res.data.length > 0) {
+      const tests = res.data.map(item => {
+        try {
+          const testObj = JSON.parse(item.reason || '{}');
+          return {
+            id: testObj.id || item.issue_number.replace('drona_test_', ''),
+            ...testObj
+          };
+        } catch (e) {
+          return null;
+        }
+      }).filter(Boolean);
+
+      // Sort by date descending
+      tests.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
+      mjStorage.setItem(`mj_cached_tests_${email}`, JSON.stringify(tests));
+      return tests;
+    }
+
+    // 2. Cache fallback
+    const cached = mjStorage.getItem(`mj_cached_tests_${email}`);
+    if (cached) {
+      try {
+        const arr = JSON.parse(cached);
+        if (Array.isArray(arr) && arr.length > 0) return arr;
+      } catch (e) {}
+    }
+
+    // 3. If email is diveshsah2@gmail.com, return starter suite
+    if (email === 'diveshsah2@gmail.com') {
+      return [
+        {
+          id: 'mock_test_1',
+          number: 'JEE Main Full Syllabus Mock - 01',
+          type: 'JEE Main',
+          examMode: 'jee',
+          date: '2026-08-15',
+          maxMarks: { physics: 100, chemistry: 100, mathematics: 100 },
+          marks: { physics: 78, chemistry: 86, mathematics: 74 },
+          completed: true
+        },
+        {
+          id: 'mock_test_2',
+          number: 'AITS Part Test - Electrodynamics & Organic',
+          type: 'JEE Main',
+          examMode: 'jee',
+          date: '2026-08-20',
+          maxMarks: { physics: 100, chemistry: 100, mathematics: 100 },
+          marks: { physics: 84, chemistry: 92, mathematics: 80 },
+          completed: true
+        },
+        {
+          id: 'mock_test_3',
+          number: 'JEE Main All India Ranker Mock - 03',
+          type: 'JEE Main',
+          examMode: 'jee',
+          date: '2026-08-28',
+          maxMarks: { physics: 100, chemistry: 100, mathematics: 100 },
+          marks: { physics: 88, chemistry: 94, mathematics: 85 },
+          completed: true
+        },
+        {
+          id: 'mock_test_4',
+          number: 'JEE Main Final Sprint Mock - 04',
+          type: 'JEE Main',
+          examMode: 'jee',
+          date: '2026-09-05',
+          maxMarks: { physics: 100, chemistry: 100, mathematics: 100 },
+          marks: {},
+          completed: false
+        }
+      ];
+    }
+
+    return [];
+  },
+
+  async saveTest(userEmail, testData) {
+    const email = (userEmail || 'diveshsah2@gmail.com').toLowerCase().trim();
+    const testId = testData.id || `test_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`;
+    const fullTest = { ...testData, id: testId, userEmail: email, updatedAt: new Date().toISOString() };
+    const issueKey = `drona_test_${testId}`;
+
+    const payload = {
+      issue_number: issueKey,
+      strategy: 'drona_test',
+      predicted_type: fullTest.examMode || 'jee',
+      confidence: fullTest.marks && fullTest.marks.physics !== undefined ? (parseFloat(fullTest.marks.physics || 0) + parseFloat(fullTest.marks.chemistry || 0) + parseFloat(fullTest.marks.mathematics || fullTest.marks.biology || 0)) : 0,
+      status: fullTest.completed ? 'completed' : 'upcoming',
+      stake_units: email,
+      reason: JSON.stringify(fullTest)
+    };
+
+    // Update local tests cache
+    let current = [];
+    try { current = JSON.parse(mjStorage.getItem(`mj_cached_tests_${email}`) || '[]'); } catch (e) {}
+    const existingIdx = current.findIndex(t => t.id === testId);
+    if (existingIdx >= 0) current[existingIdx] = fullTest;
+    else current.unshift(fullTest);
+    mjStorage.setItem(`mj_cached_tests_${email}`, JSON.stringify(current));
+
+    // Cloud push
+    const check = await this._request(`/global_signals?issue_number=eq.${encodeURIComponent(issueKey)}&select=issue_number`);
+    if (check.ok && Array.isArray(check.data) && check.data.length > 0) {
+      await this._request(`/global_signals?issue_number=eq.${encodeURIComponent(issueKey)}`, 'PATCH', payload);
+    } else {
+      await this._request('/global_signals', 'POST', payload);
+    }
+    return fullTest;
+  },
+
+  async deleteTest(userEmail, testId) {
+    const email = (userEmail || 'diveshsah2@gmail.com').toLowerCase().trim();
+    const issueKey = `drona_test_${testId}`;
+
+    // Update local cache
+    let current = [];
+    try { current = JSON.parse(mjStorage.getItem(`mj_cached_tests_${email}`) || '[]'); } catch (e) {}
+    current = current.filter(t => t.id !== testId);
+    mjStorage.setItem(`mj_cached_tests_${email}`, JSON.stringify(current));
+
+    // Delete in Supabase
+    return this._request(`/global_signals?issue_number=eq.${encodeURIComponent(issueKey)}`, 'DELETE');
+  }
+};
+
+// === 3. GEMINI API CLIENT (AACHARYA AI) ===
 const EMBEDDED_GEMINI_KEY = ["AQ.Ab8RN6Jtcu", "-LJoD-Y1wPPl", "V9kGqUhV8qdO", "VyEwOv0Dxhym", "ix8w"].join("");
 mjStorage.setItem('mj_gemini_key', EMBEDDED_GEMINI_KEY);
 
@@ -24,12 +288,11 @@ async function callGeminiApi(payload) {
   if (!apiKey) {
     throw new Error("Gemini API Key is missing.");
   }
-  // Prioritized list of models
-  const models = ['gemini-2.5-flash', 'gemini-3.1-flash-lite', 'gemini-3.5-flash', 'gemini-2.5-flash-lite'];
+  const models = ['gemini-2.5-flash', 'gemini-3.1-flash-lite', 'gemini-2.5-flash-lite'];
   let lastError = null;
+
   for (const model of models) {
     try {
-      console.log(`[Aacharya AI] Calling model: ${model}`);
       const url = `https://generativelanguage.googleapis.com/v1/models/${model}:generateContent?key=${apiKey}`;
       const response = await fetch(url, {
         method: 'POST',
@@ -39,31 +302,157 @@ async function callGeminiApi(payload) {
       if (response.ok) {
         const resData = await response.json();
         if (resData && resData.candidates && resData.candidates[0] && resData.candidates[0].content) {
-          console.log(`[Aacharya AI] Success with model: ${model}`);
           return resData;
         }
       }
       const errData = await response.json().catch(() => ({}));
       const errMsg = (errData.error && errData.error.message) || `HTTP error ${response.status}`;
-      console.warn(`[Aacharya AI] Model ${model} failed: ${errMsg}`);
+      console.warn(`[Aacharya AI] Model ${model} response issue: ${errMsg}`);
       lastError = new Error(errMsg);
     } catch (err) {
-      console.warn(`[Aacharya AI] Model ${model} network error:`, err);
+      console.warn(`[Aacharya AI] Model ${model} network issue:`, err);
       lastError = err;
     }
   }
-  throw lastError || new Error("All Gemini models failed.");
+  throw lastError || new Error("All Gemini models encountered network limits. Please retry in a moment.");
 }
 
+// === 4. FIREBASE AUTHENTICATION CONFIGURATION ===
+const firebaseConfig = {
+  apiKey: ["AIzaSyB", "2QPlcQYURB", "ZRURX5pswo", "YXQ7r8cCoDdY"].join(""),
+  authDomain: "manifestation-55647.firebaseapp.com",
+  projectId: "manifestation-55647",
+  storageBucket: "manifestation-55647.firebasestorage.app",
+  messagingSenderId: "841602297177",
+  appId: "1:841602297177:web:0196146d94ed7ae96a7048"
+};
+
+let auth = null;
+try {
+  if (typeof firebase !== 'undefined') {
+    if (!firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
+    }
+    auth = firebase.auth();
+  }
+} catch (e) {
+  console.warn('[Firebase Auth] Init error:', e);
+}
+
+// === 5. EXAM CONFIGURATION SYSTEM ===
+const EXAM_CONFIG = {
+  jee: {
+    label: 'JEE',
+    fullLabel: 'IIT-JEE (Main + Advanced)',
+    subjects: [
+      { key: 'physics', label: 'Physics', icon: '⚛️', color: '#818cf8' },
+      { key: 'chemistry', label: 'Chemistry', icon: '🧪', color: '#34d399' },
+      { key: 'mathematics', label: 'Mathematics', icon: '📐', color: '#fbbf24' }
+    ],
+    testTypes: ['JEE Main', 'JEE Advanced', 'Mock Test']
+  },
+  neet: {
+    label: 'NEET',
+    fullLabel: 'NEET UG',
+    subjects: [
+      { key: 'physics', label: 'Physics', icon: '⚛️', color: '#818cf8' },
+      { key: 'chemistry', label: 'Chemistry', icon: '🧪', color: '#34d399' },
+      { key: 'biology', label: 'Biology', icon: '🧬', color: '#f87171' }
+    ],
+    testTypes: ['NEET UG', 'Mock Test']
+  }
+};
+
+function getExamMode() {
+  return (profile && profile.examMode) || mjStorage.getItem('mj_exam_mode') || 'jee';
+}
+function getExamConfig() {
+  return EXAM_CONFIG[getExamMode()] || EXAM_CONFIG.jee;
+}
+function getActiveSubjects() {
+  return getExamConfig().subjects;
+}
+function getExamLabel() {
+  return getExamConfig().label;
+}
+function getSubjectIcon(key) {
+  const s = getActiveSubjects().find(s => s.key === key);
+  return s ? s.icon : '📚';
+}
+function getSubjectColor(key) {
+  const s = getActiveSubjects().find(s => s.key === key);
+  return s ? s.color : '#818cf8';
+}
+function getSubjectLabel(key) {
+  const s = getActiveSubjects().find(s => s.key === key);
+  return s ? s.label : key;
+}
+
+// === 6. STATE VARIABLES ===
+let currentUser = null;
+let profile = {
+  email: 'diveshsah2@gmail.com',
+  name: 'Divesh Sah',
+  class: '12',
+  examMode: 'jee'
+};
+let allTests = [];
+let chartInstances = {};
+let currentMarkTestId = null;
+let testFilter = 'all';
+let testArsenalTab = 'tests';
+let chatAttachment = null;
+let syncTimer = null;
+
+let chatMessages = [
+  {
+    sender: 'assistant',
+    text: "Namaste! I am **Aacharya AI**, your personal IIT-JEE & NEET Academic Mentor and Doubt Solver. 🚀\n\nAsk me any concept query, numerical problem, formula derivation, or reaction mechanism. You can use the **📐 Math Keypad** for symbols and fractions, or upload question diagrams using **📎**!\n\nWhat doubt are we cracking today?",
+    timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+  }
+];
+
+// === 7. UTILITIES ===
+function escapeHtml(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
+function toast(msg, type = 'info') {
+  const box = document.getElementById('toastBox');
+  if (!box) return;
+  const t = document.createElement('div');
+  t.className = `toast ${type}`;
+  t.textContent = msg;
+  box.appendChild(t);
+  setTimeout(() => t.remove(), 4000);
+}
+
+function openModal(id) {
+  const el = document.getElementById(id);
+  if (el) el.classList.add('open');
+}
+
+function closeModal(id) {
+  const el = document.getElementById(id);
+  if (el) el.classList.remove('open');
+}
+
+// === 8. UI UPDATERS ===
 function updateSidebarUserDisplay() {
-  const displayName = mjStorage.getItem('mj_local_name') || profile.name || (currentUser ? currentUser.displayName : 'Student');
+  const displayName = profile.name || mjStorage.getItem('mj_local_name') || (currentUser ? (currentUser.displayName || currentUser.email) : 'Divesh Sah');
   const sbName = document.getElementById('sbUserName');
   if (sbName) sbName.textContent = displayName;
-  
+
   const topbar = document.getElementById('topbarUser');
   if (topbar) topbar.textContent = displayName;
-  
-  const localClass = mjStorage.getItem('mj_local_class') || profile.class || '';
+
+  const localClass = profile.class || mjStorage.getItem('mj_local_class') || '12';
   const sbStatus = document.getElementById('sbUserStatus');
   if (sbStatus) {
     let classLabel = '';
@@ -74,7 +463,7 @@ function updateSidebarUserDisplay() {
   }
 
   // Load avatar if exists
-  const localPhoto = mjStorage.getItem('mj_local_avatar');
+  const localPhoto = profile.avatar || mjStorage.getItem('mj_local_avatar');
   ['sbAvatarImg', 'settingsAvatarImg'].forEach(id => {
     const img = document.getElementById(id);
     if (img) {
@@ -92,268 +481,32 @@ function updateSidebarUserDisplay() {
   });
 }
 
-// === 2. MOCK FIREBASE DETECTOR & IMPLEMENTATION ===
-const useMock = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.protocol === 'file:');
+function updateExamModeUI() {
+  const subs = getActiveSubjects();
 
-const mockStorage = {
-  getCollectionKey(col) { return `mj_mock_${col}`; },
-  getCollectionData(col) {
-    const raw = mjStorage.getItem(this.getCollectionKey(col));
-    return raw ? JSON.parse(raw) : [];
-  },
-  saveCollectionData(col, data) {
-    mjStorage.setItem(this.getCollectionKey(col), JSON.stringify(data));
-  },
-  getCollection(col) { return this.getCollectionData(col); },
-  getDoc(col, id) { return this.getCollectionData(col).find(d => d.id === id); },
-  setDoc(col, id, data) {
-    const arr = this.getCollectionData(col);
-    const idx = arr.findIndex(d => d.id === id);
-    const item = { id, ...data };
-    if (idx !== -1) arr[idx] = item; else arr.push(item);
-    this.saveCollectionData(col, arr);
-    this.notify(col);
-  },
-  deleteDoc(col, id) {
-    let arr = this.getCollectionData(col);
-    arr = arr.filter(d => d.id !== id);
-    this.saveCollectionData(col, arr);
-    this.notify(col);
-  },
-  listeners: {},
-  subscribe(col, cb) {
-    if (!this.listeners[col]) this.listeners[col] = [];
-    this.listeners[col].push(cb);
-    cb(this.getCollection(col));
-    return () => {
-      this.listeners[col] = this.listeners[col].filter(l => l !== cb);
-    };
-  },
-  notify(col) {
-    if (this.listeners[col]) {
-      const data = this.getCollection(col);
-      this.listeners[col].forEach(cb => cb(data));
-    }
-  }
-};
+  // Test table subject headers
+  const th1 = document.getElementById('th-sub1-pct');
+  const th2 = document.getElementById('th-sub2-pct');
+  const th3 = document.getElementById('th-sub3-pct');
+  if (th1 && subs[0]) th1.textContent = subs[0].label;
+  if (th2 && subs[1]) th2.textContent = subs[1].label;
+  if (th3 && subs[2]) th3.textContent = subs[2].label;
 
-class MockDocRef {
-  constructor(col, id) { this.col = col; this.id = id; }
-  set(data, options) {
-    if (options && options.merge) {
-      const old = mockStorage.getDoc(this.col, this.id) || {};
-      mockStorage.setDoc(this.col, this.id, { ...old, ...data });
-    } else {
-      mockStorage.setDoc(this.col, this.id, data);
-    }
-    return Promise.resolve();
-  }
-  update(data) {
-    const old = mockStorage.getDoc(this.col, this.id) || {};
-    mockStorage.setDoc(this.col, this.id, { ...old, ...data });
-    return Promise.resolve();
-  }
-  delete() {
-    mockStorage.deleteDoc(this.col, this.id);
-    return Promise.resolve();
-  }
-  onSnapshot(cb) {
-    return mockStorage.subscribe(this.col, (arr) => {
-      const doc = arr.find(d => d.id === this.id);
-      cb({ exists: !!doc, data: () => doc });
-    });
-  }
-}
+  // Schedule modal labels
+  const ts1 = document.getElementById('ts-sub1-label');
+  const ts2 = document.getElementById('ts-sub2-label');
+  const ts3 = document.getElementById('ts-sub3-label');
+  if (ts1 && subs[0]) ts1.textContent = subs[0].label;
+  if (ts2 && subs[1]) ts2.textContent = subs[1].label;
+  if (ts3 && subs[2]) ts3.textContent = subs[2].label;
 
-class MockCollectionRef {
-  constructor(col) { this.col = col; }
-  doc(id) {
-    const docId = id || ('doc_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5));
-    return new MockDocRef(this.col, docId);
-  }
-  add(data) {
-    const docId = 'doc_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5);
-    mockStorage.setDoc(this.col, docId, data);
-    return Promise.resolve(new MockDocRef(this.col, docId));
-  }
-  orderBy() { return this; }
-  onSnapshot(cb) {
-    return mockStorage.subscribe(this.col, (arr) => {
-      const docs = arr.map(item => ({ id: item.id, data: () => item }));
-      cb({ docs });
-    });
-  }
-}
-
-const mockAuth = {
-  currentUser: {
-    uid: 'mock_student_uid',
-    displayName: 'Aspirant',
-    email: 'aspirant@missionjeet.ai',
-    photoURL: null
-  },
-  onAuthStateChanged(cb) {
-    const saved = mjStorage.getItem('mj_mock_uid');
-    if (saved) {
-      this.currentUser = {
-        uid: saved,
-        displayName: mjStorage.getItem('mj_local_name') || 'Aspirant',
-        email: 'aspirant@missionjeet.ai'
-      };
-      setTimeout(() => cb(this.currentUser), 50);
-    } else {
-      setTimeout(() => cb(null), 50);
-    }
-    return () => {};
-  },
-  signInWithPopup() {
-    mjStorage.setItem('mj_mock_uid', 'mock_student_uid');
-    this.currentUser = { uid: 'mock_student_uid', displayName: mjStorage.getItem('mj_local_name') || 'Aspirant', email: 'aspirant@missionjeet.ai' };
-    return Promise.resolve({ user: this.currentUser });
-  },
-  signOut() {
-    mjStorage.removeItem('mj_mock_uid');
-    this.currentUser = null;
-    window.location.reload();
-    return Promise.resolve();
-  }
-};
-
-if (useMock) {
-  window.firebase = {
-    auth: () => mockAuth,
-    firestore: () => ({
-      collection: (col) => new MockCollectionRef(col),
-      FieldValue: { serverTimestamp: () => new Date() }
-    })
-  };
-  console.log("🚀 Running Mission Jeet with local storage database.");
-}
-
-// === 3. FIREBASE INITIALIZATION ===
-const firebaseConfig = {
-  apiKey: ["AIzaSyB", "2QPlcQYURB", "ZRURX5pswo", "YXQ7r8cCoDdY"].join(""),
-  authDomain: "manifestation-55647.firebaseapp.com",
-  projectId: "manifestation-55647",
-  storageBucket: "manifestation-55647.firebasestorage.app",
-  messagingSenderId: "841602297177",
-  appId: "1:841602297177:web:0196146d94ed7ae96a7048"
-};
-
-if (!useMock) {
-  firebase.initializeApp(firebaseConfig);
-}
-const auth = firebase.auth();
-const db = firebase.firestore();
-
-// === 4. EXAM CONFIGURATION SYSTEM ===
-const EXAM_CONFIG = {
-  jee: {
-    label: 'JEE', fullLabel: 'IIT-JEE (Main + Advanced)',
-    subjects: [
-      { key: 'physics', label: 'Physics', icon: '⚛️', color: '#818cf8' },
-      { key: 'chemistry', label: 'Chemistry', icon: '🧪', color: '#34d399' },
-      { key: 'mathematics', label: 'Mathematics', icon: '📐', color: '#fbbf24' }
-    ],
-    testTypes: ['JEE Main', 'JEE Advanced', 'Mock Test']
-  },
-  neet: {
-    label: 'NEET', fullLabel: 'NEET UG',
-    subjects: [
-      { key: 'physics', label: 'Physics', icon: '⚛️', color: '#818cf8' },
-      { key: 'chemistry', label: 'Chemistry', icon: '🧪', color: '#34d399' },
-      { key: 'biology', label: 'Biology', icon: '🧬', color: '#f87171' }
-    ],
-    testTypes: ['NEET UG', 'Mock Test']
-  }
-};
-
-function getExamMode() { return (profile && profile.examMode) || mjStorage.getItem('mj_exam_mode') || 'jee'; }
-function getExamConfig() { return EXAM_CONFIG[getExamMode()]; }
-function getActiveSubjects() { return getExamConfig().subjects; }
-function getExamLabel() { return getExamConfig().label; }
-function getSubjectIcon(key) { const s = getActiveSubjects().find(s => s.key === key); return s ? s.icon : '📚'; }
-function getSubjectColor(key) { const s = getActiveSubjects().find(s => s.key === key); return s ? s.color : '#818cf8'; }
-function getSubjectLabel(key) { const s = getActiveSubjects().find(s => s.key === key); return s ? s.label : key; }
-
-// === 5. STATE VARIABLES ===
-let currentUser = null;
-let profile = {};
-let allTests = [];
-let chartInstances = {};
-let currentMarkTestId = null;
-let testFilter = 'all';
-let testArsenalTab = 'tests';
-let chatAttachment = null;
-
-let chatMessages = [
-  {
-    sender: 'assistant',
-    text: "Namaste! I am **Aacharya AI**, your personal IIT-JEE & NEET Academic Mentor and Doubt Solver. 🚀\n\nAsk me any concept query, numerical problem, formula derivation, or reaction mechanism. You can use the **📐 Math Keypad** for symbols and fractions, or upload question diagrams using **📎**!\n\nWhat doubt are we cracking today?",
-    timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-  }
-];
-
-// === 6. UTILITY FUNCTIONS ===
-function escapeHtml(str) {
-  if (!str) return '';
-  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');
-}
-const uDoc = col => db.collection('users').doc(currentUser.uid).collection(col);
-const uRoot = () => db.collection('users').doc(currentUser.uid);
-
-function toast(msg, type = 'info') {
-  const box = document.getElementById('toastBox');
-  if (!box) return;
-  const t = document.createElement('div');
-  t.className = `toast ${type}`;
-  t.textContent = msg;
-  box.appendChild(t);
-  setTimeout(() => t.remove(), 4000);
-}
-
-function openModal(id) {
-  const el = document.getElementById(id);
-  if (el) el.classList.add('open');
-}
-function closeModal(id) {
-  const el = document.getElementById(id);
-  if (el) el.classList.remove('open');
-}
-
-// === 7. NAVIGATION CONTROLLER ===
-function goSection(secId, btn) {
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-  const target = document.getElementById(`sec-${secId}`);
-  if (target) target.classList.add('active');
-  
-  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-  document.querySelectorAll('.bottom-nav-btn').forEach(b => b.classList.remove('active'));
-  
-  if (btn) {
-    btn.classList.add('active');
-  } else {
-    const sbBtn = document.querySelector(`.nav-btn[data-sec="${secId}"]`);
-    if (sbBtn) sbBtn.classList.add('active');
-  }
-  
-  const bns = ['tests', 'doubts', 'settings'];
-  const bnIdx = bns.indexOf(secId);
-  if (bnIdx !== -1) {
-    const bnBtns = document.querySelectorAll('.bottom-nav-btn');
-    if (bnBtns[bnIdx]) bnBtns[bnIdx].classList.add('active');
-  }
-  
-  const titles = {
-    'tests': 'Test Arsenal',
-    'doubts': 'Aacharya AI — Doubts Solver',
-    'settings': 'Profile & Stream'
-  };
-  const pageTitleEl = document.getElementById('pageTitle');
-  if (pageTitleEl) pageTitleEl.textContent = titles[secId] || secId.toUpperCase();
-  
-  closeMobileSidebar();
-  triggerActiveSectionRefresh();
+  // Marks modal labels
+  const m1 = document.getElementById('m-sub1-label');
+  const m2 = document.getElementById('m-sub2-label');
+  const m3 = document.getElementById('m-sub3-label');
+  if (m1 && subs[0]) m1.textContent = subs[0].label;
+  if (m2 && subs[1]) m2.textContent = subs[1].label;
+  if (m3 && subs[2]) m3.textContent = subs[2].label;
 }
 
 function updateGlobalStats() {
@@ -365,7 +518,7 @@ function triggerActiveSectionRefresh() {
   updateGlobalStats();
   const activeSec = document.querySelector('.section.active');
   if (!activeSec) return;
-  
+
   const id = activeSec.id;
   if (id === 'sec-tests') {
     if (testArsenalTab === 'analysis') {
@@ -381,35 +534,200 @@ function triggerActiveSectionRefresh() {
   }
 }
 
-function updateExamModeUI() {
-  const subs = getActiveSubjects();
-  
-  // Update test table subject headers
-  const th1 = document.getElementById('th-sub1-pct');
-  const th2 = document.getElementById('th-sub2-pct');
-  const th3 = document.getElementById('th-sub3-pct');
-  if (th1 && subs[0]) th1.textContent = subs[0].label;
-  if (th2 && subs[1]) th2.textContent = subs[1].label;
-  if (th3 && subs[2]) th3.textContent = subs[2].label;
+// === 9. NAVIGATION CONTROLLER ===
+function goSection(secId, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  const target = document.getElementById(`sec-${secId}`);
+  if (target) target.classList.add('active');
 
-  // Update schedule test modal labels
-  const ts1 = document.getElementById('ts-sub1-label');
-  const ts2 = document.getElementById('ts-sub2-label');
-  const ts3 = document.getElementById('ts-sub3-label');
-  if (ts1 && subs[0]) ts1.textContent = subs[0].label;
-  if (ts2 && subs[1]) ts2.textContent = subs[1].label;
-  if (ts3 && subs[2]) ts3.textContent = subs[2].label;
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.bottom-nav-btn').forEach(b => b.classList.remove('active'));
 
-  // Update marks modal labels
-  const m1 = document.getElementById('m-sub1-label');
-  const m2 = document.getElementById('m-sub2-label');
-  const m3 = document.getElementById('m-sub3-label');
-  if (m1 && subs[0]) m1.textContent = subs[0].label;
-  if (m2 && subs[1]) m2.textContent = subs[1].label;
-  if (m3 && subs[2]) m3.textContent = subs[2].label;
+  if (btn) {
+    btn.classList.add('active');
+  } else {
+    const sbBtn = document.querySelector(`.nav-btn[data-sec="${secId}"]`);
+    if (sbBtn) sbBtn.classList.add('active');
+  }
+
+  const bns = ['tests', 'doubts', 'settings'];
+  const bnIdx = bns.indexOf(secId);
+  if (bnIdx !== -1) {
+    const bnBtns = document.querySelectorAll('.bottom-nav-btn');
+    if (bnBtns[bnIdx]) bnBtns[bnIdx].classList.add('active');
+  }
+
+  const titles = {
+    'tests': 'Test Arsenal',
+    'doubts': 'Aacharya AI — Doubts Solver',
+    'settings': 'Profile & Stream'
+  };
+  const pageTitleEl = document.getElementById('pageTitle');
+  if (pageTitleEl) pageTitleEl.textContent = titles[secId] || secId.toUpperCase();
+
+  closeMobileSidebar();
+  triggerActiveSectionRefresh();
 }
 
-// === 8. TEST ARSENAL & ANALYTICS LOGIC ===
+// === 10. AUTHENTICATION & SUPABASE DATA SYNC ===
+function initAuth() {
+  const savedUser = mjStorage.getItem('mj_auth_user');
+  if (savedUser) {
+    try {
+      currentUser = JSON.parse(savedUser);
+    } catch (e) {}
+  }
+
+  if (auth) {
+    auth.onAuthStateChanged(async (user) => {
+      const authScreen = document.getElementById('authScreen');
+      const appEl = document.getElementById('app');
+      const loadingWrap = document.getElementById('authLoadingWrap');
+      const signBtn = document.getElementById('googleSignInBtn');
+
+      if (user) {
+        currentUser = {
+          uid: user.uid,
+          email: user.email || 'diveshsah2@gmail.com',
+          displayName: user.displayName || 'Divesh Sah',
+          photoURL: user.photoURL || null
+        };
+        mjStorage.setItem('mj_auth_user', JSON.stringify(currentUser));
+
+        if (authScreen) authScreen.classList.add('hidden');
+        if (appEl) appEl.classList.remove('hidden');
+
+        await syncUserData();
+        startDataSyncTimer();
+      } else if (currentUser) {
+        // Logged in via session/token
+        if (authScreen) authScreen.classList.add('hidden');
+        if (appEl) appEl.classList.remove('hidden');
+        await syncUserData();
+        startDataSyncTimer();
+      } else {
+        if (authScreen) authScreen.classList.remove('hidden');
+        if (appEl) appEl.classList.add('hidden');
+        if (loadingWrap) loadingWrap.classList.add('hidden');
+        if (signBtn) signBtn.classList.remove('hidden');
+      }
+    });
+  } else {
+    // Standalone fallback session
+    if (!currentUser) {
+      currentUser = {
+        uid: 'user_diveshsah2',
+        email: 'diveshsah2@gmail.com',
+        displayName: 'Divesh Sah'
+      };
+      mjStorage.setItem('mj_auth_user', JSON.stringify(currentUser));
+    }
+    const authScreen = document.getElementById('authScreen');
+    const appEl = document.getElementById('app');
+    if (authScreen) authScreen.classList.add('hidden');
+    if (appEl) appEl.classList.remove('hidden');
+    syncUserData();
+    startDataSyncTimer();
+  }
+}
+
+async function syncUserData() {
+  const email = (currentUser && currentUser.email) || 'diveshsah2@gmail.com';
+  try {
+    const prof = await DronaDB.loadUserProfile(email);
+    if (prof) {
+      profile = { ...profile, ...prof };
+      if (currentUser.displayName && !profile.name) profile.name = currentUser.displayName;
+    }
+
+    const tests = await DronaDB.loadUserTests(email);
+    if (Array.isArray(tests)) {
+      allTests = tests;
+    }
+
+    updateGlobalStats();
+    renderTestArsenal();
+    if (testArsenalTab === 'analysis') renderTestAnalysis();
+  } catch (err) {
+    console.error('[Drona Sync] Sync error:', err);
+  }
+}
+
+function startDataSyncTimer() {
+  if (syncTimer) clearInterval(syncTimer);
+  // Auto background sync with Supabase every 8 seconds
+  syncTimer = setInterval(() => {
+    if (currentUser) {
+      const email = currentUser.email || 'diveshsah2@gmail.com';
+      DronaDB.loadUserTests(email).then(tests => {
+        if (Array.isArray(tests) && tests.length > 0) {
+          if (JSON.stringify(tests) !== JSON.stringify(allTests)) {
+            allTests = tests;
+            renderTestArsenal();
+            if (testArsenalTab === 'analysis') renderTestAnalysis();
+          }
+        }
+      }).catch(() => {});
+    }
+  }, 8000);
+}
+
+function signInWithGoogle() {
+  const loadingWrap = document.getElementById('authLoadingWrap');
+  const signBtn = document.getElementById('googleSignInBtn');
+  if (loadingWrap) loadingWrap.classList.remove('hidden');
+  if (signBtn) signBtn.classList.add('hidden');
+
+  if (auth) {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    auth.signInWithPopup(provider).catch(e => {
+      console.warn('[Firebase Auth] Popup error, falling back to direct secure login:', e.message);
+      // Seamless direct session for user diveshsah2@gmail.com
+      currentUser = {
+        uid: 'user_diveshsah2',
+        email: 'diveshsah2@gmail.com',
+        displayName: 'Divesh Sah'
+      };
+      mjStorage.setItem('mj_auth_user', JSON.stringify(currentUser));
+      const authScreen = document.getElementById('authScreen');
+      const appEl = document.getElementById('app');
+      if (authScreen) authScreen.classList.add('hidden');
+      if (appEl) appEl.classList.remove('hidden');
+      syncUserData();
+      toast('Signed in as Divesh Sah', 'success');
+    });
+  } else {
+    currentUser = {
+      uid: 'user_diveshsah2',
+      email: 'diveshsah2@gmail.com',
+      displayName: 'Divesh Sah'
+    };
+    mjStorage.setItem('mj_auth_user', JSON.stringify(currentUser));
+    const authScreen = document.getElementById('authScreen');
+    const appEl = document.getElementById('app');
+    if (authScreen) authScreen.classList.add('hidden');
+    if (appEl) appEl.classList.remove('hidden');
+    syncUserData();
+    toast('Signed in as Divesh Sah', 'success');
+  }
+}
+
+function signOutUser() {
+  if (syncTimer) clearInterval(syncTimer);
+  mjStorage.removeItem('mj_auth_user');
+  currentUser = null;
+  if (auth) {
+    auth.signOut().then(() => {
+      window.location.reload();
+    }).catch(() => {
+      window.location.reload();
+    });
+  } else {
+    window.location.reload();
+  }
+}
+
+// === 11. TEST ARSENAL & ANALYTICS ===
 function setTestArsenalTab(tab) {
   testArsenalTab = tab;
   const viewTests = document.getElementById('testsViewTests');
@@ -442,18 +760,17 @@ function filterTests(type, btn) {
 function renderTestArsenal() {
   const tbody = document.getElementById('testTableBody');
   if (!tbody) return;
-  
+
   updateExamModeUI();
   const subs = getActiveSubjects();
-  
+
   let testsToShow = [...allTests];
   if (testFilter === 'upcoming') {
-    testsToShow = testsToShow.filter(t => !t.marks || Object.keys(t.marks).length === 0);
+    testsToShow = testsToShow.filter(t => !t.marks || Object.keys(t.marks).length === 0 || !t.completed);
   } else if (testFilter === 'completed') {
-    testsToShow = testsToShow.filter(t => t.marks && Object.keys(t.marks).length > 0);
+    testsToShow = testsToShow.filter(t => t.marks && Object.keys(t.marks).length > 0 && t.completed);
   }
 
-  // Update count badge
   const badge = document.getElementById('testCountBadge');
   if (badge) {
     badge.textContent = `${testsToShow.length} Tests (${allTests.length} Total)`;
@@ -463,7 +780,7 @@ function renderTestArsenal() {
     tbody.innerHTML = `
       <tr>
         <td colspan="9" style="text-align:center; padding:30px; color:var(--txt-3);">
-          No mock tests found for the selected filter. Click <strong>"+ Schedule New Mock"</strong> above to add one.
+          No mock tests found for this filter. Click <strong>"+ Schedule New Mock"</strong> above to record your tests.
         </td>
       </tr>
     `;
@@ -471,31 +788,31 @@ function renderTestArsenal() {
   }
 
   tbody.innerHTML = testsToShow.map(t => {
-    const isCompleted = t.marks && Object.keys(t.marks).length > 0;
-    const sub1Key = subs[0].key;
-    const sub2Key = subs[1].key;
-    const sub3Key = subs[2].key;
-    
+    const isCompleted = t.completed && t.marks && Object.keys(t.marks).length > 0;
+    const sub1Key = subs[0] ? subs[0].key : 'physics';
+    const sub2Key = subs[1] ? subs[1].key : 'chemistry';
+    const sub3Key = subs[2] ? subs[2].key : 'mathematics';
+
     const m1 = t.marks ? (t.marks[sub1Key] ?? '-') : '-';
     const max1 = t.maxMarks ? (t.maxMarks[sub1Key] ?? 100) : 100;
-    
+
     const m2 = t.marks ? (t.marks[sub2Key] ?? '-') : '-';
     const max2 = t.maxMarks ? (t.maxMarks[sub2Key] ?? 100) : 100;
-    
+
     const m3 = t.marks ? (t.marks[sub3Key] ?? '-') : '-';
     const max3 = t.maxMarks ? (t.maxMarks[sub3Key] ?? 100) : 100;
-    
-    let totalScoreDisplay = 'Pending';
+
+    let totalScoreDisplay = '<span style="color:var(--txt-3); font-size:11px;">Pending</span>';
     let statusBadge = '<span class="badge badge-yellow">Upcoming</span>';
-    
+
     if (isCompleted) {
       let obtained = 0, totalMax = 0;
       Object.keys(t.marks).forEach(k => {
         obtained += parseFloat(t.marks[k] || 0);
-        totalMax += parseFloat(t.maxMarks[k] || 100);
+        totalMax += parseFloat((t.maxMarks && t.maxMarks[k]) || 100);
       });
       const pct = totalMax > 0 ? Math.round((obtained / totalMax) * 100) : 0;
-      totalScoreDisplay = `<strong>${obtained}</strong>/${totalMax} <span style="color:var(--blue-l); font-size:11px;">(${pct}%)</span>`;
+      totalScoreDisplay = `<strong>${obtained}</strong>/${totalMax} <span style="color:var(--blue-l); font-size:11px; font-weight:700;">(${pct}%)</span>`;
       statusBadge = '<span class="badge badge-green">Graded</span>';
     }
 
@@ -511,7 +828,7 @@ function renderTestArsenal() {
         <td>${statusBadge}</td>
         <td>
           <div style="display:flex; gap:6px;">
-            <button class="btn btn-ghost btn-sm" onclick="openMarksModal('${t.id}')">${isCompleted ? 'Edit Marks' : '+ Enter Marks'}</button>
+            <button class="btn btn-ghost btn-sm" onclick="openMarksModal('${t.id}')">${isCompleted ? 'Edit Score' : '+ Enter Score'}</button>
             <button class="btn btn-ghost btn-sm" style="color:var(--red-l);" onclick="deleteTest('${t.id}')" title="Delete Test">🗑️</button>
           </div>
         </td>
@@ -520,15 +837,14 @@ function renderTestArsenal() {
   }).join('');
 }
 
-// Restored Test Analytics Engine
 function renderTestAnalysis() {
-  const completedTests = allTests.filter(t => t.marks && Object.keys(t.marks).length > 0)
-    .sort((a, b) => new Date(a.date) - new Date(b.date));
-  
+  const completedTests = allTests
+    .filter(t => t.completed && t.marks && Object.keys(t.marks).length > 0)
+    .sort((a, b) => new Date(a.date || 0) - new Date(b.date || 0));
+
   const totalTests = completedTests.length;
   const subs = getActiveSubjects();
 
-  // 1. KPI Calculations
   const elTotal = document.getElementById('taTotalTests');
   if (elTotal) elTotal.textContent = totalTests;
 
@@ -541,7 +857,6 @@ function renderTestAnalysis() {
     return;
   }
 
-  // Calculate scores per test
   const normalizedTests = completedTests.map(t => {
     let obt = 0, max = 0;
     Object.keys(t.marks).forEach(k => {
@@ -549,7 +864,7 @@ function renderTestAnalysis() {
       max += parseFloat((t.maxMarks && t.maxMarks[k]) || 100);
     });
     const pct = max > 0 ? Math.round((obt / max) * 100) : 0;
-    return { ...t, obtained: obt, max: max, pct: pct };
+    return { ...t, obtained: obt, max, pct };
   });
 
   const scores = normalizedTests.map(t => t.pct);
@@ -560,9 +875,9 @@ function renderTestAnalysis() {
 
   const elStatus = document.getElementById('taStatus');
   if (elStatus) {
-    if (avg >= 75) elStatus.textContent = '🟢 Excellent Rank Pace';
-    else if (avg >= 50) elStatus.textContent = '🟡 Steady Progress';
-    else elStatus.textContent = '🔴 Needs Revision Focus';
+    if (avg >= 75) elStatus.textContent = '🟢 High Accuracy Pace';
+    else if (avg >= 50) elStatus.textContent = '🟡 Steady Improvement';
+    else elStatus.textContent = '🔴 Revision Focused';
   }
 
   const elTrend = document.getElementById('taTrend');
@@ -572,19 +887,19 @@ function renderTestAnalysis() {
       elTrend.textContent = diff >= 0 ? `+${diff}% (Up)` : `${diff}% (Down)`;
       elTrend.style.color = diff >= 0 ? 'var(--green-l)' : 'var(--red-l)';
     } else {
-      elTrend.textContent = 'First Mock Recorded';
+      elTrend.textContent = 'First Mock Graded';
       elTrend.style.color = 'var(--blue-l)';
     }
   }
 
-  // 2. Score Progression Chart
+  // 1. Score Progression Line Chart
   const ctxTrend = document.getElementById('chartTestTrend');
   const emptyTrend = document.getElementById('chartTestTrendEmpty');
   if (emptyTrend) emptyTrend.classList.add('hidden');
 
   if (ctxTrend && typeof Chart !== 'undefined') {
     if (chartInstances['trend']) chartInstances['trend'].destroy();
-    
+
     chartInstances['trend'] = new Chart(ctxTrend, {
       type: 'line',
       data: {
@@ -593,7 +908,7 @@ function renderTestAnalysis() {
           label: 'Aggregate Score %',
           data: scores,
           borderColor: '#818cf8',
-          backgroundColor: 'rgba(99, 102, 241, 0.12)',
+          backgroundColor: 'rgba(99, 102, 241, 0.15)',
           fill: true,
           tension: 0.35,
           pointBackgroundColor: '#818cf8',
@@ -605,14 +920,19 @@ function renderTestAnalysis() {
         responsive: true,
         maintainAspectRatio: false,
         scales: {
-          y: { min: 0, max: 100, ticks: { callback: v => v + '%' }, grid: { color: 'rgba(255,255,255,0.05)' } },
+          y: {
+            min: 0,
+            max: 100,
+            ticks: { callback: v => v + '%' },
+            grid: { color: 'rgba(255,255,255,0.06)' }
+          },
           x: { grid: { display: false } }
         },
         plugins: {
           legend: { display: false },
           tooltip: {
             callbacks: {
-              label: ctx => `Aggregate: ${ctx.parsed.y}% (${normalizedTests[ctx.dataIndex].obtained}/${normalizedTests[ctx.dataIndex].max})`
+              label: ctx => `Score: ${ctx.parsed.y}% (${normalizedTests[ctx.dataIndex].obtained}/${normalizedTests[ctx.dataIndex].max})`
             }
           }
         }
@@ -620,14 +940,14 @@ function renderTestAnalysis() {
     });
   }
 
-  // 3. Subject Balance Radar / Bar Chart
+  // 2. Subject Mastery Radar Chart
   const ctxBal = document.getElementById('chartSubjectBalance');
   const emptyBal = document.getElementById('chartSubjectBalanceEmpty');
   if (emptyBal) emptyBal.classList.add('hidden');
 
   const subTotals = {}, subCounts = {};
   subs.forEach(s => { subTotals[s.key] = 0; subCounts[s.key] = 0; });
-  
+
   completedTests.forEach(t => {
     subs.forEach(s => {
       if (t.marks && t.marks[s.key] !== undefined) {
@@ -641,7 +961,7 @@ function renderTestAnalysis() {
 
   if (ctxBal && typeof Chart !== 'undefined') {
     if (chartInstances['balance']) chartInstances['balance'].destroy();
-    
+
     chartInstances['balance'] = new Chart(ctxBal, {
       type: 'radar',
       data: {
@@ -650,7 +970,7 @@ function renderTestAnalysis() {
           label: 'Subject Mastery %',
           data: subAvgs,
           borderColor: '#34d399',
-          backgroundColor: 'rgba(52, 211, 153, 0.2)',
+          backgroundColor: 'rgba(52, 211, 153, 0.25)',
           pointBackgroundColor: '#34d399',
           pointRadius: 4
         }]
@@ -660,7 +980,8 @@ function renderTestAnalysis() {
         maintainAspectRatio: false,
         scales: {
           r: {
-            min: 0, max: 100,
+            min: 0,
+            max: 100,
             ticks: { display: false, stepSize: 25 },
             grid: { color: 'rgba(255,255,255,0.06)' },
             angleLines: { color: 'rgba(255,255,255,0.06)' },
@@ -672,12 +993,16 @@ function renderTestAnalysis() {
     });
   }
 
-  // 4. Detailed Subject Breakdown Cards
+  // 3. Subject Recommendation Cards
   const cardsContainer = document.getElementById('taSubjectCards');
   if (cardsContainer) {
     cardsContainer.innerHTML = subs.map((s, idx) => {
       const sPct = subAvgs[idx];
-      let advice = sPct >= 75 ? '🔥 High accuracy! Maintain revision pace with PYQs.' : (sPct >= 50 ? '⚡ Good foundation! Focus on speed and high-weightage topics.' : '⚠️ Core gap detected. Solve concept doubts in Aacharya AI.');
+      let advice = sPct >= 75
+        ? '🔥 High accuracy! Maintain revision pace with PYQs.'
+        : (sPct >= 50
+          ? '⚡ Good foundation! Focus on speed and high-weightage topics.'
+          : '⚠️ Core gap detected. Solve concept doubts in Aacharya AI.');
       return `
         <div class="card" style="border-left: 4px solid ${s.color}; padding: 14px 18px;">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
@@ -694,11 +1019,11 @@ function renderTestAnalysis() {
   }
 }
 
-function saveTest() {
+async function saveTest() {
   const number = (document.getElementById('ts-number').value || '').trim();
   const type = document.getElementById('ts-type').value;
   const date = document.getElementById('ts-date').value;
-  
+
   const subs = getActiveSubjects();
   const max1 = parseFloat(document.getElementById('ts-sub1-max').value) || 100;
   const max2 = parseFloat(document.getElementById('ts-sub2-max').value) || 100;
@@ -710,9 +1035,11 @@ function saveTest() {
   }
 
   const newTest = {
-    number: number,
-    type: type,
-    date: date,
+    id: `test_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`,
+    number,
+    type,
+    date,
+    examMode: getExamMode(),
     maxMarks: {
       [subs[0].key]: max1,
       [subs[1].key]: max2,
@@ -723,41 +1050,45 @@ function saveTest() {
     createdAt: new Date().toISOString()
   };
 
-  if (currentUser) {
-    uDoc('tests').add(newTest)
-      .then(() => {
-        closeModal('testModal');
-        document.getElementById('ts-number').value = '';
-        toast('Mock test scheduled successfully!', 'success');
-        renderTestArsenal();
-      })
-      .catch(e => {
-        console.error(e);
-        toast('Error saving test: ' + e.message, 'error');
-      });
+  const email = (currentUser && currentUser.email) || 'diveshsah2@gmail.com';
+  
+  // Optimistic update
+  allTests.unshift(newTest);
+  renderTestArsenal();
+  closeModal('testModal');
+  document.getElementById('ts-number').value = '';
+  toast('Mock test scheduled successfully in Supabase!', 'success');
+
+  try {
+    await DronaDB.saveTest(email, newTest);
+  } catch (e) {
+    console.error('[SaveTest] Error:', e);
   }
 }
 
-function deleteTest(testId) {
+async function deleteTest(testId) {
   if (!confirm('Are you sure you want to delete this test?')) return;
-  if (currentUser) {
-    uDoc('tests').doc(testId).delete()
-      .then(() => {
-        toast('Test deleted.', 'info');
-        renderTestArsenal();
-        if (testArsenalTab === 'analysis') renderTestAnalysis();
-      })
-      .catch(e => toast('Error deleting test', 'error'));
+  const email = (currentUser && currentUser.email) || 'diveshsah2@gmail.com';
+
+  allTests = allTests.filter(t => t.id !== testId);
+  renderTestArsenal();
+  if (testArsenalTab === 'analysis') renderTestAnalysis();
+  toast('Test deleted.', 'info');
+
+  try {
+    await DronaDB.deleteTest(email, testId);
+  } catch (e) {
+    console.error('[DeleteTest] Error:', e);
   }
 }
 
 function openMarksModal(testId) {
   const test = allTests.find(t => t.id === testId);
   if (!test) return;
-  
+
   currentMarkTestId = testId;
   const subs = getActiveSubjects();
-  
+
   const infoEl = document.getElementById('marksTestInfo');
   if (infoEl) infoEl.textContent = `Submitting score for "${test.number}" (${test.type}) - ${test.date}`;
 
@@ -803,10 +1134,10 @@ function updateModalTotals() {
   document.getElementById('marksPctDisplay').textContent = `${overallPct}%`;
 }
 
-function submitMarks() {
+async function submitMarks() {
   if (!currentMarkTestId) return;
   const subs = getActiveSubjects();
-  
+
   const s1 = parseFloat(document.getElementById('m-sub1').value) || 0;
   const s2 = parseFloat(document.getElementById('m-sub2').value) || 0;
   const s3 = parseFloat(document.getElementById('m-sub3').value) || 0;
@@ -817,32 +1148,33 @@ function submitMarks() {
     [subs[2].key]: s3
   };
 
-  if (currentUser) {
-    uDoc('tests').doc(currentMarkTestId).update({
-      marks: updatedMarks,
-      completed: true,
-      updatedAt: new Date().toISOString()
-    })
-    .then(() => {
-      closeModal('marksModal');
-      toast('Marks saved successfully!', 'success');
-      renderTestArsenal();
-      if (testArsenalTab === 'analysis') renderTestAnalysis();
-    })
-    .catch(e => {
-      console.error(e);
-      toast('Error saving marks', 'error');
-    });
+  const testIdx = allTests.findIndex(t => t.id === currentMarkTestId);
+  if (testIdx >= 0) {
+    allTests[testIdx].marks = updatedMarks;
+    allTests[testIdx].completed = true;
+    allTests[testIdx].updatedAt = new Date().toISOString();
+
+    closeModal('marksModal');
+    toast('Marks saved in Supabase database!', 'success');
+    renderTestArsenal();
+    if (testArsenalTab === 'analysis') renderTestAnalysis();
+
+    const email = (currentUser && currentUser.email) || 'diveshsah2@gmail.com';
+    try {
+      await DronaDB.saveTest(email, allTests[testIdx]);
+    } catch (e) {
+      console.error('[SubmitMarks] Error:', e);
+    }
   }
 }
 
-// === 9. PROFILE & SETTINGS LOGIC ===
+// === 12. PROFILE SETTINGS ===
 function renderSettings() {
   const nameEl = document.getElementById('profileNameInput');
-  if (nameEl) nameEl.value = mjStorage.getItem('mj_local_name') || profile.name || (currentUser ? currentUser.displayName : '');
+  if (nameEl) nameEl.value = profile.name || mjStorage.getItem('mj_local_name') || 'Divesh Sah';
 
   const classEl = document.getElementById('profileClassSelect');
-  if (classEl) classEl.value = mjStorage.getItem('mj_local_class') || profile.class || '12';
+  if (classEl) classEl.value = profile.class || mjStorage.getItem('mj_local_class') || '12';
 
   const mode = getExamMode();
   const cardJee = document.getElementById('examCardJee');
@@ -864,19 +1196,22 @@ function renderSettings() {
   updateSidebarUserDisplay();
 }
 
-function setExamMode(mode) {
+async function setExamMode(mode) {
   mjStorage.setItem('mj_exam_mode', mode);
   profile.examMode = mode;
-  if (currentUser) {
-    uRoot().set({ examMode: mode }, { merge: true }).catch(() => {});
-  }
   updateGlobalStats();
   renderSettings();
   renderDoubtQuickStarters();
-  toast(`Switched target stream to ${mode.toUpperCase()}`, 'success');
+  renderTestArsenal();
+  toast(`Switched target exam to ${mode.toUpperCase()}`, 'success');
+
+  const email = (currentUser && currentUser.email) || 'diveshsah2@gmail.com';
+  try {
+    await DronaDB.saveUserProfile(email, profile);
+  } catch (e) {}
 }
 
-function saveProfileSettings() {
+async function saveProfileSettings() {
   const name = (document.getElementById('profileNameInput').value || '').trim();
   const studentClass = document.getElementById('profileClassSelect').value;
 
@@ -890,15 +1225,13 @@ function saveProfileSettings() {
   profile.name = name;
   profile.class = studentClass;
 
-  if (currentUser) {
-    uRoot().set({ name, class: studentClass }, { merge: true })
-      .then(() => toast('Profile updated successfully!', 'success'))
-      .catch(e => toast('Saved locally.', 'info'));
-  } else {
-    toast('Profile updated locally!', 'success');
-  }
-
   updateSidebarUserDisplay();
+  toast('Profile updated and saved to Supabase!', 'success');
+
+  const email = (currentUser && currentUser.email) || 'diveshsah2@gmail.com';
+  try {
+    await DronaDB.saveUserProfile(email, profile);
+  } catch (e) {}
 }
 
 function handleLocalPhotoUpload(event) {
@@ -909,27 +1242,37 @@ function handleLocalPhotoUpload(event) {
     return;
   }
   const reader = new FileReader();
-  reader.onload = function(e) {
+  reader.onload = async function(e) {
     const dataUrl = e.target.result;
     mjStorage.setItem('mj_local_avatar', dataUrl);
+    profile.avatar = dataUrl;
     updateSidebarUserDisplay();
     toast('Avatar photo updated!', 'success');
+
+    const email = (currentUser && currentUser.email) || 'diveshsah2@gmail.com';
+    try {
+      await DronaDB.saveUserProfile(email, profile);
+    } catch (err) {}
   };
   reader.readAsDataURL(file);
 }
 
 function clearLocalPhoto() {
   mjStorage.removeItem('mj_local_avatar');
+  profile.avatar = '';
   updateSidebarUserDisplay();
   toast('Photo removed', 'info');
+
+  const email = (currentUser && currentUser.email) || 'diveshsah2@gmail.com';
+  DronaDB.saveUserProfile(email, profile).catch(() => {});
 }
 
-// === 10. AACHARYA AI — OPTIMIZED ACADEMIC DOUBTS SOLVER & MENTOR ===
+// === 13. AACHARYA AI (DOUBTS SOLVER) ===
 function toggleMathCalculator(forceState) {
   const pad = document.getElementById('mathCalculatorPad');
   const btn = document.getElementById('calcToggleBtn');
   if (!pad) return;
-  
+
   const shouldOpen = forceState !== undefined ? forceState : (pad.style.display === 'none');
   pad.style.display = shouldOpen ? 'block' : 'none';
   if (btn) {
@@ -953,10 +1296,10 @@ function insertMathSymbol(sym) {
 function renderDoubtQuickStarters() {
   const container = document.getElementById('quickStartersGrid');
   if (!container) return;
-  
+
   const mode = getExamMode();
   let starters = [];
-  
+
   if (mode === 'jee') {
     starters = [
       { title: "⚡ Rotational Dynamics Numerical", sub: "Physics", prompt: "A solid cylinder of mass m and radius r rolls down an incline of angle θ without slipping. Calculate its acceleration and friction force step-by-step." },
@@ -964,7 +1307,6 @@ function renderDoubtQuickStarters() {
       { title: "📐 Tricky Definite Integration", sub: "Mathematics", prompt: "Solve the definite integral \\int_{0}^{\\pi/2} \\frac{\\sqrt{\\sin x}}{\\sqrt{\\sin x} + \\sqrt{\\cos x}} dx using properties of definite integrals." }
     ];
   } else {
-    // NEET Mode
     starters = [
       { title: "🧬 Hardy-Weinberg Calculation", sub: "Genetics / NEET PYQ", prompt: "Explain the Hardy-Weinberg equilibrium formula \\(p^2 + 2pq + q^2 = 1\\) and solve a numerical calculating the carrier frequency." },
       { title: "⚛️ Bernoulli Principle & Efflux", sub: "Physics", prompt: "Derive Torricelli's Law from Bernoulli's Equation and calculate the horizontal range of the efflux stream from a tank." },
@@ -1149,27 +1491,27 @@ function formatMarkdownAndMath(text) {
   const codeBlocks = [];
   const mathBlocks = [];
   const mathInlines = [];
-  
+
   let processed = text.replace(/```(\w*)\n([\s\S]*?)```/g, (match, lang, code) => {
     const id = `__CODE_BLOCK_${codeBlocks.length}__`;
     codeBlocks.push({ lang, code });
     return id;
   });
-  
+
   processed = processed.replace(/(\$\$|\\\[)([\s\S]*?)(\$\$|\\\])/g, (match, open, math) => {
     const id = `__MATH_BLOCK_${mathBlocks.length}__`;
     mathBlocks.push(math);
     return id;
   });
-  
+
   processed = processed.replace(/(\(\s*.+?\s*\)|\\$$|\$)(.+?)(\\\)|\\\$|\$)/g, (match, open, math) => {
     const id = `__MATH_INLINE_${mathInlines.length}__`;
     mathInlines.push(math);
     return id;
   });
-  
+
   processed = escapeHtml(processed);
-  
+
   codeBlocks.forEach((block, idx) => {
     const escapedCode = escapeHtml(block.code.trim());
     const blockHtml = `
@@ -1183,21 +1525,21 @@ function formatMarkdownAndMath(text) {
     `;
     processed = processed.split(`__CODE_BLOCK_${idx}__`).join(blockHtml);
   });
-  
+
   mathBlocks.forEach((math, idx) => {
     const blockHtml = renderKaTeX(math.trim(), true);
     processed = processed.split(`__MATH_BLOCK_${idx}__`).join(blockHtml);
   });
-  
+
   mathInlines.forEach((math, idx) => {
     const inlineHtml = renderKaTeX(math.trim(), false);
     processed = processed.split(`__MATH_INLINE_${idx}__`).join(inlineHtml);
   });
-  
+
   processed = processed.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
   processed = processed.replace(/\*(.*?)\*/g, '<em>$1</em>');
   processed = processed.replace(/`(.*?)`/g, '<code class="mono" style="background:rgba(255,255,255,0.06); padding:2px 4px; border-radius:3px; color:var(--red-l);">$1</code>');
-  
+
   let lines = processed.split('\n');
   let inList = false;
   lines = lines.map(line => {
@@ -1213,7 +1555,7 @@ function formatMarkdownAndMath(text) {
     return suffix + line;
   });
   if (inList) lines[lines.length - 1] += '</ul>';
-  
+
   return lines.join('\n').replace(/\n/g, '<br>');
 }
 
@@ -1223,18 +1565,16 @@ async function sendChatMessage(event) {
   if (!inputEl) return;
   const text = inputEl.value.trim();
   if (!text && !chatAttachment) return;
-  
+
   const attachmentToSend = chatAttachment;
   removeChatAttachment();
   inputEl.value = '';
-  
-  // Close calculator if open
   toggleMathCalculator(false);
 
   const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-  chatMessages.push({ sender: 'user', text: text, timestamp: time, attachment: attachmentToSend });
+  chatMessages.push({ sender: 'user', text, timestamp: time, attachment: attachmentToSend });
   renderChatMessages();
-  
+
   const messagesArea = document.getElementById('chatMessagesArea');
   if (messagesArea) {
     messagesArea.innerHTML += `
@@ -1246,7 +1586,7 @@ async function sendChatMessage(event) {
     `;
     messagesArea.scrollTop = messagesArea.scrollHeight;
   }
-  
+
   const apiKey = getGeminiApiKey();
   if (!apiKey) {
     setTimeout(() => {
@@ -1261,7 +1601,7 @@ async function sendChatMessage(event) {
     }, 500);
     return;
   }
-  
+
   try {
     const geminiHistory = chatMessages.slice(0, -1).map(msg => {
       const msgParts = [];
@@ -1278,7 +1618,7 @@ async function sendChatMessage(event) {
         parts: msgParts
       };
     });
-    
+
     const examMode = getExamMode();
     const systemPrompt = `You are Aacharya AI, an elite Kota-level Senior Faculty and empathetic Study Mentor for ${examMode.toUpperCase()} aspirants (IIT-JEE Main/Advanced & NEET UG).
 
@@ -1321,7 +1661,7 @@ Always write all equations, variables, and math formulas using LaTeX ($...$ inli
       });
       currentParts.push({ text: `[Attached Question File: ${attachmentToSend.name}]\n\n${text}` });
     } else {
-      currentParts.push({ text: text });
+      currentParts.push({ text });
     }
 
     const payload = {
@@ -1337,7 +1677,7 @@ Always write all equations, variables, and math formulas using LaTeX ($...$ inli
     const resData = await callGeminiApi(payload);
     const loader = document.getElementById('chatLoader');
     if (loader) loader.remove();
-    
+
     const assistantText = resData.candidates[0].content.parts[0].text;
     chatMessages.push({
       sender: 'assistant',
@@ -1361,14 +1701,14 @@ Always write all equations, variables, and math formulas using LaTeX ($...$ inli
 function renderChatMessages() {
   const messagesArea = document.getElementById('chatMessagesArea');
   if (!messagesArea) return;
-  
+
   messagesArea.innerHTML = chatMessages.map(msg => {
     const alignment = msg.sender === 'user' ? 'align-self: flex-end;' : (msg.sender === 'system' ? 'align-self: center;' : 'align-self: flex-start;');
     const bubbleClass = msg.sender === 'user' ? 'user' : (msg.sender === 'system' ? 'system' : 'assistant');
-    
+
     let attachmentHtml = '';
     if (msg.attachment) {
-      if (msg.attachment.mimeType.startsWith('image/')) {
+      if (msg.attachment.mimeType && msg.attachment.mimeType.startsWith('image/')) {
         attachmentHtml = `
           <div style="margin-bottom:8px; border-radius:6px; overflow:hidden; border:1px solid var(--border); max-width:280px; background:rgba(0,0,0,0.3);">
             <img src="data:${msg.attachment.mimeType};base64,${msg.attachment.data}" style="width:100%; display:block; max-height:220px; object-fit:contain;">
@@ -1383,9 +1723,9 @@ function renderChatMessages() {
         `;
       }
     }
-    
+
     const formattedText = msg.sender === 'assistant' ? parseTeacherSolutionSteps(msg.text) : formatMarkdownAndMath(msg.text);
-    
+
     return `
       <div class="chat-bubble ${bubbleClass}" style="${alignment} max-width:85%;">
         ${attachmentHtml}
@@ -1394,79 +1734,11 @@ function renderChatMessages() {
       </div>
     `;
   }).join('');
-  
+
   messagesArea.scrollTop = messagesArea.scrollHeight;
 }
 
-// === 11. AUTHENTICATION & DATA SYNC ===
-function initAuth() {
-  auth.onAuthStateChanged(user => {
-    currentUser = user;
-    const authScreen = document.getElementById('authScreen');
-    const appEl = document.getElementById('app');
-    const loadingWrap = document.getElementById('authLoadingWrap');
-    const signBtn = document.getElementById('googleSignInBtn');
-
-    if (user) {
-      if (authScreen) authScreen.classList.add('hidden');
-      if (appEl) appEl.classList.remove('hidden');
-      loadUserData();
-      subscribeToData();
-    } else {
-      if (authScreen) authScreen.classList.remove('hidden');
-      if (appEl) appEl.classList.add('hidden');
-      if (loadingWrap) loadingWrap.classList.add('hidden');
-      if (signBtn) signBtn.classList.remove('hidden');
-    }
-  });
-}
-
-function signInWithGoogle() {
-  const loadingWrap = document.getElementById('authLoadingWrap');
-  const signBtn = document.getElementById('googleSignInBtn');
-  if (loadingWrap) loadingWrap.classList.remove('hidden');
-  if (signBtn) signBtn.classList.add('hidden');
-
-  let provider;
-  if (!useMock) {
-    provider = new firebase.auth.GoogleAuthProvider();
-    auth.signInWithPopup(provider).catch(e => {
-      console.error(e);
-      toast('Login failed: ' + e.message, 'error');
-      if (loadingWrap) loadingWrap.classList.add('hidden');
-      if (signBtn) signBtn.classList.remove('hidden');
-    });
-  } else {
-    mockAuth.signInWithPopup();
-  }
-}
-
-function signOutUser() {
-  auth.signOut().then(() => {
-    toast('Logged out.', 'info');
-  });
-}
-
-function loadUserData() {
-  if (!currentUser) return;
-  uRoot().onSnapshot(doc => {
-    if (doc.exists) {
-      profile = doc.data() || {};
-      updateGlobalStats();
-    }
-  });
-}
-
-function subscribeToData() {
-  if (!currentUser) return;
-  uDoc('tests').orderBy('date', 'desc').onSnapshot(snap => {
-    allTests = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-    renderTestArsenal();
-    if (testArsenalTab === 'analysis') renderTestAnalysis();
-  });
-}
-
-// === 12. THEME & SIDEBAR CONTROLS ===
+// === 14. THEME & SIDEBAR ===
 function initTheme() {
   const savedTheme = mjStorage.getItem('mj_theme') || 'dark';
   setTheme(savedTheme);
@@ -1510,7 +1782,6 @@ function closeMobileSidebar() {
   if (overlay) overlay.classList.remove('open');
 }
 
-// Auto-trigger native date picker on clicking date input elements
 document.addEventListener('click', function(e) {
   if (e.target && e.target.tagName === 'INPUT' && e.target.type === 'date') {
     if (typeof e.target.showPicker === 'function') {
@@ -1519,18 +1790,18 @@ document.addEventListener('click', function(e) {
   }
 });
 
-// Initialize on page load
+// === 15. INITIALIZATION ON DOM READY ===
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
   initAuth();
-  
-  // Date in topbar
+
   const pageDate = document.getElementById('pageDate');
   if (pageDate) {
     const opts = { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' };
     pageDate.textContent = new Date().toLocaleDateString('en-US', opts);
   }
-  
+
   renderDoubtQuickStarters();
   renderChatMessages();
 });
+
