@@ -166,54 +166,8 @@ const DronaDB = {
     if (cached) {
       try {
         const arr = JSON.parse(cached);
-        if (Array.isArray(arr) && arr.length > 0) return arr;
+        if (Array.isArray(arr)) return arr;
       } catch (e) {}
-    }
-
-    // 3. If diveshsah2@gmail.com, return starter suite
-    if (email === 'diveshsah2@gmail.com') {
-      return [
-        {
-          id: 'mock_test_1',
-          number: 'JEE Main Full Syllabus Mock - 01',
-          type: 'JEE Main',
-          examMode: 'jee',
-          date: '2026-08-15',
-          maxMarks: { physics: 100, chemistry: 100, mathematics: 100 },
-          marks: { physics: 78, chemistry: 86, mathematics: 74 },
-          completed: true
-        },
-        {
-          id: 'mock_test_2',
-          number: 'AITS Part Test - Electrodynamics & Organic',
-          type: 'JEE Main',
-          examMode: 'jee',
-          date: '2026-08-20',
-          maxMarks: { physics: 100, chemistry: 100, mathematics: 100 },
-          marks: { physics: 84, chemistry: 92, mathematics: 80 },
-          completed: true
-        },
-        {
-          id: 'mock_test_3',
-          number: 'JEE Main All India Ranker Mock - 03',
-          type: 'JEE Main',
-          examMode: 'jee',
-          date: '2026-08-28',
-          maxMarks: { physics: 100, chemistry: 100, mathematics: 100 },
-          marks: { physics: 88, chemistry: 94, mathematics: 85 },
-          completed: true
-        },
-        {
-          id: 'mock_test_4',
-          number: 'JEE Main Final Sprint Mock - 04',
-          type: 'JEE Main',
-          examMode: 'jee',
-          date: '2026-09-05',
-          maxMarks: { physics: 100, chemistry: 100, mathematics: 100 },
-          marks: {},
-          completed: false
-        }
-      ];
     }
 
     return [];
@@ -253,14 +207,31 @@ const DronaDB = {
 
   async deleteTest(userEmail, testId) {
     const email = (userEmail || 'diveshsah2@gmail.com').toLowerCase().trim();
-    const issueKey = `drona_test_${testId}`;
+    const cleanId = String(testId).replace('drona_test_', '');
+    const issueKey = `drona_test_${cleanId}`;
 
+    // 1. Immediately remove from local storage cache
     let current = [];
     try { current = JSON.parse(mjStorage.getItem(`mj_cached_tests_${email}`) || '[]'); } catch (e) {}
-    current = current.filter(t => t.id !== testId);
+    current = current.filter(t => t && t.id !== cleanId && t.id !== testId && t.id !== issueKey);
     mjStorage.setItem(`mj_cached_tests_${email}`, JSON.stringify(current));
 
-    return this._request(`/global_signals?issue_number=eq.${encodeURIComponent(issueKey)}`, 'DELETE');
+    // 2. Mark as deleted in Supabase (soft delete) and delete
+    await this._request(`/global_signals?issue_number=eq.${encodeURIComponent(issueKey)}`, 'PATCH', { status: 'deleted' });
+    await this._request(`/global_signals?issue_number=eq.${encodeURIComponent(issueKey)}`, 'DELETE');
+    return true;
+  },
+
+  async clearAllTests(userEmail) {
+    const email = (userEmail || 'diveshsah2@gmail.com').toLowerCase().trim();
+    mjStorage.setItem(`mj_cached_tests_${email}`, JSON.stringify([]));
+
+    const res = await this._request(`/global_signals?strategy=eq.drona_test&stake_units=eq.${encodeURIComponent(email)}&select=issue_number`);
+    if (res.ok && Array.isArray(res.data)) {
+      for (const item of res.data) {
+        await this._request(`/global_signals?issue_number=eq.${encodeURIComponent(item.issue_number)}`, 'PATCH', { status: 'deleted' });
+      }
+    }
   }
 };
 
@@ -1048,17 +1019,34 @@ async function saveTest() {
 
 async function deleteTest(testId) {
   if (!confirm('Are you sure you want to delete this test?')) return;
+  const cleanId = String(testId).replace('drona_test_', '');
   const email = (currentUser && currentUser.email) || 'diveshsah2@gmail.com';
 
-  allTests = allTests.filter(t => t.id !== testId);
+  allTests = allTests.filter(t => t && t.id !== testId && t.id !== cleanId && t.id !== `drona_test_${cleanId}`);
   renderTestArsenal();
   if (testArsenalTab === 'analysis') renderTestAnalysis();
-  toast('Test deleted.', 'info');
+  toast('Test deleted successfully.', 'info');
 
   try {
     await DronaDB.deleteTest(email, testId);
   } catch (e) {
     console.error('[DeleteTest] Error:', e);
+  }
+}
+
+async function clearAllUserTests() {
+  if (!confirm('Are you sure you want to delete ALL mock tests from your arsenal? This will reset your test schedule to a clean slate.')) return;
+  const email = (currentUser && currentUser.email) || 'diveshsah2@gmail.com';
+
+  allTests = [];
+  renderTestArsenal();
+  if (testArsenalTab === 'analysis') renderTestAnalysis();
+  toast('All mock tests removed.', 'info');
+
+  try {
+    await DronaDB.clearAllTests(email);
+  } catch (e) {
+    console.error('[ClearAll] Error:', e);
   }
 }
 
