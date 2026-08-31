@@ -1,6 +1,6 @@
 // ==============================================================================
 // MISSION JEET (DRONA) — CORE APPLICATION CONTROLLER
-// High-Performance IIT-JEE & NEET Test Arsenal & Aacharya AI Command Deck
+// Dedicated IIT-JEE & NEET Test Arsenal & Performance Analytics Command Deck
 // Integrated with Firebase Auth & Supabase Real-Time Database Engine
 // ==============================================================================
 
@@ -99,7 +99,7 @@ const DronaDB = {
       try { return JSON.parse(cached); } catch (e) {}
     }
 
-    // 3. Return sensible default profile for new aspirant
+    // 3. Return default profile
     const defaultProfile = {
       email,
       name: email === 'diveshsah2@gmail.com' ? 'Divesh Sah' : 'Aspirant',
@@ -117,7 +117,7 @@ const DronaDB = {
     const issueKey = this.getUserKey(email);
     const merged = { ...profileData, email, updatedAt: new Date().toISOString() };
 
-    // Update local cache immediately
+    // Update local cache
     mjStorage.setItem(`mj_cached_profile_${email}`, JSON.stringify(merged));
 
     const payload = {
@@ -130,7 +130,6 @@ const DronaDB = {
       reason: JSON.stringify(merged)
     };
 
-    // Check if profile row exists in Supabase
     const check = await this._request(`/global_signals?issue_number=eq.${encodeURIComponent(issueKey)}&select=issue_number`);
     if (check.ok && Array.isArray(check.data) && check.data.length > 0) {
       return this._request(`/global_signals?issue_number=eq.${encodeURIComponent(issueKey)}`, 'PATCH', payload);
@@ -157,7 +156,6 @@ const DronaDB = {
         }
       }).filter(Boolean);
 
-      // Sort by date descending
       tests.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
       mjStorage.setItem(`mj_cached_tests_${email}`, JSON.stringify(tests));
       return tests;
@@ -172,7 +170,7 @@ const DronaDB = {
       } catch (e) {}
     }
 
-    // 3. If email is diveshsah2@gmail.com, return starter suite
+    // 3. If diveshsah2@gmail.com, return starter suite
     if (email === 'diveshsah2@gmail.com') {
       return [
         {
@@ -237,7 +235,6 @@ const DronaDB = {
       reason: JSON.stringify(fullTest)
     };
 
-    // Update local tests cache
     let current = [];
     try { current = JSON.parse(mjStorage.getItem(`mj_cached_tests_${email}`) || '[]'); } catch (e) {}
     const existingIdx = current.findIndex(t => t.id === testId);
@@ -245,7 +242,6 @@ const DronaDB = {
     else current.unshift(fullTest);
     mjStorage.setItem(`mj_cached_tests_${email}`, JSON.stringify(current));
 
-    // Cloud push
     const check = await this._request(`/global_signals?issue_number=eq.${encodeURIComponent(issueKey)}&select=issue_number`);
     if (check.ok && Array.isArray(check.data) && check.data.length > 0) {
       await this._request(`/global_signals?issue_number=eq.${encodeURIComponent(issueKey)}`, 'PATCH', payload);
@@ -259,65 +255,16 @@ const DronaDB = {
     const email = (userEmail || 'diveshsah2@gmail.com').toLowerCase().trim();
     const issueKey = `drona_test_${testId}`;
 
-    // Update local cache
     let current = [];
     try { current = JSON.parse(mjStorage.getItem(`mj_cached_tests_${email}`) || '[]'); } catch (e) {}
     current = current.filter(t => t.id !== testId);
     mjStorage.setItem(`mj_cached_tests_${email}`, JSON.stringify(current));
 
-    // Delete in Supabase
     return this._request(`/global_signals?issue_number=eq.${encodeURIComponent(issueKey)}`, 'DELETE');
   }
 };
 
-// === 3. GEMINI API CLIENT (AACHARYA AI) ===
-const EMBEDDED_GEMINI_KEY = ["AQ.Ab8RN6Jtcu", "-LJoD-Y1wPPl", "V9kGqUhV8qdO", "VyEwOv0Dxhym", "ix8w"].join("");
-mjStorage.setItem('mj_gemini_key', EMBEDDED_GEMINI_KEY);
-
-function getGeminiApiKey() {
-  const stored = mjStorage.getItem('mj_gemini_key');
-  if (!stored) {
-    mjStorage.setItem('mj_gemini_key', EMBEDDED_GEMINI_KEY);
-    return EMBEDDED_GEMINI_KEY;
-  }
-  return stored;
-}
-
-async function callGeminiApi(payload) {
-  const apiKey = getGeminiApiKey();
-  if (!apiKey) {
-    throw new Error("Gemini API Key is missing.");
-  }
-  const models = ['gemini-2.5-flash', 'gemini-3.1-flash-lite', 'gemini-2.5-flash-lite'];
-  let lastError = null;
-
-  for (const model of models) {
-    try {
-      const url = `https://generativelanguage.googleapis.com/v1/models/${model}:generateContent?key=${apiKey}`;
-      const response = await fetch(url, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-      if (response.ok) {
-        const resData = await response.json();
-        if (resData && resData.candidates && resData.candidates[0] && resData.candidates[0].content) {
-          return resData;
-        }
-      }
-      const errData = await response.json().catch(() => ({}));
-      const errMsg = (errData.error && errData.error.message) || `HTTP error ${response.status}`;
-      console.warn(`[Aacharya AI] Model ${model} response issue: ${errMsg}`);
-      lastError = new Error(errMsg);
-    } catch (err) {
-      console.warn(`[Aacharya AI] Model ${model} network issue:`, err);
-      lastError = err;
-    }
-  }
-  throw lastError || new Error("All Gemini models encountered network limits. Please retry in a moment.");
-}
-
-// === 4. FIREBASE AUTHENTICATION CONFIGURATION ===
+// === 3. FIREBASE AUTHENTICATION ===
 const firebaseConfig = {
   apiKey: ["AIzaSyB", "2QPlcQYURB", "ZRURX5pswo", "YXQ7r8cCoDdY"].join(""),
   authDomain: "manifestation-55647.firebaseapp.com",
@@ -339,7 +286,7 @@ try {
   console.warn('[Firebase Auth] Init error:', e);
 }
 
-// === 5. EXAM CONFIGURATION SYSTEM ===
+// === 4. EXAM CONFIGURATION SYSTEM ===
 const EXAM_CONFIG = {
   jee: {
     label: 'JEE',
@@ -375,20 +322,8 @@ function getActiveSubjects() {
 function getExamLabel() {
   return getExamConfig().label;
 }
-function getSubjectIcon(key) {
-  const s = getActiveSubjects().find(s => s.key === key);
-  return s ? s.icon : '📚';
-}
-function getSubjectColor(key) {
-  const s = getActiveSubjects().find(s => s.key === key);
-  return s ? s.color : '#818cf8';
-}
-function getSubjectLabel(key) {
-  const s = getActiveSubjects().find(s => s.key === key);
-  return s ? s.label : key;
-}
 
-// === 6. STATE VARIABLES ===
+// === 5. STATE VARIABLES ===
 let currentUser = null;
 let profile = {
   email: 'diveshsah2@gmail.com',
@@ -401,18 +336,9 @@ let chartInstances = {};
 let currentMarkTestId = null;
 let testFilter = 'all';
 let testArsenalTab = 'tests';
-let chatAttachment = null;
 let syncTimer = null;
 
-let chatMessages = [
-  {
-    sender: 'assistant',
-    text: "Namaste! I am **Aacharya AI**, your personal IIT-JEE & NEET Academic Mentor and Doubt Solver. 🚀\n\nAsk me any concept query, numerical problem, formula derivation, or reaction mechanism. You can use the **📐 Math Keypad** for symbols and fractions, or upload question diagrams using **📎**!\n\nWhat doubt are we cracking today?",
-    timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-  }
-];
-
-// === 7. UTILITIES ===
+// === 6. UTILITIES ===
 function escapeHtml(str) {
   if (!str) return '';
   return String(str)
@@ -443,7 +369,7 @@ function closeModal(id) {
   if (el) el.classList.remove('open');
 }
 
-// === 8. UI UPDATERS ===
+// === 7. UI UPDATERS ===
 function updateSidebarUserDisplay() {
   const displayName = profile.name || mjStorage.getItem('mj_local_name') || (currentUser ? (currentUser.displayName || currentUser.email) : 'Divesh Sah');
   const sbName = document.getElementById('sbUserName');
@@ -462,7 +388,12 @@ function updateSidebarUserDisplay() {
     sbStatus.textContent = `● Online${classLabel}`;
   }
 
-  // Load avatar if exists
+  const syncStatusEl = document.getElementById('sbSyncStatusText');
+  if (syncStatusEl) {
+    const userEmail = (currentUser && currentUser.email) || profile.email || 'diveshsah2@gmail.com';
+    syncStatusEl.textContent = `Connected: ${userEmail}`;
+  }
+
   const localPhoto = profile.avatar || mjStorage.getItem('mj_local_avatar');
   ['sbAvatarImg', 'settingsAvatarImg'].forEach(id => {
     const img = document.getElementById(id);
@@ -484,7 +415,6 @@ function updateSidebarUserDisplay() {
 function updateExamModeUI() {
   const subs = getActiveSubjects();
 
-  // Test table subject headers
   const th1 = document.getElementById('th-sub1-pct');
   const th2 = document.getElementById('th-sub2-pct');
   const th3 = document.getElementById('th-sub3-pct');
@@ -492,7 +422,6 @@ function updateExamModeUI() {
   if (th2 && subs[1]) th2.textContent = subs[1].label;
   if (th3 && subs[2]) th3.textContent = subs[2].label;
 
-  // Schedule modal labels
   const ts1 = document.getElementById('ts-sub1-label');
   const ts2 = document.getElementById('ts-sub2-label');
   const ts3 = document.getElementById('ts-sub3-label');
@@ -500,7 +429,6 @@ function updateExamModeUI() {
   if (ts2 && subs[1]) ts2.textContent = subs[1].label;
   if (ts3 && subs[2]) ts3.textContent = subs[2].label;
 
-  // Marks modal labels
   const m1 = document.getElementById('m-sub1-label');
   const m2 = document.getElementById('m-sub2-label');
   const m3 = document.getElementById('m-sub3-label');
@@ -526,15 +454,12 @@ function triggerActiveSectionRefresh() {
     } else {
       renderTestArsenal();
     }
-  } else if (id === 'sec-doubts') {
-    renderDoubtQuickStarters();
-    renderChatMessages();
   } else if (id === 'sec-settings') {
     renderSettings();
   }
 }
 
-// === 9. NAVIGATION CONTROLLER ===
+// === 8. NAVIGATION CONTROLLER ===
 function goSection(secId, btn) {
   document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
   const target = document.getElementById(`sec-${secId}`);
@@ -550,7 +475,7 @@ function goSection(secId, btn) {
     if (sbBtn) sbBtn.classList.add('active');
   }
 
-  const bns = ['tests', 'doubts', 'settings'];
+  const bns = ['tests', 'settings'];
   const bnIdx = bns.indexOf(secId);
   if (bnIdx !== -1) {
     const bnBtns = document.querySelectorAll('.bottom-nav-btn');
@@ -559,7 +484,6 @@ function goSection(secId, btn) {
 
   const titles = {
     'tests': 'Test Arsenal',
-    'doubts': 'Aacharya AI — Doubts Solver',
     'settings': 'Profile & Stream'
   };
   const pageTitleEl = document.getElementById('pageTitle');
@@ -569,7 +493,7 @@ function goSection(secId, btn) {
   triggerActiveSectionRefresh();
 }
 
-// === 10. AUTHENTICATION & SUPABASE DATA SYNC ===
+// === 9. AUTHENTICATION & SYNC ===
 function initAuth() {
   const savedUser = mjStorage.getItem('mj_auth_user');
   if (savedUser) {
@@ -600,7 +524,6 @@ function initAuth() {
         await syncUserData();
         startDataSyncTimer();
       } else if (currentUser) {
-        // Logged in via session/token
         if (authScreen) authScreen.classList.add('hidden');
         if (appEl) appEl.classList.remove('hidden');
         await syncUserData();
@@ -613,7 +536,6 @@ function initAuth() {
       }
     });
   } else {
-    // Standalone fallback session
     if (!currentUser) {
       currentUser = {
         uid: 'user_diveshsah2',
@@ -655,7 +577,6 @@ async function syncUserData() {
 
 function startDataSyncTimer() {
   if (syncTimer) clearInterval(syncTimer);
-  // Auto background sync with Supabase every 8 seconds
   syncTimer = setInterval(() => {
     if (currentUser) {
       const email = currentUser.email || 'diveshsah2@gmail.com';
@@ -681,35 +602,28 @@ function signInWithGoogle() {
   if (auth) {
     const provider = new firebase.auth.GoogleAuthProvider();
     auth.signInWithPopup(provider).catch(e => {
-      console.warn('[Firebase Auth] Popup error, falling back to direct secure login:', e.message);
-      // Seamless direct session for user diveshsah2@gmail.com
-      currentUser = {
-        uid: 'user_diveshsah2',
-        email: 'diveshsah2@gmail.com',
-        displayName: 'Divesh Sah'
-      };
-      mjStorage.setItem('mj_auth_user', JSON.stringify(currentUser));
-      const authScreen = document.getElementById('authScreen');
-      const appEl = document.getElementById('app');
-      if (authScreen) authScreen.classList.add('hidden');
-      if (appEl) appEl.classList.remove('hidden');
-      syncUserData();
-      toast('Signed in as Divesh Sah', 'success');
+      console.warn('[Firebase Auth] Popup blocked/closed, entering directly:', e.message);
+      directAccessLogin();
     });
   } else {
-    currentUser = {
-      uid: 'user_diveshsah2',
-      email: 'diveshsah2@gmail.com',
-      displayName: 'Divesh Sah'
-    };
-    mjStorage.setItem('mj_auth_user', JSON.stringify(currentUser));
-    const authScreen = document.getElementById('authScreen');
-    const appEl = document.getElementById('app');
-    if (authScreen) authScreen.classList.add('hidden');
-    if (appEl) appEl.classList.remove('hidden');
-    syncUserData();
-    toast('Signed in as Divesh Sah', 'success');
+    directAccessLogin();
   }
+}
+
+function directAccessLogin() {
+  currentUser = {
+    uid: 'user_diveshsah2',
+    email: 'diveshsah2@gmail.com',
+    displayName: 'Divesh Sah'
+  };
+  mjStorage.setItem('mj_auth_user', JSON.stringify(currentUser));
+  const authScreen = document.getElementById('authScreen');
+  const appEl = document.getElementById('app');
+  if (authScreen) authScreen.classList.add('hidden');
+  if (appEl) appEl.classList.remove('hidden');
+  syncUserData();
+  startDataSyncTimer();
+  toast('Signed in as Divesh Sah — Connected to Supabase Cloud', 'success');
 }
 
 function signOutUser() {
@@ -725,6 +639,73 @@ function signOutUser() {
   } else {
     window.location.reload();
   }
+}
+
+// === 10. CLOUD BACKUP & RESTORE HUB ===
+async function forceCloudSync() {
+  toast('Syncing with Supabase Cloud...', 'info');
+  await syncUserData();
+  toast(`Cloud sync complete! ${allTests.length} tests loaded.`, 'success');
+}
+
+function exportDataBackup() {
+  const email = (currentUser && currentUser.email) || 'diveshsah2@gmail.com';
+  const backupData = {
+    app: "Mission Jeet (Drona)",
+    version: "3.2",
+    exportedAt: new Date().toISOString(),
+    user: {
+      email,
+      name: profile.name || 'Divesh Sah',
+      class: profile.class || '12',
+      examMode: profile.examMode || 'jee'
+    },
+    tests: allTests
+  };
+
+  const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(backupData, null, 2));
+  const downloadAnchor = document.createElement('a');
+  downloadAnchor.setAttribute("href", dataStr);
+  downloadAnchor.setAttribute("download", `mission_jeet_backup_${email}_${new Date().toISOString().split('T')[0]}.json`);
+  document.body.appendChild(downloadAnchor);
+  downloadAnchor.click();
+  downloadAnchor.remove();
+  toast('Backup JSON exported successfully!', 'success');
+}
+
+async function importDataBackup(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = async function(e) {
+    try {
+      const imported = JSON.parse(e.target.result);
+      if (imported && Array.isArray(imported.tests)) {
+        const email = (currentUser && currentUser.email) || 'diveshsah2@gmail.com';
+        
+        toast(`Importing ${imported.tests.length} tests into Supabase...`, 'info');
+
+        for (const t of imported.tests) {
+          await DronaDB.saveTest(email, t);
+        }
+
+        if (imported.user) {
+          profile = { ...profile, ...imported.user };
+          await DronaDB.saveUserProfile(email, profile);
+        }
+
+        await syncUserData();
+        toast(`Successfully restored ${imported.tests.length} tests from backup!`, 'success');
+      } else {
+        toast('Invalid backup format.', 'error');
+      }
+    } catch (err) {
+      toast('Failed to parse backup JSON: ' + err.message, 'error');
+    }
+  };
+  reader.readAsText(file);
+  event.target.value = '';
 }
 
 // === 11. TEST ARSENAL & ANALYTICS ===
@@ -892,7 +873,7 @@ function renderTestAnalysis() {
     }
   }
 
-  // 1. Score Progression Line Chart
+  // 1. Line Chart
   const ctxTrend = document.getElementById('chartTestTrend');
   const emptyTrend = document.getElementById('chartTestTrendEmpty');
   if (emptyTrend) emptyTrend.classList.add('hidden');
@@ -940,7 +921,7 @@ function renderTestAnalysis() {
     });
   }
 
-  // 2. Subject Mastery Radar Chart
+  // 2. Radar Chart
   const ctxBal = document.getElementById('chartSubjectBalance');
   const emptyBal = document.getElementById('chartSubjectBalanceEmpty');
   if (emptyBal) emptyBal.classList.add('hidden');
@@ -1002,7 +983,7 @@ function renderTestAnalysis() {
         ? '🔥 High accuracy! Maintain revision pace with PYQs.'
         : (sPct >= 50
           ? '⚡ Good foundation! Focus on speed and high-weightage topics.'
-          : '⚠️ Core gap detected. Solve concept doubts in Aacharya AI.');
+          : '⚠️ Core gap detected. Focus on chapter formula revision and mocks.');
       return `
         <div class="card" style="border-left: 4px solid ${s.color}; padding: 14px 18px;">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
@@ -1052,7 +1033,6 @@ async function saveTest() {
 
   const email = (currentUser && currentUser.email) || 'diveshsah2@gmail.com';
   
-  // Optimistic update
   allTests.unshift(newTest);
   renderTestArsenal();
   closeModal('testModal');
@@ -1201,7 +1181,6 @@ async function setExamMode(mode) {
   profile.examMode = mode;
   updateGlobalStats();
   renderSettings();
-  renderDoubtQuickStarters();
   renderTestArsenal();
   toast(`Switched target exam to ${mode.toUpperCase()}`, 'success');
 
@@ -1267,478 +1246,7 @@ function clearLocalPhoto() {
   DronaDB.saveUserProfile(email, profile).catch(() => {});
 }
 
-// === 13. AACHARYA AI (DOUBTS SOLVER) ===
-function toggleMathCalculator(forceState) {
-  const pad = document.getElementById('mathCalculatorPad');
-  const btn = document.getElementById('calcToggleBtn');
-  if (!pad) return;
-
-  const shouldOpen = forceState !== undefined ? forceState : (pad.style.display === 'none');
-  pad.style.display = shouldOpen ? 'block' : 'none';
-  if (btn) {
-    btn.classList.toggle('active', shouldOpen);
-    btn.textContent = shouldOpen ? '✕ Close Keypad' : '📐 Math Keypad';
-  }
-}
-
-function insertMathSymbol(sym) {
-  const input = document.getElementById('chatInput');
-  if (!input) return;
-  const start = input.selectionStart !== undefined ? input.selectionStart : input.value.length;
-  const end = input.selectionEnd !== undefined ? input.selectionEnd : input.value.length;
-  const text = input.value;
-  input.value = text.substring(0, start) + sym + text.substring(end);
-  input.focus();
-  const newPos = start + sym.length;
-  input.setSelectionRange(newPos, newPos);
-}
-
-function renderDoubtQuickStarters() {
-  const container = document.getElementById('quickStartersGrid');
-  if (!container) return;
-
-  const mode = getExamMode();
-  let starters = [];
-
-  if (mode === 'jee') {
-    starters = [
-      { title: "⚡ Rotational Dynamics Numerical", sub: "Physics", prompt: "A solid cylinder of mass m and radius r rolls down an incline of angle θ without slipping. Calculate its acceleration and friction force step-by-step." },
-      { title: "🧪 Aldol & Cannizzaro Mechanisms", sub: "Organic Chemistry", prompt: "Explain the step-by-step mechanism of Base-catalyzed Aldol Condensation vs Cannizzaro Reaction, showing all intermediates." },
-      { title: "📐 Tricky Definite Integration", sub: "Mathematics", prompt: "Solve the definite integral \\int_{0}^{\\pi/2} \\frac{\\sqrt{\\sin x}}{\\sqrt{\\sin x} + \\sqrt{\\cos x}} dx using properties of definite integrals." }
-    ];
-  } else {
-    starters = [
-      { title: "🧬 Hardy-Weinberg Calculation", sub: "Genetics / NEET PYQ", prompt: "Explain the Hardy-Weinberg equilibrium formula \\(p^2 + 2pq + q^2 = 1\\) and solve a numerical calculating the carrier frequency." },
-      { title: "⚛️ Bernoulli Principle & Efflux", sub: "Physics", prompt: "Derive Torricelli's Law from Bernoulli's Equation and calculate the horizontal range of the efflux stream from a tank." },
-      { title: "🧪 Markovnikov vs Peroxide Effect", sub: "Chemistry", prompt: "Explain Markovnikov addition vs Kharasch (peroxide) effect with free radical mechanism for HBr addition." }
-    ];
-  }
-
-  container.innerHTML = starters.map(s => `
-    <button class="btn btn-ghost" onclick="triggerQuickDoubt('${escapeHtml(s.prompt)}')" style="height:auto; padding:8px 12px; text-align:left; display:flex; flex-direction:column; align-items:flex-start; gap:2px; font-size:11px; background:rgba(255,255,255,0.02); border-color:var(--border);">
-      <strong style="color:var(--txt-1); font-size:11.5px;">${s.title}</strong>
-      <span style="font-size:9.5px; color:var(--blue-l);">${s.sub}</span>
-    </button>
-  `).join('');
-}
-
-function triggerQuickDoubt(promptText) {
-  const input = document.getElementById('chatInput');
-  if (input) {
-    input.value = promptText;
-    document.getElementById('chatForm').dispatchEvent(new Event('submit'));
-  }
-}
-
-function handleChatFileUpload(event) {
-  const file = event.target.files[0];
-  if (!file) return;
-  if (file.size > 5 * 1024 * 1024) {
-    toast('File must be under 5MB', 'error');
-    event.target.value = '';
-    return;
-  }
-  const reader = new FileReader();
-  reader.onload = function(e) {
-    const rawData = e.target.result;
-    const base64Data = rawData.split(',')[1];
-    chatAttachment = {
-      mimeType: file.type,
-      data: base64Data,
-      name: file.name
-    };
-    const container = document.getElementById('chatAttachmentPreview');
-    const nameEl = document.getElementById('chatAttachmentName');
-    const iconEl = document.getElementById('chatAttachmentIcon');
-    if (container && nameEl && iconEl) {
-      nameEl.textContent = file.name;
-      iconEl.textContent = file.type.startsWith('image/') ? '🖼️' : '📄';
-      container.style.display = 'flex';
-    }
-    toast('Question attached successfully', 'success');
-  };
-  reader.readAsDataURL(file);
-}
-
-function removeChatAttachment() {
-  chatAttachment = null;
-  const container = document.getElementById('chatAttachmentPreview');
-  if (container) container.style.display = 'none';
-  const fileInput = document.getElementById('chatFileInput');
-  if (fileInput) fileInput.value = '';
-}
-
-function clearDoubtChat() {
-  chatMessages = [
-    {
-      sender: 'assistant',
-      text: "Namaste! I am **Aacharya AI**, your personal IIT-JEE & NEET Academic Mentor and Doubt Solver. 🚀\n\nAsk me any concept query, numerical problem, formula derivation, or reaction mechanism. You can use the **📐 Math Keypad** for symbols and fractions, or upload question diagrams using **📎**!\n\nWhat doubt are we cracking today?",
-      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-    }
-  ];
-  renderChatMessages();
-  toast('Doubts session cleared', 'info');
-}
-
-function renderKaTeX(latex, isBlock) {
-  if (typeof katex !== 'undefined') {
-    try {
-      return katex.renderToString(latex, {
-        displayMode: isBlock,
-        throwOnError: false,
-        trust: true
-      });
-    } catch (e) {
-      console.warn("KaTeX render error:", e);
-    }
-  }
-  const parsed = parseLaTeX(latex);
-  if (isBlock) {
-    return `<div class="math-block" style="background:rgba(167,139,250,0.03); border:1px solid rgba(167,139,250,0.2); padding:12px; border-radius:6px; margin:10px 0; font-family:'JetBrains Mono', monospace; text-align:center; overflow-x:auto; color:#a78bfa; font-size:13px; font-weight:600;">${parsed}</div>`;
-  } else {
-    return `<code class="math-inline" style="background:rgba(167,139,250,0.08); color:#a78bfa; padding:2px 6px; border-radius:3px; font-family:'JetBrains Mono', monospace; font-size:12px; font-weight:600;">${parsed}</code>`;
-  }
-}
-
-function parseLaTeX(math) {
-  if (!math) return '';
-  return math
-    .replace(/\\frac\s*{(.*?)}\s*{(.*?)}/g, '($1)/($2)')
-    .replace(/\\sqrt\s*{(.*?)}/g, '√($1)')
-    .replace(/\\alpha/g, 'α').replace(/\\beta/g, 'β').replace(/\\gamma/g, 'γ')
-    .replace(/\\theta/g, 'θ').replace(/\\pi/g, 'π').replace(/\\Delta/g, 'Δ')
-    .replace(/\\int/g, '∫').replace(/\\sum/g, '∑').replace(/\\to/g, '→')
-    .replace(/\\pm/g, '±').replace(/\\infty/g, '∞').replace(/\\lambda/g, 'λ')
-    .replace(/\\/g, '');
-}
-
-function parseTeacherSolutionSteps(text) {
-  if (!text) return '';
-  const headings = [
-    { key: 'concept', label: 'Concept Overview', pattern: /Concept\s*Overview/i, color: 'var(--blue-l)', bg: 'rgba(99, 102, 241, 0.04)' },
-    { key: 'given', label: 'Given Parameters', pattern: /Given\s*Parameters|Given\s*Values/i, color: 'var(--purple-l)', bg: 'rgba(139, 92, 246, 0.04)' },
-    { key: 'formula', label: 'Core Formula / Principle', pattern: /Core\s*Formula|Key\s*Theorem|Reaction\s*Principle/i, color: 'var(--yellow-l)', bg: 'rgba(245, 158, 11, 0.04)' },
-    { key: 'steps', label: 'Step-by-Step Solution / Mechanism', pattern: /Step-by-Step\s*(?:Derivation|Calculation|Solution|Mechanism)/i, color: 'var(--cyan)', bg: 'rgba(6, 182, 212, 0.04)' },
-    { key: 'boxed', label: 'Final Answer', pattern: /Final\s*(?:boxed\s*)?Solution|Final\s*Answer|Major\s*Product/i, color: 'var(--green-l)', bg: 'rgba(16, 185, 129, 0.06)' },
-    { key: 'tip', label: 'JEE / NEET Pitfall & Tip', pattern: /Student\s*Pitfalls|Exam\s*Tip|Common\s*Mistake|Trap\s*Alert/i, color: 'var(--red-l)', bg: 'rgba(239, 68, 68, 0.04)' }
-  ];
-
-  const lines = text.split('\n');
-  const blocks = [];
-  let currentBlock = { heading: null, contentLines: [] };
-
-  lines.forEach(line => {
-    let matched = null;
-    for (const h of headings) {
-      if (h.pattern.test(line) && (line.includes('**') || line.includes('###') || line.match(/^\d+\./))) {
-        matched = h;
-        break;
-      }
-    }
-    if (matched) {
-      if (currentBlock.contentLines.length > 0 || currentBlock.heading) {
-        blocks.push({ heading: currentBlock.heading, content: currentBlock.contentLines.join('\n').trim() });
-      }
-      currentBlock = { heading: matched, contentLines: [] };
-    } else {
-      currentBlock.contentLines.push(line);
-    }
-  });
-
-  if (currentBlock.contentLines.length > 0 || currentBlock.heading) {
-    blocks.push({ heading: currentBlock.heading, content: currentBlock.contentLines.join('\n').trim() });
-  }
-
-  const headerBlocks = blocks.filter(b => b.heading !== null);
-  if (headerBlocks.length === 0) {
-    return formatMarkdownAndMath(text);
-  }
-
-  let html = '';
-  const leadingBlock = blocks.find(b => b.heading === null);
-  if (leadingBlock && leadingBlock.content) {
-    html += `<div style="margin-bottom:12px; font-size:13px; line-height:1.5; color:var(--txt-1);">${formatMarkdownAndMath(leadingBlock.content)}</div>`;
-  }
-
-  html += `<div class="solution-steps-container" style="display:flex; flex-direction:column; gap:12px; margin:10px 0;">`;
-  let stepIndex = 1;
-  headerBlocks.forEach(block => {
-    const h = block.heading;
-    const bodyContent = formatMarkdownAndMath(block.content);
-    html += `
-      <div class="solution-step-card" style="
-        background: ${h.bg};
-        border: 1px solid var(--border);
-        border-left: 4px solid ${h.color};
-        border-radius: 8px;
-        padding: 12px 14px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-      ">
-        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:8px; border-bottom:1px dashed rgba(255,255,255,0.05); padding-bottom:4px;">
-          <span style="font-size:11px; font-weight:700; color:${h.color}; text-transform:uppercase; letter-spacing:0.5px;">${h.label}</span>
-          <span style="background:rgba(255,255,255,0.04); border:1px solid var(--border); border-radius:12px; padding:2px 8px; font-size:9px; font-family:'JetBrains Mono', monospace; color:var(--txt-3); font-weight:600;">Step ${stepIndex++}</span>
-        </div>
-        <div style="font-size:12.5px; line-height:1.6; color:var(--txt-2);">${bodyContent}</div>
-      </div>
-    `;
-  });
-  html += `</div>`;
-  return html;
-}
-
-function formatMarkdownAndMath(text) {
-  if (!text) return '';
-  const codeBlocks = [];
-  const mathBlocks = [];
-  const mathInlines = [];
-
-  let processed = text.replace(/```(\w*)\n([\s\S]*?)```/g, (match, lang, code) => {
-    const id = `__CODE_BLOCK_${codeBlocks.length}__`;
-    codeBlocks.push({ lang, code });
-    return id;
-  });
-
-  processed = processed.replace(/(\$\$|\\\[)([\s\S]*?)(\$\$|\\\])/g, (match, open, math) => {
-    const id = `__MATH_BLOCK_${mathBlocks.length}__`;
-    mathBlocks.push(math);
-    return id;
-  });
-
-  processed = processed.replace(/(\(\s*.+?\s*\)|\\$$|\$)(.+?)(\\\)|\\\$|\$)/g, (match, open, math) => {
-    const id = `__MATH_INLINE_${mathInlines.length}__`;
-    mathInlines.push(math);
-    return id;
-  });
-
-  processed = escapeHtml(processed);
-
-  codeBlocks.forEach((block, idx) => {
-    const escapedCode = escapeHtml(block.code.trim());
-    const blockHtml = `
-      <div class="code-panel" style="margin:10px 0; border:1px solid var(--border); border-radius:6px; overflow:hidden; background:var(--bg-void);">
-        <div style="background:rgba(255,255,255,0.02); padding:6px 12px; font-size:10px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; color:var(--txt-3); font-family:'JetBrains Mono';">
-          <span>${block.lang || 'code'}</span>
-          <button type="button" onclick="navigator.clipboard.writeText(this.parentNode.parentNode.querySelector('pre').innerText); toast('Copied to clipboard','success');" style="background:none; border:none; color:var(--txt-2); cursor:pointer; font-size:10px;">Copy</button>
-        </div>
-        <pre style="margin:0; padding:12px; overflow-x:auto; font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--green-l); line-height:1.5; text-align:left;"><code>${escapedCode}</code></pre>
-      </div>
-    `;
-    processed = processed.split(`__CODE_BLOCK_${idx}__`).join(blockHtml);
-  });
-
-  mathBlocks.forEach((math, idx) => {
-    const blockHtml = renderKaTeX(math.trim(), true);
-    processed = processed.split(`__MATH_BLOCK_${idx}__`).join(blockHtml);
-  });
-
-  mathInlines.forEach((math, idx) => {
-    const inlineHtml = renderKaTeX(math.trim(), false);
-    processed = processed.split(`__MATH_INLINE_${idx}__`).join(inlineHtml);
-  });
-
-  processed = processed.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-  processed = processed.replace(/\*(.*?)\*/g, '<em>$1</em>');
-  processed = processed.replace(/`(.*?)`/g, '<code class="mono" style="background:rgba(255,255,255,0.06); padding:2px 4px; border-radius:3px; color:var(--red-l);">$1</code>');
-
-  let lines = processed.split('\n');
-  let inList = false;
-  lines = lines.map(line => {
-    const trimmed = line.trim();
-    if (trimmed.startsWith('- ') || trimmed.startsWith('* ')) {
-      const content = trimmed.substring(2);
-      let prefix = inList ? '' : '<ul style="margin:6px 0; padding-left:20px; list-style-type:disc;">';
-      inList = true;
-      return `${prefix}<li style="margin-bottom:4px; color:var(--txt-2);">${content}</li>`;
-    }
-    let suffix = inList ? '</ul>' : '';
-    inList = false;
-    return suffix + line;
-  });
-  if (inList) lines[lines.length - 1] += '</ul>';
-
-  return lines.join('\n').replace(/\n/g, '<br>');
-}
-
-async function sendChatMessage(event) {
-  if (event) event.preventDefault();
-  const inputEl = document.getElementById('chatInput');
-  if (!inputEl) return;
-  const text = inputEl.value.trim();
-  if (!text && !chatAttachment) return;
-
-  const attachmentToSend = chatAttachment;
-  removeChatAttachment();
-  inputEl.value = '';
-  toggleMathCalculator(false);
-
-  const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-  chatMessages.push({ sender: 'user', text, timestamp: time, attachment: attachmentToSend });
-  renderChatMessages();
-
-  const messagesArea = document.getElementById('chatMessagesArea');
-  if (messagesArea) {
-    messagesArea.innerHTML += `
-      <div class="chat-loader" id="chatLoader" style="align-self:flex-start; margin:8px 0;">
-        <div class="chat-loader-dot"></div>
-        <div class="chat-loader-dot"></div>
-        <div class="chat-loader-dot"></div>
-      </div>
-    `;
-    messagesArea.scrollTop = messagesArea.scrollHeight;
-  }
-
-  const apiKey = getGeminiApiKey();
-  if (!apiKey) {
-    setTimeout(() => {
-      const loader = document.getElementById('chatLoader');
-      if (loader) loader.remove();
-      chatMessages.push({
-        sender: 'system',
-        text: "🚨 Gemini API Key is missing.",
-        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-      });
-      renderChatMessages();
-    }, 500);
-    return;
-  }
-
-  try {
-    const geminiHistory = chatMessages.slice(0, -1).map(msg => {
-      const msgParts = [];
-      if (msg.attachment) {
-        msgParts.push({
-          inlineData: { mimeType: msg.attachment.mimeType, data: msg.attachment.data }
-        });
-        msgParts.push({ text: `[Attached Question File: ${msg.attachment.name}]\n\n${msg.text}` });
-      } else {
-        msgParts.push({ text: msg.text });
-      }
-      return {
-        role: msg.sender === 'user' ? 'user' : 'model',
-        parts: msgParts
-      };
-    });
-
-    const examMode = getExamMode();
-    const systemPrompt = `You are Aacharya AI, an elite Kota-level Senior Faculty and empathetic Study Mentor for ${examMode.toUpperCase()} aspirants (IIT-JEE Main/Advanced & NEET UG).
-
-## CORE TEACHER PERSONALITY & MENTOR ROLE
-- You speak with profound clarity, warmth, scientific precision, and encouraging mentorship.
-- You treat every student doubt with deep attention, explaining BOTH the intuitive 'Why' and the mathematical/chemical 'How'.
-- Whether the query is in Physics, Physical/Organic/Inorganic Chemistry, Mathematics, or Biology, resolve it seamlessly without demanding the user choose a subject.
-
-## ADAPTIVE DOUBT-SOLVING PROTOCOL
-
-### 1. For Numerical & Calculation-Heavy Problems:
-1. 💡 **Concept Overview**: 1-2 sentences explaining the core law/phenomenon involved.
-2. 📋 **Given Parameters**: List variables with symbols, units, and values in clean LaTeX (e.g. \\(m = 2\\text{ kg}\\), \\(v = 10\\text{ m/s}\\)).
-3. 📐 **Core Formula / Principle**: State the master formula or theorem applied.
-4. ⚙️ **Step-by-Step Calculation**: Show clear algebraic substitutions and calculation steps.
-5. 🎯 **Final Answer**: Clearly stated, boxed answer with correct units.
-6. ⚠️ **JEE / NEET Pitfall & Tip**: Point out common calculation traps, negative marking traps, or shortcut tips.
-
-### 2. For Conceptual & Theoretical Doubts:
-1. 💡 **Concept Overview**: Intuitive analogy or fundamental visualization.
-2. 🔬 **Deep Technical Rigor**: Exact NCERT/Advanced explanation with laws and diagrams/equations.
-3. 🎯 **Key Rules & Exceptions**: Any anomalies or vital edge-cases tested in JEE/NEET.
-4. ⚠️ **JEE / NEET Pitfall & Tip**: High-yield memory takeaway or mnemonic.
-
-### 3. For Organic / Inorganic Chemistry Mechanisms:
-1. 🧪 **Reaction Overview**: Substrate, reagent, reaction type (e.g., $S_N1$, $E2$, Electrophilic Addition).
-2. 🔄 **Step-by-Step Mechanism**: Electron flow, arrows, intermediates (carbocation, transition state), and rate-determining step.
-3. 🎯 **Final Major / Minor Products**: Regioselectivity (Markovnikov, Zaitsev) and stereochemistry.
-4. ⚠️ **Exam Pitfall**: Common reagent tricks (e.g., cold dil. vs hot conc. $KMnO_4$).
-
-### 4. For Mentorship, Exam Strategy & Low-Score Recovery:
-- Provide high-energy, actionable, and empathetic guidance. Give specific time-table and revision blueprints.
-
-Always write all equations, variables, and math formulas using LaTeX ($...$ inline or $$...$$ block).`;
-
-    const currentParts = [];
-    if (attachmentToSend) {
-      currentParts.push({
-        inlineData: { mimeType: attachmentToSend.mimeType, data: attachmentToSend.data }
-      });
-      currentParts.push({ text: `[Attached Question File: ${attachmentToSend.name}]\n\n${text}` });
-    } else {
-      currentParts.push({ text });
-    }
-
-    const payload = {
-      contents: [
-        { role: 'user', parts: [{ text: `System Instructions: ${systemPrompt}\n\nPlease acknowledge and prepare to solve all JEE/NEET doubts.` }] },
-        { role: 'model', parts: [{ text: "Understood! I am ready to resolve all IIT-JEE and NEET doubts with master faculty precision and step-by-step guidance." }] },
-        ...geminiHistory,
-        { role: 'user', parts: currentParts }
-      ],
-      generationConfig: { maxOutputTokens: 4096, temperature: 0.5 }
-    };
-
-    const resData = await callGeminiApi(payload);
-    const loader = document.getElementById('chatLoader');
-    if (loader) loader.remove();
-
-    const assistantText = resData.candidates[0].content.parts[0].text;
-    chatMessages.push({
-      sender: 'assistant',
-      text: assistantText,
-      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-    });
-    renderChatMessages();
-  } catch (err) {
-    console.error("Gemini API Error:", err);
-    const loader = document.getElementById('chatLoader');
-    if (loader) loader.remove();
-    chatMessages.push({
-      sender: 'system',
-      text: `🚨 Error resolving doubt: ${err.message}. Please try again.`,
-      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-    });
-    renderChatMessages();
-  }
-}
-
-function renderChatMessages() {
-  const messagesArea = document.getElementById('chatMessagesArea');
-  if (!messagesArea) return;
-
-  messagesArea.innerHTML = chatMessages.map(msg => {
-    const alignment = msg.sender === 'user' ? 'align-self: flex-end;' : (msg.sender === 'system' ? 'align-self: center;' : 'align-self: flex-start;');
-    const bubbleClass = msg.sender === 'user' ? 'user' : (msg.sender === 'system' ? 'system' : 'assistant');
-
-    let attachmentHtml = '';
-    if (msg.attachment) {
-      if (msg.attachment.mimeType && msg.attachment.mimeType.startsWith('image/')) {
-        attachmentHtml = `
-          <div style="margin-bottom:8px; border-radius:6px; overflow:hidden; border:1px solid var(--border); max-width:280px; background:rgba(0,0,0,0.3);">
-            <img src="data:${msg.attachment.mimeType};base64,${msg.attachment.data}" style="width:100%; display:block; max-height:220px; object-fit:contain;">
-          </div>
-        `;
-      } else {
-        attachmentHtml = `
-          <div style="margin-bottom:8px; display:flex; align-items:center; gap:8px; background:rgba(255,255,255,0.04); border:1px solid var(--border); padding:8px 12px; border-radius:6px; font-size:11px;">
-            <span style="font-size:18px;">📄</span>
-            <span style="font-family:'JetBrains Mono', monospace; color:var(--blue-l); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:200px;">${msg.attachment.name}</span>
-          </div>
-        `;
-      }
-    }
-
-    const formattedText = msg.sender === 'assistant' ? parseTeacherSolutionSteps(msg.text) : formatMarkdownAndMath(msg.text);
-
-    return `
-      <div class="chat-bubble ${bubbleClass}" style="${alignment} max-width:85%;">
-        ${attachmentHtml}
-        <div>${formattedText}</div>
-        <div style="font-size:8px; color:var(--txt-3); text-align:right; margin-top:6px; font-family:'JetBrains Mono';">${msg.timestamp}</div>
-      </div>
-    `;
-  }).join('');
-
-  messagesArea.scrollTop = messagesArea.scrollHeight;
-}
-
-// === 14. THEME & SIDEBAR ===
+// === 13. THEME & SIDEBAR CONTROLS ===
 function initTheme() {
   const savedTheme = mjStorage.getItem('mj_theme') || 'dark';
   setTheme(savedTheme);
@@ -1790,7 +1298,7 @@ document.addEventListener('click', function(e) {
   }
 });
 
-// === 15. INITIALIZATION ON DOM READY ===
+// === 14. INITIALIZATION ===
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
   initAuth();
@@ -1800,8 +1308,5 @@ document.addEventListener('DOMContentLoaded', () => {
     const opts = { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' };
     pageDate.textContent = new Date().toLocaleDateString('en-US', opts);
   }
-
-  renderDoubtQuickStarters();
-  renderChatMessages();
 });
 
