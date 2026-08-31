@@ -31,10 +31,19 @@ const mjStorage = {
 };
 
 // === 2. SUPABASE DATABASE ADAPTER FOR DRONA ===
+const DEFAULT_SUPABASE_URL = "https://fvmbqikdomcjalladwmz.supabase.co";
+const DEFAULT_SUPABASE_KEY = "sb_publishable_UNWum89AzkwnfNb2BoxdKA_otmSXn5c";
+
 const SUPABASE_CONFIG = {
-  PROJECT_URL: "https://fvmbqikdomcjalladwmz.supabase.co",
-  ANON_KEY: "sb_publishable_UNWum89AzkwnfNb2BoxdKA_otmSXn5c",
-  REST_ENDPOINT: "https://fvmbqikdomcjalladwmz.supabase.co/rest/v1"
+  get PROJECT_URL() {
+    return mjStorage.getItem('mj_supabase_url') || DEFAULT_SUPABASE_URL;
+  },
+  get ANON_KEY() {
+    return mjStorage.getItem('mj_supabase_key') || DEFAULT_SUPABASE_KEY;
+  },
+  get REST_ENDPOINT() {
+    return `${this.PROJECT_URL.replace(/\/$/, '')}/rest/v1`;
+  }
 };
 
 const DronaDB = {
@@ -861,39 +870,83 @@ function renderTestAnalysis() {
   if (ctxTrend && typeof Chart !== 'undefined') {
     if (chartInstances['trend']) chartInstances['trend'].destroy();
 
+    // Short X-axis label to eliminate clipping with content below
+    const chartLabels = normalizedTests.map((t, idx) => {
+      const raw = (t.number || `Mock ${idx + 1}`).trim();
+      return raw.length > 16 ? raw.substring(0, 14) + '…' : raw;
+    });
+
     chartInstances['trend'] = new Chart(ctxTrend, {
       type: 'line',
       data: {
-        labels: normalizedTests.map(t => `${t.number} (${t.date})`),
+        labels: chartLabels,
         datasets: [{
           label: 'Aggregate Score %',
           data: scores,
           borderColor: '#818cf8',
-          backgroundColor: 'rgba(99, 102, 241, 0.15)',
+          backgroundColor: 'rgba(99, 102, 241, 0.12)',
           fill: true,
           tension: 0.35,
           pointBackgroundColor: '#818cf8',
-          pointRadius: 5,
-          pointHoverRadius: 7
+          pointBorderColor: '#0b0b11',
+          pointBorderWidth: 2,
+          pointRadius: 6,
+          pointHoverRadius: 8
         }]
       },
       options: {
         responsive: true,
         maintainAspectRatio: false,
+        layout: {
+          padding: {
+            top: 10,
+            bottom: 15,
+            left: 5,
+            right: 15
+          }
+        },
         scales: {
           y: {
             min: 0,
             max: 100,
-            ticks: { callback: v => v + '%' },
+            ticks: {
+              callback: v => v + '%',
+              color: 'rgba(238, 242, 255, 0.65)',
+              font: { family: "'JetBrains Mono', monospace", size: 11 }
+            },
             grid: { color: 'rgba(255,255,255,0.06)' }
           },
-          x: { grid: { display: false } }
+          x: {
+            ticks: {
+              color: 'rgba(238, 242, 255, 0.75)',
+              font: { family: "'Inter', sans-serif", size: 11, weight: '500' },
+              maxRotation: 20,
+              minRotation: 0,
+              padding: 10
+            },
+            grid: { display: false }
+          }
         },
         plugins: {
           legend: { display: false },
           tooltip: {
+            backgroundColor: '#0d0d15',
+            titleColor: '#eef2ff',
+            bodyColor: '#818cf8',
+            borderColor: 'rgba(99, 102, 241, 0.3)',
+            borderWidth: 1,
+            padding: 12,
+            displayColors: false,
             callbacks: {
-              label: ctx => `Score: ${ctx.parsed.y}% (${normalizedTests[ctx.dataIndex].obtained}/${normalizedTests[ctx.dataIndex].max})`
+              title: items => {
+                if (!items.length) return '';
+                const idx = items[0].dataIndex;
+                return `${normalizedTests[idx].number} (${normalizedTests[idx].date || 'No Date'})`;
+              },
+              label: ctx => {
+                const t = normalizedTests[ctx.dataIndex];
+                return `Score: ${ctx.parsed.y}% (${t.obtained}/${t.max} marks)`;
+              }
             }
           }
         }
@@ -931,14 +984,19 @@ function renderTestAnalysis() {
           label: 'Subject Mastery %',
           data: subAvgs,
           borderColor: '#34d399',
-          backgroundColor: 'rgba(52, 211, 153, 0.25)',
+          backgroundColor: 'rgba(52, 211, 153, 0.2)',
           pointBackgroundColor: '#34d399',
-          pointRadius: 4
+          pointBorderColor: '#0b0b11',
+          pointBorderWidth: 2,
+          pointRadius: 5
         }]
       },
       options: {
         responsive: true,
         maintainAspectRatio: false,
+        layout: {
+          padding: { top: 10, bottom: 10, left: 10, right: 10 }
+        },
         scales: {
           r: {
             min: 0,
@@ -946,10 +1004,21 @@ function renderTestAnalysis() {
             ticks: { display: false, stepSize: 25 },
             grid: { color: 'rgba(255,255,255,0.06)' },
             angleLines: { color: 'rgba(255,255,255,0.06)' },
-            pointLabels: { color: '#eef2ff', font: { size: 11, weight: '700' } }
+            pointLabels: { color: '#eef2ff', font: { size: 12, weight: '700', family: "'Inter', sans-serif" } }
           }
         },
-        plugins: { legend: { display: false } }
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            backgroundColor: '#0d0d15',
+            borderColor: 'rgba(52, 211, 153, 0.3)',
+            borderWidth: 1,
+            padding: 10,
+            callbacks: {
+              label: ctx => `${ctx.label}: ${ctx.raw}% Mastery`
+            }
+          }
+        }
       }
     });
   }
@@ -1200,6 +1269,12 @@ function renderSettings() {
   const classEl = document.getElementById('profileClassSelect');
   if (classEl) classEl.value = profile.class || mjStorage.getItem('mj_local_class') || '12';
 
+  const sbUrlInput = document.getElementById('customSupabaseUrl');
+  if (sbUrlInput) sbUrlInput.value = SUPABASE_CONFIG.PROJECT_URL;
+
+  const sbKeyInput = document.getElementById('customSupabaseKey');
+  if (sbKeyInput) sbKeyInput.value = SUPABASE_CONFIG.ANON_KEY;
+
   const mode = getExamMode();
   const cardJee = document.getElementById('examCardJee');
   const cardNeet = document.getElementById('examCardNeet');
@@ -1218,6 +1293,35 @@ function renderSettings() {
   }
 
   updateSidebarUserDisplay();
+}
+
+function saveCustomSupabaseConfig() {
+  const url = (document.getElementById('customSupabaseUrl').value || '').trim();
+  const key = (document.getElementById('customSupabaseKey').value || '').trim();
+
+  if (!url || !key) {
+    toast('Please enter both Supabase URL and Key', 'error');
+    return;
+  }
+
+  mjStorage.setItem('mj_supabase_url', url);
+  mjStorage.setItem('mj_supabase_key', key);
+  toast('Custom Supabase Project saved! Synchronizing...', 'success');
+  syncUserData();
+}
+
+function resetSupabaseConfig() {
+  mjStorage.removeItem('mj_supabase_url');
+  mjStorage.removeItem('mj_supabase_key');
+
+  const sbUrlInput = document.getElementById('customSupabaseUrl');
+  if (sbUrlInput) sbUrlInput.value = DEFAULT_SUPABASE_URL;
+
+  const sbKeyInput = document.getElementById('customSupabaseKey');
+  if (sbKeyInput) sbKeyInput.value = DEFAULT_SUPABASE_KEY;
+
+  toast('Reset to default Supabase project', 'info');
+  syncUserData();
 }
 
 async function setExamMode(mode) {
