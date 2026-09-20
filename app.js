@@ -31,15 +31,15 @@ const mjStorage = {
 };
 
 // === 2. SUPABASE DATABASE ADAPTER FOR DRONA ===
-const DEFAULT_SUPABASE_URL = "https://fvmbqikdomcjalladwmz.supabase.co";
-const DEFAULT_SUPABASE_KEY = "sb_publishable_UNWum89AzkwnfNb2BoxdKA_otmSXn5c";
+const DEFAULT_SUPABASE_URL = "https://ukoxijpkxmdckamcmczz.supabase.co";
+const DEFAULT_SUPABASE_KEY = "sb_publishable_dpg1jDHvPSx2UyNz80vHog_FGUs5aeY";
 
 const SUPABASE_CONFIG = {
   get PROJECT_URL() {
-    return mjStorage.getItem('mj_supabase_url') || DEFAULT_SUPABASE_URL;
+    return DEFAULT_SUPABASE_URL;
   },
   get ANON_KEY() {
-    return mjStorage.getItem('mj_supabase_key') || DEFAULT_SUPABASE_KEY;
+    return DEFAULT_SUPABASE_KEY;
   },
   get REST_ENDPOINT() {
     return `${this.PROJECT_URL.replace(/\/$/, '')}/rest/v1`;
@@ -244,7 +244,130 @@ const DronaDB = {
   }
 };
 
-// === 3. FIREBASE AUTHENTICATION ===
+// === 3. STUDY LIBRARY ===
+let libraryCurrentFolder = null;
+
+function libraryItems() {
+  try { return JSON.parse(mjStorage.getItem('mj_library_items') || '[]'); } catch (e) { return []; }
+}
+
+function saveLibraryItems(items) {
+  mjStorage.setItem('mj_library_items', JSON.stringify(items));
+}
+
+function libraryEscape(value) {
+  return String(value || '').replace(/[&<>'"]/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', "'":'&#39;', '"':'&quot;' })[c]);
+}
+
+function libraryFileIcon(item) {
+  if (item.type === 'folder') return '📁';
+  if (item.type === 'note') return '📝';
+  if ((item.mime || '').includes('pdf')) return '📄';
+  if ((item.mime || '').startsWith('image/')) return '🖼️';
+  return '📎';
+}
+
+function renderLibrary() {
+  const grid = document.getElementById('libraryGrid');
+  if (!grid) return;
+  const items = libraryItems().filter(item => (item.parentId || null) === libraryCurrentFolder);
+  const current = libraryItems().find(item => item.id === libraryCurrentFolder);
+  const path = document.getElementById('libraryPath');
+  const back = document.getElementById('libraryBackBtn');
+  if (path) path.textContent = current ? `Library / ${current.name}` : 'Library';
+  if (back) back.style.display = libraryCurrentFolder ? 'inline-flex' : 'none';
+  if (!items.length) {
+    grid.innerHTML = '<div class="library-empty">No study material here yet. Create a folder, write a note, upload a PDF, or turn images into a PDF.</div>';
+    return;
+  }
+  grid.innerHTML = items.map(item => `
+    <article class="card library-item" onclick="libraryOpenItem('${item.id}')">
+      <div class="card-body">
+        <div class="library-icon">${libraryFileIcon(item)}</div>
+        <div class="library-item-title" title="${libraryEscape(item.name)}">${libraryEscape(item.name)}</div>
+        <div class="library-item-meta">${item.type === 'folder' ? 'Folder' : libraryEscape(item.mime || item.type)} · ${new Date(item.createdAt).toLocaleDateString()}</div>
+        <button class="btn btn-ghost btn-sm" style="margin-top:12px;padding:5px 8px;" onclick="event.stopPropagation(); libraryDeleteItem('${item.id}')">Delete</button>
+      </div>
+    </article>`).join('');
+}
+
+function libraryCreateFolder() {
+  const name = window.prompt('Folder name');
+  if (!name || !name.trim()) return;
+  const items = libraryItems();
+  items.push({ id: `folder_${Date.now()}`, type: 'folder', name: name.trim(), parentId: libraryCurrentFolder, createdAt: new Date().toISOString() });
+  saveLibraryItems(items); renderLibrary();
+}
+
+function libraryCreateNote() {
+  const name = window.prompt('Note title');
+  if (!name || !name.trim()) return;
+  const text = window.prompt('Write your note') || '';
+  const items = libraryItems();
+  items.push({ id: `note_${Date.now()}`, type: 'note', name: name.trim(), mime: 'text/plain', content: text, parentId: libraryCurrentFolder, createdAt: new Date().toISOString() });
+  saveLibraryItems(items); renderLibrary();
+}
+
+function libraryReadFile(file) {
+  return new Promise((resolve, reject) => { const reader = new FileReader(); reader.onload = () => resolve(reader.result); reader.onerror = reject; reader.readAsDataURL(file); });
+}
+
+async function libraryUploadFiles(event) {
+  const files = [...(event.target.files || [])]; event.target.value = '';
+  if (!files.length) return;
+  try {
+    const items = libraryItems();
+    for (const file of files) {
+      if (file.size > 4 * 1024 * 1024) throw new Error(`${file.name} is larger than the 4 MB browser-library limit.`);
+      items.push({ id: `file_${Date.now()}_${Math.random().toString(36).slice(2)}`, type: 'file', name: file.name, mime: file.type || 'file', content: await libraryReadFile(file), parentId: libraryCurrentFolder, createdAt: new Date().toISOString() });
+    }
+    saveLibraryItems(items); renderLibrary(); toast('Files added to your library.', 'success');
+  } catch (err) { toast(err.message || 'Could not add those files.', 'error'); }
+}
+
+async function libraryCreatePdfFromImages(event) {
+  const files = [...(event.target.files || [])]; event.target.value = '';
+  if (!files.length) return;
+  if (!window.jspdf) { toast('PDF creator is still loading. Please try again.', 'error'); return; }
+  try {
+    const { jsPDF } = window.jspdf;
+    const pdf = new jsPDF({ unit: 'pt', format: 'a4' });
+    for (let i = 0; i < files.length; i++) {
+      const data = await libraryReadFile(files[i]);
+      const image = await new Promise((resolve, reject) => { const img = new Image(); img.onload = () => resolve(img); img.onerror = reject; img.src = data; });
+      if (i) pdf.addPage();
+      const pageW = pdf.internal.pageSize.getWidth(), pageH = pdf.internal.pageSize.getHeight();
+      const scale = Math.min(pageW / image.width, pageH / image.height);
+      const width = image.width * scale, height = image.height * scale;
+      pdf.addImage(data, 'JPEG', (pageW - width) / 2, (pageH - height) / 2, width, height);
+    }
+    const name = (window.prompt('PDF name', 'study-notes') || 'study-notes').replace(/\.pdf$/i, '');
+    const items = libraryItems();
+    items.push({ id: `file_${Date.now()}`, type: 'file', name: `${name}.pdf`, mime: 'application/pdf', content: pdf.output('datauristring'), parentId: libraryCurrentFolder, createdAt: new Date().toISOString() });
+    saveLibraryItems(items); renderLibrary(); toast('PDF created and saved to your library.', 'success');
+  } catch (err) { console.error(err); toast('Could not create the PDF.', 'error'); }
+}
+
+function libraryOpenItem(id) {
+  const item = libraryItems().find(entry => entry.id === id); if (!item) return;
+  if (item.type === 'folder') { libraryCurrentFolder = item.id; renderLibrary(); return; }
+  if (item.type === 'note') { window.alert(item.content || '(Empty note)'); return; }
+  if (item.content) window.open(item.content, '_blank', 'noopener');
+}
+
+function libraryGoBack() {
+  const current = libraryItems().find(item => item.id === libraryCurrentFolder);
+  libraryCurrentFolder = current ? (current.parentId || null) : null; renderLibrary();
+}
+
+function libraryDeleteItem(id) {
+  if (!window.confirm('Delete this item and everything inside it?')) return;
+  const toDelete = new Set([id]); let changed = true; const items = libraryItems();
+  while (changed) { changed = false; items.forEach(item => { if (toDelete.has(item.parentId) && !toDelete.has(item.id)) { toDelete.add(item.id); changed = true; } }); }
+  saveLibraryItems(items.filter(item => !toDelete.has(item.id))); renderLibrary();
+}
+
+// === 4. FIREBASE AUTHENTICATION ===
 const firebaseConfig = {
   apiKey: ["AIzaSyB", "2QPlcQYURB", "ZRURX5pswo", "YXQ7r8cCoDdY"].join(""),
   authDomain: "manifestation-55647.firebaseapp.com",
@@ -436,6 +559,8 @@ function triggerActiveSectionRefresh() {
     }
   } else if (id === 'sec-settings') {
     renderSettings();
+  } else if (id === 'sec-library') {
+    renderLibrary();
   }
 }
 
@@ -455,7 +580,7 @@ function goSection(secId, btn) {
     if (sbBtn) sbBtn.classList.add('active');
   }
 
-  const bns = ['tests', 'settings'];
+  const bns = ['tests', 'library', 'settings'];
   const bnIdx = bns.indexOf(secId);
   if (bnIdx !== -1) {
     const bnBtns = document.querySelectorAll('.bottom-nav-btn');
@@ -464,6 +589,7 @@ function goSection(secId, btn) {
 
   const titles = {
     'tests': 'Test Arsenal',
+    'library': 'Library',
     'settings': 'Profile & Stream'
   };
   const pageTitleEl = document.getElementById('pageTitle');
@@ -1457,4 +1583,3 @@ document.addEventListener('DOMContentLoaded', () => {
     pageDate.textContent = new Date().toLocaleDateString('en-US', opts);
   }
 });
-

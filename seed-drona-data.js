@@ -1,7 +1,7 @@
 const https = require('https');
 
-const SUPABASE_URL = 'https://fvmbqikdomcjalladwmz.supabase.co';
-const SUPABASE_ANON_KEY = 'sb_publishable_UNWum89AzkwnfNb2BoxdKA_otmSXn5c';
+const SUPABASE_URL = 'https://ukoxijpkxmdckamcmczz.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_dpg1jDHvPSx2UyNz80vHog_FGUs5aeY';
 
 function supabaseRequest(path, method = 'GET', body = null) {
   return new Promise((resolve, reject) => {

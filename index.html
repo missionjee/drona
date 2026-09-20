@@ -16,6 +16,7 @@
   
   <!-- ChartJS -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
   
   <link rel="stylesheet" href="styles.css">
   
@@ -31,6 +32,14 @@
       padding: 18px;
       margin-bottom: 20px;
     }
+    .sync-card, .supabase-custom-card, .sb-footer > div:first-child { display:none; }
+    .library-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(190px, 1fr)); gap:14px; }
+    .library-item { min-height:150px; cursor:pointer; transition:transform .18s ease, border-color .18s ease; }
+    .library-item:hover { transform:translateY(-3px); border-color:rgba(99,102,241,.65); }
+    .library-icon { font-size:34px; margin-bottom:12px; }
+    .library-item-title { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-weight:700; font-size:13px; }
+    .library-item-meta { color:var(--txt-3); font-size:10px; margin-top:5px; }
+    .library-empty { border:1px dashed var(--border); border-radius:var(--r); color:var(--txt-3); padding:42px 20px; text-align:center; }
   </style>
 </head>
 <body>
@@ -101,6 +110,11 @@
           <span class="nav-icon">🧪</span>
           <span class="nav-text">Test Arsenal</span>
           <span class="nav-tooltip">Test Arsenal</span>
+        </button>
+        <button class="nav-btn" data-sec="library" onclick="goSection('library',this)">
+          <span class="nav-icon">📚</span>
+          <span class="nav-text">Library</span>
+          <span class="nav-tooltip">Library</span>
         </button>
         <button class="nav-btn" data-sec="settings" onclick="goSection('settings',this)">
           <span class="nav-icon">⚙️</span>
@@ -267,13 +281,40 @@
 
         </section>
 
-        <!-- SECTION 2: PROFILE & STREAM -->
+        <!-- SECTION 2: LIBRARY -->
+        <section id="sec-library" class="section">
+          <div class="mission-hero" style="margin-bottom:20px;">
+            <div class="mission-hero-top" style="align-items:center; gap:16px;">
+              <div>
+                <h2 class="mission-hero-heading" style="font-family:'Playfair Display',serif;font-style:italic;font-weight:800;font-size:26px;">STUDY LIBRARY</h2>
+                <p style="font-size:11px;color:var(--txt-3);margin-top:2px;">Organize books, PDFs, notes, and image-based study material.</p>
+              </div>
+              <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                <button class="btn btn-ghost btn-sm" onclick="libraryCreateFolder()">New Folder</button>
+                <button class="btn btn-ghost btn-sm" onclick="libraryCreateNote()">New Note</button>
+                <button class="btn btn-primary btn-sm" onclick="document.getElementById('libraryUploadInput').click()">Upload</button>
+                <button class="btn btn-primary btn-sm" onclick="document.getElementById('libraryImagesInput').click()">Images to PDF</button>
+              </div>
+            </div>
+          </div>
+          <input id="libraryUploadInput" type="file" accept="application/pdf,image/*,.txt,.md" multiple hidden onchange="libraryUploadFiles(event)">
+          <input id="libraryImagesInput" type="file" accept="image/*" multiple hidden onchange="libraryCreatePdfFromImages(event)">
+          <div class="card" style="margin-bottom:16px;">
+            <div class="card-body" style="padding:14px 18px;display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap;">
+              <div id="libraryPath" style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--txt-2);">Library</div>
+              <button id="libraryBackBtn" class="btn btn-ghost btn-sm" onclick="libraryGoBack()" style="display:none;">Back</button>
+            </div>
+          </div>
+          <div id="libraryGrid" class="library-grid"></div>
+        </section>
+
+        <!-- SECTION 3: PROFILE & STREAM -->
         <section id="sec-settings" class="section">
           <div class="mission-hero" style="margin-bottom: 20px;">
             <div class="mission-hero-top">
               <div>
                 <h2 class="mission-hero-heading" style="font-family: 'Playfair Display', serif; font-style: italic; font-weight: 800; font-size: 26px;">PROFILE & STREAM</h2>
-                <p style="font-size: 11px; color: var(--txt-3); margin-top: 2px;">Manage your student identity, exam path, and custom Supabase project connection.</p>
+                <p style="font-size: 11px; color: var(--txt-3); margin-top: 2px;">Manage your student identity and exam path.</p>
               </div>
             </div>
           </div>
@@ -418,7 +459,7 @@
             </div>
 
             <!-- Custom Supabase Project Connection Card -->
-            <div class="card" style="grid-column: 1 / -1;">
+            <div class="card supabase-custom-card" style="grid-column: 1 / -1;">
               <div class="card-header"><h3 class="card-title">Custom Supabase Project Connection</h3></div>
               <div class="card-body">
                 <p style="font-size:11px; color:var(--txt-3); margin-bottom:14px;">Connect your own separate Supabase project. Enter your project URL and publishable key from your Supabase Dashboard.</p>
@@ -453,6 +494,10 @@
         <button class="bottom-nav-btn active" onclick="goSection('tests')">
           <span class="bn-icon">🧪</span>
           <span class="bn-label">Tests</span>
+        </button>
+        <button class="bottom-nav-btn" onclick="goSection('library')">
+          <span class="bn-icon">📚</span>
+          <span class="bn-label">Library</span>
         </button>
         <button class="bottom-nav-btn" onclick="goSection('settings')">
           <span class="bn-icon">⚙️</span>
