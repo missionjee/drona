@@ -246,6 +246,7 @@ const DronaDB = {
 
 // === 3. STUDY LIBRARY ===
 let libraryCurrentFolder = null;
+let libraryEditingNoteId = null;
 
 function libraryItems() {
   try { return JSON.parse(mjStorage.getItem('mj_library_items') || '[]'); } catch (e) { return []; }
@@ -270,14 +271,21 @@ function libraryFileIcon(item) {
 function renderLibrary() {
   const grid = document.getElementById('libraryGrid');
   if (!grid) return;
-  const items = libraryItems().filter(item => (item.parentId || null) === libraryCurrentFolder);
-  const current = libraryItems().find(item => item.id === libraryCurrentFolder);
+  const allItems = libraryItems();
+  const search = (document.getElementById('librarySearch')?.value || '').trim().toLowerCase();
+  const items = allItems
+    .filter(item => (item.parentId || null) === libraryCurrentFolder)
+    .filter(item => !search || item.name.toLowerCase().includes(search))
+    .sort((a, b) => (a.type === 'folder' ? -1 : b.type === 'folder' ? 1 : 0) || a.name.localeCompare(b.name));
+  const current = allItems.find(item => item.id === libraryCurrentFolder);
   const path = document.getElementById('libraryPath');
   const back = document.getElementById('libraryBackBtn');
+  const count = document.getElementById('libraryItemCount');
   if (path) path.textContent = current ? `Library / ${current.name}` : 'Library';
   if (back) back.style.display = libraryCurrentFolder ? 'inline-flex' : 'none';
+  if (count) count.textContent = `${items.length} item${items.length === 1 ? '' : 's'}`;
   if (!items.length) {
-    grid.innerHTML = '<div class="library-empty">No study material here yet. Create a folder, write a note, upload a PDF, or turn images into a PDF.</div>';
+    grid.innerHTML = `<div class="library-empty">${search ? 'No matching material found.' : 'No study material here yet. Create a folder, write a note, upload a PDF, or turn images into a PDF.'}</div>`;
     return;
   }
   grid.innerHTML = items.map(item => `
@@ -286,7 +294,10 @@ function renderLibrary() {
         <div class="library-icon">${libraryFileIcon(item)}</div>
         <div class="library-item-title" title="${libraryEscape(item.name)}">${libraryEscape(item.name)}</div>
         <div class="library-item-meta">${item.type === 'folder' ? 'Folder' : libraryEscape(item.mime || item.type)} · ${new Date(item.createdAt).toLocaleDateString()}</div>
-        <button class="btn btn-ghost btn-sm" style="margin-top:12px;padding:5px 8px;" onclick="event.stopPropagation(); libraryDeleteItem('${item.id}')">Delete</button>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:12px;">
+          ${item.type === 'note' ? `<button class="btn btn-ghost btn-sm" style="padding:5px 8px;" onclick="event.stopPropagation(); libraryEditNote('${item.id}')">Edit</button><button class="btn btn-ghost btn-sm" style="padding:5px 8px;" onclick="event.stopPropagation(); libraryExportNotePdf('${item.id}')">PDF</button>` : ''}
+          <button class="btn btn-ghost btn-sm" style="padding:5px 8px;" onclick="event.stopPropagation(); libraryDeleteItem('${item.id}')">Delete</button>
+        </div>
       </div>
     </article>`).join('');
 }
@@ -300,12 +311,47 @@ function libraryCreateFolder() {
 }
 
 function libraryCreateNote() {
-  const name = window.prompt('Note title');
-  if (!name || !name.trim()) return;
-  const text = window.prompt('Write your note') || '';
+  libraryEditingNoteId = null;
+  document.getElementById('libraryNoteEditorTitle').textContent = 'New Note';
+  document.getElementById('libraryNoteTitle').value = '';
+  document.getElementById('libraryNoteContent').value = '';
+  document.getElementById('libraryNoteEditor').style.display = 'block';
+  document.getElementById('libraryNoteTitle').focus();
+}
+
+function libraryEditNote(id) {
+  const item = libraryItems().find(entry => entry.id === id); if (!item || item.type !== 'note') return;
+  libraryEditingNoteId = id;
+  document.getElementById('libraryNoteEditorTitle').textContent = 'Edit Note';
+  document.getElementById('libraryNoteTitle').value = item.name;
+  document.getElementById('libraryNoteContent').value = item.content || '';
+  document.getElementById('libraryNoteEditor').style.display = 'block';
+  document.getElementById('libraryNoteTitle').focus();
+}
+
+function libraryCloseNoteEditor() {
+  document.getElementById('libraryNoteEditor').style.display = 'none';
+  libraryEditingNoteId = null;
+}
+
+function libraryNoteFromEditor() {
+  const name = document.getElementById('libraryNoteTitle').value.trim();
+  const content = document.getElementById('libraryNoteContent').value;
+  return { name, content };
+}
+
+function librarySaveNote() {
+  const { name, content } = libraryNoteFromEditor();
+  if (!name) { toast('Give your note a title.', 'error'); return null; }
   const items = libraryItems();
-  items.push({ id: `note_${Date.now()}`, type: 'note', name: name.trim(), mime: 'text/plain', content: text, parentId: libraryCurrentFolder, createdAt: new Date().toISOString() });
-  saveLibraryItems(items); renderLibrary();
+  let note = items.find(item => item.id === libraryEditingNoteId);
+  if (note) {
+    note.name = name; note.content = content; note.updatedAt = new Date().toISOString();
+  } else {
+    note = { id: `note_${Date.now()}`, type: 'note', name, mime: 'text/plain', content, parentId: libraryCurrentFolder, createdAt: new Date().toISOString() };
+    items.push(note); libraryEditingNoteId = note.id;
+  }
+  saveLibraryItems(items); renderLibrary(); toast('Note saved.', 'success'); return note;
 }
 
 function libraryReadFile(file) {
@@ -323,6 +369,54 @@ async function libraryUploadFiles(event) {
     }
     saveLibraryItems(items); renderLibrary(); toast('Files added to your library.', 'success');
   } catch (err) { toast(err.message || 'Could not add those files.', 'error'); }
+}
+
+function libraryBuildNotePdf(note) {
+  if (!window.jspdf) throw new Error('PDF creator is still loading. Please try again.');
+  const { jsPDF } = window.jspdf;
+  const pdf = new jsPDF({ unit: 'pt', format: 'a4' });
+  const pageW = pdf.internal.pageSize.getWidth(), pageH = pdf.internal.pageSize.getHeight();
+  const margin = 48, contentW = pageW - margin * 2;
+  let y = margin;
+  pdf.setFont('helvetica', 'bold'); pdf.setFontSize(20);
+  const titleLines = pdf.splitTextToSize(note.name, contentW);
+  pdf.text(titleLines, margin, y); y += titleLines.length * 25 + 14;
+  pdf.setDrawColor(150); pdf.line(margin, y, pageW - margin, y); y += 24;
+  pdf.setFont('helvetica', 'normal'); pdf.setFontSize(11);
+  const lines = pdf.splitTextToSize(note.content || '(Empty note)', contentW);
+  lines.forEach(line => {
+    if (y > pageH - margin) { pdf.addPage(); y = margin; }
+    pdf.text(line, margin, y); y += 16;
+  });
+  const pages = pdf.getNumberOfPages();
+  for (let page = 1; page <= pages; page++) {
+    pdf.setPage(page); pdf.setFontSize(9); pdf.setTextColor(120);
+    pdf.text(`${note.name}  •  ${page}/${pages}`, margin, pageH - 24);
+  }
+  return pdf;
+}
+
+function libraryExportNotePdf(id) {
+  const note = libraryItems().find(item => item.id === id && item.type === 'note');
+  if (!note) return;
+  try {
+    const pdf = libraryBuildNotePdf(note);
+    pdf.save(`${note.name.replace(/[\\/:*?"<>|]/g, '-').slice(0, 80) || 'note'}.pdf`);
+    toast('Your note PDF is downloading.', 'success');
+  } catch (err) { toast(err.message || 'Could not create the PDF.', 'error'); }
+}
+
+function libraryExportCurrentNotePdf() {
+  const note = librarySaveNote(); if (note) libraryExportNotePdf(note.id);
+}
+
+function librarySaveCurrentNotePdf() {
+  const note = librarySaveNote(); if (!note) return;
+  try {
+    const items = libraryItems();
+    items.push({ id: `file_${Date.now()}`, type: 'file', name: `${note.name}.pdf`, mime: 'application/pdf', content: libraryBuildNotePdf(note).output('datauristring'), parentId: note.parentId, createdAt: new Date().toISOString() });
+    saveLibraryItems(items); renderLibrary(); toast('PDF saved in your library.', 'success');
+  } catch (err) { toast(err.message || 'Could not save the PDF.', 'error'); }
 }
 
 async function libraryCreatePdfFromImages(event) {
@@ -351,7 +445,7 @@ async function libraryCreatePdfFromImages(event) {
 function libraryOpenItem(id) {
   const item = libraryItems().find(entry => entry.id === id); if (!item) return;
   if (item.type === 'folder') { libraryCurrentFolder = item.id; renderLibrary(); return; }
-  if (item.type === 'note') { window.alert(item.content || '(Empty note)'); return; }
+  if (item.type === 'note') { libraryEditNote(item.id); return; }
   if (item.content) window.open(item.content, '_blank', 'noopener');
 }
 

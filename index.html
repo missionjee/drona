@@ -300,9 +300,28 @@
           <input id="libraryUploadInput" type="file" accept="application/pdf,image/*,.txt,.md" multiple hidden onchange="libraryUploadFiles(event)">
           <input id="libraryImagesInput" type="file" accept="image/*" multiple hidden onchange="libraryCreatePdfFromImages(event)">
           <div class="card" style="margin-bottom:16px;">
+            <div class="card-body" style="padding:12px 18px;display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;">
+              <input id="librarySearch" class="form-input" style="max-width:320px;" type="search" placeholder="Search this folder..." oninput="renderLibrary()">
+              <span id="libraryItemCount" style="font-size:11px;color:var(--txt-3);"></span>
+            </div>
+          </div>
+          <div class="card" style="margin-bottom:16px;">
             <div class="card-body" style="padding:14px 18px;display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap;">
               <div id="libraryPath" style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--txt-2);">Library</div>
               <button id="libraryBackBtn" class="btn btn-ghost btn-sm" onclick="libraryGoBack()" style="display:none;">Back</button>
+            </div>
+          </div>
+          <div class="card" id="libraryNoteEditor" style="display:none;margin-bottom:16px;">
+            <div class="card-header"><h3 class="card-title" id="libraryNoteEditorTitle">New Note</h3></div>
+            <div class="card-body">
+              <input id="libraryNoteTitle" class="form-input" maxlength="100" placeholder="Note title" style="margin-bottom:12px;">
+              <textarea id="libraryNoteContent" class="form-input" rows="12" placeholder="Write your study notes here..." style="resize:vertical;line-height:1.6;"></textarea>
+              <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;">
+                <button class="btn btn-primary btn-sm" onclick="librarySaveNote()">Save Note</button>
+                <button class="btn btn-ghost btn-sm" onclick="libraryExportCurrentNotePdf()">Download PDF</button>
+                <button class="btn btn-ghost btn-sm" onclick="librarySaveCurrentNotePdf()">Save PDF in Library</button>
+                <button class="btn btn-ghost btn-sm" onclick="libraryCloseNoteEditor()">Close</button>
+              </div>
             </div>
           </div>
           <div id="libraryGrid" class="library-grid"></div>
@@ -320,7 +339,7 @@
           </div>
 
           <!-- Supabase Cloud Sync Center -->
-          <div class="sync-card">
+          <div class="sync-card" hidden aria-hidden="true">
             <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
               <div>
                 <h4 style="margin:0 0 4px 0; font-size:14px; font-weight:800; color:var(--txt-1); display:flex; align-items:center; gap:8px;">
@@ -459,7 +478,7 @@
             </div>
 
             <!-- Custom Supabase Project Connection Card -->
-            <div class="card supabase-custom-card" style="grid-column: 1 / -1;">
+            <div class="card supabase-custom-card" style="grid-column: 1 / -1;" hidden aria-hidden="true">
               <div class="card-header"><h3 class="card-title">Custom Supabase Project Connection</h3></div>
               <div class="card-body">
                 <p style="font-size:11px; color:var(--txt-3); margin-bottom:14px;">Connect your own separate Supabase project. Enter your project URL and publishable key from your Supabase Dashboard.</p>
