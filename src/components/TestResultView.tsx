@@ -301,6 +301,11 @@ export const TestResultView: React.FC<TestResultViewProps> = ({
                           {q.section}
                         </span>
                       )}
+                      {q.patternLabel && (
+                        <span className="px-2 py-0.5 rounded bg-purple-50 dark:bg-purple-950/60 border border-purple-200 dark:border-purple-900 text-purple-700 dark:text-purple-300 font-bold text-[10px]">
+                          {q.patternLabel}
+                        </span>
+                      )}
                     </div>
 
                     <div>

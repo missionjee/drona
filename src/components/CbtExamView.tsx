@@ -635,13 +635,18 @@ export const CbtExamView: React.FC<CbtExamViewProps> = ({
         <div className="flex-1 flex flex-col bg-slate-50 dark:bg-slate-950 overflow-hidden border-r border-slate-200 dark:border-slate-800">
           {/* Question Sub-header */}
           <div className="px-6 py-3 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 flex flex-wrap items-center justify-between gap-2 shrink-0">
-            <div className="flex items-center gap-2.5">
+            <div className="flex items-center gap-2.5 flex-wrap">
               <span className="font-extrabold text-sm text-slate-900 dark:text-white">
                 Question No. {currentQuestionIndex + 1}
               </span>
               <span className="text-xs px-2.5 py-0.5 rounded-full font-bold bg-blue-100 dark:bg-blue-900/60 text-blue-900 dark:text-blue-200">
                 {currentQuestion?.type.replace('_', ' ').toUpperCase()}
               </span>
+              {currentQuestion?.patternLabel && (
+                <span className="text-xs px-2.5 py-0.5 rounded-full font-bold bg-purple-100 dark:bg-purple-950/60 text-purple-800 dark:text-purple-300 border border-purple-200 dark:border-purple-800">
+                  {currentQuestion.patternLabel}
+                </span>
+              )}
             </div>
 
             <div className="flex items-center gap-3 text-xs font-bold">

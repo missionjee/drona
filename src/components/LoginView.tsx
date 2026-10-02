@@ -38,10 +38,10 @@ export const LoginView: React.FC<LoginViewProps> = ({
   onToggleDarkMode,
 }) => {
   const [authMode, setAuthMode] = useState<'login' | 'register'>('login');
-  const [name, setName] = useState(initialProfile.name && initialProfile.name !== 'JEE Aspirant' ? initialProfile.name : '');
-  const [phoneNumber, setPhoneNumber] = useState(initialProfile.phoneNumber || '');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [name, setName] = useState(initialProfile.name || 'Divesh');
+  const [phoneNumber, setPhoneNumber] = useState(initialProfile.phoneNumber || '8298272149');
+  const [password, setPassword] = useState('divesh8298');
+  const [confirmPassword, setConfirmPassword] = useState('divesh8298');
   const [showPassword, setShowPassword] = useState(false);
   const [stream, setStream] = useState<StreamType>(initialProfile.stream || 'jee');
   const [classLevel, setClassLevel] = useState<'11' | '12' | 'dropper'>(initialProfile.classLevel || '12');

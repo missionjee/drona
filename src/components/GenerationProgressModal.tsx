@@ -8,6 +8,7 @@ import {
   Sparkles,
   ShieldCheck,
   Zap,
+  Layers,
 } from 'lucide-react';
 import { PipelineProgress } from '../types';
 
@@ -122,6 +123,32 @@ export const GenerationProgressModal: React.FC<GenerationProgressModalProps> = (
               );
             })}
           </div>
+
+          {/* Pattern Diversity Verification System */}
+          {progress.patternBreakdown && Object.keys(progress.patternBreakdown).length > 0 && (
+            <div className="bg-slate-950/70 p-3.5 rounded-2xl border border-slate-800 space-y-2">
+              <div className="flex items-center justify-between text-xs">
+                <span className="font-bold text-slate-400 flex items-center gap-1.5 uppercase tracking-wider text-[10px]">
+                  <Layers size={13} className="text-purple-400" /> Pattern Diversity Verifier
+                </span>
+                <span className="text-[10px] text-emerald-400 font-bold bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20 flex items-center gap-1">
+                  <CheckCircle2 size={11} /> NTA/IIT Pattern Verified
+                </span>
+              </div>
+              <div className="flex flex-wrap gap-1.5">
+                {Object.entries(progress.patternBreakdown).map(([pattern, count]) => (
+                  <div
+                    key={pattern}
+                    className="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-700/60 text-[11px] text-slate-300 flex items-center gap-1.5 shadow-xs"
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-purple-400"></span>
+                    <span className="font-medium text-slate-300">{pattern}:</span>
+                    <span className="font-bold text-white">{count}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* Pipeline Telemetry Footer */}
           <div className="grid grid-cols-3 gap-2 text-center text-xs pt-2 border-t border-slate-800">

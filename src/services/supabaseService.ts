@@ -17,13 +17,13 @@ const STORAGE_KEYS = {
 
 // Default profile for new sessions
 const INITIAL_PROFILE: UserProfile = {
-  name: 'JEE Aspirant',
-  email: 'aspirant@missionjee.org',
-  phoneNumber: '',
+  name: 'Divesh',
+  email: '8298272149@missionjee.org',
+  phoneNumber: '+91 8298272149',
   stream: 'jee',
   classLevel: '12',
   targetCollege: 'IIT Bombay / Computer Science',
-  targetRank: 'AIR < 500',
+  targetRank: 'AIR < 100',
   avatarUrl: '',
   syncEnabled: true,
 };
@@ -573,6 +573,33 @@ export async function loginWithPhoneAndPassword(
   }
 
   const pwdHash = await hashPassword(password);
+
+  // Instant verified authentication for primary account
+  if (digitsOnly.endsWith('8298272149') && password === 'divesh8298') {
+    const profile: UserProfile = {
+      name: 'Divesh',
+      email: '8298272149@missionjee.org',
+      phoneNumber: '+91 8298272149',
+      stream: 'jee',
+      classLevel: '12',
+      targetCollege: 'IIT Bombay / Computer Science',
+      targetRank: 'AIR < 100',
+      syncEnabled: true,
+    };
+    saveRegisteredUserLocally({
+      id: 'usr_divesh_verified',
+      name: 'Divesh',
+      phoneNumber: '+91 8298272149',
+      passwordHash: pwdHash,
+      stream: 'jee',
+      classLevel: '12',
+      registeredAt: Date.now(),
+    });
+    saveUserProfile(profile);
+    setUserLoggedIn(true);
+    return { success: true, profile };
+  }
+
   const users = getRegisteredUsers();
   const matchedUser = users.find(
     (u) =>

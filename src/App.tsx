@@ -33,8 +33,10 @@ import { ProfileView } from './components/ProfileView';
 import { CbtExamView } from './components/CbtExamView';
 import { TestResultView } from './components/TestResultView';
 import { GenerationProgressModal } from './components/GenerationProgressModal';
+import { ApiKeyModal } from './components/ApiKeyModal';
 
 export function App() {
+  const [showApiKeyModal, setShowApiKeyModal] = useState(false);
   const [activeTab, setActiveTab] = useState<ActiveNavTab>('arsenal');
   const [currentView, setCurrentView] = useState<'login' | 'app' | 'exam' | 'results'>(() => {
     try {
@@ -230,6 +232,12 @@ export function App() {
         setPipelineProgress(progress);
       });
 
+      if (generatedQuestions.length < config.totalQuestions) {
+        throw new Error(
+          `Incomplete Question Quota: Only ${generatedQuestions.length} of ${config.totalQuestions} questions were generated. The test requires 100% of questions to be generated before starting.`
+        );
+      }
+
       const chCount =
         (config.selectedChapters.physics?.length || 0) +
         (config.selectedChapters.chemistry?.length || 0) +
@@ -408,6 +416,7 @@ export function App() {
               onToggleDarkMode={() => setDarkMode(!darkMode)}
               userProfile={userProfile}
               onOpenProfile={() => setActiveTab('profile')}
+              onOpenApiKeyModal={() => setShowApiKeyModal(true)}
               onSignOut={handleSignOut}
             />
 
@@ -451,6 +460,12 @@ export function App() {
       <GenerationProgressModal
         isOpen={isGenerating}
         progress={pipelineProgress}
+      />
+
+      {/* Google Gemini API Key Configuration Modal */}
+      <ApiKeyModal
+        isOpen={showApiKeyModal}
+        onClose={() => setShowApiKeyModal(false)}
       />
     </div>
   );

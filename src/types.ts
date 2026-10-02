@@ -36,6 +36,15 @@ export interface ParagraphContext {
   linkedQuestionIds: string[];
 }
 
+export type QuestionPatternType =
+  | 'assertion_reason'
+  | 'statement_eval'
+  | 'numerical_calculation'
+  | 'graphical_analysis'
+  | 'multi_concept_synthesis'
+  | 'standard_pyq_mcq'
+  | 'match_the_following';
+
 export interface Question {
   id: string;
   subject: Subject;
@@ -44,6 +53,8 @@ export interface Question {
   subtopic?: string;
   difficulty: Difficulty;
   type: QuestionType;
+  patternType?: QuestionPatternType;
+  patternLabel?: string;
   text: string;
   options?: Option[];
   correctAnswer: string | string[];
@@ -84,6 +95,8 @@ export interface QuestionSpec {
   subject: Subject;
   chapter: string;
   type: QuestionType;
+  patternType?: QuestionPatternType;
+  patternLabel?: string;
   difficulty: Difficulty;
   section: string;
   source?: 'HCV' | 'Irodov' | 'PYQ' | 'AI_NTA' | 'AI_ADVANCED';
@@ -131,6 +144,7 @@ export interface PipelineProgress {
   rejectedCount: number;
   verifiedCount: number;
   totalNeeded: number;
+  patternBreakdown?: Record<string, number>;
 }
 
 export interface EphemeralTestSession {
