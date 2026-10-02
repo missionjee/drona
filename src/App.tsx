@@ -24,7 +24,6 @@ import { ProfileView } from './components/ProfileView';
 import { CbtExamView } from './components/CbtExamView';
 import { TestResultView } from './components/TestResultView';
 import { GenerationProgressModal } from './components/GenerationProgressModal';
-import { ApiKeyModal } from './components/ApiKeyModal';
 
 export function App() {
   const [activeTab, setActiveTab] = useState<ActiveNavTab>('arsenal');
@@ -46,9 +45,6 @@ export function App() {
     targetRank: 'AIR < 500',
     syncEnabled: true,
   });
-
-  // Modals
-  const [showApiKeyModal, setShowApiKeyModal] = useState(false);
 
   // Pipeline generation progress
   const [isGenerating, setIsGenerating] = useState(false);
@@ -198,7 +194,6 @@ export function App() {
             setActiveTab('series');
           }}
           onFinishAndPurge={handleFinishAndPurge}
-          onOpenApiKeyModal={() => setShowApiKeyModal(true)}
           userProfile={userProfile}
         />
       )}
@@ -241,24 +236,6 @@ export function App() {
 
               {activeTab === 'series' && (
                 <div className="max-w-6xl mx-auto space-y-6">
-                  <div className="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                    <div>
-                      <h2 className="text-xl font-bold text-slate-900 dark:text-white">
-                        CBT Test Series Synthesizer
-                      </h2>
-                      <p className="text-xs text-slate-500 mt-1">
-                        Select chapters to generate genuine tests matching {userProfile.stream === 'neet' ? 'NEET-UG' : 'JEE Main & Advanced'} PYQ standards. Fullscreen proctoring enabled.
-                      </p>
-                    </div>
-
-                    <button
-                      onClick={() => setShowApiKeyModal(true)}
-                      className="px-3.5 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:border-blue-500 transition"
-                    >
-                      Gemini API Key
-                    </button>
-                  </div>
-
                   <SyllabusSelector
                     onGenerateTest={handleGenerateCustomTest}
                     isGenerating={isGenerating}
@@ -285,12 +262,6 @@ export function App() {
       <GenerationProgressModal
         isOpen={isGenerating}
         progress={pipelineProgress}
-      />
-
-      {/* Gemini API Key Modal */}
-      <ApiKeyModal
-        isOpen={showApiKeyModal}
-        onClose={() => setShowApiKeyModal(false)}
       />
     </div>
   );

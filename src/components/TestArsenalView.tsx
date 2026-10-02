@@ -16,6 +16,7 @@ import {
   BarChart2,
   Eye,
   X,
+  PieChart,
 } from 'lucide-react';
 import { PersistentPerformanceRecord, UserProfile, Subject } from '../types';
 
@@ -38,6 +39,7 @@ export const TestArsenalView: React.FC<TestArsenalViewProps> = ({
 
   const [selectedRecordForDetail, setSelectedRecordForDetail] =
     useState<PersistentPerformanceRecord | null>(null);
+  const [hoveredPoint, setHoveredPoint] = useState<number | null>(null);
 
   const totalTests = pastRecords.length;
   const bestPercentile = pastRecords.reduce(
@@ -85,15 +87,14 @@ export const TestArsenalView: React.FC<TestArsenalViewProps> = ({
   };
 
   // Trajectory graph coordinates calculation
-  // We sort records chronologically (oldest to newest)
   const chronological = [...pastRecords].sort(
     (a, b) => new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime()
   );
 
-  const graphWidth = 700;
-  const graphHeight = 220;
-  const padX = 50;
-  const padY = 30;
+  const graphWidth = 720;
+  const graphHeight = 230;
+  const padX = 45;
+  const padY = 28;
   const usableWidth = graphWidth - padX * 2;
   const usableHeight = graphHeight - padY * 2;
 
@@ -119,7 +120,7 @@ export const TestArsenalView: React.FC<TestArsenalViewProps> = ({
           return `${acc} C ${cpX1} ${cpY1}, ${cpX2} ${cpY2}, ${p.x} ${p.y}`;
         }, '')
       : points.length === 1
-      ? `M ${points[0].x - 40} ${points[0].y} L ${points[0].x + 40} ${points[0].y}`
+      ? `M ${points[0].x - 50} ${points[0].y} L ${points[0].x + 50} ${points[0].y}`
       : '';
 
   const areaD =
@@ -129,9 +130,47 @@ export const TestArsenalView: React.FC<TestArsenalViewProps> = ({
         } ${padY + usableHeight} Z`
       : '';
 
+  // ================= SUBJECT BALANCE CIRCLE (DONUT) CHART =================
+  // Calculate relative practice weight of each subject
+  const subjectMasteryData = subjects.map((sub) => {
+    const m = getSubjectMastery(sub);
+    return { subject: sub, ...m };
+  });
+
+  const totalMasterySum = subjectMasteryData.reduce(
+    (acc, s) => acc + (s.pct > 0 ? s.pct : 33),
+    0
+  );
+
+  const colors: Record<string, string> = {
+    physics: '#3b82f6', // blue
+    chemistry: '#10b981', // emerald
+    mathematics: '#8b5cf6', // purple
+    biology: '#ec4899', // pink
+  };
+
+  const donutR = 48;
+  const donutC = 2 * Math.PI * donutR; // ~301.59
+  let accumulatedOffset = 0;
+
+  const donutSlices = subjectMasteryData.map((s) => {
+    const share = ((s.pct > 0 ? s.pct : 33) / totalMasterySum) * 100;
+    const strokeDash = (share / 100) * donutC;
+    const offset = -accumulatedOffset;
+    accumulatedOffset += strokeDash;
+    return {
+      subject: s.subject,
+      share: Math.round(share),
+      strokeDash,
+      offset,
+      color: colors[s.subject] || '#3b82f6',
+      pct: s.pct,
+    };
+  });
+
   return (
     <div className="space-y-6 max-w-7xl mx-auto font-sans">
-      {/* ================= 1. TOP COMMAND METRICS ================= */}
+      {/* ================= 1. TOP METRIC CARDS ================= */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         <div className="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs">
           <div className="flex items-center justify-between text-slate-500 mb-2">
@@ -141,7 +180,7 @@ export const TestArsenalView: React.FC<TestArsenalViewProps> = ({
             </div>
           </div>
           <div className="text-2xl font-black text-slate-900 dark:text-white">{totalTests}</div>
-          <p className="text-[11px] text-slate-500 mt-1">Permanent Supabase Ledger</p>
+          <p className="text-[11px] text-slate-500 mt-1">Permanent Test Ledger</p>
         </div>
 
         <div className="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs">
@@ -154,7 +193,7 @@ export const TestArsenalView: React.FC<TestArsenalViewProps> = ({
           <div className="text-2xl font-black text-slate-900 dark:text-white">
             {totalTests > 0 ? `${avgScorePct.toFixed(1)}%` : '--'}
           </div>
-          <p className="text-[11px] text-slate-500 mt-1">Across all attempted papers</p>
+          <p className="text-[11px] text-slate-500 mt-1">Across all attempted mocks</p>
         </div>
 
         <div className="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs">
@@ -167,7 +206,7 @@ export const TestArsenalView: React.FC<TestArsenalViewProps> = ({
           <div className="text-2xl font-black text-slate-900 dark:text-white">
             {bestPercentile > 0 ? `${bestPercentile.toFixed(2)}%` : '--'}
           </div>
-          <p className="text-[11px] text-slate-500 mt-1">Projected All India Rank</p>
+          <p className="text-[11px] text-slate-500 mt-1">Projected Rank Tier</p>
         </div>
 
         <div className="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs">
@@ -184,43 +223,50 @@ export const TestArsenalView: React.FC<TestArsenalViewProps> = ({
         </div>
       </div>
 
-      {/* ================= 2. INTERACTIVE SCORE TRAJECTORY GRAPH ================= */}
+      {/* ================= 2. MODERN SLEEK SCORE TRAJECTORY GRAPH ================= */}
       <div className="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs space-y-4">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 dark:border-slate-800 pb-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 dark:border-slate-800 pb-3">
           <div>
             <h3 className="font-extrabold text-sm text-slate-900 dark:text-white flex items-center gap-2">
               <BarChart2 size={18} className="text-blue-600" />
-              Score Trajectory & Percentile Momentum
+              Score Trajectory & Percentile Curve
             </h3>
             <p className="text-xs text-slate-500 mt-0.5">
-              Chronological progress curve across simulated NTA & IIT papers with 85% AIR cutoff.
+              Continuous examination progress trajectory plotted against the 85% AIR cutoff.
             </p>
           </div>
 
           <div className="flex items-center gap-4 text-xs">
             <div className="flex items-center gap-1.5 font-semibold text-blue-600 dark:text-blue-400">
-              <span className="w-2.5 h-2.5 rounded-full bg-blue-600"></span> Your Score %
+              <span className="w-2.5 h-2.5 rounded-full bg-blue-600"></span> Score Percentage
             </div>
             <div className="flex items-center gap-1.5 font-semibold text-emerald-600 dark:text-emerald-400">
-              <span className="w-2.5 h-1 border-t-2 border-dashed border-emerald-500"></span> 85% Target Line
+              <span className="w-3 h-0.5 border-t-2 border-dashed border-emerald-500"></span> 85% Target Zone
             </div>
           </div>
         </div>
 
         {pastRecords.length > 0 ? (
-          <div className="relative overflow-x-auto">
+          <div className="relative overflow-x-auto pt-2">
             <svg
               viewBox={`0 0 ${graphWidth} ${graphHeight}`}
-              className="w-full h-56 min-w-[550px] drop-shadow-xs"
+              className="w-full h-60 min-w-[580px]"
             >
               <defs>
-                <linearGradient id="scoreGradient" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.35" />
+                <linearGradient id="curveGradient" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.4" />
                   <stop offset="100%" stopColor="#3b82f6" stopOpacity="0.0" />
                 </linearGradient>
+                <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="3" result="blur" />
+                  <feMerge>
+                    <feMergeNode in="blur" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
               </defs>
 
-              {/* Horizontal Grid lines */}
+              {/* Grid Lines */}
               {[0, 25, 50, 75, 100].map((val) => {
                 const yPos = padY + usableHeight - (val / 100) * usableHeight;
                 return (
@@ -231,9 +277,9 @@ export const TestArsenalView: React.FC<TestArsenalViewProps> = ({
                       x2={graphWidth - padX}
                       y2={yPos}
                       stroke="#94a3b8"
-                      strokeWidth="0.75"
-                      strokeDasharray="3,3"
-                      strokeOpacity="0.3"
+                      strokeWidth="0.8"
+                      strokeDasharray="4,4"
+                      strokeOpacity="0.25"
                     />
                     <text
                       x={padX - 8}
@@ -249,7 +295,7 @@ export const TestArsenalView: React.FC<TestArsenalViewProps> = ({
                 );
               })}
 
-              {/* 85% Benchmark Target Line */}
+              {/* 85% Benchmark Line */}
               {(() => {
                 const targetY = padY + usableHeight - (85 / 100) * usableHeight;
                 return (
@@ -261,12 +307,21 @@ export const TestArsenalView: React.FC<TestArsenalViewProps> = ({
                       y2={targetY}
                       stroke="#10b981"
                       strokeWidth="1.5"
-                      strokeDasharray="4,4"
+                      strokeDasharray="5,5"
+                    />
+                    <rect
+                      x={graphWidth - padX - 110}
+                      y={targetY - 14}
+                      width="110"
+                      height="14"
+                      rx="4"
+                      fill="#10b981"
+                      fillOpacity="0.15"
                     />
                     <text
-                      x={graphWidth - padX}
-                      y={targetY - 5}
-                      fontSize="9"
+                      x={graphWidth - padX - 5}
+                      y={targetY - 3.5}
+                      fontSize="8.5"
                       fontWeight="bold"
                       fill="#10b981"
                       textAnchor="end"
@@ -277,80 +332,99 @@ export const TestArsenalView: React.FC<TestArsenalViewProps> = ({
                 );
               })()}
 
-              {/* Area Gradient Fill */}
-              {areaD && <path d={areaD} fill="url(#scoreGradient)" />}
+              {/* Gradient Area */}
+              {areaD && <path d={areaD} fill="url(#curveGradient)" />}
 
-              {/* Trajectory Line */}
+              {/* Smooth Glowing Path */}
               {pathD && (
                 <path
                   d={pathD}
                   fill="none"
                   stroke="#2563eb"
-                  strokeWidth="3"
+                  strokeWidth="3.5"
                   strokeLinecap="round"
                   strokeLinejoin="round"
+                  filter="url(#glow)"
                 />
               )}
 
               {/* Data points */}
-              {points.map((pt, idx) => (
-                <g
-                  key={pt.rec.id}
-                  className="cursor-pointer group"
-                  onClick={() => setSelectedRecordForDetail(pt.rec)}
-                >
-                  <circle
-                    cx={pt.x}
-                    cy={pt.y}
-                    r="5"
-                    fill="#ffffff"
-                    stroke="#2563eb"
-                    strokeWidth="2.5"
-                    className="transition group-hover:r-7"
-                  />
-                  <text
-                    x={pt.x}
-                    y={pt.y - 10}
-                    fontSize="9.5"
-                    fontWeight="bold"
-                    fill="#1e293b"
-                    className="dark:fill-slate-100"
-                    textAnchor="middle"
+              {points.map((pt, idx) => {
+                const isHovered = hoveredPoint === idx;
+                return (
+                  <g
+                    key={pt.rec.id}
+                    className="cursor-pointer"
+                    onMouseEnter={() => setHoveredPoint(idx)}
+                    onMouseLeave={() => setHoveredPoint(null)}
+                    onClick={() => setSelectedRecordForDetail(pt.rec)}
                   >
-                    {pt.rec.percentage.toFixed(0)}%
-                  </text>
-                  <text
-                    x={pt.x}
-                    y={padY + usableHeight + 16}
-                    fontSize="8.5"
-                    fontWeight="bold"
-                    fill="#64748b"
-                    textAnchor="middle"
-                  >
-                    T{idx + 1} ({new Date(pt.rec.timestamp).toLocaleDateString([], { month: 'numeric', day: 'numeric' })})
-                  </text>
-                </g>
-              ))}
+                    {/* Outer ring */}
+                    <circle
+                      cx={pt.x}
+                      cy={pt.y}
+                      r={isHovered ? 8 : 5.5}
+                      fill="#ffffff"
+                      stroke="#2563eb"
+                      strokeWidth={isHovered ? 3.5 : 2.5}
+                      className="transition-all duration-200"
+                    />
+
+                    {/* Score badge above marker */}
+                    <rect
+                      x={pt.x - 18}
+                      y={pt.y - 23}
+                      width="36"
+                      height="16"
+                      rx="5"
+                      fill="#0f172a"
+                      className="drop-shadow-xs"
+                    />
+                    <text
+                      x={pt.x}
+                      y={pt.y - 12}
+                      fontSize="9"
+                      fontWeight="black"
+                      fill="#ffffff"
+                      textAnchor="middle"
+                    >
+                      {pt.rec.percentage.toFixed(0)}%
+                    </text>
+
+                    {/* Date label on X axis */}
+                    <text
+                      x={pt.x}
+                      y={padY + usableHeight + 16}
+                      fontSize="8.5"
+                      fontWeight="bold"
+                      fill="#64748b"
+                      textAnchor="middle"
+                    >
+                      M{idx + 1}
+                    </text>
+                  </g>
+                );
+              })}
             </svg>
           </div>
         ) : (
-          <div className="py-12 text-center space-y-2 border border-dashed border-slate-200 dark:border-slate-800 rounded-xl">
+          <div className="py-14 text-center space-y-2 border border-dashed border-slate-200 dark:border-slate-800 rounded-xl">
             <div className="w-10 h-10 rounded-full bg-blue-50 dark:bg-blue-950 text-blue-600 mx-auto flex items-center justify-center font-bold">
               📈
             </div>
             <p className="text-xs font-bold text-slate-800 dark:text-slate-200">
-              No Trend Data Available
+              No Test Data Recorded Yet
             </p>
             <p className="text-xs text-slate-500 max-w-sm mx-auto">
-              Complete your first CBT Mock Test in the Test Series tab to view your score trajectory graph.
+              Attempt your first mock test in the Test Series tab to begin generating your score curve.
             </p>
           </div>
         )}
       </div>
 
-      {/* ================= 3. SUBJECT MASTERY & QUICK LAUNCH ================= */}
+      {/* ================= 3. SUBJECT MASTERY & CIRCLE GRAPH (SUBJECT BALANCE) ================= */}
       <div className="grid md:grid-cols-3 gap-5">
-        {/* Subject Mastery Breakdown */}
+        {/* Subject Mastery Progress Bars */}
         <div className="md:col-span-2 p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-4 shadow-xs">
           <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
             <h3 className="font-bold text-sm text-slate-900 dark:text-white flex items-center gap-2">
@@ -396,28 +470,87 @@ export const TestArsenalView: React.FC<TestArsenalViewProps> = ({
           </div>
         </div>
 
-        {/* Action Card: Synthesize New Mock */}
-        <div className="p-6 rounded-2xl bg-gradient-to-br from-blue-900 to-indigo-950 text-white flex flex-col justify-between shadow-md">
-          <div className="space-y-2">
-            <div className="flex items-center gap-1.5 text-xs font-bold text-blue-300 uppercase tracking-wider">
-              <Sparkles size={14} /> CBT Mock Simulator
-            </div>
-            <h3 className="text-lg font-black tracking-tight">
-              Ready to Test Your Combat Readiness?
-            </h3>
-            <p className="text-xs text-blue-200 leading-relaxed">
-              Launch our 8-stage self-healing engine to generate a fresh, unrepeated{' '}
-              {isNeet ? 'NEET' : 'JEE Main & Advanced'} paper grounded in authentic PYQs (2015-2026), HCV, and Irodov.
-            </p>
+        {/* ================= CIRCLE GRAPH (SUBJECT BALANCE DONUT) ================= */}
+        <div className="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs flex flex-col justify-between space-y-4">
+          <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-2">
+            <span className="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
+              <PieChart size={15} className="text-blue-600" /> Subject Balance Ratio
+            </span>
+            <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-blue-50 dark:bg-blue-950 text-blue-600 dark:text-blue-400">
+              Optimal 1:1:1
+            </span>
           </div>
 
-          <button
-            onClick={onNavigateToSeries}
-            className="mt-6 w-full py-2.5 bg-white hover:bg-blue-50 text-slate-900 font-extrabold text-xs rounded-xl shadow-md transition flex items-center justify-center gap-2"
-          >
-            <span>Architect Custom Test</span>
-            <ArrowUpRight size={15} />
-          </button>
+          {/* SVG Donut Center */}
+          <div className="flex items-center justify-center py-2">
+            <div className="relative w-36 h-36 flex items-center justify-center">
+              <svg viewBox="0 0 120 120" className="w-full h-full -rotate-90">
+                {/* Background Ring */}
+                <circle
+                  cx="60"
+                  cy="60"
+                  r={donutR}
+                  fill="transparent"
+                  stroke="#e2e8f0"
+                  className="dark:stroke-slate-800"
+                  strokeWidth="14"
+                />
+
+                {/* Slices */}
+                {donutSlices.map((sl) => (
+                  <circle
+                    key={sl.subject}
+                    cx="60"
+                    cy="60"
+                    r={donutR}
+                    fill="transparent"
+                    stroke={sl.color}
+                    strokeWidth="14"
+                    strokeDasharray={`${sl.strokeDash} ${donutC}`}
+                    strokeDashoffset={sl.offset}
+                    strokeLinecap="round"
+                    className="transition-all duration-700"
+                  />
+                ))}
+              </svg>
+
+              {/* Center Metrics */}
+              <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                  Balance
+                </span>
+                <span className="text-base font-black text-slate-900 dark:text-white">
+                  {totalTests > 0 ? `${Math.round(avgAccuracy)}%` : '100%'}
+                </span>
+                <span className="text-[9px] font-semibold text-emerald-600 dark:text-emerald-400">
+                  Harmonized
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Subject Pills */}
+          <div className="space-y-1.5 pt-1">
+            {donutSlices.map((sl) => (
+              <div
+                key={sl.subject}
+                className="flex items-center justify-between text-xs p-1.5 rounded-lg bg-slate-50 dark:bg-slate-850"
+              >
+                <div className="flex items-center gap-2">
+                  <span
+                    className="w-2.5 h-2.5 rounded-full"
+                    style={{ backgroundColor: sl.color }}
+                  ></span>
+                  <span className="font-bold capitalize text-slate-800 dark:text-slate-200">
+                    {sl.subject}
+                  </span>
+                </div>
+                <span className="font-mono font-bold text-slate-700 dark:text-slate-300">
+                  {sl.share}%
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -567,12 +700,12 @@ export const TestArsenalView: React.FC<TestArsenalViewProps> = ({
                 No Tests Recorded Yet
               </h4>
               <p className="text-xs text-slate-500 max-w-sm mx-auto">
-                Generate your first NCERT mock test in the Test Series tab. Marks will automatically appear here once completed.
+                Generate your first mock test in the Test Series tab. Marks will automatically appear here once completed.
               </p>
             </div>
             <button
               onClick={onNavigateToSeries}
-              className="px-4 py-2 bg-blue-600 text-white font-bold text-xs rounded-xl shadow-sm transition"
+              className="px-4 py-2 bg-blue-600 text-white font-bold text-xs rounded-xl shadow-xs transition"
             >
               Start First Mock Test
             </button>

@@ -39,7 +39,7 @@ interface TestResultViewProps {
   analytics: PersistentPerformanceRecord;
   onRetake: () => void;
   onFinishAndPurge: () => void;
-  onOpenApiKeyModal: () => void;
+  onOpenApiKeyModal?: () => void;
   userProfile?: UserProfile;
 }
 
