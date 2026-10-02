@@ -9,6 +9,7 @@ import {
   CheckCircle,
   Menu,
   X,
+  LogOut,
 } from 'lucide-react';
 import { UserProfile } from '../types';
 
@@ -21,6 +22,7 @@ interface SidebarProps {
   isOpenMobile: boolean;
   onCloseMobile: () => void;
   supabaseConnected: boolean;
+  onSignOut?: () => void;
 }
 
 export const Sidebar: React.FC<SidebarProps> = ({
@@ -30,6 +32,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
   isOpenMobile,
   onCloseMobile,
   supabaseConnected,
+  onSignOut,
 }) => {
   const navItems = [
     { id: 'arsenal' as ActiveNavTab, label: 'Test Arsenal', icon: FlaskConical, badge: 'Graphs & History' },
@@ -167,6 +170,17 @@ export const Sidebar: React.FC<SidebarProps> = ({
               {userProfile.email}
             </p>
           </div>
+
+          {onSignOut && (
+            <button
+              onClick={onSignOut}
+              className="w-full py-2 px-3 rounded-xl border border-slate-200 dark:border-slate-800 text-[11px] font-semibold text-slate-600 dark:text-slate-400 hover:text-red-600 hover:border-red-200 dark:hover:border-red-900/60 dark:hover:text-red-400 transition flex items-center justify-center gap-1.5 cursor-pointer bg-slate-50 dark:bg-slate-800/40"
+            >
+              <LogOut size={12} />
+              <span>Sign Out / Switch Profile</span>
+            </button>
+          )}
+
           <div className="text-center text-[10px] text-slate-400 font-mono tracking-wider">
             MISSION JEET v4.0 • DRONA
           </div>

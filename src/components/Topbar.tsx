@@ -11,6 +11,7 @@ interface TopbarProps {
   userProfile: UserProfile;
   onOpenProfile: () => void;
   onGoogleSignIn?: () => void;
+  onSignOut?: () => void;
   isGoogleAuthenticated?: boolean;
 }
 
@@ -22,6 +23,7 @@ export const Topbar: React.FC<TopbarProps> = ({
   userProfile,
   onOpenProfile,
   onGoogleSignIn,
+  onSignOut,
   isGoogleAuthenticated = false,
 }) => {
   const getTabTitle = (tab: ActiveNavTab) => {

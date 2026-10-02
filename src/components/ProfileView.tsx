@@ -212,8 +212,8 @@ export const ProfileView: React.FC<ProfileViewProps> = ({
             </div>
           </div>
 
-          <div>
-            {isGoogleAuthenticated && onSignOut ? (
+          <div className="flex items-center gap-2">
+            {onSignOut && (
               <button
                 type="button"
                 onClick={onSignOut}
@@ -221,7 +221,8 @@ export const ProfileView: React.FC<ProfileViewProps> = ({
               >
                 Sign Out
               </button>
-            ) : onGoogleSignIn ? (
+            )}
+            {!isGoogleAuthenticated && onGoogleSignIn && (
               <button
                 type="button"
                 onClick={onGoogleSignIn}
@@ -229,7 +230,7 @@ export const ProfileView: React.FC<ProfileViewProps> = ({
               >
                 <span>Login with Google</span>
               </button>
-            ) : null}
+            )}
           </div>
         </div>
 

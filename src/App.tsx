@@ -18,7 +18,11 @@ import {
   signOutUser,
   getAuthUser,
   subscribeAuthState,
+  isUserLoggedIn,
+  setUserLoggedIn,
+  checkActiveSession,
 } from './services/supabaseService';
+import { LoginView } from './components/LoginView';
 import { Sidebar, ActiveNavTab } from './components/Sidebar';
 import { Topbar } from './components/Topbar';
 import { TestArsenalView } from './components/TestArsenalView';
@@ -31,7 +35,16 @@ import { GenerationProgressModal } from './components/GenerationProgressModal';
 
 export function App() {
   const [activeTab, setActiveTab] = useState<ActiveNavTab>('arsenal');
-  const [currentView, setCurrentView] = useState<'app' | 'exam' | 'results'>('app');
+  const [currentView, setCurrentView] = useState<'login' | 'app' | 'exam' | 'results'>(() => {
+    const hasAuthCallback =
+      window.location.hash.includes('access_token=') ||
+      window.location.search.includes('code=');
+
+    if (hasAuthCallback || isUserLoggedIn()) {
+      return 'app';
+    }
+    return 'login';
+  });
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isGoogleAuthenticated, setIsGoogleAuthenticated] = useState(false);
 
@@ -67,9 +80,40 @@ export function App() {
     fetchUserProfile().then((p) => setUserProfile(p));
     fetchTestHistory().then((h) => setPastRecords(h));
 
+    // Check active Supabase session or process OAuth tokens in URL
+    checkActiveSession().then((sessionData) => {
+      if (sessionData?.user) {
+        setIsGoogleAuthenticated(true);
+        setUserLoggedIn(true);
+        setCurrentView('app');
+        const user = sessionData.user;
+        const name = user.user_metadata?.full_name || user.user_metadata?.name || user.email?.split('@')[0];
+        const avatar = user.user_metadata?.avatar_url || user.user_metadata?.picture;
+        if (name || avatar || user.email) {
+          setUserProfile((prev) => {
+            const updated = {
+              ...prev,
+              name: name || prev.name,
+              email: user.email || prev.email,
+              avatarUrl: avatar || prev.avatarUrl,
+            };
+            saveUserProfile(updated);
+            return updated;
+          });
+        }
+      }
+    });
+
+    if (window.location.hash.includes('access_token=') || window.location.search.includes('code=')) {
+      setTimeout(() => {
+        window.history.replaceState({}, document.title, window.location.pathname);
+      }, 600);
+    }
+
     getAuthUser().then((user) => {
       if (user) {
         setIsGoogleAuthenticated(true);
+        setUserLoggedIn(true);
         const name = user.user_metadata?.full_name || user.user_metadata?.name || user.email?.split('@')[0];
         const avatar = user.user_metadata?.avatar_url || user.user_metadata?.picture;
         if (name || avatar || user.email) {
@@ -90,6 +134,8 @@ export function App() {
     const unsubscribe = subscribeAuthState((user) => {
       if (user) {
         setIsGoogleAuthenticated(true);
+        setUserLoggedIn(true);
+        setCurrentView('app');
         const name = user.user_metadata?.full_name || user.user_metadata?.name || user.email?.split('@')[0];
         const avatar = user.user_metadata?.avatar_url || user.user_metadata?.picture;
         setUserProfile((prev) => {
@@ -233,6 +279,15 @@ export function App() {
     setActiveTab('arsenal');
   };
 
+  // Handler: Successful Login from LoginView
+  const handleLoginSuccess = (profile: UserProfile, isGoogle: boolean) => {
+    setUserProfile(profile);
+    setIsGoogleAuthenticated(isGoogle);
+    setUserLoggedIn(true);
+    setCurrentView('app');
+    fetchTestHistory().then((h) => setPastRecords(h));
+  };
+
   // Handler: Google OAuth Sign-In
   const handleGoogleSignIn = async () => {
     const { error } = await signInWithGoogle();
@@ -241,14 +296,26 @@ export function App() {
     }
   };
 
-  // Handler: Google Sign-Out
+  // Handler: Sign-Out to Login Screen
   const handleSignOut = async () => {
     await signOutUser();
     setIsGoogleAuthenticated(false);
+    setUserLoggedIn(false);
+    setCurrentView('login');
   };
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 font-sans transition-colors">
+      {/* First Screen: Dedicated Login & Welcome View */}
+      {currentView === 'login' && (
+        <LoginView
+          initialProfile={userProfile}
+          onLoginSuccess={handleLoginSuccess}
+          darkMode={darkMode}
+          onToggleDarkMode={() => setDarkMode(!darkMode)}
+        />
+      )}
+
       {/* Active CBT Exam Viewport (Locks Screen) */}
       {currentView === 'exam' && activeSession && (
         <CbtExamView
@@ -290,6 +357,7 @@ export function App() {
             isOpenMobile={isMobileMenuOpen}
             onCloseMobile={() => setIsMobileMenuOpen(false)}
             supabaseConnected={true}
+            onSignOut={handleSignOut}
           />
 
           {/* Main Frame Viewport */}
@@ -302,6 +370,7 @@ export function App() {
               userProfile={userProfile}
               onOpenProfile={() => setActiveTab('profile')}
               onGoogleSignIn={handleGoogleSignIn}
+              onSignOut={handleSignOut}
               isGoogleAuthenticated={isGoogleAuthenticated}
             />
 

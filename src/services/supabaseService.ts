@@ -10,6 +10,7 @@ const STORAGE_KEYS = {
   CUSTOM_KEY: 'drona_custom_supabase_key',
   TEST_HISTORY: 'drona_test_history',
   STUDY_NOTES: 'drona_study_notes',
+  AUTH_LOGGED_IN: 'drona_user_logged_in',
 };
 
 // Default profile for new sessions
@@ -46,6 +47,7 @@ export function getSupabaseClient(): SupabaseClient | null {
         auth: {
           persistSession: true,
           autoRefreshToken: true,
+          detectSessionInUrl: true,
         },
       });
     } catch (err) {
@@ -325,26 +327,84 @@ export async function testSupabaseConnection(
 }
 
 // -------------------------------------------------------------
-// GOOGLE OAUTH AUTHENTICATION
+// AUTHENTICATION STATE & GOOGLE OAUTH
 // -------------------------------------------------------------
-export async function signInWithGoogle(): Promise<{ error: Error | null }> {
+export function isUserLoggedIn(): boolean {
+  return localStorage.getItem(STORAGE_KEYS.AUTH_LOGGED_IN) === 'true';
+}
+
+export function setUserLoggedIn(loggedIn: boolean): void {
+  if (loggedIn) {
+    localStorage.setItem(STORAGE_KEYS.AUTH_LOGGED_IN, 'true');
+  } else {
+    localStorage.removeItem(STORAGE_KEYS.AUTH_LOGGED_IN);
+  }
+}
+
+export async function checkActiveSession(): Promise<{ user: any; session: any } | null> {
+  const supabase = getSupabaseClient();
+  if (!supabase) return null;
+  try {
+    const { data: { session }, error } = await supabase.auth.getSession();
+    if (error || !session) return null;
+    return { user: session.user, session };
+  } catch (err) {
+    console.warn('Error checking Supabase session:', err);
+    return null;
+  }
+}
+
+export async function checkGoogleOAuthAvailable(): Promise<boolean> {
+  try {
+    const { url } = getActiveSupabaseConfig();
+    const res = await fetch(
+      `${url}/auth/v1/authorize?provider=google&redirect_to=${encodeURIComponent(window.location.origin)}`,
+      { method: 'GET' }
+    );
+    if (res.status === 400) {
+      const text = await res.text();
+      if (text.includes('Unsupported provider') || text.includes('validation_failed')) {
+        return false;
+      }
+    }
+    return res.status === 200 || res.status === 302 || res.status === 303;
+  } catch {
+    return false;
+  }
+}
+
+export async function signInWithGoogle(): Promise<{ error: Error | null; unsupportedProvider?: boolean }> {
   const supabase = getSupabaseClient();
   if (!supabase) return { error: new Error('Supabase client is not initialized') };
 
   try {
+    // Check if Google OAuth provider is enabled in Supabase project to avoid 400 bad request error screen
+    const isSupported = await checkGoogleOAuthAvailable();
+    if (!isSupported) {
+      return {
+        error: new Error('Google OAuth provider is not yet enabled in the Supabase console.'),
+        unsupportedProvider: true,
+      };
+    }
+
     const { error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: {
         redirectTo: window.location.origin + window.location.pathname,
       },
     });
-    return { error: error ? new Error(error.message) : null };
+
+    if (error) {
+      return { error: new Error(error.message) };
+    }
+    return { error: null };
   } catch (err: any) {
     return { error: err };
   }
 }
 
 export async function signOutUser(): Promise<{ error: Error | null }> {
+  setUserLoggedIn(false);
   const supabase = getSupabaseClient();
   if (!supabase) return { error: null };
 
@@ -373,6 +433,9 @@ export function subscribeAuthState(callback: (user: any) => void): () => void {
 
   try {
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (session?.user) {
+        setUserLoggedIn(true);
+      }
       callback(session?.user || null);
     });
     return () => {
@@ -382,4 +445,5 @@ export function subscribeAuthState(callback: (user: any) => void): () => void {
     return () => {};
   }
 }
+
 
