@@ -2,27 +2,31 @@ import React, { useState } from 'react';
 import {
   ShieldCheck,
   Zap,
-  Target,
-  BookOpen,
   ArrowRight,
   Sun,
   Moon,
   Cloud,
   CheckCircle2,
   Sparkles,
-  Award,
   AlertCircle,
+  Phone,
+  Lock,
+  Eye,
+  EyeOff,
+  User,
+  UserPlus,
+  LogIn,
 } from 'lucide-react';
 import { UserProfile, StreamType } from '../types';
 import {
-  signInWithGoogle,
-  saveUserProfile,
+  registerWithPhoneAndPassword,
+  loginWithPhoneAndPassword,
   setUserLoggedIn,
 } from '../services/supabaseService';
 
 interface LoginViewProps {
   initialProfile: UserProfile;
-  onLoginSuccess: (profile: UserProfile, isGoogle: boolean) => void;
+  onLoginSuccess: (profile: UserProfile) => void;
   darkMode: boolean;
   onToggleDarkMode: () => void;
 }
@@ -33,83 +37,119 @@ export const LoginView: React.FC<LoginViewProps> = ({
   darkMode,
   onToggleDarkMode,
 }) => {
-  const [name, setName] = useState(initialProfile.name || 'JEE Aspirant');
-  const [email, setEmail] = useState(initialProfile.email || 'aspirant@missionjee.org');
+  const [authMode, setAuthMode] = useState<'login' | 'register'>('login');
+  const [name, setName] = useState(initialProfile.name && initialProfile.name !== 'JEE Aspirant' ? initialProfile.name : '');
+  const [phoneNumber, setPhoneNumber] = useState(initialProfile.phoneNumber || '');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [stream, setStream] = useState<StreamType>(initialProfile.stream || 'jee');
   const [classLevel, setClassLevel] = useState<'11' | '12' | 'dropper'>(initialProfile.classLevel || '12');
-  const [isAuthenticating, setIsAuthenticating] = useState(false);
-  const [googleNotice, setGoogleNotice] = useState<string | null>(null);
-  const [showCustomForm, setShowCustomForm] = useState(false);
 
-  // Handle Google OAuth Sign-in attempt
-  const handleGoogleClick = async () => {
-    setIsAuthenticating(true);
-    setGoogleNotice(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [successMsg, setSuccessMsg] = useState<string | null>(null);
 
+  // Switch tabs
+  const handleTabSwitch = (mode: 'login' | 'register') => {
+    setAuthMode(mode);
+    setErrorMsg(null);
+    setSuccessMsg(null);
+  };
+
+  // Submit Handler for Login
+  const handleLoginSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setErrorMsg(null);
+    setSuccessMsg(null);
+
+    const cleanPhone = phoneNumber.replace(/[\s\-\(\)]/g, '').trim();
+    if (cleanPhone.replace(/[^0-9]/g, '').length < 10) {
+      setErrorMsg('Please enter a valid 10-digit mobile phone number.');
+      return;
+    }
+    if (!password) {
+      setErrorMsg('Please enter your account password.');
+      return;
+    }
+
+    setIsLoading(true);
     try {
-      const res = await signInWithGoogle();
-      if (res.unsupportedProvider) {
-        // Google provider is not yet toggled on in Supabase console
-        setGoogleNotice(
-          'Google OAuth provider is currently pending configuration in your Supabase dashboard. You can continue instantly with your Google email below.'
-        );
-        setShowCustomForm(true);
-      } else if (res.error) {
-        setGoogleNotice(res.error.message || 'Google sign-in could not be initiated.');
-        setShowCustomForm(true);
+      const res = await loginWithPhoneAndPassword(cleanPhone, password);
+      if (res.success && res.profile) {
+        setSuccessMsg('Login successful! Launching Drona Command Center...');
+        setTimeout(() => {
+          onLoginSuccess(res.profile!);
+        }, 300);
+      } else {
+        setErrorMsg(res.error || 'Login failed. Please verify your phone number and password.');
       }
     } catch (err: any) {
-      setGoogleNotice(err.message || 'Google sign-in encountered an issue.');
-      setShowCustomForm(true);
+      setErrorMsg(err.message || 'An error occurred during login. Please try again.');
     } finally {
-      setIsAuthenticating(false);
+      setIsLoading(false);
     }
   };
 
-  // Instant 1-click Google Account Login
-  const handleInstantGoogleLogin = () => {
-    const profile: UserProfile = {
-      ...initialProfile,
-      name: name.trim() || 'JEE Aspirant',
-      email: email.trim() || 'aspirant@missionjee.org',
-      stream,
-      classLevel,
-      targetCollege: stream === 'neet' ? 'AIIMS New Delhi' : 'IIT Bombay / Computer Science',
-      targetRank: stream === 'neet' ? 'AIR < 100' : 'AIR < 500',
-      syncEnabled: true,
-    };
-    saveUserProfile(profile);
-    setUserLoggedIn(true);
-    onLoginSuccess(profile, true);
-  };
-
-  // Student Profile Login
-  const handleStudentLogin = (e: React.FormEvent) => {
+  // Submit Handler for Registration
+  const handleRegisterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name.trim()) return;
+    setErrorMsg(null);
+    setSuccessMsg(null);
 
-    const profile: UserProfile = {
-      ...initialProfile,
-      name: name.trim(),
-      email: email.trim() || 'student@missionjee.org',
-      stream,
-      classLevel,
-      targetCollege: stream === 'neet' ? 'AIIMS New Delhi' : 'IIT Bombay / Computer Science',
-      targetRank: stream === 'neet' ? 'AIR < 100' : 'AIR < 500',
-      syncEnabled: true,
-    };
+    if (!name.trim()) {
+      setErrorMsg('Please provide your full name.');
+      return;
+    }
 
-    saveUserProfile(profile);
-    setUserLoggedIn(true);
-    onLoginSuccess(profile, false);
+    const cleanPhone = phoneNumber.replace(/[\s\-\(\)]/g, '').trim();
+    if (cleanPhone.replace(/[^0-9]/g, '').length < 10) {
+      setErrorMsg('Please enter a valid 10-digit mobile phone number.');
+      return;
+    }
+
+    if (password.length < 6) {
+      setErrorMsg('Password must be at least 6 characters long.');
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      setErrorMsg('Passwords do not match. Please re-type your password confirmation.');
+      return;
+    }
+
+    setIsLoading(true);
+    try {
+      const res = await registerWithPhoneAndPassword(
+        name.trim(),
+        cleanPhone,
+        password,
+        stream,
+        classLevel
+      );
+
+      if (res.success && res.profile) {
+        setSuccessMsg('Account registered successfully! Welcome to Drona.');
+        setTimeout(() => {
+          onLoginSuccess(res.profile!);
+        }, 400);
+      } else {
+        setErrorMsg(res.error || 'Registration could not be completed.');
+      }
+    } catch (err: any) {
+      setErrorMsg(err.message || 'An error occurred during registration. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
-  // Instant Guest / Offline Practice
+  // Instant Guest / Offline Practice Mode
   const handleGuestLogin = () => {
-    const profile: UserProfile = {
+    const guestProfile: UserProfile = {
       ...initialProfile,
       name: 'Guest Aspirant',
       email: 'guest@missionjee.org',
+      phoneNumber: '',
       stream: 'jee',
       classLevel: '12',
       targetCollege: 'IIT Bombay',
@@ -117,7 +157,7 @@ export const LoginView: React.FC<LoginViewProps> = ({
       syncEnabled: false,
     };
     setUserLoggedIn(true);
-    onLoginSuccess(profile, false);
+    onLoginSuccess(guestProfile);
   };
 
   return (
@@ -148,7 +188,7 @@ export const LoginView: React.FC<LoginViewProps> = ({
           {/* Supabase status badge */}
           <div className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-[11px] font-semibold text-slate-600 dark:text-slate-400 shadow-xs">
             <Cloud size={13} className="text-blue-500" />
-            <span>Supabase Cloud</span>
+            <span>Supabase Auth</span>
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
           </div>
 
@@ -156,115 +196,197 @@ export const LoginView: React.FC<LoginViewProps> = ({
           <button
             onClick={onToggleDarkMode}
             title="Toggle Light / Dark Mode"
-            className="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition shadow-xs"
+            className="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition shadow-xs cursor-pointer"
           >
             {darkMode ? <Sun size={17} className="text-yellow-400" /> : <Moon size={17} className="text-slate-700" />}
           </button>
         </div>
       </header>
 
-      {/* Main Authentication Container */}
-      <main className="max-w-md w-full mx-auto px-4 py-8">
+      {/* Main Authentication Card */}
+      <main className="max-w-md w-full mx-auto px-4 py-6">
         <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-xl shadow-slate-200/50 dark:shadow-none space-y-6">
+          
           {/* Card Title */}
           <div className="text-center space-y-2">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-900 text-blue-700 dark:text-blue-300 text-xs font-bold">
               <Sparkles size={13} />
-              <span>Sign in to Start Mock Tests</span>
+              <span>Aspirant Authentication</span>
             </div>
             <h2 className="text-2xl font-black text-slate-900 dark:text-white tracking-tight">
-              Welcome to DRONA
+              {authMode === 'login' ? 'Log In to DRONA' : 'Create Aspirant Account'}
             </h2>
             <p className="text-xs text-slate-500 dark:text-slate-400 max-w-xs mx-auto">
-              Real NTA 75-Question JEE Main & Dynamic Advanced CBT Environment
+              {authMode === 'login'
+                ? 'Enter your mobile number and password to access your CBT test records.'
+                : 'Register on Supabase to start taking verified JEE & NEET mock tests.'}
             </p>
           </div>
 
-          {/* Notice if Google OAuth needs fallback */}
-          {googleNotice && (
-            <div className="p-3.5 rounded-2xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900/60 text-amber-900 dark:text-amber-200 text-xs space-y-1.5">
+          {/* Mode Switcher Tabs */}
+          <div className="grid grid-cols-2 p-1 bg-slate-100 dark:bg-slate-800/80 rounded-2xl border border-slate-200/80 dark:border-slate-700/80 text-xs font-bold">
+            <button
+              type="button"
+              onClick={() => handleTabSwitch('login')}
+              className={`py-2 px-3 rounded-xl transition flex items-center justify-center gap-2 cursor-pointer ${
+                authMode === 'login'
+                  ? 'bg-white dark:bg-slate-900 text-blue-600 dark:text-blue-400 shadow-xs'
+                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+              }`}
+            >
+              <LogIn size={14} />
+              <span>Log In</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => handleTabSwitch('register')}
+              className={`py-2 px-3 rounded-xl transition flex items-center justify-center gap-2 cursor-pointer ${
+                authMode === 'register'
+                  ? 'bg-white dark:bg-slate-900 text-blue-600 dark:text-blue-400 shadow-xs'
+                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+              }`}
+            >
+              <UserPlus size={14} />
+              <span>Register</span>
+            </button>
+          </div>
+
+          {/* Error Banner */}
+          {errorMsg && (
+            <div className="p-3.5 rounded-2xl bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900/60 text-red-900 dark:text-red-200 text-xs space-y-1 animate-in fade-in">
               <div className="flex items-center gap-2 font-bold">
-                <AlertCircle size={15} className="text-amber-600 shrink-0" />
-                <span>Notice</span>
+                <AlertCircle size={15} className="text-red-600 shrink-0" />
+                <span>Authentication Notice</span>
               </div>
-              <p className="text-[11px] leading-relaxed text-amber-800 dark:text-amber-300">
-                {googleNotice}
+              <p className="text-[11px] leading-relaxed text-red-800 dark:text-red-300">
+                {errorMsg}
               </p>
             </div>
           )}
 
-          {/* Primary Action: Sign in with Google */}
-          <div className="space-y-3">
-            <button
-              type="button"
-              onClick={handleGoogleClick}
-              disabled={isAuthenticating}
-              className="w-full py-3 px-4 rounded-2xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/90 hover:bg-slate-50 dark:hover:bg-slate-750 text-slate-800 dark:text-slate-100 font-extrabold text-sm transition shadow-xs flex items-center justify-center gap-3 cursor-pointer group"
-            >
-              <svg className="w-4 h-4 shrink-0 transition-transform group-hover:scale-110" viewBox="0 0 24 24">
-                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
-                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
-                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" />
-                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" />
-              </svg>
-              <span>{isAuthenticating ? 'Connecting to Google...' : 'Continue with Google'}</span>
-            </button>
+          {/* Success Banner */}
+          {successMsg && (
+            <div className="p-3.5 rounded-2xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-900/60 text-emerald-900 dark:text-emerald-200 text-xs flex items-center gap-2 font-bold animate-in fade-in">
+              <CheckCircle2 size={16} className="text-emerald-600 shrink-0" />
+              <span>{successMsg}</span>
+            </div>
+          )}
 
-            {/* Instant 1-Click Profile Sign-in (Useful fallback for configured Google account) */}
-            <button
-              type="button"
-              onClick={handleInstantGoogleLogin}
-              className="w-full py-2.5 px-4 rounded-xl bg-blue-50 dark:bg-blue-950/40 hover:bg-blue-100 dark:hover:bg-blue-900/60 border border-blue-200 dark:border-blue-900 text-blue-700 dark:text-blue-300 font-bold text-xs transition flex items-center justify-center gap-2 cursor-pointer"
-            >
-              <span>Continue as {name || 'JEE Aspirant'} ({email || 'aspirant@missionjee.org'})</span>
-              <ArrowRight size={13} />
-            </button>
-          </div>
-
-          <div className="relative flex items-center justify-center">
-            <div className="border-t border-slate-200 dark:border-slate-800 w-full" />
-            <span className="bg-white dark:bg-slate-900 px-3 text-[11px] font-semibold text-slate-400 uppercase tracking-wider shrink-0">
-              Or Customize Profile
-            </span>
-          </div>
-
-          {/* Toggle form button if not open */}
-          {!showCustomForm ? (
-            <button
-              type="button"
-              onClick={() => setShowCustomForm(true)}
-              className="w-full py-2 px-3 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800/60 text-slate-600 dark:text-slate-400 text-xs font-semibold transition cursor-pointer"
-            >
-              Set Aspirant Stream (JEE / NEET) & Class
-            </button>
-          ) : (
-            <form onSubmit={handleStudentLogin} className="space-y-4">
+          {/* ================= LOGIN FORM ================= */}
+          {authMode === 'login' && (
+            <form onSubmit={handleLoginSubmit} className="space-y-4">
               <div>
-                <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1">
-                  Full Name
+                <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1.5">
+                  Mobile Phone Number
                 </label>
-                <input
-                  type="text"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  placeholder="e.g. Rahul Sharma"
-                  required
-                  className="w-full px-3.5 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-xs font-semibold focus:outline-none focus:border-blue-500"
-                />
+                <div className="relative flex items-center">
+                  <span className="absolute left-3 text-xs font-bold text-slate-400 flex items-center gap-1">
+                    <Phone size={14} className="text-blue-500" />
+                    <span>+91</span>
+                  </span>
+                  <input
+                    type="tel"
+                    value={phoneNumber}
+                    onChange={(e) => setPhoneNumber(e.target.value)}
+                    placeholder="98765 43210"
+                    required
+                    className="w-full pl-16 pr-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-mono text-xs font-bold focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                </div>
               </div>
 
               <div>
-                <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1">
-                  Email Address
+                <div className="flex items-center justify-between mb-1.5">
+                  <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-500">
+                    Password
+                  </label>
+                </div>
+                <div className="relative flex items-center">
+                  <span className="absolute left-3 text-slate-400">
+                    <Lock size={14} className="text-blue-500" />
+                  </span>
+                  <input
+                    type={showPassword ? 'text' : 'password'}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="Enter your password"
+                    required
+                    className="w-full pl-9 pr-10 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute right-3 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 cursor-pointer"
+                  >
+                    {showPassword ? <EyeOff size={15} /> : <Eye size={15} />}
+                  </button>
+                </div>
+              </div>
+
+              <button
+                type="submit"
+                disabled={isLoading}
+                className="w-full py-3 px-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs transition shadow-md shadow-blue-600/20 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60"
+              >
+                <span>{isLoading ? 'Authenticating with Supabase...' : 'Log In to Drona'}</span>
+                <ArrowRight size={14} />
+              </button>
+
+              <div className="pt-1 text-center">
+                <p className="text-xs text-slate-500">
+                  New aspirant?{' '}
+                  <button
+                    type="button"
+                    onClick={() => handleTabSwitch('register')}
+                    className="text-blue-600 dark:text-blue-400 font-bold hover:underline cursor-pointer"
+                  >
+                    Register account here
+                  </button>
+                </p>
+              </div>
+            </form>
+          )}
+
+          {/* ================= REGISTRATION FORM ================= */}
+          {authMode === 'register' && (
+            <form onSubmit={handleRegisterSubmit} className="space-y-4">
+              <div>
+                <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1.5">
+                  Aspirant Full Name
                 </label>
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="e.g. student@gmail.com"
-                  required
-                  className="w-full px-3.5 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-xs font-semibold focus:outline-none focus:border-blue-500"
-                />
+                <div className="relative flex items-center">
+                  <span className="absolute left-3 text-slate-400">
+                    <User size={14} className="text-blue-500" />
+                  </span>
+                  <input
+                    type="text"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder="e.g. Rahul Sharma"
+                    required
+                    className="w-full pl-9 pr-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1.5">
+                  Mobile Phone Number (Login ID)
+                </label>
+                <div className="relative flex items-center">
+                  <span className="absolute left-3 text-xs font-bold text-slate-400 flex items-center gap-1">
+                    <Phone size={14} className="text-blue-500" />
+                    <span>+91</span>
+                  </span>
+                  <input
+                    type="tel"
+                    value={phoneNumber}
+                    onChange={(e) => setPhoneNumber(e.target.value)}
+                    placeholder="98765 43210"
+                    required
+                    className="w-full pl-16 pr-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-mono text-xs font-bold focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                </div>
               </div>
 
               {/* Stream Selection */}
@@ -322,18 +444,81 @@ export const LoginView: React.FC<LoginViewProps> = ({
                 </div>
               </div>
 
+              {/* Password */}
+              <div>
+                <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1.5">
+                  Create Password (min. 6 characters)
+                </label>
+                <div className="relative flex items-center">
+                  <span className="absolute left-3 text-slate-400">
+                    <Lock size={14} className="text-blue-500" />
+                  </span>
+                  <input
+                    type={showPassword ? 'text' : 'password'}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="Create a secure password"
+                    required
+                    minLength={6}
+                    className="w-full pl-9 pr-10 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute right-3 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 cursor-pointer"
+                  >
+                    {showPassword ? <EyeOff size={15} /> : <Eye size={15} />}
+                  </button>
+                </div>
+              </div>
+
+              {/* Confirm Password */}
+              <div>
+                <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1.5">
+                  Confirm Password
+                </label>
+                <div className="relative flex items-center">
+                  <span className="absolute left-3 text-slate-400">
+                    <Lock size={14} className="text-blue-500" />
+                  </span>
+                  <input
+                    type={showPassword ? 'text' : 'password'}
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    placeholder="Re-type your password"
+                    required
+                    minLength={6}
+                    className="w-full pl-9 pr-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                </div>
+              </div>
+
               <button
                 type="submit"
-                className="w-full py-2.5 px-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs transition shadow-xs flex items-center justify-center gap-2 cursor-pointer"
+                disabled={isLoading}
+                className="w-full py-3 px-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs transition shadow-md shadow-blue-600/20 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60"
               >
-                <span>Enter Drona Workspace</span>
+                <span>{isLoading ? 'Registering on Supabase...' : 'Create Aspirant Account'}</span>
                 <ArrowRight size={14} />
               </button>
+
+              <div className="pt-1 text-center">
+                <p className="text-xs text-slate-500">
+                  Already have an account?{' '}
+                  <button
+                    type="button"
+                    onClick={() => handleTabSwitch('login')}
+                    className="text-blue-600 dark:text-blue-400 font-bold hover:underline cursor-pointer"
+                  >
+                    Log in here
+                  </button>
+                </p>
+              </div>
             </form>
           )}
 
           {/* Quick Practice Mode (Guest) */}
-          <div className="pt-2 text-center">
+          <div className="pt-2 text-center border-t border-slate-100 dark:border-slate-800">
             <button
               type="button"
               onClick={handleGuestLogin}

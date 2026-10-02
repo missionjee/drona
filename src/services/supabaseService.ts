@@ -1,5 +1,5 @@
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
-import { UserProfile, PersistentPerformanceRecord, StudyNote } from '../types';
+import { UserProfile, PersistentPerformanceRecord, StudyNote, StreamType } from '../types';
 
 const DEFAULT_SUPABASE_URL = 'https://ukoxijpkxmdckamcmczz.supabase.co';
 const DEFAULT_SUPABASE_KEY = 'sb_publishable_dpg1jDHvPSx2UyNz80vHog_FGUs5aeY';
@@ -12,12 +12,14 @@ const STORAGE_KEYS = {
   ARCHIVED_PAPERS: 'drona_archived_papers',
   STUDY_NOTES: 'drona_study_notes',
   AUTH_LOGGED_IN: 'drona_user_logged_in',
+  REGISTERED_USERS: 'drona_registered_users',
 };
 
 // Default profile for new sessions
 const INITIAL_PROFILE: UserProfile = {
   name: 'JEE Aspirant',
   email: 'aspirant@missionjee.org',
+  phoneNumber: '',
   stream: 'jee',
   classLevel: '12',
   targetCollege: 'IIT Bombay / Computer Science',
@@ -359,8 +361,18 @@ export async function testSupabaseConnection(
 }
 
 // -------------------------------------------------------------
-// AUTHENTICATION STATE & GOOGLE OAUTH
+// AUTHENTICATION & PHONE NUMBER + PASSWORD SYSTEM
 // -------------------------------------------------------------
+export interface RegisteredUser {
+  id: string;
+  name: string;
+  phoneNumber: string;
+  passwordHash: string;
+  stream: StreamType;
+  classLevel: '11' | '12' | 'dropper';
+  registeredAt: number;
+}
+
 export function isUserLoggedIn(): boolean {
   return localStorage.getItem(STORAGE_KEYS.AUTH_LOGGED_IN) === 'true';
 }
@@ -373,65 +385,303 @@ export function setUserLoggedIn(loggedIn: boolean): void {
   }
 }
 
+export function normalizePhoneNumber(phone: string): string {
+  return phone.replace(/[\s\-\(\)]/g, '').trim();
+}
+
+export async function hashPassword(password: string): Promise<string> {
+  try {
+    if (typeof window !== 'undefined' && window.crypto && window.crypto.subtle) {
+      const encoder = new TextEncoder();
+      const data = encoder.encode(password + '_drona_salt_2026');
+      const hashBuffer = await window.crypto.subtle.digest('SHA-256', data);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      return hashArray.map((b) => b.toString(16).padStart(2, '0')).join('');
+    }
+  } catch (e) {
+    console.warn('Crypto subtle not available, using standard hash fallback:', e);
+  }
+  let hash = 0;
+  const str = password + '_drona_salt_2026';
+  for (let i = 0; i < str.length; i++) {
+    hash = (hash << 5) - hash + str.charCodeAt(i);
+    hash |= 0;
+  }
+  return 'h_' + Math.abs(hash).toString(16);
+}
+
+export function getRegisteredUsers(): RegisteredUser[] {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEYS.REGISTERED_USERS);
+    return raw ? JSON.parse(raw) : [];
+  } catch {
+    return [];
+  }
+}
+
+export function saveRegisteredUserLocally(user: RegisteredUser): void {
+  const users = getRegisteredUsers().filter(
+    (u) => u.phoneNumber !== user.phoneNumber && u.id !== user.id
+  );
+  users.push(user);
+  localStorage.setItem(STORAGE_KEYS.REGISTERED_USERS, JSON.stringify(users));
+}
+
+/**
+ * Register a new user on Supabase with Phone Number & Password
+ */
+export async function registerWithPhoneAndPassword(
+  name: string,
+  phone: string,
+  password: string,
+  stream: StreamType = 'jee',
+  classLevel: '11' | '12' | 'dropper' = '12'
+): Promise<{ success: boolean; profile?: UserProfile; error?: string }> {
+  const cleanPhone = normalizePhoneNumber(phone);
+  const digitsOnly = cleanPhone.replace(/[^0-9]/g, '');
+
+  if (digitsOnly.length < 10) {
+    return { success: false, error: 'Please enter a valid 10-digit mobile phone number.' };
+  }
+  if (!password || password.length < 6) {
+    return { success: false, error: 'Password must be at least 6 characters long.' };
+  }
+  if (!name.trim()) {
+    return { success: false, error: 'Please provide your full name.' };
+  }
+
+  // Check if account already exists locally
+  const existingUsers = getRegisteredUsers();
+  if (
+    existingUsers.some(
+      (u) =>
+        u.phoneNumber === cleanPhone ||
+        u.phoneNumber.endsWith(digitsOnly.slice(-10)) ||
+        digitsOnly.endsWith(u.phoneNumber.replace(/[^0-9]/g, '').slice(-10))
+    )
+  ) {
+    return {
+      success: false,
+      error: 'An account with this phone number already exists. Please log in instead.',
+    };
+  }
+
+  const pwdHash = await hashPassword(password);
+  const userId = `usr_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`;
+  const newUser: RegisteredUser = {
+    id: userId,
+    name: name.trim(),
+    phoneNumber: cleanPhone,
+    passwordHash: pwdHash,
+    stream,
+    classLevel,
+    registeredAt: Date.now(),
+  };
+
+  saveRegisteredUserLocally(newUser);
+
+  // Attempt registration on Supabase Auth & Cloud Database
+  const supabase = getSupabaseClient();
+  if (supabase) {
+    try {
+      const formattedE164 = cleanPhone.startsWith('+') ? cleanPhone : `+91${digitsOnly.slice(-10)}`;
+      const phoneRes = await supabase.auth.signUp({
+        phone: formattedE164,
+        password: password,
+        options: {
+          data: {
+            name: name.trim(),
+            stream,
+            class_level: classLevel,
+            phone: cleanPhone,
+          },
+        },
+      });
+
+      if (
+        phoneRes.error &&
+        (phoneRes.error.message.includes('disabled') ||
+          phoneRes.error.message.includes('SMS') ||
+          phoneRes.error.message.includes('invalid'))
+      ) {
+        const syntheticEmail = `student_${digitsOnly.slice(-10)}@drona-aspirant.org`;
+        await supabase.auth.signUp({
+          email: syntheticEmail,
+          password: password,
+          options: {
+            data: {
+              name: name.trim(),
+              stream,
+              class_level: classLevel,
+              phone: cleanPhone,
+            },
+          },
+        });
+      }
+    } catch (e) {
+      console.warn('Supabase remote auth attempt skipped or rate-limited:', e);
+    }
+
+    try {
+      await supabase.from('user_profiles').upsert(
+        {
+          phone_number: cleanPhone,
+          name: name.trim(),
+          stream,
+          class_level: classLevel,
+          updated_at: new Date().toISOString(),
+        },
+        { onConflict: 'phone_number' }
+      );
+    } catch {
+      // ignore table schema errors
+    }
+  }
+
+  const profile: UserProfile = {
+    name: name.trim(),
+    email: `${digitsOnly.slice(-10)}@drona.user`,
+    phoneNumber: cleanPhone,
+    stream,
+    classLevel,
+    targetCollege: stream === 'neet' ? 'AIIMS New Delhi' : 'IIT Bombay / Computer Science',
+    targetRank: stream === 'neet' ? 'AIR < 100' : 'AIR < 500',
+    syncEnabled: true,
+  };
+
+  saveUserProfile(profile);
+  setUserLoggedIn(true);
+
+  return { success: true, profile };
+}
+
+/**
+ * Log in an existing user with Phone Number & Password
+ */
+export async function loginWithPhoneAndPassword(
+  phone: string,
+  password: string
+): Promise<{ success: boolean; profile?: UserProfile; error?: string }> {
+  const cleanPhone = normalizePhoneNumber(phone);
+  const digitsOnly = cleanPhone.replace(/[^0-9]/g, '');
+
+  if (digitsOnly.length < 10) {
+    return { success: false, error: 'Please enter a valid 10-digit mobile phone number.' };
+  }
+  if (!password) {
+    return { success: false, error: 'Please enter your account password.' };
+  }
+
+  const pwdHash = await hashPassword(password);
+  const users = getRegisteredUsers();
+  const matchedUser = users.find(
+    (u) =>
+      u.phoneNumber === cleanPhone ||
+      u.phoneNumber.endsWith(digitsOnly.slice(-10)) ||
+      digitsOnly.endsWith(u.phoneNumber.replace(/[^0-9]/g, '').slice(-10))
+  );
+
+  // Attempt Supabase Cloud Auth
+  const supabase = getSupabaseClient();
+  let supabaseLoggedIn = false;
+  let remoteUserData: any = null;
+
+  if (supabase) {
+    try {
+      const formattedE164 = cleanPhone.startsWith('+') ? cleanPhone : `+91${digitsOnly.slice(-10)}`;
+      const { data, error } = await supabase.auth.signInWithPassword({
+        phone: formattedE164,
+        password: password,
+      });
+
+      if (!error && data?.session) {
+        supabaseLoggedIn = true;
+        remoteUserData = data.user?.user_metadata || {};
+      } else {
+        const syntheticEmail = `student_${digitsOnly.slice(-10)}@drona-aspirant.org`;
+        const emailRes = await supabase.auth.signInWithPassword({
+          email: syntheticEmail,
+          password: password,
+        });
+        if (!emailRes.error && emailRes.data?.session) {
+          supabaseLoggedIn = true;
+          remoteUserData = emailRes.data.user?.user_metadata || {};
+        }
+      }
+    } catch {
+      // Supabase network error; fall back to local credentials ledger
+    }
+  }
+
+  if (matchedUser) {
+    if (matchedUser.passwordHash !== pwdHash) {
+      return { success: false, error: 'Incorrect password. Please verify your password and try again.' };
+    }
+
+    const profile: UserProfile = {
+      name: matchedUser.name,
+      email: `${digitsOnly.slice(-10)}@drona.user`,
+      phoneNumber: cleanPhone,
+      stream: matchedUser.stream,
+      classLevel: matchedUser.classLevel,
+      targetCollege:
+        matchedUser.stream === 'neet' ? 'AIIMS New Delhi' : 'IIT Bombay / Computer Science',
+      targetRank: matchedUser.stream === 'neet' ? 'AIR < 100' : 'AIR < 500',
+      syncEnabled: true,
+    };
+
+    saveUserProfile(profile);
+    setUserLoggedIn(true);
+    return { success: true, profile };
+  }
+
+  if (supabaseLoggedIn) {
+    const profile: UserProfile = {
+      name: remoteUserData?.name || 'JEE Aspirant',
+      email: `${digitsOnly.slice(-10)}@drona.user`,
+      phoneNumber: cleanPhone,
+      stream: remoteUserData?.stream || 'jee',
+      classLevel: remoteUserData?.class_level || '12',
+      targetCollege:
+        remoteUserData?.stream === 'neet' ? 'AIIMS New Delhi' : 'IIT Bombay / Computer Science',
+      targetRank: remoteUserData?.stream === 'neet' ? 'AIR < 100' : 'AIR < 500',
+      syncEnabled: true,
+    };
+
+    saveRegisteredUserLocally({
+      id: `usr_${Date.now()}`,
+      name: profile.name,
+      phoneNumber: cleanPhone,
+      passwordHash: pwdHash,
+      stream: profile.stream,
+      classLevel: profile.classLevel,
+      registeredAt: Date.now(),
+    });
+
+    saveUserProfile(profile);
+    setUserLoggedIn(true);
+    return { success: true, profile };
+  }
+
+  return {
+    success: false,
+    error: 'Account not found with this phone number. Please click "Register as New Aspirant" below to register.',
+  };
+}
+
 export async function checkActiveSession(): Promise<{ user: any; session: any } | null> {
   const supabase = getSupabaseClient();
   if (!supabase) return null;
   try {
-    const { data: { session }, error } = await supabase.auth.getSession();
+    const {
+      data: { session },
+      error,
+    } = await supabase.auth.getSession();
     if (error || !session) return null;
     return { user: session.user, session };
   } catch (err) {
     console.warn('Error checking Supabase session:', err);
     return null;
-  }
-}
-
-export async function checkGoogleOAuthAvailable(): Promise<boolean> {
-  try {
-    const { url } = getActiveSupabaseConfig();
-    const res = await fetch(
-      `${url}/auth/v1/authorize?provider=google&redirect_to=${encodeURIComponent(window.location.origin)}`,
-      { method: 'GET' }
-    );
-    if (res.status === 400) {
-      const text = await res.text();
-      if (text.includes('Unsupported provider') || text.includes('validation_failed')) {
-        return false;
-      }
-    }
-    return res.status === 200 || res.status === 302 || res.status === 303;
-  } catch {
-    return false;
-  }
-}
-
-export async function signInWithGoogle(): Promise<{ error: Error | null; unsupportedProvider?: boolean }> {
-  const supabase = getSupabaseClient();
-  if (!supabase) return { error: new Error('Supabase client is not initialized') };
-
-  try {
-    // Check if Google OAuth provider is enabled in Supabase project to avoid 400 bad request error screen
-    const isSupported = await checkGoogleOAuthAvailable();
-    if (!isSupported) {
-      return {
-        error: new Error('Google OAuth provider is not yet enabled in the Supabase console.'),
-        unsupportedProvider: true,
-      };
-    }
-
-    const { error } = await supabase.auth.signInWithOAuth({
-      provider: 'google',
-      options: {
-        redirectTo: window.location.origin + window.location.pathname,
-      },
-    });
-
-    if (error) {
-      return { error: new Error(error.message) };
-    }
-    return { error: null };
-  } catch (err: any) {
-    return { error: err };
   }
 }
 
@@ -452,7 +702,9 @@ export async function getAuthUser() {
   const supabase = getSupabaseClient();
   if (!supabase) return null;
   try {
-    const { data: { user } } = await supabase.auth.getUser();
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
     return user;
   } catch {
     return null;
@@ -464,7 +716,9 @@ export function subscribeAuthState(callback: (user: any) => void): () => void {
   if (!supabase) return () => {};
 
   try {
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
       if (session?.user) {
         setUserLoggedIn(true);
       }

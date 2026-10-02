@@ -16,7 +16,6 @@ import {
   autoUploadTestResult,
   saveArchivedTestSession,
   getArchivedTestSession,
-  signInWithGoogle,
   signOutUser,
   getAuthUser,
   subscribeAuthState,
@@ -50,17 +49,12 @@ export function App() {
       // ignore parse errors
     }
 
-    const hasAuthCallback =
-      window.location.hash.includes('access_token=') ||
-      window.location.search.includes('code=');
-
-    if (hasAuthCallback || isUserLoggedIn()) {
+    if (isUserLoggedIn()) {
       return 'app';
     }
     return 'login';
   });
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isGoogleAuthenticated, setIsGoogleAuthenticated] = useState(false);
 
   // High-contrast theme toggle
   const [darkMode, setDarkMode] = useState<boolean>(() => {
@@ -102,27 +96,25 @@ export function App() {
   // Persistent Performance History
   const [pastRecords, setPastRecords] = useState<PersistentPerformanceRecord[]>([]);
 
-  // Load User Profile, Test History and Google Auth on mount
+  // Load User Profile, Test History and Auth session on mount
   useEffect(() => {
     fetchUserProfile().then((p) => setUserProfile(p));
     fetchTestHistory().then((h) => setPastRecords(h));
 
-    // Check active Supabase session or process OAuth tokens in URL
+    // Check active Supabase session
     checkActiveSession().then((sessionData) => {
       if (sessionData?.user) {
-        setIsGoogleAuthenticated(true);
         setUserLoggedIn(true);
         setCurrentView('app');
         const user = sessionData.user;
-        const name = user.user_metadata?.full_name || user.user_metadata?.name || user.email?.split('@')[0];
-        const avatar = user.user_metadata?.avatar_url || user.user_metadata?.picture;
-        if (name || avatar || user.email) {
+        const name = user.user_metadata?.name || user.user_metadata?.full_name;
+        const phone = user.user_metadata?.phone || user.phone;
+        if (name || phone) {
           setUserProfile((prev) => {
             const updated = {
               ...prev,
               name: name || prev.name,
-              email: user.email || prev.email,
-              avatarUrl: avatar || prev.avatarUrl,
+              phoneNumber: phone || prev.phoneNumber,
             };
             saveUserProfile(updated);
             return updated;
@@ -131,25 +123,17 @@ export function App() {
       }
     });
 
-    if (window.location.hash.includes('access_token=') || window.location.search.includes('code=')) {
-      setTimeout(() => {
-        window.history.replaceState({}, document.title, window.location.pathname);
-      }, 600);
-    }
-
     getAuthUser().then((user) => {
       if (user) {
-        setIsGoogleAuthenticated(true);
         setUserLoggedIn(true);
-        const name = user.user_metadata?.full_name || user.user_metadata?.name || user.email?.split('@')[0];
-        const avatar = user.user_metadata?.avatar_url || user.user_metadata?.picture;
-        if (name || avatar || user.email) {
+        const name = user.user_metadata?.name || user.user_metadata?.full_name;
+        const phone = user.user_metadata?.phone || user.phone;
+        if (name || phone) {
           setUserProfile((prev) => {
             const updated = {
               ...prev,
               name: name || prev.name,
-              email: user.email || prev.email,
-              avatarUrl: avatar || prev.avatarUrl,
+              phoneNumber: phone || prev.phoneNumber,
             };
             saveUserProfile(updated);
             return updated;
@@ -160,24 +144,20 @@ export function App() {
 
     const unsubscribe = subscribeAuthState((user) => {
       if (user) {
-        setIsGoogleAuthenticated(true);
         setUserLoggedIn(true);
         setCurrentView('app');
-        const name = user.user_metadata?.full_name || user.user_metadata?.name || user.email?.split('@')[0];
-        const avatar = user.user_metadata?.avatar_url || user.user_metadata?.picture;
+        const name = user.user_metadata?.name || user.user_metadata?.full_name;
+        const phone = user.user_metadata?.phone || user.phone;
         setUserProfile((prev) => {
           const updated = {
             ...prev,
             name: name || prev.name,
-            email: user.email || prev.email,
-            avatarUrl: avatar || prev.avatarUrl,
+            phoneNumber: phone || prev.phoneNumber,
           };
           saveUserProfile(updated);
           return updated;
         });
         fetchTestHistory().then((h) => setPastRecords(h));
-      } else {
-        setIsGoogleAuthenticated(false);
       }
     });
 
@@ -348,26 +328,16 @@ export function App() {
   };
 
   // Handler: Successful Login from LoginView
-  const handleLoginSuccess = (profile: UserProfile, isGoogle: boolean) => {
+  const handleLoginSuccess = (profile: UserProfile) => {
     setUserProfile(profile);
-    setIsGoogleAuthenticated(isGoogle);
     setUserLoggedIn(true);
     setCurrentView('app');
     fetchTestHistory().then((h) => setPastRecords(h));
   };
 
-  // Handler: Google OAuth Sign-In
-  const handleGoogleSignIn = async () => {
-    const { error } = await signInWithGoogle();
-    if (error) {
-      alert(`Google Sign-In: ${error.message || 'Unable to open Google login'}`);
-    }
-  };
-
   // Handler: Sign-Out to Login Screen
   const handleSignOut = async () => {
     await signOutUser();
-    setIsGoogleAuthenticated(false);
     setUserLoggedIn(false);
     setCurrentView('login');
   };
@@ -438,9 +408,7 @@ export function App() {
               onToggleDarkMode={() => setDarkMode(!darkMode)}
               userProfile={userProfile}
               onOpenProfile={() => setActiveTab('profile')}
-              onGoogleSignIn={handleGoogleSignIn}
               onSignOut={handleSignOut}
-              isGoogleAuthenticated={isGoogleAuthenticated}
             />
 
             <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8">
@@ -471,9 +439,7 @@ export function App() {
                 <ProfileView
                   userProfile={userProfile}
                   onUpdateProfile={(up) => setUserProfile(up)}
-                  onGoogleSignIn={handleGoogleSignIn}
                   onSignOut={handleSignOut}
-                  isGoogleAuthenticated={isGoogleAuthenticated}
                 />
               )}
             </main>

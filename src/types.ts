@@ -203,6 +203,7 @@ export interface ChapterFormula {
 export interface UserProfile {
   name: string;
   email: string;
+  phoneNumber?: string;
   stream: StreamType;
   classLevel: '11' | '12' | 'dropper';
   targetCollege: string;
