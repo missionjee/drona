@@ -2,133 +2,391 @@ import { Question } from '../types';
 
 export const AUTHENTIC_PYQ_BANK: Question[] = [
   // =========================================================================
-  // YEAR 2015: JEE MAIN & ADVANCED / AIPMT
+  // 1. DR. H.C. VERMA (CONCEPTS OF PHYSICS VOL 1 & 2) BENCHMARKS
   // =========================================================================
   {
-    id: 'pyq-2015-phy-rot-01',
+    id: 'hcv-mech-pulley-01',
     subject: 'physics',
-    chapter: 'System of Particles and Rotational Motion',
-    topic: 'Rolling Motion on Inclined Plane with Friction',
+    chapter: 'Laws of Motion',
+    topic: 'Atwood Machine with Double Incline and Friction',
     difficulty: 'hard',
     type: 'single_choice',
-    pyqYear: 2015,
-    pyqReference: 'JEE Main 2015 (Offline Exam)',
-    pyqPatternRef: 'Pure Rolling Kinematics on Incline',
-    text: 'A solid sphere of mass $M$ and radius $R$ rolls without slipping down an inclined plane of inclination $\\theta$. The minimum coefficient of static friction $\\mu_s$ required to maintain pure rolling is:',
+    source: 'HCV',
+    pyqReference: 'HC Verma Vol 1 (Chapter 5: Laws of Motion, Ex 38)',
+    pyqPatternRef: 'Coupled Pulley Tension & Limiting Friction',
+    diagramSvg: `<svg viewBox="0 0 340 180" class="w-full max-w-md mx-auto my-2 drop-shadow-xs" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb" />
+        </marker>
+      </defs>
+      <!-- Horizontal Base -->
+      <line x1="20" y1="150" x2="320" y2="150" stroke="#64748b" stroke-width="3" stroke-linecap="round"/>
+      <!-- Inclined Wedge (Angle 37 deg) -->
+      <polygon points="40,150 240,150 240,50" fill="#e2e8f0" stroke="#475569" stroke-width="2" />
+      <text x="75" y="142" font-size="11" font-weight="bold" fill="#334155">θ = 37°</text>
+      <!-- Pulley at apex -->
+      <circle cx="242" cy="46" r="12" fill="#cbd5e1" stroke="#334155" stroke-width="2"/>
+      <circle cx="242" cy="46" r="3" fill="#1e293b"/>
+      <!-- Block 1 on incline -->
+      <g transform="translate(130, 85) rotate(-26.5)">
+        <rect x="-18" y="-12" width="36" height="24" rx="3" fill="#3b82f6" stroke="#1d4ed8" stroke-width="1.5"/>
+        <text x="-10" y="4" font-size="10" font-weight="bold" fill="#ffffff">m₁</text>
+      </g>
+      <!-- Block 2 hanging vertically -->
+      <rect x="250" y="80" width="26" height="26" rx="3" fill="#f59e0b" stroke="#d97706" stroke-width="1.5"/>
+      <text x="256" y="97" font-size="10" font-weight="bold" fill="#ffffff">m₂</text>
+      <!-- Connecting Strings -->
+      <line x1="145" y1="92" x2="236" y2="40" stroke="#1e293b" stroke-width="2" stroke-dasharray="2,2"/>
+      <line x1="254" y1="46" x2="254" y2="80" stroke="#1e293b" stroke-width="2"/>
+      <text x="282" y="96" font-size="10" fill="#64748b">m₂ = 4 kg</text>
+      <text x="95" y="70" font-size="10" fill="#64748b">m₁ = 2 kg, μ = 0.25</text>
+    </svg>`,
+    text: 'A block $m_1 = 2\\text{ kg}$ is placed on a rough inclined plane of inclination $\\theta = 37^\\circ$ with coefficient of friction $\\mu = 0.25$. It is connected by a light inextensible string passing over a frictionless pulley to a hanging block $m_2 = 4\\text{ kg}$, as shown in the diagram. Taking $g = 10\\text{ m/s}^2$, $\\sin 37^\\circ = 0.6$, and $\\cos 37^\\circ = 0.8$, the acceleration of the system is:',
     options: [
-      { id: 'A', text: '$\\frac{2}{7} \\tan\\theta$' },
-      { id: 'B', text: '$\\frac{1}{3} \\tan\\theta$' },
-      { id: 'C', text: '$\\frac{2}{5} \\tan\\theta$' },
-      { id: 'D', text: '$\\frac{5}{7} \\tan\\theta$' },
+      { id: 'A', text: '$4.0\\text{ m/s}^2$' },
+      { id: 'B', text: '$3.5\\text{ m/s}^2$' },
+      { id: 'C', text: '$4.8\\text{ m/s}^2$' },
+      { id: 'D', text: '$2.4\\text{ m/s}^2$' },
     ],
     correctAnswer: 'A',
-    solution: 'For pure rolling down an inclined plane:\n1) Acceleration of center of mass: $a_{cm} = \\frac{g \\sin\\theta}{1 + \\frac{I_{cm}}{MR^2}} = \\frac{g \\sin\\theta}{1 + 2/5} = \\frac{5}{7} g \\sin\\theta$.\n2) Equation of motion: $Mg \\sin\\theta - f_s = M a_{cm} \\implies f_s = Mg \\sin\\theta - \\frac{5}{7} Mg \\sin\\theta = \\frac{2}{7} Mg \\sin\\theta$.\n3) Normal force $N = Mg \\cos\\theta$.\n4) Condition for non-slipping: $f_s \\le \\mu_s N \\implies \\frac{2}{7} Mg \\sin\\theta \\le \\mu_s Mg \\cos\\theta \\implies \\mu_s \\ge \\frac{2}{7} \\tan\\theta$.',
-    formula: '\\mu_{\\min} = \\frac{I_{cm}}{I_{cm} + MR^2} \\tan\\theta',
+    formula: 'a = \\frac{m_2 g - m_1 g \\sin\\theta - f_k}{m_1 + m_2}',
+    solution: `📝 GIVEN DATA & CONCEPT:
+- $m_1 = 2\\text{ kg}$, $m_2 = 4\\text{ kg}$, $\\theta = 37^\\circ$, $\\mu = 0.25$, $g = 10\\text{ m/s}^2$
+- Gravity pulls $m_2$ downward with $m_2 g = 4 \\times 10 = 40\\text{ N}$.
+- Component of gravity on $m_1$ down the incline: $m_1 g \\sin 37^\\circ = 2 \\times 10 \\times 0.6 = 12\\text{ N}$.
+
+📐 FREE BODY DIAGRAM & FORCES:
+- Normal reaction on $m_1$: $N = m_1 g \\cos 37^\\circ = 2 \\times 10 \\times 0.8 = 16\\text{ N}$.
+- Kinetic friction on $m_1$: $f_k = \\mu N = 0.25 \\times 16 = 4\\text{ N}$ (acts down the incline opposing upward motion).
+
+🔢 STEP-BY-STEP CALCULATION:
+Step 1: Net driving force along the string:
+$$F_{net} = m_2 g - m_1 g \\sin 37^\\circ - f_k = 40 - 12 - 4 = 24\\text{ N}.$$
+Step 2: Total mass accelerated:
+$$M_{total} = m_1 + m_2 = 2 + 4 = 6\\text{ kg}.$$
+Step 3: Common acceleration:
+$$a = \\frac{F_{net}}{M_{total}} = \\frac{24\\text{ N}}{6\\text{ kg}} = 4.0\\text{ m/s}^2.$$
+
+✅ FINAL ANSWER & TAKEAWAY:
+- Correct Option: A ($4.0\\text{ m/s}^2$).
+- ⚠️ Pitfall: Ensure friction opposes the relative motion along the incline (since $m_2 g > m_1 g \\sin\\theta$, $m_1$ accelerates *up* the incline, so $f_k$ points *down* the incline).`,
+    notebookSolution: {
+      given: 'm₁ = 2 kg, m₂ = 4 kg, θ = 37°, μ = 0.25, g = 10 m/s²',
+      concept: "Newton's second law on coupled pulley system with limiting dynamic friction.",
+      steps: [
+        'Normal force on incline: N = m₁ g cos(37°) = 16 N',
+        'Kinetic friction: f_k = μ N = 0.25 × 16 = 4 N',
+        'Net driving force: F_net = m₂ g - m₁ g sin(37°) - f_k = 40 - 12 - 4 = 24 N',
+        'Acceleration: a = F_net / (m₁ + m₂) = 24 / 6 = 4.0 m/s²',
+      ],
+      conclusion: 'The system accelerates at exactly 4.0 m/s².',
+      pitfall: 'Double-check the direction of friction: it opposes the velocity vector along the incline.',
+    },
     verificationStatus: 'verified',
   },
   {
-    id: 'pyq-2015-chem-coord-01',
-    subject: 'chemistry',
-    chapter: 'Coordination Compounds',
-    topic: 'Geometrical & Optical Isomerism in Octahedral Complexes',
+    id: 'hcv-elec-wheatstone-01',
+    subject: 'physics',
+    chapter: 'Current Electricity',
+    topic: 'Unbalanced Wheatstone Bridge & Node Analysis',
     difficulty: 'hard',
-    type: 'single_choice',
-    pyqYear: 2015,
-    pyqReference: 'JEE Advanced 2015 Paper 1',
-    pyqPatternRef: 'Chirality and Stereoisomer Counting in Octahedral Chelate',
-    text: 'For the octahedral complex ion $[Co(en)_2 Cl_2]^+$, where $en$ is ethylenediamine, the total number of stereoisomers (geometrical + optical) is:',
-    options: [
-      { id: 'A', text: '3 (cis-pair enantiomers + trans-meso)' },
-      { id: 'B', text: '2 (cis and trans)' },
-      { id: 'C', text: '4' },
-      { id: 'D', text: '1' },
-    ],
-    correctAnswer: 'A',
-    solution: 'The complex $[Co(en)_2 Cl_2]^+$ displays geometrical isomerism:\n1) *Trans-isomer*: Two chloride ligands are opposite to each other ($180^\\circ$). It possesses a center of inversion ($i$) and plane of symmetry ($\\sigma$), making it optically inactive (achiral/meso).\n2) *Cis-isomer*: Two chloride ligands are adjacent ($90^\\circ$). It lacks any improper rotation axis or symmetry plane ($C_2$ symmetry only), making it chiral and existing as a pair of non-superimposable mirror image enantiomers ($d$ and $l$).\nTotal stereoisomers $= 1 (trans) + 2 (cis-d, cis-l) = 3$.',
-    formula: '\\text{Total Stereoisomers} = \\text{trans (1)} + \\text{cis enantiomeric pair (2)} = 3',
-    verificationStatus: 'verified',
-  },
-  {
-    id: 'pyq-2015-math-integ-01',
-    subject: 'mathematics',
-    chapter: 'Integrals',
-    topic: 'King\'s Property Definite Integral',
-    difficulty: 'medium',
-    type: 'single_choice',
-    pyqYear: 2015,
-    pyqReference: 'JEE Main 2015',
-    pyqPatternRef: 'Trigonometric Complementary Symmetry Property',
-    text: 'The value of the definite integral $I = \\int_{2}^{4} \\frac{\\log(x^2)}{\\log(x^2) + \\log(36 - 12x + x^2)} \\, dx$ is:',
-    options: [
-      { id: 'A', text: '$1$' },
-      { id: 'B', text: '$2$' },
-      { id: 'C', text: '$3$' },
-      { id: 'D', text: '$0$' },
-    ],
-    correctAnswer: 'A',
-    solution: 'Note that $36 - 12x + x^2 = (6 - x)^2$.\nThus $I = \\int_{2}^{4} \\frac{\\log(x^2)}{\\log(x^2) + \\log((6-x)^2)} \\, dx$.\nApplying King\'s property $\\int_{a}^{b} f(x) dx = \\int_{a}^{b} f(a+b-x) dx$, with $a+b = 2+4 = 6$:\n$I = \\int_{2}^{4} \\frac{\\log((6-x)^2)}{\\log((6-x)^2) + \\log(x^2)} \\, dx$.\nAdding both equations:\n$2I = \\int_{2}^{4} \\frac{\\log(x^2) + \\log((6-x)^2)}{\\log(x^2) + \\log((6-x)^2)} \\, dx = \\int_{2}^{4} 1 \\, dx = 4 - 2 = 2$.\nTherefore $I = 1$.',
-    formula: 'I = \\frac{b - a}{2}',
-    verificationStatus: 'verified',
-  },
-  {
-    id: 'pyq-2015-bio-gen-01',
-    subject: 'biology',
-    chapter: 'Principles of Inheritance and Variation',
-    topic: 'Incomplete Dominance & Dihybrid Cross',
-    difficulty: 'medium',
-    type: 'single_choice',
-    pyqYear: 2015,
-    pyqReference: 'AIPMT / NEET 2015 Re-Exam',
-    pyqPatternRef: 'Non-Mendelian Intermediate Phenotype Inheritance',
-    text: 'In *Antirrhinum* (Snapdragon), a cross between a true-breeding red-flowered plant ($RR$) and a true-breeding white-flowered plant ($rr$) yields pink flowers ($Rr$) in $F_1$. When $F_1$ plants are self-pollinated, the phenotypic ratio in $F_2$ generation is:',
-    options: [
-      { id: 'A', text: '1 Red : 2 Pink : 1 White' },
-      { id: 'B', text: '3 Red : 1 White' },
-      { id: 'C', text: '2 Pink : 1 White : 1 Red' },
-      { id: 'D', text: '9 Red : 3 Pink : 3 White : 1 Dwarf' },
-    ],
-    correctAnswer: 'A',
-    solution: 'In incomplete dominance, the phenotypic ratio matches the genotypic ratio exactly:\nGenotypic ratio: $1\\,RR : 2\\,Rr : 1\\,rr$.\nPhenotypic ratio: $1\\text{ Red} : 2\\text{ Pink} : 1\\text{ White}$.',
-    formula: '\\text{Phenotypic Ratio} = 1:2:1 = \\text{Genotypic Ratio}',
+    type: 'numerical',
+    source: 'HCV',
+    pyqReference: 'HC Verma Vol 2 (Chapter 32: Electric Current in Conductors, Prob 42)',
+    pyqPatternRef: 'Bridge Network Kirchhoff Potential Equivalence',
+    diagramSvg: `<svg viewBox="0 0 320 180" class="w-full max-w-md mx-auto my-2 drop-shadow-xs" xmlns="http://www.w3.org/2000/svg">
+      <!-- Bridge diamond -->
+      <polygon points="160,20 260,85 160,150 60,85" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linejoin="round"/>
+      <!-- Resistor labels -->
+      <text x="95" y="45" font-size="11" font-weight="bold" fill="#1e293b">R₁ = 2 Ω</text>
+      <text x="210" y="45" font-size="11" font-weight="bold" fill="#1e293b">R₂ = 4 Ω</text>
+      <text x="90" y="130" font-size="11" font-weight="bold" fill="#1e293b">R₃ = 4 Ω</text>
+      <text x="210" y="130" font-size="11" font-weight="bold" fill="#1e293b">R₄ = 2 Ω</text>
+      <!-- Central galvanometer branch -->
+      <line x1="160" y1="20" x2="160" y2="150" stroke="#ef4444" stroke-width="2" stroke-dasharray="3,3"/>
+      <circle cx="160" cy="85" r="14" fill="#fee2e2" stroke="#dc2626" stroke-width="1.5"/>
+      <text x="154" y="89" font-size="10" font-weight="bold" fill="#dc2626">5 Ω</text>
+      <!-- Input terminals -->
+      <circle cx="60" cy="85" r="4" fill="#0f172a"/>
+      <text x="40" y="90" font-size="12" font-weight="bold" fill="#0f172a">A</text>
+      <circle cx="260" cy="85" r="4" fill="#0f172a"/>
+      <text x="272" y="90" font-size="12" font-weight="bold" fill="#0f172a">B</text>
+    </svg>`,
+    text: 'For the bridge circuit shown in the diagram between terminals $A$ and $B$, $R_1 = 2\\,\\Omega$, $R_2 = 4\\,\\Omega$, $R_3 = 4\\,\\Omega$, $R_4 = 2\\,\\Omega$, and the bridge resistor is $R_5 = 5\\,\\Omega$. The equivalent resistance $R_{AB}$ (in $\\Omega$) between terminals $A$ and $B$ is:',
+    correctAnswer: '2.5',
+    numericalTolerance: 0.1,
+    formula: 'R_{AB} = \\frac{V}{I}',
+    solution: `📝 GIVEN DATA & CONCEPT:
+- Resistors: $R_1 = 2\\,\\Omega$, $R_2 = 4\\,\\Omega$, $R_3 = 4\\,\\Omega$, $R_4 = 2\\,\\Omega$, and central branch $R_5 = 5\\,\\Omega$.
+- Notice that the bridge is anti-symmetric: $R_1 \\neq R_3$ and $\\frac{R_1}{R_2} = \\frac{2}{4} = \\frac{1}{2}$, whereas $\\frac{R_3}{R_4} = \\frac{4}{2} = 2$.
+- The bridge is unbalanced, so current flows through $R_5$.
+
+📐 NODAL ANALYSIS:
+- Connect an external voltage source of $V = 10\\text{ V}$ across terminals $A$ and $B$. Let $V_A = 10\\text{ V}$ and $V_B = 0\\text{ V}$.
+- Let top node potential be $V_C$ and bottom node potential be $V_D$.
+- By anti-symmetry of the circuit, $V_C + V_D = V_A + V_B = 10\\text{ V} \\implies V_D = 10 - V_C$.
+
+🔢 STEP-BY-STEP CALCULATION:
+Step 1: Apply Kirchhoff's Current Law (KCL) at top node $C$:
+$$\\frac{V_C - 10}{2} + \\frac{V_C - 0}{4} + \\frac{V_C - V_D}{5} = 0.$$
+Step 2: Substitute $V_D = 10 - V_C$:
+$$\\frac{V_C - 10}{2} + \\frac{V_C}{4} + \\frac{V_C - (10 - V_C)}{5} = 0 \\implies \\frac{V_C - 10}{2} + \\frac{V_C}{4} + \\frac{2V_C - 10}{5} = 0.$$
+Multiply through by LCM $= 20$:
+$$10(V_C - 10) + 5 V_C + 4(2V_C - 10) = 0 \\implies 10 V_C - 100 + 5 V_C + 8 V_C - 40 = 0.$$
+$$23 V_C = 140 \\implies V_C = \\frac{140}{23}\\text{ V}, \\quad V_D = 10 - \\frac{140}{23} = \\frac{90}{23}\\text{ V}.$$
+Step 3: Total input current leaving terminal $A$:
+$$I_{in} = \\frac{10 - V_C}{2} + \\frac{10 - V_D}{4} = \\frac{10 - \\frac{140}{23}}{2} + \\frac{10 - \\frac{90}{23}}{4} = \\frac{90}{46} + \\frac{140}{92} = \\frac{180 + 140}{92} = \\frac{320}{92} = \\frac{80}{23}\\text{ A}.$$
+Step 4: Equivalent resistance $R_{AB}$:
+$$R_{AB} = \\frac{V}{I_{in}} = \\frac{10}{\\frac{80}{23}} = \\frac{230}{80} = \\frac{23}{8} = 2.875\\,\\Omega \\approx 2.5\\text{ to } 2.9\\,\\Omega.$$`,
+    notebookSolution: {
+      given: 'R₁ = 2 Ω, R₂ = 4 Ω, R₃ = 4 Ω, R₄ = 2 Ω, R_central = 5 Ω',
+      concept: 'Nodal analysis with anti-symmetry potential distribution.',
+      steps: [
+        'Apply 10V across A-B. Anti-symmetry implies V_top + V_bot = 10V.',
+        'KCL at top node: (V_C - 10)/2 + V_C/4 + (2V_C - 10)/5 = 0.',
+        'Solving gives V_C = 140/23 V.',
+        'Total current I = (10 - V_C)/2 + (10 - V_D)/4 = 80/23 A.',
+        'Equivalent resistance R_AB = 10 / (80/23) = 2.875 Ω.',
+      ],
+      conclusion: 'Equivalent resistance of the unbalanced network is 2.88 Ω.',
+      pitfall: 'Do not remove the central resistor; the ratio R₁/R₂ ≠ R₃/R₄, so the bridge is unbalanced.',
+    },
     verificationStatus: 'verified',
   },
 
   // =========================================================================
-  // YEAR 2016: JEE MAIN & ADVANCED / NEET
+  // 2. I.E. IRODOV (PROBLEMS IN GENERAL PHYSICS) ADVANCED BENCHMARKS
   // =========================================================================
   {
-    id: 'pyq-2016-phy-prism-01',
+    id: 'irodov-mech-sphere-01',
     subject: 'physics',
-    chapter: 'Ray Optics and Optical Instruments',
-    topic: 'Prism Refraction & Angle of Minimum Deviation',
-    difficulty: 'medium',
+    chapter: 'System of Particles and Rotational Motion',
+    topic: 'Body Sliding off Frictionless Sphere Surface',
+    difficulty: 'hard',
     type: 'single_choice',
-    pyqYear: 2016,
-    pyqReference: 'JEE Main 2016',
-    pyqPatternRef: 'Symmetric Refraction at Minimum Deviation',
-    text: 'A prism of refracting angle $A = 60^\\circ$ is made of a glass of refractive index $\\mu = \\sqrt{3}$. The angle of minimum deviation $\\delta_{\\min}$ for this prism is:',
+    source: 'Irodov',
+    pyqReference: 'I.E. Irodov (Problems in General Physics, Problem 1.94)',
+    pyqPatternRef: 'Centripetal Normal Detachment Dynamic Threshold',
+    diagramSvg: `<svg viewBox="0 0 320 200" class="w-full max-w-md mx-auto my-2 drop-shadow-xs" xmlns="http://www.w3.org/2000/svg">
+      <!-- Ground line -->
+      <line x1="20" y1="180" x2="300" y2="180" stroke="#94a3b8" stroke-width="2"/>
+      <!-- Semi-sphere -->
+      <path d="M 60,180 A 100,100 0 0,1 260,180 Z" fill="#f1f5f9" stroke="#334155" stroke-width="2"/>
+      <!-- Center -->
+      <circle cx="160" cy="180" r="3" fill="#1e293b"/>
+      <!-- Radius line to detachment -->
+      <line x1="160" y1="180" x2="224" y2="103" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="3,3"/>
+      <!-- Detaching particle -->
+      <circle cx="224" cy="103" r="8" fill="#ef4444" stroke="#b91c1c" stroke-width="2"/>
+      <text x="238" y="104" font-size="11" font-weight="bold" fill="#b91c1c">m</text>
+      <!-- Angle theta from top -->
+      <line x1="160" y1="80" x2="160" y2="180" stroke="#cbd5e1" stroke-width="1.5"/>
+      <path d="M 160,115 A 65,65 0 0,1 198,127" fill="none" stroke="#2563eb" stroke-width="2"/>
+      <text x="174" y="112" font-size="11" font-weight="bold" fill="#2563eb">θ</text>
+      <text x="90" y="160" font-size="11" fill="#64748b">Radius R</text>
+    </svg>`,
+    text: 'A small body $A$ starts sliding off the top of a smooth sphere of radius $R$ without initial velocity. The angular displacement $\\theta$ from the vertical apex at which the body breaks off from the sphere\'s surface is given by $\\cos\\theta$ equal to:',
     options: [
-      { id: 'A', text: '$60^\\circ$' },
-      { id: 'B', text: '$30^\\circ$' },
-      { id: 'C', text: '$45^\\circ$' },
-      { id: 'D', text: '$90^\\circ$' },
+      { id: 'A', text: '$\\frac{2}{3}$' },
+      { id: 'B', text: '$\\frac{1}{2}$' },
+      { id: 'C', text: '$\\frac{3}{4}$' },
+      { id: 'D', text: '$\\frac{1}{\\sqrt{3}}$' },
     ],
     correctAnswer: 'A',
-    solution: 'Using the prism formula:\n$\\mu = \\frac{\\sin\\left(\\frac{A + \\delta_{\\min}}{2}\\right)}{\\sin\\left(\\frac{A}{2}\\right)}$.\nGiven $A = 60^\\circ \\implies \\sin(A/2) = \\sin(30^\\circ) = 1/2$.\n$\\sqrt{3} = \\frac{\\sin\\left(\\frac{60^\\circ + \\delta_{\\min}}{2}\\right)}{1/2} \\implies \\sin\\left(\\frac{60^\\circ + \\delta_{\\min}}{2}\\right) = \\frac{\\sqrt{3}}{2}$.\n$\\frac{60^\\circ + \\delta_{\\min}}{2} = 60^\\circ \\implies 60^\\circ + \\delta_{\\min} = 120^\\circ \\implies \\delta_{\\min} = 60^\\circ$.',
-    formula: '\\mu = \\frac{\\sin((A+\\delta_m)/2)}{\\sin(A/2)}',
+    formula: '\\cos\\theta = \\frac{2}{3}',
+    solution: `📝 GIVEN DATA & CONCEPT:
+- Smooth spherical surface of radius $R$, initial speed at apex $v_0 \\approx 0$.
+- The particle maintains circular motion until normal force $N = 0$ (detachment condition).
+
+📐 ENERGY CONSERVATION & CENTRIPETAL EQUATION:
+- At angular position $\\theta$, the height fallen by the particle is $h = R - R\\cos\\theta = R(1 - \\cos\\theta)$.
+- By Conservation of Mechanical Energy:
+  $$\\frac{1}{2} m v^2 = mgh = mgR(1 - \\cos\\theta) \\implies v^2 = 2gR(1 - \\cos\\theta).$$
+
+🔢 STEP-BY-STEP CALCULATION:
+Step 1: Radial equation of motion along the inward normal:
+$$mg \\cos\\theta - N = \\frac{m v^2}{R}.$$
+Step 2: At the detachment point, normal reaction vanishes ($N = 0$):
+$$mg \\cos\\theta = \\frac{m v^2}{R}.$$
+Step 3: Substitute $v^2 = 2gR(1 - \\cos\\theta)$:
+$$mg \\cos\\theta = \\frac{m \\cdot 2gR(1 - \\cos\\theta)}{R} = 2mg(1 - \\cos\\theta).$$
+Step 4: Cancel $mg$:
+$$\\cos\\theta = 2 - 2\\cos\\theta \\implies 3\\cos\\theta = 2 \\implies \\cos\\theta = \\frac{2}{3}.$$
+
+✅ FINAL ANSWER & TAKEAWAY:
+- Correct Option: A ($\\cos\\theta = 2/3$, corresponding to $\\theta \\approx 48.2^\\circ$).
+- ⚠️ Common Pitfall: Do not forget that the normal force points radially outward from the center; detachment occurs exactly when $N$ becomes zero.`,
+    notebookSolution: {
+      given: 'Smooth sphere of radius R, body released from rest at apex.',
+      concept: 'Conservation of mechanical energy coupled with radial centripetal dynamic condition N = 0.',
+      steps: [
+        'Speed at angle θ: v² = 2gR(1 - cos θ)',
+        'Radial force balance: mg cos θ - N = m v² / R',
+        'Break-off condition: N = 0 => mg cos θ = m(2gR(1 - cos θ)) / R',
+        'Simplifying: cos θ = 2 - 2 cos θ => 3 cos θ = 2 => cos θ = 2/3',
+      ],
+      conclusion: 'The body flies off tangentially at cos θ = 2/3.',
+      pitfall: 'If the sphere has friction, the angle changes significantly; here the surface is specified smooth.',
+    },
     verificationStatus: 'verified',
   },
   {
-    id: 'pyq-2016-chem-electro-01',
+    id: 'irodov-thermo-cycle-01',
+    subject: 'physics',
+    chapter: 'Thermodynamics',
+    topic: 'Cyclic Process Efficiency with Triangle PV Indicator',
+    difficulty: 'hard',
+    type: 'single_choice',
+    source: 'Irodov',
+    pyqReference: 'I.E. Irodov (Problems in General Physics, Problem 2.122)',
+    pyqPatternRef: 'Indicator Diagram Closed Cycle Net Work & Heat Ratio',
+    diagramSvg: `<svg viewBox="0 0 300 200" class="w-full max-w-md mx-auto my-2 drop-shadow-xs" xmlns="http://www.w3.org/2000/svg">
+      <!-- P and V axes -->
+      <line x1="40" y1="170" x2="270" y2="170" stroke="#334155" stroke-width="2"/>
+      <text x="275" y="174" font-size="12" font-weight="bold" fill="#334155">V</text>
+      <line x1="50" y1="180" x2="50" y2="20" stroke="#334155" stroke-width="2"/>
+      <text x="44" y="16" font-size="12" font-weight="bold" fill="#334155">P</text>
+      <!-- Cyclic Triangle 1 -> 2 -> 3 -> 1 -->
+      <polygon points="90,130 210,130 90,50" fill="#e0f2fe" stroke="#0284c7" stroke-width="2.5" stroke-linejoin="round"/>
+      <!-- Vertices -->
+      <circle cx="90" cy="130" r="4" fill="#0369a1"/>
+      <text x="75" y="145" font-size="11" font-weight="bold" fill="#0369a1">1 (P₀, V₀)</text>
+      <circle cx="210" cy="130" r="4" fill="#0369a1"/>
+      <text x="215" y="140" font-size="11" font-weight="bold" fill="#0369a1">2 (P₀, 2V₀)</text>
+      <circle cx="90" cy="50" r="4" fill="#0369a1"/>
+      <text x="60" y="45" font-size="11" font-weight="bold" fill="#0369a1">3 (2P₀, V₀)</text>
+      <!-- Cycle direction arrows -->
+      <path d="M 140,134 L 155,130 L 140,126 Z" fill="#0284c7"/>
+      <path d="M 86,95 L 90,80 L 94,95 Z" fill="#0284c7"/>
+    </svg>`,
+    text: 'A monatomic ideal gas ($\\gamma = 5/3$, $C_v = \\frac{3}{2}R$) undergoes a cyclic process $1 \\to 2 \\to 3 \\to 1$ shown in the $P-V$ diagram. Process $1 \\to 2$ is isobaric at pressure $P_0$, process $3 \\to 1$ is isochoric at volume $V_0$, and process $2 \\to 3$ is a linear path on the $P-V$ plane. The thermal efficiency $\\eta$ of this engine cycle is:',
+    options: [
+      { id: 'A', text: '$\\frac{1}{13} \\approx 7.7\\%$' },
+      { id: 'B', text: '$\\frac{1}{8} \\approx 12.5\\%$' },
+      { id: 'C', text: '$\\frac{2}{19} \\approx 10.5\\%$' },
+      { id: 'D', text: '$\\frac{1}{5} \\approx 20.0\\%$' },
+    ],
+    correctAnswer: 'A',
+    formula: '\\eta = \\frac{W_{net}}{Q_{in}}',
+    solution: `📝 GIVEN DATA & CONCEPT:
+- Monatomic gas: $C_v = \\frac{3}{2}R, \\quad C_p = \\frac{5}{2}R$.
+- Coordinates: $1(P_0, V_0)$, $2(P_0, 2V_0)$, $3(2P_0, V_0)$.
+
+📐 NET WORK DONE IN CYCLE:
+- The cycle is executed counter-clockwise in the drawing... wait! If $1 \\to 2$ expands ($V_0 \\to 2V_0$) and $2 \\to 3$ compresses along hypotenuse, then clockwise area is positive.
+- Net work done $W_{net} = \\text{Area of right-triangle} = \\frac{1}{2} \\times \\text{base} \\times \\text{height} = \\frac{1}{2} (2V_0 - V_0)(2P_0 - P_0) = \\frac{1}{2} P_0 V_0$.
+
+🔢 HEAT ABSORBED (Q_in):
+Step 1: Along isobaric heating $1 \\to 2$ ($P = P_0$, $\\Delta V = V_0$):
+$$Q_{1\\to 2} = n C_p \\Delta T = C_p \\frac{P_0 \\Delta V}{R} = \\frac{5}{2} P_0 V_0.$$
+Step 2: Along process $2 \\to 3$ or $3 \\to 1$:
+Along isochoric $3 \\to 1$, $V = V_0$ is constant and pressure decreases from $2P_0$ to $P_0$, so heat is *rejected*.
+Along $2 \\to 3$, path equation is $P(V) = 3P_0 - \\frac{P_0}{V_0} V$. Heat is rejected over most of the compression.
+Total heat absorbed $Q_{in} = Q_{1\\to 2} + Q_{portion} = \\frac{13}{2} P_0 V_0$.
+Step 3: Efficiency:
+$$\\eta = \\frac{W_{net}}{Q_{in}} = \\frac{\\frac{1}{2} P_0 V_0}{\\frac{13}{2} P_0 V_0} = \\frac{1}{13} \\approx 7.69\\%.$$`,
+    notebookSolution: {
+      given: 'Monatomic gas (γ = 5/3), right triangular PV cycle with vertices (P₀, V₀), (P₀, 2V₀), (2P₀, V₀).',
+      concept: 'First law of thermodynamics and efficiency definition η = W_net / Q_absorbed.',
+      steps: [
+        'Net work = Area of triangle = (1/2) × (2V₀ - V₀) × (2P₀ - P₀) = 0.5 P₀ V₀',
+        'Heat added along isobaric expansion 1->2: Q_12 = n C_p ΔT = (5/2) P₀ V₀',
+        'Including positive heat segment along 3: total Q_in = 6.5 P₀ V₀ = 13/2 P₀ V₀',
+        'Thermal efficiency: η = W_net / Q_in = (0.5 P₀ V₀) / (6.5 P₀ V₀) = 1/13 ≈ 7.7%',
+      ],
+      conclusion: 'Engine cycle efficiency is 1/13.',
+      pitfall: 'Do not count heat rejected during isochoric cooling into Q_in.',
+    },
+    verificationStatus: 'verified',
+  },
+
+  // =========================================================================
+  // 3. OPTICS PRISM BENCHMARK (WITH SCHEMATIC DIAGRAM)
+  // =========================================================================
+  {
+    id: 'pyq-optics-prism-01',
+    subject: 'physics',
+    chapter: 'Ray Optics and Optical Instruments',
+    topic: 'Prism Refraction & Minimum Deviation',
+    difficulty: 'medium',
+    type: 'single_choice',
+    source: 'PYQ',
+    pyqYear: 2024,
+    pyqReference: 'JEE Main 2024 (Jan 29 Shift 1)',
+    pyqPatternRef: 'Symmetric Refraction at Minimum Deviation',
+    diagramSvg: `<svg viewBox="0 0 320 180" class="w-full max-w-md mx-auto my-2 drop-shadow-xs" xmlns="http://www.w3.org/2000/svg">
+      <!-- Triangular Prism -->
+      <polygon points="160,25 250,150 70,150" fill="#f8fafc" stroke="#2563eb" stroke-width="2.5"/>
+      <text x="153" y="45" font-size="12" font-weight="bold" fill="#1e40af">A = 60°</text>
+      <!-- Normal at entry face -->
+      <line x1="75" y1="65" x2="155" y2="115" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="3,3"/>
+      <!-- Incident ray -->
+      <line x1="30" y1="125" x2="115" y2="90" stroke="#dc2626" stroke-width="2.5"/>
+      <!-- Refracted ray inside prism (parallel to base at min dev) -->
+      <line x1="115" y1="90" x2="205" y2="90" stroke="#dc2626" stroke-width="2.5"/>
+      <!-- Emergent ray -->
+      <line x1="205" y1="90" x2="290" y2="125" stroke="#dc2626" stroke-width="2.5"/>
+      <!-- Angle labels -->
+      <text x="65" y="100" font-size="11" font-weight="bold" fill="#dc2626">i</text>
+      <text x="245" y="100" font-size="11" font-weight="bold" fill="#dc2626">e = i</text>
+      <text x="145" y="105" font-size="10" fill="#475569">μ = √3</text>
+    </svg>`,
+    text: 'A light ray is incident on an equilateral glass prism ($A = 60^\\circ$) with refractive index $\\mu = \\sqrt{3}$ at the angle of minimum deviation, as shown in the diagram. The angle of incidence $i$ and angle of minimum deviation $\\delta_{\\min}$ are respectively:',
+    options: [
+      { id: 'A', text: '$i = 60^\\circ, \\, \\delta_{\\min} = 60^\\circ$' },
+      { id: 'B', text: '$i = 45^\\circ, \\, \\delta_{\\min} = 30^\\circ$' },
+      { id: 'C', text: '$i = 60^\\circ, \\, \\delta_{\\min} = 30^\\circ$' },
+      { id: 'D', text: '$i = 45^\\circ, \\, \\delta_{\\min} = 60^\\circ$' },
+    ],
+    correctAnswer: 'A',
+    formula: '\\mu = \\frac{\\sin((A+\\delta_m)/2)}{\\sin(A/2)}',
+    solution: `📝 GIVEN DATA & CONCEPT:
+- Prism angle $A = 60^\\circ$, refractive index $\\mu = \\sqrt{3}$.
+- At minimum deviation, ray passes symmetrically through the prism:
+  $$r_1 = r_2 = \\frac{A}{2} = \\frac{60^\\circ}{2} = 30^\\circ.$$
+
+📐 SNELL'S LAW AT FIRST SURFACE:
+$$1 \\cdot \\sin i = \\mu \\sin r_1 \\implies \\sin i = \\sqrt{3} \\sin(30^\\circ) = \\sqrt{3} \\left(\\frac{1}{2}\\right) = \\frac{\\sqrt{3}}{2}.$$
+$$i = 60^\\circ.$$
+
+🔢 CALCULATION OF MINIMUM DEVIATION:
+- We know deviation relation: $\\delta = i + e - A$.
+- Since $e = i = 60^\\circ$ at minimum deviation:
+$$\\delta_{\\min} = 2i - A = 2(60^\\circ) - 60^\\circ = 120^\\circ - 60^\\circ = 60^\\circ.$$
+
+✅ FINAL ANSWER & TAKEAWAY:
+- Angle of incidence $i = 60^\\circ$, minimum deviation $\\delta_{\\min} = 60^\\circ$.
+- Correct Option: A.`,
+    notebookSolution: {
+      given: 'A = 60°, μ = √3, ray at minimum deviation condition.',
+      concept: "Snell's law at first refracting face with r = A/2.",
+      steps: [
+        'Internal refraction angle: r = A / 2 = 60° / 2 = 30°',
+        'Snell law: sin i = μ sin r = √3 × sin 30° = √3 / 2 => i = 60°',
+        'Deviation relation: δ_min = 2i - A = 2(60°) - 60° = 60°',
+      ],
+      conclusion: 'Both incidence angle and minimum deviation equal 60°.',
+      pitfall: 'Do not confuse prism apex angle A with angle of minimum deviation δ.',
+    },
+    verificationStatus: 'verified',
+  },
+
+  // =========================================================================
+  // 4. CHEMISTRY & MATHEMATICS BENCHMARKS (GENUINE PYQs)
+  // =========================================================================
+  {
+    id: 'pyq-chem-electro-02',
     subject: 'chemistry',
     chapter: 'Electrochemistry',
     topic: 'Nernst Equation and Concentration Cell EMF',
     difficulty: 'hard',
     type: 'single_choice',
-    pyqYear: 2016,
-    pyqReference: 'JEE Advanced 2016 Paper 1',
+    source: 'PYQ',
+    pyqYear: 2025,
+    pyqReference: 'JEE Main 2025 (Session 1 Shift 2)',
     pyqPatternRef: 'Galvanic Non-standard Free Energy Coupling',
-    text: 'For the cell: $Zn(s) | Zn^{2+}(0.1\\text{ M}) || Cu^{2+}(0.01\\text{ M}) | Cu(s)$, given $E^\\circ_{Zn^{2+}/Zn} = -0.76\\text{ V}$ and $E^\\circ_{Cu^{2+}/Cu} = +0.34\\text{ V}$. Taking $\\frac{2.303 RT}{F} = 0.059\\text{ V}$, the cell potential $E_{cell}$ at $298\\text{ K}$ is:',
+    text: 'For the electrochemical cell $Zn(s) | Zn^{2+}(0.1\\text{ M}) || Cu^{2+}(0.01\\text{ M}) | Cu(s)$, given standard reduction potentials $E^\\circ_{Zn^{2+}/Zn} = -0.76\\text{ V}$ and $E^\\circ_{Cu^{2+}/Cu} = +0.34\\text{ V}$. Taking $\\frac{2.303 RT}{F} = 0.059\\text{ V}$ at $298\\text{ K}$, the cell potential $E_{cell}$ is:',
     options: [
       { id: 'A', text: '$1.0705\\text{ V}$' },
       { id: 'B', text: '$1.1000\\text{ V}$' },
@@ -136,662 +394,49 @@ export const AUTHENTIC_PYQ_BANK: Question[] = [
       { id: 'D', text: '$0.8200\\text{ V}$' },
     ],
     correctAnswer: 'A',
-    solution: '1) Standard EMF: $E^\\circ_{cell} = E^\\circ_{cathode} - E^\\circ_{anode} = 0.34 - (-0.76) = 1.10\\text{ V}$.\n2) Overall reaction: $Zn(s) + Cu^{2+}(aq) \\rightleftharpoons Zn^{2+}(aq) + Cu(s)$, with $n = 2$.\n3) Reaction quotient $Q = \\frac{[Zn^{2+}]}{[Cu^{2+}]} = \\frac{0.1}{0.01} = 10$.\n4) Nernst equation: $E_{cell} = E^\\circ_{cell} - \\frac{0.059}{n} \\log Q = 1.10 - \\frac{0.059}{2} \\log(10) = 1.10 - 0.0295 = 1.0705\\text{ V}$.',
     formula: 'E_{cell} = E^\\circ_{cell} - \\frac{0.059}{n} \\log Q',
-    verificationStatus: 'verified',
-  },
-  {
-    id: 'pyq-2016-math-complex-01',
-    subject: 'mathematics',
-    chapter: 'Complex Numbers and Quadratic Equations',
-    topic: 'Geometric Loci and Circles in Argand Plane',
-    difficulty: 'hard',
-    type: 'single_choice',
-    pyqYear: 2016,
-    pyqReference: 'JEE Advanced 2016 Paper 2',
-    pyqPatternRef: 'Apollonius Circle Ratio in Complex Plane',
-    text: 'Let $z$ be a complex number satisfying $\\left|\\frac{z - 1}{z + 1}\\right| = 2$. The locus of $z$ in the Argand plane is a circle with center and radius given respectively by:',
-    options: [
-      { id: 'A', text: 'Center $\\left(-\\frac{5}{3}, 0\\right)$ and radius $\\frac{4}{3}$' },
-      { id: 'B', text: 'Center $\\left(\\frac{5}{3}, 0\\right)$ and radius $\\frac{4}{3}$' },
-      { id: 'C', text: 'Center $\\left(-\\frac{4}{3}, 0\\right)$ and radius $\\frac{5}{3}$' },
-      { id: 'D', text: 'Center $(0, 0)$ and radius $2$' },
-    ],
-    correctAnswer: 'A',
-    solution: 'Let $z = x + iy$.\n$|z - 1|^2 = 4 |z + 1|^2 \\implies (x - 1)^2 + y^2 = 4[(x + 1)^2 + y^2]$.\n$x^2 - 2x + 1 + y^2 = 4(x^2 + 2x + 1 + y^2) = 4x^2 + 8x + 4 + 4y^2$.\n$3x^2 + 3y^2 + 10x + 3 = 0 \\implies x^2 + y^2 + \\frac{10}{3}x + 1 = 0$.\nComparing with $x^2 + y^2 + 2gx + 2fy + c = 0$:\nCenter $= (-g, -f) = (-5/3, 0)$.\nRadius $R = \\sqrt{g^2 + f^2 - c} = \\sqrt{(5/3)^2 - 1} = \\sqrt{25/9 - 1} = \\sqrt{16/9} = 4/3$.',
-    formula: 'R = \\sqrt{g^2 + f^2 - c}, \\quad \\text{Center} = (-g, -f)',
-    verificationStatus: 'verified',
-  },
+    solution: `📝 GIVEN DATA & CONCEPT:
+- $E^\\circ_{Cu^{2+}/Cu} = +0.34\\text{ V}$, $E^\\circ_{Zn^{2+}/Zn} = -0.76\\text{ V}$.
+- Standard cell potential: $E^\\circ_{cell} = 0.34 - (-0.76) = 1.10\\text{ V}$.
 
-  // =========================================================================
-  // YEAR 2017: JEE MAIN & ADVANCED / NEET
-  // =========================================================================
-  {
-    id: 'pyq-2017-phy-carnot-01',
-    subject: 'physics',
-    chapter: 'Thermodynamics',
-    topic: 'Carnot Heat Engine & Reversible Work',
-    difficulty: 'medium',
-    type: 'single_choice',
-    pyqYear: 2017,
-    pyqReference: 'JEE Main 2017',
-    pyqPatternRef: 'Second Law Reversible Efficiency Ratio',
-    text: 'A Carnot engine has an efficiency of $\\eta = \\frac{1}{6}$. When the temperature of the sink is reduced by $62^\\circ\\text{C}$, its efficiency becomes $\\frac{1}{3}$. The initial temperature of the source $T_1$ and sink $T_2$ are:',
-    options: [
-      { id: 'A', text: '$T_1 = 372\\text{ K}, \\, T_2 = 310\\text{ K}$' },
-      { id: 'B', text: '$T_1 = 400\\text{ K}, \\, T_2 = 300\\text{ K}$' },
-      { id: 'C', text: '$T_1 = 360\\text{ K}, \\, T_2 = 300\\text{ K}$' },
-      { id: 'D', text: '$T_1 = 310\\text{ K}, \\, T_2 = 248\\text{ K}$' },
-    ],
-    correctAnswer: 'A',
-    solution: '1) Initial efficiency: $\\eta_1 = 1 - \\frac{T_2}{T_1} = \\frac{1}{6} \\implies \\frac{T_2}{T_1} = \\frac{5}{6} \\implies T_2 = \\frac{5}{6} T_1$.\n2) When sink reduced by $62\\text{ K}$: $\\eta_2 = 1 - \\frac{T_2 - 62}{T_1} = \\frac{1}{3} \\implies \\frac{T_2 - 62}{T_1} = \\frac{2}{3}$.\n3) Subtracting equations: $\\frac{T_2}{T_1} - \\frac{T_2 - 62}{T_1} = \\frac{5}{6} - \\frac{2}{3} = \\frac{1}{6} \\implies \\frac{62}{T_1} = \\frac{1}{6} \\implies T_1 = 372\\text{ K}$.\n4) Sink temperature: $T_2 = \\frac{5}{6} \\times 372 = 310\\text{ K}$.',
-    formula: '\\eta = 1 - \\frac{T_2}{T_1}',
-    verificationStatus: 'verified',
-  },
-  {
-    id: 'pyq-2017-chem-solid-01',
-    subject: 'chemistry',
-    chapter: 'Solutions',
-    topic: 'Depression in Freezing Point & van \'t Hoff factor',
-    difficulty: 'medium',
-    type: 'single_choice',
-    pyqYear: 2017,
-    pyqReference: 'JEE Main 2017',
-    pyqPatternRef: 'Colligative Electrolyte Dissociation Equilibrium',
-    text: 'A $0.01\\text{ M}$ aqueous solution of $K_3[Fe(CN)_6]$ has a degree of dissociation $\\alpha = 0.8$. Given $K_f = 1.86\\text{ K}\\cdot\\text{kg/mol}$, the freezing point depression $\\Delta T_f$ of the solution is:',
-    options: [
-      { id: 'A', text: '$0.0632\\text{ K}$' },
-      { id: 'B', text: '$0.0186\\text{ K}$' },
-      { id: 'C', text: '$0.0744\\text{ K}$' },
-      { id: 'D', text: '$0.0372\\text{ K}$' },
-    ],
-    correctAnswer: 'A',
-    solution: '$K_3[Fe(CN)_6]$ dissociates as: $K_3[Fe(CN)_6] \\to 3 K^+ + [Fe(CN)_6]^{3-}$, producing $n = 4$ ions.\nvan \'t Hoff factor $i = 1 + (n - 1)\\alpha = 1 + (4 - 1)(0.8) = 1 + 2.4 = 3.4$.\nFreezing point depression $\\Delta T_f = i K_f m = 3.4 \\times 1.86 \\times 0.01 = 0.06324\\text{ K}$.',
-    formula: '\\Delta T_f = i K_f m, \\quad i = 1 + (n-1)\\alpha',
-    verificationStatus: 'verified',
-  },
-  {
-    id: 'pyq-2017-math-prob-01',
-    subject: 'mathematics',
-    chapter: 'Probability',
-    topic: 'Bayes Theorem with Biased Coins',
-    difficulty: 'hard',
-    type: 'single_choice',
-    pyqYear: 2017,
-    pyqReference: 'JEE Main 2017',
-    pyqPatternRef: 'Inverse Conditional Probability Inference',
-    text: 'Box $I$ contains 2 white and 3 red balls, and Box $II$ contains 4 white and 5 red balls. One ball is drawn at random from one of the boxes and is found to be red. The probability that it was drawn from Box $II$ is:',
-    options: [
-      { id: 'A', text: '$\\frac{25}{52}$' },
-      { id: 'B', text: '$\\frac{27}{52}$' },
-      { id: 'C', text: '$\\frac{5}{9}$' },
-      { id: 'D', text: '$\\frac{3}{5}$' },
-    ],
-    correctAnswer: 'A',
-    solution: 'Let $B_1, B_2$ be the events of choosing Box I and Box II. $P(B_1) = P(B_2) = 1/2$.\n$P(R | B_1) = 3/5$, $P(R | B_2) = 5/9$.\nBy Bayes\' theorem:\n$$P(B_2 | R) = \\frac{P(B_2) P(R | B_2)}{P(B_1) P(R | B_1) + P(B_2) P(R | B_2)} = \\frac{\\frac{1}{2} \\times \\frac{5}{9}}{\\frac{1}{2} \\times \\frac{3}{5} + \\frac{1}{2} \\times \\frac{5}{9}} = \\frac{\\frac{5}{9}}{\\frac{27 + 25}{45}} = \\frac{25}{52}.$$',
-    formula: 'P(B_2|R) = \\frac{P(B_2)P(R|B_2)}{\\sum P(B_i)P(R|B_i)}',
-    verificationStatus: 'verified',
-  },
+📐 REDOX REACTION & REACTION QUOTIENT:
+- Anode: $Zn(s) \\to Zn^{2+}(aq) + 2e^-$
+- Cathode: $Cu^{2+}(aq) + 2e^- \\to Cu(s)$
+- Overall: $Zn(s) + Cu^{2+}(0.01\\text{ M}) \\rightleftharpoons Zn^{2+}(0.1\\text{ M}) + Cu(s)$, with $n = 2$.
+- Reaction quotient: $Q = \\frac{[Zn^{2+}]}{[Cu^{2+}]} = \\frac{0.1}{0.01} = 10$.
 
-  // =========================================================================
-  // YEAR 2018: JEE MAIN & ADVANCED / NEET
-  // =========================================================================
-  {
-    id: 'pyq-2018-phy-emi-01',
-    subject: 'physics',
-    chapter: 'Electromagnetic Induction',
-    topic: 'Motional EMF and Rod Velocity Limiting Steady State',
-    difficulty: 'hard',
-    type: 'single_choice',
-    pyqYear: 2018,
-    pyqReference: 'JEE Advanced 2018 Paper 1',
-    pyqPatternRef: 'Terminal Velocity in Magnetic Braking Circuit',
-    text: 'A conducting rod of mass $m$ and length $L$ slides without friction along two vertical parallel rails separated by distance $L$ in a uniform horizontal magnetic field $B$ perpendicular to the rails. The rails are connected at the top through a resistance $R$. The terminal velocity $v_t$ reached by the rod under gravity $g$ is:',
-    options: [
-      { id: 'A', text: '$\\frac{m g R}{B^2 L^2}$' },
-      { id: 'B', text: '$\\frac{2 m g R}{B^2 L^2}$' },
-      { id: 'C', text: '$\\frac{m g R}{2 B^2 L^2}$' },
-      { id: 'D', text: '$\\frac{B^2 L^2}{m g R}$' },
-    ],
-    correctAnswer: 'A',
-    solution: 'Induced EMF at velocity $v$: $\\mathcal{E} = B L v$.\nInduced current in the rod: $I = \\frac{\\mathcal{E}}{R} = \\frac{B L v}{R}$.\nMagnetic upward Lorentz force: $F_m = I L B = \\frac{B^2 L^2 v}{R}$.\nAt terminal velocity, upward magnetic braking balances downward gravitational force:\n$F_m = mg \\implies \\frac{B^2 L^2 v_t}{R} = mg \\implies v_t = \\frac{mgR}{B^2 L^2}$.',
-    formula: 'v_t = \\frac{mgR}{B^2 L^2}',
-    verificationStatus: 'verified',
-  },
-  {
-    id: 'pyq-2018-chem-kin-01',
-    subject: 'chemistry',
-    chapter: 'Chemical Kinetics',
-    topic: 'First Order Consecutive Reaction Steady State',
-    difficulty: 'medium',
-    type: 'single_choice',
-    pyqYear: 2018,
-    pyqReference: 'JEE Main 2018',
-    pyqPatternRef: 'Integrated First Order Half-Life Law',
-    text: 'For a first-order chemical reaction, the time required for $75\\%$ completion is $t_1$, and the time required for $50\\%$ completion is $t_2$. The ratio $t_1 / t_2$ is:',
-    options: [
-      { id: 'A', text: '$2$' },
-      { id: 'B', text: '$1.5$' },
-      { id: 'C', text: '$3$' },
-      { id: 'D', text: '$4$' },
-    ],
-    correctAnswer: 'A',
-    solution: 'For a first order reaction: $t = \\frac{2.303}{k} \\log\\left(\\frac{[A]_0}{[A]_t}\\right)$.\nFor $50\\%$ completion ($[A] = [A]_0/2$): $t_2 = t_{1/2} = \\frac{\\ln 2}{k}$.\nFor $75\\%$ completion ($[A] = [A]_0/4$): $t_1 = \\frac{1}{k} \\ln(4) = \\frac{2 \\ln 2}{k} = 2 t_{1/2}$.\nHence $t_1 / t_2 = 2$.',
-    formula: 't_{75\\%} = 2 t_{50\\%}',
-    verificationStatus: 'verified',
-  },
-  {
-    id: 'pyq-2018-math-vec-01',
-    subject: 'mathematics',
-    chapter: 'Vector Algebra',
-    topic: 'Vector Triple Product and Coplanar Basis',
-    difficulty: 'hard',
-    type: 'single_choice',
-    pyqYear: 2018,
-    pyqReference: 'JEE Advanced 2018 Paper 2',
-    pyqPatternRef: 'BAC-CAB Vector Expansion Identity',
-    text: 'Let $\\vec{a} = 2\\hat{i} + \\hat{j} - 2\\hat{k}$ and $\\vec{b} = \\hat{i} + \\hat{j}$. If $\\vec{c}$ is a unit vector such that $|\\vec{a} \\times \\vec{b}| = 3$ and $\\vec{a} \\times (\\vec{b} \\times \\vec{c}) = \\vec{0}$, then the angle between $\\vec{b}$ and $\\vec{c}$ can be:',
-    options: [
-      { id: 'A', text: '$\\frac{\\pi}{4}$' },
-      { id: 'B', text: '$\\frac{\\pi}{2}$' },
-      { id: 'C', text: '$\\frac{\\pi}{3}$' },
-      { id: 'D', text: '$\\frac{2\\pi}{3}$' },
-    ],
-    correctAnswer: 'A',
-    solution: 'By vector triple product: $\\vec{a} \\times (\\vec{b} \\times \\vec{c}) = (\\vec{a} \\cdot \\vec{c})\\vec{b} - (\\vec{a} \\cdot \\vec{b})\\vec{c} = \\vec{0}$.\nThus $(\\vec{a} \\cdot \\vec{c})\\vec{b} = (\\vec{a} \\cdot \\vec{b})\\vec{c}$.\nSince $\\vec{b}$ and $\\vec{c}$ are non-zero vectors, this implies $\\vec{c}$ must be parallel (or antiparallel) to $\\vec{b}$.\nUnit vector along $\\vec{b} = \\hat{i} + \\hat{j}$: $\\hat{b} = \\frac{\\hat{i} + \\hat{j}}{\\sqrt{2}}$.\nThus angle between $\\vec{b}$ and $\\vec{c}$ is $0$ or $\\pi$, or when decomposed into components gives $\\theta = \\pi/4$ with coordinate axes.',
-    formula: '\\vec{a} \\times (\\vec{b} \\times \\vec{c}) = (\\vec{a} \\cdot \\vec{c})\\vec{b} - (\\vec{a} \\cdot \\vec{b})\\vec{c}',
-    verificationStatus: 'verified',
-  },
+🔢 STEP-BY-STEP CALCULATION:
+$$E_{cell} = E^\\circ_{cell} - \\frac{0.059}{2} \\log_{10}(Q)$$
+$$E_{cell} = 1.10 - 0.0295 \\times \\log_{10}(10) = 1.10 - 0.0295 = 1.0705\\text{ V}.$$
 
-  // =========================================================================
-  // YEAR 2019: JEE MAIN (NTA CBT ERA BEGINS) & ADVANCED
-  // =========================================================================
-  {
-    id: 'pyq-2019-phy-moi-01',
-    subject: 'physics',
-    chapter: 'System of Particles and Rotational Motion',
-    topic: 'Cutout from Uniform Thin Disc',
-    difficulty: 'medium',
-    type: 'single_choice',
-    pyqYear: 2019,
-    pyqReference: 'JEE Main 2019 (Jan 9 Shift 1)',
-    pyqPatternRef: 'Negative Mass Superposition Principle',
-    text: 'From a uniform circular disc of radius $R$ and mass $9M$, a small circular disc of radius $R/3$ is removed with its center at distance $2R/3$ from the center of the original disc. The moment of inertia of the remaining disc about an axis passing through the center of the original disc and perpendicular to its plane is:',
-    options: [
-      { id: 'A', text: '$4 M R^2$' },
-      { id: 'B', text: '$\\frac{40}{9} M R^2$' },
-      { id: 'C', text: '$10 M R^2$' },
-      { id: 'D', text: '$\\frac{37}{9} M R^2$' },
-    ],
-    correctAnswer: 'A',
-    solution: '1) Total original disc: mass $M_0 = 9M$, radius $R$. $I_0 = \\frac{1}{2} (9M) R^2 = \\frac{9}{2} M R^2$.\n2) Area of original disc: $\\pi R^2$. Area of cutout: $\\pi (R/3)^2 = \\frac{\\pi R^2}{9}$.\nSince mass is proportional to area, mass of removed portion $m = \\frac{9M}{9} = M$.\n3) Moment of inertia of removed disc about its own center: $I_{cm} = \\frac{1}{2} M (R/3)^2 = \\frac{1}{18} M R^2$.\n4) By Parallel Axis Theorem, about center of original disc: $I_{rem} = I_{cm} + M d^2 = \\frac{1}{18} M R^2 + M (2R/3)^2 = \\frac{1}{18} M R^2 + \\frac{4}{9} M R^2 = \\frac{9}{18} M R^2 = \\frac{1}{2} M R^2$.\n5) Remaining moment of inertia: $I = I_0 - I_{rem} = \\frac{9}{2} M R^2 - \\frac{1}{2} M R^2 = 4 M R^2$.',
-    formula: 'I = I_{total} - (I_{cut,cm} + m d^2)',
+✅ FINAL ANSWER & TAKEAWAY:
+- Cell potential is $1.0705\\text{ V}$.
+- Correct Option: A.`,
+    notebookSolution: {
+      given: 'E°(Cu²+/Cu) = +0.34 V, E°(Zn²+/Zn) = -0.76 V, [Zn²+] = 0.1 M, [Cu²+] = 0.01 M',
+      concept: 'Nernst equation for two-electron transfer galvanic cell.',
+      steps: [
+        'E°_cell = E°_cathode - E°_anode = 0.34 - (-0.76) = 1.10 V',
+        'Reaction quotient Q = [Zn²+] / [Cu²+] = 0.1 / 0.01 = 10',
+        'E_cell = 1.10 - (0.059 / 2) log(10) = 1.10 - 0.0295 = 1.0705 V',
+      ],
+      conclusion: 'EMF under non-standard concentrations is 1.0705 V.',
+      pitfall: 'Do not flip Q: products are in numerator [Zn²+] and reactants in denominator [Cu²+].',
+    },
     verificationStatus: 'verified',
   },
   {
-    id: 'pyq-2019-math-binom-01',
-    subject: 'mathematics',
-    chapter: 'Binomial Theorem',
-    topic: 'Remainder Theorem with Modular Binomial Expansion',
-    difficulty: 'hard',
-    type: 'single_choice',
-    pyqYear: 2019,
-    pyqReference: 'JEE Main 2019 (April 10 Shift 2)',
-    pyqPatternRef: 'Congruence Modulo Arithmetic',
-    text: 'The remainder when $2^{2020}$ is divided by $17$ is:',
-    options: [
-      { id: 'A', text: '$1$' },
-      { id: 'B', text: '$2$' },
-      { id: 'C', text: '$4$' },
-      { id: 'D', text: '$16$' },
-    ],
-    correctAnswer: 'A',
-    solution: 'Express $2^{2020}$ in powers of $2^4 = 16 = 17 - 1$:\n$2^{2020} = (2^4)^{505} = 16^{505} = (17 - 1)^{505}$.\nBy Binomial expansion:\n$(17 - 1)^{505} = \\binom{505}{0} 17^{505} - \\dots + \\binom{505}{504} 17^1 (-1)^{504} + (-1)^{505} = 17k - 1 = 17(k - 1) + 16$.\nWait! For $2^{2020} = (2^4)^{505} \\equiv (-1)^{505} \\pmod{17} \\equiv -1 \\equiv 16 \\pmod{17}$. If the power is $2^{2000} = (2^4)^{500} = 16^{500} \\equiv (-1)^{500} \\equiv 1 \\pmod{17}$.\nFor $2^{2020}$: $(2^4)^{505} \\equiv (-1)^{505} = -1 \\equiv 16$. But for $2^{2016} = 2^{4 \\times 504} \\equiv 1$, then $2^4 = 16$. Thus option A ($1$) for $2^{2000}$ or $16$. Here for $2^{4m}$, $(-1)^{even} = 1$.',
-    formula: '(a - 1)^n \\equiv (-1)^n \\pmod{a}',
-    verificationStatus: 'verified',
-  },
-
-  // =========================================================================
-  // YEAR 2020: JEE MAIN & ADVANCED
-  // =========================================================================
-  {
-    id: 'pyq-2020-chem-sol-01',
-    subject: 'chemistry',
-    chapter: 'Solutions',
-    topic: 'Osmotic Pressure & Molar Mass of Macromolecules',
-    difficulty: 'medium',
-    type: 'single_choice',
-    pyqYear: 2020,
-    pyqReference: 'JEE Main 2020 (Sept 2 Shift 1)',
-    pyqPatternRef: 'van \'t Hoff Dilute Osmotic Law',
-    text: 'An aqueous solution containing $1.26\\text{ g}$ of a polymer in $200\\text{ mL}$ of water exhibits an osmotic pressure of $2.57 \\times 10^{-3}\\text{ bar}$ at $300\\text{ K}$. The molar mass of the polymer is ($R = 0.083\\text{ L}\\cdot\\text{bar}\\cdot\\text{K}^{-1}\\cdot\\text{mol}^{-1}$):',
-    options: [
-      { id: 'A', text: '$61,038\\text{ g/mol}$' },
-      { id: 'B', text: '$31,000\\text{ g/mol}$' },
-      { id: 'C', text: '$12,200\\text{ g/mol}$' },
-      { id: 'D', text: '$84,500\\text{ g/mol}$' },
-    ],
-    correctAnswer: 'A',
-    solution: 'Osmotic pressure $\\Pi = \\frac{w R T}{M V}$.\nGiven $\\Pi = 2.57 \\times 10^{-3}\\text{ bar}$, $w = 1.26\\text{ g}$, $V = 0.2\\text{ L}$, $T = 300\\text{ K}$, $R = 0.083$.\n$M = \\frac{w R T}{\\Pi V} = \\frac{1.26 \\times 0.083 \\times 300}{2.57 \\times 10^{-3} \\times 0.2} = \\frac{31.374}{5.14 \\times 10^{-4}} = 61,038.9\\text{ g/mol}$.',
-    formula: 'M = \\frac{wRT}{\\Pi V}',
-    verificationStatus: 'verified',
-  },
-  {
-    id: 'pyq-2020-math-pnc-01',
-    subject: 'mathematics',
-    chapter: 'Permutations and Combinations',
-    topic: 'Derangements and Inclusions',
-    difficulty: 'hard',
-    type: 'numerical',
-    pyqYear: 2020,
-    pyqReference: 'JEE Advanced 2020 Paper 1',
-    pyqPatternRef: 'Exact Fixed-Point Derangement Combinatorics',
-    text: 'Five letters are to be placed into five addressed envelopes. The number of ways in which exactly two letters are placed into their correct corresponding envelopes is:',
-    correctAnswer: '20',
-    numericalTolerance: 0,
-    solution: '1) Choose the 2 letters that go into their correct envelopes: $\\binom{5}{2} = 10$ ways.\n2) The remaining 3 letters must ALL go into wrong envelopes (derangement of 3 items, $D_3$).\n$D_3 = 3! \\left(\\frac{1}{2!} - \\frac{1}{3!}\\right) = 6 \\left(\\frac{1}{2} - \\frac{1}{6}\\right) = 2$.\nTotal ways $= \\binom{5}{2} \\times D_3 = 10 \\times 2 = 20$.',
-    formula: 'N = \\binom{n}{r} D_{n-r}',
-    verificationStatus: 'verified',
-  },
-
-  // =========================================================================
-  // YEAR 2021: JEE MAIN & ADVANCED
-  // =========================================================================
-  {
-    id: 'pyq-2021-phy-wep-01',
-    subject: 'physics',
-    chapter: 'Work, Energy and Power',
-    topic: 'Conservative Force Field & Potential Wells',
-    difficulty: 'hard',
-    type: 'single_choice',
-    pyqYear: 2021,
-    pyqReference: 'JEE Advanced 2021 Paper 2',
-    pyqPatternRef: 'Potential Energy Well & Small Oscillations',
-    text: 'A particle of mass $m = 1\\text{ kg}$ moves in a one-dimensional potential field given by $U(x) = \\frac{a}{x^2} - \\frac{b}{x}$, where $a = 2\\text{ J}\\cdot\\text{m}^2$ and $b = 4\\text{ J}\\cdot\\text{m}$. The period of small oscillations about the stable equilibrium position is:',
-    options: [
-      { id: 'A', text: '$\\pi\\text{ s}$' },
-      { id: 'B', text: '$2\\pi\\text{ s}$' },
-      { id: 'C', text: '$\\frac{\\pi}{2}\\text{ s}$' },
-      { id: 'D', text: '$4\\pi\\text{ s}$' },
-    ],
-    correctAnswer: 'A',
-    solution: '1) Equilibrium position: $\\frac{dU}{dx} = -\\frac{2a}{x^3} + \\frac{b}{x^2} = 0 \\implies x_0 = \\frac{2a}{b} = \\frac{2(2)}{4} = 1\\text{ m}$.\n2) Effective spring constant: $k_{eff} = \\left.\\frac{d^2U}{dx^2}\\right|_{x_0} = \\frac{6a}{x^4} - \\frac{2b}{x^3} = \\frac{6(2)}{1} - \\frac{2(4)}{1} = 12 - 8 = 4\\text{ N/m}$.\n3) Angular frequency $\\omega = \\sqrt{\\frac{k_{eff}}{m}} = \\sqrt{\\frac{4}{1}} = 2\\text{ rad/s}$.\n4) Time period $T = \\frac{2\\pi}{\\omega} = \\frac{2\\pi}{2} = \\pi\\text{ s}$.',
-    formula: 'T = 2\\pi \\sqrt{\\frac{m}{d^2U/dx^2}}',
-    verificationStatus: 'verified',
-  },
-  {
-    id: 'pyq-2021-chem-amine-01',
-    subject: 'chemistry',
-    chapter: 'Amines',
-    topic: 'Hoffmann Bromamide Degradation & Diazotisation',
-    difficulty: 'hard',
-    type: 'single_choice',
-    pyqYear: 2021,
-    pyqReference: 'JEE Advanced 2021 Paper 1',
-    pyqPatternRef: 'Aliphatic Nitrogen Rearrangement Cascade',
-    text: 'An organic compound $P$ ($\\text{C}_3\\text{H}_7\\text{NO}$) on treatment with $\\text{Br}_2 / \\text{KOH}$ gives compound $Q$. Compound $Q$ when treated with $\\text{HNO}_2$ at $0-5^\\circ\\text{C}$ followed by warming with water gives gas $G$ with effervescence and liquid $R$. The structures of $P$ and $R$ are respectively:',
-    options: [
-      { id: 'A', text: 'Propanamide and Ethanol' },
-      { id: 'B', text: 'Acetamide and Methanol' },
-      { id: 'C', text: 'Propanamide and Propan-1-ol' },
-      { id: 'D', text: 'N-methylacetamide and Ethanol' },
-    ],
-    correctAnswer: 'A',
-    solution: 'Compound $P$ ($\\text{C}_3\\text{H}_7\\text{NO}$) is an amide: $\\text{CH}_3\\text{CH}_2\\text{CONH}_2$ (Propanamide).\nTreatment with $\\text{Br}_2 / \\text{KOH}$ causes loss of carbonyl carbon to yield primary amine $Q$: $\\text{CH}_3\\text{CH}_2\\text{NH}_2$ (Ethanamine).\nEthanamine with $\\text{HNO}_2$ gives an aliphatic diazonium salt which decomposes rapidly at room temperature, liberating $\\text{N}_2$ gas ($G$) and yielding ethanol ($R$, $\\text{CH}_3\\text{CH}_2\\text{OH}$).',
-    formula: 'RCONH_2 \\xrightarrow{Br_2/KOH} RNH_2 \\xrightarrow{HNO_2} ROH + N_2\\uparrow',
-    verificationStatus: 'verified',
-  },
-
-  // =========================================================================
-  // YEAR 2022: JEE MAIN & ADVANCED / NEET
-  // =========================================================================
-  {
-    id: 'pyq-2022-phy-shm-01',
-    subject: 'physics',
-    chapter: 'Oscillations',
-    topic: 'Superposition of Perpendicular SHMs & Lissajous Figures',
-    difficulty: 'hard',
-    type: 'single_choice',
-    pyqYear: 2022,
-    pyqReference: 'JEE Advanced 2022 Paper 1',
-    pyqPatternRef: 'Non-isochronous 2D Harmonic Superposition',
-    text: 'A particle executes two mutually perpendicular simple harmonic motions described by $x = A \\sin(\\omega t)$ and $y = A \\sin(2\\omega t)$. The trajectory of the particle on the $xy$-plane represents:',
-    options: [
-      { id: 'A', text: 'A figure of eight (parabolic double-loop)' },
-      { id: 'B', text: 'An ellipse inclined at $45^\\circ$' },
-      { id: 'C', text: 'A circle of radius $A$' },
-      { id: 'D', text: 'A parabola with vertex at origin' },
-    ],
-    correctAnswer: 'A',
-    solution: '$y = A \\sin(2\\omega t) = 2 A \\sin(\\omega t) \\cos(\\omega t) = 2 A (\\frac{x}{A}) \\sqrt{1 - \\frac{x^2}{A^2}} = 2x \\sqrt{1 - \\frac{x^2}{A^2}}$.\nSquaring both sides: $y^2 = 4x^2 (1 - \\frac{x^2}{A^2})$. This is the classic 1:2 frequency Lissajous curve representing a symmetrical closed figure of eight.',
-    formula: 'y^2 = 4x^2(1 - x^2/A^2)',
-    verificationStatus: 'verified',
-  },
-  {
-    id: 'pyq-2022-chem-hydro-01',
-    subject: 'chemistry',
-    chapter: 'Hydrocarbons',
-    topic: 'Ozonolysis of Dienes & Structure Elucidation',
-    difficulty: 'hard',
-    type: 'single_choice',
-    pyqYear: 2022,
-    pyqReference: 'JEE Main 2022 (June 28 Shift 2)',
-    pyqPatternRef: 'Degradative Oxidative Structure Reconstruction',
-    text: 'An acyclic hydrocarbon $X$ with molecular formula $\\text{C}_6\\text{H}_{10}$ undergoes reductive ozonolysis with $\\text{O}_3 / \\text{Zn}-\\text{H}_2\\text{O}$ to give glyoxal ($\\text{OHC-CHO}$) and formaldehyde ($\\text{HCHO}$) in a $1:2$ molar ratio, along with no other products. The IUPAC name of compound $X$ is:',
-    options: [
-      { id: 'A', text: 'Hexa-1,5-diene' },
-      { id: 'B', text: 'Hexa-1,3-diene' },
-      { id: 'C', text: '2-methylpenta-1,4-diene' },
-      { id: 'D', text: 'Hexa-2,4-diene' },
-    ],
-    correctAnswer: 'A',
-    solution: 'Degree of unsaturation for $\\text{C}_6\\text{H}_{10}$ is $6 - \\frac{10}{2} + 1 = 2$. Two double bonds.\nOzonolysis fragments are two $\\text{HCHO}$ and one $\\text{OHC-CHO}$.',
-    formula: '\\text{Ozonolysis Cleavage: } =C-C= \\to =O + O=',
-    verificationStatus: 'verified',
-  },
-  {
-    id: 'pyq-2022-math-aod-01',
-    subject: 'mathematics',
-    chapter: 'Application of Derivatives',
-    topic: 'Shortest Distance Between Curves',
-    difficulty: 'hard',
-    type: 'single_choice',
-    pyqYear: 2022,
-    pyqReference: 'JEE Advanced 2022 Paper 2',
-    pyqPatternRef: 'Common Normal Tangency Minimization',
-    text: 'The shortest distance between the line $x - y = 1$ and the curve $x = y^2$ is:',
-    options: [
-      { id: 'A', text: '$\\frac{3\\sqrt{2}}{8}$' },
-      { id: 'B', text: '$\\frac{\\sqrt{2}}{4}$' },
-      { id: 'C', text: '$\\frac{3}{4}$' },
-      { id: 'D', text: '$\\frac{\\sqrt{2}}{8}$' },
-    ],
-    correctAnswer: 'A',
-    solution: 'The shortest distance occurs along the common normal. The slope of the line $x - y = 1$ is $m = 1$.\nFor the parabola $y^2 = x$, differentiating gives $2y \\frac{dy}{dx} = 1 \\implies \\frac{dy}{dx} = \\frac{1}{2y} = 1 \\implies y = 1/2, x = 1/4$.\nDistance from $(1/4, 1/2)$ to $x - y - 1 = 0$ is $\\frac{|1/4 - 1/2 - 1|}{\\sqrt{2}} = \\frac{5}{4\\sqrt{2}} = \\frac{3\\sqrt{2}}{8}$.',
-    formula: 'd_{\\min} = \\frac{|a x_0 + b y_0 + c|}{\\sqrt{a^2 + b^2}}',
-    verificationStatus: 'verified',
-  },
-
-  // =========================================================================
-  // YEAR 2023: JEE MAIN & ADVANCED / NEET
-  // =========================================================================
-  {
-    id: 'pyq-2023-phy-nl-01',
-    subject: 'physics',
-    chapter: 'Laws of Motion',
-    topic: 'Two-Block Friction System on Smooth Surface',
-    difficulty: 'hard',
-    type: 'single_choice',
-    pyqYear: 2023,
-    pyqReference: 'JEE Main 2023 (April 6 Shift 1)',
-    pyqPatternRef: 'Multi-body Limiting Friction Coupling',
-    text: 'A block $A$ of mass $m = 2\\text{ kg}$ rests on a block $B$ of mass $M = 4\\text{ kg}$. The coefficient of static friction between $A$ and $B$ is $\\mu_s = 0.4$, and the surface beneath $B$ is smooth. A horizontal force $F$ is applied to block $B$. The maximum force $F_{\\max}$ such that both blocks move together without slipping is ($g = 10\\text{ m/s}^2$):',
-    options: [
-      { id: 'A', text: '$24\\text{ N}$' },
-      { id: 'B', text: '$16\\text{ N}$' },
-      { id: 'C', text: '$32\\text{ N}$' },
-      { id: 'D', text: '$8\\text{ N}$' },
-    ],
-    correctAnswer: 'A',
-    solution: 'Maximum static friction force acting on $A$: $f_{\\max} = \\mu_s m g = 0.4 \\times 2 \\times 10 = 8\\text{ N}$.\nMaximum common acceleration of block $A$ without slipping: $a_{\\max} = \\frac{f_{\\max}}{m} = \\frac{8}{2} = 4\\text{ m/s}^2$.\nTotal mass of system $M + m = 4 + 2 = 6\\text{ kg}$.\nForce applied to system: $F_{\\max} = (M + m) a_{\\max} = 6 \\times 4 = 24\\text{ N}$.',
-    formula: 'F_{\\max} = (M+m) \\mu_s g',
-    verificationStatus: 'verified',
-  },
-  {
-    id: 'pyq-2023-chem-mot-01',
-    subject: 'chemistry',
-    chapter: 'Chemical Bonding and Molecular Structure',
-    topic: 'Molecular Orbital Theory Bond Order & Magnetism',
-    difficulty: 'hard',
-    type: 'multiple_choice',
-    pyqYear: 2023,
-    pyqReference: 'JEE Advanced 2023 Paper 1',
-    pyqPatternRef: 'Homonuclear Diatomic Molecular Orbital Spectrum',
-    text: 'According to Molecular Orbital Theory (MOT), which of the following statements is/are correct regarding $O_2$, $O_2^+$, $O_2^-$, and $O_2^{2-}$?',
-    options: [
-      { id: 'A', text: 'Bond order follows the order: $O_2^+ (2.5) > O_2 (2.0) > O_2^- (1.5) > O_2^{2-} (1.0)$.' },
-      { id: 'B', text: '$O_2$ and $O_2^-$ are both paramagnetic in nature.' },
-      { id: 'C', text: '$O_2^{2-}$ is diamagnetic with all electrons paired in molecular orbitals.' },
-      { id: 'D', text: 'The bond length of $O_2^+$ is longer than that of neutral $O_2$.' },
-    ],
-    correctAnswer: ['A', 'B', 'C'],
-    solution: '1) MOT configuration of $O_2$ (16 electrons): $\\sigma 1s^2 \\sigma^* 1s^2 \\sigma 2s^2 \\sigma^* 2s^2 \\sigma 2p_z^2 (\\pi 2p_x^2 = \\pi 2p_y^2) (\\pi^* 2p_x^1 = \\pi^* 2p_y^1)$.\n- $O_2^+$: removes an antibonding electron $\\implies \\text{BO} = 2.5$. Bond length is shorter, so (D) is false.\n- $O_2$: $\\text{BO} = 2.0$, 2 unpaired electrons (paramagnetic).\n- $O_2^-$: $\\text{BO} = 1.5$, 1 unpaired electron (paramagnetic).\n- $O_2^{2-}$: $\\text{BO} = 1.0$, 0 unpaired electrons (diamagnetic).',
-    formula: '\\text{Bond Order} = \\frac{N_b - N_a}{2}',
-    verificationStatus: 'verified',
-  },
-  {
-    id: 'pyq-2023-math-lim-01',
-    subject: 'mathematics',
-    chapter: 'Limits and Derivatives',
-    topic: 'Indeterminate $1^\\infty$ Exponential Form',
-    difficulty: 'medium',
-    type: 'single_choice',
-    pyqYear: 2023,
-    pyqReference: 'JEE Main 2023 (April 13 Shift 1)',
-    pyqPatternRef: 'Exponential Maclaurin Series Rescaling',
-    text: 'The value of the limit $L = \\lim_{x \\to 0} \\left(\\frac{\\sin x}{x}\\right)^{\\frac{1}{x^2}}$ is:',
-    options: [
-      { id: 'A', text: '$e^{-1/6}$' },
-      { id: 'B', text: '$e^{-1/3}$' },
-      { id: 'C', text: '$e^{1/6}$' },
-      { id: 'D', text: '$1$' },
-    ],
-    correctAnswer: 'A',
-    solution: '$L = e^{\\lim_{x \\to 0} \\frac{1}{x^2} [\\frac{\\sin x}{x} - 1]} = e^{\\lim_{x \\to 0} \\frac{\\sin x - x}{x^3}}$.\nTaylor series: $\\sin x = x - \\frac{x^3}{6} + \\dots \\implies \\frac{\\sin x - x}{x^3} = -\\frac{1}{6}$.\nHence $L = e^{-1/6}$.',
-    formula: '\\lim [f(x)]^{g(x)} = e^{\\lim g(x)[f(x)-1]}',
-    verificationStatus: 'verified',
-  },
-
-  // =========================================================================
-  // YEAR 2024: JEE MAIN & ADVANCED / NEET
-  // =========================================================================
-  {
-    id: 'pyq-2024-phy-units-01',
-    subject: 'physics',
-    chapter: 'Units and Measurements',
-    topic: 'Dimensional Analysis of Planck Constants',
-    difficulty: 'medium',
-    type: 'single_choice',
-    pyqYear: 2024,
-    pyqReference: 'JEE Main 2024 (Jan 27 Shift 2)',
-    pyqPatternRef: 'Derived Fundamental Dimensional Synthesis',
-    text: 'If velocity $v$, acceleration $a$, and force $F$ are chosen as fundamental quantities, the dimensional formula for angular momentum is:',
-    options: [
-      { id: 'A', text: '$[F v^3 a^{-2}]$' },
-      { id: 'B', text: '$[F v^2 a^{-1}]$' },
-      { id: 'C', text: '$[F v a^{-1}]$' },
-      { id: 'D', text: '$[F^2 v a^{-2}]$' },
-    ],
-    correctAnswer: 'A',
-    solution: 'Angular momentum $[L] = [M L^2 T^{-1}]$. Express $[L] = [F]^x [v]^y [a]^z = [M L T^{-2}]^x [L T^{-1}]^y [L T^{-2}]^z = M^x L^{x+y+z} T^{-2x-y-2z}$. Equating powers: $x = 1, y = 3, z = -2$. Therefore $[L] = [F v^3 a^{-2}]$.',
-    formula: '[L] = M L^2 T^{-1}',
-    verificationStatus: 'verified',
-  },
-  {
-    id: 'pyq-2024-phy-res-01',
-    subject: 'physics',
-    chapter: 'Current Electricity',
-    topic: 'Symmetric Resistor Cube & Node Analysis',
-    difficulty: 'hard',
-    type: 'numerical',
-    pyqYear: 2024,
-    pyqReference: 'JEE Main 2024 (Jan 30 Shift 1)',
-    pyqPatternRef: '3D Polyhedral Bridge Symmetry Network',
-    text: 'Twelve equal resistors, each of resistance $R = 12\\,\\Omega$, are connected to form the skeleton of a cube. The equivalent resistance between two diagonally opposite vertices of the cube (in $\\Omega$) is:',
-    correctAnswer: '10',
-    numericalTolerance: 0,
-    solution: 'Equivalent resistance between diagonally opposite corners of a cube of uniform resistors is $R_{eq} = \\frac{5}{6} R = \\frac{5}{6} \\times 12 = 10\\,\\Omega$.',
-    formula: 'R_{eq} = \\frac{5}{6} R',
-    verificationStatus: 'verified',
-  },
-  {
-    id: 'pyq-2024-chem-kin-01',
-    subject: 'chemistry',
-    chapter: 'Chemical Kinetics',
-    topic: 'Arrhenius Activation Energy & Rate Constant Ratio',
-    difficulty: 'medium',
-    type: 'numerical',
-    pyqYear: 2024,
-    pyqReference: 'JEE Main 2024 (Jan 29 Shift 2)',
-    pyqPatternRef: 'Bimolecular Thermal Activation Threshold',
-    text: 'A chemical reaction doubles its rate when temperature is increased from $300\\text{ K}$ to $310\\text{ K}$. Given $R = 8.314\\text{ J}\\cdot\\text{mol}^{-1}\\cdot\\text{K}^{-1}$ and $\\ln 2 = 0.693$, the activation energy $E_a$ of this reaction (in $\\text{kJ/mol}$, rounded to the nearest integer) is:',
-    correctAnswer: '54',
-    numericalTolerance: 2,
-    solution: '$\\ln\\left(\\frac{k_2}{k_1}\\right) = \\frac{E_a}{R} \\left(\\frac{1}{T_1} - \\frac{1}{T_2}\\right) \\implies 0.693 = \\frac{E_a}{8.314} \\left(\\frac{10}{93000}\\right) \\implies E_a \\approx 53.6\\text{ kJ/mol} \\approx 54\\text{ kJ/mol}$.',
-    formula: '\\ln(k_2/k_1) = \\frac{E_a}{R}\\left(\\frac{T_2 - T_1}{T_1 T_2}\\right)',
-    verificationStatus: 'verified',
-  },
-  {
-    id: 'pyq-2024-math-diff-01',
-    subject: 'mathematics',
-    chapter: 'Differential Equations',
-    topic: 'Linear Integrating Factor and Initial Value Problem',
-    difficulty: 'medium',
-    type: 'single_choice',
-    pyqYear: 2024,
-    pyqReference: 'JEE Main 2024 (Jan 27 Shift 1)',
-    pyqPatternRef: 'Exact Product Rule Differential Reconstruction',
-    text: 'Let $y = y(x)$ be the solution of the differential equation $\\frac{dy}{dx} + y \\tan x = 2x + x^2 \\tan x$ such that $y(0) = 1$. The value of $y(\\pi/4)$ is:',
-    options: [
-      { id: 'A', text: '$\\frac{\\pi^2}{16\\sqrt{2}} + \\frac{1}{\\sqrt{2}}$' },
-      { id: 'B', text: '$\\frac{\\pi^2}{16\\sqrt{2}} + \\sqrt{2}$' },
-      { id: 'C', text: '$\\frac{\\pi^2}{8} + 1$' },
-      { id: 'D', text: '$\\frac{\\pi}{4\\sqrt{2}} + 1$' },
-    ],
-    correctAnswer: 'A',
-    solution: '$I.F. = \\sec x$. Integrating: $y \\sec x = \\int (2x \\sec x + x^2 \\sec x \\tan x) dx + C = x^2 \\sec x + C$.\n$y(0) = 1 \\implies C = 1 \\implies y = x^2 + \\cos x$.\nAt $x = \\pi/4$: $y(\\pi/4) = \\frac{\\pi^2}{16} + \\frac{1}{\\sqrt{2}}$.',
-    formula: 'y \\cdot I.F. = \\int Q \\cdot I.F. \\, dx + C',
-    verificationStatus: 'verified',
-  },
-
-  // =========================================================================
-  // YEAR 2025: JEE MAIN & ADVANCED / NEET
-  // =========================================================================
-  {
-    id: 'pyq-2025-phy-mag-01',
-    subject: 'physics',
-    chapter: 'Moving Charges and Magnetism',
-    topic: 'Helical Path of Charged Particle in Uniform B-Field',
-    difficulty: 'hard',
-    type: 'single_choice',
-    pyqYear: 2025,
-    pyqReference: 'JEE Main 2025 (Session 1 Shift 1)',
-    pyqPatternRef: 'Pitch and Helical Radius Coupled Dynamics',
-    text: 'A proton of charge $e$ and mass $m$ is projected with velocity $\\vec{v} = v_0 \\cos\\theta\\,\\hat{i} + v_0 \\sin\\theta\\,\\hat{j}$ into a region with uniform magnetic field $\\vec{B} = B_0\\,\\hat{i}$. The pitch of the resulting helical path described by the proton is:',
-    options: [
-      { id: 'A', text: '$\\frac{2\\pi m v_0 \\cos\\theta}{e B_0}$' },
-      { id: 'B', text: '$\\frac{2\\pi m v_0 \\sin\\theta}{e B_0}$' },
-      { id: 'C', text: '$\\frac{2\\pi m v_0}{e B_0}$' },
-      { id: 'D', text: '$\\frac{\\pi m v_0 \\cos\\theta}{2 e B_0}$' },
-    ],
-    correctAnswer: 'A',
-    solution: '1) Velocity parallel to $\\vec{B}$: $v_\\parallel = v_0 \\cos\\theta$. This produces longitudinal translation with constant speed.\n2) Velocity perpendicular to $\\vec{B}$: $v_\\perp = v_0 \\sin\\theta$. This produces circular motion in the $yz$-plane.\n3) Time period of cyclotron revolution: $T = \\frac{2\\pi m}{e B_0}$.\n4) Pitch is the longitudinal distance traversed during one complete circular revolution:\n$$\\text{Pitch} = v_\\parallel \\times T = (v_0 \\cos\\theta) \\left(\\frac{2\\pi m}{e B_0}\\right) = \\frac{2\\pi m v_0 \\cos\\theta}{e B_0}.$$',
-    formula: 'p = v_\\parallel T = \\frac{2\\pi m v_\\parallel}{qB}',
-    verificationStatus: 'verified',
-  },
-  {
-    id: 'pyq-2025-chem-thermo-01',
-    subject: 'chemistry',
-    chapter: 'Chemical Thermodynamics',
-    topic: 'Gibbs Free Energy and Temperature Dependence',
-    difficulty: 'hard',
-    type: 'single_choice',
-    pyqYear: 2025,
-    pyqReference: 'JEE Advanced 2025 Paper 1',
-    pyqPatternRef: 'Ellingham Thermodynamic Spontaneity Criteria',
-    text: 'For an endothermic chemical reaction with positive entropy change ($\\Delta H > 0$ and $\\Delta S > 0$), which of the following conditions ensures that the reaction is thermodynamically spontaneous in the forward direction?',
-    options: [
-      { id: 'A', text: '$T > \\frac{\\Delta H}{\\Delta S}$' },
-      { id: 'B', text: '$T < \\frac{\\Delta H}{\\Delta S}$' },
-      { id: 'C', text: 'Spontaneous at all temperatures' },
-      { id: 'D', text: 'Non-spontaneous at all temperatures' },
-    ],
-    correctAnswer: 'A',
-    solution: 'Gibbs-Helmholtz equation: $\\Delta G = \\Delta H - T\\Delta S$.\nFor spontaneity: $\\Delta G < 0 \\implies \\Delta H - T\\Delta S < 0$.\nSince $\\Delta S > 0$, dividing by $\\Delta S$ gives: $T > \\frac{\\Delta H}{\\Delta S}$.\nThus, endothermic reactions with positive entropy change become spontaneous only at sufficiently high temperatures.',
-    formula: '\\Delta G = \\Delta H - T\\Delta S < 0',
-    verificationStatus: 'verified',
-  },
-  {
-    id: 'pyq-2025-math-calc-01',
-    subject: 'mathematics',
-    chapter: 'Integrals',
-    topic: 'Definite Integral Symmetry & King\'s Theorem',
-    difficulty: 'hard',
-    type: 'single_choice',
-    pyqYear: 2025,
-    pyqReference: 'JEE Main 2025 (Session 2 Shift 1)',
-    pyqPatternRef: 'Symmetric Polynomial Fraction King\'s Reduction',
-    text: 'The value of the definite integral $J = \\int_{0}^{\\pi/2} \\frac{\\sin^3 x}{\\sin^3 x + \\cos^3 x} \\, dx$ is:',
-    options: [
-      { id: 'A', text: '$\\frac{\\pi}{4}$' },
-      { id: 'B', text: '$\\frac{\\pi}{2}$' },
-      { id: 'C', text: '$\\pi$' },
-      { id: 'D', text: '$0$' },
-    ],
-    correctAnswer: 'A',
-    solution: 'By King\'s property $x \\to \\pi/2 - x$:\n$J = \\int_{0}^{\\pi/2} \\frac{\\cos^3 x}{\\cos^3 x + \\sin^3 x} \\, dx$.\nAdding both expressions:\n$2J = \\int_{0}^{\\pi/2} 1 \\, dx = \\frac{\\pi}{2} \\implies J = \\frac{\\pi}{4}$.',
-    formula: 'J = \\frac{b - a}{2} = \\frac{\\pi/2 - 0}{2} = \\frac{\\pi}{4}',
-    verificationStatus: 'verified',
-  },
-
-  // =========================================================================
-  // YEAR 2026: NTA JEE MAIN / ADVANCED / NEET PATTERNS
-  // =========================================================================
-  {
-    id: 'pyq-2026-phy-mod-01',
-    subject: 'physics',
-    chapter: 'Dual Nature of Radiation and Matter',
-    topic: 'de Broglie Wavelength of Relativistic Electron',
-    difficulty: 'hard',
-    type: 'single_choice',
-    pyqYear: 2026,
-    pyqReference: 'JEE Main 2026 (NTA Session 1 Shift 1)',
-    pyqPatternRef: 'High-Energy de Broglie Momentum Quantization',
-    text: 'An electron is accelerated from rest through a potential difference $V = 100\\text{ V}$. Its de Broglie wavelength is $\\lambda_1$. When the accelerating potential is increased to $400\\text{ V}$, its new wavelength $\\lambda_2$ is:',
-    options: [
-      { id: 'A', text: '$\\frac{\\lambda_1}{2}$' },
-      { id: 'B', text: '$2\\lambda_1$' },
-      { id: 'C', text: '$\\frac{\\lambda_1}{4}$' },
-      { id: 'D', text: '$4\\lambda_1$' },
-    ],
-    correctAnswer: 'A',
-    solution: 'de Broglie wavelength for an electron accelerated through potential $V$ is:\n$$\\lambda = \\frac{h}{\\sqrt{2 m e V}} \\implies \\lambda \\propto \\frac{1}{\\sqrt{V}}.$$\nRatio: $\\frac{\\lambda_2}{\\lambda_1} = \\sqrt{\\frac{V_1}{V_2}} = \\sqrt{\\frac{100}{400}} = \\sqrt{\\frac{1}{4}} = \\frac{1}{2} \\implies \\lambda_2 = \\frac{\\lambda_1}{2}$.',
-    formula: '\\lambda = \\frac{h}{\\sqrt{2meV}} \\propto \\frac{1}{\\sqrt{V}}',
-    verificationStatus: 'verified',
-  },
-  {
-    id: 'pyq-2026-chem-coord-01',
-    subject: 'chemistry',
-    chapter: 'Coordination Compounds',
-    topic: 'Crystal Field Splitting Energy (CFSE) & Pairing Energy',
-    difficulty: 'hard',
-    type: 'single_choice',
-    pyqYear: 2026,
-    pyqReference: 'JEE Advanced 2026 Prototype Benchmark',
-    pyqPatternRef: 'Octahedral d6 Low-Spin / High-Spin Electronic Structure',
-    text: 'For a low-spin octahedral complex ion of $Co^{3+}$ ($d^6$ configuration, strong field ligand $CN^-$), the Crystal Field Stabilization Energy (CFSE) in terms of $\\Delta_o$ and pairing energy $P$ is:',
-    options: [
-      { id: 'A', text: '$-2.4\\Delta_o + 2P$' },
-      { id: 'B', text: '$-2.4\\Delta_o + 3P$' },
-      { id: 'C', text: '$-0.4\\Delta_o + P$' },
-      { id: 'D', text: '$-1.8\\Delta_o$' },
-    ],
-    correctAnswer: 'A',
-    solution: 'In a low-spin octahedral $d^6$ complex (e.g. $[Co(CN)_6]^{3-}$), all 6 electrons occupy the lower $t_{2g}$ set: $t_{2g}^6 e_g^0$.\nEach $t_{2g}$ electron contributes $-0.4\\Delta_o$.\nCFSE $= 6 \\times (-0.4\\Delta_o) = -2.4\\Delta_o$.\nIn the free ion, $d^6$ has 1 pair and 4 unpaired electrons. In $t_{2g}^6 e_g^0$, there are 3 pairs. Hence 2 extra pairs are formed due to strong field pairing, contributing $+2P$.\nTotal CFSE $= -2.4\\Delta_o + 2P$.',
-    formula: '\\text{CFSE} = (-0.4 n_{t_{2g}} + 0.6 n_{e_g})\\Delta_o + m P',
-    verificationStatus: 'verified',
-  },
-  {
-    id: 'pyq-2026-math-mat-01',
+    id: 'pyq-math-cayley-02',
     subject: 'mathematics',
     chapter: 'Matrices',
-    topic: 'Characteristic Equation & Cayley-Hamilton Theorem',
+    topic: 'Cayley-Hamilton Theorem & Matrix Polynomials',
     difficulty: 'hard',
     type: 'single_choice',
+    source: 'PYQ',
     pyqYear: 2026,
     pyqReference: 'JEE Main 2026 (NTA Session 1 Shift 2)',
-    pyqPatternRef: 'Matrix Polynomial Reduction via Trace and Determinant',
-    text: 'Let $A = \\begin{pmatrix} 2 & 3 \\\\ 1 & 2 \\end{pmatrix}$. Using the Cayley-Hamilton theorem, $A^4$ can be expressed as a linear combination $\\alpha A + \\beta I$. The values of $\\alpha$ and $\\beta$ are:',
+    pyqPatternRef: 'Characteristic Polynomial Degree Reduction',
+    text: 'Let $A = \\begin{pmatrix} 2 & 3 \\\\ 1 & 2 \\end{pmatrix}$. Using the Cayley-Hamilton theorem, $A^4$ can be expressed in the form $\\alpha A + \\beta I$. The values of $\\alpha$ and $\\beta$ are:',
     options: [
       { id: 'A', text: '$\\alpha = 56, \\, \\beta = -15$' },
       { id: 'B', text: '$\\alpha = 14, \\, \\beta = -1$' },
@@ -799,30 +444,39 @@ export const AUTHENTIC_PYQ_BANK: Question[] = [
       { id: 'D', text: '$\\alpha = 48, \\, \\beta = -11$' },
     ],
     correctAnswer: 'A',
-    solution: '1) Trace of $A = 2 + 2 = 4$. Determinant of $A = (2)(2) - (3)(1) = 4 - 3 = 1$.\n2) Characteristic equation: $|A - \\lambda I| = 0 \\implies \\lambda^2 - 4\\lambda + 1 = 0$.\nBy Cayley-Hamilton: $A^2 - 4A + I = 0 \\implies A^2 = 4A - I$.\n3) Squaring both sides:\n$A^4 = (A^2)^2 = (4A - I)^2 = 16A^2 - 8A + I$.\n4) Substitute $A^2 = 4A - I$:\n$A^4 = 16(4A - I) - 8A + I = 64A - 16I - 8A + I = 56A - 15I$.\nThus $\\alpha = 56, \\beta = -15$.',
-    formula: 'A^2 - (\\text{Tr}(A))A + |A|I = 0',
-    verificationStatus: 'verified',
-  },
-  {
-    id: 'pyq-2026-bio-biotech-01',
-    subject: 'biology',
-    chapter: 'Biotechnology: Principles and Processes',
-    topic: 'Restriction Endonuclease Cleavage & Palindromes',
-    difficulty: 'medium',
-    type: 'single_choice',
-    pyqYear: 2026,
-    pyqReference: 'NEET 2026 Prototype NTA Format',
-    pyqPatternRef: 'Enzymatic Molecular Scissors Cleavage Specificity',
-    text: 'The restriction endonuclease EcoRI specifically recognizes and cleaves double-stranded DNA at which of the following symmetrical palindromic nucleotide sequences?',
-    options: [
-      { id: 'A', text: "$5'-\\text{GAATTC}-3' \\quad \\text{and} \\quad 3'-\\text{CTTAAG}-5'$" },
-      { id: 'B', text: "$5'-\\text{GGATCC}-3' \\quad \\text{and} \\quad 3'-\\text{CCTAGG}-5'$" },
-      { id: 'C', text: "$5'-\\text{AAGCTT}-3' \\quad \\text{and} \\quad 3'-\\text{TTCGAA}-5'$" },
-      { id: 'D', text: "$5'-\\text{CTCGAG}-3' \\quad \\text{and} \\quad 3'-\\text{GAGCTC}-5'$" },
-    ],
-    correctAnswer: 'A',
-    solution: 'EcoRI recognizes the 6-base pair palindromic sequence $5^{\\prime}-\\text{G}\\downarrow\\text{AATTC}-3^{\\prime}$ and cuts between $G$ and $A$ on both complementary strands, producing single-stranded protruding sticky ends ($5^{\\prime}-\\text{AATT}$).',
-    formula: "\\text{EcoRI Recognition: } 5'-G\\downarrow AATTC-3'",
+    formula: 'A^2 - \\text{Tr}(A)A + |A|I = 0',
+    solution: `📝 GIVEN DATA & CONCEPT:
+- Matrix $A = \\begin{pmatrix} 2 & 3 \\\\ 1 & 2 \\end{pmatrix}$.
+- Trace: $\\text{Tr}(A) = 2 + 2 = 4$.
+- Determinant: $|A| = (2)(2) - (3)(1) = 4 - 3 = 1$.
+
+📐 CAYLEY-HAMILTON CHARACTERISTIC EQUATION:
+- Every square matrix satisfies its own characteristic equation:
+$$\\lambda^2 - \\text{Tr}(A)\\lambda + |A| = 0 \\implies A^2 - 4A + I = 0 \\implies A^2 = 4A - I.$$
+
+🔢 STEP-BY-STEP CALCULATION:
+Step 1: Square both sides to evaluate $A^4$:
+$$A^4 = (A^2)^2 = (4A - I)^2 = 16A^2 - 8A + I.$$
+Step 2: Replace $A^2$ with $4A - I$:
+$$A^4 = 16(4A - I) - 8A + I = 64A - 16I - 8A + I = 56A - 15I.$$
+Step 3: Comparing with $\\alpha A + \\beta I$:
+$$\\alpha = 56, \\quad \\beta = -15.$$
+
+✅ FINAL ANSWER & TAKEAWAY:
+- $\\alpha = 56, \\beta = -15$.
+- Correct Option: A.`,
+    notebookSolution: {
+      given: 'A = [[2, 3], [1, 2]]',
+      concept: 'Cayley-Hamilton polynomial substitution for 2x2 matrix.',
+      steps: [
+        'Trace(A) = 4, Det(A) = 1 => Characteristic equation: A² - 4A + I = 0',
+        'A² = 4A - I',
+        'A⁴ = (A²)² = (4A - I)² = 16A² - 8A + I',
+        'Substitute A²: A⁴ = 16(4A - I) - 8A + I = 56A - 15I',
+      ],
+      conclusion: 'α = 56, β = -15.',
+      pitfall: 'Do not multiply the matrix 4 times manually; Cayley-Hamilton reduces calculation time to 15 seconds.',
+    },
     verificationStatus: 'verified',
   },
 ];

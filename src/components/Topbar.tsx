@@ -23,13 +23,11 @@ export const Topbar: React.FC<TopbarProps> = ({
   const getTabTitle = (tab: ActiveNavTab) => {
     switch (tab) {
       case 'arsenal':
-        return { title: 'Test Arsenal', subtitle: 'Continuous Performance Tracker & Automated History' };
+        return { title: 'Test Arsenal', subtitle: 'Interactive Graphs, Score Trajectory & Immutable Ledger' };
       case 'series':
-        return { title: 'CBT Test Series Engine', subtitle: 'Unrepeated NTA & IIT Mock Test Synthesizer' };
+        return { title: 'CBT Test Series Engine', subtitle: 'NTA & IIT Chapter-Specific Mock Generator' };
       case 'library':
         return { title: 'Study Library & Vault', subtitle: 'Class 11, Class 12, HC Verma & Irodov Master Archive' };
-      case 'analytics':
-        return { title: 'AI Cognitive Analytics', subtitle: 'Weak Chapter Diagnostics & AIR Percentile Predictor' };
       case 'profile':
         return { title: 'Profile & Stream Setup', subtitle: 'Identity, Aspirant Track & Supabase Cloud Sync' };
     }

@@ -17,11 +17,11 @@ import {
   Calendar,
   Layers,
   BarChart2,
-  Trash2,
   ShieldCheck,
   FileDown,
   ArrowLeft,
   Check,
+  BookOpen,
 } from 'lucide-react';
 import {
   EphemeralTestSession,
@@ -72,7 +72,7 @@ export const TestResultView: React.FC<TestResultViewProps> = ({
     setIsPdfDownloaded(true);
   };
 
-  // Filter questions for the in-session review
+  // Filter questions for review
   const filteredQuestions = session.questions.filter((q) => {
     const resp = session.responses[q.id];
     const isAnswered =
@@ -118,102 +118,107 @@ export const TestResultView: React.FC<TestResultViewProps> = ({
             <div className="flex items-center gap-2">
               <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
               <span className="font-extrabold text-xs uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
-                Official Mock Performance Report
+                Exam Evaluation Complete • Auto-Synced to Test Arsenal
               </span>
             </div>
             <h1 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight">
               {session.title}
             </h1>
-            <p className="text-xs text-slate-500 max-w-xl">
-              Marks have been automatically recorded into your Test Arsenal and Supabase cloud ledger. You can download your test paper with step-by-step solutions below before leaving.
+            <p className="text-xs sm:text-sm text-slate-500">
+              Attempted by <span className="font-semibold text-slate-700 dark:text-slate-300">{userProfile?.name || 'Divesh Sah'}</span> • Data Policy: Questions & solutions will be wiped from active memory when you return to dashboard.
             </p>
           </div>
 
-          {/* Action Buttons */}
+          {/* Action buttons */}
           <div className="flex flex-wrap items-center gap-3">
             <button
               onClick={handleDownloadPdf}
-              className={`px-4 py-2.5 font-bold text-xs rounded-xl shadow-sm transition flex items-center gap-2 ${
+              className={`px-4 py-2.5 rounded-xl font-bold text-xs flex items-center gap-2 shadow-sm transition ${
                 isPdfDownloaded
-                  ? 'bg-emerald-600 text-white hover:bg-emerald-700'
-                  : 'bg-indigo-600 hover:bg-indigo-700 text-white'
+                  ? 'bg-emerald-600 text-white hover:bg-emerald-500'
+                  : 'bg-blue-600 text-white hover:bg-blue-500'
               }`}
             >
               {isPdfDownloaded ? <Check size={16} /> : <FileDown size={16} />}
-              <span>{isPdfDownloaded ? 'Downloaded Paper Again' : 'Download Paper & Solutions (PDF)'}</span>
+              <span>{isPdfDownloaded ? 'PDF Downloaded' : 'Download Paper & Solutions (PDF)'}</span>
             </button>
 
             <button
               onClick={onFinishAndPurge}
-              className="px-5 py-2.5 bg-slate-900 dark:bg-slate-800 hover:bg-slate-800 text-white font-bold text-xs rounded-xl shadow-sm transition flex items-center gap-2"
+              className="px-4 py-2.5 rounded-xl bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-white font-bold text-xs flex items-center gap-2 shadow-xs transition"
             >
-              <span>Return to Test Arsenal</span>
-              <ArrowRight size={15} />
+              <ArrowLeft size={16} />
+              <span>Back to Test Arsenal</span>
             </button>
           </div>
         </div>
 
-        {/* ================= PRIMARY SCORE TILES ================= */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div className="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs">
+        {/* ================= SCORECARD OVERVIEW ================= */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xs">
             <div className="flex items-center justify-between text-slate-500 mb-2">
               <span className="text-[11px] font-bold uppercase tracking-wider">Total Score</span>
               <Trophy size={16} className="text-amber-500" />
             </div>
-            <div className="text-3xl font-black text-slate-900 dark:text-white">
-              {analytics.totalScore}
-              <span className="text-sm font-semibold text-slate-400">/{analytics.maxScore}</span>
-            </div>
-            <p className="text-[11px] text-slate-500 mt-1">{analytics.percentage.toFixed(1)}% Marks</p>
-          </div>
-
-          <div className="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs">
-            <div className="flex items-center justify-between text-slate-500 mb-2">
-              <span className="text-[11px] font-bold uppercase tracking-wider">Percentile</span>
-              <TrendingUp size={16} className="text-emerald-500" />
-            </div>
-            <div className="text-3xl font-black text-emerald-600 dark:text-emerald-400">
-              {analytics.predictedPercentile.toFixed(2)}%
-            </div>
-            <p className="text-[11px] text-slate-500 mt-1">Estimated NTA Standing</p>
-          </div>
-
-          <div className="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs">
-            <div className="flex items-center justify-between text-slate-500 mb-2">
-              <span className="text-[11px] font-bold uppercase tracking-wider">Accuracy</span>
-              <Zap size={16} className="text-blue-500" />
-            </div>
-            <div className="text-3xl font-black text-blue-600 dark:text-blue-400">
-              {analytics.accuracy.toFixed(0)}%
+            <div className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">
+              {analytics.totalScore}{' '}
+              <span className="text-sm font-semibold text-slate-400">/ {analytics.maxScore}</span>
             </div>
             <p className="text-[11px] text-slate-500 mt-1">
-              {analytics.totalCorrect} Correct, {analytics.totalIncorrect} Incorrect
+              Percentage: {analytics.percentage.toFixed(1)}%
             </p>
           </div>
 
-          <div className="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs">
+          <div className="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xs">
             <div className="flex items-center justify-between text-slate-500 mb-2">
-              <span className="text-[11px] font-bold uppercase tracking-wider">Time Spent</span>
-              <Clock size={16} className="text-purple-500" />
+              <span className="text-[11px] font-bold uppercase tracking-wider">Accuracy Rate</span>
+              <Zap size={16} className="text-emerald-500" />
             </div>
-            <div className="text-3xl font-black text-slate-900 dark:text-white">
-              {Math.floor(analytics.timeSpentSeconds / 60)}m
+            <div className="text-2xl sm:text-3xl font-black text-emerald-600 dark:text-emerald-400">
+              {analytics.accuracy.toFixed(0)}%
             </div>
             <p className="text-[11px] text-slate-500 mt-1">
-              ~{Math.round(analytics.timeSpentSeconds / (session.questions.length || 1))}s per question
+              {analytics.totalCorrect} Correct • {analytics.totalIncorrect} Incorrect
+            </p>
+          </div>
+
+          <div className="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xs">
+            <div className="flex items-center justify-between text-slate-500 mb-2">
+              <span className="text-[11px] font-bold uppercase tracking-wider">Projected Percentile</span>
+              <Award size={16} className="text-blue-500" />
+            </div>
+            <div className="text-2xl sm:text-3xl font-black text-blue-600 dark:text-blue-400">
+              {analytics.predictedPercentile.toFixed(2)}%
+            </div>
+            <p className="text-[11px] text-slate-500 mt-1">
+              Est. AIR: ~{analytics.predictedRank || '500-1500'}
+            </p>
+          </div>
+
+          <div className="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xs">
+            <div className="flex items-center justify-between text-slate-500 mb-2">
+              <span className="text-[11px] font-bold uppercase tracking-wider">Time Invested</span>
+              <Clock size={16} className="text-purple-500" />
+            </div>
+            <div className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">
+              {Math.floor(analytics.timeSpentSeconds / 60)}m {analytics.timeSpentSeconds % 60}s
+            </div>
+            <p className="text-[11px] text-slate-500 mt-1">
+              ~{Math.round(analytics.timeSpentSeconds / (session.questions.length || 1))}s avg per question
             </p>
           </div>
         </div>
 
-        {/* ================= QUESTION REVIEW & SOLUTIONS ================= */}
+        {/* ================= QUESTION REVIEW & NOTEBOOK-STYLE SOLUTIONS ================= */}
         <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 space-y-6 shadow-xs">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 dark:border-slate-800 pb-4">
             <div>
-              <h3 className="text-base font-bold text-slate-900 dark:text-white">
-                Question-by-Question Diagnostic Review
+              <h3 className="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                <BookOpen size={18} className="text-blue-600" />
+                Notebook-Style Step-by-Step Diagnostic Review
               </h3>
               <p className="text-xs text-slate-500">
-                Inspect step-by-step derivations and compare your answers with authentic solutions.
+                Detailed handwritten notebook derivations with given parameters, governing concepts, step-by-step math, and pitfall checks.
               </p>
             </div>
 
@@ -247,17 +252,22 @@ export const TestResultView: React.FC<TestResultViewProps> = ({
                   (resp.numericalValue !== undefined && resp.numericalValue.trim() !== ''));
 
               let isCorrect = false;
+              let studentAnsText = 'Unattempted';
+
               if (q.type === 'single_choice') {
+                studentAnsText = resp?.selectedOption || 'Unattempted';
                 isCorrect =
                   resp?.selectedOption?.trim().toUpperCase() ===
                   String(q.correctAnswer).trim().toUpperCase();
               } else if (q.type === 'multiple_choice') {
+                studentAnsText = resp?.selectedOptions?.join(', ') || 'Unattempted';
                 if (Array.isArray(q.correctAnswer) && resp?.selectedOptions) {
                   const setA = new Set(q.correctAnswer);
                   const setB = new Set(resp.selectedOptions);
                   isCorrect = setA.size === setB.size && [...setA].every((v) => setB.has(v));
                 }
               } else if (q.type === 'numerical' || q.type === 'integer') {
+                studentAnsText = resp?.numericalValue || 'Unattempted';
                 const sVal = parseFloat(resp?.numericalValue || '0');
                 const cVal = parseFloat(String(q.correctAnswer));
                 isCorrect = Math.abs(sVal - cVal) <= (q.numericalTolerance ?? 0.05);
@@ -266,7 +276,7 @@ export const TestResultView: React.FC<TestResultViewProps> = ({
               return (
                 <div
                   key={q.id}
-                  className={`p-5 rounded-2xl border transition ${
+                  className={`p-6 rounded-2xl border transition ${
                     !isAnswered
                       ? 'border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40'
                       : isCorrect
@@ -283,9 +293,19 @@ export const TestResultView: React.FC<TestResultViewProps> = ({
                         {q.subject}
                       </span>
                       <span className="text-slate-400">•</span>
-                      <span className="text-slate-700 dark:text-slate-300 font-medium">
-                        {q.chapter}
+                      <span className="text-slate-700 dark:text-slate-300 font-semibold">
+                        {q.chapter || q.topic}
                       </span>
+                      {q.section && (
+                        <span className="px-2 py-0.5 rounded bg-blue-50 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-900 text-blue-700 dark:text-blue-300 font-bold text-[10px]">
+                          {q.section}
+                        </span>
+                      )}
+                      {q.source && (
+                        <span className="px-2 py-0.5 rounded bg-amber-50 dark:bg-amber-950/60 border border-amber-200 dark:border-amber-800 text-amber-800 dark:text-amber-300 font-bold text-[10px]">
+                          {q.source}
+                        </span>
+                      )}
                       {q.pyqReference && (
                         <span className="px-2 py-0.5 rounded bg-slate-200 dark:bg-slate-800 font-mono text-[10px] text-slate-600 dark:text-slate-300 font-bold">
                           {q.pyqReference}
@@ -310,22 +330,101 @@ export const TestResultView: React.FC<TestResultViewProps> = ({
                     </div>
                   </div>
 
+                  {/* Diagram if available */}
+                  {q.diagramSvg && (
+                    <div
+                      className="p-4 my-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl flex items-center justify-center max-w-md mx-auto"
+                      dangerouslySetInnerHTML={{ __html: q.diagramSvg }}
+                    />
+                  )}
+
+                  {/* Question Statement */}
                   <div className="text-sm font-medium text-slate-900 dark:text-slate-100 mb-4 bg-white dark:bg-slate-800/60 p-4 rounded-xl border border-slate-200 dark:border-slate-800">
                     <MathRenderer latex={q.text} />
                   </div>
 
-                  {/* Solutions block */}
-                  <div className="bg-slate-100 dark:bg-slate-800/70 p-4 rounded-xl border border-slate-200 dark:border-slate-700/60 space-y-2">
-                    <span className="text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
-                      📖 Step-by-Step Derivation
-                    </span>
-                    <div className="text-xs text-slate-800 dark:text-slate-200 leading-relaxed font-mono">
-                      <MathRenderer latex={q.solution} />
+                  {/* Student vs Correct Answer */}
+                  <div className="flex flex-wrap items-center gap-4 text-xs font-semibold p-3 bg-slate-100/70 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700 mb-4">
+                    <div>
+                      <span className="text-slate-500">Your Response: </span>
+                      <span
+                        className={`font-bold font-mono ${
+                          !isAnswered
+                            ? 'text-slate-400'
+                            : isCorrect
+                            ? 'text-emerald-600'
+                            : 'text-red-500'
+                        }`}
+                      >
+                        {studentAnsText}
+                      </span>
                     </div>
-                    {q.formula && (
-                      <div className="pt-2 border-t border-slate-200 dark:border-slate-700 text-xs text-blue-600 dark:text-blue-400 font-semibold flex items-center gap-2">
-                        <span>Governing Formula:</span>
-                        <MathRenderer latex={`$${q.formula}$`} />
+                    <div>
+                      <span className="text-slate-500">Correct Answer: </span>
+                      <span className="font-bold font-mono text-emerald-600 dark:text-emerald-400">
+                        {Array.isArray(q.correctAnswer) ? q.correctAnswer.join(', ') : q.correctAnswer}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* ================= NOTEBOOK-STYLE SOLUTION CARD ================= */}
+                  <div className="bg-amber-50/40 dark:bg-slate-900/90 p-5 rounded-2xl border border-amber-200/80 dark:border-slate-700 space-y-3.5 shadow-xs">
+                    <div className="flex items-center justify-between border-b border-amber-200/60 dark:border-slate-800 pb-2">
+                      <span className="text-xs font-extrabold text-amber-900 dark:text-amber-400 uppercase tracking-wider flex items-center gap-1.5">
+                        📝 Official Notebook Derivation
+                      </span>
+                      {q.formula && (
+                        <span className="text-[11px] font-mono text-blue-600 dark:text-blue-400 font-bold">
+                          Formula: ${q.formula}$
+                        </span>
+                      )}
+                    </div>
+
+                    {q.notebookSolution ? (
+                      <div className="space-y-3 text-xs text-slate-800 dark:text-slate-200">
+                        <div className="p-2.5 bg-white/80 dark:bg-slate-800/60 rounded-xl border border-amber-100 dark:border-slate-700">
+                          <span className="font-bold text-slate-900 dark:text-white block mb-0.5">
+                            📌 Given Data & Boundary Conditions:
+                          </span>
+                          <span className="font-mono text-slate-700 dark:text-slate-300">
+                            {q.notebookSolution.given}
+                          </span>
+                        </div>
+
+                        <div className="p-2.5 bg-white/80 dark:bg-slate-800/60 rounded-xl border border-amber-100 dark:border-slate-700">
+                          <span className="font-bold text-slate-900 dark:text-white block mb-0.5">
+                            📐 Governing Law & Core Concept:
+                          </span>
+                          <span className="text-slate-700 dark:text-slate-300">
+                            {q.notebookSolution.concept}
+                          </span>
+                        </div>
+
+                        <div className="p-3 bg-white/90 dark:bg-slate-800/80 rounded-xl border border-amber-200 dark:border-slate-700 space-y-1.5 font-mono">
+                          <span className="font-bold text-slate-900 dark:text-white block font-sans">
+                            🔢 Step-by-Step Derivation:
+                          </span>
+                          {q.notebookSolution.steps.map((step, sIdx) => (
+                            <div key={sIdx} className="text-slate-800 dark:text-slate-200">
+                              <span className="font-bold text-blue-600 mr-2">[{sIdx + 1}]</span>
+                              <MathRenderer latex={step} />
+                            </div>
+                          ))}
+                        </div>
+
+                        <div className="p-2.5 bg-emerald-50/80 dark:bg-emerald-950/40 rounded-xl border border-emerald-200 dark:border-emerald-900 text-emerald-900 dark:text-emerald-200 font-bold">
+                          ✅ Conclusion: {q.notebookSolution.conclusion}
+                        </div>
+
+                        {q.notebookSolution.pitfall && (
+                          <div className="p-2.5 bg-red-50/80 dark:bg-red-950/40 rounded-xl border border-red-200 dark:border-red-900 text-red-900 dark:text-red-200 text-[11px]">
+                            ⚠️ Common Trap / Misconception: {q.notebookSolution.pitfall}
+                          </div>
+                        )}
+                      </div>
+                    ) : (
+                      <div className="text-xs text-slate-800 dark:text-slate-200 leading-relaxed font-mono whitespace-pre-line">
+                        <MathRenderer latex={q.solution} />
                       </div>
                     )}
                   </div>

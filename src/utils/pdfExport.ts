@@ -38,7 +38,7 @@ export function generateTestPaperPdf(
   const drawPageHeader = () => {
     doc.setFontSize(8);
     doc.setTextColor(120, 120, 120);
-    doc.text('MISSION JEET • DRONA COMMAND CENTER | AUTHENTIC CBT QUESTION PAPER & DETAILED SOLUTIONS', margin, 8);
+    doc.text('MISSION JEET • DRONA COMMAND CENTER | AUTHENTIC CBT QUESTION PAPER & NOTEBOOK SOLUTIONS', margin, 8);
     doc.setDrawColor(220, 220, 220);
     doc.line(margin, 10, pageWidth - margin, 10);
     doc.setTextColor(30, 30, 30);
@@ -53,12 +53,12 @@ export function generateTestPaperPdf(
   doc.rect(margin, y, contentWidth, 28, 'F');
 
   doc.setFont('helvetica', 'bold');
-  doc.setFontSize(14);
+  doc.setFontSize(13);
   doc.setTextColor(255, 255, 255);
   doc.text(session.title.toUpperCase(), margin + 6, y + 8);
 
   doc.setFont('helvetica', 'normal');
-  doc.setFontSize(9);
+  doc.setFontSize(8.5);
   doc.setTextColor(200, 210, 230);
   doc.text(`Candidate: ${candidateName}   |   Stream: ${targetExam}   |   Date: ${new Date().toLocaleDateString()}`, margin + 6, y + 15);
   doc.text(`Score: ${performance.totalScore}/${performance.maxScore} (${performance.percentage.toFixed(1)}%)   |   Accuracy: ${performance.accuracy.toFixed(0)}%   |   Percentile: ${performance.predictedPercentile.toFixed(2)}%`, margin + 6, y + 22);
@@ -94,9 +94,11 @@ export function generateTestPaperPdf(
     doc.rect(margin, y, contentWidth, 7, 'S');
 
     doc.setFont('helvetica', 'bold');
-    doc.setFontSize(9);
+    doc.setFontSize(8.5);
     doc.setTextColor(15, 23, 42);
-    doc.text(`Q${idx + 1}. [${q.subject.toUpperCase()}] - ${q.chapter || q.topic}`, margin + 3, y + 5);
+    const secTag = q.section ? `[${q.section}] ` : '';
+    const srcTag = q.source ? `[${q.source}] ` : '';
+    doc.text(`Q${idx + 1}. ${secTag}${srcTag}[${q.subject.toUpperCase()}] - ${q.chapter || q.topic}`, margin + 3, y + 5);
 
     // Badge indicator
     doc.setFontSize(8);
@@ -114,7 +116,7 @@ export function generateTestPaperPdf(
     y += 10;
 
     // Clean LaTeX and symbols for clean PDF rendering
-    const cleanText = q.text.replace(/\$/g, '').replace(/\\text\{([^}]+)\}/g, '$1');
+    const cleanText = q.text.replace(/\$\$/g, '').replace(/\$/g, '').replace(/\\text\{([^}]+)\}/g, '$1');
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(9);
     doc.setTextColor(30, 41, 59);
@@ -155,27 +157,59 @@ export function generateTestPaperPdf(
     doc.setFontSize(8.5);
     doc.setTextColor(15, 23, 42);
     const correctAnsStr = Array.isArray(q.correctAnswer) ? q.correctAnswer.join(', ') : q.correctAnswer;
-    doc.text(`Correct Answer: ${correctAnsStr}    |    Your Response: ${studentAns}    |    Status: ${q.pyqReference || 'Authentic PYQ Pattern'}`, margin + 2, y);
+    doc.text(`Correct Answer: ${correctAnsStr}    |    Your Response: ${studentAns}    |    Reference: ${q.pyqReference || 'Authentic Exam Spec'}`, margin + 2, y);
     y += 5;
 
-    // Detailed Solution
-    checkPageBreak(20);
+    // Detailed Notebook-Style Solution
+    checkPageBreak(25);
     doc.setFillColor(248, 250, 252);
     doc.rect(margin, y, contentWidth, 5, 'F');
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(8);
     doc.setTextColor(79, 70, 229);
-    doc.text('STEP-BY-STEP SOLUTION & DERIVATION:', margin + 2, y + 3.8);
+    doc.text('NOTEBOOK DERIVATION & SCIENTIFIC SOLUTION:', margin + 2, y + 3.8);
     y += 7;
 
-    const cleanSolution = q.solution.replace(/\$\$/g, '').replace(/\$/g, '').replace(/\\text\{([^}]+)\}/g, '$1');
-    doc.setFont('helvetica', 'normal');
-    doc.setFontSize(8);
-    doc.setTextColor(51, 65, 85);
-    const solLines = doc.splitTextToSize(cleanSolution, contentWidth - 4);
-    checkPageBreak(solLines.length * 4 + 6);
-    doc.text(solLines, margin + 2, y);
-    y += solLines.length * 4 + 7;
+    if (q.notebookSolution) {
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(8);
+      doc.setTextColor(30, 41, 59);
+      doc.text(`Given: ${q.notebookSolution.given}`, margin + 2, y);
+      y += 4.5;
+      doc.text(`Concept: ${q.notebookSolution.concept}`, margin + 2, y);
+      y += 4.5;
+
+      doc.setFont('helvetica', 'normal');
+      doc.setTextColor(51, 65, 85);
+      q.notebookSolution.steps.forEach((st, sIdx) => {
+        checkPageBreak(5);
+        const cleanSt = st.replace(/\$\$/g, '').replace(/\$/g, '').replace(/\\text\{([^}]+)\}/g, '$1');
+        doc.text(`[${sIdx + 1}] ${cleanSt}`, margin + 4, y);
+        y += 4.2;
+      });
+
+      checkPageBreak(5);
+      doc.setFont('helvetica', 'bold');
+      doc.setTextColor(16, 185, 129);
+      doc.text(`Conclusion: ${q.notebookSolution.conclusion}`, margin + 2, y);
+      y += 5;
+
+      if (q.notebookSolution.pitfall) {
+        checkPageBreak(5);
+        doc.setTextColor(220, 38, 38);
+        doc.text(`Pitfall Warning: ${q.notebookSolution.pitfall}`, margin + 2, y);
+        y += 5;
+      }
+    } else {
+      const cleanSolution = q.solution.replace(/\$\$/g, '').replace(/\$/g, '').replace(/\\text\{([^}]+)\}/g, '$1');
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(8);
+      doc.setTextColor(51, 65, 85);
+      const solLines = doc.splitTextToSize(cleanSolution, contentWidth - 4);
+      checkPageBreak(solLines.length * 4 + 6);
+      doc.text(solLines, margin + 2, y);
+      y += solLines.length * 4 + 7;
+    }
 
     // Divider line between questions
     doc.setDrawColor(226, 232, 240);

@@ -12,7 +12,7 @@ import {
 } from 'lucide-react';
 import { UserProfile } from '../types';
 
-export type ActiveNavTab = 'arsenal' | 'series' | 'library' | 'analytics' | 'profile';
+export type ActiveNavTab = 'arsenal' | 'series' | 'library' | 'profile';
 
 interface SidebarProps {
   activeTab: ActiveNavTab;
@@ -32,10 +32,9 @@ export const Sidebar: React.FC<SidebarProps> = ({
   supabaseConnected,
 }) => {
   const navItems = [
-    { id: 'arsenal' as ActiveNavTab, label: 'Test Arsenal', icon: FlaskConical, badge: 'Records' },
+    { id: 'arsenal' as ActiveNavTab, label: 'Test Arsenal', icon: FlaskConical, badge: 'Graphs & History' },
     { id: 'series' as ActiveNavTab, label: 'Test Series', icon: Zap, badge: 'CBT AI' },
-    { id: 'library' as ActiveNavTab, label: 'Library & Books', icon: BookOpen, badge: '15 Books' },
-    { id: 'analytics' as ActiveNavTab, label: 'AI Analytics', icon: BarChart3, badge: 'Deep AI' },
+    { id: 'library' as ActiveNavTab, label: 'Study Library', icon: BookOpen, badge: 'NCERT + HCV' },
     { id: 'profile' as ActiveNavTab, label: 'Profile & Stream', icon: UserCheck, badge: userProfile.stream.toUpperCase() },
   ];
 

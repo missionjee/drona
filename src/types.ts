@@ -53,6 +53,16 @@ export interface Question {
   pyqReference?: string;
   pyqPatternRef?: string;
   pyqYear?: number;
+  section?: string;
+  source?: 'HCV' | 'Irodov' | 'PYQ' | 'AI_NTA' | 'AI_ADVANCED';
+  diagramSvg?: string;
+  notebookSolution?: {
+    given: string;
+    concept: string;
+    steps: string[];
+    conclusion: string;
+    pitfall?: string;
+  };
   matrixMatch?: MatrixMatchItem;
   paragraphContext?: ParagraphContext;
   verificationStatus?: 'verified' | 'flagged' | 'healed';

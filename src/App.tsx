@@ -20,7 +20,6 @@ import { Topbar } from './components/Topbar';
 import { TestArsenalView } from './components/TestArsenalView';
 import { SyllabusSelector } from './components/SyllabusSelector';
 import { LibraryView } from './components/LibraryView';
-import { AiAnalyticsView } from './components/AiAnalyticsView';
 import { ProfileView } from './components/ProfileView';
 import { CbtExamView } from './components/CbtExamView';
 import { TestResultView } from './components/TestResultView';
@@ -270,14 +269,6 @@ export function App() {
               )}
 
               {activeTab === 'library' && <LibraryView />}
-
-              {activeTab === 'analytics' && (
-                <AiAnalyticsView
-                  pastRecords={pastRecords}
-                  userProfile={userProfile}
-                  onNavigateToSeries={() => setActiveTab('series')}
-                />
-              )}
 
               {activeTab === 'profile' && (
                 <ProfileView
