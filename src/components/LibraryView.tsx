@@ -17,6 +17,19 @@ import { LibraryBook, StudyNote } from '../types';
 import { PRELOADED_LIBRARY_BOOKS } from '../data/libraryCatalog';
 import { fetchStudyNotes, saveStudyNote } from '../services/supabaseService';
 
+export function getResolvedBookUrl(bookUrl: string): string {
+  if (!bookUrl) return '';
+  if (bookUrl.startsWith('http://') || bookUrl.startsWith('https://')) {
+    return bookUrl;
+  }
+  const clean = bookUrl.replace(/^(\.\/|\/)/, '');
+  const pathname = typeof window !== 'undefined' ? window.location.pathname : '';
+  if (pathname.includes('/drona')) {
+    return `/drona/${clean}`;
+  }
+  return `/${clean}`;
+}
+
 export const LibraryView: React.FC = () => {
   const [books] = useState<LibraryBook[]>(PRELOADED_LIBRARY_BOOKS);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
@@ -255,33 +268,25 @@ export const LibraryView: React.FC = () => {
             <div className="flex items-center gap-2 pt-3 mt-3 border-t border-slate-100 dark:border-slate-800">
               <button
                 onClick={() => setSelectedBookForReading(book)}
-                className="flex-1 py-1.5 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-xl shadow-xs transition flex items-center justify-center gap-1.5"
+                className="flex-1 py-1.5 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-xl shadow-xs transition flex items-center justify-center gap-1.5 cursor-pointer"
               >
                 <BookOpen size={13} /> Read PDF
               </button>
 
               <a
-                href={
-                  book.fileUrl.startsWith('http')
-                    ? book.fileUrl
-                    : './' + book.fileUrl.replace(/^(\.\/|\/)/, '')
-                }
+                href={getResolvedBookUrl(book.fileUrl)}
                 target="_blank"
                 rel="noreferrer"
-                className="p-1.5 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
+                className="p-1.5 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition cursor-pointer"
                 title="Open in new tab"
               >
                 <ExternalLink size={14} />
               </a>
 
               <a
-                href={
-                  book.fileUrl.startsWith('http')
-                    ? book.fileUrl
-                    : './' + book.fileUrl.replace(/^(\.\/|\/)/, '')
-                }
+                href={getResolvedBookUrl(book.fileUrl)}
                 download={book.fileName}
-                className="p-1.5 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
+                className="p-1.5 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition cursor-pointer"
                 title="Download PDF"
               >
                 <Download size={14} />
@@ -330,47 +335,93 @@ export const LibraryView: React.FC = () => {
       {selectedBookForReading && (
         <div className="fixed inset-0 z-50 bg-black/85 flex flex-col p-2 sm:p-4 backdrop-blur-xs">
           {/* Header */}
-          <div className="h-12 bg-slate-900 border border-slate-800 rounded-t-2xl px-4 flex items-center justify-between text-white shrink-0">
+          <div className="h-14 bg-slate-900 border border-slate-800 rounded-t-2xl px-4 flex items-center justify-between text-white shrink-0">
             <div className="flex items-center gap-3">
-              <BookOpen size={16} className="text-blue-400" />
-              <span className="text-xs font-bold truncate max-w-sm sm:max-w-md">
-                {selectedBookForReading.title}
-              </span>
+              <div className="p-2 bg-blue-600/30 rounded-xl text-blue-400">
+                <BookOpen size={18} />
+              </div>
+              <div>
+                <span className="text-xs font-bold truncate max-w-sm sm:max-w-md block">
+                  {selectedBookForReading.title}
+                </span>
+                <span className="text-[10px] text-slate-400">
+                  {selectedBookForReading.badge} • {selectedBookForReading.fileSize}
+                </span>
+              </div>
             </div>
 
             <div className="flex items-center gap-2">
               <a
-                href={
-                  selectedBookForReading.fileUrl.startsWith('http')
-                    ? selectedBookForReading.fileUrl
-                    : './' + selectedBookForReading.fileUrl.replace(/^(\.\/|\/)/, '')
-                }
+                href={getResolvedBookUrl(selectedBookForReading.fileUrl)}
                 target="_blank"
                 rel="noreferrer"
-                className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-semibold flex items-center gap-1 text-slate-300"
+                className="px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-xs font-bold flex items-center gap-1.5 text-white transition shadow-sm"
               >
-                <Maximize2 size={13} /> Full Window
+                <Maximize2 size={13} /> Open in New Tab
               </a>
+
+              <a
+                href={getResolvedBookUrl(selectedBookForReading.fileUrl)}
+                download={selectedBookForReading.fileName}
+                className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-semibold flex items-center gap-1 text-slate-300 transition"
+                title="Download PDF"
+              >
+                <Download size={14} />
+              </a>
+
               <button
                 onClick={() => setSelectedBookForReading(null)}
-                className="p-1.5 rounded-lg bg-slate-800 hover:bg-red-900 text-slate-300 hover:text-white transition"
+                className="p-2 rounded-xl bg-slate-800 hover:bg-red-900 text-slate-300 hover:text-white transition cursor-pointer"
+                title="Close Viewer"
               >
                 <X size={16} />
               </button>
             </div>
           </div>
 
-          {/* Iframe Viewport */}
-          <div className="flex-1 bg-slate-950 rounded-b-2xl overflow-hidden border border-t-0 border-slate-800">
-            <iframe
-              src={
-                selectedBookForReading.fileUrl.startsWith('http')
-                  ? selectedBookForReading.fileUrl
-                  : './' + selectedBookForReading.fileUrl.replace(/^(\.\/|\/)/, '')
-              }
-              title={selectedBookForReading.title}
-              className="w-full h-full border-none"
-            />
+          {/* Iframe & Object Viewport with interactive fallback */}
+          <div className="flex-1 bg-slate-950 rounded-b-2xl overflow-hidden border border-t-0 border-slate-800 flex flex-col relative">
+            <object
+              data={getResolvedBookUrl(selectedBookForReading.fileUrl)}
+              type="application/pdf"
+              className="w-full flex-1"
+            >
+              <iframe
+                src={getResolvedBookUrl(selectedBookForReading.fileUrl)}
+                title={selectedBookForReading.title}
+                className="w-full flex-1 border-none"
+              />
+              <div className="flex-1 flex flex-col items-center justify-center p-8 text-center text-slate-200 space-y-4">
+                <div className="p-4 bg-blue-900/30 rounded-2xl border border-blue-700/40">
+                  <BookOpen size={40} className="text-blue-400" />
+                </div>
+                <div>
+                  <h4 className="font-extrabold text-base text-white">
+                    {selectedBookForReading.title}
+                  </h4>
+                  <p className="text-xs text-slate-400 mt-1 max-w-md">
+                    Academic PDF textbook ({selectedBookForReading.fileSize}). Click below to open directly in your browser's native PDF reader.
+                  </p>
+                </div>
+                <div className="flex items-center gap-3">
+                  <a
+                    href={getResolvedBookUrl(selectedBookForReading.fileUrl)}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="px-6 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs rounded-xl shadow-md transition flex items-center gap-2"
+                  >
+                    <ExternalLink size={14} /> Open Full Textbook in New Window
+                  </a>
+                  <a
+                    href={getResolvedBookUrl(selectedBookForReading.fileUrl)}
+                    download={selectedBookForReading.fileName}
+                    className="px-5 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs rounded-xl transition flex items-center gap-2"
+                  >
+                    <Download size={14} /> Save Offline PDF
+                  </a>
+                </div>
+              </div>
+            </object>
           </div>
         </div>
       )}

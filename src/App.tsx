@@ -74,12 +74,29 @@ export function App() {
     }
   }, [darkMode]);
 
+  // Handler: Reset Weekly Test Quota for Practice Mode
+  const handleResetWeeklyQuota = () => {
+    const updated = pastRecords.map((r) => ({
+      ...r,
+      timestamp: r.timestamp - 8 * 86400000,
+    }));
+    setPastRecords(updated);
+    localStorage.setItem('drona_test_history', JSON.stringify(updated));
+    alert('Weekly mock test quota reset! You can now generate and start tests for practice.');
+  };
+
   // Handler: Launch AI Custom Syllabus Generation Pipeline
   const handleGenerateCustomTest = async (config: CustomSyllabusConfig) => {
     const quota = getWeeklyTestQuota(pastRecords);
     if (!quota.canCreate) {
-      alert(`Weekly limit reached (${quota.testsCreatedThisWeek}/3 mock tests created this week).\n\nYour weekly quota will reset on ${quota.resetsOn}.`);
-      return;
+      const confirmReset = confirm(
+        `Weekly limit reached (${quota.testsCreatedThisWeek}/3 mock tests created this week).\n\nReset your test quota now to start this practice test?`
+      );
+      if (confirmReset) {
+        handleResetWeeklyQuota();
+      } else {
+        return;
+      }
     }
 
     setIsGenerating(true);
@@ -238,6 +255,7 @@ export function App() {
                 <div className="max-w-6xl mx-auto space-y-6">
                   <SyllabusSelector
                     onGenerateTest={handleGenerateCustomTest}
+                    onResetQuota={handleResetWeeklyQuota}
                     isGenerating={isGenerating}
                     userStream={userProfile.stream}
                     pastRecords={pastRecords}

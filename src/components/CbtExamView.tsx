@@ -58,31 +58,56 @@ export const CbtExamView: React.FC<CbtExamViewProps> = ({
   const [showProctorWarning, setShowProctorWarning] = useState(false);
   const [warningCountdown, setWarningCountdown] = useState(10);
   const warningTimerRef = useRef<any>(null);
+  const wasFullscreenEver = useRef<boolean>(false);
+
+  // Fullscreen toggle handler with explicit user gesture
+  const handleToggleFullscreen = () => {
+    try {
+      if (!document.fullscreenElement) {
+        document.documentElement
+          .requestFullscreen()
+          .then(() => {
+            setIsFullscreen(true);
+            wasFullscreenEver.current = true;
+          })
+          .catch(() => {});
+      } else {
+        document.exitFullscreen().catch(() => {});
+      }
+    } catch {}
+  };
 
   // Enforce fullscreen on exam entrance
   useEffect(() => {
     try {
       if (!document.fullscreenElement) {
-        document.documentElement.requestFullscreen().catch(() => {});
+        document.documentElement.requestFullscreen().then(() => {
+          setIsFullscreen(true);
+          wasFullscreenEver.current = true;
+        }).catch(() => {});
       }
     } catch {}
 
     const handleFullscreenChange = () => {
-      setIsFullscreen(!!document.fullscreenElement);
-      if (!document.fullscreenElement && !session.isCompleted) {
+      const isNowFs = !!document.fullscreenElement;
+      setIsFullscreen(isNowFs);
+      if (isNowFs) {
+        wasFullscreenEver.current = true;
+      } else if (wasFullscreenEver.current && !session.isCompleted) {
         triggerProctorViolation('Exited Fullscreen Examination Mode');
       }
     };
 
+    let visibilityTimer: any = null;
     const handleVisibilityChange = () => {
       if (document.hidden && !session.isCompleted) {
-        triggerProctorViolation('Switched Browser Tab or Minimized Window');
-      }
-    };
-
-    const handleWindowBlur = () => {
-      if (!session.isCompleted) {
-        triggerProctorViolation('Exam Window Lost Focus (Alt+Tab or external app)');
+        visibilityTimer = setTimeout(() => {
+          if (document.hidden && !session.isCompleted) {
+            triggerProctorViolation('Switched Browser Tab or Minimized Window');
+          }
+        }, 3500);
+      } else {
+        if (visibilityTimer) clearTimeout(visibilityTimer);
       }
     };
 
@@ -104,14 +129,13 @@ export const CbtExamView: React.FC<CbtExamViewProps> = ({
 
     document.addEventListener('fullscreenchange', handleFullscreenChange);
     document.addEventListener('visibilitychange', handleVisibilityChange);
-    window.addEventListener('blur', handleWindowBlur);
     window.addEventListener('contextmenu', handleContextMenu);
     window.addEventListener('keydown', handleKeyDown);
 
     return () => {
       document.removeEventListener('fullscreenchange', handleFullscreenChange);
       document.removeEventListener('visibilitychange', handleVisibilityChange);
-      window.removeEventListener('blur', handleWindowBlur);
+      if (visibilityTimer) clearTimeout(visibilityTimer);
       window.removeEventListener('contextmenu', handleContextMenu);
       window.removeEventListener('keydown', handleKeyDown);
     };
@@ -463,8 +487,17 @@ export const CbtExamView: React.FC<CbtExamViewProps> = ({
 
         {/* Tools, Anti-Cheat Status & Timer */}
         <div className="flex items-center gap-2 md:gap-3">
+          <button
+            onClick={handleToggleFullscreen}
+            className="px-2.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-medium flex items-center gap-1.5 border border-slate-700 transition text-slate-300 hover:text-white cursor-pointer"
+            title={isFullscreen ? "Exit Fullscreen" : "Enter Fullscreen Mode"}
+          >
+            <Sparkles size={14} className={isFullscreen ? "text-emerald-400" : "text-blue-400"} />
+            <span className="hidden sm:inline">{isFullscreen ? 'Fullscreen Active' : 'Enter Fullscreen'}</span>
+          </button>
+
           <div className="hidden lg:flex items-center gap-1.5 px-2.5 py-1 rounded bg-slate-800 border border-slate-700 text-xs font-semibold text-emerald-400">
-            <ShieldAlert size={14} /> Fullscreen Proctor Active (Strikes: {proctorStrikes}/3)
+            <ShieldAlert size={14} /> Proctor Active (Strikes: {proctorStrikes}/3)
           </div>
 
           <button

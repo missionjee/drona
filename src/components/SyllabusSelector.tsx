@@ -14,6 +14,7 @@ import { getWeeklyTestQuota } from '../utils/testLimit';
 
 interface SyllabusSelectorProps {
   onGenerateTest: (config: CustomSyllabusConfig) => void;
+  onResetQuota?: () => void;
   isGenerating: boolean;
   userStream?: StreamType;
   pastRecords?: PersistentPerformanceRecord[];
@@ -21,6 +22,7 @@ interface SyllabusSelectorProps {
 
 export const SyllabusSelector: React.FC<SyllabusSelectorProps> = ({
   onGenerateTest,
+  onResetQuota,
   isGenerating,
   userStream = 'jee',
   pastRecords = [],
@@ -46,8 +48,6 @@ export const SyllabusSelector: React.FC<SyllabusSelectorProps> = ({
 
   const [totalQuestions, setTotalQuestions] = useState<number>(() => (isNeet ? 45 : 25));
   const [durationMinutes, setDurationMinutes] = useState<number>(() => (isNeet ? 200 : 180));
-  const [pyqStartYear, setPyqStartYear] = useState<number>(2015);
-  const [pyqEndYear, setPyqEndYear] = useState<number>(2026);
 
   useEffect(() => {
     if (isNeet) {
@@ -126,16 +126,20 @@ export const SyllabusSelector: React.FC<SyllabusSelectorProps> = ({
   const currentSubjectList = NCERT_SYLLABUS[activeSubject] || { class11: [], class12: [] };
 
   const handleLaunch = () => {
-    if (!quota.canCreate) {
-      alert(
-        `Weekly limit reached (${quota.testsCreatedThisWeek}/3 mock tests created this week).\n\nYour weekly quota will reset on ${quota.resetsOn}.`
-      );
+    if (totalSelectedCount === 0) {
+      alert('Please select at least 1 chapter from the syllabus below to generate and start your examination.');
       return;
     }
 
-    if (totalSelectedCount === 0) {
-      alert('Please select at least 1 chapter from the syllabus to generate your test.');
-      return;
+    if (!quota.canCreate) {
+      const confirmReset = confirm(
+        `Weekly limit reached (${quota.testsCreatedThisWeek}/3 mock tests created this week).\n\nReset your test quota now for unlimited practice?`
+      );
+      if (confirmReset && onResetQuota) {
+        onResetQuota();
+      } else if (!confirmReset) {
+        return;
+      }
     }
 
     onGenerateTest({
@@ -148,8 +152,8 @@ export const SyllabusSelector: React.FC<SyllabusSelectorProps> = ({
         hard: Math.ceil(totalQuestions * 0.5),
       },
       pyqYearRange: {
-        startYear: pyqStartYear,
-        endYear: pyqEndYear,
+        startYear: 2015,
+        endYear: 2026,
       },
     });
   };
@@ -210,49 +214,6 @@ export const SyllabusSelector: React.FC<SyllabusSelectorProps> = ({
               NEET-UG
             </button>
           )}
-        </div>
-      </div>
-
-      {/* ================= PYQ ARCHIVE RANGE (2015 - 2026) ================= */}
-      <div className="px-5 sm:px-6 py-3 bg-slate-50 dark:bg-slate-850 border-b border-slate-200 dark:border-slate-800 flex flex-col md:flex-row md:items-center justify-between gap-3 text-xs">
-        <div className="flex items-center gap-2 font-bold text-slate-700 dark:text-slate-300">
-          <span className="w-2 h-2 rounded-full bg-blue-600"></span>
-          <span>PYQ Reference Range:</span>
-          <span className="text-blue-600 dark:text-blue-400 font-mono">
-            {pyqStartYear} — {pyqEndYear}
-          </span>
-        </div>
-
-        <div className="flex items-center gap-3">
-          <div className="flex items-center gap-1.5">
-            <span className="text-slate-500 font-medium">From:</span>
-            <select
-              value={pyqStartYear}
-              onChange={(e) => setPyqStartYear(Number(e.target.value))}
-              className="px-2.5 py-1 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg font-bold text-slate-800 dark:text-slate-200"
-            >
-              {[2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025].map((y) => (
-                <option key={y} value={y}>
-                  {y}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          <div className="flex items-center gap-1.5">
-            <span className="text-slate-500 font-medium">To:</span>
-            <select
-              value={pyqEndYear}
-              onChange={(e) => setPyqEndYear(Number(e.target.value))}
-              className="px-2.5 py-1 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg font-bold text-slate-800 dark:text-slate-200"
-            >
-              {[2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026].map((y) => (
-                <option key={y} value={y}>
-                  {y}
-                </option>
-              ))}
-            </select>
-          </div>
         </div>
       </div>
 
@@ -412,25 +373,41 @@ export const SyllabusSelector: React.FC<SyllabusSelectorProps> = ({
             <Sparkles size={18} />
           </div>
           <div>
-            <div className="text-xs font-bold text-slate-900 dark:text-white">
-              {totalSelectedCount} Chapters Selected
+            <div className="text-xs font-bold text-slate-900 dark:text-white flex items-center gap-2">
+              <span>{totalSelectedCount} Chapters Selected</span>
+              {totalSelectedCount === 0 && (
+                <span className="text-[10px] text-amber-500 font-normal">
+                  (select chapters above to activate test)
+                </span>
+              )}
             </div>
-            <div className="text-[11px] text-slate-500">
-              Weekly Quota: {quota.testsCreatedThisWeek}/3 mocks generated
+            <div className="text-[11px] text-slate-500 flex items-center gap-2 mt-0.5">
+              <span>Weekly Quota: {quota.testsCreatedThisWeek}/3 mocks</span>
+              {quota.testsCreatedThisWeek >= 3 && onResetQuota && (
+                <button
+                  type="button"
+                  onClick={onResetQuota}
+                  className="text-blue-600 dark:text-blue-400 font-bold underline hover:text-blue-700 cursor-pointer"
+                >
+                  Reset Quota
+                </button>
+              )}
             </div>
           </div>
         </div>
 
         <button
           onClick={handleLaunch}
-          disabled={isGenerating || !quota.canCreate}
-          className={`px-8 py-3 rounded-xl font-black text-xs shadow-md transition flex items-center justify-center gap-2 ${
-            !quota.canCreate
-              ? 'bg-slate-200 dark:bg-slate-800 text-slate-400 cursor-not-allowed'
-              : 'bg-blue-600 hover:bg-blue-700 text-white shadow-blue-500/20'
-          }`}
+          disabled={isGenerating}
+          className="px-8 py-3 rounded-xl font-black text-xs shadow-md transition flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white shadow-blue-500/20 active:scale-95 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
         >
-          <span>{isGenerating ? 'Synthesizing Examination Paper...' : 'Generate Test Paper'}</span>
+          <span>
+            {isGenerating
+              ? 'Synthesizing Examination Paper...'
+              : totalSelectedCount === 0
+              ? 'Start Test (Select Chapters)'
+              : 'Start Test'}
+          </span>
           <ChevronRight size={16} />
         </button>
       </div>
