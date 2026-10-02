@@ -6,6 +6,9 @@ interface ScratchpadModalProps {
   onClose: () => void;
 }
 
+// Module-level persistent cache for scratchpad so work is never lost on toggle
+let cachedCanvasDataUrl: string | null = null;
+
 export const ScratchpadModal: React.FC<ScratchpadModalProps> = ({ isOpen, onClose }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [isDrawing, setIsDrawing] = useState(false);
@@ -19,13 +22,23 @@ export const ScratchpadModal: React.FC<ScratchpadModalProps> = ({ isOpen, onClos
     if (!canvas) return;
 
     // Set canvas dimensions based on container
-    canvas.width = canvas.parentElement?.clientWidth || 700;
-    canvas.height = 450;
+    const width = canvas.parentElement?.clientWidth || 700;
+    const height = 450;
+    canvas.width = width;
+    canvas.height = height;
 
     const ctx = canvas.getContext('2d');
     if (ctx) {
-      ctx.fillStyle = '#ffffff';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      if (cachedCanvasDataUrl) {
+        const img = new Image();
+        img.onload = () => {
+          ctx.drawImage(img, 0, 0);
+        };
+        img.src = cachedCanvasDataUrl;
+      } else {
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, width, height);
+      }
       ctx.lineCap = 'round';
       ctx.lineJoin = 'round';
     }
@@ -33,15 +46,19 @@ export const ScratchpadModal: React.FC<ScratchpadModalProps> = ({ isOpen, onClos
 
   if (!isOpen) return null;
 
-  const startDrawing = (e: React.MouseEvent<HTMLCanvasElement>) => {
+  const saveCanvasState = () => {
+    if (canvasRef.current) {
+      try {
+        cachedCanvasDataUrl = canvasRef.current.toDataURL();
+      } catch {}
+    }
+  };
+
+  const startDrawingAt = (x: number, y: number) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
-
-    const rect = canvas.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
 
     ctx.beginPath();
     ctx.moveTo(x, y);
@@ -50,23 +67,65 @@ export const ScratchpadModal: React.FC<ScratchpadModalProps> = ({ isOpen, onClos
     setIsDrawing(true);
   };
 
-  const draw = (e: React.MouseEvent<HTMLCanvasElement>) => {
+  const drawTo = (x: number, y: number) => {
     if (!isDrawing) return;
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    const rect = canvas.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
     ctx.lineTo(x, y);
     ctx.stroke();
   };
 
   const stopDrawing = () => {
-    setIsDrawing(false);
+    if (isDrawing) {
+      setIsDrawing(false);
+      saveCanvasState();
+    }
+  };
+
+  const startDrawing = (e: React.MouseEvent<HTMLCanvasElement>) => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const rect = canvas.getBoundingClientRect();
+    startDrawingAt(e.clientX - rect.left, e.clientY - rect.top);
+  };
+
+  const draw = (e: React.MouseEvent<HTMLCanvasElement>) => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const rect = canvas.getBoundingClientRect();
+    drawTo(e.clientX - rect.left, e.clientY - rect.top);
+  };
+
+  // Touch device support (mobile / iPad / stylus)
+  const getTouchPos = (e: React.TouchEvent<HTMLCanvasElement>) => {
+    const canvas = canvasRef.current;
+    if (!canvas) return { x: 0, y: 0 };
+    const rect = canvas.getBoundingClientRect();
+    const touch = e.touches[0] || e.changedTouches[0];
+    return {
+      x: touch.clientX - rect.left,
+      y: touch.clientY - rect.top,
+    };
+  };
+
+  const handleTouchStart = (e: React.TouchEvent<HTMLCanvasElement>) => {
+    e.preventDefault();
+    const { x, y } = getTouchPos(e);
+    startDrawingAt(x, y);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent<HTMLCanvasElement>) => {
+    e.preventDefault();
+    const { x, y } = getTouchPos(e);
+    drawTo(x, y);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent<HTMLCanvasElement>) => {
+    e.preventDefault();
+    stopDrawing();
   };
 
   const clearCanvas = () => {
@@ -76,6 +135,7 @@ export const ScratchpadModal: React.FC<ScratchpadModalProps> = ({ isOpen, onClos
     if (!ctx) return;
     ctx.fillStyle = '#ffffff';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
+    cachedCanvasDataUrl = null;
   };
 
   return (
@@ -159,7 +219,10 @@ export const ScratchpadModal: React.FC<ScratchpadModalProps> = ({ isOpen, onClos
             onMouseMove={draw}
             onMouseUp={stopDrawing}
             onMouseLeave={stopDrawing}
-            className="w-full h-full block"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+            className="w-full h-full block touch-none"
           />
         </div>
       </div>

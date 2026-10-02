@@ -36,7 +36,8 @@ function supabaseRequest(path, method = 'GET', body = null) {
 }
 
 async function seedData() {
-  const email = 'diveshsah2@gmail.com';
+  const email = process.env.USER_EMAIL || 'aspirant@missionjee.org';
+  const name = process.env.USER_NAME || 'JEE Aspirant';
   console.log(`[Seed] Initializing Supabase profile for user: ${email}...`);
 
   // 1. User Profile only
@@ -50,7 +51,7 @@ async function seedData() {
     stake_units: email,
     reason: JSON.stringify({
       email: email,
-      name: 'Divesh Sah',
+      name: name,
       class: '12',
       examMode: 'jee',
       targetCollege: 'IIT Bombay / IIT Delhi - Computer Science',

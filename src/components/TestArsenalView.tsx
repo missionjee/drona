@@ -31,6 +31,7 @@ export const TestArsenalView: React.FC<TestArsenalViewProps> = ({
   pastRecords,
   userProfile,
   onNavigateToSeries,
+  onSelectTestRecord,
 }) => {
   const isNeet = userProfile.stream === 'neet';
   const subjects: Subject[] = isNeet
@@ -776,6 +777,20 @@ export const TestArsenalView: React.FC<TestArsenalViewProps> = ({
                   ))}
                 </div>
               </div>
+            )}
+
+            {onSelectTestRecord && (
+              <button
+                type="button"
+                onClick={() => {
+                  const rec = selectedRecordForDetail;
+                  setSelectedRecordForDetail(null);
+                  onSelectTestRecord(rec);
+                }}
+                className="w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-xl shadow-xs transition flex items-center justify-center gap-1.5 cursor-pointer"
+              >
+                <Eye size={14} /> Review Questions & Detailed Solutions
+              </button>
             )}
 
             <button

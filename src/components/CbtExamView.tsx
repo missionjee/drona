@@ -23,6 +23,7 @@ import {
   EphemeralTestSession,
   QuestionStatus,
   ExamType,
+  UserProfile,
 } from '../types';
 import { MathRenderer } from './MathRenderer';
 import { ScientificCalculator } from './ScientificCalculator';
@@ -33,6 +34,7 @@ interface CbtExamViewProps {
   onUpdateResponses: (responses: Record<string, StudentResponse>) => void;
   onSubmitTest: (proctorAutoSubmitted?: boolean) => void;
   onExitTest: () => void;
+  userProfile?: UserProfile;
 }
 
 export const CbtExamView: React.FC<CbtExamViewProps> = ({
@@ -40,6 +42,7 @@ export const CbtExamView: React.FC<CbtExamViewProps> = ({
   onUpdateResponses,
   onSubmitTest,
   onExitTest,
+  userProfile,
 }) => {
   const [currentSubject, setCurrentSubject] = useState<Subject>(
     session.questions[0]?.subject || 'physics'
@@ -52,6 +55,15 @@ export const CbtExamView: React.FC<CbtExamViewProps> = ({
   const [showScratchpad, setShowScratchpad] = useState(false);
   const [showSubmitModal, setShowSubmitModal] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
+
+  const candidateName = userProfile?.name || 'JEE Aspirant';
+  const candidateInitials = candidateName
+    .split(' ')
+    .map((w) => w[0])
+    .filter(Boolean)
+    .slice(0, 2)
+    .join('')
+    .toUpperCase() || 'JA';
 
   // ================= ANTI-CHEATING PROCTORING SYSTEM =================
   const [proctorStrikes, setProctorStrikes] = useState(0);
@@ -77,17 +89,8 @@ export const CbtExamView: React.FC<CbtExamViewProps> = ({
     } catch {}
   };
 
-  // Enforce fullscreen on exam entrance
+  // Enforce fullscreen handlers safely through user gesture
   useEffect(() => {
-    try {
-      if (!document.fullscreenElement) {
-        document.documentElement.requestFullscreen().then(() => {
-          setIsFullscreen(true);
-          wasFullscreenEver.current = true;
-        }).catch(() => {});
-      }
-    } catch {}
-
     const handleFullscreenChange = () => {
       const isNowFs = !!document.fullscreenElement;
       setIsFullscreen(isNowFs);
@@ -101,11 +104,12 @@ export const CbtExamView: React.FC<CbtExamViewProps> = ({
     let visibilityTimer: any = null;
     const handleVisibilityChange = () => {
       if (document.hidden && !session.isCompleted) {
+        // 8 second grace debounce for accidental notification overlays / OS popups
         visibilityTimer = setTimeout(() => {
           if (document.hidden && !session.isCompleted) {
             triggerProctorViolation('Switched Browser Tab or Minimized Window');
           }
-        }, 3500);
+        }, 8000);
       } else {
         if (visibilityTimer) clearTimeout(visibilityTimer);
       }
@@ -116,11 +120,10 @@ export const CbtExamView: React.FC<CbtExamViewProps> = ({
     };
 
     const handleKeyDown = (e: KeyboardEvent) => {
-      // Block F11, Escape, Ctrl+W, Ctrl+T, Ctrl+N, Alt+Tab
+      // Block F11, Escape, Ctrl+W, Ctrl+T, Ctrl+N
       if (
         e.key === 'F11' ||
-        (e.ctrlKey && ['w', 't', 'n', 'r', 'p'].includes(e.key.toLowerCase())) ||
-        (e.altKey && e.key === 'Tab')
+        (e.ctrlKey && ['w', 't', 'n', 'p'].includes(e.key.toLowerCase()))
       ) {
         e.preventDefault();
         triggerProctorViolation('Blocked Unauthorized Keyboard Shortcut');
@@ -145,10 +148,11 @@ export const CbtExamView: React.FC<CbtExamViewProps> = ({
     setProctorStrikes((prev) => {
       const nextStrikes = prev + 1;
       if (nextStrikes >= 3) {
+        // After 3 confirmed infractions, alert and submit
         onSubmitTest(true);
       } else {
         setShowProctorWarning(true);
-        setWarningCountdown(10);
+        setWarningCountdown(20);
       }
       return nextStrikes;
     });
@@ -787,11 +791,11 @@ export const CbtExamView: React.FC<CbtExamViewProps> = ({
         <div className="w-full lg:w-80 bg-white dark:bg-slate-900 flex flex-col shrink-0 border-l border-slate-200 dark:border-slate-800 overflow-hidden">
           {/* User profile banner */}
           <div className="p-4 border-b border-slate-200 dark:border-slate-800 flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-blue-600 text-white font-bold flex items-center justify-center">
-              DS
+            <div className="w-10 h-10 rounded-full bg-blue-600 text-white font-bold flex items-center justify-center text-xs">
+              {candidateInitials}
             </div>
             <div>
-              <div className="font-bold text-xs text-slate-900 dark:text-white">Divesh Sah</div>
+              <div className="font-bold text-xs text-slate-900 dark:text-white">{candidateName}</div>
               <div className="text-[11px] text-slate-500">Roll No: JEE-2026-NTA</div>
             </div>
           </div>

@@ -33,8 +33,8 @@ export const LoginView: React.FC<LoginViewProps> = ({
   darkMode,
   onToggleDarkMode,
 }) => {
-  const [name, setName] = useState(initialProfile.name || 'Divesh Sah');
-  const [email, setEmail] = useState(initialProfile.email || 'diveshsah2@gmail.com');
+  const [name, setName] = useState(initialProfile.name || 'JEE Aspirant');
+  const [email, setEmail] = useState(initialProfile.email || 'aspirant@missionjee.org');
   const [stream, setStream] = useState<StreamType>(initialProfile.stream || 'jee');
   const [classLevel, setClassLevel] = useState<'11' | '12' | 'dropper'>(initialProfile.classLevel || '12');
   const [isAuthenticating, setIsAuthenticating] = useState(false);
@@ -70,8 +70,8 @@ export const LoginView: React.FC<LoginViewProps> = ({
   const handleInstantGoogleLogin = () => {
     const profile: UserProfile = {
       ...initialProfile,
-      name: name.trim() || 'Divesh Sah',
-      email: email.trim() || 'diveshsah2@gmail.com',
+      name: name.trim() || 'JEE Aspirant',
+      email: email.trim() || 'aspirant@missionjee.org',
       stream,
       classLevel,
       targetCollege: stream === 'neet' ? 'AIIMS New Delhi' : 'IIT Bombay / Computer Science',
@@ -216,7 +216,7 @@ export const LoginView: React.FC<LoginViewProps> = ({
               onClick={handleInstantGoogleLogin}
               className="w-full py-2.5 px-4 rounded-xl bg-blue-50 dark:bg-blue-950/40 hover:bg-blue-100 dark:hover:bg-blue-900/60 border border-blue-200 dark:border-blue-900 text-blue-700 dark:text-blue-300 font-bold text-xs transition flex items-center justify-center gap-2 cursor-pointer"
             >
-              <span>Continue as {name || 'Divesh Sah'} ({email})</span>
+              <span>Continue as {name || 'JEE Aspirant'} ({email || 'aspirant@missionjee.org'})</span>
               <ArrowRight size={13} />
             </button>
           </div>
@@ -247,7 +247,7 @@ export const LoginView: React.FC<LoginViewProps> = ({
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  placeholder="e.g. Divesh Sah"
+                  placeholder="e.g. Rahul Sharma"
                   required
                   className="w-full px-3.5 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-xs font-semibold focus:outline-none focus:border-blue-500"
                 />
@@ -261,7 +261,7 @@ export const LoginView: React.FC<LoginViewProps> = ({
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="e.g. diveshsah2@gmail.com"
+                  placeholder="e.g. student@gmail.com"
                   required
                   className="w-full px-3.5 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-xs font-semibold focus:outline-none focus:border-blue-500"
                 />

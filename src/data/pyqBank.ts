@@ -114,9 +114,9 @@ $$a = \\frac{F_{net}}{M_{total}} = \\frac{24\\text{ N}}{6\\text{ kg}} = 4.0\\tex
       <text x="272" y="90" font-size="12" font-weight="bold" fill="#0f172a">B</text>
     </svg>`,
     text: 'For the bridge circuit shown in the diagram between terminals $A$ and $B$, $R_1 = 2\\,\\Omega$, $R_2 = 4\\,\\Omega$, $R_3 = 4\\,\\Omega$, $R_4 = 2\\,\\Omega$, and the bridge resistor is $R_5 = 5\\,\\Omega$. The equivalent resistance $R_{AB}$ (in $\\Omega$) between terminals $A$ and $B$ is:',
-    correctAnswer: '2.5',
-    numericalTolerance: 0.1,
-    formula: 'R_{AB} = \\frac{V}{I}',
+    correctAnswer: '2.88',
+    numericalTolerance: 0.15,
+    formula: 'R_{AB} = \\frac{V}{I} = 2.88\\,\\Omega',
     solution: `📝 GIVEN DATA & CONCEPT:
 - Resistors: $R_1 = 2\\,\\Omega$, $R_2 = 4\\,\\Omega$, $R_3 = 4\\,\\Omega$, $R_4 = 2\\,\\Omega$, and central branch $R_5 = 5\\,\\Omega$.
 - Notice that the bridge is anti-symmetric: $R_1 \\neq R_3$ and $\\frac{R_1}{R_2} = \\frac{2}{4} = \\frac{1}{2}$, whereas $\\frac{R_3}{R_4} = \\frac{4}{2} = 2$.
@@ -138,7 +138,7 @@ $$23 V_C = 140 \\implies V_C = \\frac{140}{23}\\text{ V}, \\quad V_D = 10 - \\fr
 Step 3: Total input current leaving terminal $A$:
 $$I_{in} = \\frac{10 - V_C}{2} + \\frac{10 - V_D}{4} = \\frac{10 - \\frac{140}{23}}{2} + \\frac{10 - \\frac{90}{23}}{4} = \\frac{90}{46} + \\frac{140}{92} = \\frac{180 + 140}{92} = \\frac{320}{92} = \\frac{80}{23}\\text{ A}.$$
 Step 4: Equivalent resistance $R_{AB}$:
-$$R_{AB} = \\frac{V}{I_{in}} = \\frac{10}{\\frac{80}{23}} = \\frac{230}{80} = \\frac{23}{8} = 2.875\\,\\Omega \\approx 2.5\\text{ to } 2.9\\,\\Omega.$$`,
+$$R_{AB} = \\frac{V}{I_{in}} = \\frac{10}{\\frac{80}{23}} = \\frac{230}{80} = \\frac{23}{8} = 2.875\\,\\Omega \\approx 2.88\\,\\Omega.$$`,
     notebookSolution: {
       given: 'R₁ = 2 Ω, R₂ = 4 Ω, R₃ = 4 Ω, R₄ = 2 Ω, R_central = 5 Ω',
       concept: 'Nodal analysis with anti-symmetry potential distribution.',

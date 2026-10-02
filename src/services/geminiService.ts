@@ -1,14 +1,13 @@
 import { GoogleGenAI } from '@google/genai';
 import { Question, Subject, ExamType, Difficulty, PerformanceAnalysis, TestSession, ChapterFormula } from '../types';
 
-export const EMBEDDED_GEMINI_API_KEY = 'AQ.Ab8RN6IO1Jj6mkxZ7Bx-7qbJu0RJ5RrEIgCcZdWVMG5GKTxJwg';
 const STORAGE_KEY = 'jee_ai_gemini_api_key';
 
 export function getStoredApiKey(): string {
   return (
     localStorage.getItem(STORAGE_KEY) ||
     (import.meta as any).env?.VITE_GEMINI_API_KEY ||
-    EMBEDDED_GEMINI_API_KEY
+    ''
   );
 }
 
@@ -81,12 +80,12 @@ Schema:
 ]`;
 
     try {
-      const response = await client.interactions.create({
-        model: 'gemini-3.8-flash',
-        input: prompt,
+      const response = await client.models.generateContent({
+        model: 'gemini-2.5-flash',
+        contents: prompt,
       });
 
-      const text = response.output_text?.trim() || '';
+      const text = response.text?.trim() || '';
       const cleanJson = text.replace(/^```json/i, '').replace(/^```/i, '').replace(/```$/i, '').trim();
       const parsed: Question[] = JSON.parse(cleanJson);
       return parsed.map((q, idx) => ({
@@ -170,11 +169,11 @@ INSTRUCTIONS:
 4. Keep the response crisp, well-structured, and easy to read during exam revision.`;
 
   try {
-    const response = await client.interactions.create({
-      model: 'gemini-3.8-flash',
-      input: prompt,
+    const response = await client.models.generateContent({
+      model: 'gemini-2.5-flash',
+      contents: prompt,
     });
-    return response.output_text || 'Could not generate tutor response.';
+    return response.text || 'Could not generate tutor response.';
   } catch (err: any) {
     return `Error connecting to Gemini AI: ${err.message || 'Check your API key in Settings.'}`;
   }
@@ -247,11 +246,11 @@ Respond strictly in valid JSON format matching this schema:
 }`;
 
   try {
-    const response = await client.interactions.create({
-      model: 'gemini-3.8-flash',
-      input: prompt,
+    const response = await client.models.generateContent({
+      model: 'gemini-2.5-flash',
+      contents: prompt,
     });
-    const text = response.output_text?.trim() || '';
+    const text = response.text?.trim() || '';
     const cleanJson = text.replace(/^```json/i, '').replace(/^```/i, '').replace(/```$/i, '').trim();
     return JSON.parse(cleanJson);
   } catch (err) {
@@ -340,11 +339,11 @@ Output STRICT JSON only matching this schema:
 }`;
 
   try {
-    const response = await client.interactions.create({
-      model: 'gemini-3.8-flash',
-      input: prompt,
+    const response = await client.models.generateContent({
+      model: 'gemini-2.5-flash',
+      contents: prompt,
     });
-    const text = response.output_text?.trim() || '';
+    const text = response.text?.trim() || '';
     const cleanJson = text.replace(/^```json/i, '').replace(/^```/i, '').replace(/```$/i, '').trim();
     return JSON.parse(cleanJson);
   } catch (err) {

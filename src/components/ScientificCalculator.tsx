@@ -6,6 +6,63 @@ interface ScientificCalculatorProps {
   onClose: () => void;
 }
 
+// Safe tokenized arithmetic parser without any eval or new Function execution
+function safeCalculateArithmetic(input: string): number {
+  const sanitized = input.replace(/×/g, '*').replace(/÷/g, '/').replace(/\s+/g, '');
+  if (!/^[\d+\-*/().]+$/.test(sanitized)) {
+    throw new Error('Invalid math expression');
+  }
+
+  const tokens = sanitized.match(/\d+(\.\d+)?|[+\-*/()]/g);
+  if (!tokens || tokens.length === 0) return 0;
+
+  let pos = 0;
+  function parsePrimary(): number {
+    const t = tokens![pos++];
+    if (t === '(') {
+      const val = parseAddSub();
+      if (tokens![pos++] !== ')') throw new Error('Mismatched paren');
+      return val;
+    }
+    if (t === '-') {
+      return -parsePrimary();
+    }
+    if (t === '+') {
+      return parsePrimary();
+    }
+    const num = parseFloat(t);
+    if (isNaN(num)) throw new Error('Invalid number');
+    return num;
+  }
+
+  function parseMulDiv(): number {
+    let val = parsePrimary();
+    while (pos < tokens!.length && (tokens![pos] === '*' || tokens![pos] === '/')) {
+      const op = tokens![pos++];
+      const next = parsePrimary();
+      if (op === '*') val *= next;
+      else {
+        if (next === 0) throw new Error('Divide by zero');
+        val /= next;
+      }
+    }
+    return val;
+  }
+
+  function parseAddSub(): number {
+    let val = parseMulDiv();
+    while (pos < tokens!.length && (tokens![pos] === '+' || tokens![pos] === '-')) {
+      const op = tokens![pos++];
+      const next = parseMulDiv();
+      if (op === '+') val += next;
+      else val -= next;
+    }
+    return val;
+  }
+
+  return parseAddSub();
+}
+
 export const ScientificCalculator: React.FC<ScientificCalculatorProps> = ({ isOpen, onClose }) => {
   const [display, setDisplay] = useState('0');
   const [isRad, setIsRad] = useState(false);
@@ -79,10 +136,7 @@ export const ScientificCalculator: React.FC<ScientificCalculatorProps> = ({ isOp
 
   const handleEqual = () => {
     try {
-      // Safe math evaluator for basic expressions
-      // eslint-disable-next-line no-eval
-      const sanitized = display.replace(/×/g, '*').replace(/÷/g, '/');
-      const val = Function(`"use strict"; return (${sanitized})`)();
+      const val = safeCalculateArithmetic(display);
       setDisplay(String(Number(val.toFixed(6))));
     } catch {
       setDisplay('Error');

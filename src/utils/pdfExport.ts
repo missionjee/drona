@@ -18,7 +18,7 @@ export function generateTestPaperPdf(
   const contentWidth = pageWidth - margin * 2;
   let y = margin;
 
-  const candidateName = userProfile?.name || 'Divesh Sah';
+  const candidateName = userProfile?.name || 'JEE Aspirant';
   const targetExam =
     session.examType === 'jee_advanced'
       ? 'JEE Advanced (IIT)'

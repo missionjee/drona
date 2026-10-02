@@ -14,6 +14,8 @@ import {
   saveUserProfile,
   fetchTestHistory,
   autoUploadTestResult,
+  saveArchivedTestSession,
+  getArchivedTestSession,
   signInWithGoogle,
   signOutUser,
   getAuthUser,
@@ -36,6 +38,18 @@ import { GenerationProgressModal } from './components/GenerationProgressModal';
 export function App() {
   const [activeTab, setActiveTab] = useState<ActiveNavTab>('arsenal');
   const [currentView, setCurrentView] = useState<'login' | 'app' | 'exam' | 'results'>(() => {
+    try {
+      const saved = sessionStorage.getItem('drona_active_exam_state');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (parsed?.session && !parsed.session.isCompleted) {
+          return 'exam';
+        }
+      }
+    } catch {
+      // ignore parse errors
+    }
+
     const hasAuthCallback =
       window.location.hash.includes('access_token=') ||
       window.location.search.includes('code=');
@@ -55,8 +69,8 @@ export function App() {
 
   // User Profile
   const [userProfile, setUserProfile] = useState<UserProfile>({
-    name: 'Divesh Sah',
-    email: 'diveshsah2@gmail.com',
+    name: 'JEE Aspirant',
+    email: 'aspirant@missionjee.org',
     stream: 'jee',
     classLevel: '12',
     targetCollege: 'IIT Bombay / Computer Science',
@@ -68,8 +82,21 @@ export function App() {
   const [isGenerating, setIsGenerating] = useState(false);
   const [pipelineProgress, setPipelineProgress] = useState<PipelineProgress | null>(null);
 
-  // Active Ephemeral Test Session (IN-MEMORY ONLY)
-  const [activeSession, setActiveSession] = useState<EphemeralTestSession | null>(null);
+  // Active Test Session with persistent recovery during active exam
+  const [activeSession, setActiveSession] = useState<EphemeralTestSession | null>(() => {
+    try {
+      const saved = sessionStorage.getItem('drona_active_exam_state');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (parsed?.session && !parsed.session.isCompleted) {
+          return parsed.session;
+        }
+      }
+    } catch {
+      // ignore parse errors
+    }
+    return null;
+  });
   const [currentAnalytics, setCurrentAnalytics] = useState<PersistentPerformanceRecord | null>(null);
 
   // Persistent Performance History
@@ -170,6 +197,28 @@ export function App() {
     }
   }, [darkMode]);
 
+  // Synchronize ongoing test session with sessionStorage for crash/refresh resilience
+  useEffect(() => {
+    if (currentView === 'exam' && activeSession && !activeSession.isCompleted) {
+      sessionStorage.setItem('drona_active_exam_state', JSON.stringify({ session: activeSession }));
+    } else if (currentView !== 'exam' || !activeSession || activeSession.isCompleted) {
+      sessionStorage.removeItem('drona_active_exam_state');
+    }
+  }, [currentView, activeSession]);
+
+  // Guard against accidental tab closure or browser refresh during active exam
+  useEffect(() => {
+    const handleBeforeUnload = (e: BeforeUnloadEvent) => {
+      if (currentView === 'exam' && activeSession && !activeSession.isCompleted) {
+        e.preventDefault();
+        e.returnValue = 'Your test is currently in progress. If you leave, your active test session will be interrupted.';
+        return e.returnValue;
+      }
+    };
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    return () => window.removeEventListener('beforeunload', handleBeforeUnload);
+  }, [currentView, activeSession]);
+
   // Handler: Reset Weekly Test Quota for Practice Mode
   const handleResetWeeklyQuota = () => {
     const updated = pastRecords.map((r) => ({
@@ -262,17 +311,36 @@ export function App() {
     const updatedHistory = await fetchTestHistory();
     setPastRecords(updatedHistory);
 
-    setCurrentAnalytics(analysis);
-    setActiveSession({
+    // Save archived test session with question data and user responses, keyed by analysis.id
+    const finalSession: EphemeralTestSession = {
       ...activeSession,
+      id: analysis.id,
       isCompleted: true,
       autoSubmittedForProctoring: proctorAutoSubmitted,
-    });
+    };
+    saveArchivedTestSession(finalSession);
+    sessionStorage.removeItem('drona_active_exam_state');
+
+    setCurrentAnalytics(analysis);
+    setActiveSession(finalSession);
     setCurrentView('results');
   };
 
-  // Handler: Finish Test and Discard Ephemeral Raw Paper
+  // Handler: Inspect past test paper and solutions
+  const handleReviewSolutions = (rec: PersistentPerformanceRecord) => {
+    const archived = getArchivedTestSession(rec.id);
+    if (archived && archived.questions && archived.questions.length > 0) {
+      setActiveSession(archived);
+      setCurrentAnalytics(rec);
+      setCurrentView('results');
+    } else {
+      alert(`Detailed questions for "${rec.title}" are not cached in local storage.`);
+    }
+  };
+
+  // Handler: Finish Test and Return to Arsenal
   const handleFinishAndPurge = () => {
+    sessionStorage.removeItem('drona_active_exam_state');
     setActiveSession(null);
     setCurrentAnalytics(null);
     setCurrentView('app');
@@ -329,6 +397,7 @@ export function App() {
               handleFinishAndPurge();
             }
           }}
+          userProfile={userProfile}
         />
       )}
 
@@ -380,9 +449,7 @@ export function App() {
                   pastRecords={pastRecords}
                   userProfile={userProfile}
                   onNavigateToSeries={() => setActiveTab('series')}
-                  onSelectTestRecord={(rec) => {
-                    // Quick modal or focus
-                  }}
+                  onSelectTestRecord={handleReviewSolutions}
                 />
               )}
 

@@ -12,13 +12,26 @@ function fmt(num: number, decimals: number = 2): string {
   return s.endsWith('.00') ? s.slice(0, -3) : s.endsWith('0') && s.includes('.') ? s.slice(0, -1) : s;
 }
 
-// Helper to shuffle options and ensure correct answer is matched
+// Helper to distribute options cleanly and ensure correct answer is placed at correctKey with zero duplicate distractors
 function makeMcqOptions(correctText: string, distractors: string[], correctKey: 'A' | 'B' | 'C' | 'D' = 'A') {
+  const d0 = distractors[0] || 'Alternate Option 1';
+  const d1 = distractors[1] || 'Alternate Option 2';
+  const d2 = distractors[2] || 'Alternate Option 3';
+
+  // Explicit, unambiguous slot assignment so no distractor is ever reused
+  const mapping: Record<'A' | 'B' | 'C' | 'D', [string, string, string, string]> = {
+    A: [correctText, d0, d1, d2],
+    B: [d0, correctText, d1, d2],
+    C: [d0, d1, correctText, d2],
+    D: [d0, d1, d2, correctText],
+  };
+
+  const [tA, tB, tC, tD] = mapping[correctKey];
   const opts = [
-    { id: 'A', text: correctKey === 'A' ? correctText : distractors[0] },
-    { id: 'B', text: correctKey === 'B' ? correctText : distractors[correctKey === 'A' ? 0 : 1] },
-    { id: 'C', text: correctKey === 'C' ? correctText : distractors[correctKey === 'D' ? 1 : 2] },
-    { id: 'D', text: correctKey === 'D' ? correctText : distractors[correctKey === 'A' ? 2 : 0] },
+    { id: 'A', text: tA },
+    { id: 'B', text: tB },
+    { id: 'C', text: tC },
+    { id: 'D', text: tD },
   ];
   return { options: opts, correctAnswer: correctKey };
 }

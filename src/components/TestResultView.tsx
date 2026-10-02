@@ -125,7 +125,7 @@ export const TestResultView: React.FC<TestResultViewProps> = ({
               {session.title}
             </h1>
             <p className="text-xs sm:text-sm text-slate-500">
-              Attempted by <span className="font-semibold text-slate-700 dark:text-slate-300">{userProfile?.name || 'Divesh Sah'}</span> • Data Policy: Questions & solutions will be wiped from active memory when you return to dashboard.
+              Attempted by <span className="font-semibold text-slate-700 dark:text-slate-300">{userProfile?.name || 'JEE Aspirant'}</span> • Verified CBT Result Session
             </p>
           </div>
 
@@ -333,28 +333,98 @@ export const TestResultView: React.FC<TestResultViewProps> = ({
                     <MathRenderer latex={q.text} />
                   </div>
 
+                  {/* MCQ Options with status indicator */}
+                  {q.options && q.options.length > 0 && (
+                    <div className="space-y-2 mb-4">
+                      <div className="text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1">
+                        Exam Options & Answer Key:
+                      </div>
+                      <div className="grid sm:grid-cols-2 gap-2.5">
+                        {q.options.map((opt) => {
+                          const isOfficialCorrect = Array.isArray(q.correctAnswer)
+                            ? q.correctAnswer.includes(opt.id)
+                            : String(q.correctAnswer).trim().toUpperCase() === opt.id.toUpperCase();
+
+                          const isStudentPick = q.type === 'multiple_choice'
+                            ? resp?.selectedOptions?.includes(opt.id)
+                            : resp?.selectedOption === opt.id;
+
+                          let borderStyle = 'border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/60 text-slate-800 dark:text-slate-200';
+                          let badgeStyle = 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300';
+
+                          if (isOfficialCorrect) {
+                            borderStyle = 'border-emerald-500 bg-emerald-50/70 dark:bg-emerald-950/40 text-emerald-950 dark:text-emerald-100 font-semibold shadow-xs';
+                            badgeStyle = 'bg-emerald-600 text-white font-bold';
+                          } else if (isStudentPick && !isOfficialCorrect) {
+                            borderStyle = 'border-red-400 bg-red-50/70 dark:bg-red-950/40 text-red-950 dark:text-red-100 font-semibold';
+                            badgeStyle = 'bg-red-500 text-white font-bold';
+                          }
+
+                          return (
+                            <div
+                              key={opt.id}
+                              className={`p-3 rounded-xl border flex items-center justify-between gap-3 text-xs transition select-none ${borderStyle}`}
+                            >
+                              <div className="flex items-center gap-2.5 min-w-0 flex-1">
+                                <div className={`w-6 h-6 rounded-full flex items-center justify-center text-xs shrink-0 ${badgeStyle}`}>
+                                  {opt.id}
+                                </div>
+                                <div className="min-w-0 flex-1">
+                                  <MathRenderer latex={opt.text} inline />
+                                </div>
+                              </div>
+
+                              <div className="shrink-0 flex items-center gap-1.5 font-bold text-[10px] uppercase">
+                                {isOfficialCorrect && (
+                                  <span className="px-2 py-0.5 rounded bg-emerald-100 dark:bg-emerald-900/80 text-emerald-800 dark:text-emerald-200">
+                                    Correct Answer
+                                  </span>
+                                )}
+                                {isStudentPick && !isOfficialCorrect && (
+                                  <span className="px-2 py-0.5 rounded bg-red-100 dark:bg-red-900/80 text-red-800 dark:text-red-200">
+                                    Your Response
+                                  </span>
+                                )}
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  )}
+
                   {/* Student vs Correct Answer */}
-                  <div className="flex flex-wrap items-center gap-4 text-xs font-semibold p-3 bg-slate-100/70 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700 mb-4">
-                    <div>
-                      <span className="text-slate-500">Your Response: </span>
-                      <span
-                        className={`font-bold font-mono ${
-                          !isAnswered
-                            ? 'text-slate-400'
-                            : isCorrect
-                            ? 'text-emerald-600'
-                            : 'text-red-500'
-                        }`}
-                      >
-                        {studentAnsText}
-                      </span>
+                  <div className="flex flex-wrap items-center justify-between gap-4 text-xs font-semibold p-3.5 bg-slate-100/70 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700 mb-4">
+                    <div className="flex flex-wrap items-center gap-5">
+                      <div>
+                        <span className="text-slate-500">Your Response: </span>
+                        <span
+                          className={`font-bold font-mono ${
+                            !isAnswered
+                              ? 'text-slate-400'
+                              : isCorrect
+                              ? 'text-emerald-600'
+                              : 'text-red-500'
+                          }`}
+                        >
+                          {studentAnsText}
+                        </span>
+                      </div>
+                      <div>
+                        <span className="text-slate-500">Correct Answer: </span>
+                        <span className="font-bold font-mono text-emerald-600 dark:text-emerald-400">
+                          {Array.isArray(q.correctAnswer) ? q.correctAnswer.join(', ') : q.correctAnswer}
+                        </span>
+                      </div>
                     </div>
-                    <div>
-                      <span className="text-slate-500">Correct Answer: </span>
-                      <span className="font-bold font-mono text-emerald-600 dark:text-emerald-400">
-                        {Array.isArray(q.correctAnswer) ? q.correctAnswer.join(', ') : q.correctAnswer}
-                      </span>
-                    </div>
+
+                    <button
+                      onClick={() => setSelectedQuestionForTutor(q)}
+                      className="px-3 py-1.5 rounded-xl bg-purple-50 dark:bg-purple-950/60 hover:bg-purple-100 dark:hover:bg-purple-900/80 text-purple-700 dark:text-purple-300 font-bold text-xs flex items-center gap-1.5 border border-purple-200 dark:border-purple-800 transition cursor-pointer"
+                    >
+                      <Bot size={14} className="text-purple-600 dark:text-purple-400" />
+                      <span>Ask AI Doubt Tutor</span>
+                    </button>
                   </div>
 
                   {/* ================= NOTEBOOK-STYLE SOLUTION CARD ================= */}
@@ -364,9 +434,10 @@ export const TestResultView: React.FC<TestResultViewProps> = ({
                         📝 Official Notebook Derivation
                       </span>
                       {q.formula && (
-                        <span className="text-[11px] font-mono text-blue-600 dark:text-blue-400 font-bold">
-                          Formula: ${q.formula}$
-                        </span>
+                        <div className="text-[11px] font-mono text-blue-600 dark:text-blue-400 font-bold flex items-center gap-1">
+                          <span>Formula:</span>
+                          <MathRenderer latex={`$${q.formula.replace(/^\$+|\$+$/g, '')}$`} inline />
+                        </div>
                       )}
                     </div>
 
@@ -376,18 +447,18 @@ export const TestResultView: React.FC<TestResultViewProps> = ({
                           <span className="font-bold text-slate-900 dark:text-white block mb-0.5">
                             📌 Given Data & Boundary Conditions:
                           </span>
-                          <span className="font-mono text-slate-700 dark:text-slate-300">
-                            {q.notebookSolution.given}
-                          </span>
+                          <div className="font-mono text-slate-700 dark:text-slate-300">
+                            <MathRenderer latex={q.notebookSolution.given} />
+                          </div>
                         </div>
 
                         <div className="p-2.5 bg-white/80 dark:bg-slate-800/60 rounded-xl border border-amber-100 dark:border-slate-700">
                           <span className="font-bold text-slate-900 dark:text-white block mb-0.5">
                             📐 Governing Law & Core Concept:
                           </span>
-                          <span className="text-slate-700 dark:text-slate-300">
-                            {q.notebookSolution.concept}
-                          </span>
+                          <div className="text-slate-700 dark:text-slate-300">
+                            <MathRenderer latex={q.notebookSolution.concept} />
+                          </div>
                         </div>
 
                         <div className="p-3 bg-white/90 dark:bg-slate-800/80 rounded-xl border border-amber-200 dark:border-slate-700 space-y-1.5 font-mono">
@@ -395,20 +466,22 @@ export const TestResultView: React.FC<TestResultViewProps> = ({
                             🔢 Step-by-Step Derivation:
                           </span>
                           {q.notebookSolution.steps.map((step, sIdx) => (
-                            <div key={sIdx} className="text-slate-800 dark:text-slate-200">
-                              <span className="font-bold text-blue-600 mr-2">[{sIdx + 1}]</span>
-                              <MathRenderer latex={step} />
+                            <div key={sIdx} className="text-slate-800 dark:text-slate-200 flex items-start gap-2">
+                              <span className="font-bold text-blue-600 shrink-0">[{sIdx + 1}]</span>
+                              <div className="flex-1">
+                                <MathRenderer latex={step} />
+                              </div>
                             </div>
                           ))}
                         </div>
 
                         <div className="p-2.5 bg-emerald-50/80 dark:bg-emerald-950/40 rounded-xl border border-emerald-200 dark:border-emerald-900 text-emerald-900 dark:text-emerald-200 font-bold">
-                          ✅ Conclusion: {q.notebookSolution.conclusion}
+                          ✅ Conclusion: <MathRenderer latex={q.notebookSolution.conclusion} inline />
                         </div>
 
                         {q.notebookSolution.pitfall && (
                           <div className="p-2.5 bg-red-50/80 dark:bg-red-950/40 rounded-xl border border-red-200 dark:border-red-900 text-red-900 dark:text-red-200 text-[11px]">
-                            ⚠️ Common Trap / Misconception: {q.notebookSolution.pitfall}
+                            ⚠️ Common Trap / Misconception: <MathRenderer latex={q.notebookSolution.pitfall} inline />
                           </div>
                         )}
                       </div>
@@ -424,6 +497,16 @@ export const TestResultView: React.FC<TestResultViewProps> = ({
           </div>
         </div>
       </div>
+
+      {/* AI Doubt Tutor Modal */}
+      {selectedQuestionForTutor && (
+        <AiDoubtTutorModal
+          isOpen={Boolean(selectedQuestionForTutor)}
+          onClose={() => setSelectedQuestionForTutor(null)}
+          question={selectedQuestionForTutor}
+          onOpenApiKeyModal={onOpenApiKeyModal || (() => {})}
+        />
+      )}
     </div>
   );
 };

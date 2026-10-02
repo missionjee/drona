@@ -45,12 +45,19 @@ export const MathRenderer: React.FC<MathRendererProps> = ({
       }
     });
 
+    // Convert newlines to breaks when not inline
+    if (!inline) {
+      processed = processed
+        .replace(/\n\n+/g, '<div class="h-2.5"></div>')
+        .replace(/\n/g, '<br/>');
+    }
+
     return processed;
-  }, [textToRender]);
+  }, [textToRender, inline]);
 
   return (
     <div
-      className={`math-content ${inline ? 'inline' : 'block'} ${className}`}
+      className={`math-content ${inline ? 'inline' : 'block leading-relaxed'} ${className}`}
       dangerouslySetInnerHTML={{ __html: renderedContent }}
     />
   );

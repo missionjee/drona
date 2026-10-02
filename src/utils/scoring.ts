@@ -23,12 +23,12 @@ export function calculatePerformanceRecord(
 
   const subjectScores: Record<
     Subject,
-    { score: number; maxScore: number; accuracy: number; attempted: number }
+    { score: number; maxScore: number; accuracy: number; attempted: number; correct: number }
   > = {
-    physics: { score: 0, maxScore: 0, accuracy: 0, attempted: 0 },
-    chemistry: { score: 0, maxScore: 0, accuracy: 0, attempted: 0 },
-    mathematics: { score: 0, maxScore: 0, accuracy: 0, attempted: 0 },
-    biology: { score: 0, maxScore: 0, accuracy: 0, attempted: 0 },
+    physics: { score: 0, maxScore: 0, accuracy: 0, attempted: 0, correct: 0 },
+    chemistry: { score: 0, maxScore: 0, accuracy: 0, attempted: 0, correct: 0 },
+    mathematics: { score: 0, maxScore: 0, accuracy: 0, attempted: 0, correct: 0 },
+    biology: { score: 0, maxScore: 0, accuracy: 0, attempted: 0, correct: 0 },
   };
 
   const chapterMap: Record<
@@ -41,12 +41,31 @@ export function calculatePerformanceRecord(
   questions.forEach((q) => {
     const sub = q.subject;
     const resp = responses[q.id];
-    const qMarks = 4;
-    const negMarks = -1;
+
+    // Exam-specific marking scheme
+    let qMarks = 4;
+    let negMarks = -1;
+
+    if (examType === 'jee_advanced') {
+      if (q.type === 'multiple_choice') {
+        qMarks = 4;
+        negMarks = -2;
+      } else if (q.type === 'numerical' || q.type === 'integer') {
+        qMarks = 4;
+        negMarks = 0; // JEE Advanced standard numerical format has 0 negative marks
+      } else {
+        qMarks = 3;
+        negMarks = -1;
+      }
+    } else {
+      // JEE Main & NEET
+      qMarks = 4;
+      negMarks = -1;
+    }
 
     maxScore += qMarks;
     if (!subjectScores[sub]) {
-      subjectScores[sub] = { score: 0, maxScore: 0, accuracy: 0, attempted: 0 };
+      subjectScores[sub] = { score: 0, maxScore: 0, accuracy: 0, attempted: 0, correct: 0 };
     }
     subjectScores[sub].maxScore += qMarks;
 
@@ -101,6 +120,7 @@ export function calculatePerformanceRecord(
       totalCorrect++;
       totalScore += qMarks;
       subjectScores[sub].score += qMarks;
+      subjectScores[sub].correct++;
       chapterMap[chName].correct++;
     } else {
       totalIncorrect++;
@@ -109,10 +129,10 @@ export function calculatePerformanceRecord(
     }
   });
 
-  // Calculate subject accuracies
+  // Calculate authentic subject accuracies: correct / attempted * 100
   (['physics', 'chemistry', 'mathematics', 'biology'] as Subject[]).forEach((sub) => {
     const s = subjectScores[sub];
-    s.accuracy = s.attempted > 0 ? Math.max(0, Math.round((s.score / (s.attempted * 4)) * 100)) : 0;
+    s.accuracy = s.attempted > 0 ? Math.round((s.correct / s.attempted) * 100) : 0;
   });
 
   // Overall accuracy

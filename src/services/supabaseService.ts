@@ -9,14 +9,15 @@ const STORAGE_KEYS = {
   CUSTOM_URL: 'drona_custom_supabase_url',
   CUSTOM_KEY: 'drona_custom_supabase_key',
   TEST_HISTORY: 'drona_test_history',
+  ARCHIVED_PAPERS: 'drona_archived_papers',
   STUDY_NOTES: 'drona_study_notes',
   AUTH_LOGGED_IN: 'drona_user_logged_in',
 };
 
 // Default profile for new sessions
 const INITIAL_PROFILE: UserProfile = {
-  name: 'Divesh Sah',
-  email: 'diveshsah2@gmail.com',
+  name: 'JEE Aspirant',
+  email: 'aspirant@missionjee.org',
   stream: 'jee',
   classLevel: '12',
   targetCollege: 'IIT Bombay / Computer Science',
@@ -157,10 +158,14 @@ export async function fetchTestHistory(): Promise<PersistentPerformanceRecord[]>
   if (supabase) {
     try {
       const profile = await fetchUserProfile();
-      const { data, error } = await supabase
-        .from('test_history')
-        .select('*')
-        .order('timestamp', { ascending: false });
+      let query = supabase.from('test_history').select('*');
+
+      // User isolation: filter by active email if available
+      if (profile.email && !profile.email.includes('missionjee.org')) {
+        query = query.eq('user_email', profile.email);
+      }
+
+      const { data, error } = await query.order('timestamp', { ascending: false });
 
       if (!error && data && data.length > 0) {
         // Merge Supabase records with local records by ID
@@ -209,16 +214,17 @@ export async function fetchTestHistory(): Promise<PersistentPerformanceRecord[]>
 export async function autoUploadTestResult(record: PersistentPerformanceRecord): Promise<void> {
   // 1. Immediately store in local history
   const current = await fetchTestHistory();
-  // Filter out duplicate if same ID
   const updated = [record, ...current.filter((r) => r.id !== record.id)];
   localStorage.setItem(STORAGE_KEYS.TEST_HISTORY, JSON.stringify(updated));
 
-  // 2. Upload to Supabase cloud table
+  // 2. Upload to Supabase cloud table with user scoping
   const supabase = getSupabaseClient();
   if (supabase) {
     try {
+      const profile = await fetchUserProfile();
       const payload = {
         id: record.id,
+        user_email: profile.email || 'aspirant@missionjee.org',
         timestamp: record.timestamp,
         exam_type: record.examType,
         title: record.title,
@@ -245,6 +251,32 @@ export async function autoUploadTestResult(record: PersistentPerformanceRecord):
     } catch (err) {
       console.warn('Supabase test marks upload error (saved locally):', err);
     }
+  }
+}
+
+/**
+ * ARCHIVE AND RETRIEVE COMPLETE TEST PAPERS
+ * Stores actual questions and student answers so students can review past solutions anytime!
+ */
+export function saveArchivedTestSession(session: any): void {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEYS.ARCHIVED_PAPERS);
+    const papers: Record<string, any> = raw ? JSON.parse(raw) : {};
+    papers[session.id] = session;
+    localStorage.setItem(STORAGE_KEYS.ARCHIVED_PAPERS, JSON.stringify(papers));
+  } catch (e) {
+    console.warn('Could not archive test paper to local storage:', e);
+  }
+}
+
+export function getArchivedTestSession(sessionId: string): any | null {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEYS.ARCHIVED_PAPERS);
+    if (!raw) return null;
+    const papers = JSON.parse(raw);
+    return papers[sessionId] || null;
+  } catch {
+    return null;
   }
 }
 
