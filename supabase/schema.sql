@@ -1,28 +1,66 @@
--- Run this once in Supabase Dashboard > SQL Editor for project ukoxijpkxmdckamcmczz.
--- The current web app uses the publishable key directly (it does not exchange a
--- Supabase Auth session), so these policies intentionally allow anon access.
--- Restrict them after moving the app to Supabase Auth.
+-- =========================================================================
+-- MISSION JEET / DRONA SUPABASE SCHEMA
+-- Project Reference: ukoxijpkxmdckamcmczz
+-- Host: https://ukoxijpkxmdckamcmczz.supabase.co
+-- =========================================================================
 
-create table if not exists public.global_signals (
-  issue_number text primary key,
-  strategy text not null,
-  predicted_type text,
-  confidence numeric,
-  status text,
-  stake_units text,
-  reason text,
-  created_at timestamptz not null default now(),
-  updated_at timestamptz not null default now()
+-- 1. USER PROFILES
+create table if not exists public.user_profiles (
+  email text primary key,
+  name text not null,
+  stream text not null default 'jee',
+  class_level text not null default '12',
+  target_college text,
+  target_rank text,
+  avatar_url text,
+  updated_at timestamp with time zone default timezone('utc'::text, now())
 );
 
-alter table public.global_signals enable row level security;
+-- 2. IMMUTABLE TEST HISTORY & PERFORMANCE MARKS (NO DELETIONS)
+create table if not exists public.test_history (
+  id text primary key,
+  timestamp bigint not null,
+  exam_type text not null,
+  title text not null,
+  total_score numeric not null,
+  max_score numeric not null,
+  percentage numeric not null,
+  accuracy numeric not null,
+  predicted_percentile numeric,
+  predicted_rank integer,
+  total_attempted integer,
+  total_correct integer,
+  total_incorrect integer,
+  total_unattempted integer,
+  time_spent_seconds integer,
+  subject_scores jsonb,
+  weak_chapters text[],
+  strong_chapters text[],
+  ai_recommendations text[],
+  proctor_strikes integer default 0,
+  created_at timestamp with time zone default timezone('utc'::text, now())
+);
 
-drop policy if exists "drona anon read" on public.global_signals;
-drop policy if exists "drona anon insert" on public.global_signals;
-drop policy if exists "drona anon update" on public.global_signals;
-drop policy if exists "drona anon delete" on public.global_signals;
+-- 3. STUDY NOTES & FORMULA CHEATSHEETS
+create table if not exists public.study_notes (
+  id text primary key,
+  title text not null,
+  subject text not null,
+  content text,
+  updated_at timestamp with time zone default timezone('utc'::text, now())
+);
 
-create policy "drona anon read" on public.global_signals for select to anon using (true);
-create policy "drona anon insert" on public.global_signals for insert to anon with check (true);
-create policy "drona anon update" on public.global_signals for update to anon using (true) with check (true);
-create policy "drona anon delete" on public.global_signals for delete to anon using (true);
+-- Enable Row Level Security (RLS)
+alter table public.user_profiles enable row level security;
+alter table public.test_history enable row level security;
+alter table public.study_notes enable row level security;
+
+-- Anon Policies for Direct App Deck Interaction
+create policy if not exists "Allow anon read/write on user_profiles"
+  on public.user_profiles for all using (true) with check (true);
+
+create policy if not exists "Allow anon read/insert on test_history"
+  on public.test_history for all using (true) with check (true);
+
+create policy if not exists "Allow anon read/write on study_notes"
+  on public.study_notes for all using (true) with check (true);
