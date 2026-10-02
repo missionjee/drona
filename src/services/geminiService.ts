@@ -51,7 +51,7 @@ Difficulty: ${params.difficulty}
 
 Requirements:
 1. Every formula and equation MUST be enclosed in LaTeX syntax: inline $...$ and display $$...$$.
-2. Resemble actual JEE Main & Advanced PYQ patterns (no board level questions, no trivial filler).
+2. Resemble actual Previous Year Question (PYQ) patterns from the 2015 to 2026 archives (no board level questions, no trivial filler).
 3. Include rigorous, step-by-step mathematical solutions with formulas.
 4. Output STRICT JSON format only. No markdown fences around the json.
 
@@ -74,7 +74,9 @@ Schema:
     "correctAnswer": "A",
     "solution": "Step-by-step mathematical solution with $$...$$ display math",
     "formula": "Primary formula used",
-    "pyqPatternRef": "Inspired by JEE Advanced PYQ Pattern"
+    "pyqReference": "JEE Main / Advanced 2015-2026 PYQ Benchmark",
+    "pyqPatternRef": "Inspired by 2015-2026 PYQ High-Yield Concept",
+    "pyqYear": 2024
   }
 ]`;
 

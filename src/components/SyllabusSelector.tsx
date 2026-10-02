@@ -78,6 +78,8 @@ export const SyllabusSelector: React.FC<SyllabusSelectorProps> = ({
   // NEET: 200 mins
   const [totalQuestions, setTotalQuestions] = useState<number>(() => (isNeet ? 45 : 25));
   const [durationMinutes, setDurationMinutes] = useState<number>(() => (isNeet ? 200 : 180));
+  const [pyqStartYear, setPyqStartYear] = useState<number>(2015);
+  const [pyqEndYear, setPyqEndYear] = useState<number>(2026);
 
   useEffect(() => {
     if (isNeet) {
@@ -175,6 +177,10 @@ export const SyllabusSelector: React.FC<SyllabusSelectorProps> = ({
         medium: Math.floor(totalQuestions * 0.5),
         hard: Math.ceil(totalQuestions * 0.5),
       },
+      pyqYearRange: {
+        startYear: pyqStartYear,
+        endYear: pyqEndYear,
+      },
     });
   };
 
@@ -190,7 +196,7 @@ export const SyllabusSelector: React.FC<SyllabusSelectorProps> = ({
             </h2>
           </div>
           <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-            Build unrepeated, proctored mock tests grounded in actual PYQs (2019–2025) and NCERT textbooks.
+            Build unrepeated, proctored mock tests grounded in authentic PYQs (2015–2026) and NCERT textbooks.
           </p>
         </div>
 
@@ -237,6 +243,113 @@ export const SyllabusSelector: React.FC<SyllabusSelectorProps> = ({
               NEET-UG (Medical / 3h 20m)
             </button>
           )}
+        </div>
+      </div>
+
+      {/* ================= PYQ YEAR BENCHMARK SELECTOR (2015 - 2026) ================= */}
+      <div className="px-5 sm:px-6 py-3 bg-blue-50/50 dark:bg-blue-950/20 border-b border-blue-100 dark:border-blue-900/40 flex flex-col md:flex-row md:items-center justify-between gap-3 text-xs">
+        <div className="flex items-center gap-2.5">
+          <span className="px-2 py-1 rounded-lg bg-blue-600 text-white font-mono font-bold text-[11px] shrink-0">
+            PYQ 2015–2026
+          </span>
+          <div>
+            <div className="font-bold text-slate-800 dark:text-slate-200 flex items-center gap-2">
+              Authentic PYQ Pattern Range ({pyqStartYear} – {pyqEndYear})
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900/60 text-blue-700 dark:text-blue-300 font-semibold">
+                {pyqEndYear - pyqStartYear + 1} Years Active
+              </span>
+            </div>
+            <p className="text-[11px] text-slate-500 dark:text-slate-400">
+              Synthesizes problems matching real NTA & IIT JEE questions from 2015 through 2026.
+            </p>
+          </div>
+        </div>
+
+        {/* Year Range Presets and Pickers */}
+        <div className="flex flex-wrap items-center gap-2">
+          {/* Preset Buttons */}
+          <div className="flex items-center bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 p-0.5 shadow-2xs">
+            <button
+              type="button"
+              onClick={() => { setPyqStartYear(2015); setPyqEndYear(2026); }}
+              className={`px-2.5 py-1 rounded-md text-[11px] font-semibold transition ${
+                pyqStartYear === 2015 && pyqEndYear === 2026
+                  ? 'bg-blue-600 text-white shadow-xs'
+                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+              }`}
+            >
+              All (2015–2026)
+            </button>
+            <button
+              type="button"
+              onClick={() => { setPyqStartYear(2021); setPyqEndYear(2026); }}
+              className={`px-2.5 py-1 rounded-md text-[11px] font-semibold transition ${
+                pyqStartYear === 2021 && pyqEndYear === 2026
+                  ? 'bg-blue-600 text-white shadow-xs'
+                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+              }`}
+            >
+              Recent CBT (2021–2026)
+            </button>
+            <button
+              type="button"
+              onClick={() => { setPyqStartYear(2024); setPyqEndYear(2026); }}
+              className={`px-2.5 py-1 rounded-md text-[11px] font-semibold transition ${
+                pyqStartYear === 2024 && pyqEndYear === 2026
+                  ? 'bg-blue-600 text-white shadow-xs'
+                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+              }`}
+            >
+              Latest (2024–2026)
+            </button>
+            <button
+              type="button"
+              onClick={() => { setPyqStartYear(2015); setPyqEndYear(2020); }}
+              className={`px-2.5 py-1 rounded-md text-[11px] font-semibold transition ${
+                pyqStartYear === 2015 && pyqEndYear === 2020
+                  ? 'bg-blue-600 text-white shadow-xs'
+                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+              }`}
+            >
+              Classic (2015–2020)
+            </button>
+          </div>
+
+          {/* Custom Year Dropdowns */}
+          <div className="flex items-center gap-1.5 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 px-2 py-1 shadow-2xs">
+            <span className="text-[11px] text-slate-400 font-mono">From</span>
+            <select
+              value={pyqStartYear}
+              onChange={(e) => {
+                const val = Number(e.target.value);
+                setPyqStartYear(val);
+                if (val > pyqEndYear) setPyqEndYear(val);
+              }}
+              className="bg-transparent text-slate-800 dark:text-slate-200 font-semibold text-[11px] focus:outline-hidden cursor-pointer"
+            >
+              {[2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026].map((yr) => (
+                <option key={`start-${yr}`} value={yr} className="dark:bg-slate-900">
+                  {yr}
+                </option>
+              ))}
+            </select>
+            <span className="text-[11px] text-slate-400 font-mono">To</span>
+            <select
+              value={pyqEndYear}
+              onChange={(e) => {
+                const val = Number(e.target.value);
+                setPyqEndYear(val);
+                if (val < pyqStartYear) setPyqStartYear(val);
+              }}
+              className="bg-transparent text-slate-800 dark:text-slate-200 font-semibold text-[11px] focus:outline-hidden cursor-pointer"
+            >
+              {[2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026].map((yr) => (
+                <option key={`end-${yr}`} value={yr} className="dark:bg-slate-900">
+                  {yr}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
       </div>
 

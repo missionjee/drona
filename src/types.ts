@@ -52,6 +52,7 @@ export interface Question {
   formula?: string;
   pyqReference?: string;
   pyqPatternRef?: string;
+  pyqYear?: number;
   matrixMatch?: MatrixMatchItem;
   paragraphContext?: ParagraphContext;
   verificationStatus?: 'verified' | 'flagged' | 'healed';
@@ -76,6 +77,10 @@ export interface CustomSyllabusConfig {
   difficultyDistribution: {
     medium: number;
     hard: number;
+  };
+  pyqYearRange?: {
+    startYear: number;
+    endYear: number;
   };
 }
 

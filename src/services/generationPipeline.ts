@@ -19,6 +19,7 @@ interface QuestionSpec {
   difficulty: Difficulty;
   pyqArchetype: string;
   examType: ExamType;
+  pyqYearRange?: { startYear: number; endYear: number };
 }
 
 interface ValidationResult {
@@ -228,8 +229,9 @@ function createBlueprintSpecs(
       chapter,
       type,
       difficulty: i % 3 === 0 ? 'hard' : 'medium',
-      pyqArchetype: `${chapter} High-Yield PYQ Pattern`,
+      pyqArchetype: `${chapter} High-Yield PYQ Pattern (${config.pyqYearRange?.startYear || 2015}–${config.pyqYearRange?.endYear || 2026})`,
       examType: config.examType,
+      pyqYearRange: config.pyqYearRange || { startYear: 2015, endYear: 2026 },
     });
   }
 
@@ -253,18 +255,22 @@ async function generateDraftBatch(
           ? 'NEET (UG)'
           : 'JEE Main (NTA)';
 
+      const startYear = specs[0]?.pyqYearRange?.startYear || 2015;
+      const endYear = specs[0]?.pyqYearRange?.endYear || 2026;
+
       const prompt = `You are an elite professor and examination paper setter for ${examName}.
 Synthesize exactly ${specs.length} COMPLETELY FRESH, HIGH-CALIBER questions based on the specifications below.
 
 CRITICAL ACADEMIC INSTRUCTIONS:
-1. Resemble actual Previous Year Question (PYQ) patterns from 2019-2025.
-2. DO NOT generate trivial board-level or superficial questions.
-3. DO NOT generate simple variable swaps of textbook problems.
-4. Integrate realistic physical phenomena, multi-step reaction mechanisms, or deep mathematical properties.
-5. All equations and symbols MUST use proper LaTeX: $inline$ and $$display$$.
-6. For Multiple Choice (JEE Advanced), provide multiple valid options where applicable.
-7. For Numerical/Integer type, provide exact numerical or integer values with clear derivations.
-8. Output STRICT JSON format only. No markdown fences around the json.
+1. Resemble actual Previous Year Question (PYQ) patterns from the official archives spanning ${startYear} to ${endYear}.
+2. Draw inspiration from genuine PYQ problems from ${startYear} through ${endYear} (e.g. 2015, 2017, 2019, 2021, 2023, 2024, 2025, 2026).
+3. DO NOT generate trivial board-level or superficial questions.
+4. DO NOT generate simple variable swaps of textbook problems.
+5. Integrate realistic physical phenomena, multi-step reaction mechanisms, or deep mathematical properties.
+6. All equations and symbols MUST use proper LaTeX: $inline$ and $$display$$.
+7. For Multiple Choice (JEE Advanced), provide multiple valid options where applicable.
+8. For Numerical/Integer type, provide exact numerical or integer values with clear derivations.
+9. Output STRICT JSON format only. No markdown fences around the json.
 
 SPECIFICATIONS:
 ${JSON.stringify(specs, null, 2)}
@@ -330,8 +336,29 @@ JSON SCHEMA TO RETURN:
 function synthesizeGenuinePyqQuestion(spec: QuestionSpec, index: number): Question {
   const seed = Date.now() + index * 1013;
   const id = `pyq-synth-${seed}-${index}`;
+  const startYear = spec.pyqYearRange?.startYear || 2015;
+  const endYear = spec.pyqYearRange?.endYear || 2026;
 
-  // 1. Try to find an exact or related chapter match from AUTHENTIC_PYQ_BANK
+  // 1. Try to find an exact or related chapter match from AUTHENTIC_PYQ_BANK within requested year range
+  const matchedPyqsInYear = AUTHENTIC_PYQ_BANK.filter(
+    (q) =>
+      q.subject === spec.subject &&
+      (q.chapter === spec.chapter || q.chapter?.includes(spec.chapter.substring(0, 8))) &&
+      (q.pyqYear ? q.pyqYear >= startYear && q.pyqYear <= endYear : true)
+  );
+
+  if (matchedPyqsInYear.length > 0) {
+    const selected = matchedPyqsInYear[index % matchedPyqsInYear.length];
+    return {
+      ...selected,
+      id,
+      chapter: spec.chapter,
+      type: spec.type,
+      difficulty: spec.difficulty,
+    };
+  }
+
+  // 2. Try chapter match across entire PYQ bank
   const matchedPyqs = AUTHENTIC_PYQ_BANK.filter(
     (q) => q.subject === spec.subject && (q.chapter === spec.chapter || q.chapter?.includes(spec.chapter.substring(0, 8)))
   );
@@ -347,7 +374,22 @@ function synthesizeGenuinePyqQuestion(spec: QuestionSpec, index: number): Questi
     };
   }
 
-  // 2. Try subject match
+  // 3. Try subject match within requested year range
+  const subjectPyqsInYear = AUTHENTIC_PYQ_BANK.filter(
+    (q) => q.subject === spec.subject && (q.pyqYear ? q.pyqYear >= startYear && q.pyqYear <= endYear : true)
+  );
+  if (subjectPyqsInYear.length > 0) {
+    const selected = subjectPyqsInYear[index % subjectPyqsInYear.length];
+    return {
+      ...selected,
+      id,
+      chapter: spec.chapter,
+      type: spec.type,
+      difficulty: spec.difficulty,
+    };
+  }
+
+  // 4. Try any subject match in bank
   const subjectPyqs = AUTHENTIC_PYQ_BANK.filter((q) => q.subject === spec.subject);
   if (subjectPyqs.length > 0) {
     const selected = subjectPyqs[index % subjectPyqs.length];
@@ -360,7 +402,7 @@ function synthesizeGenuinePyqQuestion(spec: QuestionSpec, index: number): Questi
     };
   }
 
-  // 3. Fallback high-yield conceptual question generator with diverse, rigorous problem structures
+  // 5. Fallback high-yield conceptual question generator with diverse, rigorous problem structures
   return generateCuratedConceptualQuestion(spec, id, index);
 }
 
