@@ -638,25 +638,6 @@ export const CbtExamView: React.FC<CbtExamViewProps> = ({
               <span className="text-xs px-2.5 py-0.5 rounded-full font-bold bg-blue-100 dark:bg-blue-900/60 text-blue-900 dark:text-blue-200">
                 {currentQuestion?.type.replace('_', ' ').toUpperCase()}
               </span>
-
-              {/* Source Badge (HCV, Irodov, PYQ) */}
-              {currentQuestion?.source && (
-                <span className="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded bg-amber-100 dark:bg-amber-950/70 border border-amber-300 dark:border-amber-800 text-amber-900 dark:text-amber-200">
-                  {currentQuestion.source === 'HCV'
-                    ? 'HC Verma'
-                    : currentQuestion.source === 'Irodov'
-                    ? 'I.E. Irodov'
-                    : currentQuestion.source === 'PYQ'
-                    ? 'Official PYQ'
-                    : 'NTA Exam Prototype'}
-                </span>
-              )}
-
-              {currentQuestion?.pyqReference && (
-                <span className="text-[11px] px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-semibold hidden sm:inline">
-                  {currentQuestion.pyqReference}
-                </span>
-              )}
             </div>
 
             <div className="flex items-center gap-3 text-xs font-bold">

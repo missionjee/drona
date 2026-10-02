@@ -323,3 +323,63 @@ export async function testSupabaseConnection(
     return { ok: false, message: err.message || 'Connection failed.' };
   }
 }
+
+// -------------------------------------------------------------
+// GOOGLE OAUTH AUTHENTICATION
+// -------------------------------------------------------------
+export async function signInWithGoogle(): Promise<{ error: Error | null }> {
+  const supabase = getSupabaseClient();
+  if (!supabase) return { error: new Error('Supabase client is not initialized') };
+
+  try {
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: 'google',
+      options: {
+        redirectTo: window.location.origin + window.location.pathname,
+      },
+    });
+    return { error: error ? new Error(error.message) : null };
+  } catch (err: any) {
+    return { error: err };
+  }
+}
+
+export async function signOutUser(): Promise<{ error: Error | null }> {
+  const supabase = getSupabaseClient();
+  if (!supabase) return { error: null };
+
+  try {
+    const { error } = await supabase.auth.signOut();
+    return { error: error ? new Error(error.message) : null };
+  } catch (err: any) {
+    return { error: err };
+  }
+}
+
+export async function getAuthUser() {
+  const supabase = getSupabaseClient();
+  if (!supabase) return null;
+  try {
+    const { data: { user } } = await supabase.auth.getUser();
+    return user;
+  } catch {
+    return null;
+  }
+}
+
+export function subscribeAuthState(callback: (user: any) => void): () => void {
+  const supabase = getSupabaseClient();
+  if (!supabase) return () => {};
+
+  try {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      callback(session?.user || null);
+    });
+    return () => {
+      subscription.unsubscribe();
+    };
+  } catch {
+    return () => {};
+  }
+}
+

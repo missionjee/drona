@@ -79,6 +79,22 @@ export interface StudentResponse {
   visitedCount: number;
 }
 
+export interface QuestionSpec {
+  id: string;
+  subject: Subject;
+  chapter: string;
+  type: QuestionType;
+  difficulty: Difficulty;
+  section: string;
+  source?: 'HCV' | 'Irodov' | 'PYQ' | 'AI_NTA' | 'AI_ADVANCED';
+  pyqArchetype?: string;
+  examType: ExamType;
+  pyqYearRange?: {
+    startYear: number;
+    endYear: number;
+  };
+}
+
 export interface CustomSyllabusConfig {
   examType: ExamType;
   selectedChapters: Record<Subject, string[]>;

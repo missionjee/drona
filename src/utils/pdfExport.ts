@@ -97,8 +97,7 @@ export function generateTestPaperPdf(
     doc.setFontSize(8.5);
     doc.setTextColor(15, 23, 42);
     const secTag = q.section ? `[${q.section}] ` : '';
-    const srcTag = q.source ? `[${q.source}] ` : '';
-    doc.text(`Q${idx + 1}. ${secTag}${srcTag}[${q.subject.toUpperCase()}] - ${q.chapter || q.topic}`, margin + 3, y + 5);
+    doc.text(`Q${idx + 1}. ${secTag}[${q.subject.toUpperCase()}] - ${q.chapter || q.topic}`, margin + 3, y + 5);
 
     // Badge indicator
     doc.setFontSize(8);
@@ -157,7 +156,7 @@ export function generateTestPaperPdf(
     doc.setFontSize(8.5);
     doc.setTextColor(15, 23, 42);
     const correctAnsStr = Array.isArray(q.correctAnswer) ? q.correctAnswer.join(', ') : q.correctAnswer;
-    doc.text(`Correct Answer: ${correctAnsStr}    |    Your Response: ${studentAns}    |    Reference: ${q.pyqReference || 'Authentic Exam Spec'}`, margin + 2, y);
+    doc.text(`Correct Answer: ${correctAnsStr}    |    Your Response: ${studentAns}`, margin + 2, y);
     y += 5;
 
     // Detailed Notebook-Style Solution

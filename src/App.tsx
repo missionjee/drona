@@ -14,6 +14,10 @@ import {
   saveUserProfile,
   fetchTestHistory,
   autoUploadTestResult,
+  signInWithGoogle,
+  signOutUser,
+  getAuthUser,
+  subscribeAuthState,
 } from './services/supabaseService';
 import { Sidebar, ActiveNavTab } from './components/Sidebar';
 import { Topbar } from './components/Topbar';
@@ -29,6 +33,7 @@ export function App() {
   const [activeTab, setActiveTab] = useState<ActiveNavTab>('arsenal');
   const [currentView, setCurrentView] = useState<'app' | 'exam' | 'results'>('app');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isGoogleAuthenticated, setIsGoogleAuthenticated] = useState(false);
 
   // High-contrast theme toggle
   const [darkMode, setDarkMode] = useState<boolean>(() => {
@@ -57,10 +62,55 @@ export function App() {
   // Persistent Performance History
   const [pastRecords, setPastRecords] = useState<PersistentPerformanceRecord[]>([]);
 
-  // Load User Profile and Test History on mount
+  // Load User Profile, Test History and Google Auth on mount
   useEffect(() => {
     fetchUserProfile().then((p) => setUserProfile(p));
     fetchTestHistory().then((h) => setPastRecords(h));
+
+    getAuthUser().then((user) => {
+      if (user) {
+        setIsGoogleAuthenticated(true);
+        const name = user.user_metadata?.full_name || user.user_metadata?.name || user.email?.split('@')[0];
+        const avatar = user.user_metadata?.avatar_url || user.user_metadata?.picture;
+        if (name || avatar || user.email) {
+          setUserProfile((prev) => {
+            const updated = {
+              ...prev,
+              name: name || prev.name,
+              email: user.email || prev.email,
+              avatarUrl: avatar || prev.avatarUrl,
+            };
+            saveUserProfile(updated);
+            return updated;
+          });
+        }
+      }
+    });
+
+    const unsubscribe = subscribeAuthState((user) => {
+      if (user) {
+        setIsGoogleAuthenticated(true);
+        const name = user.user_metadata?.full_name || user.user_metadata?.name || user.email?.split('@')[0];
+        const avatar = user.user_metadata?.avatar_url || user.user_metadata?.picture;
+        setUserProfile((prev) => {
+          const updated = {
+            ...prev,
+            name: name || prev.name,
+            email: user.email || prev.email,
+            avatarUrl: avatar || prev.avatarUrl,
+          };
+          saveUserProfile(updated);
+          return updated;
+        });
+        fetchTestHistory().then((h) => setPastRecords(h));
+      } else {
+        setIsGoogleAuthenticated(false);
+      }
+    });
+
+    return () => {
+      unsubscribe();
+    };
   }, []);
 
   // Dark mode effect
@@ -183,6 +233,20 @@ export function App() {
     setActiveTab('arsenal');
   };
 
+  // Handler: Google OAuth Sign-In
+  const handleGoogleSignIn = async () => {
+    const { error } = await signInWithGoogle();
+    if (error) {
+      alert(`Google Sign-In: ${error.message || 'Unable to open Google login'}`);
+    }
+  };
+
+  // Handler: Google Sign-Out
+  const handleSignOut = async () => {
+    await signOutUser();
+    setIsGoogleAuthenticated(false);
+  };
+
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 font-sans transition-colors">
       {/* Active CBT Exam Viewport (Locks Screen) */}
@@ -237,6 +301,8 @@ export function App() {
               onToggleDarkMode={() => setDarkMode(!darkMode)}
               userProfile={userProfile}
               onOpenProfile={() => setActiveTab('profile')}
+              onGoogleSignIn={handleGoogleSignIn}
+              isGoogleAuthenticated={isGoogleAuthenticated}
             />
 
             <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8">
@@ -269,6 +335,9 @@ export function App() {
                 <ProfileView
                   userProfile={userProfile}
                   onUpdateProfile={(up) => setUserProfile(up)}
+                  onGoogleSignIn={handleGoogleSignIn}
+                  onSignOut={handleSignOut}
+                  isGoogleAuthenticated={isGoogleAuthenticated}
                 />
               )}
             </main>

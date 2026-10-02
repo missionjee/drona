@@ -301,16 +301,6 @@ export const TestResultView: React.FC<TestResultViewProps> = ({
                           {q.section}
                         </span>
                       )}
-                      {q.source && (
-                        <span className="px-2 py-0.5 rounded bg-amber-50 dark:bg-amber-950/60 border border-amber-200 dark:border-amber-800 text-amber-800 dark:text-amber-300 font-bold text-[10px]">
-                          {q.source}
-                        </span>
-                      )}
-                      {q.pyqReference && (
-                        <span className="px-2 py-0.5 rounded bg-slate-200 dark:bg-slate-800 font-mono text-[10px] text-slate-600 dark:text-slate-300 font-bold">
-                          {q.pyqReference}
-                        </span>
-                      )}
                     </div>
 
                     <div>

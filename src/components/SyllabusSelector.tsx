@@ -46,18 +46,18 @@ export const SyllabusSelector: React.FC<SyllabusSelectorProps> = ({
     biology: [],
   });
 
-  const [totalQuestions, setTotalQuestions] = useState<number>(() => (isNeet ? 45 : 25));
+  const [totalQuestions, setTotalQuestions] = useState<number>(() => (isNeet ? 180 : 75));
   const [durationMinutes, setDurationMinutes] = useState<number>(() => (isNeet ? 200 : 180));
 
   useEffect(() => {
     if (isNeet) {
       setExamType('neet');
-      setTotalQuestions(45);
+      setTotalQuestions(180);
       setDurationMinutes(200);
       if (activeSubject === 'mathematics') setActiveSubject('biology');
     } else {
       setExamType('jee_main');
-      setTotalQuestions(25);
+      setTotalQuestions(75);
       setDurationMinutes(180);
       if (activeSubject === 'biology') setActiveSubject('mathematics');
     }
@@ -179,7 +179,7 @@ export const SyllabusSelector: React.FC<SyllabusSelectorProps> = ({
                 type="button"
                 onClick={() => {
                   setExamType('jee_main');
-                  setTotalQuestions(25);
+                  setTotalQuestions(75);
                   setDurationMinutes(180);
                 }}
                 className={`px-4 py-1.5 rounded-lg transition ${
@@ -194,7 +194,7 @@ export const SyllabusSelector: React.FC<SyllabusSelectorProps> = ({
                 type="button"
                 onClick={() => {
                   setExamType('jee_advanced');
-                  setTotalQuestions(20);
+                  setTotalQuestions(54);
                   setDurationMinutes(180);
                 }}
                 className={`px-4 py-1.5 rounded-lg transition ${
