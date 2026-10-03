@@ -15,15 +15,15 @@ import {
   BarChart3,
   Sliders,
   CheckCircle2,
+  Zap,
+  Target,
+  ArrowRight,
 } from 'lucide-react';
 import { Subject, ExamType, CustomSyllabusConfig, StreamType, PersistentPerformanceRecord } from '../types';
 import { NCERT_SYLLABUS } from '../data/ncertSyllabus';
 import { getWeeklyTestQuota } from '../utils/testLimit';
 import {
-  ALL_CURATED_TEST_SERIES,
-  CLASS_11_TEST_SERIES,
-  CLASS_12_TEST_SERIES,
-  COMPLETE_JEE_MAIN_TEST_SERIES,
+  JEE_MAIN_TEST_SERIES,
   JEE_ADVANCED_TEST_SERIES,
   CuratedTestPackage,
 } from '../data/curatedTestSeries';
@@ -48,9 +48,9 @@ export const SyllabusSelector: React.FC<SyllabusSelectorProps> = ({
   const quota = getWeeklyTestQuota(pastRecords);
   const isNeet = userStream === 'neet';
 
-  // Primary navigation: 'curated' (default) vs 'custom'
-  const [activeMode, setActiveMode] = useState<'curated' | 'custom'>('curated');
-  const [curatedCategory, setCuratedCategory] = useState<'all' | 'class_11' | 'class_12' | 'complete_jee_main' | 'jee_advanced'>('all');
+  // Primary navigation: TWO FORMS ONLY ('jee_main' vs 'jee_advanced')
+  const [selectedSeriesTrack, setSelectedSeriesTrack] = useState<'jee_main' | 'jee_advanced'>('jee_main');
+  const [showCustomBuilder, setShowCustomBuilder] = useState<boolean>(false);
 
   // Allowed subjects based on user stream
   const availableSubjects: Subject[] = isNeet
@@ -78,12 +78,12 @@ export const SyllabusSelector: React.FC<SyllabusSelectorProps> = ({
       setDurationMinutes(200);
       if (activeSubject === 'mathematics') setActiveSubject('biology');
     } else {
-      setExamType('jee_main');
-      setTotalQuestions(75);
+      setExamType(selectedSeriesTrack === 'jee_advanced' ? 'jee_advanced' : 'jee_main');
+      setTotalQuestions(selectedSeriesTrack === 'jee_advanced' ? 54 : 75);
       setDurationMinutes(180);
       if (activeSubject === 'biology') setActiveSubject('mathematics');
     }
-  }, [userStream, isNeet]);
+  }, [userStream, isNeet, selectedSeriesTrack]);
 
   const toggleChapter = (subject: Subject, chapterName: string) => {
     setSelectedChapters((prev) => {
@@ -180,224 +180,268 @@ export const SyllabusSelector: React.FC<SyllabusSelectorProps> = ({
     });
   };
 
-  // Filter curated packages
-  const filteredCuratedPackages = ALL_CURATED_TEST_SERIES.filter((pkg) => {
-    if (curatedCategory === 'all') return true;
-    return pkg.config.seriesCategory === curatedCategory;
-  });
+  const currentSeriesPackages =
+    selectedSeriesTrack === 'jee_main' ? JEE_MAIN_TEST_SERIES : JEE_ADVANCED_TEST_SERIES;
 
   return (
     <div className="space-y-6 font-sans">
-      {/* ================= TOP TIER MODE SELECTOR ================= */}
-      <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-3 sm:p-4 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-3">
-        <div className="flex items-center gap-2 w-full sm:w-auto">
+      {/* ================= TWO FORMS ONLY: PRIMARY TEST SERIES SWITCHER ================= */}
+      <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-4 sm:p-5 shadow-xs flex flex-col md:flex-row items-center justify-between gap-4">
+        {/* Two Series Tabs */}
+        <div className="flex items-center gap-3 w-full md:w-auto">
           <button
             type="button"
-            onClick={() => setActiveMode('curated')}
-            className={`flex-1 sm:flex-none px-5 py-2.5 rounded-xl text-xs font-black transition flex items-center justify-center gap-2 cursor-pointer ${
-              activeMode === 'curated'
-                ? 'bg-blue-600 text-white shadow-md shadow-blue-500/20'
+            onClick={() => {
+              setSelectedSeriesTrack('jee_main');
+              setShowCustomBuilder(false);
+            }}
+            className={`flex-1 md:flex-none px-6 py-3.5 rounded-xl text-xs font-black transition flex items-center justify-center gap-2.5 cursor-pointer ${
+              selectedSeriesTrack === 'jee_main' && !showCustomBuilder
+                ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/25 ring-2 ring-blue-500/30'
                 : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'
             }`}
           >
-            <Trophy size={16} />
-            <span>Curated Test Series Packs</span>
-            <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-amber-400 text-slate-950 font-black">
-              Elite
+            <Target size={18} />
+            <span className="text-sm">JEE Mains Test Series</span>
+            <span
+              className={`text-[10px] px-2 py-0.5 rounded-full font-black ${
+                selectedSeriesTrack === 'jee_main' && !showCustomBuilder
+                  ? 'bg-blue-800 text-white'
+                  : 'bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300'
+              }`}
+            >
+              5 Mocks
             </span>
           </button>
 
           <button
             type="button"
-            onClick={() => setActiveMode('custom')}
-            className={`flex-1 sm:flex-none px-5 py-2.5 rounded-xl text-xs font-bold transition flex items-center justify-center gap-2 cursor-pointer ${
-              activeMode === 'custom'
-                ? 'bg-blue-600 text-white shadow-md shadow-blue-500/20'
+            onClick={() => {
+              setSelectedSeriesTrack('jee_advanced');
+              setShowCustomBuilder(false);
+            }}
+            className={`flex-1 md:flex-none px-6 py-3.5 rounded-xl text-xs font-black transition flex items-center justify-center gap-2.5 cursor-pointer ${
+              selectedSeriesTrack === 'jee_advanced' && !showCustomBuilder
+                ? 'bg-purple-600 text-white shadow-lg shadow-purple-500/25 ring-2 ring-purple-500/30'
                 : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'
             }`}
           >
-            <Sliders size={16} />
-            <span>Custom Chapter Builder</span>
+            <Zap size={18} />
+            <span className="text-sm">JEE Advanced Test Series</span>
+            <span
+              className={`text-[10px] px-2 py-0.5 rounded-full font-black ${
+                selectedSeriesTrack === 'jee_advanced' && !showCustomBuilder
+                  ? 'bg-purple-800 text-white'
+                  : 'bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300'
+              }`}
+            >
+              3 Papers
+            </span>
           </button>
         </div>
 
-        <div className="text-[11px] text-slate-500 flex items-center gap-2">
-          <ShieldCheck size={14} className="text-emerald-500" />
-          <span>Authentic NTA PYQs • 100% Questions Pre-Loaded</span>
+        {/* Custom Builder Sub-Toggle */}
+        <div className="flex items-center gap-3 w-full md:w-auto justify-end">
+          <button
+            type="button"
+            onClick={() => setShowCustomBuilder(!showCustomBuilder)}
+            className={`px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2 cursor-pointer border ${
+              showCustomBuilder
+                ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-950 border-transparent shadow-xs'
+                : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:border-slate-300'
+            }`}
+          >
+            <Sliders size={14} />
+            <span>{showCustomBuilder ? 'Back to Test Series' : 'Custom Chapter Builder'}</span>
+          </button>
+
+          <div className="hidden lg:flex items-center gap-1.5 text-xs text-slate-500 font-medium">
+            <ShieldCheck size={14} className="text-emerald-500" />
+            <span>NTA PYQ 100% Pre-Loaded</span>
+          </div>
         </div>
       </div>
 
-      {/* ================= VIEW 1: CURATED TEST SERIES PACKS ================= */}
-      {activeMode === 'curated' && (
-        <div className="space-y-5">
-          {/* Category Filter Tabs */}
-          <div className="flex items-center gap-2 overflow-x-auto pb-1">
-            {[
-              { id: 'all', label: 'All Series', count: ALL_CURATED_TEST_SERIES.length },
-              { id: 'class_11', label: 'Class 11th Mains', count: CLASS_11_TEST_SERIES.length },
-              { id: 'class_12', label: 'Class 12th Mains', count: CLASS_12_TEST_SERIES.length },
-              { id: 'complete_jee_main', label: 'Complete Full Mains', count: COMPLETE_JEE_MAIN_TEST_SERIES.length },
-              { id: 'jee_advanced', label: 'JEE Advanced Series', count: JEE_ADVANCED_TEST_SERIES.length },
-            ].map((tab) => (
-              <button
-                key={tab.id}
-                type="button"
-                onClick={() => setCuratedCategory(tab.id as any)}
-                className={`px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition flex items-center gap-2 cursor-pointer ${
-                  curatedCategory === tab.id
-                    ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-950 shadow-xs'
-                    : 'bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
-                }`}
-              >
-                <span>{tab.label}</span>
-                <span
-                  className={`text-[10px] px-1.5 py-0.5 rounded-full font-black ${
-                    curatedCategory === tab.id
-                      ? 'bg-slate-700 dark:bg-slate-200 text-white dark:text-slate-900'
-                      : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400'
-                  }`}
-                >
-                  {tab.count}
+      {/* ================= ACTIVE SERIES BANNER ================= */}
+      {!showCustomBuilder && (
+        <div
+          className={`p-6 rounded-2xl border text-white shadow-md relative overflow-hidden ${
+            selectedSeriesTrack === 'jee_main'
+              ? 'bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 border-blue-500/30'
+              : 'bg-gradient-to-r from-purple-950 via-indigo-950 to-slate-900 border-purple-500/30'
+          }`}
+        >
+          <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div className="space-y-1.5">
+              <div className="flex items-center gap-2">
+                <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-amber-400 text-slate-950">
+                  {selectedSeriesTrack === 'jee_main' ? 'All-India Grand Test Series' : 'National IIT-JEE Benchmark Series'}
                 </span>
-              </button>
-            ))}
-          </div>
+                <span className="text-xs text-blue-200 font-medium">
+                  {selectedSeriesTrack === 'jee_main' ? '300 Marks • 180 Mins • Exact NTA Section A/B' : '180 Marks • 180 Mins • Multi-Correct (+4, -2)'}
+                </span>
+              </div>
+              <h2 className="text-xl sm:text-2xl font-black tracking-tight text-white">
+                {selectedSeriesTrack === 'jee_main'
+                  ? 'JEE Mains Official Pattern Mock Test Series'
+                  : 'IIT-JEE Advanced National Benchmark Papers'}
+              </h2>
+              <p className="text-xs text-slate-300 max-w-2xl leading-relaxed">
+                {selectedSeriesTrack === 'jee_main'
+                  ? 'Complete test series containing 5 full-scale mocks covering full syllabus, Class 11th & 12th benchmarks, and high-yield NTA PYQs with full step-by-step KaTeX solutions.'
+                  : 'Rigorous multi-concept examination series designed after official IIT Bombay / Madras papers with multi-correct questions, partial markings, and high-difficulty numericals.'}
+              </p>
+            </div>
 
-          {/* Test Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {filteredCuratedPackages.map((pkg) => {
-              const { config, questions } = pkg;
-              const isClass11 = config.seriesCategory === 'class_11';
-              const isClass12 = config.seriesCategory === 'class_12';
-              const isFullMains = config.seriesCategory === 'complete_jee_main';
-              const isAdvanced = config.seriesCategory === 'jee_advanced';
-
-              const phyCount = questions.filter((q) => q.subject === 'physics').length;
-              const chemCount = questions.filter((q) => q.subject === 'chemistry').length;
-              const mathCount = questions.filter((q) => q.subject === 'mathematics').length;
-
-              return (
-                <div
-                  key={config.id}
-                  className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-xs hover:shadow-md transition flex flex-col justify-between group"
-                >
-                  <div>
-                    {/* Header Badges */}
-                    <div className="flex items-center justify-between gap-2 mb-3">
-                      <div className="flex items-center gap-2">
-                        <span
-                          className={`text-[10px] px-2.5 py-1 rounded-md font-black tracking-wider uppercase ${
-                            isAdvanced
-                              ? 'bg-purple-100 dark:bg-purple-950/70 text-purple-700 dark:text-purple-300 border border-purple-300 dark:border-purple-800'
-                              : isFullMains
-                              ? 'bg-amber-100 dark:bg-amber-950/70 text-amber-700 dark:text-amber-300 border border-amber-300 dark:border-amber-800'
-                              : isClass11
-                              ? 'bg-emerald-100 dark:bg-emerald-950/70 text-emerald-700 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-800'
-                              : 'bg-blue-100 dark:bg-blue-950/70 text-blue-700 dark:text-blue-300 border border-blue-300 dark:border-blue-800'
-                          }`}
-                        >
-                          {config.badge || 'Official Mock'}
-                        </span>
-
-                        <span className="text-[10px] font-bold text-slate-500 bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded-md">
-                          {config.difficulty}
-                        </span>
-                      </div>
-
-                      <div className="flex items-center gap-1.5 text-xs font-bold text-emerald-600 dark:text-emerald-400">
-                        <CheckCircle2 size={14} />
-                        <span>Pre-Loaded & Verified</span>
-                      </div>
-                    </div>
-
-                    {/* Title & Description */}
-                    <h3 className="text-base sm:text-lg font-black text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition leading-snug">
-                      {config.title}
-                    </h3>
-                    <p className="text-xs font-medium text-slate-500 mt-1 line-clamp-1">
-                      {config.subtitle}
-                    </p>
-                    <p className="text-xs text-slate-600 dark:text-slate-400 mt-2.5 leading-relaxed">
-                      {config.description}
-                    </p>
-
-                    {/* Exam Stats Grid */}
-                    <div className="grid grid-cols-3 gap-2 py-3.5 my-3.5 border-y border-slate-100 dark:border-slate-800/80 text-center">
-                      <div className="bg-slate-50 dark:bg-slate-800/50 p-2 rounded-xl">
-                        <div className="text-[10px] font-bold text-slate-400 uppercase">Questions</div>
-                        <div className="text-sm font-black text-slate-900 dark:text-white mt-0.5">
-                          {config.questionCount} Qs
-                        </div>
-                      </div>
-                      <div className="bg-slate-50 dark:bg-slate-800/50 p-2 rounded-xl">
-                        <div className="text-[10px] font-bold text-slate-400 uppercase">Duration</div>
-                        <div className="text-sm font-black text-slate-900 dark:text-white mt-0.5">
-                          {config.durationMinutes} Mins
-                        </div>
-                      </div>
-                      <div className="bg-slate-50 dark:bg-slate-800/50 p-2 rounded-xl">
-                        <div className="text-[10px] font-bold text-slate-400 uppercase">Total Marks</div>
-                        <div className="text-sm font-black text-slate-900 dark:text-white mt-0.5">
-                          {config.totalMarks} Marks
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Subject Distribution */}
-                    <div className="flex items-center gap-2 text-[11px] font-bold text-slate-600 dark:text-slate-400 mb-4">
-                      <span className="bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 px-2 py-1 rounded-md">
-                        Phy: {phyCount} Qs
-                      </span>
-                      <span className="bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 px-2 py-1 rounded-md">
-                        Chem: {chemCount} Qs
-                      </span>
-                      <span className="bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300 px-2 py-1 rounded-md">
-                        Math: {mathCount} Qs
-                      </span>
-                    </div>
-
-                    {/* Tags Pills */}
-                    <div className="flex flex-wrap items-center gap-1.5 mb-5">
-                      {config.tags?.map((tag) => (
-                        <span
-                          key={tag}
-                          className="text-[10px] px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-semibold"
-                        >
-                          #{tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* 1-Click Start Test Action Button */}
-                  <button
-                    type="button"
-                    onClick={() => {
-                      if (onStartCuratedTest) {
-                        onStartCuratedTest(pkg);
-                      }
-                    }}
-                    className={`w-full py-3 rounded-xl font-black text-xs shadow-md transition flex items-center justify-center gap-2 cursor-pointer active:scale-[0.98] ${
-                      isAdvanced
-                        ? 'bg-purple-600 hover:bg-purple-700 text-white shadow-purple-500/20'
-                        : isFullMains
-                        ? 'bg-amber-600 hover:bg-amber-700 text-white shadow-amber-500/20'
-                        : 'bg-blue-600 hover:bg-blue-700 text-white shadow-blue-500/20'
-                    }`}
-                  >
-                    <Play size={14} className="fill-white" />
-                    <span>Start Test Now (Instant Launch)</span>
-                    <ChevronRight size={16} />
-                  </button>
+            <div className="flex items-center gap-3 bg-white/10 backdrop-blur-xs p-3 rounded-xl border border-white/15 self-start md:self-auto shrink-0">
+              <div className="text-center px-2">
+                <div className="text-[10px] uppercase font-bold text-slate-300">Total Tests</div>
+                <div className="text-base font-black text-white mt-0.5">
+                  {selectedSeriesTrack === 'jee_main' ? '5 Mocks' : '3 Papers'}
                 </div>
-              );
-            })}
+              </div>
+              <div className="w-px h-8 bg-white/20" />
+              <div className="text-center px-2">
+                <div className="text-[10px] uppercase font-bold text-slate-300">Per Test Marks</div>
+                <div className="text-base font-black text-white mt-0.5">
+                  {selectedSeriesTrack === 'jee_main' ? '300 M' : '180 M'}
+                </div>
+              </div>
+              <div className="w-px h-8 bg-white/20" />
+              <div className="text-center px-2">
+                <div className="text-[10px] uppercase font-bold text-slate-300">Launch Mode</div>
+                <div className="text-base font-black text-emerald-400 mt-0.5">Instant</div>
+              </div>
+            </div>
           </div>
         </div>
       )}
 
+      {/* ================= VIEW 1: CURATED SERIES MOCK LIST ================= */}
+      {!showCustomBuilder && (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          {currentSeriesPackages.map((pkg) => {
+            const { config, questions } = pkg;
+            const isAdvanced = config.seriesCategory === 'jee_advanced';
+            const phyCount = questions.filter((q) => q.subject === 'physics').length;
+            const chemCount = questions.filter((q) => q.subject === 'chemistry').length;
+            const mathCount = questions.filter((q) => q.subject === 'mathematics').length;
+
+            return (
+              <div
+                key={config.id}
+                className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-xs hover:shadow-md transition flex flex-col justify-between group"
+              >
+                <div>
+                  {/* Top Badges */}
+                  <div className="flex items-center justify-between gap-2 mb-3">
+                    <div className="flex items-center gap-2">
+                      <span
+                        className={`text-[10px] px-2.5 py-1 rounded-md font-black tracking-wider uppercase ${
+                          isAdvanced
+                            ? 'bg-purple-100 dark:bg-purple-950/70 text-purple-700 dark:text-purple-300 border border-purple-300 dark:border-purple-800'
+                            : 'bg-blue-100 dark:bg-blue-950/70 text-blue-700 dark:text-blue-300 border border-blue-300 dark:border-blue-800'
+                        }`}
+                      >
+                        {config.badge || `Mock ${config.testNumber}`}
+                      </span>
+
+                      <span className="text-[10px] font-bold text-slate-500 bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded-md">
+                        {config.difficulty}
+                      </span>
+                    </div>
+
+                    <div className="flex items-center gap-1.5 text-xs font-bold text-emerald-600 dark:text-emerald-400">
+                      <CheckCircle2 size={14} />
+                      <span>100% Pre-Loaded</span>
+                    </div>
+                  </div>
+
+                  {/* Title & Subtitle */}
+                  <h3 className="text-base sm:text-lg font-black text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition leading-snug">
+                    {config.title}
+                  </h3>
+                  <p className="text-xs font-medium text-slate-500 mt-1 line-clamp-1">
+                    {config.subtitle}
+                  </p>
+                  <p className="text-xs text-slate-600 dark:text-slate-400 mt-2.5 leading-relaxed">
+                    {config.description}
+                  </p>
+
+                  {/* Exam Stats Grid */}
+                  <div className="grid grid-cols-3 gap-2 py-3.5 my-3.5 border-y border-slate-100 dark:border-slate-800/80 text-center">
+                    <div className="bg-slate-50 dark:bg-slate-800/50 p-2 rounded-xl">
+                      <div className="text-[10px] font-bold text-slate-400 uppercase">Questions</div>
+                      <div className="text-sm font-black text-slate-900 dark:text-white mt-0.5">
+                        {config.questionCount} Qs
+                      </div>
+                    </div>
+                    <div className="bg-slate-50 dark:bg-slate-800/50 p-2 rounded-xl">
+                      <div className="text-[10px] font-bold text-slate-400 uppercase">Duration</div>
+                      <div className="text-sm font-black text-slate-900 dark:text-white mt-0.5">
+                        {config.durationMinutes} Mins
+                      </div>
+                    </div>
+                    <div className="bg-slate-50 dark:bg-slate-800/50 p-2 rounded-xl">
+                      <div className="text-[10px] font-bold text-slate-400 uppercase">Total Marks</div>
+                      <div className="text-sm font-black text-slate-900 dark:text-white mt-0.5">
+                        {config.totalMarks} Marks
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Subject Breakdown Pills */}
+                  <div className="flex items-center gap-2 text-[11px] font-bold text-slate-600 dark:text-slate-400 mb-4">
+                    <span className="bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 px-2 py-1 rounded-md">
+                      Physics: {phyCount} Qs
+                    </span>
+                    <span className="bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 px-2 py-1 rounded-md">
+                      Chemistry: {chemCount} Qs
+                    </span>
+                    <span className="bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300 px-2 py-1 rounded-md">
+                      Math: {mathCount} Qs
+                    </span>
+                  </div>
+
+                  {/* Tag Pills */}
+                  <div className="flex flex-wrap items-center gap-1.5 mb-5">
+                    {config.tags?.map((tag) => (
+                      <span
+                        key={tag}
+                        className="text-[10px] px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-semibold"
+                      >
+                        #{tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* 1-Click Launch Button */}
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (onStartCuratedTest) {
+                      onStartCuratedTest(pkg);
+                    }
+                  }}
+                  className={`w-full py-3 rounded-xl font-black text-xs shadow-md transition flex items-center justify-center gap-2 cursor-pointer active:scale-[0.98] ${
+                    isAdvanced
+                      ? 'bg-purple-600 hover:bg-purple-700 text-white shadow-purple-500/20'
+                      : 'bg-blue-600 hover:bg-blue-700 text-white shadow-blue-500/20'
+                  }`}
+                >
+                  <Play size={14} className="fill-white" />
+                  <span>Start Test Now (Instant Launch)</span>
+                  <ChevronRight size={16} />
+                </button>
+              </div>
+            );
+          })}
+        </div>
+      )}
+
       {/* ================= VIEW 2: CUSTOM CHAPTER BUILDER ================= */}
-      {activeMode === 'custom' && (
+      {showCustomBuilder && (
         <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-xs overflow-hidden">
           {/* Header */}
           <div className="p-5 sm:p-6 border-b border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -406,7 +450,7 @@ export const SyllabusSelector: React.FC<SyllabusSelectorProps> = ({
                 Custom Test
               </h2>
               <p className="text-xs text-slate-500 mt-0.5">
-                Select chapters from Class 11 and 12 to generate a fresh, unrepeated examination paper.
+                Select chapters from Class 11 and 12 to generate a custom practice paper.
               </p>
             </div>
 
