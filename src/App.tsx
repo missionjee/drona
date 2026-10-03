@@ -34,6 +34,7 @@ import { CbtExamView } from './components/CbtExamView';
 import { TestResultView } from './components/TestResultView';
 import { GenerationProgressModal } from './components/GenerationProgressModal';
 import { ApiKeyModal } from './components/ApiKeyModal';
+import { CuratedTestPackage } from './data/curatedTestSeries';
 
 export function App() {
   const [showApiKeyModal, setShowApiKeyModal] = useState(false);
@@ -277,6 +278,30 @@ export function App() {
     }
   };
 
+  // Handler: Instant Launch of Curated Test Series (Zero Latency, 100% Questions Pre-Loaded)
+  const handleStartCuratedTest = (pkg: CuratedTestPackage) => {
+    const session: EphemeralTestSession = {
+      id: `curated-${pkg.config.id}-${Date.now()}`,
+      title: pkg.config.title,
+      examType: pkg.config.examType,
+      syllabusSummary: {
+        physics: ['Complete Syllabus'],
+        chemistry: ['Complete Syllabus'],
+        mathematics: ['Complete Syllabus'],
+        biology: [],
+      },
+      durationMinutes: pkg.config.durationMinutes,
+      startTime: Date.now(),
+      questions: pkg.questions,
+      responses: {},
+      isCompleted: false,
+      proctorStrikes: 0,
+    };
+    sessionStorage.setItem('drona_active_exam_state', JSON.stringify({ session }));
+    setActiveSession(session);
+    setCurrentView('exam');
+  };
+
   // Handler: Submit Exam (Auto or Manual)
   const handleSubmitExam = async (proctorAutoSubmitted: boolean = false) => {
     if (!activeSession) return;
@@ -434,6 +459,7 @@ export function App() {
                 <div className="max-w-6xl mx-auto space-y-6">
                   <SyllabusSelector
                     onGenerateTest={handleGenerateCustomTest}
+                    onStartCuratedTest={handleStartCuratedTest}
                     onResetQuota={handleResetWeeklyQuota}
                     isGenerating={isGenerating}
                     userStream={userProfile.stream}

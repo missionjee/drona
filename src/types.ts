@@ -134,6 +134,10 @@ export interface MockTestConfig {
   description: string;
   difficulty: 'Balanced' | 'Tough' | 'Speed Focus' | 'Advanced Benchmark';
   subjectsIncluded: Subject[];
+  seriesCategory?: 'class_11' | 'class_12' | 'complete_jee_main' | 'jee_advanced';
+  classLevel?: '11' | '12' | 'full';
+  badge?: string;
+  tags?: string[];
 }
 
 export interface PipelineProgress {

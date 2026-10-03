@@ -17,6 +17,8 @@ import {
   Eye,
   X,
   PieChart,
+  Play,
+  ChevronRight,
 } from 'lucide-react';
 import { PersistentPerformanceRecord, UserProfile, Subject } from '../types';
 
@@ -171,6 +173,37 @@ export const TestArsenalView: React.FC<TestArsenalViewProps> = ({
 
   return (
     <div className="space-y-6 max-w-7xl mx-auto font-sans">
+      {/* ================= CURATED TEST SERIES HERO BANNER ================= */}
+      <div className="p-5 sm:p-6 rounded-2xl bg-gradient-to-r from-blue-900/90 via-indigo-900/90 to-slate-900 border border-blue-500/30 text-white shadow-lg relative overflow-hidden">
+        <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div className="space-y-1.5 max-w-2xl">
+            <div className="flex items-center gap-2">
+              <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-amber-400 text-slate-950">
+                Official Test Packs Ready
+              </span>
+              <span className="text-xs text-blue-200 font-medium">
+                100% Pre-Loaded Questions • Zero Latency
+              </span>
+            </div>
+            <h2 className="text-lg sm:text-xl font-black tracking-tight text-white">
+              Authentic NTA PYQ Test Series (Class 11th, 12th & Full JEE)
+            </h2>
+            <p className="text-xs text-blue-100/80 leading-relaxed">
+              Full 75-question Mock Tests with NTA standards, KaTeX step-by-step derivations, and CBT proctoring.
+            </p>
+          </div>
+
+          <button
+            onClick={onNavigateToSeries}
+            className="px-6 py-3 rounded-xl bg-white text-blue-950 font-black text-xs shadow-md hover:bg-blue-50 active:scale-95 transition flex items-center justify-center gap-2 shrink-0 cursor-pointer"
+          >
+            <Play size={14} className="fill-blue-950 text-blue-950" />
+            <span>Enter Test Series Hub</span>
+            <ChevronRight size={16} />
+          </button>
+        </div>
+      </div>
+
       {/* ================= 1. TOP METRIC CARDS ================= */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         <div className="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs">
