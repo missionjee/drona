@@ -112,17 +112,19 @@ export function App() {
         const user = sessionData.user;
         const name = user.user_metadata?.name || user.user_metadata?.full_name;
         const phone = user.user_metadata?.phone || user.phone;
-        if (name || phone) {
-          setUserProfile((prev) => {
-            const updated = {
-              ...prev,
-              name: name || prev.name,
-              phoneNumber: phone || prev.phoneNumber,
-            };
-            saveUserProfile(updated);
-            return updated;
-          });
-        }
+        const email = user.email;
+        const avatar = user.user_metadata?.avatar_url || user.user_metadata?.picture;
+        setUserProfile((prev) => {
+          const updated = {
+            ...prev,
+            name: name || prev.name,
+            phoneNumber: phone || prev.phoneNumber,
+            email: email || prev.email,
+            avatarUrl: avatar || prev.avatarUrl,
+          };
+          saveUserProfile(updated);
+          return updated;
+        });
       }
     });
 
@@ -131,17 +133,19 @@ export function App() {
         setUserLoggedIn(true);
         const name = user.user_metadata?.name || user.user_metadata?.full_name;
         const phone = user.user_metadata?.phone || user.phone;
-        if (name || phone) {
-          setUserProfile((prev) => {
-            const updated = {
-              ...prev,
-              name: name || prev.name,
-              phoneNumber: phone || prev.phoneNumber,
-            };
-            saveUserProfile(updated);
-            return updated;
-          });
-        }
+        const email = user.email;
+        const avatar = user.user_metadata?.avatar_url || user.user_metadata?.picture;
+        setUserProfile((prev) => {
+          const updated = {
+            ...prev,
+            name: name || prev.name,
+            phoneNumber: phone || prev.phoneNumber,
+            email: email || prev.email,
+            avatarUrl: avatar || prev.avatarUrl,
+          };
+          saveUserProfile(updated);
+          return updated;
+        });
       }
     });
 
@@ -151,11 +155,15 @@ export function App() {
         setCurrentView('app');
         const name = user.user_metadata?.name || user.user_metadata?.full_name;
         const phone = user.user_metadata?.phone || user.phone;
+        const email = user.email;
+        const avatar = user.user_metadata?.avatar_url || user.user_metadata?.picture;
         setUserProfile((prev) => {
           const updated = {
             ...prev,
             name: name || prev.name,
             phoneNumber: phone || prev.phoneNumber,
+            email: email || prev.email,
+            avatarUrl: avatar || prev.avatarUrl,
           };
           saveUserProfile(updated);
           return updated;
