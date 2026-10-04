@@ -21,7 +21,6 @@ import { UserProfile, StreamType } from '../types';
 import {
   registerWithPhoneAndPassword,
   loginWithPhoneAndPassword,
-  signInWithGoogle,
   setUserLoggedIn,
 } from '../services/supabaseService';
 
@@ -56,27 +55,6 @@ export const LoginView: React.FC<LoginViewProps> = ({
     setAuthMode(mode);
     setErrorMsg(null);
     setSuccessMsg(null);
-  };
-
-  // Google OAuth Handler
-  const handleGoogleSignIn = async () => {
-    setErrorMsg(null);
-    setSuccessMsg(null);
-    setIsLoading(true);
-    try {
-      const res = await signInWithGoogle();
-      if (res.error) {
-        setErrorMsg(
-          `Google Sign-In notice: ${res.error.message}. Ensure the Google provider is enabled in your Supabase project under Authentication > Providers.`
-        );
-      } else {
-        setSuccessMsg('Connecting to Google via Supabase...');
-      }
-    } catch (err: any) {
-      setErrorMsg(err.message || 'Google OAuth failed to initialize.');
-    } finally {
-      setIsLoading(false);
-    }
   };
 
   // Submit Handler for Login
@@ -293,46 +271,6 @@ export const LoginView: React.FC<LoginViewProps> = ({
               <span>{successMsg}</span>
             </div>
           )}
-
-          {/* ================= GOOGLE AUTHENTICATION OPTION ================= */}
-          <div className="space-y-3">
-            <button
-              type="button"
-              onClick={handleGoogleSignIn}
-              disabled={isLoading}
-              className="w-full py-3 px-4 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-750 text-slate-800 dark:text-slate-100 font-extrabold text-xs transition shadow-xs flex items-center justify-center gap-3 cursor-pointer disabled:opacity-60 group active:scale-[0.99]"
-            >
-              <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24">
-                <path
-                  fill="#4285F4"
-                  d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"
-                />
-                <path
-                  fill="#34A853"
-                  d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.33 24 12 24z"
-                />
-                <path
-                  fill="#FBBC05"
-                  d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.99 0 12s.45 3.82 1.25 5.42l4.03-3.15z"
-                />
-                <path
-                  fill="#EA4335"
-                  d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"
-                />
-              </svg>
-              <span>
-                {authMode === 'register' ? 'Sign up with Google (Supabase)' : 'Continue with Google (Supabase)'}
-              </span>
-            </button>
-
-            <div className="relative flex items-center justify-center my-3">
-              <div className="border-t border-slate-200 dark:border-slate-800 w-full" />
-              <span className="bg-white dark:bg-slate-900 px-3 text-[10px] uppercase font-bold text-slate-400 tracking-wider shrink-0">
-                Or continue with mobile number
-              </span>
-              <div className="border-t border-slate-200 dark:border-slate-800 w-full" />
-            </div>
-          </div>
 
           {/* ================= LOGIN FORM ================= */}
           {authMode === 'login' && (

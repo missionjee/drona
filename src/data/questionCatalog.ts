@@ -14,9 +14,11 @@ function fmt(num: number, decimals: number = 2): string {
 
 // Helper to distribute options cleanly and ensure correct answer is placed at correctKey with zero duplicate distractors
 function makeMcqOptions(correctText: string, distractors: string[], correctKey: 'A' | 'B' | 'C' | 'D' = 'A') {
-  const d0 = distractors[0] || 'Alternate Option 1';
-  const d1 = distractors[1] || 'Alternate Option 2';
-  const d2 = distractors[2] || 'Alternate Option 3';
+  const extractNum = (correctText.match(/-?\d+(\.\d+)?/) || [])[0];
+  const baseNum = extractNum ? parseFloat(extractNum) : 10;
+  const d0 = distractors[0] || (extractNum ? correctText.replace(extractNum, fmt(baseNum * 2)) : `$2 \\times (${correctText})$`);
+  const d1 = distractors[1] || (extractNum ? correctText.replace(extractNum, fmt(baseNum + 4)) : `$\\frac{1}{2} (${correctText})$`);
+  const d2 = distractors[2] || (extractNum ? correctText.replace(extractNum, fmt(Math.max(1, baseNum - 2))) : `$-(${correctText})$`);
 
   // Explicit, unambiguous slot assignment so no distractor is ever reused
   const mapping: Record<'A' | 'B' | 'C' | 'D', [string, string, string, string]> = {

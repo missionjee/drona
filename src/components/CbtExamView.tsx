@@ -188,20 +188,44 @@ export const CbtExamView: React.FC<CbtExamViewProps> = ({
     setShowProctorWarning(false);
   };
 
-  // Filter questions by current subject
-  const subjectQuestions = session.questions.filter((q) => q.subject === currentSubject);
+  // Filter and strictly sort questions by current subject and section (Section A / 1 first, Section B / 2 second)
+  const subjectQuestions = React.useMemo(() => {
+    const raw = session.questions.filter((q) => q.subject === currentSubject);
+    return [...raw].sort((a, b) => {
+      const getSecRank = (q: Question) => {
+        const sec = (q.section || '').toLowerCase();
+        if (sec.includes('section a') || sec.includes('section 1')) return 1;
+        if (sec.includes('section b') || sec.includes('section 2')) return 2;
+        if (sec.includes('section c') || sec.includes('section 3')) return 3;
+        return q.type === 'numerical' || q.type === 'integer' ? 2 : 1;
+      };
+      return getSecRank(a) - getSecRank(b);
+    });
+  }, [session.questions, currentSubject]);
 
-  // Available sections within current subject
-  const availableSections = Array.from(
-    new Set(
-      subjectQuestions.map((q) => {
-        if (q.section) return q.section;
-        return q.type === 'numerical' || q.type === 'integer'
-          ? 'Section B (Numerical Value)'
-          : 'Section A (Multiple Choice)';
-      })
-    )
-  );
+  // Available sections within current subject, strictly sorted in series (Section A, then Section B)
+  const availableSections = React.useMemo(() => {
+    const secs = Array.from(
+      new Set(
+        subjectQuestions.map((q) => {
+          if (q.section) return q.section;
+          return q.type === 'numerical' || q.type === 'integer'
+            ? 'Section B (Numerical Value)'
+            : 'Section A (Multiple Choice)';
+        })
+      )
+    );
+    return secs.sort((a, b) => {
+      const getRank = (s: string) => {
+        const lower = s.toLowerCase();
+        if (lower.includes('section a') || lower.includes('section 1')) return 1;
+        if (lower.includes('section b') || lower.includes('section 2')) return 2;
+        if (lower.includes('section c') || lower.includes('section 3')) return 3;
+        return 4;
+      };
+      return getRank(a) - getRank(b);
+    });
+  }, [subjectQuestions]);
 
   const currentQuestion: Question | undefined = subjectQuestions[currentQuestionIndex];
   const activeSection =
@@ -209,6 +233,8 @@ export const CbtExamView: React.FC<CbtExamViewProps> = ({
     (currentQuestion?.type === 'numerical' || currentQuestion?.type === 'integer'
       ? 'Section B (Numerical Value)'
       : 'Section A (Multiple Choice)');
+
+  const overallQuestionIndex = currentQuestion ? session.questions.indexOf(currentQuestion) : -1;
 
   // Live countdown timer in seconds
   const totalSeconds = session.durationMinutes * 60;
@@ -639,6 +665,14 @@ export const CbtExamView: React.FC<CbtExamViewProps> = ({
               <span className="font-extrabold text-sm text-slate-900 dark:text-white">
                 Question No. {currentQuestionIndex + 1}
               </span>
+              <span className="text-xs px-2.5 py-0.5 rounded-full font-bold bg-indigo-50 dark:bg-indigo-950/70 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">
+                {activeSection.includes('Section B') || currentQuestion?.type === 'numerical' || currentQuestion?.type === 'integer'
+                  ? `Section B (Numerical) • Q${currentQuestionIndex >= 20 ? currentQuestionIndex - 19 : currentQuestionIndex + 1}`
+                  : `Section A (MCQ) • Q${currentQuestionIndex + 1}`}
+              </span>
+              <span className="text-[11px] px-2 py-0.5 rounded font-semibold text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                Paper Q{overallQuestionIndex !== -1 ? overallQuestionIndex + 1 : currentQuestionIndex + 1} of {session.questions.length}
+              </span>
               <span className="text-xs px-2.5 py-0.5 rounded-full font-bold bg-blue-100 dark:bg-blue-900/60 text-blue-900 dark:text-blue-200">
                 {currentQuestion?.type.replace('_', ' ').toUpperCase()}
               </span>
@@ -817,6 +851,11 @@ export const CbtExamView: React.FC<CbtExamViewProps> = ({
                 return qSec === secName;
               });
 
+              const isSecB = secName.includes('Section B') || secName.includes('Numerical');
+              const secRangeLabel = isSecB
+                ? `Questions 21–25`
+                : `Questions 1–${secQuestions.length}`;
+
               return (
                 <div key={secName} className="space-y-2.5">
                   <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-1">
@@ -824,7 +863,7 @@ export const CbtExamView: React.FC<CbtExamViewProps> = ({
                       {secName}
                     </span>
                     <span className="text-[10px] font-semibold text-slate-500">
-                      {secQuestions.length} Questions
+                      {secQuestions.length} Qs ({secRangeLabel})
                     </span>
                   </div>
 
@@ -851,6 +890,7 @@ export const CbtExamView: React.FC<CbtExamViewProps> = ({
                         <button
                           key={q.id}
                           onClick={() => handlePaletteQuestionClick(idx)}
+                          title={`Question ${idx + 1} (${secName})`}
                           className={`h-9 rounded-lg text-xs font-semibold border flex items-center justify-center transition select-none ${btnStyle} ${
                             isCurrent ? 'ring-2 ring-blue-500 scale-105' : ''
                           }`}

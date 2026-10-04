@@ -78,6 +78,8 @@ export interface Question {
   paragraphContext?: ParagraphContext;
   verificationStatus?: 'verified' | 'flagged' | 'healed';
   conceptDepthRating?: number;
+  questionNumberInSubject?: number;
+  questionNumberInExam?: number;
 }
 
 export interface StudentResponse {
@@ -92,6 +94,7 @@ export interface StudentResponse {
 
 export interface QuestionSpec {
   id: string;
+  slotIndex?: number;
   subject: Subject;
   chapter: string;
   type: QuestionType;
