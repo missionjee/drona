@@ -7,7 +7,7 @@ import { MathRenderer } from './MathRenderer';
 interface FormulaSheetModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onOpenApiKeyModal: () => void;
+  onOpenApiKeyModal?: () => void;
 }
 
 const PRESET_FORMULA_SHEETS: Record<string, ChapterFormula> = {

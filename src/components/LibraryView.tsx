@@ -83,7 +83,7 @@ export const LibraryView: React.FC = () => {
     setShowNoteEditor(false);
   };
 
-  // Helper to generate distinct realistic book front page cover art
+  // Helper to generate distinct realistic book front page cover art as an icon
   const renderBookCover = (book: LibraryBook) => {
     const isHcv = book.id.includes('hcv');
     const isIrodov = book.id.includes('irodov');
@@ -94,92 +94,65 @@ export const LibraryView: React.FC = () => {
 
     let coverBg = 'from-slate-800 to-slate-950';
     let accentColor = '#3b82f6';
-    let title = book.title;
-    let subtitle = book.badge || 'NCERT Textbook';
-    let author = 'NCERT';
+    let symbol = '📚';
 
     if (isIrodov) {
-      coverBg = 'from-red-950 via-rose-900 to-slate-950';
+      coverBg = 'from-rose-900 via-red-950 to-slate-950';
       accentColor = '#f59e0b';
-      author = 'I.E. IRODOV';
-      subtitle = 'PROBLEMS IN GENERAL PHYSICS';
+      symbol = '∑';
     } else if (isHcv) {
       if (book.id.includes('1')) {
-        coverBg = 'from-blue-950 via-indigo-900 to-slate-950';
+        coverBg = 'from-blue-900 via-indigo-950 to-slate-950';
         accentColor = '#fbbf24';
-        author = 'Dr. H.C. VERMA';
-        subtitle = 'PART 1 • MECHANICS & WAVES';
+        symbol = 'λ';
       } else {
-        coverBg = 'from-emerald-950 via-teal-900 to-slate-950';
+        coverBg = 'from-emerald-900 via-teal-950 to-slate-950';
         accentColor = '#38bdf8';
-        author = 'Dr. H.C. VERMA';
-        subtitle = 'PART 2 • ELECTRODYNAMICS & OPTICS';
+        symbol = '⚡';
       }
     } else if (isPhy) {
-      coverBg = 'from-blue-900 via-sky-950 to-slate-950';
+      coverBg = 'from-blue-800 via-sky-950 to-slate-950';
       accentColor = '#60a5fa';
-      author = 'NCERT NATIONAL COUNCIL';
+      symbol = 'ħ';
     } else if (isChem) {
-      coverBg = 'from-emerald-900 via-teal-950 to-slate-950';
+      coverBg = 'from-emerald-800 via-teal-950 to-slate-950';
       accentColor = '#34d399';
-      author = 'NCERT NATIONAL COUNCIL';
+      symbol = '⬡';
     } else if (isMath) {
-      coverBg = 'from-purple-900 via-indigo-950 to-slate-950';
+      coverBg = 'from-purple-800 via-indigo-950 to-slate-950';
       accentColor = '#c084fc';
-      author = 'NCERT NATIONAL COUNCIL';
+      symbol = '∫';
     } else if (isBio) {
-      coverBg = 'from-rose-900 via-pink-950 to-slate-950';
+      coverBg = 'from-pink-800 via-rose-950 to-slate-950';
       accentColor = '#f472b6';
-      author = 'NCERT NATIONAL COUNCIL';
+      symbol = '🧬';
     }
 
     return (
-      <div className="relative w-full aspect-[3/4.2] rounded-xl overflow-hidden bg-gradient-to-br shadow-md group-hover:shadow-xl transition-all duration-300 flex flex-col justify-between p-4 border-l-4 border-black/40 select-none cursor-pointer">
-        {/* Book cover background gradient */}
+      <div className="relative w-16 h-22 sm:w-18 sm:h-24 rounded-lg overflow-hidden bg-gradient-to-br shadow-md group-hover:shadow-lg transition-all duration-200 flex flex-col justify-between p-2 border-l-2 border-black/40 shrink-0 select-none">
+        {/* Cover background gradient */}
         <div className={`absolute inset-0 bg-gradient-to-br ${coverBg} opacity-95`} />
+        {/* Spine edge */}
+        <div className="absolute top-0 bottom-0 left-0 w-1.5 bg-gradient-to-r from-black/50 to-transparent pointer-events-none" />
 
-        {/* Paper texture and glossy diagonal sheen */}
-        <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent pointer-events-none" />
-
-        {/* Realistic spine edge highlight on the left */}
-        <div className="absolute top-0 bottom-0 left-0 w-2.5 bg-gradient-to-r from-black/50 via-white/15 to-transparent pointer-events-none" />
-
-        {/* Top Header of Book Cover */}
-        <div className="relative z-10 space-y-1">
-          <div className="flex items-center justify-between">
-            <span
-              className="text-[9px] font-black uppercase tracking-widest px-2 py-0.5 rounded shadow-xs"
-              style={{ backgroundColor: accentColor, color: '#0f172a' }}
-            >
-              {book.category.replace('_', ' ').toUpperCase()}
-            </span>
-            <span className="text-[10px] font-mono text-white/70 font-semibold">
-              {book.fileSize}
-            </span>
-          </div>
-          <p className="text-[10px] font-extrabold tracking-widest text-slate-300 uppercase pt-2">
-            {subtitle}
-          </p>
+        {/* Top subject tag */}
+        <div className="relative z-10">
+          <span
+            className="text-[8px] font-black uppercase tracking-wider px-1 py-0.5 rounded shadow-xs"
+            style={{ backgroundColor: accentColor, color: '#0f172a' }}
+          >
+            {book.subject.slice(0, 4).toUpperCase()}
+          </span>
         </div>
 
-        {/* Center Title and Graphic Motif */}
-        <div className="relative z-10 my-auto text-center space-y-2">
-          {/* Subtle decorative emblem */}
-          <div className="w-12 h-12 rounded-full border border-white/20 mx-auto flex items-center justify-center text-white/80 text-xl font-serif">
-            {isIrodov ? '∑' : isHcv ? 'λ' : isPhy ? 'ħ' : isChem ? '⬡' : isMath ? '∫' : '🧬'}
-          </div>
-
-          <h4 className="text-base font-black text-white tracking-tight leading-tight px-1 font-serif drop-shadow-sm">
-            {title}
-          </h4>
-
-          <div className="w-10 h-0.5 mx-auto rounded" style={{ backgroundColor: accentColor }} />
+        {/* Center Symbol */}
+        <div className="relative z-10 text-center text-white/90 text-lg font-serif font-bold">
+          {symbol}
         </div>
 
-        {/* Bottom Author & Publisher Seal */}
-        <div className="relative z-10 pt-2 border-t border-white/15 flex items-center justify-between text-[10px] text-slate-300">
-          <span className="font-bold tracking-wider">{author}</span>
-          <span className="text-[9px] font-mono text-white/60">EDITION 2025</span>
+        {/* Bottom subtle bar */}
+        <div className="relative z-10 text-[8px] text-white/70 font-mono tracking-tighter truncate">
+          {book.fileSize}
         </div>
       </div>
     );
@@ -242,55 +215,65 @@ export const LibraryView: React.FC = () => {
         ))}
       </div>
 
-      {/* ================= BOOKS SHELF (FRONT PAGE COVERS) ================= */}
-      <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      {/* ================= BOOKS SHELF (CLEAN COMPACT CARDS WITH COVER ICONS) ================= */}
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {filteredBooks.map((book) => (
           <div
             key={book.id}
-            className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs flex flex-col justify-between hover:border-blue-500 dark:hover:border-blue-500 transition-all duration-200 group"
+            className="p-3 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs flex items-center gap-3.5 hover:border-blue-500 dark:hover:border-blue-500 hover:shadow-sm transition-all duration-200 group"
           >
-            {/* Book Front Page Cover */}
-            <div onClick={() => setSelectedBookForReading(book)}>
+            {/* Generated Book Cover as Icon */}
+            <div
+              onClick={() => setSelectedBookForReading(book)}
+              className="cursor-pointer transition-transform group-hover:scale-105 shrink-0"
+              title="Click to read PDF"
+            >
               {renderBookCover(book)}
             </div>
 
-            {/* Book Title & Meta */}
-            <div className="mt-3.5 space-y-1">
-              <h3 className="text-xs font-extrabold text-slate-900 dark:text-white line-clamp-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition">
+            {/* Book Name & Minimal Details */}
+            <div className="flex-1 min-w-0">
+              <h3
+                onClick={() => setSelectedBookForReading(book)}
+                className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white line-clamp-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition cursor-pointer"
+                title={book.title}
+              >
                 {book.title}
               </h3>
-              <p className="text-[11px] text-slate-500 line-clamp-2 leading-relaxed">
-                {book.description}
+              <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5 truncate">
+                {book.badge || (book.id.includes('hcv') ? 'H.C. Verma' : book.id.includes('irodov') ? 'I.E. Irodov' : 'NCERT Edition')}
               </p>
-            </div>
 
-            {/* Action Buttons */}
-            <div className="flex items-center gap-2 pt-3 mt-3 border-t border-slate-100 dark:border-slate-800">
-              <button
-                onClick={() => setSelectedBookForReading(book)}
-                className="flex-1 py-1.5 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-xl shadow-xs transition flex items-center justify-center gap-1.5 cursor-pointer"
-              >
-                <BookOpen size={13} /> Read PDF
-              </button>
+              {/* Simple Looking Action Icons */}
+              <div className="flex items-center gap-2 mt-2.5">
+                <button
+                  onClick={() => setSelectedBookForReading(book)}
+                  className="px-2.5 py-1 bg-blue-50 dark:bg-blue-950/60 hover:bg-blue-600 hover:text-white text-blue-600 dark:text-blue-400 font-bold text-xs rounded-lg transition flex items-center gap-1 cursor-pointer"
+                  title="Read in App"
+                >
+                  <BookOpen size={12} />
+                  <span>Read</span>
+                </button>
 
-              <a
-                href={getResolvedBookUrl(book.fileUrl)}
-                target="_blank"
-                rel="noreferrer"
-                className="p-1.5 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition cursor-pointer"
-                title="Open in new tab"
-              >
-                <ExternalLink size={14} />
-              </a>
+                <a
+                  href={getResolvedBookUrl(book.fileUrl)}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="p-1 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-500 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition cursor-pointer"
+                  title="Open in new tab"
+                >
+                  <ExternalLink size={13} />
+                </a>
 
-              <a
-                href={getResolvedBookUrl(book.fileUrl)}
-                download={book.fileName}
-                className="p-1.5 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition cursor-pointer"
-                title="Download PDF"
-              >
-                <Download size={14} />
-              </a>
+                <a
+                  href={getResolvedBookUrl(book.fileUrl)}
+                  download={book.fileName}
+                  className="p-1 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-500 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition cursor-pointer"
+                  title="Download PDF"
+                >
+                  <Download size={13} />
+                </a>
+              </div>
             </div>
           </div>
         ))}

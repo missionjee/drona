@@ -17,7 +17,7 @@ interface DashboardProps {
   onGenerateCustomTest: (config: CustomSyllabusConfig) => void;
   isGenerating: boolean;
   onOpenFormulaVault: () => void;
-  onOpenApiKeyModal: () => void;
+  onOpenApiKeyModal?: () => void;
 }
 
 export const Dashboard: React.FC<DashboardProps> = ({

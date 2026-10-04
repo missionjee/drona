@@ -7,7 +7,7 @@ interface AiTestGeneratorModalProps {
   isOpen: boolean;
   onClose: () => void;
   onStartCustomTest: (testConfig: MockTestConfig, questions: Question[]) => void;
-  onOpenApiKeyModal: () => void;
+  onOpenApiKeyModal?: () => void;
 }
 
 const JEE_CHAPTERS: Record<Subject, string[]> = {
@@ -262,19 +262,6 @@ export const AiTestGeneratorModal: React.FC<AiTestGeneratorModalProps> = ({
               </div>
             </div>
           </div>
-
-          {!isApiKeyConfigured() && (
-            <div className="bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900/60 p-3 rounded-xl text-xs text-amber-900 dark:text-amber-200 flex items-center justify-between">
-              <span>⚡ Using smart curated bank. Add Gemini Key for unlimited real-time generation.</span>
-              <button
-                type="button"
-                onClick={onOpenApiKeyModal}
-                className="underline font-bold hover:text-amber-700 ml-2 shrink-0"
-              >
-                Add Key
-              </button>
-            </div>
-          )}
         </div>
 
         {/* Footer */}

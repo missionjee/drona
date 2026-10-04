@@ -11,7 +11,6 @@ interface TopbarProps {
   onToggleDarkMode: () => void;
   userProfile: UserProfile;
   onOpenProfile: () => void;
-  onOpenApiKeyModal?: () => void;
   onSignOut?: () => void;
 }
 
@@ -22,7 +21,6 @@ export const Topbar: React.FC<TopbarProps> = ({
   onToggleDarkMode,
   userProfile,
   onOpenProfile,
-  onOpenApiKeyModal,
 }) => {
   const getTabTitle = (tab: ActiveNavTab) => {
     switch (tab) {
@@ -71,40 +69,6 @@ export const Topbar: React.FC<TopbarProps> = ({
             <Phone size={11} />
             <span>{userProfile.phoneNumber}</span>
           </div>
-        )}
-
-        {/* Gemini AI Engine Status / Config Button */}
-        {onOpenApiKeyModal && (
-          <button
-            onClick={onOpenApiKeyModal}
-            title={
-              isApiKeyConfigured()
-                ? 'Google Gemini 2.5 Flash Active - Click to configure or view API key'
-                : 'Offline PYQ Engine Active - Click to configure Google Gemini API key'
-            }
-            className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl border text-xs font-bold transition cursor-pointer ${
-              isApiKeyConfigured()
-                ? 'bg-purple-50 dark:bg-purple-950/40 border-purple-200 dark:border-purple-800 text-purple-700 dark:text-purple-300 hover:bg-purple-100 dark:hover:bg-purple-900/60'
-                : 'bg-amber-50 dark:bg-amber-950/40 border-amber-200 dark:border-amber-800 text-amber-700 dark:text-amber-300 hover:bg-amber-100 dark:hover:bg-amber-900/60'
-            }`}
-          >
-            <span
-              className={`w-2 h-2 rounded-full ${
-                isApiKeyConfigured() ? 'bg-emerald-500 animate-pulse' : 'bg-amber-500'
-              }`}
-            />
-            <Sparkles
-              size={13}
-              className={
-                isApiKeyConfigured()
-                  ? 'text-purple-600 dark:text-purple-400'
-                  : 'text-amber-600 dark:text-amber-400'
-              }
-            />
-            <span className="hidden sm:inline">
-              {isApiKeyConfigured() ? 'Gemini 2.5 Active' : 'Setup Gemini AI'}
-            </span>
-          </button>
         )}
 
         {/* Theme Toggle */}

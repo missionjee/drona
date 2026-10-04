@@ -3,14 +3,12 @@ import {
   Flame,
   BrainCircuit,
   BookOpen,
-  Key,
   Moon,
   Sun,
   Layers,
   Sparkles,
   Trophy,
 } from 'lucide-react';
-import { isApiKeyConfigured } from '../services/geminiService';
 
 interface NavbarProps {
   currentView: 'dashboard' | 'exam' | 'results';
@@ -19,7 +17,6 @@ interface NavbarProps {
   onGoToDashboard: () => void;
   onOpenAiGenerator: () => void;
   onOpenFormulaVault: () => void;
-  onOpenApiKeyModal: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -29,9 +26,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onGoToDashboard,
   onOpenAiGenerator,
   onOpenFormulaVault,
-  onOpenApiKeyModal,
 }) => {
-  const hasApiKey = isApiKeyConfigured();
 
   // If in active CBT exam, show minimal distraction-free top bar instead of full navbar
   if (currentView === 'exam') return null;
@@ -90,26 +85,6 @@ export const Navbar: React.FC<NavbarProps> = ({
 
         {/* Right Action Icons */}
         <div className="flex items-center gap-2">
-          {/* Gemini API Key Button */}
-          <button
-            onClick={onOpenApiKeyModal}
-            className={`px-3 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-2 border transition ${
-              hasApiKey
-                ? 'bg-emerald-50 dark:bg-emerald-950/40 border-emerald-300 dark:border-emerald-800 text-emerald-700 dark:text-emerald-300'
-                : 'bg-amber-50 dark:bg-amber-950/40 border-amber-300 dark:border-amber-800 text-amber-700 dark:text-amber-300'
-            }`}
-          >
-            <span
-              className={`w-2 h-2 rounded-full ${
-                hasApiKey ? 'bg-emerald-500' : 'bg-amber-500 animate-pulse'
-              }`}
-            />
-            <Key size={13} />
-            <span className="hidden sm:inline">
-              {hasApiKey ? 'Gemini 3.8 Active' : 'Configure Gemini Key'}
-            </span>
-          </button>
-
           {/* Dark Mode Toggle */}
           <button
             onClick={onToggleDarkMode}

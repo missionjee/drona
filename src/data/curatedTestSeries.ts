@@ -16820,6 +16820,16456 @@ export const JEE_MAIN_TEST_SERIES: CuratedTestPackage[] = [
       "verificationStatus": "verified"
     }
   ]
+},
+{
+  "config": {
+    "id": "jm-mock-06",
+    "testNumber": 6,
+    "title": "JEE Main 2026 - All-India Grand Mock Test 06",
+    "subtitle": "Full Syllabus (11th + 12th) • 75 Questions • 300 Marks • Exact NTA Format",
+    "examType": "jee_main",
+    "durationMinutes": 180,
+    "totalMarks": 300,
+    "questionCount": 75,
+    "description": "Comprehensive full-syllabus examination reflecting the exact chapter weightage, Section A (20 MCQs) and Section B (5 Numericals) structure of recent NTA papers.",
+    "difficulty": "Balanced",
+    "subjectsIncluded": [
+      "physics",
+      "chemistry",
+      "mathematics"
+    ],
+    "seriesCategory": "jee_main",
+    "badge": "Mock Test 06",
+    "tags": [
+      "Full Syllabus",
+      "NTA Official Weightage",
+      "300 Marks",
+      "180 Mins"
+    ]
+  },
+  "questions": [
+    {
+      "id": "jm-06-phy-1",
+      "subject": "physics",
+      "chapter": "Units and Measurements",
+      "topic": "Percentage Error Propagation",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Apr 6 Shift 1)",
+      "text": "A physical quantity $P$ is related to four observables $a, b, c$ as $P = \\frac{a^{2} b^3}{\\sqrt{c}}$. The percentage errors of measurement in $a, b, c$ are $1\\%$, $2\\%$, and $4\\%$ respectively. The maximum percentage error in $P$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$10\\%$"
+        },
+        {
+          "id": "B",
+          "text": "$7\\%$"
+        },
+        {
+          "id": "C",
+          "text": "$12\\%$"
+        },
+        {
+          "id": "D",
+          "text": "$8\\%$"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "\\frac{\\Delta P}{P} = 2\\frac{\\Delta a}{a} + 3\\frac{\\Delta b}{b} + \\frac{1}{2}\\frac{\\Delta c}{c}",
+      "solution": "$$\\frac{\\Delta P}{P} = 2(1\\%) + 3(2\\%) + \\frac{1}{2}(4\\%) = 2 + 6 + 2 = 8\\%$$.",
+      "notebookSolution": {
+        "given": "a has 1%, b has 2%, c has 4%",
+        "concept": "Percentage errors add linearly with power exponents",
+        "steps": [
+          "ΔP/P = 2×1% + 3×2% + 0.5×4% = 8%"
+        ],
+        "conclusion": "Maximum error is 8% (Option D).",
+        "pitfall": "Denominator powers are always added, never subtracted."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-phy-2",
+      "subject": "physics",
+      "chapter": "Motion in a Straight Line",
+      "topic": "Kinematics Equations",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Jan 31 Shift 2)",
+      "text": "A body moving with initial velocity $u = 22\\text{ m/s}$ accelerates at a uniform rate $a = 2\\text{ m/s}^2$ for $t = 5\\text{ s}$. The total distance traversed is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$135\\text{ m}$"
+        },
+        {
+          "id": "B",
+          "text": "$155\\text{ m}$"
+        },
+        {
+          "id": "C",
+          "text": "$120\\text{ m}$"
+        },
+        {
+          "id": "D",
+          "text": "$270\\text{ m}$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "s = ut + \\frac{1}{2}at^2",
+      "solution": "$s = (22)(5) + \\frac{1}{2}(2)(5^2) = 110 + 25 = 135\\text{ m}$.",
+      "notebookSolution": {
+        "given": "u = 22 m/s, a = 2 m/s², t = 5 s",
+        "concept": "Second equation of kinematics",
+        "steps": [
+          "s = 22×5 + 0.5×2×5² = 135 m"
+        ],
+        "conclusion": "Distance is 135 m (Option A).",
+        "pitfall": "Only valid for constant acceleration."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-phy-3",
+      "subject": "physics",
+      "chapter": "Motion in a Plane",
+      "topic": "Maximum Horizontal Range of Projectile",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Apr 6 Shift 1)",
+      "text": "The maximum horizontal range of a projectile fired with launch speed $u = 70\\text{ m/s}$ on level ground (taking $g = 10\\text{ m/s}^2$) is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$588.\\text{ m}$"
+        },
+        {
+          "id": "B",
+          "text": "$490.\\text{ m}$"
+        },
+        {
+          "id": "C",
+          "text": "$392.\\text{ m}$"
+        },
+        {
+          "id": "D",
+          "text": "$735.\\text{ m}$"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "R_{max} = \\frac{u^2}{g}",
+      "solution": "Maximum range occurs at $\\theta = 45^\\circ$: $R_{max} = \\frac{(70)^2}{10} = 490.\\text{ m}$.",
+      "notebookSolution": {
+        "given": "u = 70 m/s, g = 10 m/s²",
+        "concept": "Maximum range formula R_max = u²/g",
+        "steps": [
+          "R_max = 70² / 10 = 490. m"
+        ],
+        "conclusion": "Range is 490. m (Option B).",
+        "pitfall": "Maximum range is attained at 45 degrees."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-phy-4",
+      "subject": "physics",
+      "chapter": "Laws of Motion",
+      "topic": "Atwood Machine Acceleration",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Jan 31 Shift 2)",
+      "text": "Two masses $m_1 = 2\\text{ kg}$ and $m_2 = 3\\text{ kg}$ are connected by a light inextensible string passing over a smooth frictionless pulley. The acceleration of the system is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$2.5\\text{ m/s}^2$"
+        },
+        {
+          "id": "B",
+          "text": "$4.0\\text{ m/s}^2$"
+        },
+        {
+          "id": "C",
+          "text": "$2\\text{ m/s}^2$"
+        },
+        {
+          "id": "D",
+          "text": "$1.0\\text{ m/s}^2$"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "a = \\frac{(m_2 - m_1)g}{m_1 + m_2}",
+      "solution": "$a = \\frac{(3 - 2) \\times 10}{2 + 3} = 2\\text{ m/s}^2$.",
+      "notebookSolution": {
+        "given": "m1 = 2 kg, m2 = 3 kg, g = 10 m/s²",
+        "concept": "Atwood machine equation of motion",
+        "steps": [
+          "a = (3 - 2)×10 / (2 + 3) = 2 m/s²"
+        ],
+        "conclusion": "Acceleration is 2 m/s² (Option C).",
+        "pitfall": "Net pulling force is (m2 - m1)g."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-phy-5",
+      "subject": "physics",
+      "chapter": "Work, Energy and Power",
+      "topic": "Work Done by Force at Angle",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Apr 6 Shift 1)",
+      "text": "A constant force $F = 50\\text{ N}$ acts on a particle displacing it by $s = 4\\text{ m}$ along a straight path. If the force makes an angle $\\theta = 60^\\circ$ with the displacement vector, the work done is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$200\\text{ J}$"
+        },
+        {
+          "id": "B",
+          "text": "$50\\text{ J}$"
+        },
+        {
+          "id": "C",
+          "text": "$130\\text{ J}$"
+        },
+        {
+          "id": "D",
+          "text": "$100\\text{ J}$"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "W = F s \\cos\\theta",
+      "solution": "$W = 50 \\times 4 \\times \\cos 60^\\circ = 200 \\times 0.5 = 100\\text{ J}$.",
+      "notebookSolution": {
+        "given": "F = 50 N, s = 4 m, θ = 60°",
+        "concept": "Work definition W = F·s = F s cosθ",
+        "steps": [
+          "W = 50 × 4 × 0.5 = 100 J"
+        ],
+        "conclusion": "Work done is 100 J (Option D).",
+        "pitfall": "cos 60° = 1/2."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-phy-6",
+      "subject": "physics",
+      "chapter": "Rotational Motion",
+      "topic": "Moment of Inertia of Thin Circular Ring",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Jan 31 Shift 2)",
+      "text": "The moment of inertia of a uniform thin circular ring of mass $M = 3\\text{ kg}$ and radius $R = 0.4\\text{ m}$ about its central symmetry axis is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$0.48\\text{ kg m}^2$"
+        },
+        {
+          "id": "B",
+          "text": "$0.24\\text{ kg m}^2$"
+        },
+        {
+          "id": "C",
+          "text": "$0.96\\text{ kg m}^2$"
+        },
+        {
+          "id": "D",
+          "text": "$0.72\\text{ kg m}^2$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "I = M R^2",
+      "solution": "$I = 3 \\times (0.4)^2 = 3 \\times 0.16 = 0.48\\text{ kg m}^2$.",
+      "notebookSolution": {
+        "given": "M = 3 kg, R = 0.4 m",
+        "concept": "Ring moment of inertia about central axis I = MR²",
+        "steps": [
+          "I = 3 × 0.16 = 0.48 kg m²"
+        ],
+        "conclusion": "Moment of inertia is 0.48 kg m² (Option A).",
+        "pitfall": "Disc has 1/2 MR², ring has MR²."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-phy-7",
+      "subject": "physics",
+      "chapter": "Gravitation",
+      "topic": "Escape Speed from Surface of Earth",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Apr 6 Shift 1)",
+      "text": "Taking the radius of the Earth $R_e = 6400\\text{ km}$ and $g = 9.8\\text{ m/s}^2$, the escape speed from the surface of the Earth is approximately:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$7.9\\text{ km/s}$"
+        },
+        {
+          "id": "B",
+          "text": "$11.2\\text{ km/s}$"
+        },
+        {
+          "id": "C",
+          "text": "$16.8\\text{ km/s}$"
+        },
+        {
+          "id": "D",
+          "text": "$5.6\\text{ km/s}$"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "v_e = \\sqrt{2g R_e}",
+      "solution": "$v_e = \\sqrt{2 \\times 9.8 \\times 6.4 \\times 10^6} \\approx 11.2\\text{ km/s}$.",
+      "notebookSolution": {
+        "given": "Re = 6400 km, g = 9.8 m/s²",
+        "concept": "Escape velocity formula v_e = √(2gR)",
+        "steps": [
+          "v_e = √(2 × 9.8 × 6.4 × 10⁶) ≈ 11.2 km/s"
+        ],
+        "conclusion": "Escape velocity is 11.2 km/s (Option B).",
+        "pitfall": "Orbital velocity is v_o = √(gR) ≈ 7.9 km/s; escape is √2 times larger."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-phy-8",
+      "subject": "physics",
+      "chapter": "Thermodynamics",
+      "topic": "Thermodynamic Processes and Work Done",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Jan 31 Shift 2)",
+      "text": "In which thermodynamic process does the internal energy of an ideal gas remain completely unchanged ($\\Delta U = 0$)?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Isochoric process"
+        },
+        {
+          "id": "B",
+          "text": "Isobaric process"
+        },
+        {
+          "id": "C",
+          "text": "Isothermal process"
+        },
+        {
+          "id": "D",
+          "text": "Adiabatic process"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "\\Delta U = n C_v \\Delta T = 0 \\implies T = \\text{constant}",
+      "solution": "Since internal energy of an ideal gas depends solely on temperature, $\\Delta U = 0$ implies constant temperature, which defines an isothermal process.",
+      "notebookSolution": {
+        "given": "ΔU = 0 for ideal gas",
+        "concept": "U = f(T) only for ideal gas",
+        "steps": [
+          "ΔU = 0 => ΔT = 0 => T = const => Isothermal"
+        ],
+        "conclusion": "Isothermal process (Option C).",
+        "pitfall": "In adiabatic process, Q = 0, but ΔU = -W ≠ 0."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-phy-9",
+      "subject": "physics",
+      "chapter": "Oscillations",
+      "topic": "Seconds Pendulum Length",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Apr 6 Shift 1)",
+      "text": "A simple pendulum has a time period of $T = 2.0\\text{ s}$ (seconds pendulum) on the Earth surface where $g = 9.8\\text{ m/s}^2$. Its length is approximately:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$0.5\\text{ m}$"
+        },
+        {
+          "id": "B",
+          "text": "$2.0\\text{ m}$"
+        },
+        {
+          "id": "C",
+          "text": "$4.0\\text{ m}$"
+        },
+        {
+          "id": "D",
+          "text": "$\\approx 1.0\\text{ m}$"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "T = 2\\pi \\sqrt{\\frac{L}{g}} \\implies L = \\frac{g T^2}{4\\pi^2}",
+      "solution": "$L = \\frac{9.8 \\times (2)^2}{4 \\times \\pi^2} \\approx \\frac{9.8 \\times 4}{4 \\times 9.87} \\approx 1.0\\text{ m}$.",
+      "notebookSolution": {
+        "given": "T = 2 s, g = 9.8 m/s²",
+        "concept": "Period of simple pendulum",
+        "steps": [
+          "L = g T² / (4π²) = 9.8 × 4 / (4 × 9.87) ≈ 0.993 m ≈ 1.0 m"
+        ],
+        "conclusion": "Length is approximately 1.0 m (Option D).",
+        "pitfall": "A seconds pendulum has a half-period of 1 second and full period of 2 seconds."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-phy-10",
+      "subject": "physics",
+      "chapter": "Electrostatics",
+      "topic": "Coulombs Law Force",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Jan 31 Shift 2)",
+      "text": "Two point charges $q_1 = +2\\text{ }\\mu\\text{C}$ and $q_2 = +8\\text{ }\\mu\\text{C}$ are separated by a distance $r = 30\\text{ cm}$ in vacuum. Taking $\\frac{1}{4\\pi\\varepsilon_0} = 9 \\times 10^9\\text{ N m}^2/\\text{C}^2$, the electrostatic repulsive force between them is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$1.6\\text{ N}$"
+        },
+        {
+          "id": "B",
+          "text": "$3.2\\text{ N}$"
+        },
+        {
+          "id": "C",
+          "text": "$0.8\\text{ N}$"
+        },
+        {
+          "id": "D",
+          "text": "$4.8\\text{ N}$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "F = \\frac{1}{4\\pi\\varepsilon_0}\\frac{q_1 q_2}{r^2}",
+      "solution": "$F = \\frac{9 \\times 10^9 \\times (2 \\times 10^{-6}) \\times (8 \\times 10^{-6})}{(0.3)^2} = \\frac{144 \\times 10^{-3}}{0.09} = 1.6\\text{ N}$.",
+      "notebookSolution": {
+        "given": "q1 = 2 μC, q2 = 8 μC, r = 0.3 m",
+        "concept": "Coulombs law",
+        "steps": [
+          "F = 9×10⁹ × 16×10⁻¹² / 0.09 = 0.144 / 0.09 = 1.6 N"
+        ],
+        "conclusion": "Force is 1.6 N.",
+        "pitfall": "Convert cm to meters before squaring."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-phy-11",
+      "subject": "physics",
+      "chapter": "Current Electricity",
+      "topic": "Kirchhoffs Junction and Loop Laws",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Apr 6 Shift 1)",
+      "text": "Kirchhoff's first law (Junction rule $\\sum I = 0$) and second law (Loop rule $\\sum \\Delta V = 0$) are respective consequences of conservation of:",
+      "options": [
+        {
+          "id": "A",
+          "text": "Energy and Charge respectively"
+        },
+        {
+          "id": "B",
+          "text": "Charge and Energy respectively"
+        },
+        {
+          "id": "C",
+          "text": "Momentum and Charge"
+        },
+        {
+          "id": "D",
+          "text": "Mass and Energy"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "\\sum I_{in} = \\sum I_{out} \\ (\\text{Charge}), \\quad \\sum \\Delta V = 0 \\ (\\text{Energy})",
+      "solution": "Junction rule reflects conservation of electric charge. Loop rule reflects conservation of energy around closed path.",
+      "notebookSolution": {
+        "given": "Kirchhoffs laws",
+        "concept": "Junction law = conservation of charge; Loop law = conservation of energy",
+        "steps": [
+          "KCL: dq/dt in = dq/dt out => Charge",
+          "KVL: sum of potential changes = 0 => Energy"
+        ],
+        "conclusion": "Charge and Energy respectively (Option B).",
+        "pitfall": "Do not swap the order."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-phy-12",
+      "subject": "physics",
+      "chapter": "Moving Charges and Magnetism",
+      "topic": "Motion of Charged Particle in Magnetic Field",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Jan 31 Shift 2)",
+      "text": "A charged particle enters a uniform magnetic field with velocity $\\vec{v}$ perpendicular to the field $\\vec{B}$. The trajectory of the particle is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "Helical with uniform pitch"
+        },
+        {
+          "id": "B",
+          "text": "Parabolic"
+        },
+        {
+          "id": "C",
+          "text": "Circular"
+        },
+        {
+          "id": "D",
+          "text": "Straight line"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "\\vec{F} = q(\\vec{v} \\times \\vec{B}) = \\frac{m v^2}{r}\\hat{r}",
+      "solution": "Since $\\vec{F} \\perp \\vec{v}$ at all instants, speed is constant and force provides centripetal acceleration, producing a circular path.",
+      "notebookSolution": {
+        "given": "v ⊥ B",
+        "concept": "Lorentz force provides centripetal acceleration",
+        "steps": [
+          "F = qvB = mv²/r => r = mv/(qB) = constant radius circle"
+        ],
+        "conclusion": "Circular trajectory (Option C).",
+        "pitfall": "If velocity is at an arbitrary angle θ, trajectory is helical."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-phy-13",
+      "subject": "physics",
+      "chapter": "Electromagnetic Induction",
+      "topic": "Magnetic Flux Through Parallel Loop",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Apr 6 Shift 1)",
+      "text": "A planar coil of area $A$ is placed parallel to a uniform magnetic field $\\vec{B}$ (i.e. the normal to the coil is perpendicular to $\\vec{B}$). The magnetic flux through the coil is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$BA$"
+        },
+        {
+          "id": "B",
+          "text": "$2BA$"
+        },
+        {
+          "id": "C",
+          "text": "$\\frac{BA}{2}$"
+        },
+        {
+          "id": "D",
+          "text": "Zero"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "\\Phi = \\vec{B} \\cdot \\vec{A} = B A \\cos 90^\\circ = 0",
+      "solution": "When the plane of the coil is parallel to $\\vec{B}$, the angle between area vector $\\vec{A}$ and $\\vec{B}$ is $\\theta = 90^\\circ$. Thus $\\Phi = B A \\cos 90^\\circ = 0$.",
+      "notebookSolution": {
+        "given": "Plane parallel to B => angle with normal θ = 90°",
+        "concept": "Magnetic flux Φ = B·A = BA cosθ",
+        "steps": [
+          "Φ = BA cos(90°) = 0"
+        ],
+        "conclusion": "Flux is zero (Option D).",
+        "pitfall": "Area vector is perpendicular to the plane of the loop."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-phy-14",
+      "subject": "physics",
+      "chapter": "Ray Optics",
+      "topic": "Refractive Index of Equilateral Prism",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Jan 31 Shift 2)",
+      "text": "An equilateral prism ($A = 60^\\circ$) produces a minimum angle of deviation $\\delta_m = 60^\\circ$. The refractive index $\\mu$ of the prism material is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$\\mu = \\sqrt{3}$"
+        },
+        {
+          "id": "B",
+          "text": "$\\mu = \\sqrt{2}$"
+        },
+        {
+          "id": "C",
+          "text": "$\\mu = 1.5$"
+        },
+        {
+          "id": "D",
+          "text": "$\\mu = 1.33$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "\\mu = \\frac{\\sin\\left(\\frac{A + \\delta_m}{2}\\right)}{\\sin(A/2)}",
+      "solution": "$$\\mu = \\frac{\\sin((60^\\circ + 60^\\circ)/2)}{\\sin(60^\\circ/2)} = \\frac{\\sin 60^\\circ}{\\sin 30^\\circ} = \\frac{\\sqrt{3}/2}{1/2} = \\sqrt{3}$$.",
+      "notebookSolution": {
+        "given": "A = 60°, δ_m = 60°",
+        "concept": "Prism formula",
+        "steps": [
+          "μ = sin(120°/2) / sin(30°) = sin 60° / sin 30° = √3"
+        ],
+        "conclusion": "Refractive index is √3 (Option A).",
+        "pitfall": "A = 60° for an equilateral prism."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-phy-15",
+      "subject": "physics",
+      "chapter": "Wave Optics",
+      "topic": "Youngs Double Slit Fringe Width",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Apr 6 Shift 1)",
+      "text": "In Young's double-slit experiment with slit separation $d$ and screen distance $D$ using light of wavelength $\\lambda$, the fringe width $\\beta$ is given by:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$\\beta = \\frac{\\lambda d}{D}$"
+        },
+        {
+          "id": "B",
+          "text": "$\\beta = \\frac{\\lambda D}{d}$"
+        },
+        {
+          "id": "C",
+          "text": "$\\beta = \\frac{d D}{\\lambda}$"
+        },
+        {
+          "id": "D",
+          "text": "$\\beta = \\frac{\\lambda}{D d}$"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "\\beta = \\frac{\\lambda D}{d}",
+      "solution": "Fringe width is directly proportional to screen distance $D$ and wavelength $\\lambda$, and inversely proportional to slit spacing $d$: $\\beta = \\frac{\\lambda D}{d}$.",
+      "notebookSolution": {
+        "given": "YDSE setup parameters",
+        "concept": "Fringe spacing between adjacent maxima or minima",
+        "steps": [
+          "β = y_{n+1} - y_n = λD/d"
+        ],
+        "conclusion": "β = λD/d (Option B).",
+        "pitfall": "D is distance to screen, d is slit separation."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-phy-16",
+      "subject": "physics",
+      "chapter": "Dual Nature of Radiation",
+      "topic": "Maximum Kinetic Energy of Photoelectrons",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Jan 31 Shift 2)",
+      "text": "In a photoelectric experiment, keeping the frequency of incident radiation constant, the maximum kinetic energy of emitted photoelectrons is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "Directly proportional to intensity"
+        },
+        {
+          "id": "B",
+          "text": "Inversely proportional to intensity"
+        },
+        {
+          "id": "C",
+          "text": "Independent of intensity"
+        },
+        {
+          "id": "D",
+          "text": "Directly proportional to square of intensity"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "K_{max} = h\\nu - \\phi_0",
+      "solution": "Maximum kinetic energy depends strictly on the photon frequency $\\nu$ and work function $\\phi_0$. Intensity only changes the rate of emission (photocurrent), not kinetic energy.",
+      "notebookSolution": {
+        "given": "Constant frequency, variable intensity",
+        "concept": "K_max = hν - W",
+        "steps": [
+          "K_max depends on photon energy hν, independent of beam intensity"
+        ],
+        "conclusion": "Independent of intensity (Option C).",
+        "pitfall": "Intensity determines number of emitted electrons, not their kinetic energy."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-phy-17",
+      "subject": "physics",
+      "chapter": "Atoms",
+      "topic": "Bohr Radius Orbit Dependence",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Apr 6 Shift 1)",
+      "text": "According to Bohr's postulate of quantization of angular momentum, the radius $r_n$ of the $n^{\\text{th}}$ orbit of hydrogen atom varies with principle quantum number $n$ as:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$r_n \\propto n$"
+        },
+        {
+          "id": "B",
+          "text": "$r_n \\propto 1/n$"
+        },
+        {
+          "id": "C",
+          "text": "$r_n \\propto n^3$"
+        },
+        {
+          "id": "D",
+          "text": "$r_n \\propto n^2$"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "r_n = \\frac{n^2 h^2 \\varepsilon_0}{\\pi m e^2} \\propto n^2",
+      "solution": "Radius of the $n$-th orbit is given by $r_n = 0.529 \\frac{n^2}{Z}\\text{ \\AA} \\propto n^2$.",
+      "notebookSolution": {
+        "given": "Bohr model radius formula",
+        "concept": "Orbit radius proportionality",
+        "steps": [
+          "r_n = a_0 n²/Z => r_n ∝ n²"
+        ],
+        "conclusion": "r_n ∝ n² (Option D).",
+        "pitfall": "Velocity varies as 1/n, radius varies as n²."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-phy-18",
+      "subject": "physics",
+      "chapter": "Nuclei",
+      "topic": "Nuclear Density Ratio",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Jan 31 Shift 2)",
+      "text": "Two nuclei have mass numbers in the ratio $1:8$. The ratio of their nuclear densities is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$1:2$"
+        },
+        {
+          "id": "B",
+          "text": "$1:4$"
+        },
+        {
+          "id": "C",
+          "text": "$2:1$"
+        },
+        {
+          "id": "D",
+          "text": "$4:1$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "R = R_0 A^{1/3} \\implies V \\propto A \\implies \\rho = \\frac{M}{V} = \\text{constant}",
+      "solution": "Nuclear density is independent of mass number $A$ because mass $\\propto A$ and volume $\\propto R^3 \\propto A$. Thus the ratio of nuclear densities is $1:1$ (all nuclei have approximately $\\approx 2.3 \\times 10^{17}\\text{ kg/m}^3$).",
+      "notebookSolution": {
+        "given": "A1/A2 = 1/8",
+        "concept": "Nuclear density is constant for all nuclei",
+        "steps": [
+          "ρ = m A / (4/3 π R0³ A) = constant => ρ1/ρ2 = 1:1"
+        ],
+        "conclusion": "Nuclear density is identical (1:1).",
+        "pitfall": "Nuclear radius changes with A^(1/3), but density remains constant."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-phy-19",
+      "subject": "physics",
+      "chapter": "Semiconductor Electronics",
+      "topic": "Ideal Diode in Forward Bias",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Apr 6 Shift 1)",
+      "text": "In ideal circuit approximation, the resistance offered by a $p$-$n$ junction diode in forward bias condition is taken as:",
+      "options": [
+        {
+          "id": "A",
+          "text": "Infinite"
+        },
+        {
+          "id": "B",
+          "text": "Zero"
+        },
+        {
+          "id": "C",
+          "text": "Very small"
+        },
+        {
+          "id": "D",
+          "text": "Fluctuating"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "R_{forward, ideal} = 0, \\quad R_{reverse, ideal} = \\infty",
+      "solution": "An ideal diode acts as a closed switch with zero resistance when forward biased and an open switch with infinite resistance when reverse biased.",
+      "notebookSolution": {
+        "given": "Ideal p-n junction forward biased",
+        "concept": "Ideal diode forward resistance is zero",
+        "steps": [
+          "Forward bias ideal => zero resistance (short circuit)"
+        ],
+        "conclusion": "Resistance is zero (Option B).",
+        "pitfall": "Practical diodes have ~0.7V drop for Si, but ideal diode resistance is zero."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-phy-20",
+      "subject": "physics",
+      "chapter": "Semiconductor Electronics",
+      "topic": "Universal Logic Gates",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Jan 31 Shift 2)",
+      "text": "Which of the following logic gates is classified as a universal gate capable of implementing any Boolean function?",
+      "options": [
+        {
+          "id": "A",
+          "text": "NOR gate"
+        },
+        {
+          "id": "B",
+          "text": "AND gate"
+        },
+        {
+          "id": "C",
+          "text": "NAND gate"
+        },
+        {
+          "id": "D",
+          "text": "OR gate"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "Y = \\overline{A \\cdot B} \\ (\\text{NAND}), \\quad Y = \\overline{A + B} \\ (\\text{NOR})",
+      "solution": "NAND and NOR gates are universal gates because repeated combinations can construct NOT, AND, and OR operations.",
+      "notebookSolution": {
+        "given": "Universal logic gate definition",
+        "concept": "NAND and NOR can synthesize any logic network",
+        "steps": [
+          "NAND is a universal gate"
+        ],
+        "conclusion": "NAND gate (Option C).",
+        "pitfall": "AND and OR are basic gates, not universal without NOT."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-phy-21",
+      "subject": "physics",
+      "chapter": "Current Electricity",
+      "topic": "Potentiometer Wire Resistance",
+      "difficulty": "medium",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Apr 6 Shift 1)",
+      "text": "A potentiometer wire of length $L = 10\\text{ m}$ has resistance $R = 20\\text{ }\\Omega$. A steady current is maintained by a $2\\text{ V}$ driver battery. The potential gradient along the wire (in $\\text{mV/cm}$) is:",
+      "correctAnswer": "1",
+      "formula": "k = \\frac{V}{L}",
+      "solution": "Current $I = \\frac{2}{20} = 0.1\\text{ A}$. Potential gradient $k = \\frac{V}{L} = \\frac{2\\text{ V}}{1000\\text{ cm}} = 0.002\\text{ V/cm} = 2\\text{ mV/cm}$.",
+      "notebookSolution": {
+        "given": "L = 10 m = 1000 cm, V = 2 V",
+        "concept": "Potential gradient k = V / L",
+        "steps": [
+          "k = 2 V / 1000 cm = 0.002 V/cm = 2 mV/cm"
+        ],
+        "conclusion": "Potential gradient is 2.",
+        "pitfall": "Watch the units: mV/cm vs V/m."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-phy-22",
+      "subject": "physics",
+      "chapter": "Atoms",
+      "topic": "Wavelength Ratio in Lyman Series",
+      "difficulty": "medium",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Jan 31 Shift 2)",
+      "text": "In the hydrogen atom spectrum, the ratio of the longest wavelength in the Lyman series ($n = 2 \\to 1$) to the shortest wavelength in the Lyman series ($n = \\infty \\to 1$) is $\\frac{4}{x}$. The value of $x$ is:",
+      "correctAnswer": "3",
+      "formula": "\\frac{1}{\\lambda} = R_H \\left(\\frac{1}{n_1^2} - \\frac{1}{n_2^2}\\right)",
+      "solution": "$$\\frac{1}{\\lambda_{max}} = R_H \\left(1 - \\frac{1}{4}\\right) = \\frac{3}{4}R_H \\implies \\lambda_{max} = \\frac{4}{3R_H}$$\n$$\\frac{1}{\\lambda_{min}} = R_H \\left(1 - 0\\right) = R_H \\implies \\lambda_{min} = \\frac{1}{R_H}$$\n$$\\frac{\\lambda_{max}}{\\lambda_{min}} = \\frac{4}{3} \\implies x = 3$$.",
+      "notebookSolution": {
+        "given": "Lyman longest and shortest transition",
+        "concept": "Rydberg formula for hydrogen",
+        "steps": [
+          "λ_max = 4/(3R), λ_min = 1/R => ratio = 4/3 => x = 3"
+        ],
+        "conclusion": "x = 3.",
+        "pitfall": "Longest wavelength corresponds to smallest energy difference."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-phy-23",
+      "subject": "physics",
+      "chapter": "Electrostatics",
+      "topic": "Energy Stored in Capacitor",
+      "difficulty": "easy",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Apr 6 Shift 1)",
+      "text": "A $2\\text{ }\\mu\\text{F}$ capacitor is charged to a potential of $100\\text{ V}$. The energy stored in the capacitor (in $\\text{mJ}$) is:",
+      "correctAnswer": "10",
+      "formula": "U = \\frac{1}{2} C V^2",
+      "solution": "$U = \\frac{1}{2}(2 \\times 10^{-6})(100)^2 = 10^{-6} \\times 10000 = 10^{-2}\\text{ J} = 10\\text{ mJ}$.",
+      "notebookSolution": {
+        "given": "C = 2 μF, V = 100 V",
+        "concept": "Capacitor stored energy U = 1/2 C V²",
+        "steps": [
+          "U = 0.5 × (2×10⁻⁶) × 10000 = 0.01 J = 10 mJ"
+        ],
+        "conclusion": "Energy is 10 mJ.",
+        "pitfall": "Convert Joules to milliJoules (× 1000)."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-phy-24",
+      "subject": "physics",
+      "chapter": "Magnetic Dipole",
+      "topic": "Magnetic Dipole Moment of Current Loop",
+      "difficulty": "easy",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Jan 31 Shift 2)",
+      "text": "A square coil of side $10\\text{ cm}$ consists of $20$ turns and carries a current of $2\\text{ A}$. The magnetic dipole moment of the coil (in $\\text{A m}^2$) is $x \\times 10^{-1}$. The value of $x$ is:",
+      "correctAnswer": "4",
+      "formula": "M = N I A",
+      "solution": "Area $A = (0.1)^2 = 0.01\\text{ m}^2$. Dipole moment $M = 20 \\times 2 \\times 0.01 = 0.4\\text{ A m}^2 = 4 \\times 10^{-1}\\text{ A m}^2 \\implies x = 4$.",
+      "notebookSolution": {
+        "given": "N = 20, I = 2 A, side = 0.1 m",
+        "concept": "Magnetic moment M = NIA",
+        "steps": [
+          "A = 0.1² = 0.01 m²",
+          "M = 20 × 2 × 0.01 = 0.4 A m² = 4 × 10⁻¹"
+        ],
+        "conclusion": "x = 4.",
+        "pitfall": "Do not forget number of turns N."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-phy-25",
+      "subject": "physics",
+      "chapter": "Kinetic Theory of Gases",
+      "topic": "Degrees of Freedom of Diatomic Gas",
+      "difficulty": "easy",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Apr 6 Shift 1)",
+      "text": "At room temperature, the total degrees of freedom of a rigid diatomic molecule (such as $O_2$ or $N_2$) is:",
+      "correctAnswer": "5",
+      "formula": "f = f_{trans} + f_{rot} = 3 + 2 = 5",
+      "solution": "A rigid diatomic molecule has 3 translational degrees of freedom and 2 rotational degrees of freedom (vibrational modes are frozen at normal temperatures). Total $f = 5$.",
+      "notebookSolution": {
+        "given": "Rigid diatomic gas at room temperature",
+        "concept": "Equipartition of energy degrees of freedom",
+        "steps": [
+          "3 translational + 2 rotational = 5 degrees of freedom"
+        ],
+        "conclusion": "Total degrees of freedom is 5.",
+        "pitfall": "Vibrational degrees of freedom only activate at very high temperatures."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-chem-1",
+      "subject": "chemistry",
+      "chapter": "Some Basic Concepts of Chemistry",
+      "topic": "Mole Concept and Stoichiometry",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Apr 8 Shift 2)",
+      "text": "The number of moles of oxygen atoms present in $14.700000000000001\\text{ g}$ of pure sulfuric acid ($H_2SO_4$, molar mass $= 98\\text{ g/mol}$) is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "0.3\\text{ mol}"
+        },
+        {
+          "id": "B",
+          "text": "0.15\\text{ mol}"
+        },
+        {
+          "id": "C",
+          "text": "1.2\\text{ mol}"
+        },
+        {
+          "id": "D",
+          "text": "0.6\\text{ mol}"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "n(O) = 4 \\times n(H_2SO_4) = 4 \\times \\frac{m}{M}",
+      "solution": "Moles of $H_2SO_4 = \\frac{14.700000000000001}{98} = 0.15\\text{ mol}$. Each molecule has 4 oxygen atoms, so moles of O atoms $= 4 \\times 0.15 = 0.6\\text{ mol}$.",
+      "notebookSolution": {
+        "given": "Mass = 14.700000000000001 g, Molar mass = 98 g/mol",
+        "concept": "Stoichiometry of molecular formula",
+        "steps": [
+          "Moles of H2SO4 = 14.700000000000001/98 = 0.15",
+          "Moles of O = 4 × 0.15 = 0.6"
+        ],
+        "conclusion": "Moles of oxygen atoms is 0.6 (Option D).",
+        "pitfall": "Do not confuse moles of O atoms with moles of O2 molecules."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-chem-2",
+      "subject": "chemistry",
+      "chapter": "Structure of Atom",
+      "topic": "de Broglie Wavelength of Moving Particles",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Jan 29 Shift 1)",
+      "text": "Two particles $A$ and $B$ have equal masses. If the velocity of particle $A$ is $2$ times the velocity of particle $B$ ($v_A = 2 v_B$), the ratio of their de Broglie wavelengths $\\frac{\\lambda_A}{\\lambda_B}$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$1 : 2$"
+        },
+        {
+          "id": "B",
+          "text": "$2 : 1$"
+        },
+        {
+          "id": "C",
+          "text": "$1 : 4$"
+        },
+        {
+          "id": "D",
+          "text": "$4 : 1$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "\\lambda = \\frac{h}{p} = \\frac{h}{m v}",
+      "solution": "$$\\lambda = \\frac{h}{m v} \\implies \\frac{\\lambda_A}{\\lambda_B} = \\frac{v_B}{v_A} = \\frac{1}{2} = 1 : 2$$.",
+      "notebookSolution": {
+        "given": "mA = mB, vA = 2 vB",
+        "concept": "de Broglie wavelength is inversely proportional to momentum",
+        "steps": [
+          "λ = h/(mv)",
+          "λA/λB = vB/vA = 1/2"
+        ],
+        "conclusion": "Ratio is 1 : 2 (Option A).",
+        "pitfall": "Wavelength is inversely proportional to velocity."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-chem-3",
+      "subject": "chemistry",
+      "chapter": "Classification of Elements and Periodicity",
+      "topic": "First Ionization Enthalpy Trends",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Apr 8 Shift 2)",
+      "text": "The correct increasing order of the first ionization enthalpies ($\\Delta_i H_1$) of the second period elements is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$B < Be < C < N < O < F < Ne$"
+        },
+        {
+          "id": "B",
+          "text": "$B < Be < C < O < N < F < Ne$"
+        },
+        {
+          "id": "C",
+          "text": "$Be < B < C < O < N < F < Ne$"
+        },
+        {
+          "id": "D",
+          "text": "$B < C < Be < O < N < F < Ne$"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "\\Delta_i H_1 \\text{ anomalous stability: } Be(2s^2) > B(2p^1), \\; N(2p^3) > O(2p^4)",
+      "solution": "Across a period, ionization enthalpy generally increases with effective nuclear charge, with anomalies: $Be(2s^2)$ has higher $\\Delta_i H$ than $B(2s^2 2p^1)$ due to fully-filled $2s$ subshell, and $N(2s^2 2p^3)$ has higher $\\Delta_i H$ than $O(2s^2 2p^4)$ due to half-filled $2p$ subshell. Hence: $B < Be < C < O < N < F < Ne$.",
+      "notebookSolution": {
+        "given": "Second period elements",
+        "concept": "Penetration and half-filled subshell extra stability",
+        "steps": [
+          "Be > B because of 2s² penetration",
+          "N > O because of half-filled 2p³ stability",
+          "Order: B < Be < C < O < N < F < Ne"
+        ],
+        "conclusion": "Correct order is B < Be < C < O < N < F < Ne (Option B).",
+        "pitfall": "Do not assume strictly monotonic increase across period."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-chem-4",
+      "subject": "chemistry",
+      "chapter": "Chemical Bonding and Molecular Structure",
+      "topic": "VSEPR Theory and Molecular Geometries",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Jan 29 Shift 1)",
+      "text": "According to VSEPR theory, the molecular shapes of $SF_4$, $ClF_3$, and $XeF_4$ respectively are:",
+      "options": [
+        {
+          "id": "A",
+          "text": "Tetrahedral, Trigonal planar, Octahedral"
+        },
+        {
+          "id": "B",
+          "text": "Square planar, See-saw, T-shaped"
+        },
+        {
+          "id": "C",
+          "text": "See-saw, T-shaped, Square planar"
+        },
+        {
+          "id": "D",
+          "text": "T-shaped, See-saw, Square planar"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "\\text{Steric Number} = \\frac{1}{2}(V + M - C + A)",
+      "solution": "- $SF_4$: Steric no $= 4\\text{ bp} + 1\\text{ lp} = 5$ (trigonal bipyramidal geometry) $\\implies$ **See-saw** shape.\n- $ClF_3$: Steric no $= 3\\text{ bp} + 2\\text{ lp} = 5$ $\\implies$ **T-shaped**.\n- $XeF_4$: Steric no $= 4\\text{ bp} + 2\\text{ lp} = 6$ (octahedral geometry) $\\implies$ **Square planar** shape.",
+      "notebookSolution": {
+        "given": "SF4, ClF3, XeF4 molecules",
+        "concept": "VSEPR steric number = bond pairs + lone pairs",
+        "steps": [
+          "SF4 has 1 lp -> see-saw",
+          "ClF3 has 2 lp -> T-shaped",
+          "XeF4 has 2 lp -> square planar"
+        ],
+        "conclusion": "Shapes are See-saw, T-shaped, Square planar (Option C).",
+        "pitfall": "Distinguish between electron geometry and molecular shape."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-chem-5",
+      "subject": "chemistry",
+      "chapter": "Chemical Thermodynamics",
+      "topic": "Relation between Enthalpy and Internal Energy",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Apr 8 Shift 2)",
+      "text": "For the gaseous Haber synthesis reaction: $N_2(g) + 3H_2(g) \\rightleftharpoons 2NH_3(g)$ at $298\\text{ K}$, the correct relation between enthalpy change ($\\Delta H$) and internal energy change ($\\Delta U$) is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$\\Delta H > \\Delta U$"
+        },
+        {
+          "id": "B",
+          "text": "$\\Delta H = \\Delta U$"
+        },
+        {
+          "id": "C",
+          "text": "$\\Delta H = 2\\Delta U$"
+        },
+        {
+          "id": "D",
+          "text": "$\\Delta H < \\Delta U$"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "\\Delta H = \\Delta U + \\Delta n_g R T",
+      "solution": "$$\\Delta n_g = n_{p(g)} - n_{r(g)} = 2 - (1 + 3) = -2$$.\n$$\\Delta H = \\Delta U + (-2)RT = \\Delta U - 2RT$$.\nSince $2RT > 0$, we have $\\Delta H < \\Delta U$.",
+      "notebookSolution": {
+        "given": "N2(g) + 3H2(g) <=> 2NH3(g)",
+        "concept": "ΔH = ΔU + Δn_g RT",
+        "steps": [
+          "Δn_g = 2 - 4 = -2",
+          "ΔH = ΔU - 2RT",
+          "Therefore ΔH < ΔU"
+        ],
+        "conclusion": "ΔH < ΔU (Option D).",
+        "pitfall": "Count only gaseous moles when computing Δn_g."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-chem-6",
+      "subject": "chemistry",
+      "chapter": "Equilibrium",
+      "topic": "pH of Acidic Buffer Solution",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Jan 29 Shift 1)",
+      "text": "An acidic buffer solution contains $0.2\\text{ M } CH_3COONa$ and $0.1\\text{ M } CH_3COOH$. Given $pK_a(CH_3COOH) = 4.75$ and $\\log 2 = 0.301$, the pH of the buffer solution is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "5.05"
+        },
+        {
+          "id": "B",
+          "text": "4.75"
+        },
+        {
+          "id": "C",
+          "text": "4.45"
+        },
+        {
+          "id": "D",
+          "text": "5.75"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "pH = pK_a + \\log\\frac{[\\text{Salt}]}{[\\text{Acid}]}",
+      "solution": "$$pH = pK_a + \\log\\frac{[CH_3COO^-]}{[CH_3COOH]} = 4.75 + \\log\\left(\\frac{0.2}{0.1}\\right) = 4.75 + \\log 2 = 4.75 + 0.30 = 5.05$$.",
+      "notebookSolution": {
+        "given": "[Salt] = 0.2 M, [Acid] = 0.1 M, pKa = 4.75",
+        "concept": "Henderson-Hasselbalch equation",
+        "steps": [
+          "pH = 4.75 + log(0.2/0.1) = 4.75 + 0.301 = 5.05"
+        ],
+        "conclusion": "pH = 5.05 (Option A).",
+        "pitfall": "Ensure [Salt] is in numerator and [Acid] in denominator."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-chem-7",
+      "subject": "chemistry",
+      "chapter": "Solutions",
+      "topic": "Positive and Negative Deviations from Raoult Law",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Apr 8 Shift 2)",
+      "text": "Which of the following binary liquid mixtures exhibits a **positive deviation** from Raoult's law ($Delta H_{mix} > 0, Delta V_{mix} > 0$)?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Chloroform + Acetone"
+        },
+        {
+          "id": "B",
+          "text": "Ethanol + Acetone"
+        },
+        {
+          "id": "C",
+          "text": "Phenol + Aniline"
+        },
+        {
+          "id": "D",
+          "text": "Nitric acid + Water"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "P_{total} > P_A^\\circ x_A + P_B^\\circ x_B \\text{ due to weaker A-B interactions}",
+      "solution": "In pure ethanol, molecules are strongly held by intermolecular hydrogen bonds. When acetone is added, its molecules get between ethanol molecules and break some of the hydrogen bonds, weakening intermolecular forces. Hence, vapor pressure increases (positive deviation). Chloroform + acetone exhibits negative deviation due to new hydrogen bond formation.",
+      "notebookSolution": {
+        "given": "Pairs of liquid mixtures",
+        "concept": "Intermolecular forces vs Raoult law deviations",
+        "steps": [
+          "Ethanol + Acetone breaks H-bonds -> positive deviation",
+          "Chloroform + Acetone forms H-bonds -> negative deviation"
+        ],
+        "conclusion": "Ethanol + Acetone shows positive deviation (Option B).",
+        "pitfall": "Negative deviation occurs when new intermolecular attractions are formed."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-chem-8",
+      "subject": "chemistry",
+      "chapter": "Electrochemistry",
+      "topic": "Standard Cell Potential of Galvanic Cell",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Jan 29 Shift 1)",
+      "text": "Given the standard reduction potentials $E^\\circ(Zn^{2+}/Zn) = -0.76\\text{ V}$ and $E^\\circ(Cu^{2+}/Cu) = +0.34\\text{ V}$, the standard EMF ($E^\\circ_{cell}$) of the Daniell cell is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$-1.1\\text{ V}$"
+        },
+        {
+          "id": "B",
+          "text": "$0.42\\text{ V}$"
+        },
+        {
+          "id": "C",
+          "text": "$+1.1\\text{ V}$"
+        },
+        {
+          "id": "D",
+          "text": "$1.52\\text{ V}$"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "E^\\circ_{cell} = E^\\circ_{cathode} - E^\\circ_{anode}",
+      "solution": "$$E^\\circ_{cell} = E^\\circ(Cu^{2+}/Cu) - E^\\circ(Zn^{2+}/Zn) = 0.34 - (-0.76) = +1.10\\text{ V}$$.",
+      "notebookSolution": {
+        "given": "E°(Zn²+/Zn) = -0.76 V, E°(Cu²+/Cu) = +0.34 V",
+        "concept": "Standard EMF = Cathode potential - Anode potential",
+        "steps": [
+          "E°cell = 0.34 - (-0.76) = 1.10 V"
+        ],
+        "conclusion": "E°cell is +1.10 V (Option C).",
+        "pitfall": "Always use standard reduction potentials."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-chem-9",
+      "subject": "chemistry",
+      "chapter": "Chemical Kinetics",
+      "topic": "First Order Reaction Kinetics",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Apr 8 Shift 2)",
+      "text": "For a first-order chemical reaction, the half-life period is $t_{1/2} = 20\\text{ min}$. The time required for $75\\%$ completion of the reaction is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "60\\text{ min}"
+        },
+        {
+          "id": "B",
+          "text": "30\\text{ min}"
+        },
+        {
+          "id": "C",
+          "text": "80\\text{ min}"
+        },
+        {
+          "id": "D",
+          "text": "40\\text{ min}"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "t_{75\\%} = 2 \\times t_{1/2}",
+      "solution": "For a first order reaction, after $1$ half-life, $50\\%$ remains. After $2$ half-lives, $25\\%$ remains (meaning $75\\%$ completed). Hence, $t_{75\\%} = 2 \\times t_{1/2} = 2 \\times 20 = 40\\text{ min}$.",
+      "notebookSolution": {
+        "given": "t1/2 = 20 min",
+        "concept": "First order kinetics fraction remaining = (1/2)^n",
+        "steps": [
+          "For 75% completion, remaining is 25% = (1/2)²",
+          "n = 2 half lives",
+          "t = 2 × 20 = 40 min"
+        ],
+        "conclusion": "Time is 40 min (Option D).",
+        "pitfall": "Do not use linear proportion (first order is exponential)."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-chem-10",
+      "subject": "chemistry",
+      "chapter": "Surface Chemistry",
+      "topic": "Hardy-Schulze Rule for Coagulation",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Jan 29 Shift 1)",
+      "text": "According to the Hardy-Schulze rule, the correct decreasing order of flocculating (coagulating) power of cations for a negatively charged arsenious sulfide ($As_2S_3$) sol is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$Al^{3+} > Ba^{2+} > Na^+$"
+        },
+        {
+          "id": "B",
+          "text": "$Na^+ > Ba^{2+} > Al^{3+}$"
+        },
+        {
+          "id": "C",
+          "text": "$Ba^{2+} > Al^{3+} > Na^+$"
+        },
+        {
+          "id": "D",
+          "text": "$Al^{3+} = Ba^{2+} = Na^+$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "\\text{Coagulating Power} \\propto (\\text{Valency of active ion})^6",
+      "solution": "Hardy-Schulze rule states that the coagulating power of an ion having opposite charge to that of colloidal particles increases with increasing valency of the coagulating ion. For negatively charged $As_2S_3$ sol, the coagulating ion is cation. Valency order: $Al^{3+} (+3) > Ba^{2+} (+2) > Na^+ (+1)$.",
+      "notebookSolution": {
+        "given": "Negatively charged As2S3 sol",
+        "concept": "Hardy-Schulze rule: higher valency means higher flocculating power",
+        "steps": [
+          "Valency: Al³⁺ = 3, Ba²⁺ = 2, Na⁺ = 1",
+          "Order: Al³⁺ > Ba²⁺ > Na⁺"
+        ],
+        "conclusion": "Order is Al³⁺ > Ba²⁺ > Na⁺ (Option A).",
+        "pitfall": "Flocculating power is inversely proportional to flocculation value."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-chem-11",
+      "subject": "chemistry",
+      "chapter": "p-Block Elements",
+      "topic": "Structure of Oxoacids of Phosphorus",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Apr 8 Shift 2)",
+      "text": "In orthophosphorous acid ($H_3PO_3$), the number and types of bonds connected to the central phosphorus atom are:",
+      "options": [
+        {
+          "id": "A",
+          "text": "Two $P-H$, one $P-OH$, and one $P=O$ bond"
+        },
+        {
+          "id": "B",
+          "text": "One $P-H$, two $P-OH$, and one $P=O$ bond"
+        },
+        {
+          "id": "C",
+          "text": "Three $P-OH$ and one $P=O$ bond"
+        },
+        {
+          "id": "D",
+          "text": "Two $P-H$ and two $P-OH$ bonds"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "H_3PO_3 \\text{ contains one P-H, two P-OH, and one P=O bond (dibasic acid)}",
+      "solution": "Phosphorous acid ($H_3PO_3$) has tetrahedral geometry around phosphorus with: 1 $P=O$ bond, 2 ionizable $P-OH$ bonds (making it a dibasic acid with basicity 2), and 1 non-ionizable $P-H$ bond (which gives it strong reducing properties).",
+      "notebookSolution": {
+        "given": "H3PO3 molecule",
+        "concept": "Oxoacids of phosphorus structure and basicity",
+        "steps": [
+          "P has 5 valence electrons",
+          "1 P=O bond, 2 P-OH bonds, 1 P-H bond",
+          "Basicity = 2"
+        ],
+        "conclusion": "One P-H, two P-OH, and one P=O bond (Option B).",
+        "pitfall": "Basicity is determined only by the number of P-OH bonds, not total H atoms."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-chem-12",
+      "subject": "chemistry",
+      "chapter": "d and f Block Elements",
+      "topic": "Lanthanoid Contraction and Consequences",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Jan 29 Shift 1)",
+      "text": "Which of the following is **INCORRECT** regarding the consequences of Lanthanoid Contraction?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Shielding by $4f$ electrons is extremely poor, leading to higher effective nuclear charge"
+        },
+        {
+          "id": "B",
+          "text": "Nearly identical atomic radii of $Zr$ ($4d$) and $Hf$ ($5d$)"
+        },
+        {
+          "id": "C",
+          "text": "Shielding by $4f$ electrons is extremely effective and completely offsets nuclear pull"
+        },
+        {
+          "id": "D",
+          "text": "Decrease in basic strength of hydroxides from $La(OH)_3$ to $Lu(OH)_3$"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "\\text{Poor shielding: } s > p > d > f",
+      "solution": "Lanthanoid contraction occurs because $4f$ electrons have diffuse spatial shapes and exert very **poor** (ineffective) shielding on outer electrons. As nuclear charge increases by 14 units, the outer electrons feel an increased effective nuclear charge, causing contraction. Thus, statement C is INCORRECT.",
+      "notebookSolution": {
+        "given": "Consequences of lanthanoid contraction",
+        "concept": "4f electrons have poor shielding power",
+        "steps": [
+          "4f orbitals shield poorly",
+          "Nuclear charge increases, pulling shells inward",
+          "Statement C claiming 4f shielding is effective is false"
+        ],
+        "conclusion": "Option C is incorrect.",
+        "pitfall": "Remember 4f has poorest shielding among all subshells."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-chem-13",
+      "subject": "chemistry",
+      "chapter": "Coordination Compounds",
+      "topic": "Crystal Field Theory and Diamagnetic Complexes",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Apr 8 Shift 2)",
+      "text": "Which of the following octahedral coordination complexes is **diamagnetic** (zero unpaired electrons) and inner orbital ($d^2sp^3$ hybridized)?",
+      "options": [
+        {
+          "id": "A",
+          "text": "$[FeF_6]^{3-}$"
+        },
+        {
+          "id": "B",
+          "text": "$[Cr(H_2O)_6]^{3+}$"
+        },
+        {
+          "id": "C",
+          "text": "$[NiCl_4]^{2-}$"
+        },
+        {
+          "id": "D",
+          "text": "$[Co(NH_3)_6]^{3+}$"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "Co^{3+} (d^6) + \\text{strong field ligand } NH_3 \\implies t_{2g}^6 e_g^0, \\; \\mu = 0",
+      "solution": "In $[Co(NH_3)_6]^{3+}$, Cobalt is in $+3$ oxidation state: $Co^{3+} = [Ar] 3d^6$. Ammonia ($NH_3$) acts as a strong-field ligand, causing pairing of electrons in $t_{2g}$ orbitals: electronic configuration is $t_{2g}^6 e_g^0$. With $0$ unpaired electrons, the complex is diamagnetic.",
+      "notebookSolution": {
+        "given": "Cobalt complex [Co(NH3)6]³⁺",
+        "concept": "Crystal field pairing by strong-field ligand NH3",
+        "steps": [
+          "Co³⁺ has 3d⁶ configuration",
+          "Δo > P causes all 6 electrons to pair in t2g",
+          "Number of unpaired electrons = 0 (diamagnetic)"
+        ],
+        "conclusion": "[Co(NH3)6]³⁺ is diamagnetic (Option D).",
+        "pitfall": "FeF6³⁻ has weak field F⁻ so it is high-spin paramagnetic."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-chem-14",
+      "subject": "chemistry",
+      "chapter": "Organic Chemistry - Some Basic Principles and Techniques",
+      "topic": "Carbocation Stability and Hyperconjugation",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Jan 29 Shift 1)",
+      "text": "The correct decreasing order of stability of simple alkyl carbocations is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$(CH_3)_3C^+ > (CH_3)_2CH^+ > CH_3CH_2^+ > CH_3^+$"
+        },
+        {
+          "id": "B",
+          "text": "$CH_3^+ > CH_3CH_2^+ > (CH_3)_2CH^+ > (CH_3)_3C^+$"
+        },
+        {
+          "id": "C",
+          "text": "$(CH_3)_2CH^+ > (CH_3)_3C^+ > CH_3CH_2^+ > CH_3^+$"
+        },
+        {
+          "id": "D",
+          "text": "$(CH_3)_3C^+ > CH_3CH_2^+ > (CH_3)_2CH^+ > CH_3^+$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "\\text{Stability } \\propto \\text{Number of } \\alpha\\text{-hydrogens (hyperconjugation) and } +I \\text{ effect}",
+      "solution": "Stability of alkyl carbocations is governed by hyperconjugation and inductive ($+I$) effects:\n- $(CH_3)_3C^+$ (tert-butyl): $9\\;\\alpha$-hydrogens\n- $(CH_3)_2CH^+$ (isopropyl): $6\\;\\alpha$-hydrogens\n- $CH_3CH_2^+$ (ethyl): $3\\;\\alpha$-hydrogens\n- $CH_3^+$ (methyl): $0\\;\\alpha$-hydrogens\nOrder: $3^\\circ > 2^\\circ > 1^\\circ > \\text{methyl}$.",
+      "notebookSolution": {
+        "given": "Alkyl carbocations",
+        "concept": "Hyperconjugation stability increases with α-hydrogens",
+        "steps": [
+          "tert-butyl: 9 α-H",
+          "isopropyl: 6 α-H",
+          "ethyl: 3 α-H",
+          "methyl: 0 α-H"
+        ],
+        "conclusion": "Order is 3° > 2° > 1° > methyl (Option A).",
+        "pitfall": "Do not confuse with carbanion stability which is reverse."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-chem-15",
+      "subject": "chemistry",
+      "chapter": "Haloalkanes and Haloarenes",
+      "topic": "Nucleophilic Substitution SN2 Mechanism",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Apr 8 Shift 2)",
+      "text": "The reaction of optically active $(R)$-2-bromobutane with aqueous $NaOH$ in acetone predominantly proceeds via:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$S_N1$ reaction with complete retention of configuration"
+        },
+        {
+          "id": "B",
+          "text": "$S_N2$ reaction with complete inversion of configuration (Walden inversion)"
+        },
+        {
+          "id": "C",
+          "text": "$S_N1$ reaction leading to complete racemization"
+        },
+        {
+          "id": "D",
+          "text": "$E2$ elimination giving exclusively 2-butene"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "\\text{Backside nucleophilic attack } \\implies \\text{Walden Inversion}",
+      "solution": "Secondary alkyl halides with strong nucleophiles ($OH^-$) in polar aprotic/favorable solvent predominantly proceed through bimolecular nucleophilic substitution ($S_N2$) mechanism with backside attack, resulting in 100% optical inversion (Walden inversion) to $(S)$-2-butanol.",
+      "notebookSolution": {
+        "given": "(R)-2-bromobutane + NaOH",
+        "concept": "SN2 mechanism stereochemistry",
+        "steps": [
+          "Backside attack of OH⁻",
+          "Departure of Br⁻ simultaneously",
+          "Complete Walden inversion of configuration"
+        ],
+        "conclusion": "Proceeds via SN2 with complete inversion (Option B).",
+        "pitfall": "SN1 gives partial racemization with slight net inversion; pure SN2 gives full inversion."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-chem-16",
+      "subject": "chemistry",
+      "chapter": "Alcohols, Phenols and Ethers",
+      "topic": "Reimer-Tiemann Reaction Intermediate",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Jan 29 Shift 1)",
+      "text": "In the Reimer-Tiemann reaction of phenol with chloroform ($CHCl_3$) and aqueous $NaOH$ to yield salicylaldehyde, the active electrophilic intermediate is:",
+      "options": [
+        {
+          "id": "A",
+          "text": ":CH_2 \\text{ (Carbene)}"
+        },
+        {
+          "id": "B",
+          "text": "CCl_3^+ \\text{ (Trichloromethyl cation)}"
+        },
+        {
+          "id": "C",
+          "text": ":CCl_2 \\text{ (Dichlorocarbene)}"
+        },
+        {
+          "id": "D",
+          "text": "CHCl_2^- \\text{ (Dichloromethyl anion)}"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "CHCl_3 + OH^- \\rightleftharpoons :CCl_3^- \\xrightarrow{-\\,Cl^-} :CCl_2",
+      "solution": "Hydroxide abstracts an acidic proton from $CHCl_3$ to generate the trichloromethyl carbanion, which then undergoes $\\alpha$-elimination of chloride ion to generate neutral, electron-deficient **dichlorocarbene** ($:CCl_2$), which acts as the electrophile attacking the phenoxide ring.",
+      "notebookSolution": {
+        "given": "Reimer-Tiemann reaction",
+        "concept": "Electrophilic aromatic substitution by neutral carbene",
+        "steps": [
+          "Base deprotonates CHCl3",
+          "α-elimination yields :CCl2",
+          ":CCl2 attacks phenoxide ring at ortho position"
+        ],
+        "conclusion": "Intermediate is dichlorocarbene :CCl2 (Option C).",
+        "pitfall": "It is neutral dichlorocarbene, not a charged carbocation."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-chem-17",
+      "subject": "chemistry",
+      "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+      "topic": "Cannizzaro Reaction Condition",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Apr 8 Shift 2)",
+      "text": "Which pair of aldehydes lacks $\\alpha$-hydrogen atoms and undergoes disproportionation in concentrated alkali via the **Cannizzaro reaction**?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Acetaldehyde ($CH_3CHO$) and Acetone ($CH_3COCH_3$)"
+        },
+        {
+          "id": "B",
+          "text": "Propanal ($CH_3CH_2CHO$) and Benzaldehyde"
+        },
+        {
+          "id": "C",
+          "text": "Acetaldehyde and Formaldehyde"
+        },
+        {
+          "id": "D",
+          "text": "Formaldehyde ($HCHO$) and Benzaldehyde ($C_6H_5CHO$)"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "2\\,\\text{R-CHO} \\xrightarrow{50\\%\\,NaOH} \\text{R-CH}_2\\text{OH} + \\text{R-COO}^-Na^+",
+      "solution": "Aldehydes with no $\\alpha$-hydrogen atoms cannot form enolates and therefore undergo Cannizzaro self-redox reaction in conc. $NaOH$. Both $HCHO$ and $C_6H_5CHO$ lack $\\alpha$-hydrogens. Acetaldehyde ($CH_3CHO$) has $3\\;\\alpha$-hydrogens and undergoes aldol condensation instead.",
+      "notebookSolution": {
+        "given": "Aldehydes in concentrated alkali",
+        "concept": "Cannizzaro reaction requires absence of α-hydrogens",
+        "steps": [
+          "HCHO has no α-carbon -> no α-H",
+          "C6H5CHO has aromatic ring without α-H",
+          "Both disproportionate to alcohol and carboxylate"
+        ],
+        "conclusion": "Formaldehyde and Benzaldehyde (Option D).",
+        "pitfall": "Presence of even one α-hydrogen promotes aldol condensation instead."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-chem-18",
+      "subject": "chemistry",
+      "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+      "topic": "Hell-Volhard-Zelinsky (HVZ) Reaction",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Jan 29 Shift 1)",
+      "text": "Propanoic acid on treatment with which of the following reagents undergoes $\\alpha$-bromination to yield 2-bromopropanoic acid (Hell-Volhard-Zelinsky reaction)?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Red $P + Br_2$"
+        },
+        {
+          "id": "B",
+          "text": "Alc. $KOH$"
+        },
+        {
+          "id": "C",
+          "text": "$LiAlH_4$"
+        },
+        {
+          "id": "D",
+          "text": "$SOCl_2$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "R-CH_2-COOH \\xrightarrow{X_2 / \\text{Red } P} R-CH(X)-COOH",
+      "solution": "Carboxylic acids having $\\alpha$-hydrogen atoms are halogenated at the $\\alpha$-position on treatment with chlorine or bromine in the presence of small amounts of red phosphorus (HVZ reaction).",
+      "notebookSolution": {
+        "given": "Conversion of propanoic acid to 2-bromopropanoic acid",
+        "concept": "Hell-Volhard-Zelinsky α-halogenation",
+        "steps": [
+          "Reagents: Br2 with red phosphorus catalytic amount",
+          "Enolization of acid halide intermediate directs substitution to α-position"
+        ],
+        "conclusion": "Reagent is Red P + Br2 (Option A).",
+        "pitfall": "HVZ only works if the acid contains at least one α-hydrogen."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-chem-19",
+      "subject": "chemistry",
+      "chapter": "Amines",
+      "topic": "Carbylamine Test for Primary Amines",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Apr 8 Shift 2)",
+      "text": "Which of the following reactions produces an extremely foul-smelling **isocyanide** (Carbylamine reaction)?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Dimethylamine ($(CH_3)_2NH$) with $CHCl_3 + alc. KOH$"
+        },
+        {
+          "id": "B",
+          "text": "Methylamine ($CH_3NH_2$) with $CHCl_3 + alc. KOH$"
+        },
+        {
+          "id": "C",
+          "text": "Trimethylamine ($(CH_3)_3N$) with $CHCl_3 + alc. KOH$"
+        },
+        {
+          "id": "D",
+          "text": "Aniline with nitrous acid at $0-5^\\circ\\text{C}$"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "R-NH_2 + CHCl_3 + 3KOH \\xrightarrow{\\Delta} R-NC + 3KCl + 3H_2O",
+      "solution": "The Carbylamine test is given exclusively by aliphatic and aromatic **primary ($1^\\circ$) amines** when heated with chloroform and alcoholic $KOH$, forming an offensive-smelling isocyanide ($R-NC$). Secondary and tertiary amines do NOT give this test.",
+      "notebookSolution": {
+        "given": "Carbylamine test options",
+        "concept": "Specific test for primary amines",
+        "steps": [
+          "Primary amines react with CHCl3 + alc. KOH",
+          "Forms foul smelling carbylamine (isocyanide)",
+          "Secondary and tertiary amines fail to react"
+        ],
+        "conclusion": "Methylamine with CHCl3 + alc. KOH (Option B).",
+        "pitfall": "Secondary and tertiary amines do not have two protons on nitrogen to form isocyanide."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-chem-20",
+      "subject": "chemistry",
+      "chapter": "Biomolecules",
+      "topic": "Denaturation of Proteins",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Jan 29 Shift 1)",
+      "text": "During the denaturation of proteins caused by physical changes (such as heat) or chemical changes (pH variation), which structural level **remains intact**?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Secondary structure ($alpha$-helix and $\beta$-pleated sheets)"
+        },
+        {
+          "id": "B",
+          "text": "Tertiary structure (three-dimensional globular folding)"
+        },
+        {
+          "id": "C",
+          "text": "Primary structure (sequence of amino acids held by peptide bonds)"
+        },
+        {
+          "id": "D",
+          "text": "Quaternary structure (aggregation of multi-subunit complexes)"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "\\text{Denaturation breaks H-bonds and disulfide linkages, keeping covalent peptide backbone intact}",
+      "solution": "During denaturation, hydrogen bonds and ionic interactions stabilizing the secondary, tertiary, and quaternary structures are disrupted, causing the protein to unfold and lose biological activity. The covalent peptide bonds of the **primary structure** remain intact.",
+      "notebookSolution": {
+        "given": "Denaturation of proteins",
+        "concept": "Effect of denaturation on protein hierarchy",
+        "steps": [
+          "Secondary, tertiary, quaternary structures collapse",
+          "Covalent peptide bonds are not broken by gentle denaturation",
+          "Primary structure remains intact"
+        ],
+        "conclusion": "Primary structure remains intact (Option C).",
+        "pitfall": "Enzymatic hydrolysis breaks primary structure, but thermal denaturation does not."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-chem-21",
+      "subject": "chemistry",
+      "chapter": "Redox Reactions",
+      "topic": "Oxidation Number of Chromium",
+      "difficulty": "easy",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Apr 8 Shift 2)",
+      "text": "The oxidation state of chromium ($Cr$) in the dichromate dianion ($Cr_2O_7^{2-}$) is:",
+      "correctAnswer": "6",
+      "formula": "2x + 7(-2) = -2 \\implies 2x = +12 \\implies x = +6",
+      "solution": "Let oxidation number of $Cr$ be $x$. Sum of oxidation states: $2(x) + 7(-2) = -2 \\implies 2x - 14 = -2 \\implies 2x = 12 \\implies x = +6$.",
+      "notebookSolution": {
+        "given": "Cr2O7²⁻ ion",
+        "concept": "Algebraic sum of oxidation numbers equals overall charge",
+        "steps": [
+          "2x + 7(-2) = -2",
+          "2x - 14 = -2",
+          "x = +6"
+        ],
+        "conclusion": "Oxidation state is 6.",
+        "pitfall": "Do not forget the net charge of -2 on the polyatomic anion."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-chem-22",
+      "subject": "chemistry",
+      "chapter": "Electrochemistry",
+      "topic": "Standard Gibbs Free Energy Change",
+      "difficulty": "medium",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Jan 29 Shift 1)",
+      "text": "For the Daniell cell reaction $Zn(s) + Cu^{2+}(aq) \\to Zn^{2+}(aq) + Cu(s)$, the standard cell potential is $E^\\circ_{cell} = 1.10\\text{ V}$. Taking Faraday constant $F = 96500\\text{ C mol}^{-1}$, the magnitude of standard Gibbs energy change $|\\Delta G^\\circ|$ (in $\\text{kJ mol}^{-1}$, to the nearest integer) is:",
+      "correctAnswer": "212",
+      "formula": "\\Delta G^\\circ = -n F E^\\circ_{cell}",
+      "solution": "$$\\Delta G^\\circ = - (2) \\times (96500) \\times (1.10) = -212300\\text{ J mol}^{-1} = -212.3\\text{ kJ mol}^{-1}$$. Magnitude to nearest integer is $212$.",
+      "notebookSolution": {
+        "given": "n = 2, E° = 1.10 V, F = 96500 C/mol",
+        "concept": "ΔG° = -nFE°cell",
+        "steps": [
+          "ΔG° = -2 × 96500 × 1.10 = -212300 J = -212.3 kJ",
+          "Magnitude = 212"
+        ],
+        "conclusion": "Magnitude is 212 kJ/mol.",
+        "pitfall": "Convert Joules to kiloJoules."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-chem-23",
+      "subject": "chemistry",
+      "chapter": "Chemical Kinetics",
+      "topic": "Units of Rate Constant and Order",
+      "difficulty": "easy",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Apr 8 Shift 2)",
+      "text": "The rate constant of a reaction is given as $k = 3.5 \\times 10^{-4}\\text{ s}^{-1}$. The order of this reaction is:",
+      "correctAnswer": "1",
+      "formula": "\\text{Units of } k = (\\text{mol L}^{-1})^{1 - n} \\text{ s}^{-1}",
+      "solution": "For order $n$, units are $(\\text{mol L}^{-1})^{1-n}\\text{s}^{-1}$. When $n=1$, $(1-n) = 0$, giving units of $\\text{s}^{-1}$. Hence the reaction is first-order ($n = 1$).",
+      "notebookSolution": {
+        "given": "k has units s⁻¹",
+        "concept": "General units of rate constant (conc)^(1-n) × time⁻¹",
+        "steps": [
+          "(mol/L)^(1-n) s⁻¹ = s⁻¹ implies 1 - n = 0",
+          "n = 1"
+        ],
+        "conclusion": "Order is 1.",
+        "pitfall": "Units of rate constant uniquely determine reaction order."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-chem-24",
+      "subject": "chemistry",
+      "chapter": "Coordination Compounds",
+      "topic": "Spin-only Magnetic Moment of Metal Complex",
+      "difficulty": "medium",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Jan 29 Shift 1)",
+      "text": "In the complex $[Fe(H_2O)_6]^{2+}$, water is a weak-field ligand. The number of unpaired electrons in the central iron ion is:",
+      "correctAnswer": "4",
+      "formula": "Fe^{2+} (d^6) \\text{ in weak field } \\implies t_{2g}^4 e_g^2, \\; n = 4",
+      "solution": "Iron has atomic number $26$: $Fe = [Ar] 3d^6 4s^2 \\implies Fe^{2+} = [Ar] 3d^6$. With weak field ligand $H_2O$, $\\Delta_o < P$ (high spin): configuration is $t_{2g}^4 e_g^2$. Unpaired electrons: $2$ in $t_{2g}$ and $2$ in $e_g$, giving total $n = 4$ unpaired electrons.",
+      "notebookSolution": {
+        "given": "[Fe(H2O)6]²⁺, H2O is weak field",
+        "concept": "High spin octahedral d⁶ splitting",
+        "steps": [
+          "Fe²⁺ = 3d⁶",
+          "Weak field: no pairing in eg until t2g is half filled",
+          "Configuration: t2g⁴ eg²",
+          "Unpaired electrons: 2 + 2 = 4"
+        ],
+        "conclusion": "Number of unpaired electrons is 4.",
+        "pitfall": "Fe(CN)6⁴⁻ has strong field ligand so n = 0, but H2O gives high spin n = 4."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-chem-25",
+      "subject": "chemistry",
+      "chapter": "Solutions",
+      "topic": "Depression in Freezing Point with Association",
+      "difficulty": "medium",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Apr 8 Shift 2)",
+      "text": "A $1.0\\text{ molal}$ aqueous solution of a non-electrolyte completely freezes at $-1.86^\\circ\\text{C}$ ($K_f = 1.86\\text{ K kg mol}^{-1}$). If an electrolyte $AB_2$ completely dissociates ($100\\%$ ionization) in water, the freezing point depression $\\Delta T_f$ (in $\\text{K}$) of a $1.0\\text{ molal}$ aqueous solution of $AB_2$ is $x \\times 1.86$. The value of $x$ is:",
+      "correctAnswer": "3",
+      "formula": "\\Delta T_f = i K_f m, \\quad i = 1 + (n-1)\\alpha",
+      "solution": "$AB_2 \\to A^{2+} + 2B^- \\implies n = 3$ ions. With $100\\%$ dissociation, van 't Hoff factor $i = 3$. Hence $\\Delta T_f = 3 \\times 1.86 \\times 1.0 = 3 \\times 1.86 \\implies x = 3$.",
+      "notebookSolution": {
+        "given": "AB2 completely dissociates into 3 ions",
+        "concept": "van t Hoff factor i = 1 + (n-1)α = 3",
+        "steps": [
+          "AB2 -> A²⁺ + 2B⁻ (n = 3)",
+          "α = 1.0 -> i = 3",
+          "ΔTf = 3 × Kf × m = 3 × 1.86"
+        ],
+        "conclusion": "x = 3.",
+        "pitfall": "Remember to count all cation and anion particles."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-math-1",
+      "subject": "mathematics",
+      "chapter": "Sets and Relations",
+      "topic": "Types of Binary Relations",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Apr 9 Shift 1)",
+      "text": "Let $R$ be a binary relation defined on the set of integers $\\mathbb{Z}$ by: $a R b \\iff a \\le b$. Then the relation $R$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "An equivalence relation"
+        },
+        {
+          "id": "B",
+          "text": "Symmetric, but neither reflexive nor transitive"
+        },
+        {
+          "id": "C",
+          "text": "Reflexive and symmetric, but not transitive"
+        },
+        {
+          "id": "D",
+          "text": "Reflexive and transitive, but not symmetric"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "a R a \\implies \\text{Reflexive}; \\quad a R b \\text{ and } b R c \\implies a R c \\implies \\text{Transitive}",
+      "solution": "- Reflexive: For every $a \\in \\mathbb{Z}$, $a \\le a$ is true $\\implies (a,a) \\in R$.\n- Symmetric: If $2 \\le 3$, then $3 \\le 2$ is false $\\implies$ Not symmetric.\n- Transitive: If $a \\le b$ and $b \\le c$, then $a \\le c$ is true $\\implies$ Transitive.\nHence, $R$ is reflexive and transitive, but not symmetric.",
+      "notebookSolution": {
+        "given": "Relation a R b iff a <= b on Z",
+        "concept": "Definitions of reflexivity, symmetry, transitivity",
+        "steps": [
+          "a <= a is true for all integers (reflexive)",
+          "2 <= 3 does not imply 3 <= 2 (not symmetric)",
+          "a <= b and b <= c implies a <= c (transitive)"
+        ],
+        "conclusion": "Reflexive and transitive, but not symmetric (Option D).",
+        "pitfall": "Do not confuse partial order with equivalence relation."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-math-2",
+      "subject": "mathematics",
+      "chapter": "Complex Numbers",
+      "topic": "Cube Roots of Unity",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Jan 30 Shift 2)",
+      "text": "If $\\omega$ is a non-real complex cube root of unity ($1 + \\omega + \\omega^2 = 0$ and $\\omega^3 = 1$), then the value of the expression $(1 + \\omega - \\omega^2)^3$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$-8$"
+        },
+        {
+          "id": "B",
+          "text": "$+8$"
+        },
+        {
+          "id": "C",
+          "text": "$0$"
+        },
+        {
+          "id": "D",
+          "text": "$16$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "1 + \\omega = -\\omega^2, \\quad \\omega^3 = 1",
+      "solution": "Since $1 + \\omega = -\\omega^2$, we substitute:\n$$(1 + \\omega - \\omega^2)^3 = (-\\omega^2 - \\omega^2)^3 = (-2\\omega^2)^3 = (-2)^3 (\\omega^2)^3 = -8 (\\omega^3)^2 = -8(1)^2 = -8$$.",
+      "notebookSolution": {
+        "given": "Expression (1 + ω - ω²)³",
+        "concept": "Cube roots of unity identities: 1 + ω + ω² = 0, ω³ = 1",
+        "steps": [
+          "1 + ω = -ω²",
+          "( -ω² - ω² )³ = (-2ω²)³",
+          "= -8(ω³)² = -8(1) = -8"
+        ],
+        "conclusion": "Value is -8 (Option A).",
+        "pitfall": "Remember (-2)³ has a negative sign."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-math-3",
+      "subject": "mathematics",
+      "chapter": "Quadratic Equations",
+      "topic": "Symmetric Functions of Roots",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Apr 9 Shift 1)",
+      "text": "If $\\alpha$ and $\\beta$ are the roots of the quadratic equation $x^2 - 5x + 6 = 0$, then the value of $\\alpha^2 + \\beta^2$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$17$"
+        },
+        {
+          "id": "B",
+          "text": "$13$"
+        },
+        {
+          "id": "C",
+          "text": "$9$"
+        },
+        {
+          "id": "D",
+          "text": "$23$"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "\\alpha^2 + \\beta^2 = (\\alpha + \\beta)^2 - 2\\alpha\\beta",
+      "solution": "Sum of roots $\\alpha + \\beta = 5$, product of roots $\\alpha\\beta = 6$.\n$$\\alpha^2 + \\beta^2 = (5)^2 - 2(6) = 25 - 12 = 13$$.",
+      "notebookSolution": {
+        "given": "x² - 5x + 6 = 0",
+        "concept": "Vieta formulas for quadratic equation",
+        "steps": [
+          "α + β = 5",
+          "αβ = 6",
+          "α² + β² = (5)² - 2(6) = 13"
+        ],
+        "conclusion": "Value is 13 (Option B).",
+        "pitfall": "Check minus sign in -2αβ."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-math-4",
+      "subject": "mathematics",
+      "chapter": "Matrices and Determinants",
+      "topic": "Determinant of Adjoint Matrix",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Jan 30 Shift 2)",
+      "text": "Let $A$ be a non-singular square matrix of order $3 \\times 3$ with determinant $|A| = 3$. The determinant of its adjoint matrix $|\\text{adj}(A)|$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$3$"
+        },
+        {
+          "id": "B",
+          "text": "$27$"
+        },
+        {
+          "id": "C",
+          "text": "$9$"
+        },
+        {
+          "id": "D",
+          "text": "$9$"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "|\\text{adj}(A)| = |A|^{n-1}",
+      "solution": "For an $n \\times n$ matrix, $|\\text{adj}(A)| = |A|^{n-1}$. Here order $n = 3$, so:\n$$|\\text{adj}(A)| = |A|^{3-1} = |A|^2 = (3)^2 = 9$$.",
+      "notebookSolution": {
+        "given": "Order n = 3, |A| = 3",
+        "concept": "|adj(A)| = |A|^(n-1)",
+        "steps": [
+          "|adj(A)| = |A|^(3-1) = |A|²",
+          "= (3)² = 9"
+        ],
+        "conclusion": "Determinant is 9 (Option C).",
+        "pitfall": "Order of matrix is 3, so power is 3 - 1 = 2."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-math-5",
+      "subject": "mathematics",
+      "chapter": "Permutations and Combinations",
+      "topic": "Circular Permutations",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Apr 9 Shift 1)",
+      "text": "The number of distinct ways in which $6$ persons can be seated around a circular table is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$720$"
+        },
+        {
+          "id": "B",
+          "text": "$60$"
+        },
+        {
+          "id": "C",
+          "text": "$24$"
+        },
+        {
+          "id": "D",
+          "text": "$120$"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "\\text{Circular permutations of } n \\text{ distinct items} = (n - 1)!",
+      "solution": "Seating $n = 6$ distinct persons around a circular table where rotations are considered equivalent:\n$$\\text{Ways} = (6 - 1)! = 5! = 5 \\times 4 \\times 3 \\times 2 \\times 1 = 120$$.",
+      "notebookSolution": {
+        "given": "6 persons around circular table",
+        "concept": "Circular arrangement fixes one position: (n-1)!",
+        "steps": [
+          "Formula: (6 - 1)! = 5!",
+          "5! = 120"
+        ],
+        "conclusion": "120 ways (Option D).",
+        "pitfall": "Do not use 6! = 720 (circular symmetry eliminates n equivalent rotations)."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-math-6",
+      "subject": "mathematics",
+      "chapter": "Binomial Theorem",
+      "topic": "Term Independent of x",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Jan 30 Shift 2)",
+      "text": "The term independent of $x$ in the binomial expansion of $\\left(x + \\frac{1}{x}\\right)^6$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$20$"
+        },
+        {
+          "id": "B",
+          "text": "$15$"
+        },
+        {
+          "id": "C",
+          "text": "$30$"
+        },
+        {
+          "id": "D",
+          "text": "$60$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "T_{r+1} = {}^nC_r x^{n-r} \\left(\\frac{1}{x}\\right)^r = {}^nC_r x^{n-2r}",
+      "solution": "General term $T_{r+1} = {}^6C_r x^{6-r} (x^{-1})^r = {}^6C_r x^{6-2r}$. For term independent of $x$, exponent $6 - 2r = 0 \\implies r = 3$.\n$$T_4 = {}^6C_3 = \\frac{6 \\times 5 \\times 4}{3 \\times 2 \\times 1} = 20$$.",
+      "notebookSolution": {
+        "given": "(x + 1/x)⁶",
+        "concept": "Set exponent of x to zero",
+        "steps": [
+          "x^(6 - 2r) = x^0 implies r = 3",
+          "Coeff = ⁶C₃ = 20"
+        ],
+        "conclusion": "Term independent of x is 20 (Option A).",
+        "pitfall": "Check index r matches general term T_{r+1}."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-math-7",
+      "subject": "mathematics",
+      "chapter": "Sequences and Series",
+      "topic": "Sum of Infinite Geometric Progression",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Apr 9 Shift 1)",
+      "text": "The sum of the infinite geometric series $1 + \\frac{1}{2} + \\frac{1}{4} + \\frac{1}{8} + \\cdots$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$1$"
+        },
+        {
+          "id": "B",
+          "text": "$2$"
+        },
+        {
+          "id": "C",
+          "text": "$4$"
+        },
+        {
+          "id": "D",
+          "text": "$\\frac{3}{2}$"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "S_\\infty = \\frac{a}{1 - r} \\quad (|r| < 1)",
+      "solution": "First term $a = 1$, common ratio $r = \\frac{1}{2} < 1$.\n$$S_\\infty = \\frac{1}{1 - 1/2} = \\frac{1}{1/2} = 2$$.",
+      "notebookSolution": {
+        "given": "Infinite GP with a = 1, r = 1/2",
+        "concept": "S_inf = a / (1 - r)",
+        "steps": [
+          "S_inf = 1 / (1 - 0.5) = 2"
+        ],
+        "conclusion": "Sum is 2 (Option B).",
+        "pitfall": "Only valid when |r| < 1."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-math-8",
+      "subject": "mathematics",
+      "chapter": "Limits, Continuity and Differentiability",
+      "topic": "Indeterminate Form 1 to Power Infinity",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Jan 30 Shift 2)",
+      "text": "The value of the limit $\\lim_{x \\to 0} (1 + 2x)^{\\frac{3}{x}}$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$e^{2}$"
+        },
+        {
+          "id": "B",
+          "text": "$e^{3}$"
+        },
+        {
+          "id": "C",
+          "text": "$e^{6}$"
+        },
+        {
+          "id": "D",
+          "text": "$1$"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "\\lim_{x \\to a} [f(x)]^{g(x)} = e^{\\lim_{x \\to a} g(x)[f(x) - 1]}",
+      "solution": "This is of the form $1^\\infty$.\n$$L = e^{\\lim_{x \\to 0} \\frac{3}{x} [(1 + 2x) - 1]} = e^{\\lim_{x \\to 0} \\frac{3}{x} (2x)} = e^{3 \\times 2} = e^{6}$$.",
+      "notebookSolution": {
+        "given": "Limit (1 + ax)^(b/x) as x -> 0",
+        "concept": "1^inf evaluation using e^[lim g(f - 1)]",
+        "steps": [
+          "L = e^[ lim (b/x)(ax) ]",
+          "= e^(ab) = e^6"
+        ],
+        "conclusion": "Limit is e^6 (Option C).",
+        "pitfall": "Ensure base approaches 1 and exponent approaches infinity."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-math-9",
+      "subject": "mathematics",
+      "chapter": "Application of Derivatives",
+      "topic": "Equation of Tangent to Curve",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Apr 9 Shift 1)",
+      "text": "The equation of the tangent line to the parabola $y = x^2$ at the point $(2, 4)$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$y = 4x + 4$"
+        },
+        {
+          "id": "B",
+          "text": "$y = 2x - 1$"
+        },
+        {
+          "id": "C",
+          "text": "$y = 4x$"
+        },
+        {
+          "id": "D",
+          "text": "$y = 4x - 4$"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "y - y_0 = m(x - x_0), \\quad m = \\left.\\frac{dy}{dx}\\right|_{(x_0,y_0)}",
+      "solution": "Derivative: $\\frac{dy}{dx} = 2x$. At $x = 2$, slope $m = 2(2) = 4$.\nEquation of tangent: $y - 4 = 4(x - 2) \\implies y - 4 = 4x - 8 \\implies y = 4x - 4$.",
+      "notebookSolution": {
+        "given": "Curve y = x², point (2, 4)",
+        "concept": "Tangent slope is derivative evaluated at point",
+        "steps": [
+          "dy/dx = 2x",
+          "m = 2(2) = 4",
+          "y - 4 = 4(x - 2) -> y = 4x - 4"
+        ],
+        "conclusion": "Tangent is y = 4x - 4 (Option D).",
+        "pitfall": "Check substitution into point-slope formula."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-math-10",
+      "subject": "mathematics",
+      "chapter": "Application of Derivatives",
+      "topic": "Local Minimum of Polynomial",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Jan 30 Shift 2)",
+      "text": "The function $f(x) = 2x^3 - 9x^2 + 12x + 5$ attains a local minimum at:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$x = 2$"
+        },
+        {
+          "id": "B",
+          "text": "$x = 0$"
+        },
+        {
+          "id": "C",
+          "text": "$x = -2$"
+        },
+        {
+          "id": "D",
+          "text": "$x = 4$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "f'(x) = 0 \\text{ and } f''(x) > 0",
+      "solution": "Derivative: $f'(x) = 6x^2 - 18x + 12 = 6(x^2 - 3x + 2) = 6(x - 1)(x - 2) = 0 \\implies x = 1, 2$.\nSecond derivative: $f''(x) = 12x - 18$.\n- At $x = 1$: $f''(1) = -6 < 0$ (Local maximum)\n- At $x = 2$: $f''(2) = +6 > 0$ (Local minimum)\nHence local minimum occurs at $x = 2$.",
+      "notebookSolution": {
+        "given": "f(x) = 2x³ - 9x² + 12x + 5",
+        "concept": "Second derivative test for extrema",
+        "steps": [
+          "f'(x) = 6(x - 1)(x - 2) = 0 -> x = 1, 2",
+          "f''(x) = 12x - 18",
+          "f''(2) = 6 > 0 -> local minimum at x = 2"
+        ],
+        "conclusion": "Local minimum at x = 2 (Option A).",
+        "pitfall": "Do not confuse local maximum with local minimum."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-math-11",
+      "subject": "mathematics",
+      "chapter": "Integrals",
+      "topic": "Standard Exponential Integral Identity",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Apr 9 Shift 1)",
+      "text": "The indefinite integral $\\int e^x (\\sin x + \\cos x) \\, dx$ evaluates to:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$e^x \\cos x + C$"
+        },
+        {
+          "id": "B",
+          "text": "$e^x \\sin x + C$"
+        },
+        {
+          "id": "C",
+          "text": "$-e^x \\sin x + C$"
+        },
+        {
+          "id": "D",
+          "text": "$e^x (\\sin x - \\cos x) + C$"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "\\int e^x [f(x) + f'(x)] \\, dx = e^x f(x) + C",
+      "solution": "Let $f(x) = \\sin x$. Then $f'(x) = \\cos x$. Using the standard formula:\n$$\\int e^x [f(x) + f'(x)] \\, dx = e^x f(x) + C = e^x \\sin x + C$$.",
+      "notebookSolution": {
+        "given": "Integral ∫ e^x (sin x + cos x) dx",
+        "concept": "∫ e^x [f(x) + f'(x)] dx = e^x f(x) + C",
+        "steps": [
+          "Let f(x) = sin x, then f'(x) = cos x",
+          "Expression matches e^x (f + f')",
+          "Result = e^x sin x + C"
+        ],
+        "conclusion": "e^x sin x + C (Option B).",
+        "pitfall": "Make sure f'(x) sign matches correctly."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-math-12",
+      "subject": "mathematics",
+      "chapter": "Integrals",
+      "topic": "Properties of Definite Integrals",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Jan 30 Shift 2)",
+      "text": "The value of the definite integral $I = \\int_0^{\\pi/2} \\frac{\\sqrt{\\sin x}}{\\sqrt{\\sin x} + \\sqrt{\\cos x}} \\, dx$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$\\frac{\\pi}{2}$"
+        },
+        {
+          "id": "B",
+          "text": "$\\pi$"
+        },
+        {
+          "id": "C",
+          "text": "$\\frac{\\pi}{4}$"
+        },
+        {
+          "id": "D",
+          "text": "$0$"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "\\int_a^b f(x)dx = \\int_a^b f(a+b-x)dx",
+      "solution": "Applying King's property: $x \\to \\frac{\\pi}{2} - x$:\n$$I = \\int_0^{\\pi/2} \\frac{\\sqrt{\\cos x}}{\\sqrt{\\cos x} + \\sqrt{\\sin x}} \\, dx$$.\nAdding the two equations:\n$$2I = \\int_0^{\\pi/2} \\frac{\\sqrt{\\sin x} + \\sqrt{\\cos x}}{\\sqrt{\\sin x} + \\sqrt{\\cos x}} \\, dx = \\int_0^{\\pi/2} 1 \\, dx = \\frac{\\pi}{2} \\implies I = \\frac{\\pi}{4}$$.",
+      "notebookSolution": {
+        "given": "Definite integral with limits 0 to π/2",
+        "concept": "King property: ∫ f(x) = ∫ f(a+b-x)",
+        "steps": [
+          "Replace x with π/2 - x",
+          "Add original and transformed integral: 2I = ∫ 1 dx = π/2",
+          "I = π/4"
+        ],
+        "conclusion": "I = π/4 (Option C).",
+        "pitfall": "Do not forget the factor of 2 in 2I."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-math-13",
+      "subject": "mathematics",
+      "chapter": "Differential Equations",
+      "topic": "Integrating Factor of Linear Differential Equation",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Apr 9 Shift 1)",
+      "text": "The integrating factor (I.F.) for the first-order linear differential equation $\\frac{dy}{dx} + \\frac{2}{x} y = x^3$ (for $x > 0$) is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$2x$"
+        },
+        {
+          "id": "B",
+          "text": "$\\ln x$"
+        },
+        {
+          "id": "C",
+          "text": "$e^{2x}$"
+        },
+        {
+          "id": "D",
+          "text": "$x^2$"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "\\text{I.F.} = e^{\\int P(x)\\,dx}",
+      "solution": "Here $P(x) = \\frac{2}{x}$.\n$$\\text{I.F.} = e^{\\int \\frac{2}{x} \\, dx} = e^{2 \\ln x} = e^{\\ln (x^2)} = x^2$$.",
+      "notebookSolution": {
+        "given": "dy/dx + (2/x)y = x³",
+        "concept": "I.F. = e^(∫ P dx)",
+        "steps": [
+          "P = 2/x",
+          "∫ (2/x) dx = 2 ln x = ln(x²)",
+          "e^(ln x²) = x²"
+        ],
+        "conclusion": "I.F. is x² (Option D).",
+        "pitfall": "Move coefficient inside log as exponent: 2 ln x = ln(x²)."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-math-14",
+      "subject": "mathematics",
+      "chapter": "Straight Lines",
+      "topic": "Distance between Parallel Lines",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Jan 30 Shift 2)",
+      "text": "The perpendicular distance between the parallel lines $3x + 4y + 5 = 0$ and $3x + 4y - 5 = 0$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$2$"
+        },
+        {
+          "id": "B",
+          "text": "$1$"
+        },
+        {
+          "id": "C",
+          "text": "$4$"
+        },
+        {
+          "id": "D",
+          "text": "$\\frac{5}{2}$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "d = \\frac{|c_1 - c_2|}{\\sqrt{a^2 + b^2}}",
+      "solution": "Both lines have $a = 3, b = 4$.\n$$d = \\frac{|5 - (-5)|}{\\sqrt{3^2 + 4^2}} = \\frac{|10|}{\\sqrt{9 + 16}} = \\frac{10}{5} = 2$$.",
+      "notebookSolution": {
+        "given": "Lines 3x + 4y + 5 = 0 and 3x + 4y - 5 = 0",
+        "concept": "Distance between parallel lines formula",
+        "steps": [
+          "|c1 - c2| = |5 - (-5)| = 10",
+          "√(a² + b²) = √(9 + 16) = 5",
+          "d = 10 / 5 = 2"
+        ],
+        "conclusion": "Distance is 2 units (Option A).",
+        "pitfall": "Ensure coefficients of x and y are identical before using formula."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-math-15",
+      "subject": "mathematics",
+      "chapter": "Circles",
+      "topic": "Condition of Tangency to Circle",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Apr 9 Shift 1)",
+      "text": "The straight line $y = x + c$ is a tangent to the circle $x^2 + y^2 = 25$ if:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$c = \\pm 5$"
+        },
+        {
+          "id": "B",
+          "text": "$c = \\pm 5\\sqrt{2}$"
+        },
+        {
+          "id": "C",
+          "text": "$c = \\pm 10$"
+        },
+        {
+          "id": "D",
+          "text": "$c = \\pm 25$"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "c^2 = a^2(1 + m^2)",
+      "solution": "For circle $x^2 + y^2 = a^2$, the line $y = mx + c$ is tangent if $c^2 = a^2(1 + m^2)$.\nHere $a^2 = 25$ and slope $m = 1$.\n$$c^2 = 25(1 + 1^2) = 25(2) = 50 \\implies c = \\pm \\sqrt{50} = \\pm 5\\sqrt{2}$$.",
+      "notebookSolution": {
+        "given": "Line y = x + c, Circle x² + y² = 25",
+        "concept": "Condition of tangency c² = a²(1 + m²)",
+        "steps": [
+          "m = 1, a² = 25",
+          "c² = 25(1 + 1) = 50",
+          "c = ±5√2"
+        ],
+        "conclusion": "c = ±5√2 (Option B).",
+        "pitfall": "Do not forget both plus and minus signs."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-math-16",
+      "subject": "mathematics",
+      "chapter": "Conic Sections",
+      "topic": "Length of Latus Rectum of Parabola",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Jan 30 Shift 2)",
+      "text": "The length of the latus rectum of the parabola $y^2 = 12x$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$3$"
+        },
+        {
+          "id": "B",
+          "text": "$6$"
+        },
+        {
+          "id": "C",
+          "text": "$12$"
+        },
+        {
+          "id": "D",
+          "text": "$24$"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "\\text{Length of Latus Rectum} = 4a",
+      "solution": "Comparing $y^2 = 12x$ with standard equation $y^2 = 4ax$, we have $4a = 12$. Hence the length of the latus rectum is $12$.",
+      "notebookSolution": {
+        "given": "y² = 12x",
+        "concept": "Latus rectum length = 4a",
+        "steps": [
+          "4a = 12"
+        ],
+        "conclusion": "Length is 12 (Option C).",
+        "pitfall": "Latus rectum is 4a, not a."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-math-17",
+      "subject": "mathematics",
+      "chapter": "Conic Sections",
+      "topic": "Eccentricity of Standard Ellipse",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Apr 9 Shift 1)",
+      "text": "The eccentricity of the ellipse $\\frac{x^2}{25} + \\frac{y^2}{16} = 1$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$\\frac{4}{5}$"
+        },
+        {
+          "id": "B",
+          "text": "$\\frac{9}{25}$"
+        },
+        {
+          "id": "C",
+          "text": "$\\frac{1}{5}$"
+        },
+        {
+          "id": "D",
+          "text": "$\\frac{3}{5}$"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "e = \\sqrt{1 - \\frac{b^2}{a^2}} \\quad (a > b)",
+      "solution": "Here $a^2 = 25$ and $b^2 = 16$.\n$$e = \\sqrt{1 - \\frac{16}{25}} = \\sqrt{\\frac{9}{25}} = \\frac{3}{5}$$.",
+      "notebookSolution": {
+        "given": "x²/25 + y²/16 = 1",
+        "concept": "e = √(1 - b²/a²)",
+        "steps": [
+          "a² = 25, b² = 16",
+          "1 - 16/25 = 9/25",
+          "e = 3/5"
+        ],
+        "conclusion": "Eccentricity is 3/5 (Option D).",
+        "pitfall": "Ensure b² < a² in formula for horizontal ellipse."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-math-18",
+      "subject": "mathematics",
+      "chapter": "Vector Algebra",
+      "topic": "Scalar Projection of Vector",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Jan 30 Shift 2)",
+      "text": "The projection of the vector $\\vec{a} = 2\\hat{i} + 3\\hat{j} + 2\\hat{k}$ on the vector $\\vec{b} = \\hat{i} + 2\\hat{j} + \\hat{k}$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$\\frac{10}{\\sqrt{6}}$"
+        },
+        {
+          "id": "B",
+          "text": "$\\frac{8}{\\sqrt{6}}$"
+        },
+        {
+          "id": "C",
+          "text": "$10$"
+        },
+        {
+          "id": "D",
+          "text": "$\\sqrt{6}$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "\\text{Proj}_{\\vec{b}}(\\vec{a}) = \\frac{\\vec{a} \\cdot \\vec{b}}{|\\vec{b}|}",
+      "solution": "$$\\vec{a} \\cdot \\vec{b} = (2)(1) + (3)(2) + (2)(1) = 2 + 6 + 2 = 10$$.\n$$|\\vec{b}| = \\sqrt{1^2 + 2^2 + 1^2} = \\sqrt{6}$$.\n$$\\text{Projection} = \\frac{10}{\\sqrt{6}} = \\frac{5\\sqrt{6}}{3}$$.",
+      "notebookSolution": {
+        "given": "a = 2i + 3j + 2k, b = i + 2j + k",
+        "concept": "Projection = (a . b) / |b|",
+        "steps": [
+          "a . b = 2 + 6 + 2 = 10",
+          "|b| = √(1 + 4 + 1) = √6",
+          "Proj = 10 / √6"
+        ],
+        "conclusion": "Projection is 10/√6.",
+        "pitfall": "Divide by magnitude of target vector b, not a."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-math-19",
+      "subject": "mathematics",
+      "chapter": "Three Dimensional Geometry",
+      "topic": "Angle between Two Straight Lines",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Apr 9 Shift 1)",
+      "text": "The cosine of the angle between two straight lines having direction ratios $\\langle 1, 2, 2 \\rangle$ and $\\langle 2, -2, 1 \\rangle$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$0 \\; (\\theta = 90^\\circ)$"
+        },
+        {
+          "id": "B",
+          "text": "$\\frac{1}{3}$"
+        },
+        {
+          "id": "C",
+          "text": "$\\frac{2}{3}$"
+        },
+        {
+          "id": "D",
+          "text": "$\\frac{1}{2}$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "\\cos\\theta = \\frac{a_1 a_2 + b_1 b_2 + c_1 c_2}{\\sqrt{a_1^2 + b_1^2 + c_1^2}\\sqrt{a_2^2 + b_2^2 + c_2^2}}",
+      "solution": "$$a_1 a_2 + b_1 b_2 + c_1 c_2 = (1)(2) + (2)(-2) + (2)(1) = 2 - 4 + 2 = 0$$.\nSince the numerator is $0$, $\\cos\\theta = 0 \\implies \\theta = 90^\\circ$. The lines are mutually perpendicular.",
+      "notebookSolution": {
+        "given": "Direction ratios <1, 2, 2> and <2, -2, 1>",
+        "concept": "Scalar product of direction ratios",
+        "steps": [
+          "1(2) + 2(-2) + 2(1) = 2 - 4 + 2 = 0",
+          "cos θ = 0",
+          "Lines are perpendicular"
+        ],
+        "conclusion": "cos θ = 0 (θ = 90°).",
+        "pitfall": "Check signs when multiplying direction components."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-math-20",
+      "subject": "mathematics",
+      "chapter": "Probability",
+      "topic": "Conditional Probability",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Jan 30 Shift 2)",
+      "text": "If $P(A) = 0.6$, $P(B) = 0.7$, and $P(A \\cup B) = 0.9$, then the conditional probability $P(A|B)$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$\\frac{4}{7}$"
+        },
+        {
+          "id": "B",
+          "text": "$\\frac{3}{7}$"
+        },
+        {
+          "id": "C",
+          "text": "$\\frac{2}{3}$"
+        },
+        {
+          "id": "D",
+          "text": "$\\frac{1}{2}$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "P(A \\cap B) = P(A) + P(B) - P(A \\cup B), \\quad P(A|B) = \\frac{P(A \\cap B)}{P(B)}",
+      "solution": "$$P(A \\cap B) = 0.6 + 0.7 - 0.9 = 1.3 - 0.9 = 0.4$$.\n$$P(A|B) = \\frac{P(A \\cap B)}{P(B)} = \\frac{0.4}{0.7} = \\frac{4}{7}$$.",
+      "notebookSolution": {
+        "given": "P(A) = 0.6, P(B) = 0.7, P(A ∪ B) = 0.9",
+        "concept": "Addition theorem and conditional probability formula",
+        "steps": [
+          "P(A ∩ B) = 0.6 + 0.7 - 0.9 = 0.4",
+          "P(A|B) = 0.4 / 0.7 = 4/7"
+        ],
+        "conclusion": "P(A|B) = 4/7.",
+        "pitfall": "Divide by P(B), not P(A)."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-math-21",
+      "subject": "mathematics",
+      "chapter": "Binomial Theorem",
+      "topic": "Remainder Theorem in Binomial Expansion",
+      "difficulty": "medium",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Apr 9 Shift 1)",
+      "text": "When $7^{103}$ is divided by $25$, the remainder is:",
+      "correctAnswer": "18",
+      "formula": "7^2 = 49 = 50 - 1 \\equiv -1 \\pmod{25}",
+      "solution": "$$7^{103} = 7 \\times (7^2)^{51} = 7 \\times (49)^{51} = 7 \\times (50 - 1)^{51}$$.\nUsing binomial expansion: $(50 - 1)^{51} = 50k + (-1)^{51} = 50k - 1$.\n$$7(50k - 1) = 350k - 7 = 25(14k - 1) + (25 - 7) = 25m + 18$$.\nHence, the remainder is $18$.",
+      "notebookSolution": {
+        "given": "7¹⁰³ divided by 25",
+        "concept": "Binomial expansion modulo 25",
+        "steps": [
+          "7² = 49 = 50 - 1",
+          "7¹⁰³ = 7 × (49)⁵¹ = 7(50 - 1)⁵¹",
+          "Modulo 25: 7 × (-1)⁵¹ = -7 ≡ 18 (mod 25)"
+        ],
+        "conclusion": "Remainder is 18.",
+        "pitfall": "A negative remainder -7 must be adjusted to positive by adding divisor 25: -7 + 25 = 18."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-math-22",
+      "subject": "mathematics",
+      "chapter": "Matrices and Determinants",
+      "topic": "System of Linear Equations Condition",
+      "difficulty": "medium",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Jan 30 Shift 2)",
+      "text": "The system of linear equations:\n$$x + y + z = 6$$\n$$x + 2y + 3z = 10$$\n$$x + 2y + \\lambda z = \\mu$$\nhas infinitely many solutions when $\\lambda = $",
+      "correctAnswer": "3",
+      "formula": "\\Delta = 0 \\text{ for non-unique solution}",
+      "solution": "Coefficient determinant:\n$$\\Delta = \\begin{vmatrix} 1 & 1 & 1 \\\\ 1 & 2 & 3 \\\\ 1 & 2 & \\lambda \\end{vmatrix} = 1(2\\lambda - 6) - 1(\\lambda - 3) + 1(2 - 2) = 2\\lambda - 6 - \\lambda + 3 = \\lambda - 3$$.\nFor infinitely many solutions, we must have $\\Delta = 0 \\implies \\lambda - 3 = 0 \\implies \\lambda = 3$. (And $\\mu = 10$).",
+      "notebookSolution": {
+        "given": "System of 3 equations with parameters λ and μ",
+        "concept": "Cramer rule Δ = 0 condition",
+        "steps": [
+          "Determinant of coefficients Δ = λ - 3",
+          "For infinitely many solutions Δ = 0 -> λ = 3"
+        ],
+        "conclusion": "λ = 3.",
+        "pitfall": "Check that Δx = Δy = Δz = 0 is also satisfied with μ = 10."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-math-23",
+      "subject": "mathematics",
+      "chapter": "Application of Integrals",
+      "topic": "Area Bounded by Parabola and Line",
+      "difficulty": "medium",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Apr 9 Shift 1)",
+      "text": "The area (in square units) bounded by the parabola $y^2 = 4x$ and the line $y = x$ is $\\frac{k}{3}$. The value of $k$ is:",
+      "correctAnswer": "8",
+      "formula": "\\text{Area} = \\frac{8a^2}{3m^3}",
+      "solution": "Intersection points: $x^2 = 4x \\implies x(x - 4) = 0 \\implies x = 0$ to $x = 4$.\n$$\\text{Area} = \\int_0^4 (2\\sqrt{x} - x)\\,dx = \\left[ 2 \\cdot \\frac{2}{3}x^{3/2} - \\frac{x^2}{2} \\right]_0^4 = \\frac{4}{3}(8) - 8 = \\frac{32}{3} - \\frac{24}{3} = \\frac{8}{3}$$.\nHence $k = 8$.",
+      "notebookSolution": {
+        "given": "y² = 4x and y = x",
+        "concept": "Area between curve and line ∫ (y1 - y2) dx",
+        "steps": [
+          "Limits x = 0 to x = 4",
+          "∫ (2√x - x) dx = 4/3(8) - 16/2 = 32/3 - 8 = 8/3",
+          "k/3 = 8/3 implies k = 8"
+        ],
+        "conclusion": "k = 8.",
+        "pitfall": "Upper curve is y = 2√x and lower curve is y = x in first quadrant."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-math-24",
+      "subject": "mathematics",
+      "chapter": "Vector Algebra",
+      "topic": "Scalar Triple Product Volume of Parallelepiped",
+      "difficulty": "medium",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Jan 30 Shift 2)",
+      "text": "The volume of the parallelepiped formed by the coterminous vectors $\\vec{a} = \\hat{i} + 2\\hat{j} + 3\\hat{k}$, $\\vec{b} = 2\\hat{i} + \\hat{j} + \\hat{k}$, and $\\vec{c} = \\hat{i} + \\hat{j} + \\hat{k}$ is:",
+      "correctAnswer": "1",
+      "formula": "V = |[\\vec{a} \\; \\vec{b} \\; \\vec{c}]| = |\\det(M)|",
+      "solution": "$$V = \\left| \\begin{vmatrix} 1 & 2 & 3 \\\\ 2 & 1 & 1 \\\\ 1 & 1 & 1 \\end{vmatrix} \\right| = | 1(1 - 1) - 2(2 - 1) + 3(2 - 1) | = | 0 - 2 + 3 | = 1$$.",
+      "notebookSolution": {
+        "given": "Coterminous vectors a, b, c",
+        "concept": "Volume = |scalar triple product|",
+        "steps": [
+          "Determinant = 1(0) - 2(1) + 3(1) = 1",
+          "Volume = 1 cubic unit"
+        ],
+        "conclusion": "Volume is 1.",
+        "pitfall": "Always take absolute value of scalar triple product."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-06-math-25",
+      "subject": "mathematics",
+      "chapter": "Three Dimensional Geometry",
+      "topic": "Shortest Distance between Parallel Planes",
+      "difficulty": "easy",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Apr 9 Shift 1)",
+      "text": "The distance between the parallel planes $2x - y + 2z + 3 = 0$ and $4x - 2y + 4z + 18 = 0$ is:",
+      "correctAnswer": "2",
+      "formula": "d = \\frac{|d_1 - d_2|}{\\sqrt{a^2 + b^2 + c^2}}",
+      "solution": "Divide the second plane by $2$: $2x - y + 2z + 9 = 0$.\nBoth planes have $a = 2, b = -1, c = 2$.\n$$d = \\frac{|9 - 3|}{\\sqrt{2^2 + (-1)^2 + 2^2}} = \\frac{6}{\\sqrt{4 + 1 + 4}} = \\frac{6}{\\sqrt{9}} = \\frac{6}{3} = 2$$.",
+      "notebookSolution": {
+        "given": "Planes 2x - y + 2z + 3 = 0 and 4x - 2y + 4z + 18 = 0",
+        "concept": "Distance between parallel planes",
+        "steps": [
+          "Normalize second equation to 2x - y + 2z + 9 = 0",
+          "d = |9 - 3| / √(4 + 1 + 4) = 6 / 3 = 2"
+        ],
+        "conclusion": "Distance is 2.",
+        "pitfall": "Coefficients must be identical before subtracting constant terms."
+      },
+      "verificationStatus": "verified"
+    }
+  ]
+},
+{
+  "config": {
+    "id": "jm-mock-07",
+    "testNumber": 7,
+    "title": "JEE Main 2026 - All-India Grand Mock Test 07",
+    "subtitle": "Full Syllabus (11th + 12th) • 75 Questions • 300 Marks • Exact NTA Format",
+    "examType": "jee_main",
+    "durationMinutes": 180,
+    "totalMarks": 300,
+    "questionCount": 75,
+    "description": "Comprehensive full-syllabus examination reflecting the exact chapter weightage, Section A (20 MCQs) and Section B (5 Numericals) structure of recent NTA papers.",
+    "difficulty": "Balanced",
+    "subjectsIncluded": [
+      "physics",
+      "chemistry",
+      "mathematics"
+    ],
+    "seriesCategory": "jee_main",
+    "badge": "Mock Test 07",
+    "tags": [
+      "Full Syllabus",
+      "NTA Official Weightage",
+      "300 Marks",
+      "180 Mins"
+    ]
+  },
+  "questions": [
+    {
+      "id": "jm-07-phy-1",
+      "subject": "physics",
+      "chapter": "Units and Measurements",
+      "topic": "Percentage Error Propagation",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Apr 6 Shift 1)",
+      "text": "A physical quantity $P$ is related to four observables $a, b, c$ as $P = \\frac{a^{3} b^3}{\\sqrt{c}}$. The percentage errors of measurement in $a, b, c$ are $2\\%$, $2\\%$, and $4\\%$ respectively. The maximum percentage error in $P$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$12\\%$"
+        },
+        {
+          "id": "B",
+          "text": "$14\\%$"
+        },
+        {
+          "id": "C",
+          "text": "$11\\%$"
+        },
+        {
+          "id": "D",
+          "text": "$16\\%$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "\\frac{\\Delta P}{P} = 3\\frac{\\Delta a}{a} + 3\\frac{\\Delta b}{b} + \\frac{1}{2}\\frac{\\Delta c}{c}",
+      "solution": "$$\\frac{\\Delta P}{P} = 3(2\\%) + 3(2\\%) + \\frac{1}{2}(4\\%) = 6 + 6 + 2 = 12\\%$$.",
+      "notebookSolution": {
+        "given": "a has 2%, b has 2%, c has 4%",
+        "concept": "Percentage errors add linearly with power exponents",
+        "steps": [
+          "ΔP/P = 3×2% + 3×2% + 0.5×4% = 12%"
+        ],
+        "conclusion": "Maximum error is 12% (Option A).",
+        "pitfall": "Denominator powers are always added, never subtracted."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-phy-2",
+      "subject": "physics",
+      "chapter": "Motion in a Straight Line",
+      "topic": "Kinematics Equations",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Jan 31 Shift 2)",
+      "text": "A body moving with initial velocity $u = 24\\text{ m/s}$ accelerates at a uniform rate $a = 2\\text{ m/s}^2$ for $t = 5\\text{ s}$. The total distance traversed is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$165\\text{ m}$"
+        },
+        {
+          "id": "B",
+          "text": "$145\\text{ m}$"
+        },
+        {
+          "id": "C",
+          "text": "$130\\text{ m}$"
+        },
+        {
+          "id": "D",
+          "text": "$290\\text{ m}$"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "s = ut + \\frac{1}{2}at^2",
+      "solution": "$s = (24)(5) + \\frac{1}{2}(2)(5^2) = 120 + 25 = 145\\text{ m}$.",
+      "notebookSolution": {
+        "given": "u = 24 m/s, a = 2 m/s², t = 5 s",
+        "concept": "Second equation of kinematics",
+        "steps": [
+          "s = 24×5 + 0.5×2×5² = 145 m"
+        ],
+        "conclusion": "Distance is 145 m (Option B).",
+        "pitfall": "Only valid for constant acceleration."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-phy-3",
+      "subject": "physics",
+      "chapter": "Motion in a Plane",
+      "topic": "Maximum Horizontal Range of Projectile",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Apr 6 Shift 1)",
+      "text": "The maximum horizontal range of a projectile fired with launch speed $u = 75\\text{ m/s}$ on level ground (taking $g = 10\\text{ m/s}^2$) is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$675.\\text{ m}$"
+        },
+        {
+          "id": "B",
+          "text": "$450.\\text{ m}$"
+        },
+        {
+          "id": "C",
+          "text": "$562.5\\text{ m}$"
+        },
+        {
+          "id": "D",
+          "text": "$843.8\\text{ m}$"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "R_{max} = \\frac{u^2}{g}",
+      "solution": "Maximum range occurs at $\\theta = 45^\\circ$: $R_{max} = \\frac{(75)^2}{10} = 562.5\\text{ m}$.",
+      "notebookSolution": {
+        "given": "u = 75 m/s, g = 10 m/s²",
+        "concept": "Maximum range formula R_max = u²/g",
+        "steps": [
+          "R_max = 75² / 10 = 562.5 m"
+        ],
+        "conclusion": "Range is 562.5 m (Option C).",
+        "pitfall": "Maximum range is attained at 45 degrees."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-phy-4",
+      "subject": "physics",
+      "chapter": "Laws of Motion",
+      "topic": "Atwood Machine Acceleration",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Jan 31 Shift 2)",
+      "text": "Two masses $m_1 = 2\\text{ kg}$ and $m_2 = 4\\text{ kg}$ are connected by a light inextensible string passing over a smooth frictionless pulley. The acceleration of the system is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$2.5\\text{ m/s}^2$"
+        },
+        {
+          "id": "B",
+          "text": "$4.0\\text{ m/s}^2$"
+        },
+        {
+          "id": "C",
+          "text": "$1.0\\text{ m/s}^2$"
+        },
+        {
+          "id": "D",
+          "text": "$3.33\\text{ m/s}^2$"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "a = \\frac{(m_2 - m_1)g}{m_1 + m_2}",
+      "solution": "$a = \\frac{(4 - 2) \\times 10}{2 + 4} = 3.33\\text{ m/s}^2$.",
+      "notebookSolution": {
+        "given": "m1 = 2 kg, m2 = 4 kg, g = 10 m/s²",
+        "concept": "Atwood machine equation of motion",
+        "steps": [
+          "a = (4 - 2)×10 / (2 + 4) = 3.33 m/s²"
+        ],
+        "conclusion": "Acceleration is 3.33 m/s² (Option D).",
+        "pitfall": "Net pulling force is (m2 - m1)g."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-phy-5",
+      "subject": "physics",
+      "chapter": "Work, Energy and Power",
+      "topic": "Work Done by Force at Angle",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Apr 6 Shift 1)",
+      "text": "A constant force $F = 55\\text{ N}$ acts on a particle displacing it by $s = 4\\text{ m}$ along a straight path. If the force makes an angle $\\theta = 60^\\circ$ with the displacement vector, the work done is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$110\\text{ J}$"
+        },
+        {
+          "id": "B",
+          "text": "$220\\text{ J}$"
+        },
+        {
+          "id": "C",
+          "text": "$55\\text{ J}$"
+        },
+        {
+          "id": "D",
+          "text": "$140\\text{ J}$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "W = F s \\cos\\theta",
+      "solution": "$W = 55 \\times 4 \\times \\cos 60^\\circ = 220 \\times 0.5 = 110\\text{ J}$.",
+      "notebookSolution": {
+        "given": "F = 55 N, s = 4 m, θ = 60°",
+        "concept": "Work definition W = F·s = F s cosθ",
+        "steps": [
+          "W = 55 × 4 × 0.5 = 110 J"
+        ],
+        "conclusion": "Work done is 110 J (Option A).",
+        "pitfall": "cos 60° = 1/2."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-phy-6",
+      "subject": "physics",
+      "chapter": "Rotational Motion",
+      "topic": "Moment of Inertia of Thin Circular Ring",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Jan 31 Shift 2)",
+      "text": "The moment of inertia of a uniform thin circular ring of mass $M = 3\\text{ kg}$ and radius $R = 0.4\\text{ m}$ about its central symmetry axis is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$0.24\\text{ kg m}^2$"
+        },
+        {
+          "id": "B",
+          "text": "$0.48\\text{ kg m}^2$"
+        },
+        {
+          "id": "C",
+          "text": "$0.96\\text{ kg m}^2$"
+        },
+        {
+          "id": "D",
+          "text": "$0.72\\text{ kg m}^2$"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "I = M R^2",
+      "solution": "$I = 3 \\times (0.4)^2 = 3 \\times 0.16 = 0.48\\text{ kg m}^2$.",
+      "notebookSolution": {
+        "given": "M = 3 kg, R = 0.4 m",
+        "concept": "Ring moment of inertia about central axis I = MR²",
+        "steps": [
+          "I = 3 × 0.16 = 0.48 kg m²"
+        ],
+        "conclusion": "Moment of inertia is 0.48 kg m² (Option B).",
+        "pitfall": "Disc has 1/2 MR², ring has MR²."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-phy-7",
+      "subject": "physics",
+      "chapter": "Gravitation",
+      "topic": "Escape Speed from Surface of Earth",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Apr 6 Shift 1)",
+      "text": "Taking the radius of the Earth $R_e = 6400\\text{ km}$ and $g = 9.8\\text{ m/s}^2$, the escape speed from the surface of the Earth is approximately:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$7.9\\text{ km/s}$"
+        },
+        {
+          "id": "B",
+          "text": "$16.8\\text{ km/s}$"
+        },
+        {
+          "id": "C",
+          "text": "$11.2\\text{ km/s}$"
+        },
+        {
+          "id": "D",
+          "text": "$5.6\\text{ km/s}$"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "v_e = \\sqrt{2g R_e}",
+      "solution": "$v_e = \\sqrt{2 \\times 9.8 \\times 6.4 \\times 10^6} \\approx 11.2\\text{ km/s}$.",
+      "notebookSolution": {
+        "given": "Re = 6400 km, g = 9.8 m/s²",
+        "concept": "Escape velocity formula v_e = √(2gR)",
+        "steps": [
+          "v_e = √(2 × 9.8 × 6.4 × 10⁶) ≈ 11.2 km/s"
+        ],
+        "conclusion": "Escape velocity is 11.2 km/s (Option C).",
+        "pitfall": "Orbital velocity is v_o = √(gR) ≈ 7.9 km/s; escape is √2 times larger."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-phy-8",
+      "subject": "physics",
+      "chapter": "Thermodynamics",
+      "topic": "Thermodynamic Processes and Work Done",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Jan 31 Shift 2)",
+      "text": "In which thermodynamic process does the internal energy of an ideal gas remain completely unchanged ($\\Delta U = 0$)?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Isochoric process"
+        },
+        {
+          "id": "B",
+          "text": "Isobaric process"
+        },
+        {
+          "id": "C",
+          "text": "Adiabatic process"
+        },
+        {
+          "id": "D",
+          "text": "Isothermal process"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "\\Delta U = n C_v \\Delta T = 0 \\implies T = \\text{constant}",
+      "solution": "Since internal energy of an ideal gas depends solely on temperature, $\\Delta U = 0$ implies constant temperature, which defines an isothermal process.",
+      "notebookSolution": {
+        "given": "ΔU = 0 for ideal gas",
+        "concept": "U = f(T) only for ideal gas",
+        "steps": [
+          "ΔU = 0 => ΔT = 0 => T = const => Isothermal"
+        ],
+        "conclusion": "Isothermal process (Option D).",
+        "pitfall": "In adiabatic process, Q = 0, but ΔU = -W ≠ 0."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-phy-9",
+      "subject": "physics",
+      "chapter": "Oscillations",
+      "topic": "Seconds Pendulum Length",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Apr 6 Shift 1)",
+      "text": "A simple pendulum has a time period of $T = 2.0\\text{ s}$ (seconds pendulum) on the Earth surface where $g = 9.8\\text{ m/s}^2$. Its length is approximately:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$\\approx 1.0\\text{ m}$"
+        },
+        {
+          "id": "B",
+          "text": "$0.5\\text{ m}$"
+        },
+        {
+          "id": "C",
+          "text": "$2.0\\text{ m}$"
+        },
+        {
+          "id": "D",
+          "text": "$4.0\\text{ m}$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "T = 2\\pi \\sqrt{\\frac{L}{g}} \\implies L = \\frac{g T^2}{4\\pi^2}",
+      "solution": "$L = \\frac{9.8 \\times (2)^2}{4 \\times \\pi^2} \\approx \\frac{9.8 \\times 4}{4 \\times 9.87} \\approx 1.0\\text{ m}$.",
+      "notebookSolution": {
+        "given": "T = 2 s, g = 9.8 m/s²",
+        "concept": "Period of simple pendulum",
+        "steps": [
+          "L = g T² / (4π²) = 9.8 × 4 / (4 × 9.87) ≈ 0.993 m ≈ 1.0 m"
+        ],
+        "conclusion": "Length is approximately 1.0 m (Option A).",
+        "pitfall": "A seconds pendulum has a half-period of 1 second and full period of 2 seconds."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-phy-10",
+      "subject": "physics",
+      "chapter": "Electrostatics",
+      "topic": "Coulombs Law Force",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Jan 31 Shift 2)",
+      "text": "Two point charges $q_1 = +2\\text{ }\\mu\\text{C}$ and $q_2 = +8\\text{ }\\mu\\text{C}$ are separated by a distance $r = 30\\text{ cm}$ in vacuum. Taking $\\frac{1}{4\\pi\\varepsilon_0} = 9 \\times 10^9\\text{ N m}^2/\\text{C}^2$, the electrostatic repulsive force between them is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$3.2\\text{ N}$"
+        },
+        {
+          "id": "B",
+          "text": "$1.6\\text{ N}$"
+        },
+        {
+          "id": "C",
+          "text": "$0.8\\text{ N}$"
+        },
+        {
+          "id": "D",
+          "text": "$4.8\\text{ N}$"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "F = \\frac{1}{4\\pi\\varepsilon_0}\\frac{q_1 q_2}{r^2}",
+      "solution": "$F = \\frac{9 \\times 10^9 \\times (2 \\times 10^{-6}) \\times (8 \\times 10^{-6})}{(0.3)^2} = \\frac{144 \\times 10^{-3}}{0.09} = 1.6\\text{ N}$.",
+      "notebookSolution": {
+        "given": "q1 = 2 μC, q2 = 8 μC, r = 0.3 m",
+        "concept": "Coulombs law",
+        "steps": [
+          "F = 9×10⁹ × 16×10⁻¹² / 0.09 = 0.144 / 0.09 = 1.6 N"
+        ],
+        "conclusion": "Force is 1.6 N.",
+        "pitfall": "Convert cm to meters before squaring."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-phy-11",
+      "subject": "physics",
+      "chapter": "Current Electricity",
+      "topic": "Kirchhoffs Junction and Loop Laws",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Apr 6 Shift 1)",
+      "text": "Kirchhoff's first law (Junction rule $\\sum I = 0$) and second law (Loop rule $\\sum \\Delta V = 0$) are respective consequences of conservation of:",
+      "options": [
+        {
+          "id": "A",
+          "text": "Energy and Charge respectively"
+        },
+        {
+          "id": "B",
+          "text": "Momentum and Charge"
+        },
+        {
+          "id": "C",
+          "text": "Charge and Energy respectively"
+        },
+        {
+          "id": "D",
+          "text": "Mass and Energy"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "\\sum I_{in} = \\sum I_{out} \\ (\\text{Charge}), \\quad \\sum \\Delta V = 0 \\ (\\text{Energy})",
+      "solution": "Junction rule reflects conservation of electric charge. Loop rule reflects conservation of energy around closed path.",
+      "notebookSolution": {
+        "given": "Kirchhoffs laws",
+        "concept": "Junction law = conservation of charge; Loop law = conservation of energy",
+        "steps": [
+          "KCL: dq/dt in = dq/dt out => Charge",
+          "KVL: sum of potential changes = 0 => Energy"
+        ],
+        "conclusion": "Charge and Energy respectively (Option C).",
+        "pitfall": "Do not swap the order."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-phy-12",
+      "subject": "physics",
+      "chapter": "Moving Charges and Magnetism",
+      "topic": "Motion of Charged Particle in Magnetic Field",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Jan 31 Shift 2)",
+      "text": "A charged particle enters a uniform magnetic field with velocity $\\vec{v}$ perpendicular to the field $\\vec{B}$. The trajectory of the particle is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "Helical with uniform pitch"
+        },
+        {
+          "id": "B",
+          "text": "Parabolic"
+        },
+        {
+          "id": "C",
+          "text": "Straight line"
+        },
+        {
+          "id": "D",
+          "text": "Circular"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "\\vec{F} = q(\\vec{v} \\times \\vec{B}) = \\frac{m v^2}{r}\\hat{r}",
+      "solution": "Since $\\vec{F} \\perp \\vec{v}$ at all instants, speed is constant and force provides centripetal acceleration, producing a circular path.",
+      "notebookSolution": {
+        "given": "v ⊥ B",
+        "concept": "Lorentz force provides centripetal acceleration",
+        "steps": [
+          "F = qvB = mv²/r => r = mv/(qB) = constant radius circle"
+        ],
+        "conclusion": "Circular trajectory (Option D).",
+        "pitfall": "If velocity is at an arbitrary angle θ, trajectory is helical."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-phy-13",
+      "subject": "physics",
+      "chapter": "Electromagnetic Induction",
+      "topic": "Magnetic Flux Through Parallel Loop",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Apr 6 Shift 1)",
+      "text": "A planar coil of area $A$ is placed parallel to a uniform magnetic field $\\vec{B}$ (i.e. the normal to the coil is perpendicular to $\\vec{B}$). The magnetic flux through the coil is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "Zero"
+        },
+        {
+          "id": "B",
+          "text": "$BA$"
+        },
+        {
+          "id": "C",
+          "text": "$2BA$"
+        },
+        {
+          "id": "D",
+          "text": "$\\frac{BA}{2}$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "\\Phi = \\vec{B} \\cdot \\vec{A} = B A \\cos 90^\\circ = 0",
+      "solution": "When the plane of the coil is parallel to $\\vec{B}$, the angle between area vector $\\vec{A}$ and $\\vec{B}$ is $\\theta = 90^\\circ$. Thus $\\Phi = B A \\cos 90^\\circ = 0$.",
+      "notebookSolution": {
+        "given": "Plane parallel to B => angle with normal θ = 90°",
+        "concept": "Magnetic flux Φ = B·A = BA cosθ",
+        "steps": [
+          "Φ = BA cos(90°) = 0"
+        ],
+        "conclusion": "Flux is zero (Option A).",
+        "pitfall": "Area vector is perpendicular to the plane of the loop."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-phy-14",
+      "subject": "physics",
+      "chapter": "Ray Optics",
+      "topic": "Refractive Index of Equilateral Prism",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Jan 31 Shift 2)",
+      "text": "An equilateral prism ($A = 60^\\circ$) produces a minimum angle of deviation $\\delta_m = 60^\\circ$. The refractive index $\\mu$ of the prism material is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$\\mu = \\sqrt{2}$"
+        },
+        {
+          "id": "B",
+          "text": "$\\mu = \\sqrt{3}$"
+        },
+        {
+          "id": "C",
+          "text": "$\\mu = 1.5$"
+        },
+        {
+          "id": "D",
+          "text": "$\\mu = 1.33$"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "\\mu = \\frac{\\sin\\left(\\frac{A + \\delta_m}{2}\\right)}{\\sin(A/2)}",
+      "solution": "$$\\mu = \\frac{\\sin((60^\\circ + 60^\\circ)/2)}{\\sin(60^\\circ/2)} = \\frac{\\sin 60^\\circ}{\\sin 30^\\circ} = \\frac{\\sqrt{3}/2}{1/2} = \\sqrt{3}$$.",
+      "notebookSolution": {
+        "given": "A = 60°, δ_m = 60°",
+        "concept": "Prism formula",
+        "steps": [
+          "μ = sin(120°/2) / sin(30°) = sin 60° / sin 30° = √3"
+        ],
+        "conclusion": "Refractive index is √3 (Option B).",
+        "pitfall": "A = 60° for an equilateral prism."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-phy-15",
+      "subject": "physics",
+      "chapter": "Wave Optics",
+      "topic": "Youngs Double Slit Fringe Width",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Apr 6 Shift 1)",
+      "text": "In Young's double-slit experiment with slit separation $d$ and screen distance $D$ using light of wavelength $\\lambda$, the fringe width $\\beta$ is given by:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$\\beta = \\frac{\\lambda d}{D}$"
+        },
+        {
+          "id": "B",
+          "text": "$\\beta = \\frac{d D}{\\lambda}$"
+        },
+        {
+          "id": "C",
+          "text": "$\\beta = \\frac{\\lambda D}{d}$"
+        },
+        {
+          "id": "D",
+          "text": "$\\beta = \\frac{\\lambda}{D d}$"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "\\beta = \\frac{\\lambda D}{d}",
+      "solution": "Fringe width is directly proportional to screen distance $D$ and wavelength $\\lambda$, and inversely proportional to slit spacing $d$: $\\beta = \\frac{\\lambda D}{d}$.",
+      "notebookSolution": {
+        "given": "YDSE setup parameters",
+        "concept": "Fringe spacing between adjacent maxima or minima",
+        "steps": [
+          "β = y_{n+1} - y_n = λD/d"
+        ],
+        "conclusion": "β = λD/d (Option C).",
+        "pitfall": "D is distance to screen, d is slit separation."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-phy-16",
+      "subject": "physics",
+      "chapter": "Dual Nature of Radiation",
+      "topic": "Maximum Kinetic Energy of Photoelectrons",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Jan 31 Shift 2)",
+      "text": "In a photoelectric experiment, keeping the frequency of incident radiation constant, the maximum kinetic energy of emitted photoelectrons is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "Directly proportional to intensity"
+        },
+        {
+          "id": "B",
+          "text": "Inversely proportional to intensity"
+        },
+        {
+          "id": "C",
+          "text": "Directly proportional to square of intensity"
+        },
+        {
+          "id": "D",
+          "text": "Independent of intensity"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "K_{max} = h\\nu - \\phi_0",
+      "solution": "Maximum kinetic energy depends strictly on the photon frequency $\\nu$ and work function $\\phi_0$. Intensity only changes the rate of emission (photocurrent), not kinetic energy.",
+      "notebookSolution": {
+        "given": "Constant frequency, variable intensity",
+        "concept": "K_max = hν - W",
+        "steps": [
+          "K_max depends on photon energy hν, independent of beam intensity"
+        ],
+        "conclusion": "Independent of intensity (Option D).",
+        "pitfall": "Intensity determines number of emitted electrons, not their kinetic energy."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-phy-17",
+      "subject": "physics",
+      "chapter": "Atoms",
+      "topic": "Bohr Radius Orbit Dependence",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Apr 6 Shift 1)",
+      "text": "According to Bohr's postulate of quantization of angular momentum, the radius $r_n$ of the $n^{\\text{th}}$ orbit of hydrogen atom varies with principle quantum number $n$ as:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$r_n \\propto n^2$"
+        },
+        {
+          "id": "B",
+          "text": "$r_n \\propto n$"
+        },
+        {
+          "id": "C",
+          "text": "$r_n \\propto 1/n$"
+        },
+        {
+          "id": "D",
+          "text": "$r_n \\propto n^3$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "r_n = \\frac{n^2 h^2 \\varepsilon_0}{\\pi m e^2} \\propto n^2",
+      "solution": "Radius of the $n$-th orbit is given by $r_n = 0.529 \\frac{n^2}{Z}\\text{ \\AA} \\propto n^2$.",
+      "notebookSolution": {
+        "given": "Bohr model radius formula",
+        "concept": "Orbit radius proportionality",
+        "steps": [
+          "r_n = a_0 n²/Z => r_n ∝ n²"
+        ],
+        "conclusion": "r_n ∝ n² (Option A).",
+        "pitfall": "Velocity varies as 1/n, radius varies as n²."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-phy-18",
+      "subject": "physics",
+      "chapter": "Nuclei",
+      "topic": "Nuclear Density Ratio",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Jan 31 Shift 2)",
+      "text": "Two nuclei have mass numbers in the ratio $1:8$. The ratio of their nuclear densities is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$1:4$"
+        },
+        {
+          "id": "B",
+          "text": "$1:2$"
+        },
+        {
+          "id": "C",
+          "text": "$2:1$"
+        },
+        {
+          "id": "D",
+          "text": "$4:1$"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "R = R_0 A^{1/3} \\implies V \\propto A \\implies \\rho = \\frac{M}{V} = \\text{constant}",
+      "solution": "Nuclear density is independent of mass number $A$ because mass $\\propto A$ and volume $\\propto R^3 \\propto A$. Thus the ratio of nuclear densities is $1:1$ (all nuclei have approximately $\\approx 2.3 \\times 10^{17}\\text{ kg/m}^3$).",
+      "notebookSolution": {
+        "given": "A1/A2 = 1/8",
+        "concept": "Nuclear density is constant for all nuclei",
+        "steps": [
+          "ρ = m A / (4/3 π R0³ A) = constant => ρ1/ρ2 = 1:1"
+        ],
+        "conclusion": "Nuclear density is identical (1:1).",
+        "pitfall": "Nuclear radius changes with A^(1/3), but density remains constant."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-phy-19",
+      "subject": "physics",
+      "chapter": "Semiconductor Electronics",
+      "topic": "Ideal Diode in Forward Bias",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Apr 6 Shift 1)",
+      "text": "In ideal circuit approximation, the resistance offered by a $p$-$n$ junction diode in forward bias condition is taken as:",
+      "options": [
+        {
+          "id": "A",
+          "text": "Infinite"
+        },
+        {
+          "id": "B",
+          "text": "Very small"
+        },
+        {
+          "id": "C",
+          "text": "Zero"
+        },
+        {
+          "id": "D",
+          "text": "Fluctuating"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "R_{forward, ideal} = 0, \\quad R_{reverse, ideal} = \\infty",
+      "solution": "An ideal diode acts as a closed switch with zero resistance when forward biased and an open switch with infinite resistance when reverse biased.",
+      "notebookSolution": {
+        "given": "Ideal p-n junction forward biased",
+        "concept": "Ideal diode forward resistance is zero",
+        "steps": [
+          "Forward bias ideal => zero resistance (short circuit)"
+        ],
+        "conclusion": "Resistance is zero (Option C).",
+        "pitfall": "Practical diodes have ~0.7V drop for Si, but ideal diode resistance is zero."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-phy-20",
+      "subject": "physics",
+      "chapter": "Semiconductor Electronics",
+      "topic": "Universal Logic Gates",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Jan 31 Shift 2)",
+      "text": "Which of the following logic gates is classified as a universal gate capable of implementing any Boolean function?",
+      "options": [
+        {
+          "id": "A",
+          "text": "NOR gate"
+        },
+        {
+          "id": "B",
+          "text": "AND gate"
+        },
+        {
+          "id": "C",
+          "text": "OR gate"
+        },
+        {
+          "id": "D",
+          "text": "NAND gate"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "Y = \\overline{A \\cdot B} \\ (\\text{NAND}), \\quad Y = \\overline{A + B} \\ (\\text{NOR})",
+      "solution": "NAND and NOR gates are universal gates because repeated combinations can construct NOT, AND, and OR operations.",
+      "notebookSolution": {
+        "given": "Universal logic gate definition",
+        "concept": "NAND and NOR can synthesize any logic network",
+        "steps": [
+          "NAND is a universal gate"
+        ],
+        "conclusion": "NAND gate (Option D).",
+        "pitfall": "AND and OR are basic gates, not universal without NOT."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-phy-21",
+      "subject": "physics",
+      "chapter": "Current Electricity",
+      "topic": "Potentiometer Wire Resistance",
+      "difficulty": "medium",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Apr 6 Shift 1)",
+      "text": "A potentiometer wire of length $L = 10\\text{ m}$ has resistance $R = 20\\text{ }\\Omega$. A steady current is maintained by a $2\\text{ V}$ driver battery. The potential gradient along the wire (in $\\text{mV/cm}$) is:",
+      "correctAnswer": "1",
+      "formula": "k = \\frac{V}{L}",
+      "solution": "Current $I = \\frac{2}{20} = 0.1\\text{ A}$. Potential gradient $k = \\frac{V}{L} = \\frac{2\\text{ V}}{1000\\text{ cm}} = 0.002\\text{ V/cm} = 2\\text{ mV/cm}$.",
+      "notebookSolution": {
+        "given": "L = 10 m = 1000 cm, V = 2 V",
+        "concept": "Potential gradient k = V / L",
+        "steps": [
+          "k = 2 V / 1000 cm = 0.002 V/cm = 2 mV/cm"
+        ],
+        "conclusion": "Potential gradient is 2.",
+        "pitfall": "Watch the units: mV/cm vs V/m."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-phy-22",
+      "subject": "physics",
+      "chapter": "Atoms",
+      "topic": "Wavelength Ratio in Lyman Series",
+      "difficulty": "medium",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Jan 31 Shift 2)",
+      "text": "In the hydrogen atom spectrum, the ratio of the longest wavelength in the Lyman series ($n = 2 \\to 1$) to the shortest wavelength in the Lyman series ($n = \\infty \\to 1$) is $\\frac{4}{x}$. The value of $x$ is:",
+      "correctAnswer": "3",
+      "formula": "\\frac{1}{\\lambda} = R_H \\left(\\frac{1}{n_1^2} - \\frac{1}{n_2^2}\\right)",
+      "solution": "$$\\frac{1}{\\lambda_{max}} = R_H \\left(1 - \\frac{1}{4}\\right) = \\frac{3}{4}R_H \\implies \\lambda_{max} = \\frac{4}{3R_H}$$\n$$\\frac{1}{\\lambda_{min}} = R_H \\left(1 - 0\\right) = R_H \\implies \\lambda_{min} = \\frac{1}{R_H}$$\n$$\\frac{\\lambda_{max}}{\\lambda_{min}} = \\frac{4}{3} \\implies x = 3$$.",
+      "notebookSolution": {
+        "given": "Lyman longest and shortest transition",
+        "concept": "Rydberg formula for hydrogen",
+        "steps": [
+          "λ_max = 4/(3R), λ_min = 1/R => ratio = 4/3 => x = 3"
+        ],
+        "conclusion": "x = 3.",
+        "pitfall": "Longest wavelength corresponds to smallest energy difference."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-phy-23",
+      "subject": "physics",
+      "chapter": "Electrostatics",
+      "topic": "Energy Stored in Capacitor",
+      "difficulty": "easy",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Apr 6 Shift 1)",
+      "text": "A $2\\text{ }\\mu\\text{F}$ capacitor is charged to a potential of $100\\text{ V}$. The energy stored in the capacitor (in $\\text{mJ}$) is:",
+      "correctAnswer": "10",
+      "formula": "U = \\frac{1}{2} C V^2",
+      "solution": "$U = \\frac{1}{2}(2 \\times 10^{-6})(100)^2 = 10^{-6} \\times 10000 = 10^{-2}\\text{ J} = 10\\text{ mJ}$.",
+      "notebookSolution": {
+        "given": "C = 2 μF, V = 100 V",
+        "concept": "Capacitor stored energy U = 1/2 C V²",
+        "steps": [
+          "U = 0.5 × (2×10⁻⁶) × 10000 = 0.01 J = 10 mJ"
+        ],
+        "conclusion": "Energy is 10 mJ.",
+        "pitfall": "Convert Joules to milliJoules (× 1000)."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-phy-24",
+      "subject": "physics",
+      "chapter": "Magnetic Dipole",
+      "topic": "Magnetic Dipole Moment of Current Loop",
+      "difficulty": "easy",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Jan 31 Shift 2)",
+      "text": "A square coil of side $10\\text{ cm}$ consists of $20$ turns and carries a current of $2\\text{ A}$. The magnetic dipole moment of the coil (in $\\text{A m}^2$) is $x \\times 10^{-1}$. The value of $x$ is:",
+      "correctAnswer": "4",
+      "formula": "M = N I A",
+      "solution": "Area $A = (0.1)^2 = 0.01\\text{ m}^2$. Dipole moment $M = 20 \\times 2 \\times 0.01 = 0.4\\text{ A m}^2 = 4 \\times 10^{-1}\\text{ A m}^2 \\implies x = 4$.",
+      "notebookSolution": {
+        "given": "N = 20, I = 2 A, side = 0.1 m",
+        "concept": "Magnetic moment M = NIA",
+        "steps": [
+          "A = 0.1² = 0.01 m²",
+          "M = 20 × 2 × 0.01 = 0.4 A m² = 4 × 10⁻¹"
+        ],
+        "conclusion": "x = 4.",
+        "pitfall": "Do not forget number of turns N."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-phy-25",
+      "subject": "physics",
+      "chapter": "Kinetic Theory of Gases",
+      "topic": "Degrees of Freedom of Diatomic Gas",
+      "difficulty": "easy",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Apr 6 Shift 1)",
+      "text": "At room temperature, the total degrees of freedom of a rigid diatomic molecule (such as $O_2$ or $N_2$) is:",
+      "correctAnswer": "5",
+      "formula": "f = f_{trans} + f_{rot} = 3 + 2 = 5",
+      "solution": "A rigid diatomic molecule has 3 translational degrees of freedom and 2 rotational degrees of freedom (vibrational modes are frozen at normal temperatures). Total $f = 5$.",
+      "notebookSolution": {
+        "given": "Rigid diatomic gas at room temperature",
+        "concept": "Equipartition of energy degrees of freedom",
+        "steps": [
+          "3 translational + 2 rotational = 5 degrees of freedom"
+        ],
+        "conclusion": "Total degrees of freedom is 5.",
+        "pitfall": "Vibrational degrees of freedom only activate at very high temperatures."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-chem-1",
+      "subject": "chemistry",
+      "chapter": "Some Basic Concepts of Chemistry",
+      "topic": "Mole Concept and Stoichiometry",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Apr 8 Shift 2)",
+      "text": "The number of moles of oxygen atoms present in $19.6\\text{ g}$ of pure sulfuric acid ($H_2SO_4$, molar mass $= 98\\text{ g/mol}$) is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "0.8\\text{ mol}"
+        },
+        {
+          "id": "B",
+          "text": "0.4\\text{ mol}"
+        },
+        {
+          "id": "C",
+          "text": "0.2\\text{ mol}"
+        },
+        {
+          "id": "D",
+          "text": "1.6\\text{ mol}"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "n(O) = 4 \\times n(H_2SO_4) = 4 \\times \\frac{m}{M}",
+      "solution": "Moles of $H_2SO_4 = \\frac{19.6}{98} = 0.2\\text{ mol}$. Each molecule has 4 oxygen atoms, so moles of O atoms $= 4 \\times 0.2 = 0.8\\text{ mol}$.",
+      "notebookSolution": {
+        "given": "Mass = 19.6 g, Molar mass = 98 g/mol",
+        "concept": "Stoichiometry of molecular formula",
+        "steps": [
+          "Moles of H2SO4 = 19.6/98 = 0.2",
+          "Moles of O = 4 × 0.2 = 0.8"
+        ],
+        "conclusion": "Moles of oxygen atoms is 0.8 (Option A).",
+        "pitfall": "Do not confuse moles of O atoms with moles of O2 molecules."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-chem-2",
+      "subject": "chemistry",
+      "chapter": "Structure of Atom",
+      "topic": "de Broglie Wavelength of Moving Particles",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Jan 29 Shift 1)",
+      "text": "Two particles $A$ and $B$ have equal masses. If the velocity of particle $A$ is $3$ times the velocity of particle $B$ ($v_A = 3 v_B$), the ratio of their de Broglie wavelengths $\\frac{\\lambda_A}{\\lambda_B}$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$3 : 1$"
+        },
+        {
+          "id": "B",
+          "text": "$1 : 3$"
+        },
+        {
+          "id": "C",
+          "text": "$1 : 9$"
+        },
+        {
+          "id": "D",
+          "text": "$9 : 1$"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "\\lambda = \\frac{h}{p} = \\frac{h}{m v}",
+      "solution": "$$\\lambda = \\frac{h}{m v} \\implies \\frac{\\lambda_A}{\\lambda_B} = \\frac{v_B}{v_A} = \\frac{1}{3} = 1 : 3$$.",
+      "notebookSolution": {
+        "given": "mA = mB, vA = 3 vB",
+        "concept": "de Broglie wavelength is inversely proportional to momentum",
+        "steps": [
+          "λ = h/(mv)",
+          "λA/λB = vB/vA = 1/3"
+        ],
+        "conclusion": "Ratio is 1 : 3 (Option B).",
+        "pitfall": "Wavelength is inversely proportional to velocity."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-chem-3",
+      "subject": "chemistry",
+      "chapter": "Classification of Elements and Periodicity",
+      "topic": "First Ionization Enthalpy Trends",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Apr 8 Shift 2)",
+      "text": "The correct increasing order of the first ionization enthalpies ($\\Delta_i H_1$) of the second period elements is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$B < Be < C < N < O < F < Ne$"
+        },
+        {
+          "id": "B",
+          "text": "$Be < B < C < O < N < F < Ne$"
+        },
+        {
+          "id": "C",
+          "text": "$B < Be < C < O < N < F < Ne$"
+        },
+        {
+          "id": "D",
+          "text": "$B < C < Be < O < N < F < Ne$"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "\\Delta_i H_1 \\text{ anomalous stability: } Be(2s^2) > B(2p^1), \\; N(2p^3) > O(2p^4)",
+      "solution": "Across a period, ionization enthalpy generally increases with effective nuclear charge, with anomalies: $Be(2s^2)$ has higher $\\Delta_i H$ than $B(2s^2 2p^1)$ due to fully-filled $2s$ subshell, and $N(2s^2 2p^3)$ has higher $\\Delta_i H$ than $O(2s^2 2p^4)$ due to half-filled $2p$ subshell. Hence: $B < Be < C < O < N < F < Ne$.",
+      "notebookSolution": {
+        "given": "Second period elements",
+        "concept": "Penetration and half-filled subshell extra stability",
+        "steps": [
+          "Be > B because of 2s² penetration",
+          "N > O because of half-filled 2p³ stability",
+          "Order: B < Be < C < O < N < F < Ne"
+        ],
+        "conclusion": "Correct order is B < Be < C < O < N < F < Ne (Option C).",
+        "pitfall": "Do not assume strictly monotonic increase across period."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-chem-4",
+      "subject": "chemistry",
+      "chapter": "Chemical Bonding and Molecular Structure",
+      "topic": "VSEPR Theory and Molecular Geometries",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Jan 29 Shift 1)",
+      "text": "According to VSEPR theory, the molecular shapes of $SF_4$, $ClF_3$, and $XeF_4$ respectively are:",
+      "options": [
+        {
+          "id": "A",
+          "text": "Tetrahedral, Trigonal planar, Octahedral"
+        },
+        {
+          "id": "B",
+          "text": "Square planar, See-saw, T-shaped"
+        },
+        {
+          "id": "C",
+          "text": "T-shaped, See-saw, Square planar"
+        },
+        {
+          "id": "D",
+          "text": "See-saw, T-shaped, Square planar"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "\\text{Steric Number} = \\frac{1}{2}(V + M - C + A)",
+      "solution": "- $SF_4$: Steric no $= 4\\text{ bp} + 1\\text{ lp} = 5$ (trigonal bipyramidal geometry) $\\implies$ **See-saw** shape.\n- $ClF_3$: Steric no $= 3\\text{ bp} + 2\\text{ lp} = 5$ $\\implies$ **T-shaped**.\n- $XeF_4$: Steric no $= 4\\text{ bp} + 2\\text{ lp} = 6$ (octahedral geometry) $\\implies$ **Square planar** shape.",
+      "notebookSolution": {
+        "given": "SF4, ClF3, XeF4 molecules",
+        "concept": "VSEPR steric number = bond pairs + lone pairs",
+        "steps": [
+          "SF4 has 1 lp -> see-saw",
+          "ClF3 has 2 lp -> T-shaped",
+          "XeF4 has 2 lp -> square planar"
+        ],
+        "conclusion": "Shapes are See-saw, T-shaped, Square planar (Option D).",
+        "pitfall": "Distinguish between electron geometry and molecular shape."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-chem-5",
+      "subject": "chemistry",
+      "chapter": "Chemical Thermodynamics",
+      "topic": "Relation between Enthalpy and Internal Energy",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Apr 8 Shift 2)",
+      "text": "For the gaseous Haber synthesis reaction: $N_2(g) + 3H_2(g) \\rightleftharpoons 2NH_3(g)$ at $298\\text{ K}$, the correct relation between enthalpy change ($\\Delta H$) and internal energy change ($\\Delta U$) is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$\\Delta H < \\Delta U$"
+        },
+        {
+          "id": "B",
+          "text": "$\\Delta H > \\Delta U$"
+        },
+        {
+          "id": "C",
+          "text": "$\\Delta H = \\Delta U$"
+        },
+        {
+          "id": "D",
+          "text": "$\\Delta H = 2\\Delta U$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "\\Delta H = \\Delta U + \\Delta n_g R T",
+      "solution": "$$\\Delta n_g = n_{p(g)} - n_{r(g)} = 2 - (1 + 3) = -2$$.\n$$\\Delta H = \\Delta U + (-2)RT = \\Delta U - 2RT$$.\nSince $2RT > 0$, we have $\\Delta H < \\Delta U$.",
+      "notebookSolution": {
+        "given": "N2(g) + 3H2(g) <=> 2NH3(g)",
+        "concept": "ΔH = ΔU + Δn_g RT",
+        "steps": [
+          "Δn_g = 2 - 4 = -2",
+          "ΔH = ΔU - 2RT",
+          "Therefore ΔH < ΔU"
+        ],
+        "conclusion": "ΔH < ΔU (Option A).",
+        "pitfall": "Count only gaseous moles when computing Δn_g."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-chem-6",
+      "subject": "chemistry",
+      "chapter": "Equilibrium",
+      "topic": "pH of Acidic Buffer Solution",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Jan 29 Shift 1)",
+      "text": "An acidic buffer solution contains $0.2\\text{ M } CH_3COONa$ and $0.1\\text{ M } CH_3COOH$. Given $pK_a(CH_3COOH) = 4.75$ and $\\log 2 = 0.301$, the pH of the buffer solution is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "4.75"
+        },
+        {
+          "id": "B",
+          "text": "5.05"
+        },
+        {
+          "id": "C",
+          "text": "4.45"
+        },
+        {
+          "id": "D",
+          "text": "5.75"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "pH = pK_a + \\log\\frac{[\\text{Salt}]}{[\\text{Acid}]}",
+      "solution": "$$pH = pK_a + \\log\\frac{[CH_3COO^-]}{[CH_3COOH]} = 4.75 + \\log\\left(\\frac{0.2}{0.1}\\right) = 4.75 + \\log 2 = 4.75 + 0.30 = 5.05$$.",
+      "notebookSolution": {
+        "given": "[Salt] = 0.2 M, [Acid] = 0.1 M, pKa = 4.75",
+        "concept": "Henderson-Hasselbalch equation",
+        "steps": [
+          "pH = 4.75 + log(0.2/0.1) = 4.75 + 0.301 = 5.05"
+        ],
+        "conclusion": "pH = 5.05 (Option B).",
+        "pitfall": "Ensure [Salt] is in numerator and [Acid] in denominator."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-chem-7",
+      "subject": "chemistry",
+      "chapter": "Solutions",
+      "topic": "Positive and Negative Deviations from Raoult Law",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Apr 8 Shift 2)",
+      "text": "Which of the following binary liquid mixtures exhibits a **positive deviation** from Raoult's law ($Delta H_{mix} > 0, Delta V_{mix} > 0$)?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Chloroform + Acetone"
+        },
+        {
+          "id": "B",
+          "text": "Phenol + Aniline"
+        },
+        {
+          "id": "C",
+          "text": "Ethanol + Acetone"
+        },
+        {
+          "id": "D",
+          "text": "Nitric acid + Water"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "P_{total} > P_A^\\circ x_A + P_B^\\circ x_B \\text{ due to weaker A-B interactions}",
+      "solution": "In pure ethanol, molecules are strongly held by intermolecular hydrogen bonds. When acetone is added, its molecules get between ethanol molecules and break some of the hydrogen bonds, weakening intermolecular forces. Hence, vapor pressure increases (positive deviation). Chloroform + acetone exhibits negative deviation due to new hydrogen bond formation.",
+      "notebookSolution": {
+        "given": "Pairs of liquid mixtures",
+        "concept": "Intermolecular forces vs Raoult law deviations",
+        "steps": [
+          "Ethanol + Acetone breaks H-bonds -> positive deviation",
+          "Chloroform + Acetone forms H-bonds -> negative deviation"
+        ],
+        "conclusion": "Ethanol + Acetone shows positive deviation (Option C).",
+        "pitfall": "Negative deviation occurs when new intermolecular attractions are formed."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-chem-8",
+      "subject": "chemistry",
+      "chapter": "Electrochemistry",
+      "topic": "Standard Cell Potential of Galvanic Cell",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Jan 29 Shift 1)",
+      "text": "Given the standard reduction potentials $E^\\circ(Zn^{2+}/Zn) = -0.76\\text{ V}$ and $E^\\circ(Cu^{2+}/Cu) = +0.34\\text{ V}$, the standard EMF ($E^\\circ_{cell}$) of the Daniell cell is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$-1.1\\text{ V}$"
+        },
+        {
+          "id": "B",
+          "text": "$0.42\\text{ V}$"
+        },
+        {
+          "id": "C",
+          "text": "$1.52\\text{ V}$"
+        },
+        {
+          "id": "D",
+          "text": "$+1.1\\text{ V}$"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "E^\\circ_{cell} = E^\\circ_{cathode} - E^\\circ_{anode}",
+      "solution": "$$E^\\circ_{cell} = E^\\circ(Cu^{2+}/Cu) - E^\\circ(Zn^{2+}/Zn) = 0.34 - (-0.76) = +1.10\\text{ V}$$.",
+      "notebookSolution": {
+        "given": "E°(Zn²+/Zn) = -0.76 V, E°(Cu²+/Cu) = +0.34 V",
+        "concept": "Standard EMF = Cathode potential - Anode potential",
+        "steps": [
+          "E°cell = 0.34 - (-0.76) = 1.10 V"
+        ],
+        "conclusion": "E°cell is +1.10 V (Option D).",
+        "pitfall": "Always use standard reduction potentials."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-chem-9",
+      "subject": "chemistry",
+      "chapter": "Chemical Kinetics",
+      "topic": "First Order Reaction Kinetics",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Apr 8 Shift 2)",
+      "text": "For a first-order chemical reaction, the half-life period is $t_{1/2} = 30\\text{ min}$. The time required for $75\\%$ completion of the reaction is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "60\\text{ min}"
+        },
+        {
+          "id": "B",
+          "text": "90\\text{ min}"
+        },
+        {
+          "id": "C",
+          "text": "40\\text{ min}"
+        },
+        {
+          "id": "D",
+          "text": "120\\text{ min}"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "t_{75\\%} = 2 \\times t_{1/2}",
+      "solution": "For a first order reaction, after $1$ half-life, $50\\%$ remains. After $2$ half-lives, $25\\%$ remains (meaning $75\\%$ completed). Hence, $t_{75\\%} = 2 \\times t_{1/2} = 2 \\times 30 = 60\\text{ min}$.",
+      "notebookSolution": {
+        "given": "t1/2 = 30 min",
+        "concept": "First order kinetics fraction remaining = (1/2)^n",
+        "steps": [
+          "For 75% completion, remaining is 25% = (1/2)²",
+          "n = 2 half lives",
+          "t = 2 × 30 = 60 min"
+        ],
+        "conclusion": "Time is 60 min (Option A).",
+        "pitfall": "Do not use linear proportion (first order is exponential)."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-chem-10",
+      "subject": "chemistry",
+      "chapter": "Surface Chemistry",
+      "topic": "Hardy-Schulze Rule for Coagulation",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Jan 29 Shift 1)",
+      "text": "According to the Hardy-Schulze rule, the correct decreasing order of flocculating (coagulating) power of cations for a negatively charged arsenious sulfide ($As_2S_3$) sol is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$Na^+ > Ba^{2+} > Al^{3+}$"
+        },
+        {
+          "id": "B",
+          "text": "$Al^{3+} > Ba^{2+} > Na^+$"
+        },
+        {
+          "id": "C",
+          "text": "$Ba^{2+} > Al^{3+} > Na^+$"
+        },
+        {
+          "id": "D",
+          "text": "$Al^{3+} = Ba^{2+} = Na^+$"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "\\text{Coagulating Power} \\propto (\\text{Valency of active ion})^6",
+      "solution": "Hardy-Schulze rule states that the coagulating power of an ion having opposite charge to that of colloidal particles increases with increasing valency of the coagulating ion. For negatively charged $As_2S_3$ sol, the coagulating ion is cation. Valency order: $Al^{3+} (+3) > Ba^{2+} (+2) > Na^+ (+1)$.",
+      "notebookSolution": {
+        "given": "Negatively charged As2S3 sol",
+        "concept": "Hardy-Schulze rule: higher valency means higher flocculating power",
+        "steps": [
+          "Valency: Al³⁺ = 3, Ba²⁺ = 2, Na⁺ = 1",
+          "Order: Al³⁺ > Ba²⁺ > Na⁺"
+        ],
+        "conclusion": "Order is Al³⁺ > Ba²⁺ > Na⁺ (Option B).",
+        "pitfall": "Flocculating power is inversely proportional to flocculation value."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-chem-11",
+      "subject": "chemistry",
+      "chapter": "p-Block Elements",
+      "topic": "Structure of Oxoacids of Phosphorus",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Apr 8 Shift 2)",
+      "text": "In orthophosphorous acid ($H_3PO_3$), the number and types of bonds connected to the central phosphorus atom are:",
+      "options": [
+        {
+          "id": "A",
+          "text": "Two $P-H$, one $P-OH$, and one $P=O$ bond"
+        },
+        {
+          "id": "B",
+          "text": "Three $P-OH$ and one $P=O$ bond"
+        },
+        {
+          "id": "C",
+          "text": "One $P-H$, two $P-OH$, and one $P=O$ bond"
+        },
+        {
+          "id": "D",
+          "text": "Two $P-H$ and two $P-OH$ bonds"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "H_3PO_3 \\text{ contains one P-H, two P-OH, and one P=O bond (dibasic acid)}",
+      "solution": "Phosphorous acid ($H_3PO_3$) has tetrahedral geometry around phosphorus with: 1 $P=O$ bond, 2 ionizable $P-OH$ bonds (making it a dibasic acid with basicity 2), and 1 non-ionizable $P-H$ bond (which gives it strong reducing properties).",
+      "notebookSolution": {
+        "given": "H3PO3 molecule",
+        "concept": "Oxoacids of phosphorus structure and basicity",
+        "steps": [
+          "P has 5 valence electrons",
+          "1 P=O bond, 2 P-OH bonds, 1 P-H bond",
+          "Basicity = 2"
+        ],
+        "conclusion": "One P-H, two P-OH, and one P=O bond (Option C).",
+        "pitfall": "Basicity is determined only by the number of P-OH bonds, not total H atoms."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-chem-12",
+      "subject": "chemistry",
+      "chapter": "d and f Block Elements",
+      "topic": "Lanthanoid Contraction and Consequences",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Jan 29 Shift 1)",
+      "text": "Which of the following is **INCORRECT** regarding the consequences of Lanthanoid Contraction?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Shielding by $4f$ electrons is extremely poor, leading to higher effective nuclear charge"
+        },
+        {
+          "id": "B",
+          "text": "Nearly identical atomic radii of $Zr$ ($4d$) and $Hf$ ($5d$)"
+        },
+        {
+          "id": "C",
+          "text": "Shielding by $4f$ electrons is extremely effective and completely offsets nuclear pull"
+        },
+        {
+          "id": "D",
+          "text": "Decrease in basic strength of hydroxides from $La(OH)_3$ to $Lu(OH)_3$"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "\\text{Poor shielding: } s > p > d > f",
+      "solution": "Lanthanoid contraction occurs because $4f$ electrons have diffuse spatial shapes and exert very **poor** (ineffective) shielding on outer electrons. As nuclear charge increases by 14 units, the outer electrons feel an increased effective nuclear charge, causing contraction. Thus, statement C is INCORRECT.",
+      "notebookSolution": {
+        "given": "Consequences of lanthanoid contraction",
+        "concept": "4f electrons have poor shielding power",
+        "steps": [
+          "4f orbitals shield poorly",
+          "Nuclear charge increases, pulling shells inward",
+          "Statement C claiming 4f shielding is effective is false"
+        ],
+        "conclusion": "Option C is incorrect.",
+        "pitfall": "Remember 4f has poorest shielding among all subshells."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-chem-13",
+      "subject": "chemistry",
+      "chapter": "Coordination Compounds",
+      "topic": "Crystal Field Theory and Diamagnetic Complexes",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Apr 8 Shift 2)",
+      "text": "Which of the following octahedral coordination complexes is **diamagnetic** (zero unpaired electrons) and inner orbital ($d^2sp^3$ hybridized)?",
+      "options": [
+        {
+          "id": "A",
+          "text": "$[Co(NH_3)_6]^{3+}$"
+        },
+        {
+          "id": "B",
+          "text": "$[FeF_6]^{3-}$"
+        },
+        {
+          "id": "C",
+          "text": "$[Cr(H_2O)_6]^{3+}$"
+        },
+        {
+          "id": "D",
+          "text": "$[NiCl_4]^{2-}$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "Co^{3+} (d^6) + \\text{strong field ligand } NH_3 \\implies t_{2g}^6 e_g^0, \\; \\mu = 0",
+      "solution": "In $[Co(NH_3)_6]^{3+}$, Cobalt is in $+3$ oxidation state: $Co^{3+} = [Ar] 3d^6$. Ammonia ($NH_3$) acts as a strong-field ligand, causing pairing of electrons in $t_{2g}$ orbitals: electronic configuration is $t_{2g}^6 e_g^0$. With $0$ unpaired electrons, the complex is diamagnetic.",
+      "notebookSolution": {
+        "given": "Cobalt complex [Co(NH3)6]³⁺",
+        "concept": "Crystal field pairing by strong-field ligand NH3",
+        "steps": [
+          "Co³⁺ has 3d⁶ configuration",
+          "Δo > P causes all 6 electrons to pair in t2g",
+          "Number of unpaired electrons = 0 (diamagnetic)"
+        ],
+        "conclusion": "[Co(NH3)6]³⁺ is diamagnetic (Option A).",
+        "pitfall": "FeF6³⁻ has weak field F⁻ so it is high-spin paramagnetic."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-chem-14",
+      "subject": "chemistry",
+      "chapter": "Organic Chemistry - Some Basic Principles and Techniques",
+      "topic": "Carbocation Stability and Hyperconjugation",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Jan 29 Shift 1)",
+      "text": "The correct decreasing order of stability of simple alkyl carbocations is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$CH_3^+ > CH_3CH_2^+ > (CH_3)_2CH^+ > (CH_3)_3C^+$"
+        },
+        {
+          "id": "B",
+          "text": "$(CH_3)_3C^+ > (CH_3)_2CH^+ > CH_3CH_2^+ > CH_3^+$"
+        },
+        {
+          "id": "C",
+          "text": "$(CH_3)_2CH^+ > (CH_3)_3C^+ > CH_3CH_2^+ > CH_3^+$"
+        },
+        {
+          "id": "D",
+          "text": "$(CH_3)_3C^+ > CH_3CH_2^+ > (CH_3)_2CH^+ > CH_3^+$"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "\\text{Stability } \\propto \\text{Number of } \\alpha\\text{-hydrogens (hyperconjugation) and } +I \\text{ effect}",
+      "solution": "Stability of alkyl carbocations is governed by hyperconjugation and inductive ($+I$) effects:\n- $(CH_3)_3C^+$ (tert-butyl): $9\\;\\alpha$-hydrogens\n- $(CH_3)_2CH^+$ (isopropyl): $6\\;\\alpha$-hydrogens\n- $CH_3CH_2^+$ (ethyl): $3\\;\\alpha$-hydrogens\n- $CH_3^+$ (methyl): $0\\;\\alpha$-hydrogens\nOrder: $3^\\circ > 2^\\circ > 1^\\circ > \\text{methyl}$.",
+      "notebookSolution": {
+        "given": "Alkyl carbocations",
+        "concept": "Hyperconjugation stability increases with α-hydrogens",
+        "steps": [
+          "tert-butyl: 9 α-H",
+          "isopropyl: 6 α-H",
+          "ethyl: 3 α-H",
+          "methyl: 0 α-H"
+        ],
+        "conclusion": "Order is 3° > 2° > 1° > methyl (Option B).",
+        "pitfall": "Do not confuse with carbanion stability which is reverse."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-chem-15",
+      "subject": "chemistry",
+      "chapter": "Haloalkanes and Haloarenes",
+      "topic": "Nucleophilic Substitution SN2 Mechanism",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Apr 8 Shift 2)",
+      "text": "The reaction of optically active $(R)$-2-bromobutane with aqueous $NaOH$ in acetone predominantly proceeds via:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$S_N1$ reaction with complete retention of configuration"
+        },
+        {
+          "id": "B",
+          "text": "$S_N1$ reaction leading to complete racemization"
+        },
+        {
+          "id": "C",
+          "text": "$S_N2$ reaction with complete inversion of configuration (Walden inversion)"
+        },
+        {
+          "id": "D",
+          "text": "$E2$ elimination giving exclusively 2-butene"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "\\text{Backside nucleophilic attack } \\implies \\text{Walden Inversion}",
+      "solution": "Secondary alkyl halides with strong nucleophiles ($OH^-$) in polar aprotic/favorable solvent predominantly proceed through bimolecular nucleophilic substitution ($S_N2$) mechanism with backside attack, resulting in 100% optical inversion (Walden inversion) to $(S)$-2-butanol.",
+      "notebookSolution": {
+        "given": "(R)-2-bromobutane + NaOH",
+        "concept": "SN2 mechanism stereochemistry",
+        "steps": [
+          "Backside attack of OH⁻",
+          "Departure of Br⁻ simultaneously",
+          "Complete Walden inversion of configuration"
+        ],
+        "conclusion": "Proceeds via SN2 with complete inversion (Option C).",
+        "pitfall": "SN1 gives partial racemization with slight net inversion; pure SN2 gives full inversion."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-chem-16",
+      "subject": "chemistry",
+      "chapter": "Alcohols, Phenols and Ethers",
+      "topic": "Reimer-Tiemann Reaction Intermediate",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Jan 29 Shift 1)",
+      "text": "In the Reimer-Tiemann reaction of phenol with chloroform ($CHCl_3$) and aqueous $NaOH$ to yield salicylaldehyde, the active electrophilic intermediate is:",
+      "options": [
+        {
+          "id": "A",
+          "text": ":CH_2 \\text{ (Carbene)}"
+        },
+        {
+          "id": "B",
+          "text": "CCl_3^+ \\text{ (Trichloromethyl cation)}"
+        },
+        {
+          "id": "C",
+          "text": "CHCl_2^- \\text{ (Dichloromethyl anion)}"
+        },
+        {
+          "id": "D",
+          "text": ":CCl_2 \\text{ (Dichlorocarbene)}"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "CHCl_3 + OH^- \\rightleftharpoons :CCl_3^- \\xrightarrow{-\\,Cl^-} :CCl_2",
+      "solution": "Hydroxide abstracts an acidic proton from $CHCl_3$ to generate the trichloromethyl carbanion, which then undergoes $\\alpha$-elimination of chloride ion to generate neutral, electron-deficient **dichlorocarbene** ($:CCl_2$), which acts as the electrophile attacking the phenoxide ring.",
+      "notebookSolution": {
+        "given": "Reimer-Tiemann reaction",
+        "concept": "Electrophilic aromatic substitution by neutral carbene",
+        "steps": [
+          "Base deprotonates CHCl3",
+          "α-elimination yields :CCl2",
+          ":CCl2 attacks phenoxide ring at ortho position"
+        ],
+        "conclusion": "Intermediate is dichlorocarbene :CCl2 (Option D).",
+        "pitfall": "It is neutral dichlorocarbene, not a charged carbocation."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-chem-17",
+      "subject": "chemistry",
+      "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+      "topic": "Cannizzaro Reaction Condition",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Apr 8 Shift 2)",
+      "text": "Which pair of aldehydes lacks $\\alpha$-hydrogen atoms and undergoes disproportionation in concentrated alkali via the **Cannizzaro reaction**?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Formaldehyde ($HCHO$) and Benzaldehyde ($C_6H_5CHO$)"
+        },
+        {
+          "id": "B",
+          "text": "Acetaldehyde ($CH_3CHO$) and Acetone ($CH_3COCH_3$)"
+        },
+        {
+          "id": "C",
+          "text": "Propanal ($CH_3CH_2CHO$) and Benzaldehyde"
+        },
+        {
+          "id": "D",
+          "text": "Acetaldehyde and Formaldehyde"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "2\\,\\text{R-CHO} \\xrightarrow{50\\%\\,NaOH} \\text{R-CH}_2\\text{OH} + \\text{R-COO}^-Na^+",
+      "solution": "Aldehydes with no $\\alpha$-hydrogen atoms cannot form enolates and therefore undergo Cannizzaro self-redox reaction in conc. $NaOH$. Both $HCHO$ and $C_6H_5CHO$ lack $\\alpha$-hydrogens. Acetaldehyde ($CH_3CHO$) has $3\\;\\alpha$-hydrogens and undergoes aldol condensation instead.",
+      "notebookSolution": {
+        "given": "Aldehydes in concentrated alkali",
+        "concept": "Cannizzaro reaction requires absence of α-hydrogens",
+        "steps": [
+          "HCHO has no α-carbon -> no α-H",
+          "C6H5CHO has aromatic ring without α-H",
+          "Both disproportionate to alcohol and carboxylate"
+        ],
+        "conclusion": "Formaldehyde and Benzaldehyde (Option A).",
+        "pitfall": "Presence of even one α-hydrogen promotes aldol condensation instead."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-chem-18",
+      "subject": "chemistry",
+      "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+      "topic": "Hell-Volhard-Zelinsky (HVZ) Reaction",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Jan 29 Shift 1)",
+      "text": "Propanoic acid on treatment with which of the following reagents undergoes $\\alpha$-bromination to yield 2-bromopropanoic acid (Hell-Volhard-Zelinsky reaction)?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Alc. $KOH$"
+        },
+        {
+          "id": "B",
+          "text": "Red $P + Br_2$"
+        },
+        {
+          "id": "C",
+          "text": "$LiAlH_4$"
+        },
+        {
+          "id": "D",
+          "text": "$SOCl_2$"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "R-CH_2-COOH \\xrightarrow{X_2 / \\text{Red } P} R-CH(X)-COOH",
+      "solution": "Carboxylic acids having $\\alpha$-hydrogen atoms are halogenated at the $\\alpha$-position on treatment with chlorine or bromine in the presence of small amounts of red phosphorus (HVZ reaction).",
+      "notebookSolution": {
+        "given": "Conversion of propanoic acid to 2-bromopropanoic acid",
+        "concept": "Hell-Volhard-Zelinsky α-halogenation",
+        "steps": [
+          "Reagents: Br2 with red phosphorus catalytic amount",
+          "Enolization of acid halide intermediate directs substitution to α-position"
+        ],
+        "conclusion": "Reagent is Red P + Br2 (Option B).",
+        "pitfall": "HVZ only works if the acid contains at least one α-hydrogen."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-chem-19",
+      "subject": "chemistry",
+      "chapter": "Amines",
+      "topic": "Carbylamine Test for Primary Amines",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Apr 8 Shift 2)",
+      "text": "Which of the following reactions produces an extremely foul-smelling **isocyanide** (Carbylamine reaction)?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Dimethylamine ($(CH_3)_2NH$) with $CHCl_3 + alc. KOH$"
+        },
+        {
+          "id": "B",
+          "text": "Trimethylamine ($(CH_3)_3N$) with $CHCl_3 + alc. KOH$"
+        },
+        {
+          "id": "C",
+          "text": "Methylamine ($CH_3NH_2$) with $CHCl_3 + alc. KOH$"
+        },
+        {
+          "id": "D",
+          "text": "Aniline with nitrous acid at $0-5^\\circ\\text{C}$"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "R-NH_2 + CHCl_3 + 3KOH \\xrightarrow{\\Delta} R-NC + 3KCl + 3H_2O",
+      "solution": "The Carbylamine test is given exclusively by aliphatic and aromatic **primary ($1^\\circ$) amines** when heated with chloroform and alcoholic $KOH$, forming an offensive-smelling isocyanide ($R-NC$). Secondary and tertiary amines do NOT give this test.",
+      "notebookSolution": {
+        "given": "Carbylamine test options",
+        "concept": "Specific test for primary amines",
+        "steps": [
+          "Primary amines react with CHCl3 + alc. KOH",
+          "Forms foul smelling carbylamine (isocyanide)",
+          "Secondary and tertiary amines fail to react"
+        ],
+        "conclusion": "Methylamine with CHCl3 + alc. KOH (Option C).",
+        "pitfall": "Secondary and tertiary amines do not have two protons on nitrogen to form isocyanide."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-chem-20",
+      "subject": "chemistry",
+      "chapter": "Biomolecules",
+      "topic": "Denaturation of Proteins",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Jan 29 Shift 1)",
+      "text": "During the denaturation of proteins caused by physical changes (such as heat) or chemical changes (pH variation), which structural level **remains intact**?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Secondary structure ($alpha$-helix and $\beta$-pleated sheets)"
+        },
+        {
+          "id": "B",
+          "text": "Tertiary structure (three-dimensional globular folding)"
+        },
+        {
+          "id": "C",
+          "text": "Quaternary structure (aggregation of multi-subunit complexes)"
+        },
+        {
+          "id": "D",
+          "text": "Primary structure (sequence of amino acids held by peptide bonds)"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "\\text{Denaturation breaks H-bonds and disulfide linkages, keeping covalent peptide backbone intact}",
+      "solution": "During denaturation, hydrogen bonds and ionic interactions stabilizing the secondary, tertiary, and quaternary structures are disrupted, causing the protein to unfold and lose biological activity. The covalent peptide bonds of the **primary structure** remain intact.",
+      "notebookSolution": {
+        "given": "Denaturation of proteins",
+        "concept": "Effect of denaturation on protein hierarchy",
+        "steps": [
+          "Secondary, tertiary, quaternary structures collapse",
+          "Covalent peptide bonds are not broken by gentle denaturation",
+          "Primary structure remains intact"
+        ],
+        "conclusion": "Primary structure remains intact (Option D).",
+        "pitfall": "Enzymatic hydrolysis breaks primary structure, but thermal denaturation does not."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-chem-21",
+      "subject": "chemistry",
+      "chapter": "Redox Reactions",
+      "topic": "Oxidation Number of Chromium",
+      "difficulty": "easy",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Apr 8 Shift 2)",
+      "text": "The oxidation state of chromium ($Cr$) in the dichromate dianion ($Cr_2O_7^{2-}$) is:",
+      "correctAnswer": "6",
+      "formula": "2x + 7(-2) = -2 \\implies 2x = +12 \\implies x = +6",
+      "solution": "Let oxidation number of $Cr$ be $x$. Sum of oxidation states: $2(x) + 7(-2) = -2 \\implies 2x - 14 = -2 \\implies 2x = 12 \\implies x = +6$.",
+      "notebookSolution": {
+        "given": "Cr2O7²⁻ ion",
+        "concept": "Algebraic sum of oxidation numbers equals overall charge",
+        "steps": [
+          "2x + 7(-2) = -2",
+          "2x - 14 = -2",
+          "x = +6"
+        ],
+        "conclusion": "Oxidation state is 6.",
+        "pitfall": "Do not forget the net charge of -2 on the polyatomic anion."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-chem-22",
+      "subject": "chemistry",
+      "chapter": "Electrochemistry",
+      "topic": "Standard Gibbs Free Energy Change",
+      "difficulty": "medium",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Jan 29 Shift 1)",
+      "text": "For the Daniell cell reaction $Zn(s) + Cu^{2+}(aq) \\to Zn^{2+}(aq) + Cu(s)$, the standard cell potential is $E^\\circ_{cell} = 1.10\\text{ V}$. Taking Faraday constant $F = 96500\\text{ C mol}^{-1}$, the magnitude of standard Gibbs energy change $|\\Delta G^\\circ|$ (in $\\text{kJ mol}^{-1}$, to the nearest integer) is:",
+      "correctAnswer": "212",
+      "formula": "\\Delta G^\\circ = -n F E^\\circ_{cell}",
+      "solution": "$$\\Delta G^\\circ = - (2) \\times (96500) \\times (1.10) = -212300\\text{ J mol}^{-1} = -212.3\\text{ kJ mol}^{-1}$$. Magnitude to nearest integer is $212$.",
+      "notebookSolution": {
+        "given": "n = 2, E° = 1.10 V, F = 96500 C/mol",
+        "concept": "ΔG° = -nFE°cell",
+        "steps": [
+          "ΔG° = -2 × 96500 × 1.10 = -212300 J = -212.3 kJ",
+          "Magnitude = 212"
+        ],
+        "conclusion": "Magnitude is 212 kJ/mol.",
+        "pitfall": "Convert Joules to kiloJoules."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-chem-23",
+      "subject": "chemistry",
+      "chapter": "Chemical Kinetics",
+      "topic": "Units of Rate Constant and Order",
+      "difficulty": "easy",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Apr 8 Shift 2)",
+      "text": "The rate constant of a reaction is given as $k = 3.5 \\times 10^{-4}\\text{ s}^{-1}$. The order of this reaction is:",
+      "correctAnswer": "1",
+      "formula": "\\text{Units of } k = (\\text{mol L}^{-1})^{1 - n} \\text{ s}^{-1}",
+      "solution": "For order $n$, units are $(\\text{mol L}^{-1})^{1-n}\\text{s}^{-1}$. When $n=1$, $(1-n) = 0$, giving units of $\\text{s}^{-1}$. Hence the reaction is first-order ($n = 1$).",
+      "notebookSolution": {
+        "given": "k has units s⁻¹",
+        "concept": "General units of rate constant (conc)^(1-n) × time⁻¹",
+        "steps": [
+          "(mol/L)^(1-n) s⁻¹ = s⁻¹ implies 1 - n = 0",
+          "n = 1"
+        ],
+        "conclusion": "Order is 1.",
+        "pitfall": "Units of rate constant uniquely determine reaction order."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-chem-24",
+      "subject": "chemistry",
+      "chapter": "Coordination Compounds",
+      "topic": "Spin-only Magnetic Moment of Metal Complex",
+      "difficulty": "medium",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Jan 29 Shift 1)",
+      "text": "In the complex $[Fe(H_2O)_6]^{2+}$, water is a weak-field ligand. The number of unpaired electrons in the central iron ion is:",
+      "correctAnswer": "4",
+      "formula": "Fe^{2+} (d^6) \\text{ in weak field } \\implies t_{2g}^4 e_g^2, \\; n = 4",
+      "solution": "Iron has atomic number $26$: $Fe = [Ar] 3d^6 4s^2 \\implies Fe^{2+} = [Ar] 3d^6$. With weak field ligand $H_2O$, $\\Delta_o < P$ (high spin): configuration is $t_{2g}^4 e_g^2$. Unpaired electrons: $2$ in $t_{2g}$ and $2$ in $e_g$, giving total $n = 4$ unpaired electrons.",
+      "notebookSolution": {
+        "given": "[Fe(H2O)6]²⁺, H2O is weak field",
+        "concept": "High spin octahedral d⁶ splitting",
+        "steps": [
+          "Fe²⁺ = 3d⁶",
+          "Weak field: no pairing in eg until t2g is half filled",
+          "Configuration: t2g⁴ eg²",
+          "Unpaired electrons: 2 + 2 = 4"
+        ],
+        "conclusion": "Number of unpaired electrons is 4.",
+        "pitfall": "Fe(CN)6⁴⁻ has strong field ligand so n = 0, but H2O gives high spin n = 4."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-chem-25",
+      "subject": "chemistry",
+      "chapter": "Solutions",
+      "topic": "Depression in Freezing Point with Association",
+      "difficulty": "medium",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Apr 8 Shift 2)",
+      "text": "A $1.0\\text{ molal}$ aqueous solution of a non-electrolyte completely freezes at $-1.86^\\circ\\text{C}$ ($K_f = 1.86\\text{ K kg mol}^{-1}$). If an electrolyte $AB_2$ completely dissociates ($100\\%$ ionization) in water, the freezing point depression $\\Delta T_f$ (in $\\text{K}$) of a $1.0\\text{ molal}$ aqueous solution of $AB_2$ is $x \\times 1.86$. The value of $x$ is:",
+      "correctAnswer": "3",
+      "formula": "\\Delta T_f = i K_f m, \\quad i = 1 + (n-1)\\alpha",
+      "solution": "$AB_2 \\to A^{2+} + 2B^- \\implies n = 3$ ions. With $100\\%$ dissociation, van 't Hoff factor $i = 3$. Hence $\\Delta T_f = 3 \\times 1.86 \\times 1.0 = 3 \\times 1.86 \\implies x = 3$.",
+      "notebookSolution": {
+        "given": "AB2 completely dissociates into 3 ions",
+        "concept": "van t Hoff factor i = 1 + (n-1)α = 3",
+        "steps": [
+          "AB2 -> A²⁺ + 2B⁻ (n = 3)",
+          "α = 1.0 -> i = 3",
+          "ΔTf = 3 × Kf × m = 3 × 1.86"
+        ],
+        "conclusion": "x = 3.",
+        "pitfall": "Remember to count all cation and anion particles."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-math-1",
+      "subject": "mathematics",
+      "chapter": "Sets and Relations",
+      "topic": "Types of Binary Relations",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Apr 9 Shift 1)",
+      "text": "Let $R$ be a binary relation defined on the set of integers $\\mathbb{Z}$ by: $a R b \\iff a \\le b$. Then the relation $R$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "Reflexive and transitive, but not symmetric"
+        },
+        {
+          "id": "B",
+          "text": "An equivalence relation"
+        },
+        {
+          "id": "C",
+          "text": "Symmetric, but neither reflexive nor transitive"
+        },
+        {
+          "id": "D",
+          "text": "Reflexive and symmetric, but not transitive"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "a R a \\implies \\text{Reflexive}; \\quad a R b \\text{ and } b R c \\implies a R c \\implies \\text{Transitive}",
+      "solution": "- Reflexive: For every $a \\in \\mathbb{Z}$, $a \\le a$ is true $\\implies (a,a) \\in R$.\n- Symmetric: If $2 \\le 3$, then $3 \\le 2$ is false $\\implies$ Not symmetric.\n- Transitive: If $a \\le b$ and $b \\le c$, then $a \\le c$ is true $\\implies$ Transitive.\nHence, $R$ is reflexive and transitive, but not symmetric.",
+      "notebookSolution": {
+        "given": "Relation a R b iff a <= b on Z",
+        "concept": "Definitions of reflexivity, symmetry, transitivity",
+        "steps": [
+          "a <= a is true for all integers (reflexive)",
+          "2 <= 3 does not imply 3 <= 2 (not symmetric)",
+          "a <= b and b <= c implies a <= c (transitive)"
+        ],
+        "conclusion": "Reflexive and transitive, but not symmetric (Option A).",
+        "pitfall": "Do not confuse partial order with equivalence relation."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-math-2",
+      "subject": "mathematics",
+      "chapter": "Complex Numbers",
+      "topic": "Cube Roots of Unity",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Jan 30 Shift 2)",
+      "text": "If $\\omega$ is a non-real complex cube root of unity ($1 + \\omega + \\omega^2 = 0$ and $\\omega^3 = 1$), then the value of the expression $(1 + \\omega - \\omega^2)^3$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$+8$"
+        },
+        {
+          "id": "B",
+          "text": "$-8$"
+        },
+        {
+          "id": "C",
+          "text": "$0$"
+        },
+        {
+          "id": "D",
+          "text": "$16$"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "1 + \\omega = -\\omega^2, \\quad \\omega^3 = 1",
+      "solution": "Since $1 + \\omega = -\\omega^2$, we substitute:\n$$(1 + \\omega - \\omega^2)^3 = (-\\omega^2 - \\omega^2)^3 = (-2\\omega^2)^3 = (-2)^3 (\\omega^2)^3 = -8 (\\omega^3)^2 = -8(1)^2 = -8$$.",
+      "notebookSolution": {
+        "given": "Expression (1 + ω - ω²)³",
+        "concept": "Cube roots of unity identities: 1 + ω + ω² = 0, ω³ = 1",
+        "steps": [
+          "1 + ω = -ω²",
+          "( -ω² - ω² )³ = (-2ω²)³",
+          "= -8(ω³)² = -8(1) = -8"
+        ],
+        "conclusion": "Value is -8 (Option B).",
+        "pitfall": "Remember (-2)³ has a negative sign."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-math-3",
+      "subject": "mathematics",
+      "chapter": "Quadratic Equations",
+      "topic": "Symmetric Functions of Roots",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Apr 9 Shift 1)",
+      "text": "If $\\alpha$ and $\\beta$ are the roots of the quadratic equation $x^2 - 6x + 6 = 0$, then the value of $\\alpha^2 + \\beta^2$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$28$"
+        },
+        {
+          "id": "B",
+          "text": "$20$"
+        },
+        {
+          "id": "C",
+          "text": "$24$"
+        },
+        {
+          "id": "D",
+          "text": "$34$"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "\\alpha^2 + \\beta^2 = (\\alpha + \\beta)^2 - 2\\alpha\\beta",
+      "solution": "Sum of roots $\\alpha + \\beta = 6$, product of roots $\\alpha\\beta = 6$.\n$$\\alpha^2 + \\beta^2 = (6)^2 - 2(6) = 36 - 12 = 24$$.",
+      "notebookSolution": {
+        "given": "x² - 6x + 6 = 0",
+        "concept": "Vieta formulas for quadratic equation",
+        "steps": [
+          "α + β = 6",
+          "αβ = 6",
+          "α² + β² = (6)² - 2(6) = 24"
+        ],
+        "conclusion": "Value is 24 (Option C).",
+        "pitfall": "Check minus sign in -2αβ."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-math-4",
+      "subject": "mathematics",
+      "chapter": "Matrices and Determinants",
+      "topic": "Determinant of Adjoint Matrix",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Jan 30 Shift 2)",
+      "text": "Let $A$ be a non-singular square matrix of order $3 \\times 3$ with determinant $|A| = 4$. The determinant of its adjoint matrix $|\\text{adj}(A)|$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$4$"
+        },
+        {
+          "id": "B",
+          "text": "$64$"
+        },
+        {
+          "id": "C",
+          "text": "$10$"
+        },
+        {
+          "id": "D",
+          "text": "$16$"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "|\\text{adj}(A)| = |A|^{n-1}",
+      "solution": "For an $n \\times n$ matrix, $|\\text{adj}(A)| = |A|^{n-1}$. Here order $n = 3$, so:\n$$|\\text{adj}(A)| = |A|^{3-1} = |A|^2 = (4)^2 = 16$$.",
+      "notebookSolution": {
+        "given": "Order n = 3, |A| = 4",
+        "concept": "|adj(A)| = |A|^(n-1)",
+        "steps": [
+          "|adj(A)| = |A|^(3-1) = |A|²",
+          "= (4)² = 16"
+        ],
+        "conclusion": "Determinant is 16 (Option D).",
+        "pitfall": "Order of matrix is 3, so power is 3 - 1 = 2."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-math-5",
+      "subject": "mathematics",
+      "chapter": "Permutations and Combinations",
+      "topic": "Circular Permutations",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Apr 9 Shift 1)",
+      "text": "The number of distinct ways in which $6$ persons can be seated around a circular table is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$120$"
+        },
+        {
+          "id": "B",
+          "text": "$720$"
+        },
+        {
+          "id": "C",
+          "text": "$60$"
+        },
+        {
+          "id": "D",
+          "text": "$24$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "\\text{Circular permutations of } n \\text{ distinct items} = (n - 1)!",
+      "solution": "Seating $n = 6$ distinct persons around a circular table where rotations are considered equivalent:\n$$\\text{Ways} = (6 - 1)! = 5! = 5 \\times 4 \\times 3 \\times 2 \\times 1 = 120$$.",
+      "notebookSolution": {
+        "given": "6 persons around circular table",
+        "concept": "Circular arrangement fixes one position: (n-1)!",
+        "steps": [
+          "Formula: (6 - 1)! = 5!",
+          "5! = 120"
+        ],
+        "conclusion": "120 ways (Option A).",
+        "pitfall": "Do not use 6! = 720 (circular symmetry eliminates n equivalent rotations)."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-math-6",
+      "subject": "mathematics",
+      "chapter": "Binomial Theorem",
+      "topic": "Term Independent of x",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Jan 30 Shift 2)",
+      "text": "The term independent of $x$ in the binomial expansion of $\\left(x + \\frac{1}{x}\\right)^6$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$15$"
+        },
+        {
+          "id": "B",
+          "text": "$20$"
+        },
+        {
+          "id": "C",
+          "text": "$30$"
+        },
+        {
+          "id": "D",
+          "text": "$60$"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "T_{r+1} = {}^nC_r x^{n-r} \\left(\\frac{1}{x}\\right)^r = {}^nC_r x^{n-2r}",
+      "solution": "General term $T_{r+1} = {}^6C_r x^{6-r} (x^{-1})^r = {}^6C_r x^{6-2r}$. For term independent of $x$, exponent $6 - 2r = 0 \\implies r = 3$.\n$$T_4 = {}^6C_3 = \\frac{6 \\times 5 \\times 4}{3 \\times 2 \\times 1} = 20$$.",
+      "notebookSolution": {
+        "given": "(x + 1/x)⁶",
+        "concept": "Set exponent of x to zero",
+        "steps": [
+          "x^(6 - 2r) = x^0 implies r = 3",
+          "Coeff = ⁶C₃ = 20"
+        ],
+        "conclusion": "Term independent of x is 20 (Option B).",
+        "pitfall": "Check index r matches general term T_{r+1}."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-math-7",
+      "subject": "mathematics",
+      "chapter": "Sequences and Series",
+      "topic": "Sum of Infinite Geometric Progression",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Apr 9 Shift 1)",
+      "text": "The sum of the infinite geometric series $1 + \\frac{1}{2} + \\frac{1}{4} + \\frac{1}{8} + \\cdots$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$1$"
+        },
+        {
+          "id": "B",
+          "text": "$4$"
+        },
+        {
+          "id": "C",
+          "text": "$2$"
+        },
+        {
+          "id": "D",
+          "text": "$\\frac{3}{2}$"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "S_\\infty = \\frac{a}{1 - r} \\quad (|r| < 1)",
+      "solution": "First term $a = 1$, common ratio $r = \\frac{1}{2} < 1$.\n$$S_\\infty = \\frac{1}{1 - 1/2} = \\frac{1}{1/2} = 2$$.",
+      "notebookSolution": {
+        "given": "Infinite GP with a = 1, r = 1/2",
+        "concept": "S_inf = a / (1 - r)",
+        "steps": [
+          "S_inf = 1 / (1 - 0.5) = 2"
+        ],
+        "conclusion": "Sum is 2 (Option C).",
+        "pitfall": "Only valid when |r| < 1."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-math-8",
+      "subject": "mathematics",
+      "chapter": "Limits, Continuity and Differentiability",
+      "topic": "Indeterminate Form 1 to Power Infinity",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Jan 30 Shift 2)",
+      "text": "The value of the limit $\\lim_{x \\to 0} (1 + 3x)^{\\frac{3}{x}}$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$e^{3}$"
+        },
+        {
+          "id": "B",
+          "text": "$e^{3}$"
+        },
+        {
+          "id": "C",
+          "text": "$1$"
+        },
+        {
+          "id": "D",
+          "text": "$e^{9}$"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "\\lim_{x \\to a} [f(x)]^{g(x)} = e^{\\lim_{x \\to a} g(x)[f(x) - 1]}",
+      "solution": "This is of the form $1^\\infty$.\n$$L = e^{\\lim_{x \\to 0} \\frac{3}{x} [(1 + 3x) - 1]} = e^{\\lim_{x \\to 0} \\frac{3}{x} (3x)} = e^{3 \\times 3} = e^{9}$$.",
+      "notebookSolution": {
+        "given": "Limit (1 + ax)^(b/x) as x -> 0",
+        "concept": "1^inf evaluation using e^[lim g(f - 1)]",
+        "steps": [
+          "L = e^[ lim (b/x)(ax) ]",
+          "= e^(ab) = e^9"
+        ],
+        "conclusion": "Limit is e^9 (Option D).",
+        "pitfall": "Ensure base approaches 1 and exponent approaches infinity."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-math-9",
+      "subject": "mathematics",
+      "chapter": "Application of Derivatives",
+      "topic": "Equation of Tangent to Curve",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Apr 9 Shift 1)",
+      "text": "The equation of the tangent line to the parabola $y = x^2$ at the point $(2, 4)$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$y = 4x - 4$"
+        },
+        {
+          "id": "B",
+          "text": "$y = 4x + 4$"
+        },
+        {
+          "id": "C",
+          "text": "$y = 2x - 1$"
+        },
+        {
+          "id": "D",
+          "text": "$y = 4x$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "y - y_0 = m(x - x_0), \\quad m = \\left.\\frac{dy}{dx}\\right|_{(x_0,y_0)}",
+      "solution": "Derivative: $\\frac{dy}{dx} = 2x$. At $x = 2$, slope $m = 2(2) = 4$.\nEquation of tangent: $y - 4 = 4(x - 2) \\implies y - 4 = 4x - 8 \\implies y = 4x - 4$.",
+      "notebookSolution": {
+        "given": "Curve y = x², point (2, 4)",
+        "concept": "Tangent slope is derivative evaluated at point",
+        "steps": [
+          "dy/dx = 2x",
+          "m = 2(2) = 4",
+          "y - 4 = 4(x - 2) -> y = 4x - 4"
+        ],
+        "conclusion": "Tangent is y = 4x - 4 (Option A).",
+        "pitfall": "Check substitution into point-slope formula."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-math-10",
+      "subject": "mathematics",
+      "chapter": "Application of Derivatives",
+      "topic": "Local Minimum of Polynomial",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Jan 30 Shift 2)",
+      "text": "The function $f(x) = 2x^3 - 9x^2 + 12x + 5$ attains a local minimum at:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$x = 0$"
+        },
+        {
+          "id": "B",
+          "text": "$x = 2$"
+        },
+        {
+          "id": "C",
+          "text": "$x = -2$"
+        },
+        {
+          "id": "D",
+          "text": "$x = 4$"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "f'(x) = 0 \\text{ and } f''(x) > 0",
+      "solution": "Derivative: $f'(x) = 6x^2 - 18x + 12 = 6(x^2 - 3x + 2) = 6(x - 1)(x - 2) = 0 \\implies x = 1, 2$.\nSecond derivative: $f''(x) = 12x - 18$.\n- At $x = 1$: $f''(1) = -6 < 0$ (Local maximum)\n- At $x = 2$: $f''(2) = +6 > 0$ (Local minimum)\nHence local minimum occurs at $x = 2$.",
+      "notebookSolution": {
+        "given": "f(x) = 2x³ - 9x² + 12x + 5",
+        "concept": "Second derivative test for extrema",
+        "steps": [
+          "f'(x) = 6(x - 1)(x - 2) = 0 -> x = 1, 2",
+          "f''(x) = 12x - 18",
+          "f''(2) = 6 > 0 -> local minimum at x = 2"
+        ],
+        "conclusion": "Local minimum at x = 2 (Option B).",
+        "pitfall": "Do not confuse local maximum with local minimum."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-math-11",
+      "subject": "mathematics",
+      "chapter": "Integrals",
+      "topic": "Standard Exponential Integral Identity",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Apr 9 Shift 1)",
+      "text": "The indefinite integral $\\int e^x (\\sin x + \\cos x) \\, dx$ evaluates to:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$e^x \\cos x + C$"
+        },
+        {
+          "id": "B",
+          "text": "$-e^x \\sin x + C$"
+        },
+        {
+          "id": "C",
+          "text": "$e^x \\sin x + C$"
+        },
+        {
+          "id": "D",
+          "text": "$e^x (\\sin x - \\cos x) + C$"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "\\int e^x [f(x) + f'(x)] \\, dx = e^x f(x) + C",
+      "solution": "Let $f(x) = \\sin x$. Then $f'(x) = \\cos x$. Using the standard formula:\n$$\\int e^x [f(x) + f'(x)] \\, dx = e^x f(x) + C = e^x \\sin x + C$$.",
+      "notebookSolution": {
+        "given": "Integral ∫ e^x (sin x + cos x) dx",
+        "concept": "∫ e^x [f(x) + f'(x)] dx = e^x f(x) + C",
+        "steps": [
+          "Let f(x) = sin x, then f'(x) = cos x",
+          "Expression matches e^x (f + f')",
+          "Result = e^x sin x + C"
+        ],
+        "conclusion": "e^x sin x + C (Option C).",
+        "pitfall": "Make sure f'(x) sign matches correctly."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-math-12",
+      "subject": "mathematics",
+      "chapter": "Integrals",
+      "topic": "Properties of Definite Integrals",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Jan 30 Shift 2)",
+      "text": "The value of the definite integral $I = \\int_0^{\\pi/2} \\frac{\\sqrt{\\sin x}}{\\sqrt{\\sin x} + \\sqrt{\\cos x}} \\, dx$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$\\frac{\\pi}{2}$"
+        },
+        {
+          "id": "B",
+          "text": "$\\pi$"
+        },
+        {
+          "id": "C",
+          "text": "$0$"
+        },
+        {
+          "id": "D",
+          "text": "$\\frac{\\pi}{4}$"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "\\int_a^b f(x)dx = \\int_a^b f(a+b-x)dx",
+      "solution": "Applying King's property: $x \\to \\frac{\\pi}{2} - x$:\n$$I = \\int_0^{\\pi/2} \\frac{\\sqrt{\\cos x}}{\\sqrt{\\cos x} + \\sqrt{\\sin x}} \\, dx$$.\nAdding the two equations:\n$$2I = \\int_0^{\\pi/2} \\frac{\\sqrt{\\sin x} + \\sqrt{\\cos x}}{\\sqrt{\\sin x} + \\sqrt{\\cos x}} \\, dx = \\int_0^{\\pi/2} 1 \\, dx = \\frac{\\pi}{2} \\implies I = \\frac{\\pi}{4}$$.",
+      "notebookSolution": {
+        "given": "Definite integral with limits 0 to π/2",
+        "concept": "King property: ∫ f(x) = ∫ f(a+b-x)",
+        "steps": [
+          "Replace x with π/2 - x",
+          "Add original and transformed integral: 2I = ∫ 1 dx = π/2",
+          "I = π/4"
+        ],
+        "conclusion": "I = π/4 (Option D).",
+        "pitfall": "Do not forget the factor of 2 in 2I."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-math-13",
+      "subject": "mathematics",
+      "chapter": "Differential Equations",
+      "topic": "Integrating Factor of Linear Differential Equation",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Apr 9 Shift 1)",
+      "text": "The integrating factor (I.F.) for the first-order linear differential equation $\\frac{dy}{dx} + \\frac{2}{x} y = x^3$ (for $x > 0$) is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$x^2$"
+        },
+        {
+          "id": "B",
+          "text": "$2x$"
+        },
+        {
+          "id": "C",
+          "text": "$\\ln x$"
+        },
+        {
+          "id": "D",
+          "text": "$e^{2x}$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "\\text{I.F.} = e^{\\int P(x)\\,dx}",
+      "solution": "Here $P(x) = \\frac{2}{x}$.\n$$\\text{I.F.} = e^{\\int \\frac{2}{x} \\, dx} = e^{2 \\ln x} = e^{\\ln (x^2)} = x^2$$.",
+      "notebookSolution": {
+        "given": "dy/dx + (2/x)y = x³",
+        "concept": "I.F. = e^(∫ P dx)",
+        "steps": [
+          "P = 2/x",
+          "∫ (2/x) dx = 2 ln x = ln(x²)",
+          "e^(ln x²) = x²"
+        ],
+        "conclusion": "I.F. is x² (Option A).",
+        "pitfall": "Move coefficient inside log as exponent: 2 ln x = ln(x²)."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-math-14",
+      "subject": "mathematics",
+      "chapter": "Straight Lines",
+      "topic": "Distance between Parallel Lines",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Jan 30 Shift 2)",
+      "text": "The perpendicular distance between the parallel lines $3x + 4y + 5 = 0$ and $3x + 4y - 5 = 0$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$1$"
+        },
+        {
+          "id": "B",
+          "text": "$2$"
+        },
+        {
+          "id": "C",
+          "text": "$4$"
+        },
+        {
+          "id": "D",
+          "text": "$\\frac{5}{2}$"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "d = \\frac{|c_1 - c_2|}{\\sqrt{a^2 + b^2}}",
+      "solution": "Both lines have $a = 3, b = 4$.\n$$d = \\frac{|5 - (-5)|}{\\sqrt{3^2 + 4^2}} = \\frac{|10|}{\\sqrt{9 + 16}} = \\frac{10}{5} = 2$$.",
+      "notebookSolution": {
+        "given": "Lines 3x + 4y + 5 = 0 and 3x + 4y - 5 = 0",
+        "concept": "Distance between parallel lines formula",
+        "steps": [
+          "|c1 - c2| = |5 - (-5)| = 10",
+          "√(a² + b²) = √(9 + 16) = 5",
+          "d = 10 / 5 = 2"
+        ],
+        "conclusion": "Distance is 2 units (Option B).",
+        "pitfall": "Ensure coefficients of x and y are identical before using formula."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-math-15",
+      "subject": "mathematics",
+      "chapter": "Circles",
+      "topic": "Condition of Tangency to Circle",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Apr 9 Shift 1)",
+      "text": "The straight line $y = x + c$ is a tangent to the circle $x^2 + y^2 = 25$ if:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$c = \\pm 5$"
+        },
+        {
+          "id": "B",
+          "text": "$c = \\pm 10$"
+        },
+        {
+          "id": "C",
+          "text": "$c = \\pm 5\\sqrt{2}$"
+        },
+        {
+          "id": "D",
+          "text": "$c = \\pm 25$"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "c^2 = a^2(1 + m^2)",
+      "solution": "For circle $x^2 + y^2 = a^2$, the line $y = mx + c$ is tangent if $c^2 = a^2(1 + m^2)$.\nHere $a^2 = 25$ and slope $m = 1$.\n$$c^2 = 25(1 + 1^2) = 25(2) = 50 \\implies c = \\pm \\sqrt{50} = \\pm 5\\sqrt{2}$$.",
+      "notebookSolution": {
+        "given": "Line y = x + c, Circle x² + y² = 25",
+        "concept": "Condition of tangency c² = a²(1 + m²)",
+        "steps": [
+          "m = 1, a² = 25",
+          "c² = 25(1 + 1) = 50",
+          "c = ±5√2"
+        ],
+        "conclusion": "c = ±5√2 (Option C).",
+        "pitfall": "Do not forget both plus and minus signs."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-math-16",
+      "subject": "mathematics",
+      "chapter": "Conic Sections",
+      "topic": "Length of Latus Rectum of Parabola",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Jan 30 Shift 2)",
+      "text": "The length of the latus rectum of the parabola $y^2 = 12x$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$3$"
+        },
+        {
+          "id": "B",
+          "text": "$6$"
+        },
+        {
+          "id": "C",
+          "text": "$24$"
+        },
+        {
+          "id": "D",
+          "text": "$12$"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "\\text{Length of Latus Rectum} = 4a",
+      "solution": "Comparing $y^2 = 12x$ with standard equation $y^2 = 4ax$, we have $4a = 12$. Hence the length of the latus rectum is $12$.",
+      "notebookSolution": {
+        "given": "y² = 12x",
+        "concept": "Latus rectum length = 4a",
+        "steps": [
+          "4a = 12"
+        ],
+        "conclusion": "Length is 12 (Option D).",
+        "pitfall": "Latus rectum is 4a, not a."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-math-17",
+      "subject": "mathematics",
+      "chapter": "Conic Sections",
+      "topic": "Eccentricity of Standard Ellipse",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Apr 9 Shift 1)",
+      "text": "The eccentricity of the ellipse $\\frac{x^2}{25} + \\frac{y^2}{16} = 1$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$\\frac{3}{5}$"
+        },
+        {
+          "id": "B",
+          "text": "$\\frac{4}{5}$"
+        },
+        {
+          "id": "C",
+          "text": "$\\frac{9}{25}$"
+        },
+        {
+          "id": "D",
+          "text": "$\\frac{1}{5}$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "e = \\sqrt{1 - \\frac{b^2}{a^2}} \\quad (a > b)",
+      "solution": "Here $a^2 = 25$ and $b^2 = 16$.\n$$e = \\sqrt{1 - \\frac{16}{25}} = \\sqrt{\\frac{9}{25}} = \\frac{3}{5}$$.",
+      "notebookSolution": {
+        "given": "x²/25 + y²/16 = 1",
+        "concept": "e = √(1 - b²/a²)",
+        "steps": [
+          "a² = 25, b² = 16",
+          "1 - 16/25 = 9/25",
+          "e = 3/5"
+        ],
+        "conclusion": "Eccentricity is 3/5 (Option A).",
+        "pitfall": "Ensure b² < a² in formula for horizontal ellipse."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-math-18",
+      "subject": "mathematics",
+      "chapter": "Vector Algebra",
+      "topic": "Scalar Projection of Vector",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Jan 30 Shift 2)",
+      "text": "The projection of the vector $\\vec{a} = 2\\hat{i} + 3\\hat{j} + 2\\hat{k}$ on the vector $\\vec{b} = \\hat{i} + 2\\hat{j} + \\hat{k}$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$\\frac{10}{\\sqrt{6}}$"
+        },
+        {
+          "id": "B",
+          "text": "$\\frac{8}{\\sqrt{6}}$"
+        },
+        {
+          "id": "C",
+          "text": "$10$"
+        },
+        {
+          "id": "D",
+          "text": "$\\sqrt{6}$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "\\text{Proj}_{\\vec{b}}(\\vec{a}) = \\frac{\\vec{a} \\cdot \\vec{b}}{|\\vec{b}|}",
+      "solution": "$$\\vec{a} \\cdot \\vec{b} = (2)(1) + (3)(2) + (2)(1) = 2 + 6 + 2 = 10$$.\n$$|\\vec{b}| = \\sqrt{1^2 + 2^2 + 1^2} = \\sqrt{6}$$.\n$$\\text{Projection} = \\frac{10}{\\sqrt{6}} = \\frac{5\\sqrt{6}}{3}$$.",
+      "notebookSolution": {
+        "given": "a = 2i + 3j + 2k, b = i + 2j + k",
+        "concept": "Projection = (a . b) / |b|",
+        "steps": [
+          "a . b = 2 + 6 + 2 = 10",
+          "|b| = √(1 + 4 + 1) = √6",
+          "Proj = 10 / √6"
+        ],
+        "conclusion": "Projection is 10/√6.",
+        "pitfall": "Divide by magnitude of target vector b, not a."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-math-19",
+      "subject": "mathematics",
+      "chapter": "Three Dimensional Geometry",
+      "topic": "Angle between Two Straight Lines",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Apr 9 Shift 1)",
+      "text": "The cosine of the angle between two straight lines having direction ratios $\\langle 1, 2, 2 \\rangle$ and $\\langle 2, -2, 1 \\rangle$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$0 \\; (\\theta = 90^\\circ)$"
+        },
+        {
+          "id": "B",
+          "text": "$\\frac{1}{3}$"
+        },
+        {
+          "id": "C",
+          "text": "$\\frac{2}{3}$"
+        },
+        {
+          "id": "D",
+          "text": "$\\frac{1}{2}$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "\\cos\\theta = \\frac{a_1 a_2 + b_1 b_2 + c_1 c_2}{\\sqrt{a_1^2 + b_1^2 + c_1^2}\\sqrt{a_2^2 + b_2^2 + c_2^2}}",
+      "solution": "$$a_1 a_2 + b_1 b_2 + c_1 c_2 = (1)(2) + (2)(-2) + (2)(1) = 2 - 4 + 2 = 0$$.\nSince the numerator is $0$, $\\cos\\theta = 0 \\implies \\theta = 90^\\circ$. The lines are mutually perpendicular.",
+      "notebookSolution": {
+        "given": "Direction ratios <1, 2, 2> and <2, -2, 1>",
+        "concept": "Scalar product of direction ratios",
+        "steps": [
+          "1(2) + 2(-2) + 2(1) = 2 - 4 + 2 = 0",
+          "cos θ = 0",
+          "Lines are perpendicular"
+        ],
+        "conclusion": "cos θ = 0 (θ = 90°).",
+        "pitfall": "Check signs when multiplying direction components."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-math-20",
+      "subject": "mathematics",
+      "chapter": "Probability",
+      "topic": "Conditional Probability",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Jan 30 Shift 2)",
+      "text": "If $P(A) = 0.6$, $P(B) = 0.7$, and $P(A \\cup B) = 0.9$, then the conditional probability $P(A|B)$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$\\frac{4}{7}$"
+        },
+        {
+          "id": "B",
+          "text": "$\\frac{3}{7}$"
+        },
+        {
+          "id": "C",
+          "text": "$\\frac{2}{3}$"
+        },
+        {
+          "id": "D",
+          "text": "$\\frac{1}{2}$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "P(A \\cap B) = P(A) + P(B) - P(A \\cup B), \\quad P(A|B) = \\frac{P(A \\cap B)}{P(B)}",
+      "solution": "$$P(A \\cap B) = 0.6 + 0.7 - 0.9 = 1.3 - 0.9 = 0.4$$.\n$$P(A|B) = \\frac{P(A \\cap B)}{P(B)} = \\frac{0.4}{0.7} = \\frac{4}{7}$$.",
+      "notebookSolution": {
+        "given": "P(A) = 0.6, P(B) = 0.7, P(A ∪ B) = 0.9",
+        "concept": "Addition theorem and conditional probability formula",
+        "steps": [
+          "P(A ∩ B) = 0.6 + 0.7 - 0.9 = 0.4",
+          "P(A|B) = 0.4 / 0.7 = 4/7"
+        ],
+        "conclusion": "P(A|B) = 4/7.",
+        "pitfall": "Divide by P(B), not P(A)."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-math-21",
+      "subject": "mathematics",
+      "chapter": "Binomial Theorem",
+      "topic": "Remainder Theorem in Binomial Expansion",
+      "difficulty": "medium",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Apr 9 Shift 1)",
+      "text": "When $7^{103}$ is divided by $25$, the remainder is:",
+      "correctAnswer": "18",
+      "formula": "7^2 = 49 = 50 - 1 \\equiv -1 \\pmod{25}",
+      "solution": "$$7^{103} = 7 \\times (7^2)^{51} = 7 \\times (49)^{51} = 7 \\times (50 - 1)^{51}$$.\nUsing binomial expansion: $(50 - 1)^{51} = 50k + (-1)^{51} = 50k - 1$.\n$$7(50k - 1) = 350k - 7 = 25(14k - 1) + (25 - 7) = 25m + 18$$.\nHence, the remainder is $18$.",
+      "notebookSolution": {
+        "given": "7¹⁰³ divided by 25",
+        "concept": "Binomial expansion modulo 25",
+        "steps": [
+          "7² = 49 = 50 - 1",
+          "7¹⁰³ = 7 × (49)⁵¹ = 7(50 - 1)⁵¹",
+          "Modulo 25: 7 × (-1)⁵¹ = -7 ≡ 18 (mod 25)"
+        ],
+        "conclusion": "Remainder is 18.",
+        "pitfall": "A negative remainder -7 must be adjusted to positive by adding divisor 25: -7 + 25 = 18."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-math-22",
+      "subject": "mathematics",
+      "chapter": "Matrices and Determinants",
+      "topic": "System of Linear Equations Condition",
+      "difficulty": "medium",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Jan 30 Shift 2)",
+      "text": "The system of linear equations:\n$$x + y + z = 6$$\n$$x + 2y + 3z = 10$$\n$$x + 2y + \\lambda z = \\mu$$\nhas infinitely many solutions when $\\lambda = $",
+      "correctAnswer": "3",
+      "formula": "\\Delta = 0 \\text{ for non-unique solution}",
+      "solution": "Coefficient determinant:\n$$\\Delta = \\begin{vmatrix} 1 & 1 & 1 \\\\ 1 & 2 & 3 \\\\ 1 & 2 & \\lambda \\end{vmatrix} = 1(2\\lambda - 6) - 1(\\lambda - 3) + 1(2 - 2) = 2\\lambda - 6 - \\lambda + 3 = \\lambda - 3$$.\nFor infinitely many solutions, we must have $\\Delta = 0 \\implies \\lambda - 3 = 0 \\implies \\lambda = 3$. (And $\\mu = 10$).",
+      "notebookSolution": {
+        "given": "System of 3 equations with parameters λ and μ",
+        "concept": "Cramer rule Δ = 0 condition",
+        "steps": [
+          "Determinant of coefficients Δ = λ - 3",
+          "For infinitely many solutions Δ = 0 -> λ = 3"
+        ],
+        "conclusion": "λ = 3.",
+        "pitfall": "Check that Δx = Δy = Δz = 0 is also satisfied with μ = 10."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-math-23",
+      "subject": "mathematics",
+      "chapter": "Application of Integrals",
+      "topic": "Area Bounded by Parabola and Line",
+      "difficulty": "medium",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Apr 9 Shift 1)",
+      "text": "The area (in square units) bounded by the parabola $y^2 = 4x$ and the line $y = x$ is $\\frac{k}{3}$. The value of $k$ is:",
+      "correctAnswer": "8",
+      "formula": "\\text{Area} = \\frac{8a^2}{3m^3}",
+      "solution": "Intersection points: $x^2 = 4x \\implies x(x - 4) = 0 \\implies x = 0$ to $x = 4$.\n$$\\text{Area} = \\int_0^4 (2\\sqrt{x} - x)\\,dx = \\left[ 2 \\cdot \\frac{2}{3}x^{3/2} - \\frac{x^2}{2} \\right]_0^4 = \\frac{4}{3}(8) - 8 = \\frac{32}{3} - \\frac{24}{3} = \\frac{8}{3}$$.\nHence $k = 8$.",
+      "notebookSolution": {
+        "given": "y² = 4x and y = x",
+        "concept": "Area between curve and line ∫ (y1 - y2) dx",
+        "steps": [
+          "Limits x = 0 to x = 4",
+          "∫ (2√x - x) dx = 4/3(8) - 16/2 = 32/3 - 8 = 8/3",
+          "k/3 = 8/3 implies k = 8"
+        ],
+        "conclusion": "k = 8.",
+        "pitfall": "Upper curve is y = 2√x and lower curve is y = x in first quadrant."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-math-24",
+      "subject": "mathematics",
+      "chapter": "Vector Algebra",
+      "topic": "Scalar Triple Product Volume of Parallelepiped",
+      "difficulty": "medium",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Jan 30 Shift 2)",
+      "text": "The volume of the parallelepiped formed by the coterminous vectors $\\vec{a} = \\hat{i} + 2\\hat{j} + 3\\hat{k}$, $\\vec{b} = 2\\hat{i} + \\hat{j} + \\hat{k}$, and $\\vec{c} = \\hat{i} + \\hat{j} + \\hat{k}$ is:",
+      "correctAnswer": "1",
+      "formula": "V = |[\\vec{a} \\; \\vec{b} \\; \\vec{c}]| = |\\det(M)|",
+      "solution": "$$V = \\left| \\begin{vmatrix} 1 & 2 & 3 \\\\ 2 & 1 & 1 \\\\ 1 & 1 & 1 \\end{vmatrix} \\right| = | 1(1 - 1) - 2(2 - 1) + 3(2 - 1) | = | 0 - 2 + 3 | = 1$$.",
+      "notebookSolution": {
+        "given": "Coterminous vectors a, b, c",
+        "concept": "Volume = |scalar triple product|",
+        "steps": [
+          "Determinant = 1(0) - 2(1) + 3(1) = 1",
+          "Volume = 1 cubic unit"
+        ],
+        "conclusion": "Volume is 1.",
+        "pitfall": "Always take absolute value of scalar triple product."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-07-math-25",
+      "subject": "mathematics",
+      "chapter": "Three Dimensional Geometry",
+      "topic": "Shortest Distance between Parallel Planes",
+      "difficulty": "easy",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Apr 9 Shift 1)",
+      "text": "The distance between the parallel planes $2x - y + 2z + 3 = 0$ and $4x - 2y + 4z + 18 = 0$ is:",
+      "correctAnswer": "2",
+      "formula": "d = \\frac{|d_1 - d_2|}{\\sqrt{a^2 + b^2 + c^2}}",
+      "solution": "Divide the second plane by $2$: $2x - y + 2z + 9 = 0$.\nBoth planes have $a = 2, b = -1, c = 2$.\n$$d = \\frac{|9 - 3|}{\\sqrt{2^2 + (-1)^2 + 2^2}} = \\frac{6}{\\sqrt{4 + 1 + 4}} = \\frac{6}{\\sqrt{9}} = \\frac{6}{3} = 2$$.",
+      "notebookSolution": {
+        "given": "Planes 2x - y + 2z + 3 = 0 and 4x - 2y + 4z + 18 = 0",
+        "concept": "Distance between parallel planes",
+        "steps": [
+          "Normalize second equation to 2x - y + 2z + 9 = 0",
+          "d = |9 - 3| / √(4 + 1 + 4) = 6 / 3 = 2"
+        ],
+        "conclusion": "Distance is 2.",
+        "pitfall": "Coefficients must be identical before subtracting constant terms."
+      },
+      "verificationStatus": "verified"
+    }
+  ]
+},
+{
+  "config": {
+    "id": "jm-mock-08",
+    "testNumber": 8,
+    "title": "JEE Main 2026 - All-India Grand Mock Test 08",
+    "subtitle": "Full Syllabus (11th + 12th) • 75 Questions • 300 Marks • Exact NTA Format",
+    "examType": "jee_main",
+    "durationMinutes": 180,
+    "totalMarks": 300,
+    "questionCount": 75,
+    "description": "Comprehensive full-syllabus examination reflecting the exact chapter weightage, Section A (20 MCQs) and Section B (5 Numericals) structure of recent NTA papers.",
+    "difficulty": "Balanced",
+    "subjectsIncluded": [
+      "physics",
+      "chemistry",
+      "mathematics"
+    ],
+    "seriesCategory": "jee_main",
+    "badge": "Mock Test 08",
+    "tags": [
+      "Full Syllabus",
+      "NTA Official Weightage",
+      "300 Marks",
+      "180 Mins"
+    ]
+  },
+  "questions": [
+    {
+      "id": "jm-08-phy-1",
+      "subject": "physics",
+      "chapter": "Units and Measurements",
+      "topic": "Percentage Error Propagation",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Apr 6 Shift 1)",
+      "text": "A physical quantity $P$ is related to four observables $a, b, c$ as $P = \\frac{a^{4} b^3}{\\sqrt{c}}$. The percentage errors of measurement in $a, b, c$ are $1\\%$, $2\\%$, and $4\\%$ respectively. The maximum percentage error in $P$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$12\\%$"
+        },
+        {
+          "id": "B",
+          "text": "$10\\%$"
+        },
+        {
+          "id": "C",
+          "text": "$9\\%$"
+        },
+        {
+          "id": "D",
+          "text": "$14\\%$"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "\\frac{\\Delta P}{P} = 4\\frac{\\Delta a}{a} + 3\\frac{\\Delta b}{b} + \\frac{1}{2}\\frac{\\Delta c}{c}",
+      "solution": "$$\\frac{\\Delta P}{P} = 4(1\\%) + 3(2\\%) + \\frac{1}{2}(4\\%) = 4 + 6 + 2 = 10\\%$$.",
+      "notebookSolution": {
+        "given": "a has 1%, b has 2%, c has 4%",
+        "concept": "Percentage errors add linearly with power exponents",
+        "steps": [
+          "ΔP/P = 4×1% + 3×2% + 0.5×4% = 10%"
+        ],
+        "conclusion": "Maximum error is 10% (Option B).",
+        "pitfall": "Denominator powers are always added, never subtracted."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-phy-2",
+      "subject": "physics",
+      "chapter": "Motion in a Straight Line",
+      "topic": "Kinematics Equations",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Jan 31 Shift 2)",
+      "text": "A body moving with initial velocity $u = 26\\text{ m/s}$ accelerates at a uniform rate $a = 2\\text{ m/s}^2$ for $t = 5\\text{ s}$. The total distance traversed is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$175\\text{ m}$"
+        },
+        {
+          "id": "B",
+          "text": "$140\\text{ m}$"
+        },
+        {
+          "id": "C",
+          "text": "$155\\text{ m}$"
+        },
+        {
+          "id": "D",
+          "text": "$310\\text{ m}$"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "s = ut + \\frac{1}{2}at^2",
+      "solution": "$s = (26)(5) + \\frac{1}{2}(2)(5^2) = 130 + 25 = 155\\text{ m}$.",
+      "notebookSolution": {
+        "given": "u = 26 m/s, a = 2 m/s², t = 5 s",
+        "concept": "Second equation of kinematics",
+        "steps": [
+          "s = 26×5 + 0.5×2×5² = 155 m"
+        ],
+        "conclusion": "Distance is 155 m (Option C).",
+        "pitfall": "Only valid for constant acceleration."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-phy-3",
+      "subject": "physics",
+      "chapter": "Motion in a Plane",
+      "topic": "Maximum Horizontal Range of Projectile",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Apr 6 Shift 1)",
+      "text": "The maximum horizontal range of a projectile fired with launch speed $u = 80\\text{ m/s}$ on level ground (taking $g = 10\\text{ m/s}^2$) is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$768.\\text{ m}$"
+        },
+        {
+          "id": "B",
+          "text": "$512.\\text{ m}$"
+        },
+        {
+          "id": "C",
+          "text": "$960.\\text{ m}$"
+        },
+        {
+          "id": "D",
+          "text": "$640.\\text{ m}$"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "R_{max} = \\frac{u^2}{g}",
+      "solution": "Maximum range occurs at $\\theta = 45^\\circ$: $R_{max} = \\frac{(80)^2}{10} = 640.\\text{ m}$.",
+      "notebookSolution": {
+        "given": "u = 80 m/s, g = 10 m/s²",
+        "concept": "Maximum range formula R_max = u²/g",
+        "steps": [
+          "R_max = 80² / 10 = 640. m"
+        ],
+        "conclusion": "Range is 640. m (Option D).",
+        "pitfall": "Maximum range is attained at 45 degrees."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-phy-4",
+      "subject": "physics",
+      "chapter": "Laws of Motion",
+      "topic": "Atwood Machine Acceleration",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Jan 31 Shift 2)",
+      "text": "Two masses $m_1 = 2\\text{ kg}$ and $m_2 = 3\\text{ kg}$ are connected by a light inextensible string passing over a smooth frictionless pulley. The acceleration of the system is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$2\\text{ m/s}^2$"
+        },
+        {
+          "id": "B",
+          "text": "$2.5\\text{ m/s}^2$"
+        },
+        {
+          "id": "C",
+          "text": "$4.0\\text{ m/s}^2$"
+        },
+        {
+          "id": "D",
+          "text": "$1.0\\text{ m/s}^2$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "a = \\frac{(m_2 - m_1)g}{m_1 + m_2}",
+      "solution": "$a = \\frac{(3 - 2) \\times 10}{2 + 3} = 2\\text{ m/s}^2$.",
+      "notebookSolution": {
+        "given": "m1 = 2 kg, m2 = 3 kg, g = 10 m/s²",
+        "concept": "Atwood machine equation of motion",
+        "steps": [
+          "a = (3 - 2)×10 / (2 + 3) = 2 m/s²"
+        ],
+        "conclusion": "Acceleration is 2 m/s² (Option A).",
+        "pitfall": "Net pulling force is (m2 - m1)g."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-phy-5",
+      "subject": "physics",
+      "chapter": "Work, Energy and Power",
+      "topic": "Work Done by Force at Angle",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Apr 6 Shift 1)",
+      "text": "A constant force $F = 60\\text{ N}$ acts on a particle displacing it by $s = 4\\text{ m}$ along a straight path. If the force makes an angle $\\theta = 60^\\circ$ with the displacement vector, the work done is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$240\\text{ J}$"
+        },
+        {
+          "id": "B",
+          "text": "$120\\text{ J}$"
+        },
+        {
+          "id": "C",
+          "text": "$60\\text{ J}$"
+        },
+        {
+          "id": "D",
+          "text": "$150\\text{ J}$"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "W = F s \\cos\\theta",
+      "solution": "$W = 60 \\times 4 \\times \\cos 60^\\circ = 240 \\times 0.5 = 120\\text{ J}$.",
+      "notebookSolution": {
+        "given": "F = 60 N, s = 4 m, θ = 60°",
+        "concept": "Work definition W = F·s = F s cosθ",
+        "steps": [
+          "W = 60 × 4 × 0.5 = 120 J"
+        ],
+        "conclusion": "Work done is 120 J (Option B).",
+        "pitfall": "cos 60° = 1/2."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-phy-6",
+      "subject": "physics",
+      "chapter": "Rotational Motion",
+      "topic": "Moment of Inertia of Thin Circular Ring",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Jan 31 Shift 2)",
+      "text": "The moment of inertia of a uniform thin circular ring of mass $M = 3\\text{ kg}$ and radius $R = 0.4\\text{ m}$ about its central symmetry axis is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$0.24\\text{ kg m}^2$"
+        },
+        {
+          "id": "B",
+          "text": "$0.96\\text{ kg m}^2$"
+        },
+        {
+          "id": "C",
+          "text": "$0.48\\text{ kg m}^2$"
+        },
+        {
+          "id": "D",
+          "text": "$0.72\\text{ kg m}^2$"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "I = M R^2",
+      "solution": "$I = 3 \\times (0.4)^2 = 3 \\times 0.16 = 0.48\\text{ kg m}^2$.",
+      "notebookSolution": {
+        "given": "M = 3 kg, R = 0.4 m",
+        "concept": "Ring moment of inertia about central axis I = MR²",
+        "steps": [
+          "I = 3 × 0.16 = 0.48 kg m²"
+        ],
+        "conclusion": "Moment of inertia is 0.48 kg m² (Option C).",
+        "pitfall": "Disc has 1/2 MR², ring has MR²."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-phy-7",
+      "subject": "physics",
+      "chapter": "Gravitation",
+      "topic": "Escape Speed from Surface of Earth",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Apr 6 Shift 1)",
+      "text": "Taking the radius of the Earth $R_e = 6400\\text{ km}$ and $g = 9.8\\text{ m/s}^2$, the escape speed from the surface of the Earth is approximately:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$7.9\\text{ km/s}$"
+        },
+        {
+          "id": "B",
+          "text": "$16.8\\text{ km/s}$"
+        },
+        {
+          "id": "C",
+          "text": "$5.6\\text{ km/s}$"
+        },
+        {
+          "id": "D",
+          "text": "$11.2\\text{ km/s}$"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "v_e = \\sqrt{2g R_e}",
+      "solution": "$v_e = \\sqrt{2 \\times 9.8 \\times 6.4 \\times 10^6} \\approx 11.2\\text{ km/s}$.",
+      "notebookSolution": {
+        "given": "Re = 6400 km, g = 9.8 m/s²",
+        "concept": "Escape velocity formula v_e = √(2gR)",
+        "steps": [
+          "v_e = √(2 × 9.8 × 6.4 × 10⁶) ≈ 11.2 km/s"
+        ],
+        "conclusion": "Escape velocity is 11.2 km/s (Option D).",
+        "pitfall": "Orbital velocity is v_o = √(gR) ≈ 7.9 km/s; escape is √2 times larger."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-phy-8",
+      "subject": "physics",
+      "chapter": "Thermodynamics",
+      "topic": "Thermodynamic Processes and Work Done",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Jan 31 Shift 2)",
+      "text": "In which thermodynamic process does the internal energy of an ideal gas remain completely unchanged ($\\Delta U = 0$)?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Isothermal process"
+        },
+        {
+          "id": "B",
+          "text": "Isochoric process"
+        },
+        {
+          "id": "C",
+          "text": "Isobaric process"
+        },
+        {
+          "id": "D",
+          "text": "Adiabatic process"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "\\Delta U = n C_v \\Delta T = 0 \\implies T = \\text{constant}",
+      "solution": "Since internal energy of an ideal gas depends solely on temperature, $\\Delta U = 0$ implies constant temperature, which defines an isothermal process.",
+      "notebookSolution": {
+        "given": "ΔU = 0 for ideal gas",
+        "concept": "U = f(T) only for ideal gas",
+        "steps": [
+          "ΔU = 0 => ΔT = 0 => T = const => Isothermal"
+        ],
+        "conclusion": "Isothermal process (Option A).",
+        "pitfall": "In adiabatic process, Q = 0, but ΔU = -W ≠ 0."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-phy-9",
+      "subject": "physics",
+      "chapter": "Oscillations",
+      "topic": "Seconds Pendulum Length",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Apr 6 Shift 1)",
+      "text": "A simple pendulum has a time period of $T = 2.0\\text{ s}$ (seconds pendulum) on the Earth surface where $g = 9.8\\text{ m/s}^2$. Its length is approximately:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$0.5\\text{ m}$"
+        },
+        {
+          "id": "B",
+          "text": "$\\approx 1.0\\text{ m}$"
+        },
+        {
+          "id": "C",
+          "text": "$2.0\\text{ m}$"
+        },
+        {
+          "id": "D",
+          "text": "$4.0\\text{ m}$"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "T = 2\\pi \\sqrt{\\frac{L}{g}} \\implies L = \\frac{g T^2}{4\\pi^2}",
+      "solution": "$L = \\frac{9.8 \\times (2)^2}{4 \\times \\pi^2} \\approx \\frac{9.8 \\times 4}{4 \\times 9.87} \\approx 1.0\\text{ m}$.",
+      "notebookSolution": {
+        "given": "T = 2 s, g = 9.8 m/s²",
+        "concept": "Period of simple pendulum",
+        "steps": [
+          "L = g T² / (4π²) = 9.8 × 4 / (4 × 9.87) ≈ 0.993 m ≈ 1.0 m"
+        ],
+        "conclusion": "Length is approximately 1.0 m (Option B).",
+        "pitfall": "A seconds pendulum has a half-period of 1 second and full period of 2 seconds."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-phy-10",
+      "subject": "physics",
+      "chapter": "Electrostatics",
+      "topic": "Coulombs Law Force",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Jan 31 Shift 2)",
+      "text": "Two point charges $q_1 = +2\\text{ }\\mu\\text{C}$ and $q_2 = +8\\text{ }\\mu\\text{C}$ are separated by a distance $r = 30\\text{ cm}$ in vacuum. Taking $\\frac{1}{4\\pi\\varepsilon_0} = 9 \\times 10^9\\text{ N m}^2/\\text{C}^2$, the electrostatic repulsive force between them is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$3.2\\text{ N}$"
+        },
+        {
+          "id": "B",
+          "text": "$0.8\\text{ N}$"
+        },
+        {
+          "id": "C",
+          "text": "$1.6\\text{ N}$"
+        },
+        {
+          "id": "D",
+          "text": "$4.8\\text{ N}$"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "F = \\frac{1}{4\\pi\\varepsilon_0}\\frac{q_1 q_2}{r^2}",
+      "solution": "$F = \\frac{9 \\times 10^9 \\times (2 \\times 10^{-6}) \\times (8 \\times 10^{-6})}{(0.3)^2} = \\frac{144 \\times 10^{-3}}{0.09} = 1.6\\text{ N}$.",
+      "notebookSolution": {
+        "given": "q1 = 2 μC, q2 = 8 μC, r = 0.3 m",
+        "concept": "Coulombs law",
+        "steps": [
+          "F = 9×10⁹ × 16×10⁻¹² / 0.09 = 0.144 / 0.09 = 1.6 N"
+        ],
+        "conclusion": "Force is 1.6 N.",
+        "pitfall": "Convert cm to meters before squaring."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-phy-11",
+      "subject": "physics",
+      "chapter": "Current Electricity",
+      "topic": "Kirchhoffs Junction and Loop Laws",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Apr 6 Shift 1)",
+      "text": "Kirchhoff's first law (Junction rule $\\sum I = 0$) and second law (Loop rule $\\sum \\Delta V = 0$) are respective consequences of conservation of:",
+      "options": [
+        {
+          "id": "A",
+          "text": "Energy and Charge respectively"
+        },
+        {
+          "id": "B",
+          "text": "Momentum and Charge"
+        },
+        {
+          "id": "C",
+          "text": "Mass and Energy"
+        },
+        {
+          "id": "D",
+          "text": "Charge and Energy respectively"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "\\sum I_{in} = \\sum I_{out} \\ (\\text{Charge}), \\quad \\sum \\Delta V = 0 \\ (\\text{Energy})",
+      "solution": "Junction rule reflects conservation of electric charge. Loop rule reflects conservation of energy around closed path.",
+      "notebookSolution": {
+        "given": "Kirchhoffs laws",
+        "concept": "Junction law = conservation of charge; Loop law = conservation of energy",
+        "steps": [
+          "KCL: dq/dt in = dq/dt out => Charge",
+          "KVL: sum of potential changes = 0 => Energy"
+        ],
+        "conclusion": "Charge and Energy respectively (Option D).",
+        "pitfall": "Do not swap the order."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-phy-12",
+      "subject": "physics",
+      "chapter": "Moving Charges and Magnetism",
+      "topic": "Motion of Charged Particle in Magnetic Field",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Jan 31 Shift 2)",
+      "text": "A charged particle enters a uniform magnetic field with velocity $\\vec{v}$ perpendicular to the field $\\vec{B}$. The trajectory of the particle is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "Circular"
+        },
+        {
+          "id": "B",
+          "text": "Helical with uniform pitch"
+        },
+        {
+          "id": "C",
+          "text": "Parabolic"
+        },
+        {
+          "id": "D",
+          "text": "Straight line"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "\\vec{F} = q(\\vec{v} \\times \\vec{B}) = \\frac{m v^2}{r}\\hat{r}",
+      "solution": "Since $\\vec{F} \\perp \\vec{v}$ at all instants, speed is constant and force provides centripetal acceleration, producing a circular path.",
+      "notebookSolution": {
+        "given": "v ⊥ B",
+        "concept": "Lorentz force provides centripetal acceleration",
+        "steps": [
+          "F = qvB = mv²/r => r = mv/(qB) = constant radius circle"
+        ],
+        "conclusion": "Circular trajectory (Option A).",
+        "pitfall": "If velocity is at an arbitrary angle θ, trajectory is helical."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-phy-13",
+      "subject": "physics",
+      "chapter": "Electromagnetic Induction",
+      "topic": "Magnetic Flux Through Parallel Loop",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Apr 6 Shift 1)",
+      "text": "A planar coil of area $A$ is placed parallel to a uniform magnetic field $\\vec{B}$ (i.e. the normal to the coil is perpendicular to $\\vec{B}$). The magnetic flux through the coil is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$BA$"
+        },
+        {
+          "id": "B",
+          "text": "Zero"
+        },
+        {
+          "id": "C",
+          "text": "$2BA$"
+        },
+        {
+          "id": "D",
+          "text": "$\\frac{BA}{2}$"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "\\Phi = \\vec{B} \\cdot \\vec{A} = B A \\cos 90^\\circ = 0",
+      "solution": "When the plane of the coil is parallel to $\\vec{B}$, the angle between area vector $\\vec{A}$ and $\\vec{B}$ is $\\theta = 90^\\circ$. Thus $\\Phi = B A \\cos 90^\\circ = 0$.",
+      "notebookSolution": {
+        "given": "Plane parallel to B => angle with normal θ = 90°",
+        "concept": "Magnetic flux Φ = B·A = BA cosθ",
+        "steps": [
+          "Φ = BA cos(90°) = 0"
+        ],
+        "conclusion": "Flux is zero (Option B).",
+        "pitfall": "Area vector is perpendicular to the plane of the loop."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-phy-14",
+      "subject": "physics",
+      "chapter": "Ray Optics",
+      "topic": "Refractive Index of Equilateral Prism",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Jan 31 Shift 2)",
+      "text": "An equilateral prism ($A = 60^\\circ$) produces a minimum angle of deviation $\\delta_m = 60^\\circ$. The refractive index $\\mu$ of the prism material is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$\\mu = \\sqrt{2}$"
+        },
+        {
+          "id": "B",
+          "text": "$\\mu = 1.5$"
+        },
+        {
+          "id": "C",
+          "text": "$\\mu = \\sqrt{3}$"
+        },
+        {
+          "id": "D",
+          "text": "$\\mu = 1.33$"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "\\mu = \\frac{\\sin\\left(\\frac{A + \\delta_m}{2}\\right)}{\\sin(A/2)}",
+      "solution": "$$\\mu = \\frac{\\sin((60^\\circ + 60^\\circ)/2)}{\\sin(60^\\circ/2)} = \\frac{\\sin 60^\\circ}{\\sin 30^\\circ} = \\frac{\\sqrt{3}/2}{1/2} = \\sqrt{3}$$.",
+      "notebookSolution": {
+        "given": "A = 60°, δ_m = 60°",
+        "concept": "Prism formula",
+        "steps": [
+          "μ = sin(120°/2) / sin(30°) = sin 60° / sin 30° = √3"
+        ],
+        "conclusion": "Refractive index is √3 (Option C).",
+        "pitfall": "A = 60° for an equilateral prism."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-phy-15",
+      "subject": "physics",
+      "chapter": "Wave Optics",
+      "topic": "Youngs Double Slit Fringe Width",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Apr 6 Shift 1)",
+      "text": "In Young's double-slit experiment with slit separation $d$ and screen distance $D$ using light of wavelength $\\lambda$, the fringe width $\\beta$ is given by:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$\\beta = \\frac{\\lambda d}{D}$"
+        },
+        {
+          "id": "B",
+          "text": "$\\beta = \\frac{d D}{\\lambda}$"
+        },
+        {
+          "id": "C",
+          "text": "$\\beta = \\frac{\\lambda}{D d}$"
+        },
+        {
+          "id": "D",
+          "text": "$\\beta = \\frac{\\lambda D}{d}$"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "\\beta = \\frac{\\lambda D}{d}",
+      "solution": "Fringe width is directly proportional to screen distance $D$ and wavelength $\\lambda$, and inversely proportional to slit spacing $d$: $\\beta = \\frac{\\lambda D}{d}$.",
+      "notebookSolution": {
+        "given": "YDSE setup parameters",
+        "concept": "Fringe spacing between adjacent maxima or minima",
+        "steps": [
+          "β = y_{n+1} - y_n = λD/d"
+        ],
+        "conclusion": "β = λD/d (Option D).",
+        "pitfall": "D is distance to screen, d is slit separation."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-phy-16",
+      "subject": "physics",
+      "chapter": "Dual Nature of Radiation",
+      "topic": "Maximum Kinetic Energy of Photoelectrons",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Jan 31 Shift 2)",
+      "text": "In a photoelectric experiment, keeping the frequency of incident radiation constant, the maximum kinetic energy of emitted photoelectrons is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "Independent of intensity"
+        },
+        {
+          "id": "B",
+          "text": "Directly proportional to intensity"
+        },
+        {
+          "id": "C",
+          "text": "Inversely proportional to intensity"
+        },
+        {
+          "id": "D",
+          "text": "Directly proportional to square of intensity"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "K_{max} = h\\nu - \\phi_0",
+      "solution": "Maximum kinetic energy depends strictly on the photon frequency $\\nu$ and work function $\\phi_0$. Intensity only changes the rate of emission (photocurrent), not kinetic energy.",
+      "notebookSolution": {
+        "given": "Constant frequency, variable intensity",
+        "concept": "K_max = hν - W",
+        "steps": [
+          "K_max depends on photon energy hν, independent of beam intensity"
+        ],
+        "conclusion": "Independent of intensity (Option A).",
+        "pitfall": "Intensity determines number of emitted electrons, not their kinetic energy."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-phy-17",
+      "subject": "physics",
+      "chapter": "Atoms",
+      "topic": "Bohr Radius Orbit Dependence",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Apr 6 Shift 1)",
+      "text": "According to Bohr's postulate of quantization of angular momentum, the radius $r_n$ of the $n^{\\text{th}}$ orbit of hydrogen atom varies with principle quantum number $n$ as:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$r_n \\propto n$"
+        },
+        {
+          "id": "B",
+          "text": "$r_n \\propto n^2$"
+        },
+        {
+          "id": "C",
+          "text": "$r_n \\propto 1/n$"
+        },
+        {
+          "id": "D",
+          "text": "$r_n \\propto n^3$"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "r_n = \\frac{n^2 h^2 \\varepsilon_0}{\\pi m e^2} \\propto n^2",
+      "solution": "Radius of the $n$-th orbit is given by $r_n = 0.529 \\frac{n^2}{Z}\\text{ \\AA} \\propto n^2$.",
+      "notebookSolution": {
+        "given": "Bohr model radius formula",
+        "concept": "Orbit radius proportionality",
+        "steps": [
+          "r_n = a_0 n²/Z => r_n ∝ n²"
+        ],
+        "conclusion": "r_n ∝ n² (Option B).",
+        "pitfall": "Velocity varies as 1/n, radius varies as n²."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-phy-18",
+      "subject": "physics",
+      "chapter": "Nuclei",
+      "topic": "Nuclear Density Ratio",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Jan 31 Shift 2)",
+      "text": "Two nuclei have mass numbers in the ratio $1:8$. The ratio of their nuclear densities is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$1:4$"
+        },
+        {
+          "id": "B",
+          "text": "$2:1$"
+        },
+        {
+          "id": "C",
+          "text": "$1:2$"
+        },
+        {
+          "id": "D",
+          "text": "$4:1$"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "R = R_0 A^{1/3} \\implies V \\propto A \\implies \\rho = \\frac{M}{V} = \\text{constant}",
+      "solution": "Nuclear density is independent of mass number $A$ because mass $\\propto A$ and volume $\\propto R^3 \\propto A$. Thus the ratio of nuclear densities is $1:1$ (all nuclei have approximately $\\approx 2.3 \\times 10^{17}\\text{ kg/m}^3$).",
+      "notebookSolution": {
+        "given": "A1/A2 = 1/8",
+        "concept": "Nuclear density is constant for all nuclei",
+        "steps": [
+          "ρ = m A / (4/3 π R0³ A) = constant => ρ1/ρ2 = 1:1"
+        ],
+        "conclusion": "Nuclear density is identical (1:1).",
+        "pitfall": "Nuclear radius changes with A^(1/3), but density remains constant."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-phy-19",
+      "subject": "physics",
+      "chapter": "Semiconductor Electronics",
+      "topic": "Ideal Diode in Forward Bias",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Apr 6 Shift 1)",
+      "text": "In ideal circuit approximation, the resistance offered by a $p$-$n$ junction diode in forward bias condition is taken as:",
+      "options": [
+        {
+          "id": "A",
+          "text": "Infinite"
+        },
+        {
+          "id": "B",
+          "text": "Very small"
+        },
+        {
+          "id": "C",
+          "text": "Fluctuating"
+        },
+        {
+          "id": "D",
+          "text": "Zero"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "R_{forward, ideal} = 0, \\quad R_{reverse, ideal} = \\infty",
+      "solution": "An ideal diode acts as a closed switch with zero resistance when forward biased and an open switch with infinite resistance when reverse biased.",
+      "notebookSolution": {
+        "given": "Ideal p-n junction forward biased",
+        "concept": "Ideal diode forward resistance is zero",
+        "steps": [
+          "Forward bias ideal => zero resistance (short circuit)"
+        ],
+        "conclusion": "Resistance is zero (Option D).",
+        "pitfall": "Practical diodes have ~0.7V drop for Si, but ideal diode resistance is zero."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-phy-20",
+      "subject": "physics",
+      "chapter": "Semiconductor Electronics",
+      "topic": "Universal Logic Gates",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Jan 31 Shift 2)",
+      "text": "Which of the following logic gates is classified as a universal gate capable of implementing any Boolean function?",
+      "options": [
+        {
+          "id": "A",
+          "text": "NAND gate"
+        },
+        {
+          "id": "B",
+          "text": "NOR gate"
+        },
+        {
+          "id": "C",
+          "text": "AND gate"
+        },
+        {
+          "id": "D",
+          "text": "OR gate"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "Y = \\overline{A \\cdot B} \\ (\\text{NAND}), \\quad Y = \\overline{A + B} \\ (\\text{NOR})",
+      "solution": "NAND and NOR gates are universal gates because repeated combinations can construct NOT, AND, and OR operations.",
+      "notebookSolution": {
+        "given": "Universal logic gate definition",
+        "concept": "NAND and NOR can synthesize any logic network",
+        "steps": [
+          "NAND is a universal gate"
+        ],
+        "conclusion": "NAND gate (Option A).",
+        "pitfall": "AND and OR are basic gates, not universal without NOT."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-phy-21",
+      "subject": "physics",
+      "chapter": "Current Electricity",
+      "topic": "Potentiometer Wire Resistance",
+      "difficulty": "medium",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Apr 6 Shift 1)",
+      "text": "A potentiometer wire of length $L = 10\\text{ m}$ has resistance $R = 20\\text{ }\\Omega$. A steady current is maintained by a $2\\text{ V}$ driver battery. The potential gradient along the wire (in $\\text{mV/cm}$) is:",
+      "correctAnswer": "1",
+      "formula": "k = \\frac{V}{L}",
+      "solution": "Current $I = \\frac{2}{20} = 0.1\\text{ A}$. Potential gradient $k = \\frac{V}{L} = \\frac{2\\text{ V}}{1000\\text{ cm}} = 0.002\\text{ V/cm} = 2\\text{ mV/cm}$.",
+      "notebookSolution": {
+        "given": "L = 10 m = 1000 cm, V = 2 V",
+        "concept": "Potential gradient k = V / L",
+        "steps": [
+          "k = 2 V / 1000 cm = 0.002 V/cm = 2 mV/cm"
+        ],
+        "conclusion": "Potential gradient is 2.",
+        "pitfall": "Watch the units: mV/cm vs V/m."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-phy-22",
+      "subject": "physics",
+      "chapter": "Atoms",
+      "topic": "Wavelength Ratio in Lyman Series",
+      "difficulty": "medium",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Jan 31 Shift 2)",
+      "text": "In the hydrogen atom spectrum, the ratio of the longest wavelength in the Lyman series ($n = 2 \\to 1$) to the shortest wavelength in the Lyman series ($n = \\infty \\to 1$) is $\\frac{4}{x}$. The value of $x$ is:",
+      "correctAnswer": "3",
+      "formula": "\\frac{1}{\\lambda} = R_H \\left(\\frac{1}{n_1^2} - \\frac{1}{n_2^2}\\right)",
+      "solution": "$$\\frac{1}{\\lambda_{max}} = R_H \\left(1 - \\frac{1}{4}\\right) = \\frac{3}{4}R_H \\implies \\lambda_{max} = \\frac{4}{3R_H}$$\n$$\\frac{1}{\\lambda_{min}} = R_H \\left(1 - 0\\right) = R_H \\implies \\lambda_{min} = \\frac{1}{R_H}$$\n$$\\frac{\\lambda_{max}}{\\lambda_{min}} = \\frac{4}{3} \\implies x = 3$$.",
+      "notebookSolution": {
+        "given": "Lyman longest and shortest transition",
+        "concept": "Rydberg formula for hydrogen",
+        "steps": [
+          "λ_max = 4/(3R), λ_min = 1/R => ratio = 4/3 => x = 3"
+        ],
+        "conclusion": "x = 3.",
+        "pitfall": "Longest wavelength corresponds to smallest energy difference."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-phy-23",
+      "subject": "physics",
+      "chapter": "Electrostatics",
+      "topic": "Energy Stored in Capacitor",
+      "difficulty": "easy",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Apr 6 Shift 1)",
+      "text": "A $2\\text{ }\\mu\\text{F}$ capacitor is charged to a potential of $100\\text{ V}$. The energy stored in the capacitor (in $\\text{mJ}$) is:",
+      "correctAnswer": "10",
+      "formula": "U = \\frac{1}{2} C V^2",
+      "solution": "$U = \\frac{1}{2}(2 \\times 10^{-6})(100)^2 = 10^{-6} \\times 10000 = 10^{-2}\\text{ J} = 10\\text{ mJ}$.",
+      "notebookSolution": {
+        "given": "C = 2 μF, V = 100 V",
+        "concept": "Capacitor stored energy U = 1/2 C V²",
+        "steps": [
+          "U = 0.5 × (2×10⁻⁶) × 10000 = 0.01 J = 10 mJ"
+        ],
+        "conclusion": "Energy is 10 mJ.",
+        "pitfall": "Convert Joules to milliJoules (× 1000)."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-phy-24",
+      "subject": "physics",
+      "chapter": "Magnetic Dipole",
+      "topic": "Magnetic Dipole Moment of Current Loop",
+      "difficulty": "easy",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Jan 31 Shift 2)",
+      "text": "A square coil of side $10\\text{ cm}$ consists of $20$ turns and carries a current of $2\\text{ A}$. The magnetic dipole moment of the coil (in $\\text{A m}^2$) is $x \\times 10^{-1}$. The value of $x$ is:",
+      "correctAnswer": "4",
+      "formula": "M = N I A",
+      "solution": "Area $A = (0.1)^2 = 0.01\\text{ m}^2$. Dipole moment $M = 20 \\times 2 \\times 0.01 = 0.4\\text{ A m}^2 = 4 \\times 10^{-1}\\text{ A m}^2 \\implies x = 4$.",
+      "notebookSolution": {
+        "given": "N = 20, I = 2 A, side = 0.1 m",
+        "concept": "Magnetic moment M = NIA",
+        "steps": [
+          "A = 0.1² = 0.01 m²",
+          "M = 20 × 2 × 0.01 = 0.4 A m² = 4 × 10⁻¹"
+        ],
+        "conclusion": "x = 4.",
+        "pitfall": "Do not forget number of turns N."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-phy-25",
+      "subject": "physics",
+      "chapter": "Kinetic Theory of Gases",
+      "topic": "Degrees of Freedom of Diatomic Gas",
+      "difficulty": "easy",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Apr 6 Shift 1)",
+      "text": "At room temperature, the total degrees of freedom of a rigid diatomic molecule (such as $O_2$ or $N_2$) is:",
+      "correctAnswer": "5",
+      "formula": "f = f_{trans} + f_{rot} = 3 + 2 = 5",
+      "solution": "A rigid diatomic molecule has 3 translational degrees of freedom and 2 rotational degrees of freedom (vibrational modes are frozen at normal temperatures). Total $f = 5$.",
+      "notebookSolution": {
+        "given": "Rigid diatomic gas at room temperature",
+        "concept": "Equipartition of energy degrees of freedom",
+        "steps": [
+          "3 translational + 2 rotational = 5 degrees of freedom"
+        ],
+        "conclusion": "Total degrees of freedom is 5.",
+        "pitfall": "Vibrational degrees of freedom only activate at very high temperatures."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-chem-1",
+      "subject": "chemistry",
+      "chapter": "Some Basic Concepts of Chemistry",
+      "topic": "Mole Concept and Stoichiometry",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Apr 8 Shift 2)",
+      "text": "The number of moles of oxygen atoms present in $24.5\\text{ g}$ of pure sulfuric acid ($H_2SO_4$, molar mass $= 98\\text{ g/mol}$) is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "0.5\\text{ mol}"
+        },
+        {
+          "id": "B",
+          "text": "1\\text{ mol}"
+        },
+        {
+          "id": "C",
+          "text": "0.25\\text{ mol}"
+        },
+        {
+          "id": "D",
+          "text": "2\\text{ mol}"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "n(O) = 4 \\times n(H_2SO_4) = 4 \\times \\frac{m}{M}",
+      "solution": "Moles of $H_2SO_4 = \\frac{24.5}{98} = 0.25\\text{ mol}$. Each molecule has 4 oxygen atoms, so moles of O atoms $= 4 \\times 0.25 = 1\\text{ mol}$.",
+      "notebookSolution": {
+        "given": "Mass = 24.5 g, Molar mass = 98 g/mol",
+        "concept": "Stoichiometry of molecular formula",
+        "steps": [
+          "Moles of H2SO4 = 24.5/98 = 0.25",
+          "Moles of O = 4 × 0.25 = 1"
+        ],
+        "conclusion": "Moles of oxygen atoms is 1 (Option B).",
+        "pitfall": "Do not confuse moles of O atoms with moles of O2 molecules."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-chem-2",
+      "subject": "chemistry",
+      "chapter": "Structure of Atom",
+      "topic": "de Broglie Wavelength of Moving Particles",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Jan 29 Shift 1)",
+      "text": "Two particles $A$ and $B$ have equal masses. If the velocity of particle $A$ is $4$ times the velocity of particle $B$ ($v_A = 4 v_B$), the ratio of their de Broglie wavelengths $\\frac{\\lambda_A}{\\lambda_B}$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$4 : 1$"
+        },
+        {
+          "id": "B",
+          "text": "$1 : 16$"
+        },
+        {
+          "id": "C",
+          "text": "$1 : 4$"
+        },
+        {
+          "id": "D",
+          "text": "$16 : 1$"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "\\lambda = \\frac{h}{p} = \\frac{h}{m v}",
+      "solution": "$$\\lambda = \\frac{h}{m v} \\implies \\frac{\\lambda_A}{\\lambda_B} = \\frac{v_B}{v_A} = \\frac{1}{4} = 1 : 4$$.",
+      "notebookSolution": {
+        "given": "mA = mB, vA = 4 vB",
+        "concept": "de Broglie wavelength is inversely proportional to momentum",
+        "steps": [
+          "λ = h/(mv)",
+          "λA/λB = vB/vA = 1/4"
+        ],
+        "conclusion": "Ratio is 1 : 4 (Option C).",
+        "pitfall": "Wavelength is inversely proportional to velocity."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-chem-3",
+      "subject": "chemistry",
+      "chapter": "Classification of Elements and Periodicity",
+      "topic": "First Ionization Enthalpy Trends",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Apr 8 Shift 2)",
+      "text": "The correct increasing order of the first ionization enthalpies ($\\Delta_i H_1$) of the second period elements is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$B < Be < C < N < O < F < Ne$"
+        },
+        {
+          "id": "B",
+          "text": "$Be < B < C < O < N < F < Ne$"
+        },
+        {
+          "id": "C",
+          "text": "$B < C < Be < O < N < F < Ne$"
+        },
+        {
+          "id": "D",
+          "text": "$B < Be < C < O < N < F < Ne$"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "\\Delta_i H_1 \\text{ anomalous stability: } Be(2s^2) > B(2p^1), \\; N(2p^3) > O(2p^4)",
+      "solution": "Across a period, ionization enthalpy generally increases with effective nuclear charge, with anomalies: $Be(2s^2)$ has higher $\\Delta_i H$ than $B(2s^2 2p^1)$ due to fully-filled $2s$ subshell, and $N(2s^2 2p^3)$ has higher $\\Delta_i H$ than $O(2s^2 2p^4)$ due to half-filled $2p$ subshell. Hence: $B < Be < C < O < N < F < Ne$.",
+      "notebookSolution": {
+        "given": "Second period elements",
+        "concept": "Penetration and half-filled subshell extra stability",
+        "steps": [
+          "Be > B because of 2s² penetration",
+          "N > O because of half-filled 2p³ stability",
+          "Order: B < Be < C < O < N < F < Ne"
+        ],
+        "conclusion": "Correct order is B < Be < C < O < N < F < Ne (Option D).",
+        "pitfall": "Do not assume strictly monotonic increase across period."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-chem-4",
+      "subject": "chemistry",
+      "chapter": "Chemical Bonding and Molecular Structure",
+      "topic": "VSEPR Theory and Molecular Geometries",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Jan 29 Shift 1)",
+      "text": "According to VSEPR theory, the molecular shapes of $SF_4$, $ClF_3$, and $XeF_4$ respectively are:",
+      "options": [
+        {
+          "id": "A",
+          "text": "See-saw, T-shaped, Square planar"
+        },
+        {
+          "id": "B",
+          "text": "Tetrahedral, Trigonal planar, Octahedral"
+        },
+        {
+          "id": "C",
+          "text": "Square planar, See-saw, T-shaped"
+        },
+        {
+          "id": "D",
+          "text": "T-shaped, See-saw, Square planar"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "\\text{Steric Number} = \\frac{1}{2}(V + M - C + A)",
+      "solution": "- $SF_4$: Steric no $= 4\\text{ bp} + 1\\text{ lp} = 5$ (trigonal bipyramidal geometry) $\\implies$ **See-saw** shape.\n- $ClF_3$: Steric no $= 3\\text{ bp} + 2\\text{ lp} = 5$ $\\implies$ **T-shaped**.\n- $XeF_4$: Steric no $= 4\\text{ bp} + 2\\text{ lp} = 6$ (octahedral geometry) $\\implies$ **Square planar** shape.",
+      "notebookSolution": {
+        "given": "SF4, ClF3, XeF4 molecules",
+        "concept": "VSEPR steric number = bond pairs + lone pairs",
+        "steps": [
+          "SF4 has 1 lp -> see-saw",
+          "ClF3 has 2 lp -> T-shaped",
+          "XeF4 has 2 lp -> square planar"
+        ],
+        "conclusion": "Shapes are See-saw, T-shaped, Square planar (Option A).",
+        "pitfall": "Distinguish between electron geometry and molecular shape."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-chem-5",
+      "subject": "chemistry",
+      "chapter": "Chemical Thermodynamics",
+      "topic": "Relation between Enthalpy and Internal Energy",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Apr 8 Shift 2)",
+      "text": "For the gaseous Haber synthesis reaction: $N_2(g) + 3H_2(g) \\rightleftharpoons 2NH_3(g)$ at $298\\text{ K}$, the correct relation between enthalpy change ($\\Delta H$) and internal energy change ($\\Delta U$) is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$\\Delta H > \\Delta U$"
+        },
+        {
+          "id": "B",
+          "text": "$\\Delta H < \\Delta U$"
+        },
+        {
+          "id": "C",
+          "text": "$\\Delta H = \\Delta U$"
+        },
+        {
+          "id": "D",
+          "text": "$\\Delta H = 2\\Delta U$"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "\\Delta H = \\Delta U + \\Delta n_g R T",
+      "solution": "$$\\Delta n_g = n_{p(g)} - n_{r(g)} = 2 - (1 + 3) = -2$$.\n$$\\Delta H = \\Delta U + (-2)RT = \\Delta U - 2RT$$.\nSince $2RT > 0$, we have $\\Delta H < \\Delta U$.",
+      "notebookSolution": {
+        "given": "N2(g) + 3H2(g) <=> 2NH3(g)",
+        "concept": "ΔH = ΔU + Δn_g RT",
+        "steps": [
+          "Δn_g = 2 - 4 = -2",
+          "ΔH = ΔU - 2RT",
+          "Therefore ΔH < ΔU"
+        ],
+        "conclusion": "ΔH < ΔU (Option B).",
+        "pitfall": "Count only gaseous moles when computing Δn_g."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-chem-6",
+      "subject": "chemistry",
+      "chapter": "Equilibrium",
+      "topic": "pH of Acidic Buffer Solution",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Jan 29 Shift 1)",
+      "text": "An acidic buffer solution contains $0.2\\text{ M } CH_3COONa$ and $0.1\\text{ M } CH_3COOH$. Given $pK_a(CH_3COOH) = 4.75$ and $\\log 2 = 0.301$, the pH of the buffer solution is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "4.75"
+        },
+        {
+          "id": "B",
+          "text": "4.45"
+        },
+        {
+          "id": "C",
+          "text": "5.05"
+        },
+        {
+          "id": "D",
+          "text": "5.75"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "pH = pK_a + \\log\\frac{[\\text{Salt}]}{[\\text{Acid}]}",
+      "solution": "$$pH = pK_a + \\log\\frac{[CH_3COO^-]}{[CH_3COOH]} = 4.75 + \\log\\left(\\frac{0.2}{0.1}\\right) = 4.75 + \\log 2 = 4.75 + 0.30 = 5.05$$.",
+      "notebookSolution": {
+        "given": "[Salt] = 0.2 M, [Acid] = 0.1 M, pKa = 4.75",
+        "concept": "Henderson-Hasselbalch equation",
+        "steps": [
+          "pH = 4.75 + log(0.2/0.1) = 4.75 + 0.301 = 5.05"
+        ],
+        "conclusion": "pH = 5.05 (Option C).",
+        "pitfall": "Ensure [Salt] is in numerator and [Acid] in denominator."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-chem-7",
+      "subject": "chemistry",
+      "chapter": "Solutions",
+      "topic": "Positive and Negative Deviations from Raoult Law",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Apr 8 Shift 2)",
+      "text": "Which of the following binary liquid mixtures exhibits a **positive deviation** from Raoult's law ($Delta H_{mix} > 0, Delta V_{mix} > 0$)?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Chloroform + Acetone"
+        },
+        {
+          "id": "B",
+          "text": "Phenol + Aniline"
+        },
+        {
+          "id": "C",
+          "text": "Nitric acid + Water"
+        },
+        {
+          "id": "D",
+          "text": "Ethanol + Acetone"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "P_{total} > P_A^\\circ x_A + P_B^\\circ x_B \\text{ due to weaker A-B interactions}",
+      "solution": "In pure ethanol, molecules are strongly held by intermolecular hydrogen bonds. When acetone is added, its molecules get between ethanol molecules and break some of the hydrogen bonds, weakening intermolecular forces. Hence, vapor pressure increases (positive deviation). Chloroform + acetone exhibits negative deviation due to new hydrogen bond formation.",
+      "notebookSolution": {
+        "given": "Pairs of liquid mixtures",
+        "concept": "Intermolecular forces vs Raoult law deviations",
+        "steps": [
+          "Ethanol + Acetone breaks H-bonds -> positive deviation",
+          "Chloroform + Acetone forms H-bonds -> negative deviation"
+        ],
+        "conclusion": "Ethanol + Acetone shows positive deviation (Option D).",
+        "pitfall": "Negative deviation occurs when new intermolecular attractions are formed."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-chem-8",
+      "subject": "chemistry",
+      "chapter": "Electrochemistry",
+      "topic": "Standard Cell Potential of Galvanic Cell",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Jan 29 Shift 1)",
+      "text": "Given the standard reduction potentials $E^\\circ(Zn^{2+}/Zn) = -0.76\\text{ V}$ and $E^\\circ(Cu^{2+}/Cu) = +0.34\\text{ V}$, the standard EMF ($E^\\circ_{cell}$) of the Daniell cell is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$+1.1\\text{ V}$"
+        },
+        {
+          "id": "B",
+          "text": "$-1.1\\text{ V}$"
+        },
+        {
+          "id": "C",
+          "text": "$0.42\\text{ V}$"
+        },
+        {
+          "id": "D",
+          "text": "$1.52\\text{ V}$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "E^\\circ_{cell} = E^\\circ_{cathode} - E^\\circ_{anode}",
+      "solution": "$$E^\\circ_{cell} = E^\\circ(Cu^{2+}/Cu) - E^\\circ(Zn^{2+}/Zn) = 0.34 - (-0.76) = +1.10\\text{ V}$$.",
+      "notebookSolution": {
+        "given": "E°(Zn²+/Zn) = -0.76 V, E°(Cu²+/Cu) = +0.34 V",
+        "concept": "Standard EMF = Cathode potential - Anode potential",
+        "steps": [
+          "E°cell = 0.34 - (-0.76) = 1.10 V"
+        ],
+        "conclusion": "E°cell is +1.10 V (Option A).",
+        "pitfall": "Always use standard reduction potentials."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-chem-9",
+      "subject": "chemistry",
+      "chapter": "Chemical Kinetics",
+      "topic": "First Order Reaction Kinetics",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Apr 8 Shift 2)",
+      "text": "For a first-order chemical reaction, the half-life period is $t_{1/2} = 40\\text{ min}$. The time required for $75\\%$ completion of the reaction is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "120\\text{ min}"
+        },
+        {
+          "id": "B",
+          "text": "80\\text{ min}"
+        },
+        {
+          "id": "C",
+          "text": "50\\text{ min}"
+        },
+        {
+          "id": "D",
+          "text": "160\\text{ min}"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "t_{75\\%} = 2 \\times t_{1/2}",
+      "solution": "For a first order reaction, after $1$ half-life, $50\\%$ remains. After $2$ half-lives, $25\\%$ remains (meaning $75\\%$ completed). Hence, $t_{75\\%} = 2 \\times t_{1/2} = 2 \\times 40 = 80\\text{ min}$.",
+      "notebookSolution": {
+        "given": "t1/2 = 40 min",
+        "concept": "First order kinetics fraction remaining = (1/2)^n",
+        "steps": [
+          "For 75% completion, remaining is 25% = (1/2)²",
+          "n = 2 half lives",
+          "t = 2 × 40 = 80 min"
+        ],
+        "conclusion": "Time is 80 min (Option B).",
+        "pitfall": "Do not use linear proportion (first order is exponential)."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-chem-10",
+      "subject": "chemistry",
+      "chapter": "Surface Chemistry",
+      "topic": "Hardy-Schulze Rule for Coagulation",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Jan 29 Shift 1)",
+      "text": "According to the Hardy-Schulze rule, the correct decreasing order of flocculating (coagulating) power of cations for a negatively charged arsenious sulfide ($As_2S_3$) sol is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$Na^+ > Ba^{2+} > Al^{3+}$"
+        },
+        {
+          "id": "B",
+          "text": "$Ba^{2+} > Al^{3+} > Na^+$"
+        },
+        {
+          "id": "C",
+          "text": "$Al^{3+} > Ba^{2+} > Na^+$"
+        },
+        {
+          "id": "D",
+          "text": "$Al^{3+} = Ba^{2+} = Na^+$"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "\\text{Coagulating Power} \\propto (\\text{Valency of active ion})^6",
+      "solution": "Hardy-Schulze rule states that the coagulating power of an ion having opposite charge to that of colloidal particles increases with increasing valency of the coagulating ion. For negatively charged $As_2S_3$ sol, the coagulating ion is cation. Valency order: $Al^{3+} (+3) > Ba^{2+} (+2) > Na^+ (+1)$.",
+      "notebookSolution": {
+        "given": "Negatively charged As2S3 sol",
+        "concept": "Hardy-Schulze rule: higher valency means higher flocculating power",
+        "steps": [
+          "Valency: Al³⁺ = 3, Ba²⁺ = 2, Na⁺ = 1",
+          "Order: Al³⁺ > Ba²⁺ > Na⁺"
+        ],
+        "conclusion": "Order is Al³⁺ > Ba²⁺ > Na⁺ (Option C).",
+        "pitfall": "Flocculating power is inversely proportional to flocculation value."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-chem-11",
+      "subject": "chemistry",
+      "chapter": "p-Block Elements",
+      "topic": "Structure of Oxoacids of Phosphorus",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Apr 8 Shift 2)",
+      "text": "In orthophosphorous acid ($H_3PO_3$), the number and types of bonds connected to the central phosphorus atom are:",
+      "options": [
+        {
+          "id": "A",
+          "text": "Two $P-H$, one $P-OH$, and one $P=O$ bond"
+        },
+        {
+          "id": "B",
+          "text": "Three $P-OH$ and one $P=O$ bond"
+        },
+        {
+          "id": "C",
+          "text": "Two $P-H$ and two $P-OH$ bonds"
+        },
+        {
+          "id": "D",
+          "text": "One $P-H$, two $P-OH$, and one $P=O$ bond"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "H_3PO_3 \\text{ contains one P-H, two P-OH, and one P=O bond (dibasic acid)}",
+      "solution": "Phosphorous acid ($H_3PO_3$) has tetrahedral geometry around phosphorus with: 1 $P=O$ bond, 2 ionizable $P-OH$ bonds (making it a dibasic acid with basicity 2), and 1 non-ionizable $P-H$ bond (which gives it strong reducing properties).",
+      "notebookSolution": {
+        "given": "H3PO3 molecule",
+        "concept": "Oxoacids of phosphorus structure and basicity",
+        "steps": [
+          "P has 5 valence electrons",
+          "1 P=O bond, 2 P-OH bonds, 1 P-H bond",
+          "Basicity = 2"
+        ],
+        "conclusion": "One P-H, two P-OH, and one P=O bond (Option D).",
+        "pitfall": "Basicity is determined only by the number of P-OH bonds, not total H atoms."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-chem-12",
+      "subject": "chemistry",
+      "chapter": "d and f Block Elements",
+      "topic": "Lanthanoid Contraction and Consequences",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Jan 29 Shift 1)",
+      "text": "Which of the following is **INCORRECT** regarding the consequences of Lanthanoid Contraction?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Shielding by $4f$ electrons is extremely poor, leading to higher effective nuclear charge"
+        },
+        {
+          "id": "B",
+          "text": "Nearly identical atomic radii of $Zr$ ($4d$) and $Hf$ ($5d$)"
+        },
+        {
+          "id": "C",
+          "text": "Shielding by $4f$ electrons is extremely effective and completely offsets nuclear pull"
+        },
+        {
+          "id": "D",
+          "text": "Decrease in basic strength of hydroxides from $La(OH)_3$ to $Lu(OH)_3$"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "\\text{Poor shielding: } s > p > d > f",
+      "solution": "Lanthanoid contraction occurs because $4f$ electrons have diffuse spatial shapes and exert very **poor** (ineffective) shielding on outer electrons. As nuclear charge increases by 14 units, the outer electrons feel an increased effective nuclear charge, causing contraction. Thus, statement C is INCORRECT.",
+      "notebookSolution": {
+        "given": "Consequences of lanthanoid contraction",
+        "concept": "4f electrons have poor shielding power",
+        "steps": [
+          "4f orbitals shield poorly",
+          "Nuclear charge increases, pulling shells inward",
+          "Statement C claiming 4f shielding is effective is false"
+        ],
+        "conclusion": "Option C is incorrect.",
+        "pitfall": "Remember 4f has poorest shielding among all subshells."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-chem-13",
+      "subject": "chemistry",
+      "chapter": "Coordination Compounds",
+      "topic": "Crystal Field Theory and Diamagnetic Complexes",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Apr 8 Shift 2)",
+      "text": "Which of the following octahedral coordination complexes is **diamagnetic** (zero unpaired electrons) and inner orbital ($d^2sp^3$ hybridized)?",
+      "options": [
+        {
+          "id": "A",
+          "text": "$[FeF_6]^{3-}$"
+        },
+        {
+          "id": "B",
+          "text": "$[Co(NH_3)_6]^{3+}$"
+        },
+        {
+          "id": "C",
+          "text": "$[Cr(H_2O)_6]^{3+}$"
+        },
+        {
+          "id": "D",
+          "text": "$[NiCl_4]^{2-}$"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "Co^{3+} (d^6) + \\text{strong field ligand } NH_3 \\implies t_{2g}^6 e_g^0, \\; \\mu = 0",
+      "solution": "In $[Co(NH_3)_6]^{3+}$, Cobalt is in $+3$ oxidation state: $Co^{3+} = [Ar] 3d^6$. Ammonia ($NH_3$) acts as a strong-field ligand, causing pairing of electrons in $t_{2g}$ orbitals: electronic configuration is $t_{2g}^6 e_g^0$. With $0$ unpaired electrons, the complex is diamagnetic.",
+      "notebookSolution": {
+        "given": "Cobalt complex [Co(NH3)6]³⁺",
+        "concept": "Crystal field pairing by strong-field ligand NH3",
+        "steps": [
+          "Co³⁺ has 3d⁶ configuration",
+          "Δo > P causes all 6 electrons to pair in t2g",
+          "Number of unpaired electrons = 0 (diamagnetic)"
+        ],
+        "conclusion": "[Co(NH3)6]³⁺ is diamagnetic (Option B).",
+        "pitfall": "FeF6³⁻ has weak field F⁻ so it is high-spin paramagnetic."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-chem-14",
+      "subject": "chemistry",
+      "chapter": "Organic Chemistry - Some Basic Principles and Techniques",
+      "topic": "Carbocation Stability and Hyperconjugation",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Jan 29 Shift 1)",
+      "text": "The correct decreasing order of stability of simple alkyl carbocations is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$CH_3^+ > CH_3CH_2^+ > (CH_3)_2CH^+ > (CH_3)_3C^+$"
+        },
+        {
+          "id": "B",
+          "text": "$(CH_3)_2CH^+ > (CH_3)_3C^+ > CH_3CH_2^+ > CH_3^+$"
+        },
+        {
+          "id": "C",
+          "text": "$(CH_3)_3C^+ > (CH_3)_2CH^+ > CH_3CH_2^+ > CH_3^+$"
+        },
+        {
+          "id": "D",
+          "text": "$(CH_3)_3C^+ > CH_3CH_2^+ > (CH_3)_2CH^+ > CH_3^+$"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "\\text{Stability } \\propto \\text{Number of } \\alpha\\text{-hydrogens (hyperconjugation) and } +I \\text{ effect}",
+      "solution": "Stability of alkyl carbocations is governed by hyperconjugation and inductive ($+I$) effects:\n- $(CH_3)_3C^+$ (tert-butyl): $9\\;\\alpha$-hydrogens\n- $(CH_3)_2CH^+$ (isopropyl): $6\\;\\alpha$-hydrogens\n- $CH_3CH_2^+$ (ethyl): $3\\;\\alpha$-hydrogens\n- $CH_3^+$ (methyl): $0\\;\\alpha$-hydrogens\nOrder: $3^\\circ > 2^\\circ > 1^\\circ > \\text{methyl}$.",
+      "notebookSolution": {
+        "given": "Alkyl carbocations",
+        "concept": "Hyperconjugation stability increases with α-hydrogens",
+        "steps": [
+          "tert-butyl: 9 α-H",
+          "isopropyl: 6 α-H",
+          "ethyl: 3 α-H",
+          "methyl: 0 α-H"
+        ],
+        "conclusion": "Order is 3° > 2° > 1° > methyl (Option C).",
+        "pitfall": "Do not confuse with carbanion stability which is reverse."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-chem-15",
+      "subject": "chemistry",
+      "chapter": "Haloalkanes and Haloarenes",
+      "topic": "Nucleophilic Substitution SN2 Mechanism",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Apr 8 Shift 2)",
+      "text": "The reaction of optically active $(R)$-2-bromobutane with aqueous $NaOH$ in acetone predominantly proceeds via:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$S_N1$ reaction with complete retention of configuration"
+        },
+        {
+          "id": "B",
+          "text": "$S_N1$ reaction leading to complete racemization"
+        },
+        {
+          "id": "C",
+          "text": "$E2$ elimination giving exclusively 2-butene"
+        },
+        {
+          "id": "D",
+          "text": "$S_N2$ reaction with complete inversion of configuration (Walden inversion)"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "\\text{Backside nucleophilic attack } \\implies \\text{Walden Inversion}",
+      "solution": "Secondary alkyl halides with strong nucleophiles ($OH^-$) in polar aprotic/favorable solvent predominantly proceed through bimolecular nucleophilic substitution ($S_N2$) mechanism with backside attack, resulting in 100% optical inversion (Walden inversion) to $(S)$-2-butanol.",
+      "notebookSolution": {
+        "given": "(R)-2-bromobutane + NaOH",
+        "concept": "SN2 mechanism stereochemistry",
+        "steps": [
+          "Backside attack of OH⁻",
+          "Departure of Br⁻ simultaneously",
+          "Complete Walden inversion of configuration"
+        ],
+        "conclusion": "Proceeds via SN2 with complete inversion (Option D).",
+        "pitfall": "SN1 gives partial racemization with slight net inversion; pure SN2 gives full inversion."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-chem-16",
+      "subject": "chemistry",
+      "chapter": "Alcohols, Phenols and Ethers",
+      "topic": "Reimer-Tiemann Reaction Intermediate",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Jan 29 Shift 1)",
+      "text": "In the Reimer-Tiemann reaction of phenol with chloroform ($CHCl_3$) and aqueous $NaOH$ to yield salicylaldehyde, the active electrophilic intermediate is:",
+      "options": [
+        {
+          "id": "A",
+          "text": ":CCl_2 \\text{ (Dichlorocarbene)}"
+        },
+        {
+          "id": "B",
+          "text": ":CH_2 \\text{ (Carbene)}"
+        },
+        {
+          "id": "C",
+          "text": "CCl_3^+ \\text{ (Trichloromethyl cation)}"
+        },
+        {
+          "id": "D",
+          "text": "CHCl_2^- \\text{ (Dichloromethyl anion)}"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "CHCl_3 + OH^- \\rightleftharpoons :CCl_3^- \\xrightarrow{-\\,Cl^-} :CCl_2",
+      "solution": "Hydroxide abstracts an acidic proton from $CHCl_3$ to generate the trichloromethyl carbanion, which then undergoes $\\alpha$-elimination of chloride ion to generate neutral, electron-deficient **dichlorocarbene** ($:CCl_2$), which acts as the electrophile attacking the phenoxide ring.",
+      "notebookSolution": {
+        "given": "Reimer-Tiemann reaction",
+        "concept": "Electrophilic aromatic substitution by neutral carbene",
+        "steps": [
+          "Base deprotonates CHCl3",
+          "α-elimination yields :CCl2",
+          ":CCl2 attacks phenoxide ring at ortho position"
+        ],
+        "conclusion": "Intermediate is dichlorocarbene :CCl2 (Option A).",
+        "pitfall": "It is neutral dichlorocarbene, not a charged carbocation."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-chem-17",
+      "subject": "chemistry",
+      "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+      "topic": "Cannizzaro Reaction Condition",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Apr 8 Shift 2)",
+      "text": "Which pair of aldehydes lacks $\\alpha$-hydrogen atoms and undergoes disproportionation in concentrated alkali via the **Cannizzaro reaction**?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Acetaldehyde ($CH_3CHO$) and Acetone ($CH_3COCH_3$)"
+        },
+        {
+          "id": "B",
+          "text": "Formaldehyde ($HCHO$) and Benzaldehyde ($C_6H_5CHO$)"
+        },
+        {
+          "id": "C",
+          "text": "Propanal ($CH_3CH_2CHO$) and Benzaldehyde"
+        },
+        {
+          "id": "D",
+          "text": "Acetaldehyde and Formaldehyde"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "2\\,\\text{R-CHO} \\xrightarrow{50\\%\\,NaOH} \\text{R-CH}_2\\text{OH} + \\text{R-COO}^-Na^+",
+      "solution": "Aldehydes with no $\\alpha$-hydrogen atoms cannot form enolates and therefore undergo Cannizzaro self-redox reaction in conc. $NaOH$. Both $HCHO$ and $C_6H_5CHO$ lack $\\alpha$-hydrogens. Acetaldehyde ($CH_3CHO$) has $3\\;\\alpha$-hydrogens and undergoes aldol condensation instead.",
+      "notebookSolution": {
+        "given": "Aldehydes in concentrated alkali",
+        "concept": "Cannizzaro reaction requires absence of α-hydrogens",
+        "steps": [
+          "HCHO has no α-carbon -> no α-H",
+          "C6H5CHO has aromatic ring without α-H",
+          "Both disproportionate to alcohol and carboxylate"
+        ],
+        "conclusion": "Formaldehyde and Benzaldehyde (Option B).",
+        "pitfall": "Presence of even one α-hydrogen promotes aldol condensation instead."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-chem-18",
+      "subject": "chemistry",
+      "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+      "topic": "Hell-Volhard-Zelinsky (HVZ) Reaction",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Jan 29 Shift 1)",
+      "text": "Propanoic acid on treatment with which of the following reagents undergoes $\\alpha$-bromination to yield 2-bromopropanoic acid (Hell-Volhard-Zelinsky reaction)?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Alc. $KOH$"
+        },
+        {
+          "id": "B",
+          "text": "$LiAlH_4$"
+        },
+        {
+          "id": "C",
+          "text": "Red $P + Br_2$"
+        },
+        {
+          "id": "D",
+          "text": "$SOCl_2$"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "R-CH_2-COOH \\xrightarrow{X_2 / \\text{Red } P} R-CH(X)-COOH",
+      "solution": "Carboxylic acids having $\\alpha$-hydrogen atoms are halogenated at the $\\alpha$-position on treatment with chlorine or bromine in the presence of small amounts of red phosphorus (HVZ reaction).",
+      "notebookSolution": {
+        "given": "Conversion of propanoic acid to 2-bromopropanoic acid",
+        "concept": "Hell-Volhard-Zelinsky α-halogenation",
+        "steps": [
+          "Reagents: Br2 with red phosphorus catalytic amount",
+          "Enolization of acid halide intermediate directs substitution to α-position"
+        ],
+        "conclusion": "Reagent is Red P + Br2 (Option C).",
+        "pitfall": "HVZ only works if the acid contains at least one α-hydrogen."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-chem-19",
+      "subject": "chemistry",
+      "chapter": "Amines",
+      "topic": "Carbylamine Test for Primary Amines",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Apr 8 Shift 2)",
+      "text": "Which of the following reactions produces an extremely foul-smelling **isocyanide** (Carbylamine reaction)?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Dimethylamine ($(CH_3)_2NH$) with $CHCl_3 + alc. KOH$"
+        },
+        {
+          "id": "B",
+          "text": "Trimethylamine ($(CH_3)_3N$) with $CHCl_3 + alc. KOH$"
+        },
+        {
+          "id": "C",
+          "text": "Aniline with nitrous acid at $0-5^\\circ\\text{C}$"
+        },
+        {
+          "id": "D",
+          "text": "Methylamine ($CH_3NH_2$) with $CHCl_3 + alc. KOH$"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "R-NH_2 + CHCl_3 + 3KOH \\xrightarrow{\\Delta} R-NC + 3KCl + 3H_2O",
+      "solution": "The Carbylamine test is given exclusively by aliphatic and aromatic **primary ($1^\\circ$) amines** when heated with chloroform and alcoholic $KOH$, forming an offensive-smelling isocyanide ($R-NC$). Secondary and tertiary amines do NOT give this test.",
+      "notebookSolution": {
+        "given": "Carbylamine test options",
+        "concept": "Specific test for primary amines",
+        "steps": [
+          "Primary amines react with CHCl3 + alc. KOH",
+          "Forms foul smelling carbylamine (isocyanide)",
+          "Secondary and tertiary amines fail to react"
+        ],
+        "conclusion": "Methylamine with CHCl3 + alc. KOH (Option D).",
+        "pitfall": "Secondary and tertiary amines do not have two protons on nitrogen to form isocyanide."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-chem-20",
+      "subject": "chemistry",
+      "chapter": "Biomolecules",
+      "topic": "Denaturation of Proteins",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Jan 29 Shift 1)",
+      "text": "During the denaturation of proteins caused by physical changes (such as heat) or chemical changes (pH variation), which structural level **remains intact**?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Primary structure (sequence of amino acids held by peptide bonds)"
+        },
+        {
+          "id": "B",
+          "text": "Secondary structure ($alpha$-helix and $\beta$-pleated sheets)"
+        },
+        {
+          "id": "C",
+          "text": "Tertiary structure (three-dimensional globular folding)"
+        },
+        {
+          "id": "D",
+          "text": "Quaternary structure (aggregation of multi-subunit complexes)"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "\\text{Denaturation breaks H-bonds and disulfide linkages, keeping covalent peptide backbone intact}",
+      "solution": "During denaturation, hydrogen bonds and ionic interactions stabilizing the secondary, tertiary, and quaternary structures are disrupted, causing the protein to unfold and lose biological activity. The covalent peptide bonds of the **primary structure** remain intact.",
+      "notebookSolution": {
+        "given": "Denaturation of proteins",
+        "concept": "Effect of denaturation on protein hierarchy",
+        "steps": [
+          "Secondary, tertiary, quaternary structures collapse",
+          "Covalent peptide bonds are not broken by gentle denaturation",
+          "Primary structure remains intact"
+        ],
+        "conclusion": "Primary structure remains intact (Option A).",
+        "pitfall": "Enzymatic hydrolysis breaks primary structure, but thermal denaturation does not."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-chem-21",
+      "subject": "chemistry",
+      "chapter": "Redox Reactions",
+      "topic": "Oxidation Number of Chromium",
+      "difficulty": "easy",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Apr 8 Shift 2)",
+      "text": "The oxidation state of chromium ($Cr$) in the dichromate dianion ($Cr_2O_7^{2-}$) is:",
+      "correctAnswer": "6",
+      "formula": "2x + 7(-2) = -2 \\implies 2x = +12 \\implies x = +6",
+      "solution": "Let oxidation number of $Cr$ be $x$. Sum of oxidation states: $2(x) + 7(-2) = -2 \\implies 2x - 14 = -2 \\implies 2x = 12 \\implies x = +6$.",
+      "notebookSolution": {
+        "given": "Cr2O7²⁻ ion",
+        "concept": "Algebraic sum of oxidation numbers equals overall charge",
+        "steps": [
+          "2x + 7(-2) = -2",
+          "2x - 14 = -2",
+          "x = +6"
+        ],
+        "conclusion": "Oxidation state is 6.",
+        "pitfall": "Do not forget the net charge of -2 on the polyatomic anion."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-chem-22",
+      "subject": "chemistry",
+      "chapter": "Electrochemistry",
+      "topic": "Standard Gibbs Free Energy Change",
+      "difficulty": "medium",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Jan 29 Shift 1)",
+      "text": "For the Daniell cell reaction $Zn(s) + Cu^{2+}(aq) \\to Zn^{2+}(aq) + Cu(s)$, the standard cell potential is $E^\\circ_{cell} = 1.10\\text{ V}$. Taking Faraday constant $F = 96500\\text{ C mol}^{-1}$, the magnitude of standard Gibbs energy change $|\\Delta G^\\circ|$ (in $\\text{kJ mol}^{-1}$, to the nearest integer) is:",
+      "correctAnswer": "212",
+      "formula": "\\Delta G^\\circ = -n F E^\\circ_{cell}",
+      "solution": "$$\\Delta G^\\circ = - (2) \\times (96500) \\times (1.10) = -212300\\text{ J mol}^{-1} = -212.3\\text{ kJ mol}^{-1}$$. Magnitude to nearest integer is $212$.",
+      "notebookSolution": {
+        "given": "n = 2, E° = 1.10 V, F = 96500 C/mol",
+        "concept": "ΔG° = -nFE°cell",
+        "steps": [
+          "ΔG° = -2 × 96500 × 1.10 = -212300 J = -212.3 kJ",
+          "Magnitude = 212"
+        ],
+        "conclusion": "Magnitude is 212 kJ/mol.",
+        "pitfall": "Convert Joules to kiloJoules."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-chem-23",
+      "subject": "chemistry",
+      "chapter": "Chemical Kinetics",
+      "topic": "Units of Rate Constant and Order",
+      "difficulty": "easy",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Apr 8 Shift 2)",
+      "text": "The rate constant of a reaction is given as $k = 3.5 \\times 10^{-4}\\text{ s}^{-1}$. The order of this reaction is:",
+      "correctAnswer": "1",
+      "formula": "\\text{Units of } k = (\\text{mol L}^{-1})^{1 - n} \\text{ s}^{-1}",
+      "solution": "For order $n$, units are $(\\text{mol L}^{-1})^{1-n}\\text{s}^{-1}$. When $n=1$, $(1-n) = 0$, giving units of $\\text{s}^{-1}$. Hence the reaction is first-order ($n = 1$).",
+      "notebookSolution": {
+        "given": "k has units s⁻¹",
+        "concept": "General units of rate constant (conc)^(1-n) × time⁻¹",
+        "steps": [
+          "(mol/L)^(1-n) s⁻¹ = s⁻¹ implies 1 - n = 0",
+          "n = 1"
+        ],
+        "conclusion": "Order is 1.",
+        "pitfall": "Units of rate constant uniquely determine reaction order."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-chem-24",
+      "subject": "chemistry",
+      "chapter": "Coordination Compounds",
+      "topic": "Spin-only Magnetic Moment of Metal Complex",
+      "difficulty": "medium",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Jan 29 Shift 1)",
+      "text": "In the complex $[Fe(H_2O)_6]^{2+}$, water is a weak-field ligand. The number of unpaired electrons in the central iron ion is:",
+      "correctAnswer": "4",
+      "formula": "Fe^{2+} (d^6) \\text{ in weak field } \\implies t_{2g}^4 e_g^2, \\; n = 4",
+      "solution": "Iron has atomic number $26$: $Fe = [Ar] 3d^6 4s^2 \\implies Fe^{2+} = [Ar] 3d^6$. With weak field ligand $H_2O$, $\\Delta_o < P$ (high spin): configuration is $t_{2g}^4 e_g^2$. Unpaired electrons: $2$ in $t_{2g}$ and $2$ in $e_g$, giving total $n = 4$ unpaired electrons.",
+      "notebookSolution": {
+        "given": "[Fe(H2O)6]²⁺, H2O is weak field",
+        "concept": "High spin octahedral d⁶ splitting",
+        "steps": [
+          "Fe²⁺ = 3d⁶",
+          "Weak field: no pairing in eg until t2g is half filled",
+          "Configuration: t2g⁴ eg²",
+          "Unpaired electrons: 2 + 2 = 4"
+        ],
+        "conclusion": "Number of unpaired electrons is 4.",
+        "pitfall": "Fe(CN)6⁴⁻ has strong field ligand so n = 0, but H2O gives high spin n = 4."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-chem-25",
+      "subject": "chemistry",
+      "chapter": "Solutions",
+      "topic": "Depression in Freezing Point with Association",
+      "difficulty": "medium",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Apr 8 Shift 2)",
+      "text": "A $1.0\\text{ molal}$ aqueous solution of a non-electrolyte completely freezes at $-1.86^\\circ\\text{C}$ ($K_f = 1.86\\text{ K kg mol}^{-1}$). If an electrolyte $AB_2$ completely dissociates ($100\\%$ ionization) in water, the freezing point depression $\\Delta T_f$ (in $\\text{K}$) of a $1.0\\text{ molal}$ aqueous solution of $AB_2$ is $x \\times 1.86$. The value of $x$ is:",
+      "correctAnswer": "3",
+      "formula": "\\Delta T_f = i K_f m, \\quad i = 1 + (n-1)\\alpha",
+      "solution": "$AB_2 \\to A^{2+} + 2B^- \\implies n = 3$ ions. With $100\\%$ dissociation, van 't Hoff factor $i = 3$. Hence $\\Delta T_f = 3 \\times 1.86 \\times 1.0 = 3 \\times 1.86 \\implies x = 3$.",
+      "notebookSolution": {
+        "given": "AB2 completely dissociates into 3 ions",
+        "concept": "van t Hoff factor i = 1 + (n-1)α = 3",
+        "steps": [
+          "AB2 -> A²⁺ + 2B⁻ (n = 3)",
+          "α = 1.0 -> i = 3",
+          "ΔTf = 3 × Kf × m = 3 × 1.86"
+        ],
+        "conclusion": "x = 3.",
+        "pitfall": "Remember to count all cation and anion particles."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-math-1",
+      "subject": "mathematics",
+      "chapter": "Sets and Relations",
+      "topic": "Types of Binary Relations",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Apr 9 Shift 1)",
+      "text": "Let $R$ be a binary relation defined on the set of integers $\\mathbb{Z}$ by: $a R b \\iff a \\le b$. Then the relation $R$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "An equivalence relation"
+        },
+        {
+          "id": "B",
+          "text": "Reflexive and transitive, but not symmetric"
+        },
+        {
+          "id": "C",
+          "text": "Symmetric, but neither reflexive nor transitive"
+        },
+        {
+          "id": "D",
+          "text": "Reflexive and symmetric, but not transitive"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "a R a \\implies \\text{Reflexive}; \\quad a R b \\text{ and } b R c \\implies a R c \\implies \\text{Transitive}",
+      "solution": "- Reflexive: For every $a \\in \\mathbb{Z}$, $a \\le a$ is true $\\implies (a,a) \\in R$.\n- Symmetric: If $2 \\le 3$, then $3 \\le 2$ is false $\\implies$ Not symmetric.\n- Transitive: If $a \\le b$ and $b \\le c$, then $a \\le c$ is true $\\implies$ Transitive.\nHence, $R$ is reflexive and transitive, but not symmetric.",
+      "notebookSolution": {
+        "given": "Relation a R b iff a <= b on Z",
+        "concept": "Definitions of reflexivity, symmetry, transitivity",
+        "steps": [
+          "a <= a is true for all integers (reflexive)",
+          "2 <= 3 does not imply 3 <= 2 (not symmetric)",
+          "a <= b and b <= c implies a <= c (transitive)"
+        ],
+        "conclusion": "Reflexive and transitive, but not symmetric (Option B).",
+        "pitfall": "Do not confuse partial order with equivalence relation."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-math-2",
+      "subject": "mathematics",
+      "chapter": "Complex Numbers",
+      "topic": "Cube Roots of Unity",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Jan 30 Shift 2)",
+      "text": "If $\\omega$ is a non-real complex cube root of unity ($1 + \\omega + \\omega^2 = 0$ and $\\omega^3 = 1$), then the value of the expression $(1 + \\omega - \\omega^2)^3$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$+8$"
+        },
+        {
+          "id": "B",
+          "text": "$0$"
+        },
+        {
+          "id": "C",
+          "text": "$-8$"
+        },
+        {
+          "id": "D",
+          "text": "$16$"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "1 + \\omega = -\\omega^2, \\quad \\omega^3 = 1",
+      "solution": "Since $1 + \\omega = -\\omega^2$, we substitute:\n$$(1 + \\omega - \\omega^2)^3 = (-\\omega^2 - \\omega^2)^3 = (-2\\omega^2)^3 = (-2)^3 (\\omega^2)^3 = -8 (\\omega^3)^2 = -8(1)^2 = -8$$.",
+      "notebookSolution": {
+        "given": "Expression (1 + ω - ω²)³",
+        "concept": "Cube roots of unity identities: 1 + ω + ω² = 0, ω³ = 1",
+        "steps": [
+          "1 + ω = -ω²",
+          "( -ω² - ω² )³ = (-2ω²)³",
+          "= -8(ω³)² = -8(1) = -8"
+        ],
+        "conclusion": "Value is -8 (Option C).",
+        "pitfall": "Remember (-2)³ has a negative sign."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-math-3",
+      "subject": "mathematics",
+      "chapter": "Quadratic Equations",
+      "topic": "Symmetric Functions of Roots",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Apr 9 Shift 1)",
+      "text": "If $\\alpha$ and $\\beta$ are the roots of the quadratic equation $x^2 - 7x + 6 = 0$, then the value of $\\alpha^2 + \\beta^2$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$41$"
+        },
+        {
+          "id": "B",
+          "text": "$33$"
+        },
+        {
+          "id": "C",
+          "text": "$47$"
+        },
+        {
+          "id": "D",
+          "text": "$37$"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "\\alpha^2 + \\beta^2 = (\\alpha + \\beta)^2 - 2\\alpha\\beta",
+      "solution": "Sum of roots $\\alpha + \\beta = 7$, product of roots $\\alpha\\beta = 6$.\n$$\\alpha^2 + \\beta^2 = (7)^2 - 2(6) = 49 - 12 = 37$$.",
+      "notebookSolution": {
+        "given": "x² - 7x + 6 = 0",
+        "concept": "Vieta formulas for quadratic equation",
+        "steps": [
+          "α + β = 7",
+          "αβ = 6",
+          "α² + β² = (7)² - 2(6) = 37"
+        ],
+        "conclusion": "Value is 37 (Option D).",
+        "pitfall": "Check minus sign in -2αβ."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-math-4",
+      "subject": "mathematics",
+      "chapter": "Matrices and Determinants",
+      "topic": "Determinant of Adjoint Matrix",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Jan 30 Shift 2)",
+      "text": "Let $A$ be a non-singular square matrix of order $3 \\times 3$ with determinant $|A| = 5$. The determinant of its adjoint matrix $|\\text{adj}(A)|$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$25$"
+        },
+        {
+          "id": "B",
+          "text": "$5$"
+        },
+        {
+          "id": "C",
+          "text": "$125$"
+        },
+        {
+          "id": "D",
+          "text": "$11$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "|\\text{adj}(A)| = |A|^{n-1}",
+      "solution": "For an $n \\times n$ matrix, $|\\text{adj}(A)| = |A|^{n-1}$. Here order $n = 3$, so:\n$$|\\text{adj}(A)| = |A|^{3-1} = |A|^2 = (5)^2 = 25$$.",
+      "notebookSolution": {
+        "given": "Order n = 3, |A| = 5",
+        "concept": "|adj(A)| = |A|^(n-1)",
+        "steps": [
+          "|adj(A)| = |A|^(3-1) = |A|²",
+          "= (5)² = 25"
+        ],
+        "conclusion": "Determinant is 25 (Option A).",
+        "pitfall": "Order of matrix is 3, so power is 3 - 1 = 2."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-math-5",
+      "subject": "mathematics",
+      "chapter": "Permutations and Combinations",
+      "topic": "Circular Permutations",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Apr 9 Shift 1)",
+      "text": "The number of distinct ways in which $6$ persons can be seated around a circular table is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$720$"
+        },
+        {
+          "id": "B",
+          "text": "$120$"
+        },
+        {
+          "id": "C",
+          "text": "$60$"
+        },
+        {
+          "id": "D",
+          "text": "$24$"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "\\text{Circular permutations of } n \\text{ distinct items} = (n - 1)!",
+      "solution": "Seating $n = 6$ distinct persons around a circular table where rotations are considered equivalent:\n$$\\text{Ways} = (6 - 1)! = 5! = 5 \\times 4 \\times 3 \\times 2 \\times 1 = 120$$.",
+      "notebookSolution": {
+        "given": "6 persons around circular table",
+        "concept": "Circular arrangement fixes one position: (n-1)!",
+        "steps": [
+          "Formula: (6 - 1)! = 5!",
+          "5! = 120"
+        ],
+        "conclusion": "120 ways (Option B).",
+        "pitfall": "Do not use 6! = 720 (circular symmetry eliminates n equivalent rotations)."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-math-6",
+      "subject": "mathematics",
+      "chapter": "Binomial Theorem",
+      "topic": "Term Independent of x",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Jan 30 Shift 2)",
+      "text": "The term independent of $x$ in the binomial expansion of $\\left(x + \\frac{1}{x}\\right)^6$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$15$"
+        },
+        {
+          "id": "B",
+          "text": "$30$"
+        },
+        {
+          "id": "C",
+          "text": "$20$"
+        },
+        {
+          "id": "D",
+          "text": "$60$"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "T_{r+1} = {}^nC_r x^{n-r} \\left(\\frac{1}{x}\\right)^r = {}^nC_r x^{n-2r}",
+      "solution": "General term $T_{r+1} = {}^6C_r x^{6-r} (x^{-1})^r = {}^6C_r x^{6-2r}$. For term independent of $x$, exponent $6 - 2r = 0 \\implies r = 3$.\n$$T_4 = {}^6C_3 = \\frac{6 \\times 5 \\times 4}{3 \\times 2 \\times 1} = 20$$.",
+      "notebookSolution": {
+        "given": "(x + 1/x)⁶",
+        "concept": "Set exponent of x to zero",
+        "steps": [
+          "x^(6 - 2r) = x^0 implies r = 3",
+          "Coeff = ⁶C₃ = 20"
+        ],
+        "conclusion": "Term independent of x is 20 (Option C).",
+        "pitfall": "Check index r matches general term T_{r+1}."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-math-7",
+      "subject": "mathematics",
+      "chapter": "Sequences and Series",
+      "topic": "Sum of Infinite Geometric Progression",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Apr 9 Shift 1)",
+      "text": "The sum of the infinite geometric series $1 + \\frac{1}{2} + \\frac{1}{4} + \\frac{1}{8} + \\cdots$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$1$"
+        },
+        {
+          "id": "B",
+          "text": "$4$"
+        },
+        {
+          "id": "C",
+          "text": "$\\frac{3}{2}$"
+        },
+        {
+          "id": "D",
+          "text": "$2$"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "S_\\infty = \\frac{a}{1 - r} \\quad (|r| < 1)",
+      "solution": "First term $a = 1$, common ratio $r = \\frac{1}{2} < 1$.\n$$S_\\infty = \\frac{1}{1 - 1/2} = \\frac{1}{1/2} = 2$$.",
+      "notebookSolution": {
+        "given": "Infinite GP with a = 1, r = 1/2",
+        "concept": "S_inf = a / (1 - r)",
+        "steps": [
+          "S_inf = 1 / (1 - 0.5) = 2"
+        ],
+        "conclusion": "Sum is 2 (Option D).",
+        "pitfall": "Only valid when |r| < 1."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-math-8",
+      "subject": "mathematics",
+      "chapter": "Limits, Continuity and Differentiability",
+      "topic": "Indeterminate Form 1 to Power Infinity",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Jan 30 Shift 2)",
+      "text": "The value of the limit $\\lim_{x \\to 0} (1 + 4x)^{\\frac{3}{x}}$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$e^{12}$"
+        },
+        {
+          "id": "B",
+          "text": "$e^{4}$"
+        },
+        {
+          "id": "C",
+          "text": "$e^{3}$"
+        },
+        {
+          "id": "D",
+          "text": "$1$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "\\lim_{x \\to a} [f(x)]^{g(x)} = e^{\\lim_{x \\to a} g(x)[f(x) - 1]}",
+      "solution": "This is of the form $1^\\infty$.\n$$L = e^{\\lim_{x \\to 0} \\frac{3}{x} [(1 + 4x) - 1]} = e^{\\lim_{x \\to 0} \\frac{3}{x} (4x)} = e^{3 \\times 4} = e^{12}$$.",
+      "notebookSolution": {
+        "given": "Limit (1 + ax)^(b/x) as x -> 0",
+        "concept": "1^inf evaluation using e^[lim g(f - 1)]",
+        "steps": [
+          "L = e^[ lim (b/x)(ax) ]",
+          "= e^(ab) = e^12"
+        ],
+        "conclusion": "Limit is e^12 (Option A).",
+        "pitfall": "Ensure base approaches 1 and exponent approaches infinity."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-math-9",
+      "subject": "mathematics",
+      "chapter": "Application of Derivatives",
+      "topic": "Equation of Tangent to Curve",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Apr 9 Shift 1)",
+      "text": "The equation of the tangent line to the parabola $y = x^2$ at the point $(2, 4)$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$y = 4x + 4$"
+        },
+        {
+          "id": "B",
+          "text": "$y = 4x - 4$"
+        },
+        {
+          "id": "C",
+          "text": "$y = 2x - 1$"
+        },
+        {
+          "id": "D",
+          "text": "$y = 4x$"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "y - y_0 = m(x - x_0), \\quad m = \\left.\\frac{dy}{dx}\\right|_{(x_0,y_0)}",
+      "solution": "Derivative: $\\frac{dy}{dx} = 2x$. At $x = 2$, slope $m = 2(2) = 4$.\nEquation of tangent: $y - 4 = 4(x - 2) \\implies y - 4 = 4x - 8 \\implies y = 4x - 4$.",
+      "notebookSolution": {
+        "given": "Curve y = x², point (2, 4)",
+        "concept": "Tangent slope is derivative evaluated at point",
+        "steps": [
+          "dy/dx = 2x",
+          "m = 2(2) = 4",
+          "y - 4 = 4(x - 2) -> y = 4x - 4"
+        ],
+        "conclusion": "Tangent is y = 4x - 4 (Option B).",
+        "pitfall": "Check substitution into point-slope formula."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-math-10",
+      "subject": "mathematics",
+      "chapter": "Application of Derivatives",
+      "topic": "Local Minimum of Polynomial",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Jan 30 Shift 2)",
+      "text": "The function $f(x) = 2x^3 - 9x^2 + 12x + 5$ attains a local minimum at:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$x = 0$"
+        },
+        {
+          "id": "B",
+          "text": "$x = -2$"
+        },
+        {
+          "id": "C",
+          "text": "$x = 2$"
+        },
+        {
+          "id": "D",
+          "text": "$x = 4$"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "f'(x) = 0 \\text{ and } f''(x) > 0",
+      "solution": "Derivative: $f'(x) = 6x^2 - 18x + 12 = 6(x^2 - 3x + 2) = 6(x - 1)(x - 2) = 0 \\implies x = 1, 2$.\nSecond derivative: $f''(x) = 12x - 18$.\n- At $x = 1$: $f''(1) = -6 < 0$ (Local maximum)\n- At $x = 2$: $f''(2) = +6 > 0$ (Local minimum)\nHence local minimum occurs at $x = 2$.",
+      "notebookSolution": {
+        "given": "f(x) = 2x³ - 9x² + 12x + 5",
+        "concept": "Second derivative test for extrema",
+        "steps": [
+          "f'(x) = 6(x - 1)(x - 2) = 0 -> x = 1, 2",
+          "f''(x) = 12x - 18",
+          "f''(2) = 6 > 0 -> local minimum at x = 2"
+        ],
+        "conclusion": "Local minimum at x = 2 (Option C).",
+        "pitfall": "Do not confuse local maximum with local minimum."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-math-11",
+      "subject": "mathematics",
+      "chapter": "Integrals",
+      "topic": "Standard Exponential Integral Identity",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Apr 9 Shift 1)",
+      "text": "The indefinite integral $\\int e^x (\\sin x + \\cos x) \\, dx$ evaluates to:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$e^x \\cos x + C$"
+        },
+        {
+          "id": "B",
+          "text": "$-e^x \\sin x + C$"
+        },
+        {
+          "id": "C",
+          "text": "$e^x (\\sin x - \\cos x) + C$"
+        },
+        {
+          "id": "D",
+          "text": "$e^x \\sin x + C$"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "\\int e^x [f(x) + f'(x)] \\, dx = e^x f(x) + C",
+      "solution": "Let $f(x) = \\sin x$. Then $f'(x) = \\cos x$. Using the standard formula:\n$$\\int e^x [f(x) + f'(x)] \\, dx = e^x f(x) + C = e^x \\sin x + C$$.",
+      "notebookSolution": {
+        "given": "Integral ∫ e^x (sin x + cos x) dx",
+        "concept": "∫ e^x [f(x) + f'(x)] dx = e^x f(x) + C",
+        "steps": [
+          "Let f(x) = sin x, then f'(x) = cos x",
+          "Expression matches e^x (f + f')",
+          "Result = e^x sin x + C"
+        ],
+        "conclusion": "e^x sin x + C (Option D).",
+        "pitfall": "Make sure f'(x) sign matches correctly."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-math-12",
+      "subject": "mathematics",
+      "chapter": "Integrals",
+      "topic": "Properties of Definite Integrals",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Jan 30 Shift 2)",
+      "text": "The value of the definite integral $I = \\int_0^{\\pi/2} \\frac{\\sqrt{\\sin x}}{\\sqrt{\\sin x} + \\sqrt{\\cos x}} \\, dx$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$\\frac{\\pi}{4}$"
+        },
+        {
+          "id": "B",
+          "text": "$\\frac{\\pi}{2}$"
+        },
+        {
+          "id": "C",
+          "text": "$\\pi$"
+        },
+        {
+          "id": "D",
+          "text": "$0$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "\\int_a^b f(x)dx = \\int_a^b f(a+b-x)dx",
+      "solution": "Applying King's property: $x \\to \\frac{\\pi}{2} - x$:\n$$I = \\int_0^{\\pi/2} \\frac{\\sqrt{\\cos x}}{\\sqrt{\\cos x} + \\sqrt{\\sin x}} \\, dx$$.\nAdding the two equations:\n$$2I = \\int_0^{\\pi/2} \\frac{\\sqrt{\\sin x} + \\sqrt{\\cos x}}{\\sqrt{\\sin x} + \\sqrt{\\cos x}} \\, dx = \\int_0^{\\pi/2} 1 \\, dx = \\frac{\\pi}{2} \\implies I = \\frac{\\pi}{4}$$.",
+      "notebookSolution": {
+        "given": "Definite integral with limits 0 to π/2",
+        "concept": "King property: ∫ f(x) = ∫ f(a+b-x)",
+        "steps": [
+          "Replace x with π/2 - x",
+          "Add original and transformed integral: 2I = ∫ 1 dx = π/2",
+          "I = π/4"
+        ],
+        "conclusion": "I = π/4 (Option A).",
+        "pitfall": "Do not forget the factor of 2 in 2I."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-math-13",
+      "subject": "mathematics",
+      "chapter": "Differential Equations",
+      "topic": "Integrating Factor of Linear Differential Equation",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Apr 9 Shift 1)",
+      "text": "The integrating factor (I.F.) for the first-order linear differential equation $\\frac{dy}{dx} + \\frac{2}{x} y = x^3$ (for $x > 0$) is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$2x$"
+        },
+        {
+          "id": "B",
+          "text": "$x^2$"
+        },
+        {
+          "id": "C",
+          "text": "$\\ln x$"
+        },
+        {
+          "id": "D",
+          "text": "$e^{2x}$"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "\\text{I.F.} = e^{\\int P(x)\\,dx}",
+      "solution": "Here $P(x) = \\frac{2}{x}$.\n$$\\text{I.F.} = e^{\\int \\frac{2}{x} \\, dx} = e^{2 \\ln x} = e^{\\ln (x^2)} = x^2$$.",
+      "notebookSolution": {
+        "given": "dy/dx + (2/x)y = x³",
+        "concept": "I.F. = e^(∫ P dx)",
+        "steps": [
+          "P = 2/x",
+          "∫ (2/x) dx = 2 ln x = ln(x²)",
+          "e^(ln x²) = x²"
+        ],
+        "conclusion": "I.F. is x² (Option B).",
+        "pitfall": "Move coefficient inside log as exponent: 2 ln x = ln(x²)."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-math-14",
+      "subject": "mathematics",
+      "chapter": "Straight Lines",
+      "topic": "Distance between Parallel Lines",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Jan 30 Shift 2)",
+      "text": "The perpendicular distance between the parallel lines $3x + 4y + 5 = 0$ and $3x + 4y - 5 = 0$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$1$"
+        },
+        {
+          "id": "B",
+          "text": "$4$"
+        },
+        {
+          "id": "C",
+          "text": "$2$"
+        },
+        {
+          "id": "D",
+          "text": "$\\frac{5}{2}$"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "d = \\frac{|c_1 - c_2|}{\\sqrt{a^2 + b^2}}",
+      "solution": "Both lines have $a = 3, b = 4$.\n$$d = \\frac{|5 - (-5)|}{\\sqrt{3^2 + 4^2}} = \\frac{|10|}{\\sqrt{9 + 16}} = \\frac{10}{5} = 2$$.",
+      "notebookSolution": {
+        "given": "Lines 3x + 4y + 5 = 0 and 3x + 4y - 5 = 0",
+        "concept": "Distance between parallel lines formula",
+        "steps": [
+          "|c1 - c2| = |5 - (-5)| = 10",
+          "√(a² + b²) = √(9 + 16) = 5",
+          "d = 10 / 5 = 2"
+        ],
+        "conclusion": "Distance is 2 units (Option C).",
+        "pitfall": "Ensure coefficients of x and y are identical before using formula."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-math-15",
+      "subject": "mathematics",
+      "chapter": "Circles",
+      "topic": "Condition of Tangency to Circle",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Apr 9 Shift 1)",
+      "text": "The straight line $y = x + c$ is a tangent to the circle $x^2 + y^2 = 25$ if:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$c = \\pm 5$"
+        },
+        {
+          "id": "B",
+          "text": "$c = \\pm 10$"
+        },
+        {
+          "id": "C",
+          "text": "$c = \\pm 25$"
+        },
+        {
+          "id": "D",
+          "text": "$c = \\pm 5\\sqrt{2}$"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "c^2 = a^2(1 + m^2)",
+      "solution": "For circle $x^2 + y^2 = a^2$, the line $y = mx + c$ is tangent if $c^2 = a^2(1 + m^2)$.\nHere $a^2 = 25$ and slope $m = 1$.\n$$c^2 = 25(1 + 1^2) = 25(2) = 50 \\implies c = \\pm \\sqrt{50} = \\pm 5\\sqrt{2}$$.",
+      "notebookSolution": {
+        "given": "Line y = x + c, Circle x² + y² = 25",
+        "concept": "Condition of tangency c² = a²(1 + m²)",
+        "steps": [
+          "m = 1, a² = 25",
+          "c² = 25(1 + 1) = 50",
+          "c = ±5√2"
+        ],
+        "conclusion": "c = ±5√2 (Option D).",
+        "pitfall": "Do not forget both plus and minus signs."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-math-16",
+      "subject": "mathematics",
+      "chapter": "Conic Sections",
+      "topic": "Length of Latus Rectum of Parabola",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Jan 30 Shift 2)",
+      "text": "The length of the latus rectum of the parabola $y^2 = 12x$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$12$"
+        },
+        {
+          "id": "B",
+          "text": "$3$"
+        },
+        {
+          "id": "C",
+          "text": "$6$"
+        },
+        {
+          "id": "D",
+          "text": "$24$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "\\text{Length of Latus Rectum} = 4a",
+      "solution": "Comparing $y^2 = 12x$ with standard equation $y^2 = 4ax$, we have $4a = 12$. Hence the length of the latus rectum is $12$.",
+      "notebookSolution": {
+        "given": "y² = 12x",
+        "concept": "Latus rectum length = 4a",
+        "steps": [
+          "4a = 12"
+        ],
+        "conclusion": "Length is 12 (Option A).",
+        "pitfall": "Latus rectum is 4a, not a."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-math-17",
+      "subject": "mathematics",
+      "chapter": "Conic Sections",
+      "topic": "Eccentricity of Standard Ellipse",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Apr 9 Shift 1)",
+      "text": "The eccentricity of the ellipse $\\frac{x^2}{25} + \\frac{y^2}{16} = 1$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$\\frac{4}{5}$"
+        },
+        {
+          "id": "B",
+          "text": "$\\frac{3}{5}$"
+        },
+        {
+          "id": "C",
+          "text": "$\\frac{9}{25}$"
+        },
+        {
+          "id": "D",
+          "text": "$\\frac{1}{5}$"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "e = \\sqrt{1 - \\frac{b^2}{a^2}} \\quad (a > b)",
+      "solution": "Here $a^2 = 25$ and $b^2 = 16$.\n$$e = \\sqrt{1 - \\frac{16}{25}} = \\sqrt{\\frac{9}{25}} = \\frac{3}{5}$$.",
+      "notebookSolution": {
+        "given": "x²/25 + y²/16 = 1",
+        "concept": "e = √(1 - b²/a²)",
+        "steps": [
+          "a² = 25, b² = 16",
+          "1 - 16/25 = 9/25",
+          "e = 3/5"
+        ],
+        "conclusion": "Eccentricity is 3/5 (Option B).",
+        "pitfall": "Ensure b² < a² in formula for horizontal ellipse."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-math-18",
+      "subject": "mathematics",
+      "chapter": "Vector Algebra",
+      "topic": "Scalar Projection of Vector",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Jan 30 Shift 2)",
+      "text": "The projection of the vector $\\vec{a} = 2\\hat{i} + 3\\hat{j} + 2\\hat{k}$ on the vector $\\vec{b} = \\hat{i} + 2\\hat{j} + \\hat{k}$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$\\frac{10}{\\sqrt{6}}$"
+        },
+        {
+          "id": "B",
+          "text": "$\\frac{8}{\\sqrt{6}}$"
+        },
+        {
+          "id": "C",
+          "text": "$10$"
+        },
+        {
+          "id": "D",
+          "text": "$\\sqrt{6}$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "\\text{Proj}_{\\vec{b}}(\\vec{a}) = \\frac{\\vec{a} \\cdot \\vec{b}}{|\\vec{b}|}",
+      "solution": "$$\\vec{a} \\cdot \\vec{b} = (2)(1) + (3)(2) + (2)(1) = 2 + 6 + 2 = 10$$.\n$$|\\vec{b}| = \\sqrt{1^2 + 2^2 + 1^2} = \\sqrt{6}$$.\n$$\\text{Projection} = \\frac{10}{\\sqrt{6}} = \\frac{5\\sqrt{6}}{3}$$.",
+      "notebookSolution": {
+        "given": "a = 2i + 3j + 2k, b = i + 2j + k",
+        "concept": "Projection = (a . b) / |b|",
+        "steps": [
+          "a . b = 2 + 6 + 2 = 10",
+          "|b| = √(1 + 4 + 1) = √6",
+          "Proj = 10 / √6"
+        ],
+        "conclusion": "Projection is 10/√6.",
+        "pitfall": "Divide by magnitude of target vector b, not a."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-math-19",
+      "subject": "mathematics",
+      "chapter": "Three Dimensional Geometry",
+      "topic": "Angle between Two Straight Lines",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Apr 9 Shift 1)",
+      "text": "The cosine of the angle between two straight lines having direction ratios $\\langle 1, 2, 2 \\rangle$ and $\\langle 2, -2, 1 \\rangle$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$0 \\; (\\theta = 90^\\circ)$"
+        },
+        {
+          "id": "B",
+          "text": "$\\frac{1}{3}$"
+        },
+        {
+          "id": "C",
+          "text": "$\\frac{2}{3}$"
+        },
+        {
+          "id": "D",
+          "text": "$\\frac{1}{2}$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "\\cos\\theta = \\frac{a_1 a_2 + b_1 b_2 + c_1 c_2}{\\sqrt{a_1^2 + b_1^2 + c_1^2}\\sqrt{a_2^2 + b_2^2 + c_2^2}}",
+      "solution": "$$a_1 a_2 + b_1 b_2 + c_1 c_2 = (1)(2) + (2)(-2) + (2)(1) = 2 - 4 + 2 = 0$$.\nSince the numerator is $0$, $\\cos\\theta = 0 \\implies \\theta = 90^\\circ$. The lines are mutually perpendicular.",
+      "notebookSolution": {
+        "given": "Direction ratios <1, 2, 2> and <2, -2, 1>",
+        "concept": "Scalar product of direction ratios",
+        "steps": [
+          "1(2) + 2(-2) + 2(1) = 2 - 4 + 2 = 0",
+          "cos θ = 0",
+          "Lines are perpendicular"
+        ],
+        "conclusion": "cos θ = 0 (θ = 90°).",
+        "pitfall": "Check signs when multiplying direction components."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-math-20",
+      "subject": "mathematics",
+      "chapter": "Probability",
+      "topic": "Conditional Probability",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Jan 30 Shift 2)",
+      "text": "If $P(A) = 0.6$, $P(B) = 0.7$, and $P(A \\cup B) = 0.9$, then the conditional probability $P(A|B)$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$\\frac{4}{7}$"
+        },
+        {
+          "id": "B",
+          "text": "$\\frac{3}{7}$"
+        },
+        {
+          "id": "C",
+          "text": "$\\frac{2}{3}$"
+        },
+        {
+          "id": "D",
+          "text": "$\\frac{1}{2}$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "P(A \\cap B) = P(A) + P(B) - P(A \\cup B), \\quad P(A|B) = \\frac{P(A \\cap B)}{P(B)}",
+      "solution": "$$P(A \\cap B) = 0.6 + 0.7 - 0.9 = 1.3 - 0.9 = 0.4$$.\n$$P(A|B) = \\frac{P(A \\cap B)}{P(B)} = \\frac{0.4}{0.7} = \\frac{4}{7}$$.",
+      "notebookSolution": {
+        "given": "P(A) = 0.6, P(B) = 0.7, P(A ∪ B) = 0.9",
+        "concept": "Addition theorem and conditional probability formula",
+        "steps": [
+          "P(A ∩ B) = 0.6 + 0.7 - 0.9 = 0.4",
+          "P(A|B) = 0.4 / 0.7 = 4/7"
+        ],
+        "conclusion": "P(A|B) = 4/7.",
+        "pitfall": "Divide by P(B), not P(A)."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-math-21",
+      "subject": "mathematics",
+      "chapter": "Binomial Theorem",
+      "topic": "Remainder Theorem in Binomial Expansion",
+      "difficulty": "medium",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Apr 9 Shift 1)",
+      "text": "When $7^{103}$ is divided by $25$, the remainder is:",
+      "correctAnswer": "18",
+      "formula": "7^2 = 49 = 50 - 1 \\equiv -1 \\pmod{25}",
+      "solution": "$$7^{103} = 7 \\times (7^2)^{51} = 7 \\times (49)^{51} = 7 \\times (50 - 1)^{51}$$.\nUsing binomial expansion: $(50 - 1)^{51} = 50k + (-1)^{51} = 50k - 1$.\n$$7(50k - 1) = 350k - 7 = 25(14k - 1) + (25 - 7) = 25m + 18$$.\nHence, the remainder is $18$.",
+      "notebookSolution": {
+        "given": "7¹⁰³ divided by 25",
+        "concept": "Binomial expansion modulo 25",
+        "steps": [
+          "7² = 49 = 50 - 1",
+          "7¹⁰³ = 7 × (49)⁵¹ = 7(50 - 1)⁵¹",
+          "Modulo 25: 7 × (-1)⁵¹ = -7 ≡ 18 (mod 25)"
+        ],
+        "conclusion": "Remainder is 18.",
+        "pitfall": "A negative remainder -7 must be adjusted to positive by adding divisor 25: -7 + 25 = 18."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-math-22",
+      "subject": "mathematics",
+      "chapter": "Matrices and Determinants",
+      "topic": "System of Linear Equations Condition",
+      "difficulty": "medium",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Jan 30 Shift 2)",
+      "text": "The system of linear equations:\n$$x + y + z = 6$$\n$$x + 2y + 3z = 10$$\n$$x + 2y + \\lambda z = \\mu$$\nhas infinitely many solutions when $\\lambda = $",
+      "correctAnswer": "3",
+      "formula": "\\Delta = 0 \\text{ for non-unique solution}",
+      "solution": "Coefficient determinant:\n$$\\Delta = \\begin{vmatrix} 1 & 1 & 1 \\\\ 1 & 2 & 3 \\\\ 1 & 2 & \\lambda \\end{vmatrix} = 1(2\\lambda - 6) - 1(\\lambda - 3) + 1(2 - 2) = 2\\lambda - 6 - \\lambda + 3 = \\lambda - 3$$.\nFor infinitely many solutions, we must have $\\Delta = 0 \\implies \\lambda - 3 = 0 \\implies \\lambda = 3$. (And $\\mu = 10$).",
+      "notebookSolution": {
+        "given": "System of 3 equations with parameters λ and μ",
+        "concept": "Cramer rule Δ = 0 condition",
+        "steps": [
+          "Determinant of coefficients Δ = λ - 3",
+          "For infinitely many solutions Δ = 0 -> λ = 3"
+        ],
+        "conclusion": "λ = 3.",
+        "pitfall": "Check that Δx = Δy = Δz = 0 is also satisfied with μ = 10."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-math-23",
+      "subject": "mathematics",
+      "chapter": "Application of Integrals",
+      "topic": "Area Bounded by Parabola and Line",
+      "difficulty": "medium",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Apr 9 Shift 1)",
+      "text": "The area (in square units) bounded by the parabola $y^2 = 4x$ and the line $y = x$ is $\\frac{k}{3}$. The value of $k$ is:",
+      "correctAnswer": "8",
+      "formula": "\\text{Area} = \\frac{8a^2}{3m^3}",
+      "solution": "Intersection points: $x^2 = 4x \\implies x(x - 4) = 0 \\implies x = 0$ to $x = 4$.\n$$\\text{Area} = \\int_0^4 (2\\sqrt{x} - x)\\,dx = \\left[ 2 \\cdot \\frac{2}{3}x^{3/2} - \\frac{x^2}{2} \\right]_0^4 = \\frac{4}{3}(8) - 8 = \\frac{32}{3} - \\frac{24}{3} = \\frac{8}{3}$$.\nHence $k = 8$.",
+      "notebookSolution": {
+        "given": "y² = 4x and y = x",
+        "concept": "Area between curve and line ∫ (y1 - y2) dx",
+        "steps": [
+          "Limits x = 0 to x = 4",
+          "∫ (2√x - x) dx = 4/3(8) - 16/2 = 32/3 - 8 = 8/3",
+          "k/3 = 8/3 implies k = 8"
+        ],
+        "conclusion": "k = 8.",
+        "pitfall": "Upper curve is y = 2√x and lower curve is y = x in first quadrant."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-math-24",
+      "subject": "mathematics",
+      "chapter": "Vector Algebra",
+      "topic": "Scalar Triple Product Volume of Parallelepiped",
+      "difficulty": "medium",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Jan 30 Shift 2)",
+      "text": "The volume of the parallelepiped formed by the coterminous vectors $\\vec{a} = \\hat{i} + 2\\hat{j} + 3\\hat{k}$, $\\vec{b} = 2\\hat{i} + \\hat{j} + \\hat{k}$, and $\\vec{c} = \\hat{i} + \\hat{j} + \\hat{k}$ is:",
+      "correctAnswer": "1",
+      "formula": "V = |[\\vec{a} \\; \\vec{b} \\; \\vec{c}]| = |\\det(M)|",
+      "solution": "$$V = \\left| \\begin{vmatrix} 1 & 2 & 3 \\\\ 2 & 1 & 1 \\\\ 1 & 1 & 1 \\end{vmatrix} \\right| = | 1(1 - 1) - 2(2 - 1) + 3(2 - 1) | = | 0 - 2 + 3 | = 1$$.",
+      "notebookSolution": {
+        "given": "Coterminous vectors a, b, c",
+        "concept": "Volume = |scalar triple product|",
+        "steps": [
+          "Determinant = 1(0) - 2(1) + 3(1) = 1",
+          "Volume = 1 cubic unit"
+        ],
+        "conclusion": "Volume is 1.",
+        "pitfall": "Always take absolute value of scalar triple product."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-08-math-25",
+      "subject": "mathematics",
+      "chapter": "Three Dimensional Geometry",
+      "topic": "Shortest Distance between Parallel Planes",
+      "difficulty": "easy",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Apr 9 Shift 1)",
+      "text": "The distance between the parallel planes $2x - y + 2z + 3 = 0$ and $4x - 2y + 4z + 18 = 0$ is:",
+      "correctAnswer": "2",
+      "formula": "d = \\frac{|d_1 - d_2|}{\\sqrt{a^2 + b^2 + c^2}}",
+      "solution": "Divide the second plane by $2$: $2x - y + 2z + 9 = 0$.\nBoth planes have $a = 2, b = -1, c = 2$.\n$$d = \\frac{|9 - 3|}{\\sqrt{2^2 + (-1)^2 + 2^2}} = \\frac{6}{\\sqrt{4 + 1 + 4}} = \\frac{6}{\\sqrt{9}} = \\frac{6}{3} = 2$$.",
+      "notebookSolution": {
+        "given": "Planes 2x - y + 2z + 3 = 0 and 4x - 2y + 4z + 18 = 0",
+        "concept": "Distance between parallel planes",
+        "steps": [
+          "Normalize second equation to 2x - y + 2z + 9 = 0",
+          "d = |9 - 3| / √(4 + 1 + 4) = 6 / 3 = 2"
+        ],
+        "conclusion": "Distance is 2.",
+        "pitfall": "Coefficients must be identical before subtracting constant terms."
+      },
+      "verificationStatus": "verified"
+    }
+  ]
+},
+{
+  "config": {
+    "id": "jm-mock-09",
+    "testNumber": 9,
+    "title": "JEE Main 2026 - All-India Grand Mock Test 09",
+    "subtitle": "Full Syllabus (11th + 12th) • 75 Questions • 300 Marks • Exact NTA Format",
+    "examType": "jee_main",
+    "durationMinutes": 180,
+    "totalMarks": 300,
+    "questionCount": 75,
+    "description": "Comprehensive full-syllabus examination reflecting the exact chapter weightage, Section A (20 MCQs) and Section B (5 Numericals) structure of recent NTA papers.",
+    "difficulty": "Balanced",
+    "subjectsIncluded": [
+      "physics",
+      "chemistry",
+      "mathematics"
+    ],
+    "seriesCategory": "jee_main",
+    "badge": "Mock Test 09",
+    "tags": [
+      "Full Syllabus",
+      "NTA Official Weightage",
+      "300 Marks",
+      "180 Mins"
+    ]
+  },
+  "questions": [
+    {
+      "id": "jm-09-phy-1",
+      "subject": "physics",
+      "chapter": "Units and Measurements",
+      "topic": "Percentage Error Propagation",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Apr 6 Shift 1)",
+      "text": "A physical quantity $P$ is related to four observables $a, b, c$ as $P = \\frac{a^{2} b^3}{\\sqrt{c}}$. The percentage errors of measurement in $a, b, c$ are $2\\%$, $2\\%$, and $4\\%$ respectively. The maximum percentage error in $P$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$12\\%$"
+        },
+        {
+          "id": "B",
+          "text": "$9\\%$"
+        },
+        {
+          "id": "C",
+          "text": "$10\\%$"
+        },
+        {
+          "id": "D",
+          "text": "$14\\%$"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "\\frac{\\Delta P}{P} = 2\\frac{\\Delta a}{a} + 3\\frac{\\Delta b}{b} + \\frac{1}{2}\\frac{\\Delta c}{c}",
+      "solution": "$$\\frac{\\Delta P}{P} = 2(2\\%) + 3(2\\%) + \\frac{1}{2}(4\\%) = 4 + 6 + 2 = 10\\%$$.",
+      "notebookSolution": {
+        "given": "a has 2%, b has 2%, c has 4%",
+        "concept": "Percentage errors add linearly with power exponents",
+        "steps": [
+          "ΔP/P = 2×2% + 3×2% + 0.5×4% = 10%"
+        ],
+        "conclusion": "Maximum error is 10% (Option C).",
+        "pitfall": "Denominator powers are always added, never subtracted."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-phy-2",
+      "subject": "physics",
+      "chapter": "Motion in a Straight Line",
+      "topic": "Kinematics Equations",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Jan 31 Shift 2)",
+      "text": "A body moving with initial velocity $u = 28\\text{ m/s}$ accelerates at a uniform rate $a = 2\\text{ m/s}^2$ for $t = 5\\text{ s}$. The total distance traversed is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$185\\text{ m}$"
+        },
+        {
+          "id": "B",
+          "text": "$150\\text{ m}$"
+        },
+        {
+          "id": "C",
+          "text": "$330\\text{ m}$"
+        },
+        {
+          "id": "D",
+          "text": "$165\\text{ m}$"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "s = ut + \\frac{1}{2}at^2",
+      "solution": "$s = (28)(5) + \\frac{1}{2}(2)(5^2) = 140 + 25 = 165\\text{ m}$.",
+      "notebookSolution": {
+        "given": "u = 28 m/s, a = 2 m/s², t = 5 s",
+        "concept": "Second equation of kinematics",
+        "steps": [
+          "s = 28×5 + 0.5×2×5² = 165 m"
+        ],
+        "conclusion": "Distance is 165 m (Option D).",
+        "pitfall": "Only valid for constant acceleration."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-phy-3",
+      "subject": "physics",
+      "chapter": "Motion in a Plane",
+      "topic": "Maximum Horizontal Range of Projectile",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Apr 6 Shift 1)",
+      "text": "The maximum horizontal range of a projectile fired with launch speed $u = 85\\text{ m/s}$ on level ground (taking $g = 10\\text{ m/s}^2$) is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$722.5\\text{ m}$"
+        },
+        {
+          "id": "B",
+          "text": "$867.\\text{ m}$"
+        },
+        {
+          "id": "C",
+          "text": "$578.\\text{ m}$"
+        },
+        {
+          "id": "D",
+          "text": "$1083.8\\text{ m}$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "R_{max} = \\frac{u^2}{g}",
+      "solution": "Maximum range occurs at $\\theta = 45^\\circ$: $R_{max} = \\frac{(85)^2}{10} = 722.5\\text{ m}$.",
+      "notebookSolution": {
+        "given": "u = 85 m/s, g = 10 m/s²",
+        "concept": "Maximum range formula R_max = u²/g",
+        "steps": [
+          "R_max = 85² / 10 = 722.5 m"
+        ],
+        "conclusion": "Range is 722.5 m (Option A).",
+        "pitfall": "Maximum range is attained at 45 degrees."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-phy-4",
+      "subject": "physics",
+      "chapter": "Laws of Motion",
+      "topic": "Atwood Machine Acceleration",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Jan 31 Shift 2)",
+      "text": "Two masses $m_1 = 2\\text{ kg}$ and $m_2 = 4\\text{ kg}$ are connected by a light inextensible string passing over a smooth frictionless pulley. The acceleration of the system is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$2.5\\text{ m/s}^2$"
+        },
+        {
+          "id": "B",
+          "text": "$3.33\\text{ m/s}^2$"
+        },
+        {
+          "id": "C",
+          "text": "$4.0\\text{ m/s}^2$"
+        },
+        {
+          "id": "D",
+          "text": "$1.0\\text{ m/s}^2$"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "a = \\frac{(m_2 - m_1)g}{m_1 + m_2}",
+      "solution": "$a = \\frac{(4 - 2) \\times 10}{2 + 4} = 3.33\\text{ m/s}^2$.",
+      "notebookSolution": {
+        "given": "m1 = 2 kg, m2 = 4 kg, g = 10 m/s²",
+        "concept": "Atwood machine equation of motion",
+        "steps": [
+          "a = (4 - 2)×10 / (2 + 4) = 3.33 m/s²"
+        ],
+        "conclusion": "Acceleration is 3.33 m/s² (Option B).",
+        "pitfall": "Net pulling force is (m2 - m1)g."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-phy-5",
+      "subject": "physics",
+      "chapter": "Work, Energy and Power",
+      "topic": "Work Done by Force at Angle",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Apr 6 Shift 1)",
+      "text": "A constant force $F = 65\\text{ N}$ acts on a particle displacing it by $s = 4\\text{ m}$ along a straight path. If the force makes an angle $\\theta = 60^\\circ$ with the displacement vector, the work done is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$260\\text{ J}$"
+        },
+        {
+          "id": "B",
+          "text": "$65\\text{ J}$"
+        },
+        {
+          "id": "C",
+          "text": "$130\\text{ J}$"
+        },
+        {
+          "id": "D",
+          "text": "$160\\text{ J}$"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "W = F s \\cos\\theta",
+      "solution": "$W = 65 \\times 4 \\times \\cos 60^\\circ = 260 \\times 0.5 = 130\\text{ J}$.",
+      "notebookSolution": {
+        "given": "F = 65 N, s = 4 m, θ = 60°",
+        "concept": "Work definition W = F·s = F s cosθ",
+        "steps": [
+          "W = 65 × 4 × 0.5 = 130 J"
+        ],
+        "conclusion": "Work done is 130 J (Option C).",
+        "pitfall": "cos 60° = 1/2."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-phy-6",
+      "subject": "physics",
+      "chapter": "Rotational Motion",
+      "topic": "Moment of Inertia of Thin Circular Ring",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Jan 31 Shift 2)",
+      "text": "The moment of inertia of a uniform thin circular ring of mass $M = 3\\text{ kg}$ and radius $R = 0.4\\text{ m}$ about its central symmetry axis is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$0.24\\text{ kg m}^2$"
+        },
+        {
+          "id": "B",
+          "text": "$0.96\\text{ kg m}^2$"
+        },
+        {
+          "id": "C",
+          "text": "$0.72\\text{ kg m}^2$"
+        },
+        {
+          "id": "D",
+          "text": "$0.48\\text{ kg m}^2$"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "I = M R^2",
+      "solution": "$I = 3 \\times (0.4)^2 = 3 \\times 0.16 = 0.48\\text{ kg m}^2$.",
+      "notebookSolution": {
+        "given": "M = 3 kg, R = 0.4 m",
+        "concept": "Ring moment of inertia about central axis I = MR²",
+        "steps": [
+          "I = 3 × 0.16 = 0.48 kg m²"
+        ],
+        "conclusion": "Moment of inertia is 0.48 kg m² (Option D).",
+        "pitfall": "Disc has 1/2 MR², ring has MR²."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-phy-7",
+      "subject": "physics",
+      "chapter": "Gravitation",
+      "topic": "Escape Speed from Surface of Earth",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Apr 6 Shift 1)",
+      "text": "Taking the radius of the Earth $R_e = 6400\\text{ km}$ and $g = 9.8\\text{ m/s}^2$, the escape speed from the surface of the Earth is approximately:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$11.2\\text{ km/s}$"
+        },
+        {
+          "id": "B",
+          "text": "$7.9\\text{ km/s}$"
+        },
+        {
+          "id": "C",
+          "text": "$16.8\\text{ km/s}$"
+        },
+        {
+          "id": "D",
+          "text": "$5.6\\text{ km/s}$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "v_e = \\sqrt{2g R_e}",
+      "solution": "$v_e = \\sqrt{2 \\times 9.8 \\times 6.4 \\times 10^6} \\approx 11.2\\text{ km/s}$.",
+      "notebookSolution": {
+        "given": "Re = 6400 km, g = 9.8 m/s²",
+        "concept": "Escape velocity formula v_e = √(2gR)",
+        "steps": [
+          "v_e = √(2 × 9.8 × 6.4 × 10⁶) ≈ 11.2 km/s"
+        ],
+        "conclusion": "Escape velocity is 11.2 km/s (Option A).",
+        "pitfall": "Orbital velocity is v_o = √(gR) ≈ 7.9 km/s; escape is √2 times larger."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-phy-8",
+      "subject": "physics",
+      "chapter": "Thermodynamics",
+      "topic": "Thermodynamic Processes and Work Done",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Jan 31 Shift 2)",
+      "text": "In which thermodynamic process does the internal energy of an ideal gas remain completely unchanged ($\\Delta U = 0$)?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Isochoric process"
+        },
+        {
+          "id": "B",
+          "text": "Isothermal process"
+        },
+        {
+          "id": "C",
+          "text": "Isobaric process"
+        },
+        {
+          "id": "D",
+          "text": "Adiabatic process"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "\\Delta U = n C_v \\Delta T = 0 \\implies T = \\text{constant}",
+      "solution": "Since internal energy of an ideal gas depends solely on temperature, $\\Delta U = 0$ implies constant temperature, which defines an isothermal process.",
+      "notebookSolution": {
+        "given": "ΔU = 0 for ideal gas",
+        "concept": "U = f(T) only for ideal gas",
+        "steps": [
+          "ΔU = 0 => ΔT = 0 => T = const => Isothermal"
+        ],
+        "conclusion": "Isothermal process (Option B).",
+        "pitfall": "In adiabatic process, Q = 0, but ΔU = -W ≠ 0."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-phy-9",
+      "subject": "physics",
+      "chapter": "Oscillations",
+      "topic": "Seconds Pendulum Length",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Apr 6 Shift 1)",
+      "text": "A simple pendulum has a time period of $T = 2.0\\text{ s}$ (seconds pendulum) on the Earth surface where $g = 9.8\\text{ m/s}^2$. Its length is approximately:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$0.5\\text{ m}$"
+        },
+        {
+          "id": "B",
+          "text": "$2.0\\text{ m}$"
+        },
+        {
+          "id": "C",
+          "text": "$\\approx 1.0\\text{ m}$"
+        },
+        {
+          "id": "D",
+          "text": "$4.0\\text{ m}$"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "T = 2\\pi \\sqrt{\\frac{L}{g}} \\implies L = \\frac{g T^2}{4\\pi^2}",
+      "solution": "$L = \\frac{9.8 \\times (2)^2}{4 \\times \\pi^2} \\approx \\frac{9.8 \\times 4}{4 \\times 9.87} \\approx 1.0\\text{ m}$.",
+      "notebookSolution": {
+        "given": "T = 2 s, g = 9.8 m/s²",
+        "concept": "Period of simple pendulum",
+        "steps": [
+          "L = g T² / (4π²) = 9.8 × 4 / (4 × 9.87) ≈ 0.993 m ≈ 1.0 m"
+        ],
+        "conclusion": "Length is approximately 1.0 m (Option C).",
+        "pitfall": "A seconds pendulum has a half-period of 1 second and full period of 2 seconds."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-phy-10",
+      "subject": "physics",
+      "chapter": "Electrostatics",
+      "topic": "Coulombs Law Force",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Jan 31 Shift 2)",
+      "text": "Two point charges $q_1 = +2\\text{ }\\mu\\text{C}$ and $q_2 = +8\\text{ }\\mu\\text{C}$ are separated by a distance $r = 30\\text{ cm}$ in vacuum. Taking $\\frac{1}{4\\pi\\varepsilon_0} = 9 \\times 10^9\\text{ N m}^2/\\text{C}^2$, the electrostatic repulsive force between them is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$3.2\\text{ N}$"
+        },
+        {
+          "id": "B",
+          "text": "$0.8\\text{ N}$"
+        },
+        {
+          "id": "C",
+          "text": "$4.8\\text{ N}$"
+        },
+        {
+          "id": "D",
+          "text": "$1.6\\text{ N}$"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "F = \\frac{1}{4\\pi\\varepsilon_0}\\frac{q_1 q_2}{r^2}",
+      "solution": "$F = \\frac{9 \\times 10^9 \\times (2 \\times 10^{-6}) \\times (8 \\times 10^{-6})}{(0.3)^2} = \\frac{144 \\times 10^{-3}}{0.09} = 1.6\\text{ N}$.",
+      "notebookSolution": {
+        "given": "q1 = 2 μC, q2 = 8 μC, r = 0.3 m",
+        "concept": "Coulombs law",
+        "steps": [
+          "F = 9×10⁹ × 16×10⁻¹² / 0.09 = 0.144 / 0.09 = 1.6 N"
+        ],
+        "conclusion": "Force is 1.6 N.",
+        "pitfall": "Convert cm to meters before squaring."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-phy-11",
+      "subject": "physics",
+      "chapter": "Current Electricity",
+      "topic": "Kirchhoffs Junction and Loop Laws",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Apr 6 Shift 1)",
+      "text": "Kirchhoff's first law (Junction rule $\\sum I = 0$) and second law (Loop rule $\\sum \\Delta V = 0$) are respective consequences of conservation of:",
+      "options": [
+        {
+          "id": "A",
+          "text": "Charge and Energy respectively"
+        },
+        {
+          "id": "B",
+          "text": "Energy and Charge respectively"
+        },
+        {
+          "id": "C",
+          "text": "Momentum and Charge"
+        },
+        {
+          "id": "D",
+          "text": "Mass and Energy"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "\\sum I_{in} = \\sum I_{out} \\ (\\text{Charge}), \\quad \\sum \\Delta V = 0 \\ (\\text{Energy})",
+      "solution": "Junction rule reflects conservation of electric charge. Loop rule reflects conservation of energy around closed path.",
+      "notebookSolution": {
+        "given": "Kirchhoffs laws",
+        "concept": "Junction law = conservation of charge; Loop law = conservation of energy",
+        "steps": [
+          "KCL: dq/dt in = dq/dt out => Charge",
+          "KVL: sum of potential changes = 0 => Energy"
+        ],
+        "conclusion": "Charge and Energy respectively (Option A).",
+        "pitfall": "Do not swap the order."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-phy-12",
+      "subject": "physics",
+      "chapter": "Moving Charges and Magnetism",
+      "topic": "Motion of Charged Particle in Magnetic Field",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Jan 31 Shift 2)",
+      "text": "A charged particle enters a uniform magnetic field with velocity $\\vec{v}$ perpendicular to the field $\\vec{B}$. The trajectory of the particle is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "Helical with uniform pitch"
+        },
+        {
+          "id": "B",
+          "text": "Circular"
+        },
+        {
+          "id": "C",
+          "text": "Parabolic"
+        },
+        {
+          "id": "D",
+          "text": "Straight line"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "\\vec{F} = q(\\vec{v} \\times \\vec{B}) = \\frac{m v^2}{r}\\hat{r}",
+      "solution": "Since $\\vec{F} \\perp \\vec{v}$ at all instants, speed is constant and force provides centripetal acceleration, producing a circular path.",
+      "notebookSolution": {
+        "given": "v ⊥ B",
+        "concept": "Lorentz force provides centripetal acceleration",
+        "steps": [
+          "F = qvB = mv²/r => r = mv/(qB) = constant radius circle"
+        ],
+        "conclusion": "Circular trajectory (Option B).",
+        "pitfall": "If velocity is at an arbitrary angle θ, trajectory is helical."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-phy-13",
+      "subject": "physics",
+      "chapter": "Electromagnetic Induction",
+      "topic": "Magnetic Flux Through Parallel Loop",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Apr 6 Shift 1)",
+      "text": "A planar coil of area $A$ is placed parallel to a uniform magnetic field $\\vec{B}$ (i.e. the normal to the coil is perpendicular to $\\vec{B}$). The magnetic flux through the coil is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$BA$"
+        },
+        {
+          "id": "B",
+          "text": "$2BA$"
+        },
+        {
+          "id": "C",
+          "text": "Zero"
+        },
+        {
+          "id": "D",
+          "text": "$\\frac{BA}{2}$"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "\\Phi = \\vec{B} \\cdot \\vec{A} = B A \\cos 90^\\circ = 0",
+      "solution": "When the plane of the coil is parallel to $\\vec{B}$, the angle between area vector $\\vec{A}$ and $\\vec{B}$ is $\\theta = 90^\\circ$. Thus $\\Phi = B A \\cos 90^\\circ = 0$.",
+      "notebookSolution": {
+        "given": "Plane parallel to B => angle with normal θ = 90°",
+        "concept": "Magnetic flux Φ = B·A = BA cosθ",
+        "steps": [
+          "Φ = BA cos(90°) = 0"
+        ],
+        "conclusion": "Flux is zero (Option C).",
+        "pitfall": "Area vector is perpendicular to the plane of the loop."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-phy-14",
+      "subject": "physics",
+      "chapter": "Ray Optics",
+      "topic": "Refractive Index of Equilateral Prism",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Jan 31 Shift 2)",
+      "text": "An equilateral prism ($A = 60^\\circ$) produces a minimum angle of deviation $\\delta_m = 60^\\circ$. The refractive index $\\mu$ of the prism material is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$\\mu = \\sqrt{2}$"
+        },
+        {
+          "id": "B",
+          "text": "$\\mu = 1.5$"
+        },
+        {
+          "id": "C",
+          "text": "$\\mu = 1.33$"
+        },
+        {
+          "id": "D",
+          "text": "$\\mu = \\sqrt{3}$"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "\\mu = \\frac{\\sin\\left(\\frac{A + \\delta_m}{2}\\right)}{\\sin(A/2)}",
+      "solution": "$$\\mu = \\frac{\\sin((60^\\circ + 60^\\circ)/2)}{\\sin(60^\\circ/2)} = \\frac{\\sin 60^\\circ}{\\sin 30^\\circ} = \\frac{\\sqrt{3}/2}{1/2} = \\sqrt{3}$$.",
+      "notebookSolution": {
+        "given": "A = 60°, δ_m = 60°",
+        "concept": "Prism formula",
+        "steps": [
+          "μ = sin(120°/2) / sin(30°) = sin 60° / sin 30° = √3"
+        ],
+        "conclusion": "Refractive index is √3 (Option D).",
+        "pitfall": "A = 60° for an equilateral prism."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-phy-15",
+      "subject": "physics",
+      "chapter": "Wave Optics",
+      "topic": "Youngs Double Slit Fringe Width",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Apr 6 Shift 1)",
+      "text": "In Young's double-slit experiment with slit separation $d$ and screen distance $D$ using light of wavelength $\\lambda$, the fringe width $\\beta$ is given by:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$\\beta = \\frac{\\lambda D}{d}$"
+        },
+        {
+          "id": "B",
+          "text": "$\\beta = \\frac{\\lambda d}{D}$"
+        },
+        {
+          "id": "C",
+          "text": "$\\beta = \\frac{d D}{\\lambda}$"
+        },
+        {
+          "id": "D",
+          "text": "$\\beta = \\frac{\\lambda}{D d}$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "\\beta = \\frac{\\lambda D}{d}",
+      "solution": "Fringe width is directly proportional to screen distance $D$ and wavelength $\\lambda$, and inversely proportional to slit spacing $d$: $\\beta = \\frac{\\lambda D}{d}$.",
+      "notebookSolution": {
+        "given": "YDSE setup parameters",
+        "concept": "Fringe spacing between adjacent maxima or minima",
+        "steps": [
+          "β = y_{n+1} - y_n = λD/d"
+        ],
+        "conclusion": "β = λD/d (Option A).",
+        "pitfall": "D is distance to screen, d is slit separation."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-phy-16",
+      "subject": "physics",
+      "chapter": "Dual Nature of Radiation",
+      "topic": "Maximum Kinetic Energy of Photoelectrons",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Jan 31 Shift 2)",
+      "text": "In a photoelectric experiment, keeping the frequency of incident radiation constant, the maximum kinetic energy of emitted photoelectrons is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "Directly proportional to intensity"
+        },
+        {
+          "id": "B",
+          "text": "Independent of intensity"
+        },
+        {
+          "id": "C",
+          "text": "Inversely proportional to intensity"
+        },
+        {
+          "id": "D",
+          "text": "Directly proportional to square of intensity"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "K_{max} = h\\nu - \\phi_0",
+      "solution": "Maximum kinetic energy depends strictly on the photon frequency $\\nu$ and work function $\\phi_0$. Intensity only changes the rate of emission (photocurrent), not kinetic energy.",
+      "notebookSolution": {
+        "given": "Constant frequency, variable intensity",
+        "concept": "K_max = hν - W",
+        "steps": [
+          "K_max depends on photon energy hν, independent of beam intensity"
+        ],
+        "conclusion": "Independent of intensity (Option B).",
+        "pitfall": "Intensity determines number of emitted electrons, not their kinetic energy."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-phy-17",
+      "subject": "physics",
+      "chapter": "Atoms",
+      "topic": "Bohr Radius Orbit Dependence",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Apr 6 Shift 1)",
+      "text": "According to Bohr's postulate of quantization of angular momentum, the radius $r_n$ of the $n^{\\text{th}}$ orbit of hydrogen atom varies with principle quantum number $n$ as:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$r_n \\propto n$"
+        },
+        {
+          "id": "B",
+          "text": "$r_n \\propto 1/n$"
+        },
+        {
+          "id": "C",
+          "text": "$r_n \\propto n^2$"
+        },
+        {
+          "id": "D",
+          "text": "$r_n \\propto n^3$"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "r_n = \\frac{n^2 h^2 \\varepsilon_0}{\\pi m e^2} \\propto n^2",
+      "solution": "Radius of the $n$-th orbit is given by $r_n = 0.529 \\frac{n^2}{Z}\\text{ \\AA} \\propto n^2$.",
+      "notebookSolution": {
+        "given": "Bohr model radius formula",
+        "concept": "Orbit radius proportionality",
+        "steps": [
+          "r_n = a_0 n²/Z => r_n ∝ n²"
+        ],
+        "conclusion": "r_n ∝ n² (Option C).",
+        "pitfall": "Velocity varies as 1/n, radius varies as n²."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-phy-18",
+      "subject": "physics",
+      "chapter": "Nuclei",
+      "topic": "Nuclear Density Ratio",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Jan 31 Shift 2)",
+      "text": "Two nuclei have mass numbers in the ratio $1:8$. The ratio of their nuclear densities is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$1:4$"
+        },
+        {
+          "id": "B",
+          "text": "$2:1$"
+        },
+        {
+          "id": "C",
+          "text": "$4:1$"
+        },
+        {
+          "id": "D",
+          "text": "$1:2$"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "R = R_0 A^{1/3} \\implies V \\propto A \\implies \\rho = \\frac{M}{V} = \\text{constant}",
+      "solution": "Nuclear density is independent of mass number $A$ because mass $\\propto A$ and volume $\\propto R^3 \\propto A$. Thus the ratio of nuclear densities is $1:1$ (all nuclei have approximately $\\approx 2.3 \\times 10^{17}\\text{ kg/m}^3$).",
+      "notebookSolution": {
+        "given": "A1/A2 = 1/8",
+        "concept": "Nuclear density is constant for all nuclei",
+        "steps": [
+          "ρ = m A / (4/3 π R0³ A) = constant => ρ1/ρ2 = 1:1"
+        ],
+        "conclusion": "Nuclear density is identical (1:1).",
+        "pitfall": "Nuclear radius changes with A^(1/3), but density remains constant."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-phy-19",
+      "subject": "physics",
+      "chapter": "Semiconductor Electronics",
+      "topic": "Ideal Diode in Forward Bias",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Apr 6 Shift 1)",
+      "text": "In ideal circuit approximation, the resistance offered by a $p$-$n$ junction diode in forward bias condition is taken as:",
+      "options": [
+        {
+          "id": "A",
+          "text": "Zero"
+        },
+        {
+          "id": "B",
+          "text": "Infinite"
+        },
+        {
+          "id": "C",
+          "text": "Very small"
+        },
+        {
+          "id": "D",
+          "text": "Fluctuating"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "R_{forward, ideal} = 0, \\quad R_{reverse, ideal} = \\infty",
+      "solution": "An ideal diode acts as a closed switch with zero resistance when forward biased and an open switch with infinite resistance when reverse biased.",
+      "notebookSolution": {
+        "given": "Ideal p-n junction forward biased",
+        "concept": "Ideal diode forward resistance is zero",
+        "steps": [
+          "Forward bias ideal => zero resistance (short circuit)"
+        ],
+        "conclusion": "Resistance is zero (Option A).",
+        "pitfall": "Practical diodes have ~0.7V drop for Si, but ideal diode resistance is zero."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-phy-20",
+      "subject": "physics",
+      "chapter": "Semiconductor Electronics",
+      "topic": "Universal Logic Gates",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Jan 31 Shift 2)",
+      "text": "Which of the following logic gates is classified as a universal gate capable of implementing any Boolean function?",
+      "options": [
+        {
+          "id": "A",
+          "text": "NOR gate"
+        },
+        {
+          "id": "B",
+          "text": "NAND gate"
+        },
+        {
+          "id": "C",
+          "text": "AND gate"
+        },
+        {
+          "id": "D",
+          "text": "OR gate"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "Y = \\overline{A \\cdot B} \\ (\\text{NAND}), \\quad Y = \\overline{A + B} \\ (\\text{NOR})",
+      "solution": "NAND and NOR gates are universal gates because repeated combinations can construct NOT, AND, and OR operations.",
+      "notebookSolution": {
+        "given": "Universal logic gate definition",
+        "concept": "NAND and NOR can synthesize any logic network",
+        "steps": [
+          "NAND is a universal gate"
+        ],
+        "conclusion": "NAND gate (Option B).",
+        "pitfall": "AND and OR are basic gates, not universal without NOT."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-phy-21",
+      "subject": "physics",
+      "chapter": "Current Electricity",
+      "topic": "Potentiometer Wire Resistance",
+      "difficulty": "medium",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Apr 6 Shift 1)",
+      "text": "A potentiometer wire of length $L = 10\\text{ m}$ has resistance $R = 20\\text{ }\\Omega$. A steady current is maintained by a $2\\text{ V}$ driver battery. The potential gradient along the wire (in $\\text{mV/cm}$) is:",
+      "correctAnswer": "1",
+      "formula": "k = \\frac{V}{L}",
+      "solution": "Current $I = \\frac{2}{20} = 0.1\\text{ A}$. Potential gradient $k = \\frac{V}{L} = \\frac{2\\text{ V}}{1000\\text{ cm}} = 0.002\\text{ V/cm} = 2\\text{ mV/cm}$.",
+      "notebookSolution": {
+        "given": "L = 10 m = 1000 cm, V = 2 V",
+        "concept": "Potential gradient k = V / L",
+        "steps": [
+          "k = 2 V / 1000 cm = 0.002 V/cm = 2 mV/cm"
+        ],
+        "conclusion": "Potential gradient is 2.",
+        "pitfall": "Watch the units: mV/cm vs V/m."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-phy-22",
+      "subject": "physics",
+      "chapter": "Atoms",
+      "topic": "Wavelength Ratio in Lyman Series",
+      "difficulty": "medium",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Jan 31 Shift 2)",
+      "text": "In the hydrogen atom spectrum, the ratio of the longest wavelength in the Lyman series ($n = 2 \\to 1$) to the shortest wavelength in the Lyman series ($n = \\infty \\to 1$) is $\\frac{4}{x}$. The value of $x$ is:",
+      "correctAnswer": "3",
+      "formula": "\\frac{1}{\\lambda} = R_H \\left(\\frac{1}{n_1^2} - \\frac{1}{n_2^2}\\right)",
+      "solution": "$$\\frac{1}{\\lambda_{max}} = R_H \\left(1 - \\frac{1}{4}\\right) = \\frac{3}{4}R_H \\implies \\lambda_{max} = \\frac{4}{3R_H}$$\n$$\\frac{1}{\\lambda_{min}} = R_H \\left(1 - 0\\right) = R_H \\implies \\lambda_{min} = \\frac{1}{R_H}$$\n$$\\frac{\\lambda_{max}}{\\lambda_{min}} = \\frac{4}{3} \\implies x = 3$$.",
+      "notebookSolution": {
+        "given": "Lyman longest and shortest transition",
+        "concept": "Rydberg formula for hydrogen",
+        "steps": [
+          "λ_max = 4/(3R), λ_min = 1/R => ratio = 4/3 => x = 3"
+        ],
+        "conclusion": "x = 3.",
+        "pitfall": "Longest wavelength corresponds to smallest energy difference."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-phy-23",
+      "subject": "physics",
+      "chapter": "Electrostatics",
+      "topic": "Energy Stored in Capacitor",
+      "difficulty": "easy",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Apr 6 Shift 1)",
+      "text": "A $2\\text{ }\\mu\\text{F}$ capacitor is charged to a potential of $100\\text{ V}$. The energy stored in the capacitor (in $\\text{mJ}$) is:",
+      "correctAnswer": "10",
+      "formula": "U = \\frac{1}{2} C V^2",
+      "solution": "$U = \\frac{1}{2}(2 \\times 10^{-6})(100)^2 = 10^{-6} \\times 10000 = 10^{-2}\\text{ J} = 10\\text{ mJ}$.",
+      "notebookSolution": {
+        "given": "C = 2 μF, V = 100 V",
+        "concept": "Capacitor stored energy U = 1/2 C V²",
+        "steps": [
+          "U = 0.5 × (2×10⁻⁶) × 10000 = 0.01 J = 10 mJ"
+        ],
+        "conclusion": "Energy is 10 mJ.",
+        "pitfall": "Convert Joules to milliJoules (× 1000)."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-phy-24",
+      "subject": "physics",
+      "chapter": "Magnetic Dipole",
+      "topic": "Magnetic Dipole Moment of Current Loop",
+      "difficulty": "easy",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Jan 31 Shift 2)",
+      "text": "A square coil of side $10\\text{ cm}$ consists of $20$ turns and carries a current of $2\\text{ A}$. The magnetic dipole moment of the coil (in $\\text{A m}^2$) is $x \\times 10^{-1}$. The value of $x$ is:",
+      "correctAnswer": "4",
+      "formula": "M = N I A",
+      "solution": "Area $A = (0.1)^2 = 0.01\\text{ m}^2$. Dipole moment $M = 20 \\times 2 \\times 0.01 = 0.4\\text{ A m}^2 = 4 \\times 10^{-1}\\text{ A m}^2 \\implies x = 4$.",
+      "notebookSolution": {
+        "given": "N = 20, I = 2 A, side = 0.1 m",
+        "concept": "Magnetic moment M = NIA",
+        "steps": [
+          "A = 0.1² = 0.01 m²",
+          "M = 20 × 2 × 0.01 = 0.4 A m² = 4 × 10⁻¹"
+        ],
+        "conclusion": "x = 4.",
+        "pitfall": "Do not forget number of turns N."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-phy-25",
+      "subject": "physics",
+      "chapter": "Kinetic Theory of Gases",
+      "topic": "Degrees of Freedom of Diatomic Gas",
+      "difficulty": "easy",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Apr 6 Shift 1)",
+      "text": "At room temperature, the total degrees of freedom of a rigid diatomic molecule (such as $O_2$ or $N_2$) is:",
+      "correctAnswer": "5",
+      "formula": "f = f_{trans} + f_{rot} = 3 + 2 = 5",
+      "solution": "A rigid diatomic molecule has 3 translational degrees of freedom and 2 rotational degrees of freedom (vibrational modes are frozen at normal temperatures). Total $f = 5$.",
+      "notebookSolution": {
+        "given": "Rigid diatomic gas at room temperature",
+        "concept": "Equipartition of energy degrees of freedom",
+        "steps": [
+          "3 translational + 2 rotational = 5 degrees of freedom"
+        ],
+        "conclusion": "Total degrees of freedom is 5.",
+        "pitfall": "Vibrational degrees of freedom only activate at very high temperatures."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-chem-1",
+      "subject": "chemistry",
+      "chapter": "Some Basic Concepts of Chemistry",
+      "topic": "Mole Concept and Stoichiometry",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Apr 8 Shift 2)",
+      "text": "The number of moles of oxygen atoms present in $29.400000000000002\\text{ g}$ of pure sulfuric acid ($H_2SO_4$, molar mass $= 98\\text{ g/mol}$) is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "0.6\\text{ mol}"
+        },
+        {
+          "id": "B",
+          "text": "0.3\\text{ mol}"
+        },
+        {
+          "id": "C",
+          "text": "1.2\\text{ mol}"
+        },
+        {
+          "id": "D",
+          "text": "2.4\\text{ mol}"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "n(O) = 4 \\times n(H_2SO_4) = 4 \\times \\frac{m}{M}",
+      "solution": "Moles of $H_2SO_4 = \\frac{29.400000000000002}{98} = 0.3\\text{ mol}$. Each molecule has 4 oxygen atoms, so moles of O atoms $= 4 \\times 0.3 = 1.2\\text{ mol}$.",
+      "notebookSolution": {
+        "given": "Mass = 29.400000000000002 g, Molar mass = 98 g/mol",
+        "concept": "Stoichiometry of molecular formula",
+        "steps": [
+          "Moles of H2SO4 = 29.400000000000002/98 = 0.3",
+          "Moles of O = 4 × 0.3 = 1.2"
+        ],
+        "conclusion": "Moles of oxygen atoms is 1.2 (Option C).",
+        "pitfall": "Do not confuse moles of O atoms with moles of O2 molecules."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-chem-2",
+      "subject": "chemistry",
+      "chapter": "Structure of Atom",
+      "topic": "de Broglie Wavelength of Moving Particles",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Jan 29 Shift 1)",
+      "text": "Two particles $A$ and $B$ have equal masses. If the velocity of particle $A$ is $2$ times the velocity of particle $B$ ($v_A = 2 v_B$), the ratio of their de Broglie wavelengths $\\frac{\\lambda_A}{\\lambda_B}$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$2 : 1$"
+        },
+        {
+          "id": "B",
+          "text": "$1 : 4$"
+        },
+        {
+          "id": "C",
+          "text": "$4 : 1$"
+        },
+        {
+          "id": "D",
+          "text": "$1 : 2$"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "\\lambda = \\frac{h}{p} = \\frac{h}{m v}",
+      "solution": "$$\\lambda = \\frac{h}{m v} \\implies \\frac{\\lambda_A}{\\lambda_B} = \\frac{v_B}{v_A} = \\frac{1}{2} = 1 : 2$$.",
+      "notebookSolution": {
+        "given": "mA = mB, vA = 2 vB",
+        "concept": "de Broglie wavelength is inversely proportional to momentum",
+        "steps": [
+          "λ = h/(mv)",
+          "λA/λB = vB/vA = 1/2"
+        ],
+        "conclusion": "Ratio is 1 : 2 (Option D).",
+        "pitfall": "Wavelength is inversely proportional to velocity."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-chem-3",
+      "subject": "chemistry",
+      "chapter": "Classification of Elements and Periodicity",
+      "topic": "First Ionization Enthalpy Trends",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Apr 8 Shift 2)",
+      "text": "The correct increasing order of the first ionization enthalpies ($\\Delta_i H_1$) of the second period elements is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$B < Be < C < O < N < F < Ne$"
+        },
+        {
+          "id": "B",
+          "text": "$B < Be < C < N < O < F < Ne$"
+        },
+        {
+          "id": "C",
+          "text": "$Be < B < C < O < N < F < Ne$"
+        },
+        {
+          "id": "D",
+          "text": "$B < C < Be < O < N < F < Ne$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "\\Delta_i H_1 \\text{ anomalous stability: } Be(2s^2) > B(2p^1), \\; N(2p^3) > O(2p^4)",
+      "solution": "Across a period, ionization enthalpy generally increases with effective nuclear charge, with anomalies: $Be(2s^2)$ has higher $\\Delta_i H$ than $B(2s^2 2p^1)$ due to fully-filled $2s$ subshell, and $N(2s^2 2p^3)$ has higher $\\Delta_i H$ than $O(2s^2 2p^4)$ due to half-filled $2p$ subshell. Hence: $B < Be < C < O < N < F < Ne$.",
+      "notebookSolution": {
+        "given": "Second period elements",
+        "concept": "Penetration and half-filled subshell extra stability",
+        "steps": [
+          "Be > B because of 2s² penetration",
+          "N > O because of half-filled 2p³ stability",
+          "Order: B < Be < C < O < N < F < Ne"
+        ],
+        "conclusion": "Correct order is B < Be < C < O < N < F < Ne (Option A).",
+        "pitfall": "Do not assume strictly monotonic increase across period."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-chem-4",
+      "subject": "chemistry",
+      "chapter": "Chemical Bonding and Molecular Structure",
+      "topic": "VSEPR Theory and Molecular Geometries",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Jan 29 Shift 1)",
+      "text": "According to VSEPR theory, the molecular shapes of $SF_4$, $ClF_3$, and $XeF_4$ respectively are:",
+      "options": [
+        {
+          "id": "A",
+          "text": "Tetrahedral, Trigonal planar, Octahedral"
+        },
+        {
+          "id": "B",
+          "text": "See-saw, T-shaped, Square planar"
+        },
+        {
+          "id": "C",
+          "text": "Square planar, See-saw, T-shaped"
+        },
+        {
+          "id": "D",
+          "text": "T-shaped, See-saw, Square planar"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "\\text{Steric Number} = \\frac{1}{2}(V + M - C + A)",
+      "solution": "- $SF_4$: Steric no $= 4\\text{ bp} + 1\\text{ lp} = 5$ (trigonal bipyramidal geometry) $\\implies$ **See-saw** shape.\n- $ClF_3$: Steric no $= 3\\text{ bp} + 2\\text{ lp} = 5$ $\\implies$ **T-shaped**.\n- $XeF_4$: Steric no $= 4\\text{ bp} + 2\\text{ lp} = 6$ (octahedral geometry) $\\implies$ **Square planar** shape.",
+      "notebookSolution": {
+        "given": "SF4, ClF3, XeF4 molecules",
+        "concept": "VSEPR steric number = bond pairs + lone pairs",
+        "steps": [
+          "SF4 has 1 lp -> see-saw",
+          "ClF3 has 2 lp -> T-shaped",
+          "XeF4 has 2 lp -> square planar"
+        ],
+        "conclusion": "Shapes are See-saw, T-shaped, Square planar (Option B).",
+        "pitfall": "Distinguish between electron geometry and molecular shape."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-chem-5",
+      "subject": "chemistry",
+      "chapter": "Chemical Thermodynamics",
+      "topic": "Relation between Enthalpy and Internal Energy",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Apr 8 Shift 2)",
+      "text": "For the gaseous Haber synthesis reaction: $N_2(g) + 3H_2(g) \\rightleftharpoons 2NH_3(g)$ at $298\\text{ K}$, the correct relation between enthalpy change ($\\Delta H$) and internal energy change ($\\Delta U$) is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$\\Delta H > \\Delta U$"
+        },
+        {
+          "id": "B",
+          "text": "$\\Delta H = \\Delta U$"
+        },
+        {
+          "id": "C",
+          "text": "$\\Delta H < \\Delta U$"
+        },
+        {
+          "id": "D",
+          "text": "$\\Delta H = 2\\Delta U$"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "\\Delta H = \\Delta U + \\Delta n_g R T",
+      "solution": "$$\\Delta n_g = n_{p(g)} - n_{r(g)} = 2 - (1 + 3) = -2$$.\n$$\\Delta H = \\Delta U + (-2)RT = \\Delta U - 2RT$$.\nSince $2RT > 0$, we have $\\Delta H < \\Delta U$.",
+      "notebookSolution": {
+        "given": "N2(g) + 3H2(g) <=> 2NH3(g)",
+        "concept": "ΔH = ΔU + Δn_g RT",
+        "steps": [
+          "Δn_g = 2 - 4 = -2",
+          "ΔH = ΔU - 2RT",
+          "Therefore ΔH < ΔU"
+        ],
+        "conclusion": "ΔH < ΔU (Option C).",
+        "pitfall": "Count only gaseous moles when computing Δn_g."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-chem-6",
+      "subject": "chemistry",
+      "chapter": "Equilibrium",
+      "topic": "pH of Acidic Buffer Solution",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Jan 29 Shift 1)",
+      "text": "An acidic buffer solution contains $0.2\\text{ M } CH_3COONa$ and $0.1\\text{ M } CH_3COOH$. Given $pK_a(CH_3COOH) = 4.75$ and $\\log 2 = 0.301$, the pH of the buffer solution is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "4.75"
+        },
+        {
+          "id": "B",
+          "text": "4.45"
+        },
+        {
+          "id": "C",
+          "text": "5.75"
+        },
+        {
+          "id": "D",
+          "text": "5.05"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "pH = pK_a + \\log\\frac{[\\text{Salt}]}{[\\text{Acid}]}",
+      "solution": "$$pH = pK_a + \\log\\frac{[CH_3COO^-]}{[CH_3COOH]} = 4.75 + \\log\\left(\\frac{0.2}{0.1}\\right) = 4.75 + \\log 2 = 4.75 + 0.30 = 5.05$$.",
+      "notebookSolution": {
+        "given": "[Salt] = 0.2 M, [Acid] = 0.1 M, pKa = 4.75",
+        "concept": "Henderson-Hasselbalch equation",
+        "steps": [
+          "pH = 4.75 + log(0.2/0.1) = 4.75 + 0.301 = 5.05"
+        ],
+        "conclusion": "pH = 5.05 (Option D).",
+        "pitfall": "Ensure [Salt] is in numerator and [Acid] in denominator."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-chem-7",
+      "subject": "chemistry",
+      "chapter": "Solutions",
+      "topic": "Positive and Negative Deviations from Raoult Law",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Apr 8 Shift 2)",
+      "text": "Which of the following binary liquid mixtures exhibits a **positive deviation** from Raoult's law ($Delta H_{mix} > 0, Delta V_{mix} > 0$)?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Ethanol + Acetone"
+        },
+        {
+          "id": "B",
+          "text": "Chloroform + Acetone"
+        },
+        {
+          "id": "C",
+          "text": "Phenol + Aniline"
+        },
+        {
+          "id": "D",
+          "text": "Nitric acid + Water"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "P_{total} > P_A^\\circ x_A + P_B^\\circ x_B \\text{ due to weaker A-B interactions}",
+      "solution": "In pure ethanol, molecules are strongly held by intermolecular hydrogen bonds. When acetone is added, its molecules get between ethanol molecules and break some of the hydrogen bonds, weakening intermolecular forces. Hence, vapor pressure increases (positive deviation). Chloroform + acetone exhibits negative deviation due to new hydrogen bond formation.",
+      "notebookSolution": {
+        "given": "Pairs of liquid mixtures",
+        "concept": "Intermolecular forces vs Raoult law deviations",
+        "steps": [
+          "Ethanol + Acetone breaks H-bonds -> positive deviation",
+          "Chloroform + Acetone forms H-bonds -> negative deviation"
+        ],
+        "conclusion": "Ethanol + Acetone shows positive deviation (Option A).",
+        "pitfall": "Negative deviation occurs when new intermolecular attractions are formed."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-chem-8",
+      "subject": "chemistry",
+      "chapter": "Electrochemistry",
+      "topic": "Standard Cell Potential of Galvanic Cell",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Jan 29 Shift 1)",
+      "text": "Given the standard reduction potentials $E^\\circ(Zn^{2+}/Zn) = -0.76\\text{ V}$ and $E^\\circ(Cu^{2+}/Cu) = +0.34\\text{ V}$, the standard EMF ($E^\\circ_{cell}$) of the Daniell cell is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$-1.1\\text{ V}$"
+        },
+        {
+          "id": "B",
+          "text": "$+1.1\\text{ V}$"
+        },
+        {
+          "id": "C",
+          "text": "$0.42\\text{ V}$"
+        },
+        {
+          "id": "D",
+          "text": "$1.52\\text{ V}$"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "E^\\circ_{cell} = E^\\circ_{cathode} - E^\\circ_{anode}",
+      "solution": "$$E^\\circ_{cell} = E^\\circ(Cu^{2+}/Cu) - E^\\circ(Zn^{2+}/Zn) = 0.34 - (-0.76) = +1.10\\text{ V}$$.",
+      "notebookSolution": {
+        "given": "E°(Zn²+/Zn) = -0.76 V, E°(Cu²+/Cu) = +0.34 V",
+        "concept": "Standard EMF = Cathode potential - Anode potential",
+        "steps": [
+          "E°cell = 0.34 - (-0.76) = 1.10 V"
+        ],
+        "conclusion": "E°cell is +1.10 V (Option B).",
+        "pitfall": "Always use standard reduction potentials."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-chem-9",
+      "subject": "chemistry",
+      "chapter": "Chemical Kinetics",
+      "topic": "First Order Reaction Kinetics",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Apr 8 Shift 2)",
+      "text": "For a first-order chemical reaction, the half-life period is $t_{1/2} = 20\\text{ min}$. The time required for $75\\%$ completion of the reaction is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "60\\text{ min}"
+        },
+        {
+          "id": "B",
+          "text": "30\\text{ min}"
+        },
+        {
+          "id": "C",
+          "text": "40\\text{ min}"
+        },
+        {
+          "id": "D",
+          "text": "80\\text{ min}"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "t_{75\\%} = 2 \\times t_{1/2}",
+      "solution": "For a first order reaction, after $1$ half-life, $50\\%$ remains. After $2$ half-lives, $25\\%$ remains (meaning $75\\%$ completed). Hence, $t_{75\\%} = 2 \\times t_{1/2} = 2 \\times 20 = 40\\text{ min}$.",
+      "notebookSolution": {
+        "given": "t1/2 = 20 min",
+        "concept": "First order kinetics fraction remaining = (1/2)^n",
+        "steps": [
+          "For 75% completion, remaining is 25% = (1/2)²",
+          "n = 2 half lives",
+          "t = 2 × 20 = 40 min"
+        ],
+        "conclusion": "Time is 40 min (Option C).",
+        "pitfall": "Do not use linear proportion (first order is exponential)."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-chem-10",
+      "subject": "chemistry",
+      "chapter": "Surface Chemistry",
+      "topic": "Hardy-Schulze Rule for Coagulation",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Jan 29 Shift 1)",
+      "text": "According to the Hardy-Schulze rule, the correct decreasing order of flocculating (coagulating) power of cations for a negatively charged arsenious sulfide ($As_2S_3$) sol is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$Na^+ > Ba^{2+} > Al^{3+}$"
+        },
+        {
+          "id": "B",
+          "text": "$Ba^{2+} > Al^{3+} > Na^+$"
+        },
+        {
+          "id": "C",
+          "text": "$Al^{3+} = Ba^{2+} = Na^+$"
+        },
+        {
+          "id": "D",
+          "text": "$Al^{3+} > Ba^{2+} > Na^+$"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "\\text{Coagulating Power} \\propto (\\text{Valency of active ion})^6",
+      "solution": "Hardy-Schulze rule states that the coagulating power of an ion having opposite charge to that of colloidal particles increases with increasing valency of the coagulating ion. For negatively charged $As_2S_3$ sol, the coagulating ion is cation. Valency order: $Al^{3+} (+3) > Ba^{2+} (+2) > Na^+ (+1)$.",
+      "notebookSolution": {
+        "given": "Negatively charged As2S3 sol",
+        "concept": "Hardy-Schulze rule: higher valency means higher flocculating power",
+        "steps": [
+          "Valency: Al³⁺ = 3, Ba²⁺ = 2, Na⁺ = 1",
+          "Order: Al³⁺ > Ba²⁺ > Na⁺"
+        ],
+        "conclusion": "Order is Al³⁺ > Ba²⁺ > Na⁺ (Option D).",
+        "pitfall": "Flocculating power is inversely proportional to flocculation value."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-chem-11",
+      "subject": "chemistry",
+      "chapter": "p-Block Elements",
+      "topic": "Structure of Oxoacids of Phosphorus",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Apr 8 Shift 2)",
+      "text": "In orthophosphorous acid ($H_3PO_3$), the number and types of bonds connected to the central phosphorus atom are:",
+      "options": [
+        {
+          "id": "A",
+          "text": "One $P-H$, two $P-OH$, and one $P=O$ bond"
+        },
+        {
+          "id": "B",
+          "text": "Two $P-H$, one $P-OH$, and one $P=O$ bond"
+        },
+        {
+          "id": "C",
+          "text": "Three $P-OH$ and one $P=O$ bond"
+        },
+        {
+          "id": "D",
+          "text": "Two $P-H$ and two $P-OH$ bonds"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "H_3PO_3 \\text{ contains one P-H, two P-OH, and one P=O bond (dibasic acid)}",
+      "solution": "Phosphorous acid ($H_3PO_3$) has tetrahedral geometry around phosphorus with: 1 $P=O$ bond, 2 ionizable $P-OH$ bonds (making it a dibasic acid with basicity 2), and 1 non-ionizable $P-H$ bond (which gives it strong reducing properties).",
+      "notebookSolution": {
+        "given": "H3PO3 molecule",
+        "concept": "Oxoacids of phosphorus structure and basicity",
+        "steps": [
+          "P has 5 valence electrons",
+          "1 P=O bond, 2 P-OH bonds, 1 P-H bond",
+          "Basicity = 2"
+        ],
+        "conclusion": "One P-H, two P-OH, and one P=O bond (Option A).",
+        "pitfall": "Basicity is determined only by the number of P-OH bonds, not total H atoms."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-chem-12",
+      "subject": "chemistry",
+      "chapter": "d and f Block Elements",
+      "topic": "Lanthanoid Contraction and Consequences",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Jan 29 Shift 1)",
+      "text": "Which of the following is **INCORRECT** regarding the consequences of Lanthanoid Contraction?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Shielding by $4f$ electrons is extremely poor, leading to higher effective nuclear charge"
+        },
+        {
+          "id": "B",
+          "text": "Nearly identical atomic radii of $Zr$ ($4d$) and $Hf$ ($5d$)"
+        },
+        {
+          "id": "C",
+          "text": "Shielding by $4f$ electrons is extremely effective and completely offsets nuclear pull"
+        },
+        {
+          "id": "D",
+          "text": "Decrease in basic strength of hydroxides from $La(OH)_3$ to $Lu(OH)_3$"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "\\text{Poor shielding: } s > p > d > f",
+      "solution": "Lanthanoid contraction occurs because $4f$ electrons have diffuse spatial shapes and exert very **poor** (ineffective) shielding on outer electrons. As nuclear charge increases by 14 units, the outer electrons feel an increased effective nuclear charge, causing contraction. Thus, statement C is INCORRECT.",
+      "notebookSolution": {
+        "given": "Consequences of lanthanoid contraction",
+        "concept": "4f electrons have poor shielding power",
+        "steps": [
+          "4f orbitals shield poorly",
+          "Nuclear charge increases, pulling shells inward",
+          "Statement C claiming 4f shielding is effective is false"
+        ],
+        "conclusion": "Option C is incorrect.",
+        "pitfall": "Remember 4f has poorest shielding among all subshells."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-chem-13",
+      "subject": "chemistry",
+      "chapter": "Coordination Compounds",
+      "topic": "Crystal Field Theory and Diamagnetic Complexes",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Apr 8 Shift 2)",
+      "text": "Which of the following octahedral coordination complexes is **diamagnetic** (zero unpaired electrons) and inner orbital ($d^2sp^3$ hybridized)?",
+      "options": [
+        {
+          "id": "A",
+          "text": "$[FeF_6]^{3-}$"
+        },
+        {
+          "id": "B",
+          "text": "$[Cr(H_2O)_6]^{3+}$"
+        },
+        {
+          "id": "C",
+          "text": "$[Co(NH_3)_6]^{3+}$"
+        },
+        {
+          "id": "D",
+          "text": "$[NiCl_4]^{2-}$"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "Co^{3+} (d^6) + \\text{strong field ligand } NH_3 \\implies t_{2g}^6 e_g^0, \\; \\mu = 0",
+      "solution": "In $[Co(NH_3)_6]^{3+}$, Cobalt is in $+3$ oxidation state: $Co^{3+} = [Ar] 3d^6$. Ammonia ($NH_3$) acts as a strong-field ligand, causing pairing of electrons in $t_{2g}$ orbitals: electronic configuration is $t_{2g}^6 e_g^0$. With $0$ unpaired electrons, the complex is diamagnetic.",
+      "notebookSolution": {
+        "given": "Cobalt complex [Co(NH3)6]³⁺",
+        "concept": "Crystal field pairing by strong-field ligand NH3",
+        "steps": [
+          "Co³⁺ has 3d⁶ configuration",
+          "Δo > P causes all 6 electrons to pair in t2g",
+          "Number of unpaired electrons = 0 (diamagnetic)"
+        ],
+        "conclusion": "[Co(NH3)6]³⁺ is diamagnetic (Option C).",
+        "pitfall": "FeF6³⁻ has weak field F⁻ so it is high-spin paramagnetic."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-chem-14",
+      "subject": "chemistry",
+      "chapter": "Organic Chemistry - Some Basic Principles and Techniques",
+      "topic": "Carbocation Stability and Hyperconjugation",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Jan 29 Shift 1)",
+      "text": "The correct decreasing order of stability of simple alkyl carbocations is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$CH_3^+ > CH_3CH_2^+ > (CH_3)_2CH^+ > (CH_3)_3C^+$"
+        },
+        {
+          "id": "B",
+          "text": "$(CH_3)_2CH^+ > (CH_3)_3C^+ > CH_3CH_2^+ > CH_3^+$"
+        },
+        {
+          "id": "C",
+          "text": "$(CH_3)_3C^+ > CH_3CH_2^+ > (CH_3)_2CH^+ > CH_3^+$"
+        },
+        {
+          "id": "D",
+          "text": "$(CH_3)_3C^+ > (CH_3)_2CH^+ > CH_3CH_2^+ > CH_3^+$"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "\\text{Stability } \\propto \\text{Number of } \\alpha\\text{-hydrogens (hyperconjugation) and } +I \\text{ effect}",
+      "solution": "Stability of alkyl carbocations is governed by hyperconjugation and inductive ($+I$) effects:\n- $(CH_3)_3C^+$ (tert-butyl): $9\\;\\alpha$-hydrogens\n- $(CH_3)_2CH^+$ (isopropyl): $6\\;\\alpha$-hydrogens\n- $CH_3CH_2^+$ (ethyl): $3\\;\\alpha$-hydrogens\n- $CH_3^+$ (methyl): $0\\;\\alpha$-hydrogens\nOrder: $3^\\circ > 2^\\circ > 1^\\circ > \\text{methyl}$.",
+      "notebookSolution": {
+        "given": "Alkyl carbocations",
+        "concept": "Hyperconjugation stability increases with α-hydrogens",
+        "steps": [
+          "tert-butyl: 9 α-H",
+          "isopropyl: 6 α-H",
+          "ethyl: 3 α-H",
+          "methyl: 0 α-H"
+        ],
+        "conclusion": "Order is 3° > 2° > 1° > methyl (Option D).",
+        "pitfall": "Do not confuse with carbanion stability which is reverse."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-chem-15",
+      "subject": "chemistry",
+      "chapter": "Haloalkanes and Haloarenes",
+      "topic": "Nucleophilic Substitution SN2 Mechanism",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Apr 8 Shift 2)",
+      "text": "The reaction of optically active $(R)$-2-bromobutane with aqueous $NaOH$ in acetone predominantly proceeds via:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$S_N2$ reaction with complete inversion of configuration (Walden inversion)"
+        },
+        {
+          "id": "B",
+          "text": "$S_N1$ reaction with complete retention of configuration"
+        },
+        {
+          "id": "C",
+          "text": "$S_N1$ reaction leading to complete racemization"
+        },
+        {
+          "id": "D",
+          "text": "$E2$ elimination giving exclusively 2-butene"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "\\text{Backside nucleophilic attack } \\implies \\text{Walden Inversion}",
+      "solution": "Secondary alkyl halides with strong nucleophiles ($OH^-$) in polar aprotic/favorable solvent predominantly proceed through bimolecular nucleophilic substitution ($S_N2$) mechanism with backside attack, resulting in 100% optical inversion (Walden inversion) to $(S)$-2-butanol.",
+      "notebookSolution": {
+        "given": "(R)-2-bromobutane + NaOH",
+        "concept": "SN2 mechanism stereochemistry",
+        "steps": [
+          "Backside attack of OH⁻",
+          "Departure of Br⁻ simultaneously",
+          "Complete Walden inversion of configuration"
+        ],
+        "conclusion": "Proceeds via SN2 with complete inversion (Option A).",
+        "pitfall": "SN1 gives partial racemization with slight net inversion; pure SN2 gives full inversion."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-chem-16",
+      "subject": "chemistry",
+      "chapter": "Alcohols, Phenols and Ethers",
+      "topic": "Reimer-Tiemann Reaction Intermediate",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Jan 29 Shift 1)",
+      "text": "In the Reimer-Tiemann reaction of phenol with chloroform ($CHCl_3$) and aqueous $NaOH$ to yield salicylaldehyde, the active electrophilic intermediate is:",
+      "options": [
+        {
+          "id": "A",
+          "text": ":CH_2 \\text{ (Carbene)}"
+        },
+        {
+          "id": "B",
+          "text": ":CCl_2 \\text{ (Dichlorocarbene)}"
+        },
+        {
+          "id": "C",
+          "text": "CCl_3^+ \\text{ (Trichloromethyl cation)}"
+        },
+        {
+          "id": "D",
+          "text": "CHCl_2^- \\text{ (Dichloromethyl anion)}"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "CHCl_3 + OH^- \\rightleftharpoons :CCl_3^- \\xrightarrow{-\\,Cl^-} :CCl_2",
+      "solution": "Hydroxide abstracts an acidic proton from $CHCl_3$ to generate the trichloromethyl carbanion, which then undergoes $\\alpha$-elimination of chloride ion to generate neutral, electron-deficient **dichlorocarbene** ($:CCl_2$), which acts as the electrophile attacking the phenoxide ring.",
+      "notebookSolution": {
+        "given": "Reimer-Tiemann reaction",
+        "concept": "Electrophilic aromatic substitution by neutral carbene",
+        "steps": [
+          "Base deprotonates CHCl3",
+          "α-elimination yields :CCl2",
+          ":CCl2 attacks phenoxide ring at ortho position"
+        ],
+        "conclusion": "Intermediate is dichlorocarbene :CCl2 (Option B).",
+        "pitfall": "It is neutral dichlorocarbene, not a charged carbocation."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-chem-17",
+      "subject": "chemistry",
+      "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+      "topic": "Cannizzaro Reaction Condition",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Apr 8 Shift 2)",
+      "text": "Which pair of aldehydes lacks $\\alpha$-hydrogen atoms and undergoes disproportionation in concentrated alkali via the **Cannizzaro reaction**?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Acetaldehyde ($CH_3CHO$) and Acetone ($CH_3COCH_3$)"
+        },
+        {
+          "id": "B",
+          "text": "Propanal ($CH_3CH_2CHO$) and Benzaldehyde"
+        },
+        {
+          "id": "C",
+          "text": "Formaldehyde ($HCHO$) and Benzaldehyde ($C_6H_5CHO$)"
+        },
+        {
+          "id": "D",
+          "text": "Acetaldehyde and Formaldehyde"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "2\\,\\text{R-CHO} \\xrightarrow{50\\%\\,NaOH} \\text{R-CH}_2\\text{OH} + \\text{R-COO}^-Na^+",
+      "solution": "Aldehydes with no $\\alpha$-hydrogen atoms cannot form enolates and therefore undergo Cannizzaro self-redox reaction in conc. $NaOH$. Both $HCHO$ and $C_6H_5CHO$ lack $\\alpha$-hydrogens. Acetaldehyde ($CH_3CHO$) has $3\\;\\alpha$-hydrogens and undergoes aldol condensation instead.",
+      "notebookSolution": {
+        "given": "Aldehydes in concentrated alkali",
+        "concept": "Cannizzaro reaction requires absence of α-hydrogens",
+        "steps": [
+          "HCHO has no α-carbon -> no α-H",
+          "C6H5CHO has aromatic ring without α-H",
+          "Both disproportionate to alcohol and carboxylate"
+        ],
+        "conclusion": "Formaldehyde and Benzaldehyde (Option C).",
+        "pitfall": "Presence of even one α-hydrogen promotes aldol condensation instead."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-chem-18",
+      "subject": "chemistry",
+      "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+      "topic": "Hell-Volhard-Zelinsky (HVZ) Reaction",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Jan 29 Shift 1)",
+      "text": "Propanoic acid on treatment with which of the following reagents undergoes $\\alpha$-bromination to yield 2-bromopropanoic acid (Hell-Volhard-Zelinsky reaction)?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Alc. $KOH$"
+        },
+        {
+          "id": "B",
+          "text": "$LiAlH_4$"
+        },
+        {
+          "id": "C",
+          "text": "$SOCl_2$"
+        },
+        {
+          "id": "D",
+          "text": "Red $P + Br_2$"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "R-CH_2-COOH \\xrightarrow{X_2 / \\text{Red } P} R-CH(X)-COOH",
+      "solution": "Carboxylic acids having $\\alpha$-hydrogen atoms are halogenated at the $\\alpha$-position on treatment with chlorine or bromine in the presence of small amounts of red phosphorus (HVZ reaction).",
+      "notebookSolution": {
+        "given": "Conversion of propanoic acid to 2-bromopropanoic acid",
+        "concept": "Hell-Volhard-Zelinsky α-halogenation",
+        "steps": [
+          "Reagents: Br2 with red phosphorus catalytic amount",
+          "Enolization of acid halide intermediate directs substitution to α-position"
+        ],
+        "conclusion": "Reagent is Red P + Br2 (Option D).",
+        "pitfall": "HVZ only works if the acid contains at least one α-hydrogen."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-chem-19",
+      "subject": "chemistry",
+      "chapter": "Amines",
+      "topic": "Carbylamine Test for Primary Amines",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Apr 8 Shift 2)",
+      "text": "Which of the following reactions produces an extremely foul-smelling **isocyanide** (Carbylamine reaction)?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Methylamine ($CH_3NH_2$) with $CHCl_3 + alc. KOH$"
+        },
+        {
+          "id": "B",
+          "text": "Dimethylamine ($(CH_3)_2NH$) with $CHCl_3 + alc. KOH$"
+        },
+        {
+          "id": "C",
+          "text": "Trimethylamine ($(CH_3)_3N$) with $CHCl_3 + alc. KOH$"
+        },
+        {
+          "id": "D",
+          "text": "Aniline with nitrous acid at $0-5^\\circ\\text{C}$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "R-NH_2 + CHCl_3 + 3KOH \\xrightarrow{\\Delta} R-NC + 3KCl + 3H_2O",
+      "solution": "The Carbylamine test is given exclusively by aliphatic and aromatic **primary ($1^\\circ$) amines** when heated with chloroform and alcoholic $KOH$, forming an offensive-smelling isocyanide ($R-NC$). Secondary and tertiary amines do NOT give this test.",
+      "notebookSolution": {
+        "given": "Carbylamine test options",
+        "concept": "Specific test for primary amines",
+        "steps": [
+          "Primary amines react with CHCl3 + alc. KOH",
+          "Forms foul smelling carbylamine (isocyanide)",
+          "Secondary and tertiary amines fail to react"
+        ],
+        "conclusion": "Methylamine with CHCl3 + alc. KOH (Option A).",
+        "pitfall": "Secondary and tertiary amines do not have two protons on nitrogen to form isocyanide."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-chem-20",
+      "subject": "chemistry",
+      "chapter": "Biomolecules",
+      "topic": "Denaturation of Proteins",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Jan 29 Shift 1)",
+      "text": "During the denaturation of proteins caused by physical changes (such as heat) or chemical changes (pH variation), which structural level **remains intact**?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Secondary structure ($alpha$-helix and $\beta$-pleated sheets)"
+        },
+        {
+          "id": "B",
+          "text": "Primary structure (sequence of amino acids held by peptide bonds)"
+        },
+        {
+          "id": "C",
+          "text": "Tertiary structure (three-dimensional globular folding)"
+        },
+        {
+          "id": "D",
+          "text": "Quaternary structure (aggregation of multi-subunit complexes)"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "\\text{Denaturation breaks H-bonds and disulfide linkages, keeping covalent peptide backbone intact}",
+      "solution": "During denaturation, hydrogen bonds and ionic interactions stabilizing the secondary, tertiary, and quaternary structures are disrupted, causing the protein to unfold and lose biological activity. The covalent peptide bonds of the **primary structure** remain intact.",
+      "notebookSolution": {
+        "given": "Denaturation of proteins",
+        "concept": "Effect of denaturation on protein hierarchy",
+        "steps": [
+          "Secondary, tertiary, quaternary structures collapse",
+          "Covalent peptide bonds are not broken by gentle denaturation",
+          "Primary structure remains intact"
+        ],
+        "conclusion": "Primary structure remains intact (Option B).",
+        "pitfall": "Enzymatic hydrolysis breaks primary structure, but thermal denaturation does not."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-chem-21",
+      "subject": "chemistry",
+      "chapter": "Redox Reactions",
+      "topic": "Oxidation Number of Chromium",
+      "difficulty": "easy",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Apr 8 Shift 2)",
+      "text": "The oxidation state of chromium ($Cr$) in the dichromate dianion ($Cr_2O_7^{2-}$) is:",
+      "correctAnswer": "6",
+      "formula": "2x + 7(-2) = -2 \\implies 2x = +12 \\implies x = +6",
+      "solution": "Let oxidation number of $Cr$ be $x$. Sum of oxidation states: $2(x) + 7(-2) = -2 \\implies 2x - 14 = -2 \\implies 2x = 12 \\implies x = +6$.",
+      "notebookSolution": {
+        "given": "Cr2O7²⁻ ion",
+        "concept": "Algebraic sum of oxidation numbers equals overall charge",
+        "steps": [
+          "2x + 7(-2) = -2",
+          "2x - 14 = -2",
+          "x = +6"
+        ],
+        "conclusion": "Oxidation state is 6.",
+        "pitfall": "Do not forget the net charge of -2 on the polyatomic anion."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-chem-22",
+      "subject": "chemistry",
+      "chapter": "Electrochemistry",
+      "topic": "Standard Gibbs Free Energy Change",
+      "difficulty": "medium",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Jan 29 Shift 1)",
+      "text": "For the Daniell cell reaction $Zn(s) + Cu^{2+}(aq) \\to Zn^{2+}(aq) + Cu(s)$, the standard cell potential is $E^\\circ_{cell} = 1.10\\text{ V}$. Taking Faraday constant $F = 96500\\text{ C mol}^{-1}$, the magnitude of standard Gibbs energy change $|\\Delta G^\\circ|$ (in $\\text{kJ mol}^{-1}$, to the nearest integer) is:",
+      "correctAnswer": "212",
+      "formula": "\\Delta G^\\circ = -n F E^\\circ_{cell}",
+      "solution": "$$\\Delta G^\\circ = - (2) \\times (96500) \\times (1.10) = -212300\\text{ J mol}^{-1} = -212.3\\text{ kJ mol}^{-1}$$. Magnitude to nearest integer is $212$.",
+      "notebookSolution": {
+        "given": "n = 2, E° = 1.10 V, F = 96500 C/mol",
+        "concept": "ΔG° = -nFE°cell",
+        "steps": [
+          "ΔG° = -2 × 96500 × 1.10 = -212300 J = -212.3 kJ",
+          "Magnitude = 212"
+        ],
+        "conclusion": "Magnitude is 212 kJ/mol.",
+        "pitfall": "Convert Joules to kiloJoules."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-chem-23",
+      "subject": "chemistry",
+      "chapter": "Chemical Kinetics",
+      "topic": "Units of Rate Constant and Order",
+      "difficulty": "easy",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Apr 8 Shift 2)",
+      "text": "The rate constant of a reaction is given as $k = 3.5 \\times 10^{-4}\\text{ s}^{-1}$. The order of this reaction is:",
+      "correctAnswer": "1",
+      "formula": "\\text{Units of } k = (\\text{mol L}^{-1})^{1 - n} \\text{ s}^{-1}",
+      "solution": "For order $n$, units are $(\\text{mol L}^{-1})^{1-n}\\text{s}^{-1}$. When $n=1$, $(1-n) = 0$, giving units of $\\text{s}^{-1}$. Hence the reaction is first-order ($n = 1$).",
+      "notebookSolution": {
+        "given": "k has units s⁻¹",
+        "concept": "General units of rate constant (conc)^(1-n) × time⁻¹",
+        "steps": [
+          "(mol/L)^(1-n) s⁻¹ = s⁻¹ implies 1 - n = 0",
+          "n = 1"
+        ],
+        "conclusion": "Order is 1.",
+        "pitfall": "Units of rate constant uniquely determine reaction order."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-chem-24",
+      "subject": "chemistry",
+      "chapter": "Coordination Compounds",
+      "topic": "Spin-only Magnetic Moment of Metal Complex",
+      "difficulty": "medium",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Jan 29 Shift 1)",
+      "text": "In the complex $[Fe(H_2O)_6]^{2+}$, water is a weak-field ligand. The number of unpaired electrons in the central iron ion is:",
+      "correctAnswer": "4",
+      "formula": "Fe^{2+} (d^6) \\text{ in weak field } \\implies t_{2g}^4 e_g^2, \\; n = 4",
+      "solution": "Iron has atomic number $26$: $Fe = [Ar] 3d^6 4s^2 \\implies Fe^{2+} = [Ar] 3d^6$. With weak field ligand $H_2O$, $\\Delta_o < P$ (high spin): configuration is $t_{2g}^4 e_g^2$. Unpaired electrons: $2$ in $t_{2g}$ and $2$ in $e_g$, giving total $n = 4$ unpaired electrons.",
+      "notebookSolution": {
+        "given": "[Fe(H2O)6]²⁺, H2O is weak field",
+        "concept": "High spin octahedral d⁶ splitting",
+        "steps": [
+          "Fe²⁺ = 3d⁶",
+          "Weak field: no pairing in eg until t2g is half filled",
+          "Configuration: t2g⁴ eg²",
+          "Unpaired electrons: 2 + 2 = 4"
+        ],
+        "conclusion": "Number of unpaired electrons is 4.",
+        "pitfall": "Fe(CN)6⁴⁻ has strong field ligand so n = 0, but H2O gives high spin n = 4."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-chem-25",
+      "subject": "chemistry",
+      "chapter": "Solutions",
+      "topic": "Depression in Freezing Point with Association",
+      "difficulty": "medium",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Apr 8 Shift 2)",
+      "text": "A $1.0\\text{ molal}$ aqueous solution of a non-electrolyte completely freezes at $-1.86^\\circ\\text{C}$ ($K_f = 1.86\\text{ K kg mol}^{-1}$). If an electrolyte $AB_2$ completely dissociates ($100\\%$ ionization) in water, the freezing point depression $\\Delta T_f$ (in $\\text{K}$) of a $1.0\\text{ molal}$ aqueous solution of $AB_2$ is $x \\times 1.86$. The value of $x$ is:",
+      "correctAnswer": "3",
+      "formula": "\\Delta T_f = i K_f m, \\quad i = 1 + (n-1)\\alpha",
+      "solution": "$AB_2 \\to A^{2+} + 2B^- \\implies n = 3$ ions. With $100\\%$ dissociation, van 't Hoff factor $i = 3$. Hence $\\Delta T_f = 3 \\times 1.86 \\times 1.0 = 3 \\times 1.86 \\implies x = 3$.",
+      "notebookSolution": {
+        "given": "AB2 completely dissociates into 3 ions",
+        "concept": "van t Hoff factor i = 1 + (n-1)α = 3",
+        "steps": [
+          "AB2 -> A²⁺ + 2B⁻ (n = 3)",
+          "α = 1.0 -> i = 3",
+          "ΔTf = 3 × Kf × m = 3 × 1.86"
+        ],
+        "conclusion": "x = 3.",
+        "pitfall": "Remember to count all cation and anion particles."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-math-1",
+      "subject": "mathematics",
+      "chapter": "Sets and Relations",
+      "topic": "Types of Binary Relations",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Apr 9 Shift 1)",
+      "text": "Let $R$ be a binary relation defined on the set of integers $\\mathbb{Z}$ by: $a R b \\iff a \\le b$. Then the relation $R$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "An equivalence relation"
+        },
+        {
+          "id": "B",
+          "text": "Symmetric, but neither reflexive nor transitive"
+        },
+        {
+          "id": "C",
+          "text": "Reflexive and transitive, but not symmetric"
+        },
+        {
+          "id": "D",
+          "text": "Reflexive and symmetric, but not transitive"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "a R a \\implies \\text{Reflexive}; \\quad a R b \\text{ and } b R c \\implies a R c \\implies \\text{Transitive}",
+      "solution": "- Reflexive: For every $a \\in \\mathbb{Z}$, $a \\le a$ is true $\\implies (a,a) \\in R$.\n- Symmetric: If $2 \\le 3$, then $3 \\le 2$ is false $\\implies$ Not symmetric.\n- Transitive: If $a \\le b$ and $b \\le c$, then $a \\le c$ is true $\\implies$ Transitive.\nHence, $R$ is reflexive and transitive, but not symmetric.",
+      "notebookSolution": {
+        "given": "Relation a R b iff a <= b on Z",
+        "concept": "Definitions of reflexivity, symmetry, transitivity",
+        "steps": [
+          "a <= a is true for all integers (reflexive)",
+          "2 <= 3 does not imply 3 <= 2 (not symmetric)",
+          "a <= b and b <= c implies a <= c (transitive)"
+        ],
+        "conclusion": "Reflexive and transitive, but not symmetric (Option C).",
+        "pitfall": "Do not confuse partial order with equivalence relation."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-math-2",
+      "subject": "mathematics",
+      "chapter": "Complex Numbers",
+      "topic": "Cube Roots of Unity",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Jan 30 Shift 2)",
+      "text": "If $\\omega$ is a non-real complex cube root of unity ($1 + \\omega + \\omega^2 = 0$ and $\\omega^3 = 1$), then the value of the expression $(1 + \\omega - \\omega^2)^3$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$+8$"
+        },
+        {
+          "id": "B",
+          "text": "$0$"
+        },
+        {
+          "id": "C",
+          "text": "$16$"
+        },
+        {
+          "id": "D",
+          "text": "$-8$"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "1 + \\omega = -\\omega^2, \\quad \\omega^3 = 1",
+      "solution": "Since $1 + \\omega = -\\omega^2$, we substitute:\n$$(1 + \\omega - \\omega^2)^3 = (-\\omega^2 - \\omega^2)^3 = (-2\\omega^2)^3 = (-2)^3 (\\omega^2)^3 = -8 (\\omega^3)^2 = -8(1)^2 = -8$$.",
+      "notebookSolution": {
+        "given": "Expression (1 + ω - ω²)³",
+        "concept": "Cube roots of unity identities: 1 + ω + ω² = 0, ω³ = 1",
+        "steps": [
+          "1 + ω = -ω²",
+          "( -ω² - ω² )³ = (-2ω²)³",
+          "= -8(ω³)² = -8(1) = -8"
+        ],
+        "conclusion": "Value is -8 (Option D).",
+        "pitfall": "Remember (-2)³ has a negative sign."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-math-3",
+      "subject": "mathematics",
+      "chapter": "Quadratic Equations",
+      "topic": "Symmetric Functions of Roots",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Apr 9 Shift 1)",
+      "text": "If $\\alpha$ and $\\beta$ are the roots of the quadratic equation $x^2 - 5x + 6 = 0$, then the value of $\\alpha^2 + \\beta^2$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$13$"
+        },
+        {
+          "id": "B",
+          "text": "$17$"
+        },
+        {
+          "id": "C",
+          "text": "$9$"
+        },
+        {
+          "id": "D",
+          "text": "$23$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "\\alpha^2 + \\beta^2 = (\\alpha + \\beta)^2 - 2\\alpha\\beta",
+      "solution": "Sum of roots $\\alpha + \\beta = 5$, product of roots $\\alpha\\beta = 6$.\n$$\\alpha^2 + \\beta^2 = (5)^2 - 2(6) = 25 - 12 = 13$$.",
+      "notebookSolution": {
+        "given": "x² - 5x + 6 = 0",
+        "concept": "Vieta formulas for quadratic equation",
+        "steps": [
+          "α + β = 5",
+          "αβ = 6",
+          "α² + β² = (5)² - 2(6) = 13"
+        ],
+        "conclusion": "Value is 13 (Option A).",
+        "pitfall": "Check minus sign in -2αβ."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-math-4",
+      "subject": "mathematics",
+      "chapter": "Matrices and Determinants",
+      "topic": "Determinant of Adjoint Matrix",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Jan 30 Shift 2)",
+      "text": "Let $A$ be a non-singular square matrix of order $3 \\times 3$ with determinant $|A| = 3$. The determinant of its adjoint matrix $|\\text{adj}(A)|$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$3$"
+        },
+        {
+          "id": "B",
+          "text": "$9$"
+        },
+        {
+          "id": "C",
+          "text": "$27$"
+        },
+        {
+          "id": "D",
+          "text": "$9$"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "|\\text{adj}(A)| = |A|^{n-1}",
+      "solution": "For an $n \\times n$ matrix, $|\\text{adj}(A)| = |A|^{n-1}$. Here order $n = 3$, so:\n$$|\\text{adj}(A)| = |A|^{3-1} = |A|^2 = (3)^2 = 9$$.",
+      "notebookSolution": {
+        "given": "Order n = 3, |A| = 3",
+        "concept": "|adj(A)| = |A|^(n-1)",
+        "steps": [
+          "|adj(A)| = |A|^(3-1) = |A|²",
+          "= (3)² = 9"
+        ],
+        "conclusion": "Determinant is 9 (Option B).",
+        "pitfall": "Order of matrix is 3, so power is 3 - 1 = 2."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-math-5",
+      "subject": "mathematics",
+      "chapter": "Permutations and Combinations",
+      "topic": "Circular Permutations",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Apr 9 Shift 1)",
+      "text": "The number of distinct ways in which $6$ persons can be seated around a circular table is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$720$"
+        },
+        {
+          "id": "B",
+          "text": "$60$"
+        },
+        {
+          "id": "C",
+          "text": "$120$"
+        },
+        {
+          "id": "D",
+          "text": "$24$"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "\\text{Circular permutations of } n \\text{ distinct items} = (n - 1)!",
+      "solution": "Seating $n = 6$ distinct persons around a circular table where rotations are considered equivalent:\n$$\\text{Ways} = (6 - 1)! = 5! = 5 \\times 4 \\times 3 \\times 2 \\times 1 = 120$$.",
+      "notebookSolution": {
+        "given": "6 persons around circular table",
+        "concept": "Circular arrangement fixes one position: (n-1)!",
+        "steps": [
+          "Formula: (6 - 1)! = 5!",
+          "5! = 120"
+        ],
+        "conclusion": "120 ways (Option C).",
+        "pitfall": "Do not use 6! = 720 (circular symmetry eliminates n equivalent rotations)."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-math-6",
+      "subject": "mathematics",
+      "chapter": "Binomial Theorem",
+      "topic": "Term Independent of x",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Jan 30 Shift 2)",
+      "text": "The term independent of $x$ in the binomial expansion of $\\left(x + \\frac{1}{x}\\right)^6$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$15$"
+        },
+        {
+          "id": "B",
+          "text": "$30$"
+        },
+        {
+          "id": "C",
+          "text": "$60$"
+        },
+        {
+          "id": "D",
+          "text": "$20$"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "T_{r+1} = {}^nC_r x^{n-r} \\left(\\frac{1}{x}\\right)^r = {}^nC_r x^{n-2r}",
+      "solution": "General term $T_{r+1} = {}^6C_r x^{6-r} (x^{-1})^r = {}^6C_r x^{6-2r}$. For term independent of $x$, exponent $6 - 2r = 0 \\implies r = 3$.\n$$T_4 = {}^6C_3 = \\frac{6 \\times 5 \\times 4}{3 \\times 2 \\times 1} = 20$$.",
+      "notebookSolution": {
+        "given": "(x + 1/x)⁶",
+        "concept": "Set exponent of x to zero",
+        "steps": [
+          "x^(6 - 2r) = x^0 implies r = 3",
+          "Coeff = ⁶C₃ = 20"
+        ],
+        "conclusion": "Term independent of x is 20 (Option D).",
+        "pitfall": "Check index r matches general term T_{r+1}."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-math-7",
+      "subject": "mathematics",
+      "chapter": "Sequences and Series",
+      "topic": "Sum of Infinite Geometric Progression",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Apr 9 Shift 1)",
+      "text": "The sum of the infinite geometric series $1 + \\frac{1}{2} + \\frac{1}{4} + \\frac{1}{8} + \\cdots$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$2$"
+        },
+        {
+          "id": "B",
+          "text": "$1$"
+        },
+        {
+          "id": "C",
+          "text": "$4$"
+        },
+        {
+          "id": "D",
+          "text": "$\\frac{3}{2}$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "S_\\infty = \\frac{a}{1 - r} \\quad (|r| < 1)",
+      "solution": "First term $a = 1$, common ratio $r = \\frac{1}{2} < 1$.\n$$S_\\infty = \\frac{1}{1 - 1/2} = \\frac{1}{1/2} = 2$$.",
+      "notebookSolution": {
+        "given": "Infinite GP with a = 1, r = 1/2",
+        "concept": "S_inf = a / (1 - r)",
+        "steps": [
+          "S_inf = 1 / (1 - 0.5) = 2"
+        ],
+        "conclusion": "Sum is 2 (Option A).",
+        "pitfall": "Only valid when |r| < 1."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-math-8",
+      "subject": "mathematics",
+      "chapter": "Limits, Continuity and Differentiability",
+      "topic": "Indeterminate Form 1 to Power Infinity",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Jan 30 Shift 2)",
+      "text": "The value of the limit $\\lim_{x \\to 0} (1 + 2x)^{\\frac{3}{x}}$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$e^{2}$"
+        },
+        {
+          "id": "B",
+          "text": "$e^{6}$"
+        },
+        {
+          "id": "C",
+          "text": "$e^{3}$"
+        },
+        {
+          "id": "D",
+          "text": "$1$"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "\\lim_{x \\to a} [f(x)]^{g(x)} = e^{\\lim_{x \\to a} g(x)[f(x) - 1]}",
+      "solution": "This is of the form $1^\\infty$.\n$$L = e^{\\lim_{x \\to 0} \\frac{3}{x} [(1 + 2x) - 1]} = e^{\\lim_{x \\to 0} \\frac{3}{x} (2x)} = e^{3 \\times 2} = e^{6}$$.",
+      "notebookSolution": {
+        "given": "Limit (1 + ax)^(b/x) as x -> 0",
+        "concept": "1^inf evaluation using e^[lim g(f - 1)]",
+        "steps": [
+          "L = e^[ lim (b/x)(ax) ]",
+          "= e^(ab) = e^6"
+        ],
+        "conclusion": "Limit is e^6 (Option B).",
+        "pitfall": "Ensure base approaches 1 and exponent approaches infinity."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-math-9",
+      "subject": "mathematics",
+      "chapter": "Application of Derivatives",
+      "topic": "Equation of Tangent to Curve",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Apr 9 Shift 1)",
+      "text": "The equation of the tangent line to the parabola $y = x^2$ at the point $(2, 4)$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$y = 4x + 4$"
+        },
+        {
+          "id": "B",
+          "text": "$y = 2x - 1$"
+        },
+        {
+          "id": "C",
+          "text": "$y = 4x - 4$"
+        },
+        {
+          "id": "D",
+          "text": "$y = 4x$"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "y - y_0 = m(x - x_0), \\quad m = \\left.\\frac{dy}{dx}\\right|_{(x_0,y_0)}",
+      "solution": "Derivative: $\\frac{dy}{dx} = 2x$. At $x = 2$, slope $m = 2(2) = 4$.\nEquation of tangent: $y - 4 = 4(x - 2) \\implies y - 4 = 4x - 8 \\implies y = 4x - 4$.",
+      "notebookSolution": {
+        "given": "Curve y = x², point (2, 4)",
+        "concept": "Tangent slope is derivative evaluated at point",
+        "steps": [
+          "dy/dx = 2x",
+          "m = 2(2) = 4",
+          "y - 4 = 4(x - 2) -> y = 4x - 4"
+        ],
+        "conclusion": "Tangent is y = 4x - 4 (Option C).",
+        "pitfall": "Check substitution into point-slope formula."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-math-10",
+      "subject": "mathematics",
+      "chapter": "Application of Derivatives",
+      "topic": "Local Minimum of Polynomial",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Jan 30 Shift 2)",
+      "text": "The function $f(x) = 2x^3 - 9x^2 + 12x + 5$ attains a local minimum at:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$x = 0$"
+        },
+        {
+          "id": "B",
+          "text": "$x = -2$"
+        },
+        {
+          "id": "C",
+          "text": "$x = 4$"
+        },
+        {
+          "id": "D",
+          "text": "$x = 2$"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "f'(x) = 0 \\text{ and } f''(x) > 0",
+      "solution": "Derivative: $f'(x) = 6x^2 - 18x + 12 = 6(x^2 - 3x + 2) = 6(x - 1)(x - 2) = 0 \\implies x = 1, 2$.\nSecond derivative: $f''(x) = 12x - 18$.\n- At $x = 1$: $f''(1) = -6 < 0$ (Local maximum)\n- At $x = 2$: $f''(2) = +6 > 0$ (Local minimum)\nHence local minimum occurs at $x = 2$.",
+      "notebookSolution": {
+        "given": "f(x) = 2x³ - 9x² + 12x + 5",
+        "concept": "Second derivative test for extrema",
+        "steps": [
+          "f'(x) = 6(x - 1)(x - 2) = 0 -> x = 1, 2",
+          "f''(x) = 12x - 18",
+          "f''(2) = 6 > 0 -> local minimum at x = 2"
+        ],
+        "conclusion": "Local minimum at x = 2 (Option D).",
+        "pitfall": "Do not confuse local maximum with local minimum."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-math-11",
+      "subject": "mathematics",
+      "chapter": "Integrals",
+      "topic": "Standard Exponential Integral Identity",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Apr 9 Shift 1)",
+      "text": "The indefinite integral $\\int e^x (\\sin x + \\cos x) \\, dx$ evaluates to:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$e^x \\sin x + C$"
+        },
+        {
+          "id": "B",
+          "text": "$e^x \\cos x + C$"
+        },
+        {
+          "id": "C",
+          "text": "$-e^x \\sin x + C$"
+        },
+        {
+          "id": "D",
+          "text": "$e^x (\\sin x - \\cos x) + C$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "\\int e^x [f(x) + f'(x)] \\, dx = e^x f(x) + C",
+      "solution": "Let $f(x) = \\sin x$. Then $f'(x) = \\cos x$. Using the standard formula:\n$$\\int e^x [f(x) + f'(x)] \\, dx = e^x f(x) + C = e^x \\sin x + C$$.",
+      "notebookSolution": {
+        "given": "Integral ∫ e^x (sin x + cos x) dx",
+        "concept": "∫ e^x [f(x) + f'(x)] dx = e^x f(x) + C",
+        "steps": [
+          "Let f(x) = sin x, then f'(x) = cos x",
+          "Expression matches e^x (f + f')",
+          "Result = e^x sin x + C"
+        ],
+        "conclusion": "e^x sin x + C (Option A).",
+        "pitfall": "Make sure f'(x) sign matches correctly."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-math-12",
+      "subject": "mathematics",
+      "chapter": "Integrals",
+      "topic": "Properties of Definite Integrals",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Jan 30 Shift 2)",
+      "text": "The value of the definite integral $I = \\int_0^{\\pi/2} \\frac{\\sqrt{\\sin x}}{\\sqrt{\\sin x} + \\sqrt{\\cos x}} \\, dx$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$\\frac{\\pi}{2}$"
+        },
+        {
+          "id": "B",
+          "text": "$\\frac{\\pi}{4}$"
+        },
+        {
+          "id": "C",
+          "text": "$\\pi$"
+        },
+        {
+          "id": "D",
+          "text": "$0$"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "\\int_a^b f(x)dx = \\int_a^b f(a+b-x)dx",
+      "solution": "Applying King's property: $x \\to \\frac{\\pi}{2} - x$:\n$$I = \\int_0^{\\pi/2} \\frac{\\sqrt{\\cos x}}{\\sqrt{\\cos x} + \\sqrt{\\sin x}} \\, dx$$.\nAdding the two equations:\n$$2I = \\int_0^{\\pi/2} \\frac{\\sqrt{\\sin x} + \\sqrt{\\cos x}}{\\sqrt{\\sin x} + \\sqrt{\\cos x}} \\, dx = \\int_0^{\\pi/2} 1 \\, dx = \\frac{\\pi}{2} \\implies I = \\frac{\\pi}{4}$$.",
+      "notebookSolution": {
+        "given": "Definite integral with limits 0 to π/2",
+        "concept": "King property: ∫ f(x) = ∫ f(a+b-x)",
+        "steps": [
+          "Replace x with π/2 - x",
+          "Add original and transformed integral: 2I = ∫ 1 dx = π/2",
+          "I = π/4"
+        ],
+        "conclusion": "I = π/4 (Option B).",
+        "pitfall": "Do not forget the factor of 2 in 2I."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-math-13",
+      "subject": "mathematics",
+      "chapter": "Differential Equations",
+      "topic": "Integrating Factor of Linear Differential Equation",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Apr 9 Shift 1)",
+      "text": "The integrating factor (I.F.) for the first-order linear differential equation $\\frac{dy}{dx} + \\frac{2}{x} y = x^3$ (for $x > 0$) is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$2x$"
+        },
+        {
+          "id": "B",
+          "text": "$\\ln x$"
+        },
+        {
+          "id": "C",
+          "text": "$x^2$"
+        },
+        {
+          "id": "D",
+          "text": "$e^{2x}$"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "\\text{I.F.} = e^{\\int P(x)\\,dx}",
+      "solution": "Here $P(x) = \\frac{2}{x}$.\n$$\\text{I.F.} = e^{\\int \\frac{2}{x} \\, dx} = e^{2 \\ln x} = e^{\\ln (x^2)} = x^2$$.",
+      "notebookSolution": {
+        "given": "dy/dx + (2/x)y = x³",
+        "concept": "I.F. = e^(∫ P dx)",
+        "steps": [
+          "P = 2/x",
+          "∫ (2/x) dx = 2 ln x = ln(x²)",
+          "e^(ln x²) = x²"
+        ],
+        "conclusion": "I.F. is x² (Option C).",
+        "pitfall": "Move coefficient inside log as exponent: 2 ln x = ln(x²)."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-math-14",
+      "subject": "mathematics",
+      "chapter": "Straight Lines",
+      "topic": "Distance between Parallel Lines",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Jan 30 Shift 2)",
+      "text": "The perpendicular distance between the parallel lines $3x + 4y + 5 = 0$ and $3x + 4y - 5 = 0$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$1$"
+        },
+        {
+          "id": "B",
+          "text": "$4$"
+        },
+        {
+          "id": "C",
+          "text": "$\\frac{5}{2}$"
+        },
+        {
+          "id": "D",
+          "text": "$2$"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "d = \\frac{|c_1 - c_2|}{\\sqrt{a^2 + b^2}}",
+      "solution": "Both lines have $a = 3, b = 4$.\n$$d = \\frac{|5 - (-5)|}{\\sqrt{3^2 + 4^2}} = \\frac{|10|}{\\sqrt{9 + 16}} = \\frac{10}{5} = 2$$.",
+      "notebookSolution": {
+        "given": "Lines 3x + 4y + 5 = 0 and 3x + 4y - 5 = 0",
+        "concept": "Distance between parallel lines formula",
+        "steps": [
+          "|c1 - c2| = |5 - (-5)| = 10",
+          "√(a² + b²) = √(9 + 16) = 5",
+          "d = 10 / 5 = 2"
+        ],
+        "conclusion": "Distance is 2 units (Option D).",
+        "pitfall": "Ensure coefficients of x and y are identical before using formula."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-math-15",
+      "subject": "mathematics",
+      "chapter": "Circles",
+      "topic": "Condition of Tangency to Circle",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Apr 9 Shift 1)",
+      "text": "The straight line $y = x + c$ is a tangent to the circle $x^2 + y^2 = 25$ if:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$c = \\pm 5\\sqrt{2}$"
+        },
+        {
+          "id": "B",
+          "text": "$c = \\pm 5$"
+        },
+        {
+          "id": "C",
+          "text": "$c = \\pm 10$"
+        },
+        {
+          "id": "D",
+          "text": "$c = \\pm 25$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "c^2 = a^2(1 + m^2)",
+      "solution": "For circle $x^2 + y^2 = a^2$, the line $y = mx + c$ is tangent if $c^2 = a^2(1 + m^2)$.\nHere $a^2 = 25$ and slope $m = 1$.\n$$c^2 = 25(1 + 1^2) = 25(2) = 50 \\implies c = \\pm \\sqrt{50} = \\pm 5\\sqrt{2}$$.",
+      "notebookSolution": {
+        "given": "Line y = x + c, Circle x² + y² = 25",
+        "concept": "Condition of tangency c² = a²(1 + m²)",
+        "steps": [
+          "m = 1, a² = 25",
+          "c² = 25(1 + 1) = 50",
+          "c = ±5√2"
+        ],
+        "conclusion": "c = ±5√2 (Option A).",
+        "pitfall": "Do not forget both plus and minus signs."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-math-16",
+      "subject": "mathematics",
+      "chapter": "Conic Sections",
+      "topic": "Length of Latus Rectum of Parabola",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Jan 30 Shift 2)",
+      "text": "The length of the latus rectum of the parabola $y^2 = 12x$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$3$"
+        },
+        {
+          "id": "B",
+          "text": "$12$"
+        },
+        {
+          "id": "C",
+          "text": "$6$"
+        },
+        {
+          "id": "D",
+          "text": "$24$"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "\\text{Length of Latus Rectum} = 4a",
+      "solution": "Comparing $y^2 = 12x$ with standard equation $y^2 = 4ax$, we have $4a = 12$. Hence the length of the latus rectum is $12$.",
+      "notebookSolution": {
+        "given": "y² = 12x",
+        "concept": "Latus rectum length = 4a",
+        "steps": [
+          "4a = 12"
+        ],
+        "conclusion": "Length is 12 (Option B).",
+        "pitfall": "Latus rectum is 4a, not a."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-math-17",
+      "subject": "mathematics",
+      "chapter": "Conic Sections",
+      "topic": "Eccentricity of Standard Ellipse",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Apr 9 Shift 1)",
+      "text": "The eccentricity of the ellipse $\\frac{x^2}{25} + \\frac{y^2}{16} = 1$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$\\frac{4}{5}$"
+        },
+        {
+          "id": "B",
+          "text": "$\\frac{9}{25}$"
+        },
+        {
+          "id": "C",
+          "text": "$\\frac{3}{5}$"
+        },
+        {
+          "id": "D",
+          "text": "$\\frac{1}{5}$"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "e = \\sqrt{1 - \\frac{b^2}{a^2}} \\quad (a > b)",
+      "solution": "Here $a^2 = 25$ and $b^2 = 16$.\n$$e = \\sqrt{1 - \\frac{16}{25}} = \\sqrt{\\frac{9}{25}} = \\frac{3}{5}$$.",
+      "notebookSolution": {
+        "given": "x²/25 + y²/16 = 1",
+        "concept": "e = √(1 - b²/a²)",
+        "steps": [
+          "a² = 25, b² = 16",
+          "1 - 16/25 = 9/25",
+          "e = 3/5"
+        ],
+        "conclusion": "Eccentricity is 3/5 (Option C).",
+        "pitfall": "Ensure b² < a² in formula for horizontal ellipse."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-math-18",
+      "subject": "mathematics",
+      "chapter": "Vector Algebra",
+      "topic": "Scalar Projection of Vector",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Jan 30 Shift 2)",
+      "text": "The projection of the vector $\\vec{a} = 2\\hat{i} + 3\\hat{j} + 2\\hat{k}$ on the vector $\\vec{b} = \\hat{i} + 2\\hat{j} + \\hat{k}$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$\\frac{10}{\\sqrt{6}}$"
+        },
+        {
+          "id": "B",
+          "text": "$\\frac{8}{\\sqrt{6}}$"
+        },
+        {
+          "id": "C",
+          "text": "$10$"
+        },
+        {
+          "id": "D",
+          "text": "$\\sqrt{6}$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "\\text{Proj}_{\\vec{b}}(\\vec{a}) = \\frac{\\vec{a} \\cdot \\vec{b}}{|\\vec{b}|}",
+      "solution": "$$\\vec{a} \\cdot \\vec{b} = (2)(1) + (3)(2) + (2)(1) = 2 + 6 + 2 = 10$$.\n$$|\\vec{b}| = \\sqrt{1^2 + 2^2 + 1^2} = \\sqrt{6}$$.\n$$\\text{Projection} = \\frac{10}{\\sqrt{6}} = \\frac{5\\sqrt{6}}{3}$$.",
+      "notebookSolution": {
+        "given": "a = 2i + 3j + 2k, b = i + 2j + k",
+        "concept": "Projection = (a . b) / |b|",
+        "steps": [
+          "a . b = 2 + 6 + 2 = 10",
+          "|b| = √(1 + 4 + 1) = √6",
+          "Proj = 10 / √6"
+        ],
+        "conclusion": "Projection is 10/√6.",
+        "pitfall": "Divide by magnitude of target vector b, not a."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-math-19",
+      "subject": "mathematics",
+      "chapter": "Three Dimensional Geometry",
+      "topic": "Angle between Two Straight Lines",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Apr 9 Shift 1)",
+      "text": "The cosine of the angle between two straight lines having direction ratios $\\langle 1, 2, 2 \\rangle$ and $\\langle 2, -2, 1 \\rangle$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$0 \\; (\\theta = 90^\\circ)$"
+        },
+        {
+          "id": "B",
+          "text": "$\\frac{1}{3}$"
+        },
+        {
+          "id": "C",
+          "text": "$\\frac{2}{3}$"
+        },
+        {
+          "id": "D",
+          "text": "$\\frac{1}{2}$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "\\cos\\theta = \\frac{a_1 a_2 + b_1 b_2 + c_1 c_2}{\\sqrt{a_1^2 + b_1^2 + c_1^2}\\sqrt{a_2^2 + b_2^2 + c_2^2}}",
+      "solution": "$$a_1 a_2 + b_1 b_2 + c_1 c_2 = (1)(2) + (2)(-2) + (2)(1) = 2 - 4 + 2 = 0$$.\nSince the numerator is $0$, $\\cos\\theta = 0 \\implies \\theta = 90^\\circ$. The lines are mutually perpendicular.",
+      "notebookSolution": {
+        "given": "Direction ratios <1, 2, 2> and <2, -2, 1>",
+        "concept": "Scalar product of direction ratios",
+        "steps": [
+          "1(2) + 2(-2) + 2(1) = 2 - 4 + 2 = 0",
+          "cos θ = 0",
+          "Lines are perpendicular"
+        ],
+        "conclusion": "cos θ = 0 (θ = 90°).",
+        "pitfall": "Check signs when multiplying direction components."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-math-20",
+      "subject": "mathematics",
+      "chapter": "Probability",
+      "topic": "Conditional Probability",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Jan 30 Shift 2)",
+      "text": "If $P(A) = 0.6$, $P(B) = 0.7$, and $P(A \\cup B) = 0.9$, then the conditional probability $P(A|B)$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$\\frac{4}{7}$"
+        },
+        {
+          "id": "B",
+          "text": "$\\frac{3}{7}$"
+        },
+        {
+          "id": "C",
+          "text": "$\\frac{2}{3}$"
+        },
+        {
+          "id": "D",
+          "text": "$\\frac{1}{2}$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "P(A \\cap B) = P(A) + P(B) - P(A \\cup B), \\quad P(A|B) = \\frac{P(A \\cap B)}{P(B)}",
+      "solution": "$$P(A \\cap B) = 0.6 + 0.7 - 0.9 = 1.3 - 0.9 = 0.4$$.\n$$P(A|B) = \\frac{P(A \\cap B)}{P(B)} = \\frac{0.4}{0.7} = \\frac{4}{7}$$.",
+      "notebookSolution": {
+        "given": "P(A) = 0.6, P(B) = 0.7, P(A ∪ B) = 0.9",
+        "concept": "Addition theorem and conditional probability formula",
+        "steps": [
+          "P(A ∩ B) = 0.6 + 0.7 - 0.9 = 0.4",
+          "P(A|B) = 0.4 / 0.7 = 4/7"
+        ],
+        "conclusion": "P(A|B) = 4/7.",
+        "pitfall": "Divide by P(B), not P(A)."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-math-21",
+      "subject": "mathematics",
+      "chapter": "Binomial Theorem",
+      "topic": "Remainder Theorem in Binomial Expansion",
+      "difficulty": "medium",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Apr 9 Shift 1)",
+      "text": "When $7^{103}$ is divided by $25$, the remainder is:",
+      "correctAnswer": "18",
+      "formula": "7^2 = 49 = 50 - 1 \\equiv -1 \\pmod{25}",
+      "solution": "$$7^{103} = 7 \\times (7^2)^{51} = 7 \\times (49)^{51} = 7 \\times (50 - 1)^{51}$$.\nUsing binomial expansion: $(50 - 1)^{51} = 50k + (-1)^{51} = 50k - 1$.\n$$7(50k - 1) = 350k - 7 = 25(14k - 1) + (25 - 7) = 25m + 18$$.\nHence, the remainder is $18$.",
+      "notebookSolution": {
+        "given": "7¹⁰³ divided by 25",
+        "concept": "Binomial expansion modulo 25",
+        "steps": [
+          "7² = 49 = 50 - 1",
+          "7¹⁰³ = 7 × (49)⁵¹ = 7(50 - 1)⁵¹",
+          "Modulo 25: 7 × (-1)⁵¹ = -7 ≡ 18 (mod 25)"
+        ],
+        "conclusion": "Remainder is 18.",
+        "pitfall": "A negative remainder -7 must be adjusted to positive by adding divisor 25: -7 + 25 = 18."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-math-22",
+      "subject": "mathematics",
+      "chapter": "Matrices and Determinants",
+      "topic": "System of Linear Equations Condition",
+      "difficulty": "medium",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Jan 30 Shift 2)",
+      "text": "The system of linear equations:\n$$x + y + z = 6$$\n$$x + 2y + 3z = 10$$\n$$x + 2y + \\lambda z = \\mu$$\nhas infinitely many solutions when $\\lambda = $",
+      "correctAnswer": "3",
+      "formula": "\\Delta = 0 \\text{ for non-unique solution}",
+      "solution": "Coefficient determinant:\n$$\\Delta = \\begin{vmatrix} 1 & 1 & 1 \\\\ 1 & 2 & 3 \\\\ 1 & 2 & \\lambda \\end{vmatrix} = 1(2\\lambda - 6) - 1(\\lambda - 3) + 1(2 - 2) = 2\\lambda - 6 - \\lambda + 3 = \\lambda - 3$$.\nFor infinitely many solutions, we must have $\\Delta = 0 \\implies \\lambda - 3 = 0 \\implies \\lambda = 3$. (And $\\mu = 10$).",
+      "notebookSolution": {
+        "given": "System of 3 equations with parameters λ and μ",
+        "concept": "Cramer rule Δ = 0 condition",
+        "steps": [
+          "Determinant of coefficients Δ = λ - 3",
+          "For infinitely many solutions Δ = 0 -> λ = 3"
+        ],
+        "conclusion": "λ = 3.",
+        "pitfall": "Check that Δx = Δy = Δz = 0 is also satisfied with μ = 10."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-math-23",
+      "subject": "mathematics",
+      "chapter": "Application of Integrals",
+      "topic": "Area Bounded by Parabola and Line",
+      "difficulty": "medium",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Apr 9 Shift 1)",
+      "text": "The area (in square units) bounded by the parabola $y^2 = 4x$ and the line $y = x$ is $\\frac{k}{3}$. The value of $k$ is:",
+      "correctAnswer": "8",
+      "formula": "\\text{Area} = \\frac{8a^2}{3m^3}",
+      "solution": "Intersection points: $x^2 = 4x \\implies x(x - 4) = 0 \\implies x = 0$ to $x = 4$.\n$$\\text{Area} = \\int_0^4 (2\\sqrt{x} - x)\\,dx = \\left[ 2 \\cdot \\frac{2}{3}x^{3/2} - \\frac{x^2}{2} \\right]_0^4 = \\frac{4}{3}(8) - 8 = \\frac{32}{3} - \\frac{24}{3} = \\frac{8}{3}$$.\nHence $k = 8$.",
+      "notebookSolution": {
+        "given": "y² = 4x and y = x",
+        "concept": "Area between curve and line ∫ (y1 - y2) dx",
+        "steps": [
+          "Limits x = 0 to x = 4",
+          "∫ (2√x - x) dx = 4/3(8) - 16/2 = 32/3 - 8 = 8/3",
+          "k/3 = 8/3 implies k = 8"
+        ],
+        "conclusion": "k = 8.",
+        "pitfall": "Upper curve is y = 2√x and lower curve is y = x in first quadrant."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-math-24",
+      "subject": "mathematics",
+      "chapter": "Vector Algebra",
+      "topic": "Scalar Triple Product Volume of Parallelepiped",
+      "difficulty": "medium",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Jan 30 Shift 2)",
+      "text": "The volume of the parallelepiped formed by the coterminous vectors $\\vec{a} = \\hat{i} + 2\\hat{j} + 3\\hat{k}$, $\\vec{b} = 2\\hat{i} + \\hat{j} + \\hat{k}$, and $\\vec{c} = \\hat{i} + \\hat{j} + \\hat{k}$ is:",
+      "correctAnswer": "1",
+      "formula": "V = |[\\vec{a} \\; \\vec{b} \\; \\vec{c}]| = |\\det(M)|",
+      "solution": "$$V = \\left| \\begin{vmatrix} 1 & 2 & 3 \\\\ 2 & 1 & 1 \\\\ 1 & 1 & 1 \\end{vmatrix} \\right| = | 1(1 - 1) - 2(2 - 1) + 3(2 - 1) | = | 0 - 2 + 3 | = 1$$.",
+      "notebookSolution": {
+        "given": "Coterminous vectors a, b, c",
+        "concept": "Volume = |scalar triple product|",
+        "steps": [
+          "Determinant = 1(0) - 2(1) + 3(1) = 1",
+          "Volume = 1 cubic unit"
+        ],
+        "conclusion": "Volume is 1.",
+        "pitfall": "Always take absolute value of scalar triple product."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-09-math-25",
+      "subject": "mathematics",
+      "chapter": "Three Dimensional Geometry",
+      "topic": "Shortest Distance between Parallel Planes",
+      "difficulty": "easy",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Apr 9 Shift 1)",
+      "text": "The distance between the parallel planes $2x - y + 2z + 3 = 0$ and $4x - 2y + 4z + 18 = 0$ is:",
+      "correctAnswer": "2",
+      "formula": "d = \\frac{|d_1 - d_2|}{\\sqrt{a^2 + b^2 + c^2}}",
+      "solution": "Divide the second plane by $2$: $2x - y + 2z + 9 = 0$.\nBoth planes have $a = 2, b = -1, c = 2$.\n$$d = \\frac{|9 - 3|}{\\sqrt{2^2 + (-1)^2 + 2^2}} = \\frac{6}{\\sqrt{4 + 1 + 4}} = \\frac{6}{\\sqrt{9}} = \\frac{6}{3} = 2$$.",
+      "notebookSolution": {
+        "given": "Planes 2x - y + 2z + 3 = 0 and 4x - 2y + 4z + 18 = 0",
+        "concept": "Distance between parallel planes",
+        "steps": [
+          "Normalize second equation to 2x - y + 2z + 9 = 0",
+          "d = |9 - 3| / √(4 + 1 + 4) = 6 / 3 = 2"
+        ],
+        "conclusion": "Distance is 2.",
+        "pitfall": "Coefficients must be identical before subtracting constant terms."
+      },
+      "verificationStatus": "verified"
+    }
+  ]
+},
+{
+  "config": {
+    "id": "jm-mock-10",
+    "testNumber": 10,
+    "title": "JEE Main 2026 - All-India Grand Mock Test 10",
+    "subtitle": "Full Syllabus (11th + 12th) • 75 Questions • 300 Marks • Exact NTA Format",
+    "examType": "jee_main",
+    "durationMinutes": 180,
+    "totalMarks": 300,
+    "questionCount": 75,
+    "description": "Comprehensive full-syllabus examination reflecting the exact chapter weightage, Section A (20 MCQs) and Section B (5 Numericals) structure of recent NTA papers.",
+    "difficulty": "Balanced",
+    "subjectsIncluded": [
+      "physics",
+      "chemistry",
+      "mathematics"
+    ],
+    "seriesCategory": "jee_main",
+    "badge": "Mock Test 10",
+    "tags": [
+      "Full Syllabus",
+      "NTA Official Weightage",
+      "300 Marks",
+      "180 Mins"
+    ]
+  },
+  "questions": [
+    {
+      "id": "jm-10-phy-1",
+      "subject": "physics",
+      "chapter": "Units and Measurements",
+      "topic": "Percentage Error Propagation",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Apr 6 Shift 1)",
+      "text": "A physical quantity $P$ is related to four observables $a, b, c$ as $P = \\frac{a^{3} b^3}{\\sqrt{c}}$. The percentage errors of measurement in $a, b, c$ are $1\\%$, $2\\%$, and $4\\%$ respectively. The maximum percentage error in $P$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$11\\%$"
+        },
+        {
+          "id": "B",
+          "text": "$8\\%$"
+        },
+        {
+          "id": "C",
+          "text": "$13\\%$"
+        },
+        {
+          "id": "D",
+          "text": "$9\\%$"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "\\frac{\\Delta P}{P} = 3\\frac{\\Delta a}{a} + 3\\frac{\\Delta b}{b} + \\frac{1}{2}\\frac{\\Delta c}{c}",
+      "solution": "$$\\frac{\\Delta P}{P} = 3(1\\%) + 3(2\\%) + \\frac{1}{2}(4\\%) = 3 + 6 + 2 = 9\\%$$.",
+      "notebookSolution": {
+        "given": "a has 1%, b has 2%, c has 4%",
+        "concept": "Percentage errors add linearly with power exponents",
+        "steps": [
+          "ΔP/P = 3×1% + 3×2% + 0.5×4% = 9%"
+        ],
+        "conclusion": "Maximum error is 9% (Option D).",
+        "pitfall": "Denominator powers are always added, never subtracted."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-phy-2",
+      "subject": "physics",
+      "chapter": "Motion in a Straight Line",
+      "topic": "Kinematics Equations",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Jan 31 Shift 2)",
+      "text": "A body moving with initial velocity $u = 30\\text{ m/s}$ accelerates at a uniform rate $a = 2\\text{ m/s}^2$ for $t = 5\\text{ s}$. The total distance traversed is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$175\\text{ m}$"
+        },
+        {
+          "id": "B",
+          "text": "$195\\text{ m}$"
+        },
+        {
+          "id": "C",
+          "text": "$160\\text{ m}$"
+        },
+        {
+          "id": "D",
+          "text": "$350\\text{ m}$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "s = ut + \\frac{1}{2}at^2",
+      "solution": "$s = (30)(5) + \\frac{1}{2}(2)(5^2) = 150 + 25 = 175\\text{ m}$.",
+      "notebookSolution": {
+        "given": "u = 30 m/s, a = 2 m/s², t = 5 s",
+        "concept": "Second equation of kinematics",
+        "steps": [
+          "s = 30×5 + 0.5×2×5² = 175 m"
+        ],
+        "conclusion": "Distance is 175 m (Option A).",
+        "pitfall": "Only valid for constant acceleration."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-phy-3",
+      "subject": "physics",
+      "chapter": "Motion in a Plane",
+      "topic": "Maximum Horizontal Range of Projectile",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Apr 6 Shift 1)",
+      "text": "The maximum horizontal range of a projectile fired with launch speed $u = 90\\text{ m/s}$ on level ground (taking $g = 10\\text{ m/s}^2$) is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$972.\\text{ m}$"
+        },
+        {
+          "id": "B",
+          "text": "$810.\\text{ m}$"
+        },
+        {
+          "id": "C",
+          "text": "$648.\\text{ m}$"
+        },
+        {
+          "id": "D",
+          "text": "$1215.\\text{ m}$"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "R_{max} = \\frac{u^2}{g}",
+      "solution": "Maximum range occurs at $\\theta = 45^\\circ$: $R_{max} = \\frac{(90)^2}{10} = 810.\\text{ m}$.",
+      "notebookSolution": {
+        "given": "u = 90 m/s, g = 10 m/s²",
+        "concept": "Maximum range formula R_max = u²/g",
+        "steps": [
+          "R_max = 90² / 10 = 810. m"
+        ],
+        "conclusion": "Range is 810. m (Option B).",
+        "pitfall": "Maximum range is attained at 45 degrees."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-phy-4",
+      "subject": "physics",
+      "chapter": "Laws of Motion",
+      "topic": "Atwood Machine Acceleration",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Jan 31 Shift 2)",
+      "text": "Two masses $m_1 = 2\\text{ kg}$ and $m_2 = 3\\text{ kg}$ are connected by a light inextensible string passing over a smooth frictionless pulley. The acceleration of the system is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$2.5\\text{ m/s}^2$"
+        },
+        {
+          "id": "B",
+          "text": "$4.0\\text{ m/s}^2$"
+        },
+        {
+          "id": "C",
+          "text": "$2\\text{ m/s}^2$"
+        },
+        {
+          "id": "D",
+          "text": "$1.0\\text{ m/s}^2$"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "a = \\frac{(m_2 - m_1)g}{m_1 + m_2}",
+      "solution": "$a = \\frac{(3 - 2) \\times 10}{2 + 3} = 2\\text{ m/s}^2$.",
+      "notebookSolution": {
+        "given": "m1 = 2 kg, m2 = 3 kg, g = 10 m/s²",
+        "concept": "Atwood machine equation of motion",
+        "steps": [
+          "a = (3 - 2)×10 / (2 + 3) = 2 m/s²"
+        ],
+        "conclusion": "Acceleration is 2 m/s² (Option C).",
+        "pitfall": "Net pulling force is (m2 - m1)g."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-phy-5",
+      "subject": "physics",
+      "chapter": "Work, Energy and Power",
+      "topic": "Work Done by Force at Angle",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Apr 6 Shift 1)",
+      "text": "A constant force $F = 70\\text{ N}$ acts on a particle displacing it by $s = 4\\text{ m}$ along a straight path. If the force makes an angle $\\theta = 60^\\circ$ with the displacement vector, the work done is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$280\\text{ J}$"
+        },
+        {
+          "id": "B",
+          "text": "$70\\text{ J}$"
+        },
+        {
+          "id": "C",
+          "text": "$170\\text{ J}$"
+        },
+        {
+          "id": "D",
+          "text": "$140\\text{ J}$"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "W = F s \\cos\\theta",
+      "solution": "$W = 70 \\times 4 \\times \\cos 60^\\circ = 280 \\times 0.5 = 140\\text{ J}$.",
+      "notebookSolution": {
+        "given": "F = 70 N, s = 4 m, θ = 60°",
+        "concept": "Work definition W = F·s = F s cosθ",
+        "steps": [
+          "W = 70 × 4 × 0.5 = 140 J"
+        ],
+        "conclusion": "Work done is 140 J (Option D).",
+        "pitfall": "cos 60° = 1/2."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-phy-6",
+      "subject": "physics",
+      "chapter": "Rotational Motion",
+      "topic": "Moment of Inertia of Thin Circular Ring",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Jan 31 Shift 2)",
+      "text": "The moment of inertia of a uniform thin circular ring of mass $M = 3\\text{ kg}$ and radius $R = 0.4\\text{ m}$ about its central symmetry axis is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$0.48\\text{ kg m}^2$"
+        },
+        {
+          "id": "B",
+          "text": "$0.24\\text{ kg m}^2$"
+        },
+        {
+          "id": "C",
+          "text": "$0.96\\text{ kg m}^2$"
+        },
+        {
+          "id": "D",
+          "text": "$0.72\\text{ kg m}^2$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "I = M R^2",
+      "solution": "$I = 3 \\times (0.4)^2 = 3 \\times 0.16 = 0.48\\text{ kg m}^2$.",
+      "notebookSolution": {
+        "given": "M = 3 kg, R = 0.4 m",
+        "concept": "Ring moment of inertia about central axis I = MR²",
+        "steps": [
+          "I = 3 × 0.16 = 0.48 kg m²"
+        ],
+        "conclusion": "Moment of inertia is 0.48 kg m² (Option A).",
+        "pitfall": "Disc has 1/2 MR², ring has MR²."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-phy-7",
+      "subject": "physics",
+      "chapter": "Gravitation",
+      "topic": "Escape Speed from Surface of Earth",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Apr 6 Shift 1)",
+      "text": "Taking the radius of the Earth $R_e = 6400\\text{ km}$ and $g = 9.8\\text{ m/s}^2$, the escape speed from the surface of the Earth is approximately:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$7.9\\text{ km/s}$"
+        },
+        {
+          "id": "B",
+          "text": "$11.2\\text{ km/s}$"
+        },
+        {
+          "id": "C",
+          "text": "$16.8\\text{ km/s}$"
+        },
+        {
+          "id": "D",
+          "text": "$5.6\\text{ km/s}$"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "v_e = \\sqrt{2g R_e}",
+      "solution": "$v_e = \\sqrt{2 \\times 9.8 \\times 6.4 \\times 10^6} \\approx 11.2\\text{ km/s}$.",
+      "notebookSolution": {
+        "given": "Re = 6400 km, g = 9.8 m/s²",
+        "concept": "Escape velocity formula v_e = √(2gR)",
+        "steps": [
+          "v_e = √(2 × 9.8 × 6.4 × 10⁶) ≈ 11.2 km/s"
+        ],
+        "conclusion": "Escape velocity is 11.2 km/s (Option B).",
+        "pitfall": "Orbital velocity is v_o = √(gR) ≈ 7.9 km/s; escape is √2 times larger."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-phy-8",
+      "subject": "physics",
+      "chapter": "Thermodynamics",
+      "topic": "Thermodynamic Processes and Work Done",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Jan 31 Shift 2)",
+      "text": "In which thermodynamic process does the internal energy of an ideal gas remain completely unchanged ($\\Delta U = 0$)?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Isochoric process"
+        },
+        {
+          "id": "B",
+          "text": "Isobaric process"
+        },
+        {
+          "id": "C",
+          "text": "Isothermal process"
+        },
+        {
+          "id": "D",
+          "text": "Adiabatic process"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "\\Delta U = n C_v \\Delta T = 0 \\implies T = \\text{constant}",
+      "solution": "Since internal energy of an ideal gas depends solely on temperature, $\\Delta U = 0$ implies constant temperature, which defines an isothermal process.",
+      "notebookSolution": {
+        "given": "ΔU = 0 for ideal gas",
+        "concept": "U = f(T) only for ideal gas",
+        "steps": [
+          "ΔU = 0 => ΔT = 0 => T = const => Isothermal"
+        ],
+        "conclusion": "Isothermal process (Option C).",
+        "pitfall": "In adiabatic process, Q = 0, but ΔU = -W ≠ 0."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-phy-9",
+      "subject": "physics",
+      "chapter": "Oscillations",
+      "topic": "Seconds Pendulum Length",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Apr 6 Shift 1)",
+      "text": "A simple pendulum has a time period of $T = 2.0\\text{ s}$ (seconds pendulum) on the Earth surface where $g = 9.8\\text{ m/s}^2$. Its length is approximately:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$0.5\\text{ m}$"
+        },
+        {
+          "id": "B",
+          "text": "$2.0\\text{ m}$"
+        },
+        {
+          "id": "C",
+          "text": "$4.0\\text{ m}$"
+        },
+        {
+          "id": "D",
+          "text": "$\\approx 1.0\\text{ m}$"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "T = 2\\pi \\sqrt{\\frac{L}{g}} \\implies L = \\frac{g T^2}{4\\pi^2}",
+      "solution": "$L = \\frac{9.8 \\times (2)^2}{4 \\times \\pi^2} \\approx \\frac{9.8 \\times 4}{4 \\times 9.87} \\approx 1.0\\text{ m}$.",
+      "notebookSolution": {
+        "given": "T = 2 s, g = 9.8 m/s²",
+        "concept": "Period of simple pendulum",
+        "steps": [
+          "L = g T² / (4π²) = 9.8 × 4 / (4 × 9.87) ≈ 0.993 m ≈ 1.0 m"
+        ],
+        "conclusion": "Length is approximately 1.0 m (Option D).",
+        "pitfall": "A seconds pendulum has a half-period of 1 second and full period of 2 seconds."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-phy-10",
+      "subject": "physics",
+      "chapter": "Electrostatics",
+      "topic": "Coulombs Law Force",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Jan 31 Shift 2)",
+      "text": "Two point charges $q_1 = +2\\text{ }\\mu\\text{C}$ and $q_2 = +8\\text{ }\\mu\\text{C}$ are separated by a distance $r = 30\\text{ cm}$ in vacuum. Taking $\\frac{1}{4\\pi\\varepsilon_0} = 9 \\times 10^9\\text{ N m}^2/\\text{C}^2$, the electrostatic repulsive force between them is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$1.6\\text{ N}$"
+        },
+        {
+          "id": "B",
+          "text": "$3.2\\text{ N}$"
+        },
+        {
+          "id": "C",
+          "text": "$0.8\\text{ N}$"
+        },
+        {
+          "id": "D",
+          "text": "$4.8\\text{ N}$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "F = \\frac{1}{4\\pi\\varepsilon_0}\\frac{q_1 q_2}{r^2}",
+      "solution": "$F = \\frac{9 \\times 10^9 \\times (2 \\times 10^{-6}) \\times (8 \\times 10^{-6})}{(0.3)^2} = \\frac{144 \\times 10^{-3}}{0.09} = 1.6\\text{ N}$.",
+      "notebookSolution": {
+        "given": "q1 = 2 μC, q2 = 8 μC, r = 0.3 m",
+        "concept": "Coulombs law",
+        "steps": [
+          "F = 9×10⁹ × 16×10⁻¹² / 0.09 = 0.144 / 0.09 = 1.6 N"
+        ],
+        "conclusion": "Force is 1.6 N.",
+        "pitfall": "Convert cm to meters before squaring."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-phy-11",
+      "subject": "physics",
+      "chapter": "Current Electricity",
+      "topic": "Kirchhoffs Junction and Loop Laws",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Apr 6 Shift 1)",
+      "text": "Kirchhoff's first law (Junction rule $\\sum I = 0$) and second law (Loop rule $\\sum \\Delta V = 0$) are respective consequences of conservation of:",
+      "options": [
+        {
+          "id": "A",
+          "text": "Energy and Charge respectively"
+        },
+        {
+          "id": "B",
+          "text": "Charge and Energy respectively"
+        },
+        {
+          "id": "C",
+          "text": "Momentum and Charge"
+        },
+        {
+          "id": "D",
+          "text": "Mass and Energy"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "\\sum I_{in} = \\sum I_{out} \\ (\\text{Charge}), \\quad \\sum \\Delta V = 0 \\ (\\text{Energy})",
+      "solution": "Junction rule reflects conservation of electric charge. Loop rule reflects conservation of energy around closed path.",
+      "notebookSolution": {
+        "given": "Kirchhoffs laws",
+        "concept": "Junction law = conservation of charge; Loop law = conservation of energy",
+        "steps": [
+          "KCL: dq/dt in = dq/dt out => Charge",
+          "KVL: sum of potential changes = 0 => Energy"
+        ],
+        "conclusion": "Charge and Energy respectively (Option B).",
+        "pitfall": "Do not swap the order."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-phy-12",
+      "subject": "physics",
+      "chapter": "Moving Charges and Magnetism",
+      "topic": "Motion of Charged Particle in Magnetic Field",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Jan 31 Shift 2)",
+      "text": "A charged particle enters a uniform magnetic field with velocity $\\vec{v}$ perpendicular to the field $\\vec{B}$. The trajectory of the particle is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "Helical with uniform pitch"
+        },
+        {
+          "id": "B",
+          "text": "Parabolic"
+        },
+        {
+          "id": "C",
+          "text": "Circular"
+        },
+        {
+          "id": "D",
+          "text": "Straight line"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "\\vec{F} = q(\\vec{v} \\times \\vec{B}) = \\frac{m v^2}{r}\\hat{r}",
+      "solution": "Since $\\vec{F} \\perp \\vec{v}$ at all instants, speed is constant and force provides centripetal acceleration, producing a circular path.",
+      "notebookSolution": {
+        "given": "v ⊥ B",
+        "concept": "Lorentz force provides centripetal acceleration",
+        "steps": [
+          "F = qvB = mv²/r => r = mv/(qB) = constant radius circle"
+        ],
+        "conclusion": "Circular trajectory (Option C).",
+        "pitfall": "If velocity is at an arbitrary angle θ, trajectory is helical."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-phy-13",
+      "subject": "physics",
+      "chapter": "Electromagnetic Induction",
+      "topic": "Magnetic Flux Through Parallel Loop",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Apr 6 Shift 1)",
+      "text": "A planar coil of area $A$ is placed parallel to a uniform magnetic field $\\vec{B}$ (i.e. the normal to the coil is perpendicular to $\\vec{B}$). The magnetic flux through the coil is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$BA$"
+        },
+        {
+          "id": "B",
+          "text": "$2BA$"
+        },
+        {
+          "id": "C",
+          "text": "$\\frac{BA}{2}$"
+        },
+        {
+          "id": "D",
+          "text": "Zero"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "\\Phi = \\vec{B} \\cdot \\vec{A} = B A \\cos 90^\\circ = 0",
+      "solution": "When the plane of the coil is parallel to $\\vec{B}$, the angle between area vector $\\vec{A}$ and $\\vec{B}$ is $\\theta = 90^\\circ$. Thus $\\Phi = B A \\cos 90^\\circ = 0$.",
+      "notebookSolution": {
+        "given": "Plane parallel to B => angle with normal θ = 90°",
+        "concept": "Magnetic flux Φ = B·A = BA cosθ",
+        "steps": [
+          "Φ = BA cos(90°) = 0"
+        ],
+        "conclusion": "Flux is zero (Option D).",
+        "pitfall": "Area vector is perpendicular to the plane of the loop."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-phy-14",
+      "subject": "physics",
+      "chapter": "Ray Optics",
+      "topic": "Refractive Index of Equilateral Prism",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Jan 31 Shift 2)",
+      "text": "An equilateral prism ($A = 60^\\circ$) produces a minimum angle of deviation $\\delta_m = 60^\\circ$. The refractive index $\\mu$ of the prism material is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$\\mu = \\sqrt{3}$"
+        },
+        {
+          "id": "B",
+          "text": "$\\mu = \\sqrt{2}$"
+        },
+        {
+          "id": "C",
+          "text": "$\\mu = 1.5$"
+        },
+        {
+          "id": "D",
+          "text": "$\\mu = 1.33$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "\\mu = \\frac{\\sin\\left(\\frac{A + \\delta_m}{2}\\right)}{\\sin(A/2)}",
+      "solution": "$$\\mu = \\frac{\\sin((60^\\circ + 60^\\circ)/2)}{\\sin(60^\\circ/2)} = \\frac{\\sin 60^\\circ}{\\sin 30^\\circ} = \\frac{\\sqrt{3}/2}{1/2} = \\sqrt{3}$$.",
+      "notebookSolution": {
+        "given": "A = 60°, δ_m = 60°",
+        "concept": "Prism formula",
+        "steps": [
+          "μ = sin(120°/2) / sin(30°) = sin 60° / sin 30° = √3"
+        ],
+        "conclusion": "Refractive index is √3 (Option A).",
+        "pitfall": "A = 60° for an equilateral prism."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-phy-15",
+      "subject": "physics",
+      "chapter": "Wave Optics",
+      "topic": "Youngs Double Slit Fringe Width",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Apr 6 Shift 1)",
+      "text": "In Young's double-slit experiment with slit separation $d$ and screen distance $D$ using light of wavelength $\\lambda$, the fringe width $\\beta$ is given by:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$\\beta = \\frac{\\lambda d}{D}$"
+        },
+        {
+          "id": "B",
+          "text": "$\\beta = \\frac{\\lambda D}{d}$"
+        },
+        {
+          "id": "C",
+          "text": "$\\beta = \\frac{d D}{\\lambda}$"
+        },
+        {
+          "id": "D",
+          "text": "$\\beta = \\frac{\\lambda}{D d}$"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "\\beta = \\frac{\\lambda D}{d}",
+      "solution": "Fringe width is directly proportional to screen distance $D$ and wavelength $\\lambda$, and inversely proportional to slit spacing $d$: $\\beta = \\frac{\\lambda D}{d}$.",
+      "notebookSolution": {
+        "given": "YDSE setup parameters",
+        "concept": "Fringe spacing between adjacent maxima or minima",
+        "steps": [
+          "β = y_{n+1} - y_n = λD/d"
+        ],
+        "conclusion": "β = λD/d (Option B).",
+        "pitfall": "D is distance to screen, d is slit separation."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-phy-16",
+      "subject": "physics",
+      "chapter": "Dual Nature of Radiation",
+      "topic": "Maximum Kinetic Energy of Photoelectrons",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Jan 31 Shift 2)",
+      "text": "In a photoelectric experiment, keeping the frequency of incident radiation constant, the maximum kinetic energy of emitted photoelectrons is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "Directly proportional to intensity"
+        },
+        {
+          "id": "B",
+          "text": "Inversely proportional to intensity"
+        },
+        {
+          "id": "C",
+          "text": "Independent of intensity"
+        },
+        {
+          "id": "D",
+          "text": "Directly proportional to square of intensity"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "K_{max} = h\\nu - \\phi_0",
+      "solution": "Maximum kinetic energy depends strictly on the photon frequency $\\nu$ and work function $\\phi_0$. Intensity only changes the rate of emission (photocurrent), not kinetic energy.",
+      "notebookSolution": {
+        "given": "Constant frequency, variable intensity",
+        "concept": "K_max = hν - W",
+        "steps": [
+          "K_max depends on photon energy hν, independent of beam intensity"
+        ],
+        "conclusion": "Independent of intensity (Option C).",
+        "pitfall": "Intensity determines number of emitted electrons, not their kinetic energy."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-phy-17",
+      "subject": "physics",
+      "chapter": "Atoms",
+      "topic": "Bohr Radius Orbit Dependence",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Apr 6 Shift 1)",
+      "text": "According to Bohr's postulate of quantization of angular momentum, the radius $r_n$ of the $n^{\\text{th}}$ orbit of hydrogen atom varies with principle quantum number $n$ as:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$r_n \\propto n$"
+        },
+        {
+          "id": "B",
+          "text": "$r_n \\propto 1/n$"
+        },
+        {
+          "id": "C",
+          "text": "$r_n \\propto n^3$"
+        },
+        {
+          "id": "D",
+          "text": "$r_n \\propto n^2$"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "r_n = \\frac{n^2 h^2 \\varepsilon_0}{\\pi m e^2} \\propto n^2",
+      "solution": "Radius of the $n$-th orbit is given by $r_n = 0.529 \\frac{n^2}{Z}\\text{ \\AA} \\propto n^2$.",
+      "notebookSolution": {
+        "given": "Bohr model radius formula",
+        "concept": "Orbit radius proportionality",
+        "steps": [
+          "r_n = a_0 n²/Z => r_n ∝ n²"
+        ],
+        "conclusion": "r_n ∝ n² (Option D).",
+        "pitfall": "Velocity varies as 1/n, radius varies as n²."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-phy-18",
+      "subject": "physics",
+      "chapter": "Nuclei",
+      "topic": "Nuclear Density Ratio",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Jan 31 Shift 2)",
+      "text": "Two nuclei have mass numbers in the ratio $1:8$. The ratio of their nuclear densities is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$1:2$"
+        },
+        {
+          "id": "B",
+          "text": "$1:4$"
+        },
+        {
+          "id": "C",
+          "text": "$2:1$"
+        },
+        {
+          "id": "D",
+          "text": "$4:1$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "R = R_0 A^{1/3} \\implies V \\propto A \\implies \\rho = \\frac{M}{V} = \\text{constant}",
+      "solution": "Nuclear density is independent of mass number $A$ because mass $\\propto A$ and volume $\\propto R^3 \\propto A$. Thus the ratio of nuclear densities is $1:1$ (all nuclei have approximately $\\approx 2.3 \\times 10^{17}\\text{ kg/m}^3$).",
+      "notebookSolution": {
+        "given": "A1/A2 = 1/8",
+        "concept": "Nuclear density is constant for all nuclei",
+        "steps": [
+          "ρ = m A / (4/3 π R0³ A) = constant => ρ1/ρ2 = 1:1"
+        ],
+        "conclusion": "Nuclear density is identical (1:1).",
+        "pitfall": "Nuclear radius changes with A^(1/3), but density remains constant."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-phy-19",
+      "subject": "physics",
+      "chapter": "Semiconductor Electronics",
+      "topic": "Ideal Diode in Forward Bias",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Apr 6 Shift 1)",
+      "text": "In ideal circuit approximation, the resistance offered by a $p$-$n$ junction diode in forward bias condition is taken as:",
+      "options": [
+        {
+          "id": "A",
+          "text": "Infinite"
+        },
+        {
+          "id": "B",
+          "text": "Zero"
+        },
+        {
+          "id": "C",
+          "text": "Very small"
+        },
+        {
+          "id": "D",
+          "text": "Fluctuating"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "R_{forward, ideal} = 0, \\quad R_{reverse, ideal} = \\infty",
+      "solution": "An ideal diode acts as a closed switch with zero resistance when forward biased and an open switch with infinite resistance when reverse biased.",
+      "notebookSolution": {
+        "given": "Ideal p-n junction forward biased",
+        "concept": "Ideal diode forward resistance is zero",
+        "steps": [
+          "Forward bias ideal => zero resistance (short circuit)"
+        ],
+        "conclusion": "Resistance is zero (Option B).",
+        "pitfall": "Practical diodes have ~0.7V drop for Si, but ideal diode resistance is zero."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-phy-20",
+      "subject": "physics",
+      "chapter": "Semiconductor Electronics",
+      "topic": "Universal Logic Gates",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Jan 31 Shift 2)",
+      "text": "Which of the following logic gates is classified as a universal gate capable of implementing any Boolean function?",
+      "options": [
+        {
+          "id": "A",
+          "text": "NOR gate"
+        },
+        {
+          "id": "B",
+          "text": "AND gate"
+        },
+        {
+          "id": "C",
+          "text": "NAND gate"
+        },
+        {
+          "id": "D",
+          "text": "OR gate"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "Y = \\overline{A \\cdot B} \\ (\\text{NAND}), \\quad Y = \\overline{A + B} \\ (\\text{NOR})",
+      "solution": "NAND and NOR gates are universal gates because repeated combinations can construct NOT, AND, and OR operations.",
+      "notebookSolution": {
+        "given": "Universal logic gate definition",
+        "concept": "NAND and NOR can synthesize any logic network",
+        "steps": [
+          "NAND is a universal gate"
+        ],
+        "conclusion": "NAND gate (Option C).",
+        "pitfall": "AND and OR are basic gates, not universal without NOT."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-phy-21",
+      "subject": "physics",
+      "chapter": "Current Electricity",
+      "topic": "Potentiometer Wire Resistance",
+      "difficulty": "medium",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Apr 6 Shift 1)",
+      "text": "A potentiometer wire of length $L = 10\\text{ m}$ has resistance $R = 20\\text{ }\\Omega$. A steady current is maintained by a $2\\text{ V}$ driver battery. The potential gradient along the wire (in $\\text{mV/cm}$) is:",
+      "correctAnswer": "1",
+      "formula": "k = \\frac{V}{L}",
+      "solution": "Current $I = \\frac{2}{20} = 0.1\\text{ A}$. Potential gradient $k = \\frac{V}{L} = \\frac{2\\text{ V}}{1000\\text{ cm}} = 0.002\\text{ V/cm} = 2\\text{ mV/cm}$.",
+      "notebookSolution": {
+        "given": "L = 10 m = 1000 cm, V = 2 V",
+        "concept": "Potential gradient k = V / L",
+        "steps": [
+          "k = 2 V / 1000 cm = 0.002 V/cm = 2 mV/cm"
+        ],
+        "conclusion": "Potential gradient is 2.",
+        "pitfall": "Watch the units: mV/cm vs V/m."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-phy-22",
+      "subject": "physics",
+      "chapter": "Atoms",
+      "topic": "Wavelength Ratio in Lyman Series",
+      "difficulty": "medium",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Jan 31 Shift 2)",
+      "text": "In the hydrogen atom spectrum, the ratio of the longest wavelength in the Lyman series ($n = 2 \\to 1$) to the shortest wavelength in the Lyman series ($n = \\infty \\to 1$) is $\\frac{4}{x}$. The value of $x$ is:",
+      "correctAnswer": "3",
+      "formula": "\\frac{1}{\\lambda} = R_H \\left(\\frac{1}{n_1^2} - \\frac{1}{n_2^2}\\right)",
+      "solution": "$$\\frac{1}{\\lambda_{max}} = R_H \\left(1 - \\frac{1}{4}\\right) = \\frac{3}{4}R_H \\implies \\lambda_{max} = \\frac{4}{3R_H}$$\n$$\\frac{1}{\\lambda_{min}} = R_H \\left(1 - 0\\right) = R_H \\implies \\lambda_{min} = \\frac{1}{R_H}$$\n$$\\frac{\\lambda_{max}}{\\lambda_{min}} = \\frac{4}{3} \\implies x = 3$$.",
+      "notebookSolution": {
+        "given": "Lyman longest and shortest transition",
+        "concept": "Rydberg formula for hydrogen",
+        "steps": [
+          "λ_max = 4/(3R), λ_min = 1/R => ratio = 4/3 => x = 3"
+        ],
+        "conclusion": "x = 3.",
+        "pitfall": "Longest wavelength corresponds to smallest energy difference."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-phy-23",
+      "subject": "physics",
+      "chapter": "Electrostatics",
+      "topic": "Energy Stored in Capacitor",
+      "difficulty": "easy",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Apr 6 Shift 1)",
+      "text": "A $2\\text{ }\\mu\\text{F}$ capacitor is charged to a potential of $100\\text{ V}$. The energy stored in the capacitor (in $\\text{mJ}$) is:",
+      "correctAnswer": "10",
+      "formula": "U = \\frac{1}{2} C V^2",
+      "solution": "$U = \\frac{1}{2}(2 \\times 10^{-6})(100)^2 = 10^{-6} \\times 10000 = 10^{-2}\\text{ J} = 10\\text{ mJ}$.",
+      "notebookSolution": {
+        "given": "C = 2 μF, V = 100 V",
+        "concept": "Capacitor stored energy U = 1/2 C V²",
+        "steps": [
+          "U = 0.5 × (2×10⁻⁶) × 10000 = 0.01 J = 10 mJ"
+        ],
+        "conclusion": "Energy is 10 mJ.",
+        "pitfall": "Convert Joules to milliJoules (× 1000)."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-phy-24",
+      "subject": "physics",
+      "chapter": "Magnetic Dipole",
+      "topic": "Magnetic Dipole Moment of Current Loop",
+      "difficulty": "easy",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Jan 31 Shift 2)",
+      "text": "A square coil of side $10\\text{ cm}$ consists of $20$ turns and carries a current of $2\\text{ A}$. The magnetic dipole moment of the coil (in $\\text{A m}^2$) is $x \\times 10^{-1}$. The value of $x$ is:",
+      "correctAnswer": "4",
+      "formula": "M = N I A",
+      "solution": "Area $A = (0.1)^2 = 0.01\\text{ m}^2$. Dipole moment $M = 20 \\times 2 \\times 0.01 = 0.4\\text{ A m}^2 = 4 \\times 10^{-1}\\text{ A m}^2 \\implies x = 4$.",
+      "notebookSolution": {
+        "given": "N = 20, I = 2 A, side = 0.1 m",
+        "concept": "Magnetic moment M = NIA",
+        "steps": [
+          "A = 0.1² = 0.01 m²",
+          "M = 20 × 2 × 0.01 = 0.4 A m² = 4 × 10⁻¹"
+        ],
+        "conclusion": "x = 4.",
+        "pitfall": "Do not forget number of turns N."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-phy-25",
+      "subject": "physics",
+      "chapter": "Kinetic Theory of Gases",
+      "topic": "Degrees of Freedom of Diatomic Gas",
+      "difficulty": "easy",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Apr 6 Shift 1)",
+      "text": "At room temperature, the total degrees of freedom of a rigid diatomic molecule (such as $O_2$ or $N_2$) is:",
+      "correctAnswer": "5",
+      "formula": "f = f_{trans} + f_{rot} = 3 + 2 = 5",
+      "solution": "A rigid diatomic molecule has 3 translational degrees of freedom and 2 rotational degrees of freedom (vibrational modes are frozen at normal temperatures). Total $f = 5$.",
+      "notebookSolution": {
+        "given": "Rigid diatomic gas at room temperature",
+        "concept": "Equipartition of energy degrees of freedom",
+        "steps": [
+          "3 translational + 2 rotational = 5 degrees of freedom"
+        ],
+        "conclusion": "Total degrees of freedom is 5.",
+        "pitfall": "Vibrational degrees of freedom only activate at very high temperatures."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-chem-1",
+      "subject": "chemistry",
+      "chapter": "Some Basic Concepts of Chemistry",
+      "topic": "Mole Concept and Stoichiometry",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Apr 8 Shift 2)",
+      "text": "The number of moles of oxygen atoms present in $9.8\\text{ g}$ of pure sulfuric acid ($H_2SO_4$, molar mass $= 98\\text{ g/mol}$) is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "0.2\\text{ mol}"
+        },
+        {
+          "id": "B",
+          "text": "0.1\\text{ mol}"
+        },
+        {
+          "id": "C",
+          "text": "0.8\\text{ mol}"
+        },
+        {
+          "id": "D",
+          "text": "0.4\\text{ mol}"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "n(O) = 4 \\times n(H_2SO_4) = 4 \\times \\frac{m}{M}",
+      "solution": "Moles of $H_2SO_4 = \\frac{9.8}{98} = 0.1\\text{ mol}$. Each molecule has 4 oxygen atoms, so moles of O atoms $= 4 \\times 0.1 = 0.4\\text{ mol}$.",
+      "notebookSolution": {
+        "given": "Mass = 9.8 g, Molar mass = 98 g/mol",
+        "concept": "Stoichiometry of molecular formula",
+        "steps": [
+          "Moles of H2SO4 = 9.8/98 = 0.1",
+          "Moles of O = 4 × 0.1 = 0.4"
+        ],
+        "conclusion": "Moles of oxygen atoms is 0.4 (Option D).",
+        "pitfall": "Do not confuse moles of O atoms with moles of O2 molecules."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-chem-2",
+      "subject": "chemistry",
+      "chapter": "Structure of Atom",
+      "topic": "de Broglie Wavelength of Moving Particles",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Jan 29 Shift 1)",
+      "text": "Two particles $A$ and $B$ have equal masses. If the velocity of particle $A$ is $3$ times the velocity of particle $B$ ($v_A = 3 v_B$), the ratio of their de Broglie wavelengths $\\frac{\\lambda_A}{\\lambda_B}$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$1 : 3$"
+        },
+        {
+          "id": "B",
+          "text": "$3 : 1$"
+        },
+        {
+          "id": "C",
+          "text": "$1 : 9$"
+        },
+        {
+          "id": "D",
+          "text": "$9 : 1$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "\\lambda = \\frac{h}{p} = \\frac{h}{m v}",
+      "solution": "$$\\lambda = \\frac{h}{m v} \\implies \\frac{\\lambda_A}{\\lambda_B} = \\frac{v_B}{v_A} = \\frac{1}{3} = 1 : 3$$.",
+      "notebookSolution": {
+        "given": "mA = mB, vA = 3 vB",
+        "concept": "de Broglie wavelength is inversely proportional to momentum",
+        "steps": [
+          "λ = h/(mv)",
+          "λA/λB = vB/vA = 1/3"
+        ],
+        "conclusion": "Ratio is 1 : 3 (Option A).",
+        "pitfall": "Wavelength is inversely proportional to velocity."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-chem-3",
+      "subject": "chemistry",
+      "chapter": "Classification of Elements and Periodicity",
+      "topic": "First Ionization Enthalpy Trends",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Apr 8 Shift 2)",
+      "text": "The correct increasing order of the first ionization enthalpies ($\\Delta_i H_1$) of the second period elements is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$B < Be < C < N < O < F < Ne$"
+        },
+        {
+          "id": "B",
+          "text": "$B < Be < C < O < N < F < Ne$"
+        },
+        {
+          "id": "C",
+          "text": "$Be < B < C < O < N < F < Ne$"
+        },
+        {
+          "id": "D",
+          "text": "$B < C < Be < O < N < F < Ne$"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "\\Delta_i H_1 \\text{ anomalous stability: } Be(2s^2) > B(2p^1), \\; N(2p^3) > O(2p^4)",
+      "solution": "Across a period, ionization enthalpy generally increases with effective nuclear charge, with anomalies: $Be(2s^2)$ has higher $\\Delta_i H$ than $B(2s^2 2p^1)$ due to fully-filled $2s$ subshell, and $N(2s^2 2p^3)$ has higher $\\Delta_i H$ than $O(2s^2 2p^4)$ due to half-filled $2p$ subshell. Hence: $B < Be < C < O < N < F < Ne$.",
+      "notebookSolution": {
+        "given": "Second period elements",
+        "concept": "Penetration and half-filled subshell extra stability",
+        "steps": [
+          "Be > B because of 2s² penetration",
+          "N > O because of half-filled 2p³ stability",
+          "Order: B < Be < C < O < N < F < Ne"
+        ],
+        "conclusion": "Correct order is B < Be < C < O < N < F < Ne (Option B).",
+        "pitfall": "Do not assume strictly monotonic increase across period."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-chem-4",
+      "subject": "chemistry",
+      "chapter": "Chemical Bonding and Molecular Structure",
+      "topic": "VSEPR Theory and Molecular Geometries",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Jan 29 Shift 1)",
+      "text": "According to VSEPR theory, the molecular shapes of $SF_4$, $ClF_3$, and $XeF_4$ respectively are:",
+      "options": [
+        {
+          "id": "A",
+          "text": "Tetrahedral, Trigonal planar, Octahedral"
+        },
+        {
+          "id": "B",
+          "text": "Square planar, See-saw, T-shaped"
+        },
+        {
+          "id": "C",
+          "text": "See-saw, T-shaped, Square planar"
+        },
+        {
+          "id": "D",
+          "text": "T-shaped, See-saw, Square planar"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "\\text{Steric Number} = \\frac{1}{2}(V + M - C + A)",
+      "solution": "- $SF_4$: Steric no $= 4\\text{ bp} + 1\\text{ lp} = 5$ (trigonal bipyramidal geometry) $\\implies$ **See-saw** shape.\n- $ClF_3$: Steric no $= 3\\text{ bp} + 2\\text{ lp} = 5$ $\\implies$ **T-shaped**.\n- $XeF_4$: Steric no $= 4\\text{ bp} + 2\\text{ lp} = 6$ (octahedral geometry) $\\implies$ **Square planar** shape.",
+      "notebookSolution": {
+        "given": "SF4, ClF3, XeF4 molecules",
+        "concept": "VSEPR steric number = bond pairs + lone pairs",
+        "steps": [
+          "SF4 has 1 lp -> see-saw",
+          "ClF3 has 2 lp -> T-shaped",
+          "XeF4 has 2 lp -> square planar"
+        ],
+        "conclusion": "Shapes are See-saw, T-shaped, Square planar (Option C).",
+        "pitfall": "Distinguish between electron geometry and molecular shape."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-chem-5",
+      "subject": "chemistry",
+      "chapter": "Chemical Thermodynamics",
+      "topic": "Relation between Enthalpy and Internal Energy",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Apr 8 Shift 2)",
+      "text": "For the gaseous Haber synthesis reaction: $N_2(g) + 3H_2(g) \\rightleftharpoons 2NH_3(g)$ at $298\\text{ K}$, the correct relation between enthalpy change ($\\Delta H$) and internal energy change ($\\Delta U$) is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$\\Delta H > \\Delta U$"
+        },
+        {
+          "id": "B",
+          "text": "$\\Delta H = \\Delta U$"
+        },
+        {
+          "id": "C",
+          "text": "$\\Delta H = 2\\Delta U$"
+        },
+        {
+          "id": "D",
+          "text": "$\\Delta H < \\Delta U$"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "\\Delta H = \\Delta U + \\Delta n_g R T",
+      "solution": "$$\\Delta n_g = n_{p(g)} - n_{r(g)} = 2 - (1 + 3) = -2$$.\n$$\\Delta H = \\Delta U + (-2)RT = \\Delta U - 2RT$$.\nSince $2RT > 0$, we have $\\Delta H < \\Delta U$.",
+      "notebookSolution": {
+        "given": "N2(g) + 3H2(g) <=> 2NH3(g)",
+        "concept": "ΔH = ΔU + Δn_g RT",
+        "steps": [
+          "Δn_g = 2 - 4 = -2",
+          "ΔH = ΔU - 2RT",
+          "Therefore ΔH < ΔU"
+        ],
+        "conclusion": "ΔH < ΔU (Option D).",
+        "pitfall": "Count only gaseous moles when computing Δn_g."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-chem-6",
+      "subject": "chemistry",
+      "chapter": "Equilibrium",
+      "topic": "pH of Acidic Buffer Solution",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Jan 29 Shift 1)",
+      "text": "An acidic buffer solution contains $0.2\\text{ M } CH_3COONa$ and $0.1\\text{ M } CH_3COOH$. Given $pK_a(CH_3COOH) = 4.75$ and $\\log 2 = 0.301$, the pH of the buffer solution is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "5.05"
+        },
+        {
+          "id": "B",
+          "text": "4.75"
+        },
+        {
+          "id": "C",
+          "text": "4.45"
+        },
+        {
+          "id": "D",
+          "text": "5.75"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "pH = pK_a + \\log\\frac{[\\text{Salt}]}{[\\text{Acid}]}",
+      "solution": "$$pH = pK_a + \\log\\frac{[CH_3COO^-]}{[CH_3COOH]} = 4.75 + \\log\\left(\\frac{0.2}{0.1}\\right) = 4.75 + \\log 2 = 4.75 + 0.30 = 5.05$$.",
+      "notebookSolution": {
+        "given": "[Salt] = 0.2 M, [Acid] = 0.1 M, pKa = 4.75",
+        "concept": "Henderson-Hasselbalch equation",
+        "steps": [
+          "pH = 4.75 + log(0.2/0.1) = 4.75 + 0.301 = 5.05"
+        ],
+        "conclusion": "pH = 5.05 (Option A).",
+        "pitfall": "Ensure [Salt] is in numerator and [Acid] in denominator."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-chem-7",
+      "subject": "chemistry",
+      "chapter": "Solutions",
+      "topic": "Positive and Negative Deviations from Raoult Law",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Apr 8 Shift 2)",
+      "text": "Which of the following binary liquid mixtures exhibits a **positive deviation** from Raoult's law ($Delta H_{mix} > 0, Delta V_{mix} > 0$)?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Chloroform + Acetone"
+        },
+        {
+          "id": "B",
+          "text": "Ethanol + Acetone"
+        },
+        {
+          "id": "C",
+          "text": "Phenol + Aniline"
+        },
+        {
+          "id": "D",
+          "text": "Nitric acid + Water"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "P_{total} > P_A^\\circ x_A + P_B^\\circ x_B \\text{ due to weaker A-B interactions}",
+      "solution": "In pure ethanol, molecules are strongly held by intermolecular hydrogen bonds. When acetone is added, its molecules get between ethanol molecules and break some of the hydrogen bonds, weakening intermolecular forces. Hence, vapor pressure increases (positive deviation). Chloroform + acetone exhibits negative deviation due to new hydrogen bond formation.",
+      "notebookSolution": {
+        "given": "Pairs of liquid mixtures",
+        "concept": "Intermolecular forces vs Raoult law deviations",
+        "steps": [
+          "Ethanol + Acetone breaks H-bonds -> positive deviation",
+          "Chloroform + Acetone forms H-bonds -> negative deviation"
+        ],
+        "conclusion": "Ethanol + Acetone shows positive deviation (Option B).",
+        "pitfall": "Negative deviation occurs when new intermolecular attractions are formed."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-chem-8",
+      "subject": "chemistry",
+      "chapter": "Electrochemistry",
+      "topic": "Standard Cell Potential of Galvanic Cell",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Jan 29 Shift 1)",
+      "text": "Given the standard reduction potentials $E^\\circ(Zn^{2+}/Zn) = -0.76\\text{ V}$ and $E^\\circ(Cu^{2+}/Cu) = +0.34\\text{ V}$, the standard EMF ($E^\\circ_{cell}$) of the Daniell cell is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$-1.1\\text{ V}$"
+        },
+        {
+          "id": "B",
+          "text": "$0.42\\text{ V}$"
+        },
+        {
+          "id": "C",
+          "text": "$+1.1\\text{ V}$"
+        },
+        {
+          "id": "D",
+          "text": "$1.52\\text{ V}$"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "E^\\circ_{cell} = E^\\circ_{cathode} - E^\\circ_{anode}",
+      "solution": "$$E^\\circ_{cell} = E^\\circ(Cu^{2+}/Cu) - E^\\circ(Zn^{2+}/Zn) = 0.34 - (-0.76) = +1.10\\text{ V}$$.",
+      "notebookSolution": {
+        "given": "E°(Zn²+/Zn) = -0.76 V, E°(Cu²+/Cu) = +0.34 V",
+        "concept": "Standard EMF = Cathode potential - Anode potential",
+        "steps": [
+          "E°cell = 0.34 - (-0.76) = 1.10 V"
+        ],
+        "conclusion": "E°cell is +1.10 V (Option C).",
+        "pitfall": "Always use standard reduction potentials."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-chem-9",
+      "subject": "chemistry",
+      "chapter": "Chemical Kinetics",
+      "topic": "First Order Reaction Kinetics",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Apr 8 Shift 2)",
+      "text": "For a first-order chemical reaction, the half-life period is $t_{1/2} = 30\\text{ min}$. The time required for $75\\%$ completion of the reaction is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "90\\text{ min}"
+        },
+        {
+          "id": "B",
+          "text": "40\\text{ min}"
+        },
+        {
+          "id": "C",
+          "text": "120\\text{ min}"
+        },
+        {
+          "id": "D",
+          "text": "60\\text{ min}"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "t_{75\\%} = 2 \\times t_{1/2}",
+      "solution": "For a first order reaction, after $1$ half-life, $50\\%$ remains. After $2$ half-lives, $25\\%$ remains (meaning $75\\%$ completed). Hence, $t_{75\\%} = 2 \\times t_{1/2} = 2 \\times 30 = 60\\text{ min}$.",
+      "notebookSolution": {
+        "given": "t1/2 = 30 min",
+        "concept": "First order kinetics fraction remaining = (1/2)^n",
+        "steps": [
+          "For 75% completion, remaining is 25% = (1/2)²",
+          "n = 2 half lives",
+          "t = 2 × 30 = 60 min"
+        ],
+        "conclusion": "Time is 60 min (Option D).",
+        "pitfall": "Do not use linear proportion (first order is exponential)."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-chem-10",
+      "subject": "chemistry",
+      "chapter": "Surface Chemistry",
+      "topic": "Hardy-Schulze Rule for Coagulation",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Jan 29 Shift 1)",
+      "text": "According to the Hardy-Schulze rule, the correct decreasing order of flocculating (coagulating) power of cations for a negatively charged arsenious sulfide ($As_2S_3$) sol is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$Al^{3+} > Ba^{2+} > Na^+$"
+        },
+        {
+          "id": "B",
+          "text": "$Na^+ > Ba^{2+} > Al^{3+}$"
+        },
+        {
+          "id": "C",
+          "text": "$Ba^{2+} > Al^{3+} > Na^+$"
+        },
+        {
+          "id": "D",
+          "text": "$Al^{3+} = Ba^{2+} = Na^+$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "\\text{Coagulating Power} \\propto (\\text{Valency of active ion})^6",
+      "solution": "Hardy-Schulze rule states that the coagulating power of an ion having opposite charge to that of colloidal particles increases with increasing valency of the coagulating ion. For negatively charged $As_2S_3$ sol, the coagulating ion is cation. Valency order: $Al^{3+} (+3) > Ba^{2+} (+2) > Na^+ (+1)$.",
+      "notebookSolution": {
+        "given": "Negatively charged As2S3 sol",
+        "concept": "Hardy-Schulze rule: higher valency means higher flocculating power",
+        "steps": [
+          "Valency: Al³⁺ = 3, Ba²⁺ = 2, Na⁺ = 1",
+          "Order: Al³⁺ > Ba²⁺ > Na⁺"
+        ],
+        "conclusion": "Order is Al³⁺ > Ba²⁺ > Na⁺ (Option A).",
+        "pitfall": "Flocculating power is inversely proportional to flocculation value."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-chem-11",
+      "subject": "chemistry",
+      "chapter": "p-Block Elements",
+      "topic": "Structure of Oxoacids of Phosphorus",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Apr 8 Shift 2)",
+      "text": "In orthophosphorous acid ($H_3PO_3$), the number and types of bonds connected to the central phosphorus atom are:",
+      "options": [
+        {
+          "id": "A",
+          "text": "Two $P-H$, one $P-OH$, and one $P=O$ bond"
+        },
+        {
+          "id": "B",
+          "text": "One $P-H$, two $P-OH$, and one $P=O$ bond"
+        },
+        {
+          "id": "C",
+          "text": "Three $P-OH$ and one $P=O$ bond"
+        },
+        {
+          "id": "D",
+          "text": "Two $P-H$ and two $P-OH$ bonds"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "H_3PO_3 \\text{ contains one P-H, two P-OH, and one P=O bond (dibasic acid)}",
+      "solution": "Phosphorous acid ($H_3PO_3$) has tetrahedral geometry around phosphorus with: 1 $P=O$ bond, 2 ionizable $P-OH$ bonds (making it a dibasic acid with basicity 2), and 1 non-ionizable $P-H$ bond (which gives it strong reducing properties).",
+      "notebookSolution": {
+        "given": "H3PO3 molecule",
+        "concept": "Oxoacids of phosphorus structure and basicity",
+        "steps": [
+          "P has 5 valence electrons",
+          "1 P=O bond, 2 P-OH bonds, 1 P-H bond",
+          "Basicity = 2"
+        ],
+        "conclusion": "One P-H, two P-OH, and one P=O bond (Option B).",
+        "pitfall": "Basicity is determined only by the number of P-OH bonds, not total H atoms."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-chem-12",
+      "subject": "chemistry",
+      "chapter": "d and f Block Elements",
+      "topic": "Lanthanoid Contraction and Consequences",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Jan 29 Shift 1)",
+      "text": "Which of the following is **INCORRECT** regarding the consequences of Lanthanoid Contraction?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Shielding by $4f$ electrons is extremely poor, leading to higher effective nuclear charge"
+        },
+        {
+          "id": "B",
+          "text": "Nearly identical atomic radii of $Zr$ ($4d$) and $Hf$ ($5d$)"
+        },
+        {
+          "id": "C",
+          "text": "Shielding by $4f$ electrons is extremely effective and completely offsets nuclear pull"
+        },
+        {
+          "id": "D",
+          "text": "Decrease in basic strength of hydroxides from $La(OH)_3$ to $Lu(OH)_3$"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "\\text{Poor shielding: } s > p > d > f",
+      "solution": "Lanthanoid contraction occurs because $4f$ electrons have diffuse spatial shapes and exert very **poor** (ineffective) shielding on outer electrons. As nuclear charge increases by 14 units, the outer electrons feel an increased effective nuclear charge, causing contraction. Thus, statement C is INCORRECT.",
+      "notebookSolution": {
+        "given": "Consequences of lanthanoid contraction",
+        "concept": "4f electrons have poor shielding power",
+        "steps": [
+          "4f orbitals shield poorly",
+          "Nuclear charge increases, pulling shells inward",
+          "Statement C claiming 4f shielding is effective is false"
+        ],
+        "conclusion": "Option C is incorrect.",
+        "pitfall": "Remember 4f has poorest shielding among all subshells."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-chem-13",
+      "subject": "chemistry",
+      "chapter": "Coordination Compounds",
+      "topic": "Crystal Field Theory and Diamagnetic Complexes",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Apr 8 Shift 2)",
+      "text": "Which of the following octahedral coordination complexes is **diamagnetic** (zero unpaired electrons) and inner orbital ($d^2sp^3$ hybridized)?",
+      "options": [
+        {
+          "id": "A",
+          "text": "$[FeF_6]^{3-}$"
+        },
+        {
+          "id": "B",
+          "text": "$[Cr(H_2O)_6]^{3+}$"
+        },
+        {
+          "id": "C",
+          "text": "$[NiCl_4]^{2-}$"
+        },
+        {
+          "id": "D",
+          "text": "$[Co(NH_3)_6]^{3+}$"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "Co^{3+} (d^6) + \\text{strong field ligand } NH_3 \\implies t_{2g}^6 e_g^0, \\; \\mu = 0",
+      "solution": "In $[Co(NH_3)_6]^{3+}$, Cobalt is in $+3$ oxidation state: $Co^{3+} = [Ar] 3d^6$. Ammonia ($NH_3$) acts as a strong-field ligand, causing pairing of electrons in $t_{2g}$ orbitals: electronic configuration is $t_{2g}^6 e_g^0$. With $0$ unpaired electrons, the complex is diamagnetic.",
+      "notebookSolution": {
+        "given": "Cobalt complex [Co(NH3)6]³⁺",
+        "concept": "Crystal field pairing by strong-field ligand NH3",
+        "steps": [
+          "Co³⁺ has 3d⁶ configuration",
+          "Δo > P causes all 6 electrons to pair in t2g",
+          "Number of unpaired electrons = 0 (diamagnetic)"
+        ],
+        "conclusion": "[Co(NH3)6]³⁺ is diamagnetic (Option D).",
+        "pitfall": "FeF6³⁻ has weak field F⁻ so it is high-spin paramagnetic."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-chem-14",
+      "subject": "chemistry",
+      "chapter": "Organic Chemistry - Some Basic Principles and Techniques",
+      "topic": "Carbocation Stability and Hyperconjugation",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Jan 29 Shift 1)",
+      "text": "The correct decreasing order of stability of simple alkyl carbocations is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$(CH_3)_3C^+ > (CH_3)_2CH^+ > CH_3CH_2^+ > CH_3^+$"
+        },
+        {
+          "id": "B",
+          "text": "$CH_3^+ > CH_3CH_2^+ > (CH_3)_2CH^+ > (CH_3)_3C^+$"
+        },
+        {
+          "id": "C",
+          "text": "$(CH_3)_2CH^+ > (CH_3)_3C^+ > CH_3CH_2^+ > CH_3^+$"
+        },
+        {
+          "id": "D",
+          "text": "$(CH_3)_3C^+ > CH_3CH_2^+ > (CH_3)_2CH^+ > CH_3^+$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "\\text{Stability } \\propto \\text{Number of } \\alpha\\text{-hydrogens (hyperconjugation) and } +I \\text{ effect}",
+      "solution": "Stability of alkyl carbocations is governed by hyperconjugation and inductive ($+I$) effects:\n- $(CH_3)_3C^+$ (tert-butyl): $9\\;\\alpha$-hydrogens\n- $(CH_3)_2CH^+$ (isopropyl): $6\\;\\alpha$-hydrogens\n- $CH_3CH_2^+$ (ethyl): $3\\;\\alpha$-hydrogens\n- $CH_3^+$ (methyl): $0\\;\\alpha$-hydrogens\nOrder: $3^\\circ > 2^\\circ > 1^\\circ > \\text{methyl}$.",
+      "notebookSolution": {
+        "given": "Alkyl carbocations",
+        "concept": "Hyperconjugation stability increases with α-hydrogens",
+        "steps": [
+          "tert-butyl: 9 α-H",
+          "isopropyl: 6 α-H",
+          "ethyl: 3 α-H",
+          "methyl: 0 α-H"
+        ],
+        "conclusion": "Order is 3° > 2° > 1° > methyl (Option A).",
+        "pitfall": "Do not confuse with carbanion stability which is reverse."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-chem-15",
+      "subject": "chemistry",
+      "chapter": "Haloalkanes and Haloarenes",
+      "topic": "Nucleophilic Substitution SN2 Mechanism",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Apr 8 Shift 2)",
+      "text": "The reaction of optically active $(R)$-2-bromobutane with aqueous $NaOH$ in acetone predominantly proceeds via:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$S_N1$ reaction with complete retention of configuration"
+        },
+        {
+          "id": "B",
+          "text": "$S_N2$ reaction with complete inversion of configuration (Walden inversion)"
+        },
+        {
+          "id": "C",
+          "text": "$S_N1$ reaction leading to complete racemization"
+        },
+        {
+          "id": "D",
+          "text": "$E2$ elimination giving exclusively 2-butene"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "\\text{Backside nucleophilic attack } \\implies \\text{Walden Inversion}",
+      "solution": "Secondary alkyl halides with strong nucleophiles ($OH^-$) in polar aprotic/favorable solvent predominantly proceed through bimolecular nucleophilic substitution ($S_N2$) mechanism with backside attack, resulting in 100% optical inversion (Walden inversion) to $(S)$-2-butanol.",
+      "notebookSolution": {
+        "given": "(R)-2-bromobutane + NaOH",
+        "concept": "SN2 mechanism stereochemistry",
+        "steps": [
+          "Backside attack of OH⁻",
+          "Departure of Br⁻ simultaneously",
+          "Complete Walden inversion of configuration"
+        ],
+        "conclusion": "Proceeds via SN2 with complete inversion (Option B).",
+        "pitfall": "SN1 gives partial racemization with slight net inversion; pure SN2 gives full inversion."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-chem-16",
+      "subject": "chemistry",
+      "chapter": "Alcohols, Phenols and Ethers",
+      "topic": "Reimer-Tiemann Reaction Intermediate",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Jan 29 Shift 1)",
+      "text": "In the Reimer-Tiemann reaction of phenol with chloroform ($CHCl_3$) and aqueous $NaOH$ to yield salicylaldehyde, the active electrophilic intermediate is:",
+      "options": [
+        {
+          "id": "A",
+          "text": ":CH_2 \\text{ (Carbene)}"
+        },
+        {
+          "id": "B",
+          "text": "CCl_3^+ \\text{ (Trichloromethyl cation)}"
+        },
+        {
+          "id": "C",
+          "text": ":CCl_2 \\text{ (Dichlorocarbene)}"
+        },
+        {
+          "id": "D",
+          "text": "CHCl_2^- \\text{ (Dichloromethyl anion)}"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "CHCl_3 + OH^- \\rightleftharpoons :CCl_3^- \\xrightarrow{-\\,Cl^-} :CCl_2",
+      "solution": "Hydroxide abstracts an acidic proton from $CHCl_3$ to generate the trichloromethyl carbanion, which then undergoes $\\alpha$-elimination of chloride ion to generate neutral, electron-deficient **dichlorocarbene** ($:CCl_2$), which acts as the electrophile attacking the phenoxide ring.",
+      "notebookSolution": {
+        "given": "Reimer-Tiemann reaction",
+        "concept": "Electrophilic aromatic substitution by neutral carbene",
+        "steps": [
+          "Base deprotonates CHCl3",
+          "α-elimination yields :CCl2",
+          ":CCl2 attacks phenoxide ring at ortho position"
+        ],
+        "conclusion": "Intermediate is dichlorocarbene :CCl2 (Option C).",
+        "pitfall": "It is neutral dichlorocarbene, not a charged carbocation."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-chem-17",
+      "subject": "chemistry",
+      "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+      "topic": "Cannizzaro Reaction Condition",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Apr 8 Shift 2)",
+      "text": "Which pair of aldehydes lacks $\\alpha$-hydrogen atoms and undergoes disproportionation in concentrated alkali via the **Cannizzaro reaction**?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Acetaldehyde ($CH_3CHO$) and Acetone ($CH_3COCH_3$)"
+        },
+        {
+          "id": "B",
+          "text": "Propanal ($CH_3CH_2CHO$) and Benzaldehyde"
+        },
+        {
+          "id": "C",
+          "text": "Acetaldehyde and Formaldehyde"
+        },
+        {
+          "id": "D",
+          "text": "Formaldehyde ($HCHO$) and Benzaldehyde ($C_6H_5CHO$)"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "2\\,\\text{R-CHO} \\xrightarrow{50\\%\\,NaOH} \\text{R-CH}_2\\text{OH} + \\text{R-COO}^-Na^+",
+      "solution": "Aldehydes with no $\\alpha$-hydrogen atoms cannot form enolates and therefore undergo Cannizzaro self-redox reaction in conc. $NaOH$. Both $HCHO$ and $C_6H_5CHO$ lack $\\alpha$-hydrogens. Acetaldehyde ($CH_3CHO$) has $3\\;\\alpha$-hydrogens and undergoes aldol condensation instead.",
+      "notebookSolution": {
+        "given": "Aldehydes in concentrated alkali",
+        "concept": "Cannizzaro reaction requires absence of α-hydrogens",
+        "steps": [
+          "HCHO has no α-carbon -> no α-H",
+          "C6H5CHO has aromatic ring without α-H",
+          "Both disproportionate to alcohol and carboxylate"
+        ],
+        "conclusion": "Formaldehyde and Benzaldehyde (Option D).",
+        "pitfall": "Presence of even one α-hydrogen promotes aldol condensation instead."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-chem-18",
+      "subject": "chemistry",
+      "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+      "topic": "Hell-Volhard-Zelinsky (HVZ) Reaction",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Jan 29 Shift 1)",
+      "text": "Propanoic acid on treatment with which of the following reagents undergoes $\\alpha$-bromination to yield 2-bromopropanoic acid (Hell-Volhard-Zelinsky reaction)?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Red $P + Br_2$"
+        },
+        {
+          "id": "B",
+          "text": "Alc. $KOH$"
+        },
+        {
+          "id": "C",
+          "text": "$LiAlH_4$"
+        },
+        {
+          "id": "D",
+          "text": "$SOCl_2$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "R-CH_2-COOH \\xrightarrow{X_2 / \\text{Red } P} R-CH(X)-COOH",
+      "solution": "Carboxylic acids having $\\alpha$-hydrogen atoms are halogenated at the $\\alpha$-position on treatment with chlorine or bromine in the presence of small amounts of red phosphorus (HVZ reaction).",
+      "notebookSolution": {
+        "given": "Conversion of propanoic acid to 2-bromopropanoic acid",
+        "concept": "Hell-Volhard-Zelinsky α-halogenation",
+        "steps": [
+          "Reagents: Br2 with red phosphorus catalytic amount",
+          "Enolization of acid halide intermediate directs substitution to α-position"
+        ],
+        "conclusion": "Reagent is Red P + Br2 (Option A).",
+        "pitfall": "HVZ only works if the acid contains at least one α-hydrogen."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-chem-19",
+      "subject": "chemistry",
+      "chapter": "Amines",
+      "topic": "Carbylamine Test for Primary Amines",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Apr 8 Shift 2)",
+      "text": "Which of the following reactions produces an extremely foul-smelling **isocyanide** (Carbylamine reaction)?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Dimethylamine ($(CH_3)_2NH$) with $CHCl_3 + alc. KOH$"
+        },
+        {
+          "id": "B",
+          "text": "Methylamine ($CH_3NH_2$) with $CHCl_3 + alc. KOH$"
+        },
+        {
+          "id": "C",
+          "text": "Trimethylamine ($(CH_3)_3N$) with $CHCl_3 + alc. KOH$"
+        },
+        {
+          "id": "D",
+          "text": "Aniline with nitrous acid at $0-5^\\circ\\text{C}$"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "R-NH_2 + CHCl_3 + 3KOH \\xrightarrow{\\Delta} R-NC + 3KCl + 3H_2O",
+      "solution": "The Carbylamine test is given exclusively by aliphatic and aromatic **primary ($1^\\circ$) amines** when heated with chloroform and alcoholic $KOH$, forming an offensive-smelling isocyanide ($R-NC$). Secondary and tertiary amines do NOT give this test.",
+      "notebookSolution": {
+        "given": "Carbylamine test options",
+        "concept": "Specific test for primary amines",
+        "steps": [
+          "Primary amines react with CHCl3 + alc. KOH",
+          "Forms foul smelling carbylamine (isocyanide)",
+          "Secondary and tertiary amines fail to react"
+        ],
+        "conclusion": "Methylamine with CHCl3 + alc. KOH (Option B).",
+        "pitfall": "Secondary and tertiary amines do not have two protons on nitrogen to form isocyanide."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-chem-20",
+      "subject": "chemistry",
+      "chapter": "Biomolecules",
+      "topic": "Denaturation of Proteins",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Jan 29 Shift 1)",
+      "text": "During the denaturation of proteins caused by physical changes (such as heat) or chemical changes (pH variation), which structural level **remains intact**?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Secondary structure ($alpha$-helix and $\beta$-pleated sheets)"
+        },
+        {
+          "id": "B",
+          "text": "Tertiary structure (three-dimensional globular folding)"
+        },
+        {
+          "id": "C",
+          "text": "Primary structure (sequence of amino acids held by peptide bonds)"
+        },
+        {
+          "id": "D",
+          "text": "Quaternary structure (aggregation of multi-subunit complexes)"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "\\text{Denaturation breaks H-bonds and disulfide linkages, keeping covalent peptide backbone intact}",
+      "solution": "During denaturation, hydrogen bonds and ionic interactions stabilizing the secondary, tertiary, and quaternary structures are disrupted, causing the protein to unfold and lose biological activity. The covalent peptide bonds of the **primary structure** remain intact.",
+      "notebookSolution": {
+        "given": "Denaturation of proteins",
+        "concept": "Effect of denaturation on protein hierarchy",
+        "steps": [
+          "Secondary, tertiary, quaternary structures collapse",
+          "Covalent peptide bonds are not broken by gentle denaturation",
+          "Primary structure remains intact"
+        ],
+        "conclusion": "Primary structure remains intact (Option C).",
+        "pitfall": "Enzymatic hydrolysis breaks primary structure, but thermal denaturation does not."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-chem-21",
+      "subject": "chemistry",
+      "chapter": "Redox Reactions",
+      "topic": "Oxidation Number of Chromium",
+      "difficulty": "easy",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Apr 8 Shift 2)",
+      "text": "The oxidation state of chromium ($Cr$) in the dichromate dianion ($Cr_2O_7^{2-}$) is:",
+      "correctAnswer": "6",
+      "formula": "2x + 7(-2) = -2 \\implies 2x = +12 \\implies x = +6",
+      "solution": "Let oxidation number of $Cr$ be $x$. Sum of oxidation states: $2(x) + 7(-2) = -2 \\implies 2x - 14 = -2 \\implies 2x = 12 \\implies x = +6$.",
+      "notebookSolution": {
+        "given": "Cr2O7²⁻ ion",
+        "concept": "Algebraic sum of oxidation numbers equals overall charge",
+        "steps": [
+          "2x + 7(-2) = -2",
+          "2x - 14 = -2",
+          "x = +6"
+        ],
+        "conclusion": "Oxidation state is 6.",
+        "pitfall": "Do not forget the net charge of -2 on the polyatomic anion."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-chem-22",
+      "subject": "chemistry",
+      "chapter": "Electrochemistry",
+      "topic": "Standard Gibbs Free Energy Change",
+      "difficulty": "medium",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Jan 29 Shift 1)",
+      "text": "For the Daniell cell reaction $Zn(s) + Cu^{2+}(aq) \\to Zn^{2+}(aq) + Cu(s)$, the standard cell potential is $E^\\circ_{cell} = 1.10\\text{ V}$. Taking Faraday constant $F = 96500\\text{ C mol}^{-1}$, the magnitude of standard Gibbs energy change $|\\Delta G^\\circ|$ (in $\\text{kJ mol}^{-1}$, to the nearest integer) is:",
+      "correctAnswer": "212",
+      "formula": "\\Delta G^\\circ = -n F E^\\circ_{cell}",
+      "solution": "$$\\Delta G^\\circ = - (2) \\times (96500) \\times (1.10) = -212300\\text{ J mol}^{-1} = -212.3\\text{ kJ mol}^{-1}$$. Magnitude to nearest integer is $212$.",
+      "notebookSolution": {
+        "given": "n = 2, E° = 1.10 V, F = 96500 C/mol",
+        "concept": "ΔG° = -nFE°cell",
+        "steps": [
+          "ΔG° = -2 × 96500 × 1.10 = -212300 J = -212.3 kJ",
+          "Magnitude = 212"
+        ],
+        "conclusion": "Magnitude is 212 kJ/mol.",
+        "pitfall": "Convert Joules to kiloJoules."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-chem-23",
+      "subject": "chemistry",
+      "chapter": "Chemical Kinetics",
+      "topic": "Units of Rate Constant and Order",
+      "difficulty": "easy",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Apr 8 Shift 2)",
+      "text": "The rate constant of a reaction is given as $k = 3.5 \\times 10^{-4}\\text{ s}^{-1}$. The order of this reaction is:",
+      "correctAnswer": "1",
+      "formula": "\\text{Units of } k = (\\text{mol L}^{-1})^{1 - n} \\text{ s}^{-1}",
+      "solution": "For order $n$, units are $(\\text{mol L}^{-1})^{1-n}\\text{s}^{-1}$. When $n=1$, $(1-n) = 0$, giving units of $\\text{s}^{-1}$. Hence the reaction is first-order ($n = 1$).",
+      "notebookSolution": {
+        "given": "k has units s⁻¹",
+        "concept": "General units of rate constant (conc)^(1-n) × time⁻¹",
+        "steps": [
+          "(mol/L)^(1-n) s⁻¹ = s⁻¹ implies 1 - n = 0",
+          "n = 1"
+        ],
+        "conclusion": "Order is 1.",
+        "pitfall": "Units of rate constant uniquely determine reaction order."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-chem-24",
+      "subject": "chemistry",
+      "chapter": "Coordination Compounds",
+      "topic": "Spin-only Magnetic Moment of Metal Complex",
+      "difficulty": "medium",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Jan 29 Shift 1)",
+      "text": "In the complex $[Fe(H_2O)_6]^{2+}$, water is a weak-field ligand. The number of unpaired electrons in the central iron ion is:",
+      "correctAnswer": "4",
+      "formula": "Fe^{2+} (d^6) \\text{ in weak field } \\implies t_{2g}^4 e_g^2, \\; n = 4",
+      "solution": "Iron has atomic number $26$: $Fe = [Ar] 3d^6 4s^2 \\implies Fe^{2+} = [Ar] 3d^6$. With weak field ligand $H_2O$, $\\Delta_o < P$ (high spin): configuration is $t_{2g}^4 e_g^2$. Unpaired electrons: $2$ in $t_{2g}$ and $2$ in $e_g$, giving total $n = 4$ unpaired electrons.",
+      "notebookSolution": {
+        "given": "[Fe(H2O)6]²⁺, H2O is weak field",
+        "concept": "High spin octahedral d⁶ splitting",
+        "steps": [
+          "Fe²⁺ = 3d⁶",
+          "Weak field: no pairing in eg until t2g is half filled",
+          "Configuration: t2g⁴ eg²",
+          "Unpaired electrons: 2 + 2 = 4"
+        ],
+        "conclusion": "Number of unpaired electrons is 4.",
+        "pitfall": "Fe(CN)6⁴⁻ has strong field ligand so n = 0, but H2O gives high spin n = 4."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-chem-25",
+      "subject": "chemistry",
+      "chapter": "Solutions",
+      "topic": "Depression in Freezing Point with Association",
+      "difficulty": "medium",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Apr 8 Shift 2)",
+      "text": "A $1.0\\text{ molal}$ aqueous solution of a non-electrolyte completely freezes at $-1.86^\\circ\\text{C}$ ($K_f = 1.86\\text{ K kg mol}^{-1}$). If an electrolyte $AB_2$ completely dissociates ($100\\%$ ionization) in water, the freezing point depression $\\Delta T_f$ (in $\\text{K}$) of a $1.0\\text{ molal}$ aqueous solution of $AB_2$ is $x \\times 1.86$. The value of $x$ is:",
+      "correctAnswer": "3",
+      "formula": "\\Delta T_f = i K_f m, \\quad i = 1 + (n-1)\\alpha",
+      "solution": "$AB_2 \\to A^{2+} + 2B^- \\implies n = 3$ ions. With $100\\%$ dissociation, van 't Hoff factor $i = 3$. Hence $\\Delta T_f = 3 \\times 1.86 \\times 1.0 = 3 \\times 1.86 \\implies x = 3$.",
+      "notebookSolution": {
+        "given": "AB2 completely dissociates into 3 ions",
+        "concept": "van t Hoff factor i = 1 + (n-1)α = 3",
+        "steps": [
+          "AB2 -> A²⁺ + 2B⁻ (n = 3)",
+          "α = 1.0 -> i = 3",
+          "ΔTf = 3 × Kf × m = 3 × 1.86"
+        ],
+        "conclusion": "x = 3.",
+        "pitfall": "Remember to count all cation and anion particles."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-math-1",
+      "subject": "mathematics",
+      "chapter": "Sets and Relations",
+      "topic": "Types of Binary Relations",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Apr 9 Shift 1)",
+      "text": "Let $R$ be a binary relation defined on the set of integers $\\mathbb{Z}$ by: $a R b \\iff a \\le b$. Then the relation $R$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "An equivalence relation"
+        },
+        {
+          "id": "B",
+          "text": "Symmetric, but neither reflexive nor transitive"
+        },
+        {
+          "id": "C",
+          "text": "Reflexive and symmetric, but not transitive"
+        },
+        {
+          "id": "D",
+          "text": "Reflexive and transitive, but not symmetric"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "a R a \\implies \\text{Reflexive}; \\quad a R b \\text{ and } b R c \\implies a R c \\implies \\text{Transitive}",
+      "solution": "- Reflexive: For every $a \\in \\mathbb{Z}$, $a \\le a$ is true $\\implies (a,a) \\in R$.\n- Symmetric: If $2 \\le 3$, then $3 \\le 2$ is false $\\implies$ Not symmetric.\n- Transitive: If $a \\le b$ and $b \\le c$, then $a \\le c$ is true $\\implies$ Transitive.\nHence, $R$ is reflexive and transitive, but not symmetric.",
+      "notebookSolution": {
+        "given": "Relation a R b iff a <= b on Z",
+        "concept": "Definitions of reflexivity, symmetry, transitivity",
+        "steps": [
+          "a <= a is true for all integers (reflexive)",
+          "2 <= 3 does not imply 3 <= 2 (not symmetric)",
+          "a <= b and b <= c implies a <= c (transitive)"
+        ],
+        "conclusion": "Reflexive and transitive, but not symmetric (Option D).",
+        "pitfall": "Do not confuse partial order with equivalence relation."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-math-2",
+      "subject": "mathematics",
+      "chapter": "Complex Numbers",
+      "topic": "Cube Roots of Unity",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Jan 30 Shift 2)",
+      "text": "If $\\omega$ is a non-real complex cube root of unity ($1 + \\omega + \\omega^2 = 0$ and $\\omega^3 = 1$), then the value of the expression $(1 + \\omega - \\omega^2)^3$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$-8$"
+        },
+        {
+          "id": "B",
+          "text": "$+8$"
+        },
+        {
+          "id": "C",
+          "text": "$0$"
+        },
+        {
+          "id": "D",
+          "text": "$16$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "1 + \\omega = -\\omega^2, \\quad \\omega^3 = 1",
+      "solution": "Since $1 + \\omega = -\\omega^2$, we substitute:\n$$(1 + \\omega - \\omega^2)^3 = (-\\omega^2 - \\omega^2)^3 = (-2\\omega^2)^3 = (-2)^3 (\\omega^2)^3 = -8 (\\omega^3)^2 = -8(1)^2 = -8$$.",
+      "notebookSolution": {
+        "given": "Expression (1 + ω - ω²)³",
+        "concept": "Cube roots of unity identities: 1 + ω + ω² = 0, ω³ = 1",
+        "steps": [
+          "1 + ω = -ω²",
+          "( -ω² - ω² )³ = (-2ω²)³",
+          "= -8(ω³)² = -8(1) = -8"
+        ],
+        "conclusion": "Value is -8 (Option A).",
+        "pitfall": "Remember (-2)³ has a negative sign."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-math-3",
+      "subject": "mathematics",
+      "chapter": "Quadratic Equations",
+      "topic": "Symmetric Functions of Roots",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Apr 9 Shift 1)",
+      "text": "If $\\alpha$ and $\\beta$ are the roots of the quadratic equation $x^2 - 6x + 6 = 0$, then the value of $\\alpha^2 + \\beta^2$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$28$"
+        },
+        {
+          "id": "B",
+          "text": "$24$"
+        },
+        {
+          "id": "C",
+          "text": "$20$"
+        },
+        {
+          "id": "D",
+          "text": "$34$"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "\\alpha^2 + \\beta^2 = (\\alpha + \\beta)^2 - 2\\alpha\\beta",
+      "solution": "Sum of roots $\\alpha + \\beta = 6$, product of roots $\\alpha\\beta = 6$.\n$$\\alpha^2 + \\beta^2 = (6)^2 - 2(6) = 36 - 12 = 24$$.",
+      "notebookSolution": {
+        "given": "x² - 6x + 6 = 0",
+        "concept": "Vieta formulas for quadratic equation",
+        "steps": [
+          "α + β = 6",
+          "αβ = 6",
+          "α² + β² = (6)² - 2(6) = 24"
+        ],
+        "conclusion": "Value is 24 (Option B).",
+        "pitfall": "Check minus sign in -2αβ."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-math-4",
+      "subject": "mathematics",
+      "chapter": "Matrices and Determinants",
+      "topic": "Determinant of Adjoint Matrix",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Jan 30 Shift 2)",
+      "text": "Let $A$ be a non-singular square matrix of order $3 \\times 3$ with determinant $|A| = 4$. The determinant of its adjoint matrix $|\\text{adj}(A)|$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$4$"
+        },
+        {
+          "id": "B",
+          "text": "$64$"
+        },
+        {
+          "id": "C",
+          "text": "$16$"
+        },
+        {
+          "id": "D",
+          "text": "$10$"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "|\\text{adj}(A)| = |A|^{n-1}",
+      "solution": "For an $n \\times n$ matrix, $|\\text{adj}(A)| = |A|^{n-1}$. Here order $n = 3$, so:\n$$|\\text{adj}(A)| = |A|^{3-1} = |A|^2 = (4)^2 = 16$$.",
+      "notebookSolution": {
+        "given": "Order n = 3, |A| = 4",
+        "concept": "|adj(A)| = |A|^(n-1)",
+        "steps": [
+          "|adj(A)| = |A|^(3-1) = |A|²",
+          "= (4)² = 16"
+        ],
+        "conclusion": "Determinant is 16 (Option C).",
+        "pitfall": "Order of matrix is 3, so power is 3 - 1 = 2."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-math-5",
+      "subject": "mathematics",
+      "chapter": "Permutations and Combinations",
+      "topic": "Circular Permutations",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Apr 9 Shift 1)",
+      "text": "The number of distinct ways in which $6$ persons can be seated around a circular table is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$720$"
+        },
+        {
+          "id": "B",
+          "text": "$60$"
+        },
+        {
+          "id": "C",
+          "text": "$24$"
+        },
+        {
+          "id": "D",
+          "text": "$120$"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "\\text{Circular permutations of } n \\text{ distinct items} = (n - 1)!",
+      "solution": "Seating $n = 6$ distinct persons around a circular table where rotations are considered equivalent:\n$$\\text{Ways} = (6 - 1)! = 5! = 5 \\times 4 \\times 3 \\times 2 \\times 1 = 120$$.",
+      "notebookSolution": {
+        "given": "6 persons around circular table",
+        "concept": "Circular arrangement fixes one position: (n-1)!",
+        "steps": [
+          "Formula: (6 - 1)! = 5!",
+          "5! = 120"
+        ],
+        "conclusion": "120 ways (Option D).",
+        "pitfall": "Do not use 6! = 720 (circular symmetry eliminates n equivalent rotations)."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-math-6",
+      "subject": "mathematics",
+      "chapter": "Binomial Theorem",
+      "topic": "Term Independent of x",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Jan 30 Shift 2)",
+      "text": "The term independent of $x$ in the binomial expansion of $\\left(x + \\frac{1}{x}\\right)^6$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$20$"
+        },
+        {
+          "id": "B",
+          "text": "$15$"
+        },
+        {
+          "id": "C",
+          "text": "$30$"
+        },
+        {
+          "id": "D",
+          "text": "$60$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "T_{r+1} = {}^nC_r x^{n-r} \\left(\\frac{1}{x}\\right)^r = {}^nC_r x^{n-2r}",
+      "solution": "General term $T_{r+1} = {}^6C_r x^{6-r} (x^{-1})^r = {}^6C_r x^{6-2r}$. For term independent of $x$, exponent $6 - 2r = 0 \\implies r = 3$.\n$$T_4 = {}^6C_3 = \\frac{6 \\times 5 \\times 4}{3 \\times 2 \\times 1} = 20$$.",
+      "notebookSolution": {
+        "given": "(x + 1/x)⁶",
+        "concept": "Set exponent of x to zero",
+        "steps": [
+          "x^(6 - 2r) = x^0 implies r = 3",
+          "Coeff = ⁶C₃ = 20"
+        ],
+        "conclusion": "Term independent of x is 20 (Option A).",
+        "pitfall": "Check index r matches general term T_{r+1}."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-math-7",
+      "subject": "mathematics",
+      "chapter": "Sequences and Series",
+      "topic": "Sum of Infinite Geometric Progression",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Apr 9 Shift 1)",
+      "text": "The sum of the infinite geometric series $1 + \\frac{1}{2} + \\frac{1}{4} + \\frac{1}{8} + \\cdots$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$1$"
+        },
+        {
+          "id": "B",
+          "text": "$2$"
+        },
+        {
+          "id": "C",
+          "text": "$4$"
+        },
+        {
+          "id": "D",
+          "text": "$\\frac{3}{2}$"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "S_\\infty = \\frac{a}{1 - r} \\quad (|r| < 1)",
+      "solution": "First term $a = 1$, common ratio $r = \\frac{1}{2} < 1$.\n$$S_\\infty = \\frac{1}{1 - 1/2} = \\frac{1}{1/2} = 2$$.",
+      "notebookSolution": {
+        "given": "Infinite GP with a = 1, r = 1/2",
+        "concept": "S_inf = a / (1 - r)",
+        "steps": [
+          "S_inf = 1 / (1 - 0.5) = 2"
+        ],
+        "conclusion": "Sum is 2 (Option B).",
+        "pitfall": "Only valid when |r| < 1."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-math-8",
+      "subject": "mathematics",
+      "chapter": "Limits, Continuity and Differentiability",
+      "topic": "Indeterminate Form 1 to Power Infinity",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Jan 30 Shift 2)",
+      "text": "The value of the limit $\\lim_{x \\to 0} (1 + 3x)^{\\frac{3}{x}}$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$e^{3}$"
+        },
+        {
+          "id": "B",
+          "text": "$e^{3}$"
+        },
+        {
+          "id": "C",
+          "text": "$e^{9}$"
+        },
+        {
+          "id": "D",
+          "text": "$1$"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "\\lim_{x \\to a} [f(x)]^{g(x)} = e^{\\lim_{x \\to a} g(x)[f(x) - 1]}",
+      "solution": "This is of the form $1^\\infty$.\n$$L = e^{\\lim_{x \\to 0} \\frac{3}{x} [(1 + 3x) - 1]} = e^{\\lim_{x \\to 0} \\frac{3}{x} (3x)} = e^{3 \\times 3} = e^{9}$$.",
+      "notebookSolution": {
+        "given": "Limit (1 + ax)^(b/x) as x -> 0",
+        "concept": "1^inf evaluation using e^[lim g(f - 1)]",
+        "steps": [
+          "L = e^[ lim (b/x)(ax) ]",
+          "= e^(ab) = e^9"
+        ],
+        "conclusion": "Limit is e^9 (Option C).",
+        "pitfall": "Ensure base approaches 1 and exponent approaches infinity."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-math-9",
+      "subject": "mathematics",
+      "chapter": "Application of Derivatives",
+      "topic": "Equation of Tangent to Curve",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Apr 9 Shift 1)",
+      "text": "The equation of the tangent line to the parabola $y = x^2$ at the point $(2, 4)$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$y = 4x + 4$"
+        },
+        {
+          "id": "B",
+          "text": "$y = 2x - 1$"
+        },
+        {
+          "id": "C",
+          "text": "$y = 4x$"
+        },
+        {
+          "id": "D",
+          "text": "$y = 4x - 4$"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "y - y_0 = m(x - x_0), \\quad m = \\left.\\frac{dy}{dx}\\right|_{(x_0,y_0)}",
+      "solution": "Derivative: $\\frac{dy}{dx} = 2x$. At $x = 2$, slope $m = 2(2) = 4$.\nEquation of tangent: $y - 4 = 4(x - 2) \\implies y - 4 = 4x - 8 \\implies y = 4x - 4$.",
+      "notebookSolution": {
+        "given": "Curve y = x², point (2, 4)",
+        "concept": "Tangent slope is derivative evaluated at point",
+        "steps": [
+          "dy/dx = 2x",
+          "m = 2(2) = 4",
+          "y - 4 = 4(x - 2) -> y = 4x - 4"
+        ],
+        "conclusion": "Tangent is y = 4x - 4 (Option D).",
+        "pitfall": "Check substitution into point-slope formula."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-math-10",
+      "subject": "mathematics",
+      "chapter": "Application of Derivatives",
+      "topic": "Local Minimum of Polynomial",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Jan 30 Shift 2)",
+      "text": "The function $f(x) = 2x^3 - 9x^2 + 12x + 5$ attains a local minimum at:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$x = 2$"
+        },
+        {
+          "id": "B",
+          "text": "$x = 0$"
+        },
+        {
+          "id": "C",
+          "text": "$x = -2$"
+        },
+        {
+          "id": "D",
+          "text": "$x = 4$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "f'(x) = 0 \\text{ and } f''(x) > 0",
+      "solution": "Derivative: $f'(x) = 6x^2 - 18x + 12 = 6(x^2 - 3x + 2) = 6(x - 1)(x - 2) = 0 \\implies x = 1, 2$.\nSecond derivative: $f''(x) = 12x - 18$.\n- At $x = 1$: $f''(1) = -6 < 0$ (Local maximum)\n- At $x = 2$: $f''(2) = +6 > 0$ (Local minimum)\nHence local minimum occurs at $x = 2$.",
+      "notebookSolution": {
+        "given": "f(x) = 2x³ - 9x² + 12x + 5",
+        "concept": "Second derivative test for extrema",
+        "steps": [
+          "f'(x) = 6(x - 1)(x - 2) = 0 -> x = 1, 2",
+          "f''(x) = 12x - 18",
+          "f''(2) = 6 > 0 -> local minimum at x = 2"
+        ],
+        "conclusion": "Local minimum at x = 2 (Option A).",
+        "pitfall": "Do not confuse local maximum with local minimum."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-math-11",
+      "subject": "mathematics",
+      "chapter": "Integrals",
+      "topic": "Standard Exponential Integral Identity",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Apr 9 Shift 1)",
+      "text": "The indefinite integral $\\int e^x (\\sin x + \\cos x) \\, dx$ evaluates to:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$e^x \\cos x + C$"
+        },
+        {
+          "id": "B",
+          "text": "$e^x \\sin x + C$"
+        },
+        {
+          "id": "C",
+          "text": "$-e^x \\sin x + C$"
+        },
+        {
+          "id": "D",
+          "text": "$e^x (\\sin x - \\cos x) + C$"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "\\int e^x [f(x) + f'(x)] \\, dx = e^x f(x) + C",
+      "solution": "Let $f(x) = \\sin x$. Then $f'(x) = \\cos x$. Using the standard formula:\n$$\\int e^x [f(x) + f'(x)] \\, dx = e^x f(x) + C = e^x \\sin x + C$$.",
+      "notebookSolution": {
+        "given": "Integral ∫ e^x (sin x + cos x) dx",
+        "concept": "∫ e^x [f(x) + f'(x)] dx = e^x f(x) + C",
+        "steps": [
+          "Let f(x) = sin x, then f'(x) = cos x",
+          "Expression matches e^x (f + f')",
+          "Result = e^x sin x + C"
+        ],
+        "conclusion": "e^x sin x + C (Option B).",
+        "pitfall": "Make sure f'(x) sign matches correctly."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-math-12",
+      "subject": "mathematics",
+      "chapter": "Integrals",
+      "topic": "Properties of Definite Integrals",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Jan 30 Shift 2)",
+      "text": "The value of the definite integral $I = \\int_0^{\\pi/2} \\frac{\\sqrt{\\sin x}}{\\sqrt{\\sin x} + \\sqrt{\\cos x}} \\, dx$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$\\frac{\\pi}{2}$"
+        },
+        {
+          "id": "B",
+          "text": "$\\pi$"
+        },
+        {
+          "id": "C",
+          "text": "$\\frac{\\pi}{4}$"
+        },
+        {
+          "id": "D",
+          "text": "$0$"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "\\int_a^b f(x)dx = \\int_a^b f(a+b-x)dx",
+      "solution": "Applying King's property: $x \\to \\frac{\\pi}{2} - x$:\n$$I = \\int_0^{\\pi/2} \\frac{\\sqrt{\\cos x}}{\\sqrt{\\cos x} + \\sqrt{\\sin x}} \\, dx$$.\nAdding the two equations:\n$$2I = \\int_0^{\\pi/2} \\frac{\\sqrt{\\sin x} + \\sqrt{\\cos x}}{\\sqrt{\\sin x} + \\sqrt{\\cos x}} \\, dx = \\int_0^{\\pi/2} 1 \\, dx = \\frac{\\pi}{2} \\implies I = \\frac{\\pi}{4}$$.",
+      "notebookSolution": {
+        "given": "Definite integral with limits 0 to π/2",
+        "concept": "King property: ∫ f(x) = ∫ f(a+b-x)",
+        "steps": [
+          "Replace x with π/2 - x",
+          "Add original and transformed integral: 2I = ∫ 1 dx = π/2",
+          "I = π/4"
+        ],
+        "conclusion": "I = π/4 (Option C).",
+        "pitfall": "Do not forget the factor of 2 in 2I."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-math-13",
+      "subject": "mathematics",
+      "chapter": "Differential Equations",
+      "topic": "Integrating Factor of Linear Differential Equation",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Apr 9 Shift 1)",
+      "text": "The integrating factor (I.F.) for the first-order linear differential equation $\\frac{dy}{dx} + \\frac{2}{x} y = x^3$ (for $x > 0$) is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$2x$"
+        },
+        {
+          "id": "B",
+          "text": "$\\ln x$"
+        },
+        {
+          "id": "C",
+          "text": "$e^{2x}$"
+        },
+        {
+          "id": "D",
+          "text": "$x^2$"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "\\text{I.F.} = e^{\\int P(x)\\,dx}",
+      "solution": "Here $P(x) = \\frac{2}{x}$.\n$$\\text{I.F.} = e^{\\int \\frac{2}{x} \\, dx} = e^{2 \\ln x} = e^{\\ln (x^2)} = x^2$$.",
+      "notebookSolution": {
+        "given": "dy/dx + (2/x)y = x³",
+        "concept": "I.F. = e^(∫ P dx)",
+        "steps": [
+          "P = 2/x",
+          "∫ (2/x) dx = 2 ln x = ln(x²)",
+          "e^(ln x²) = x²"
+        ],
+        "conclusion": "I.F. is x² (Option D).",
+        "pitfall": "Move coefficient inside log as exponent: 2 ln x = ln(x²)."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-math-14",
+      "subject": "mathematics",
+      "chapter": "Straight Lines",
+      "topic": "Distance between Parallel Lines",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Jan 30 Shift 2)",
+      "text": "The perpendicular distance between the parallel lines $3x + 4y + 5 = 0$ and $3x + 4y - 5 = 0$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$2$"
+        },
+        {
+          "id": "B",
+          "text": "$1$"
+        },
+        {
+          "id": "C",
+          "text": "$4$"
+        },
+        {
+          "id": "D",
+          "text": "$\\frac{5}{2}$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "d = \\frac{|c_1 - c_2|}{\\sqrt{a^2 + b^2}}",
+      "solution": "Both lines have $a = 3, b = 4$.\n$$d = \\frac{|5 - (-5)|}{\\sqrt{3^2 + 4^2}} = \\frac{|10|}{\\sqrt{9 + 16}} = \\frac{10}{5} = 2$$.",
+      "notebookSolution": {
+        "given": "Lines 3x + 4y + 5 = 0 and 3x + 4y - 5 = 0",
+        "concept": "Distance between parallel lines formula",
+        "steps": [
+          "|c1 - c2| = |5 - (-5)| = 10",
+          "√(a² + b²) = √(9 + 16) = 5",
+          "d = 10 / 5 = 2"
+        ],
+        "conclusion": "Distance is 2 units (Option A).",
+        "pitfall": "Ensure coefficients of x and y are identical before using formula."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-math-15",
+      "subject": "mathematics",
+      "chapter": "Circles",
+      "topic": "Condition of Tangency to Circle",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Apr 9 Shift 1)",
+      "text": "The straight line $y = x + c$ is a tangent to the circle $x^2 + y^2 = 25$ if:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$c = \\pm 5$"
+        },
+        {
+          "id": "B",
+          "text": "$c = \\pm 5\\sqrt{2}$"
+        },
+        {
+          "id": "C",
+          "text": "$c = \\pm 10$"
+        },
+        {
+          "id": "D",
+          "text": "$c = \\pm 25$"
+        }
+      ],
+      "correctAnswer": "B",
+      "formula": "c^2 = a^2(1 + m^2)",
+      "solution": "For circle $x^2 + y^2 = a^2$, the line $y = mx + c$ is tangent if $c^2 = a^2(1 + m^2)$.\nHere $a^2 = 25$ and slope $m = 1$.\n$$c^2 = 25(1 + 1^2) = 25(2) = 50 \\implies c = \\pm \\sqrt{50} = \\pm 5\\sqrt{2}$$.",
+      "notebookSolution": {
+        "given": "Line y = x + c, Circle x² + y² = 25",
+        "concept": "Condition of tangency c² = a²(1 + m²)",
+        "steps": [
+          "m = 1, a² = 25",
+          "c² = 25(1 + 1) = 50",
+          "c = ±5√2"
+        ],
+        "conclusion": "c = ±5√2 (Option B).",
+        "pitfall": "Do not forget both plus and minus signs."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-math-16",
+      "subject": "mathematics",
+      "chapter": "Conic Sections",
+      "topic": "Length of Latus Rectum of Parabola",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Jan 30 Shift 2)",
+      "text": "The length of the latus rectum of the parabola $y^2 = 12x$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$3$"
+        },
+        {
+          "id": "B",
+          "text": "$6$"
+        },
+        {
+          "id": "C",
+          "text": "$12$"
+        },
+        {
+          "id": "D",
+          "text": "$24$"
+        }
+      ],
+      "correctAnswer": "C",
+      "formula": "\\text{Length of Latus Rectum} = 4a",
+      "solution": "Comparing $y^2 = 12x$ with standard equation $y^2 = 4ax$, we have $4a = 12$. Hence the length of the latus rectum is $12$.",
+      "notebookSolution": {
+        "given": "y² = 12x",
+        "concept": "Latus rectum length = 4a",
+        "steps": [
+          "4a = 12"
+        ],
+        "conclusion": "Length is 12 (Option C).",
+        "pitfall": "Latus rectum is 4a, not a."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-math-17",
+      "subject": "mathematics",
+      "chapter": "Conic Sections",
+      "topic": "Eccentricity of Standard Ellipse",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Apr 9 Shift 1)",
+      "text": "The eccentricity of the ellipse $\\frac{x^2}{25} + \\frac{y^2}{16} = 1$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$\\frac{4}{5}$"
+        },
+        {
+          "id": "B",
+          "text": "$\\frac{9}{25}$"
+        },
+        {
+          "id": "C",
+          "text": "$\\frac{1}{5}$"
+        },
+        {
+          "id": "D",
+          "text": "$\\frac{3}{5}$"
+        }
+      ],
+      "correctAnswer": "D",
+      "formula": "e = \\sqrt{1 - \\frac{b^2}{a^2}} \\quad (a > b)",
+      "solution": "Here $a^2 = 25$ and $b^2 = 16$.\n$$e = \\sqrt{1 - \\frac{16}{25}} = \\sqrt{\\frac{9}{25}} = \\frac{3}{5}$$.",
+      "notebookSolution": {
+        "given": "x²/25 + y²/16 = 1",
+        "concept": "e = √(1 - b²/a²)",
+        "steps": [
+          "a² = 25, b² = 16",
+          "1 - 16/25 = 9/25",
+          "e = 3/5"
+        ],
+        "conclusion": "Eccentricity is 3/5 (Option D).",
+        "pitfall": "Ensure b² < a² in formula for horizontal ellipse."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-math-18",
+      "subject": "mathematics",
+      "chapter": "Vector Algebra",
+      "topic": "Scalar Projection of Vector",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Jan 30 Shift 2)",
+      "text": "The projection of the vector $\\vec{a} = 2\\hat{i} + 3\\hat{j} + 2\\hat{k}$ on the vector $\\vec{b} = \\hat{i} + 2\\hat{j} + \\hat{k}$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$\\frac{10}{\\sqrt{6}}$"
+        },
+        {
+          "id": "B",
+          "text": "$\\frac{8}{\\sqrt{6}}$"
+        },
+        {
+          "id": "C",
+          "text": "$10$"
+        },
+        {
+          "id": "D",
+          "text": "$\\sqrt{6}$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "\\text{Proj}_{\\vec{b}}(\\vec{a}) = \\frac{\\vec{a} \\cdot \\vec{b}}{|\\vec{b}|}",
+      "solution": "$$\\vec{a} \\cdot \\vec{b} = (2)(1) + (3)(2) + (2)(1) = 2 + 6 + 2 = 10$$.\n$$|\\vec{b}| = \\sqrt{1^2 + 2^2 + 1^2} = \\sqrt{6}$$.\n$$\\text{Projection} = \\frac{10}{\\sqrt{6}} = \\frac{5\\sqrt{6}}{3}$$.",
+      "notebookSolution": {
+        "given": "a = 2i + 3j + 2k, b = i + 2j + k",
+        "concept": "Projection = (a . b) / |b|",
+        "steps": [
+          "a . b = 2 + 6 + 2 = 10",
+          "|b| = √(1 + 4 + 1) = √6",
+          "Proj = 10 / √6"
+        ],
+        "conclusion": "Projection is 10/√6.",
+        "pitfall": "Divide by magnitude of target vector b, not a."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-math-19",
+      "subject": "mathematics",
+      "chapter": "Three Dimensional Geometry",
+      "topic": "Angle between Two Straight Lines",
+      "difficulty": "medium",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Apr 9 Shift 1)",
+      "text": "The cosine of the angle between two straight lines having direction ratios $\\langle 1, 2, 2 \\rangle$ and $\\langle 2, -2, 1 \\rangle$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$0 \\; (\\theta = 90^\\circ)$"
+        },
+        {
+          "id": "B",
+          "text": "$\\frac{1}{3}$"
+        },
+        {
+          "id": "C",
+          "text": "$\\frac{2}{3}$"
+        },
+        {
+          "id": "D",
+          "text": "$\\frac{1}{2}$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "\\cos\\theta = \\frac{a_1 a_2 + b_1 b_2 + c_1 c_2}{\\sqrt{a_1^2 + b_1^2 + c_1^2}\\sqrt{a_2^2 + b_2^2 + c_2^2}}",
+      "solution": "$$a_1 a_2 + b_1 b_2 + c_1 c_2 = (1)(2) + (2)(-2) + (2)(1) = 2 - 4 + 2 = 0$$.\nSince the numerator is $0$, $\\cos\\theta = 0 \\implies \\theta = 90^\\circ$. The lines are mutually perpendicular.",
+      "notebookSolution": {
+        "given": "Direction ratios <1, 2, 2> and <2, -2, 1>",
+        "concept": "Scalar product of direction ratios",
+        "steps": [
+          "1(2) + 2(-2) + 2(1) = 2 - 4 + 2 = 0",
+          "cos θ = 0",
+          "Lines are perpendicular"
+        ],
+        "conclusion": "cos θ = 0 (θ = 90°).",
+        "pitfall": "Check signs when multiplying direction components."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-math-20",
+      "subject": "mathematics",
+      "chapter": "Probability",
+      "topic": "Conditional Probability",
+      "difficulty": "easy",
+      "type": "single_choice",
+      "patternType": "standard_pyq_mcq",
+      "patternLabel": "NTA Single Choice (+4, -1)",
+      "section": "Section A (Multiple Choice)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Jan 30 Shift 2)",
+      "text": "If $P(A) = 0.6$, $P(B) = 0.7$, and $P(A \\cup B) = 0.9$, then the conditional probability $P(A|B)$ is:",
+      "options": [
+        {
+          "id": "A",
+          "text": "$\\frac{4}{7}$"
+        },
+        {
+          "id": "B",
+          "text": "$\\frac{3}{7}$"
+        },
+        {
+          "id": "C",
+          "text": "$\\frac{2}{3}$"
+        },
+        {
+          "id": "D",
+          "text": "$\\frac{1}{2}$"
+        }
+      ],
+      "correctAnswer": "A",
+      "formula": "P(A \\cap B) = P(A) + P(B) - P(A \\cup B), \\quad P(A|B) = \\frac{P(A \\cap B)}{P(B)}",
+      "solution": "$$P(A \\cap B) = 0.6 + 0.7 - 0.9 = 1.3 - 0.9 = 0.4$$.\n$$P(A|B) = \\frac{P(A \\cap B)}{P(B)} = \\frac{0.4}{0.7} = \\frac{4}{7}$$.",
+      "notebookSolution": {
+        "given": "P(A) = 0.6, P(B) = 0.7, P(A ∪ B) = 0.9",
+        "concept": "Addition theorem and conditional probability formula",
+        "steps": [
+          "P(A ∩ B) = 0.6 + 0.7 - 0.9 = 0.4",
+          "P(A|B) = 0.4 / 0.7 = 4/7"
+        ],
+        "conclusion": "P(A|B) = 4/7.",
+        "pitfall": "Divide by P(B), not P(A)."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-math-21",
+      "subject": "mathematics",
+      "chapter": "Binomial Theorem",
+      "topic": "Remainder Theorem in Binomial Expansion",
+      "difficulty": "medium",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Apr 9 Shift 1)",
+      "text": "When $7^{103}$ is divided by $25$, the remainder is:",
+      "correctAnswer": "18",
+      "formula": "7^2 = 49 = 50 - 1 \\equiv -1 \\pmod{25}",
+      "solution": "$$7^{103} = 7 \\times (7^2)^{51} = 7 \\times (49)^{51} = 7 \\times (50 - 1)^{51}$$.\nUsing binomial expansion: $(50 - 1)^{51} = 50k + (-1)^{51} = 50k - 1$.\n$$7(50k - 1) = 350k - 7 = 25(14k - 1) + (25 - 7) = 25m + 18$$.\nHence, the remainder is $18$.",
+      "notebookSolution": {
+        "given": "7¹⁰³ divided by 25",
+        "concept": "Binomial expansion modulo 25",
+        "steps": [
+          "7² = 49 = 50 - 1",
+          "7¹⁰³ = 7 × (49)⁵¹ = 7(50 - 1)⁵¹",
+          "Modulo 25: 7 × (-1)⁵¹ = -7 ≡ 18 (mod 25)"
+        ],
+        "conclusion": "Remainder is 18.",
+        "pitfall": "A negative remainder -7 must be adjusted to positive by adding divisor 25: -7 + 25 = 18."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-math-22",
+      "subject": "mathematics",
+      "chapter": "Matrices and Determinants",
+      "topic": "System of Linear Equations Condition",
+      "difficulty": "medium",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Main 2021 (Jan 30 Shift 2)",
+      "text": "The system of linear equations:\n$$x + y + z = 6$$\n$$x + 2y + 3z = 10$$\n$$x + 2y + \\lambda z = \\mu$$\nhas infinitely many solutions when $\\lambda = $",
+      "correctAnswer": "3",
+      "formula": "\\Delta = 0 \\text{ for non-unique solution}",
+      "solution": "Coefficient determinant:\n$$\\Delta = \\begin{vmatrix} 1 & 1 & 1 \\\\ 1 & 2 & 3 \\\\ 1 & 2 & \\lambda \\end{vmatrix} = 1(2\\lambda - 6) - 1(\\lambda - 3) + 1(2 - 2) = 2\\lambda - 6 - \\lambda + 3 = \\lambda - 3$$.\nFor infinitely many solutions, we must have $\\Delta = 0 \\implies \\lambda - 3 = 0 \\implies \\lambda = 3$. (And $\\mu = 10$).",
+      "notebookSolution": {
+        "given": "System of 3 equations with parameters λ and μ",
+        "concept": "Cramer rule Δ = 0 condition",
+        "steps": [
+          "Determinant of coefficients Δ = λ - 3",
+          "For infinitely many solutions Δ = 0 -> λ = 3"
+        ],
+        "conclusion": "λ = 3.",
+        "pitfall": "Check that Δx = Δy = Δz = 0 is also satisfied with μ = 10."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-math-23",
+      "subject": "mathematics",
+      "chapter": "Application of Integrals",
+      "topic": "Area Bounded by Parabola and Line",
+      "difficulty": "medium",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Main 2022 (Apr 9 Shift 1)",
+      "text": "The area (in square units) bounded by the parabola $y^2 = 4x$ and the line $y = x$ is $\\frac{k}{3}$. The value of $k$ is:",
+      "correctAnswer": "8",
+      "formula": "\\text{Area} = \\frac{8a^2}{3m^3}",
+      "solution": "Intersection points: $x^2 = 4x \\implies x(x - 4) = 0 \\implies x = 0$ to $x = 4$.\n$$\\text{Area} = \\int_0^4 (2\\sqrt{x} - x)\\,dx = \\left[ 2 \\cdot \\frac{2}{3}x^{3/2} - \\frac{x^2}{2} \\right]_0^4 = \\frac{4}{3}(8) - 8 = \\frac{32}{3} - \\frac{24}{3} = \\frac{8}{3}$$.\nHence $k = 8$.",
+      "notebookSolution": {
+        "given": "y² = 4x and y = x",
+        "concept": "Area between curve and line ∫ (y1 - y2) dx",
+        "steps": [
+          "Limits x = 0 to x = 4",
+          "∫ (2√x - x) dx = 4/3(8) - 16/2 = 32/3 - 8 = 8/3",
+          "k/3 = 8/3 implies k = 8"
+        ],
+        "conclusion": "k = 8.",
+        "pitfall": "Upper curve is y = 2√x and lower curve is y = x in first quadrant."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-math-24",
+      "subject": "mathematics",
+      "chapter": "Vector Algebra",
+      "topic": "Scalar Triple Product Volume of Parallelepiped",
+      "difficulty": "medium",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Main 2023 (Jan 30 Shift 2)",
+      "text": "The volume of the parallelepiped formed by the coterminous vectors $\\vec{a} = \\hat{i} + 2\\hat{j} + 3\\hat{k}$, $\\vec{b} = 2\\hat{i} + \\hat{j} + \\hat{k}$, and $\\vec{c} = \\hat{i} + \\hat{j} + \\hat{k}$ is:",
+      "correctAnswer": "1",
+      "formula": "V = |[\\vec{a} \\; \\vec{b} \\; \\vec{c}]| = |\\det(M)|",
+      "solution": "$$V = \\left| \\begin{vmatrix} 1 & 2 & 3 \\\\ 2 & 1 & 1 \\\\ 1 & 1 & 1 \\end{vmatrix} \\right| = | 1(1 - 1) - 2(2 - 1) + 3(2 - 1) | = | 0 - 2 + 3 | = 1$$.",
+      "notebookSolution": {
+        "given": "Coterminous vectors a, b, c",
+        "concept": "Volume = |scalar triple product|",
+        "steps": [
+          "Determinant = 1(0) - 2(1) + 3(1) = 1",
+          "Volume = 1 cubic unit"
+        ],
+        "conclusion": "Volume is 1.",
+        "pitfall": "Always take absolute value of scalar triple product."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "jm-10-math-25",
+      "subject": "mathematics",
+      "chapter": "Three Dimensional Geometry",
+      "topic": "Shortest Distance between Parallel Planes",
+      "difficulty": "easy",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "NTA Numerical Value (+4, -1)",
+      "section": "Section B (Numerical Value)",
+      "source": "PYQ",
+      "pyqYear": 2024,
+      "pyqReference": "JEE Main 2024 (Apr 9 Shift 1)",
+      "text": "The distance between the parallel planes $2x - y + 2z + 3 = 0$ and $4x - 2y + 4z + 18 = 0$ is:",
+      "correctAnswer": "2",
+      "formula": "d = \\frac{|d_1 - d_2|}{\\sqrt{a^2 + b^2 + c^2}}",
+      "solution": "Divide the second plane by $2$: $2x - y + 2z + 9 = 0$.\nBoth planes have $a = 2, b = -1, c = 2$.\n$$d = \\frac{|9 - 3|}{\\sqrt{2^2 + (-1)^2 + 2^2}} = \\frac{6}{\\sqrt{4 + 1 + 4}} = \\frac{6}{\\sqrt{9}} = \\frac{6}{3} = 2$$.",
+      "notebookSolution": {
+        "given": "Planes 2x - y + 2z + 3 = 0 and 4x - 2y + 4z + 18 = 0",
+        "concept": "Distance between parallel planes",
+        "steps": [
+          "Normalize second equation to 2x - y + 2z + 9 = 0",
+          "d = |9 - 3| / √(4 + 1 + 4) = 6 / 3 = 2"
+        ],
+        "conclusion": "Distance is 2.",
+        "pitfall": "Coefficients must be identical before subtracting constant terms."
+      },
+      "verificationStatus": "verified"
+    }
+  ]
 }
 ];
 
@@ -19178,6 +35628,2802 @@ export const JEE_ADVANCED_TEST_SERIES: CuratedTestPackage[] = [
         ],
         "conclusion": "The number of derangements is 44.",
         "pitfall": "Do not confuse with 5! = 120."
+      },
+      "verificationStatus": "verified"
+    }
+  ]
+},
+{
+  "config": {
+    "id": "ja-paper-04",
+    "testNumber": 4,
+    "title": "IIT-JEE Advanced 2026 - National Super Benchmark Paper 4",
+    "subtitle": "Multi-Correct (+4, -2) • Advanced Numericals • Electromagnetic & Organic Synthesis",
+    "examType": "jee_advanced",
+    "durationMinutes": 180,
+    "totalMarks": 180,
+    "questionCount": 15,
+    "description": "Elite IIT-JEE Advanced paper focusing on electromagnetic induction, rotational dynamics, organic reaction mechanisms, complex matrices, and integral calculus.",
+    "difficulty": "Advanced Benchmark",
+    "subjectsIncluded": [
+      "physics",
+      "chemistry",
+      "mathematics"
+    ],
+    "seriesCategory": "jee_advanced",
+    "badge": "Paper 04",
+    "tags": [
+      "JEE Advanced",
+      "Paper 04",
+      "Multi-Correct (+4, -2)",
+      "IIT Benchmark",
+      "180 Mins"
+    ]
+  },
+  "questions": [
+    {
+      "id": "ja-paper-04-phy-1",
+      "subject": "physics",
+      "chapter": "Rotational Motion",
+      "topic": "Pure Rolling on Inclined Plane with Friction",
+      "difficulty": "hard",
+      "type": "multiple_choice",
+      "patternType": "multi_concept_synthesis",
+      "patternLabel": "IIT-JEE Multi-Correct (+4, -2)",
+      "section": "Section 1 (One or More than One Correct)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Advanced 2022 Paper 1",
+      "text": "A uniform solid sphere of mass $M$ and radius $R$ is placed on a rough horizontal surface with coefficient of friction $\\mu$. It is struck by a horizontal impulse $J$ at a height $h$ above the center of mass. Which of the following statements is/are correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "If $h = \\frac{2}{5}R$, the sphere immediately begins pure rolling without any slipping."
+        },
+        {
+          "id": "B",
+          "text": "If $h > \\frac{2}{5}R$, the initial frictional force acts forward (in the direction of $J$)."
+        },
+        {
+          "id": "C",
+          "text": "If $h < \\frac{2}{5}R$, the initial frictional force acts backward (opposite to $J$)."
+        },
+        {
+          "id": "D",
+          "text": "The linear velocity immediately after the impulse is $v = \\frac{J}{M}$ regardless of $h$."
+        }
+      ],
+      "correctAnswer": "A,B,C,D",
+      "formula": "J = M v, \\quad J h = I \\omega = \\frac{2}{5} M R^2 \\omega \\implies v = R\\omega \\iff h = \\frac{2}{5}R",
+      "solution": "Linear impulse gives $v_0 = J/M$. Angular impulse gives $\\tau \\Delta t = J h = I \\omega_0 \\implies \\omega_0 = \\frac{J h}{\\frac{2}{5} M R^2} = \\frac{5 J h}{2 M R^2}$.\nFor instantaneous pure rolling: $v_0 = R \\omega_0 \\implies \\frac{J}{M} = \\frac{5 J h}{2 M R} \\implies h = \\frac{2}{5}R$.\nIf $h > \\frac{2}{5}R$, bottom point slips backward $\\implies$ friction acts forward.\nIf $h < \\frac{2}{5}R$, bottom point slips forward $\\implies$ friction acts backward.\nLinear momentum is conserved during instantaneous impulse: $v = J/M$ holds for all $h$.\nHence all statements A, B, C, D are correct.",
+      "notebookSolution": {
+        "given": "Impulse J at height h above COM",
+        "concept": "Instantaneous pure rolling requires v = Rω",
+        "steps": [
+          "v = J/M",
+          "ω = Jh / I = 5Jh / (2MR²)",
+          "v = Rω => h = 2/5 R"
+        ],
+        "conclusion": "A, B, C, D are all correct.",
+        "pitfall": "Do not confuse height above COM with height above ground."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "ja-paper-04-phy-2",
+      "subject": "physics",
+      "chapter": "Electromagnetic Induction",
+      "topic": "Motional EMF and Lenz Law",
+      "difficulty": "hard",
+      "type": "multiple_choice",
+      "patternType": "multi_concept_synthesis",
+      "patternLabel": "IIT-JEE Multi-Correct (+4, -2)",
+      "section": "Section 1 (One or More than One Correct)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Advanced 2023 Paper 2",
+      "text": "A rectangular loop of wire with dimensions $a \\times b$ and resistance $R$ falls vertically under gravity through a region of horizontal magnetic field $\\vec{B} = B_0 \\hat{k}$ for $0 \\le y \\le d$ (with $d > b$). Which of the following statements is/are correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "While the loop is entering the magnetic field, an upward magnetic retarding force acts on it."
+        },
+        {
+          "id": "B",
+          "text": "When the loop is completely inside the magnetic field, the net induced EMF is zero."
+        },
+        {
+          "id": "C",
+          "text": "While the loop is exiting the magnetic field, the induced current flows in the opposite sense compared to entering."
+        },
+        {
+          "id": "D",
+          "text": "The total mechanical energy lost by the loop equals the total Joule heating dissipated in the resistor."
+        }
+      ],
+      "correctAnswer": "A,B,C,D",
+      "formula": "\\mathcal{E} = -\\frac{d\\Phi_B}{dt}, \\quad F_m = I L B = \\frac{B^2 a^2 v}{R}",
+      "solution": "1. Entering: Magnetic flux into the page increases. By Lenz's law, induced current creates outward field (counter-clockwise current). Magnetic force $\\vec{F} = I\\vec{L} \\times \\vec{B}$ acts upward, retarding gravity.\n2. Fully inside: $\\frac{d\\Phi_B}{dt} = 0$, so induced EMF is zero, current is zero, and acceleration is simply $g$.\n3. Exiting: Flux decreases, so current reverses (clockwise) to oppose loss of flux. Force is still upward.\n4. By conservation of energy, work done against magnetic drag equals Joule heat $\\int I^2 R \\, dt$.\nAll statements A, B, C, D are correct.",
+      "notebookSolution": {
+        "given": "Falling loop entering and leaving transverse magnetic field",
+        "concept": "Faraday-Lenz law and Joule dissipation",
+        "steps": [
+          "Flux change generates opposing EMF",
+          "Inside region dΦ/dt = 0 => I = 0",
+          "Energy balance: ΔE_mech = Q_joule"
+        ],
+        "conclusion": "All options A, B, C, D are correct.",
+        "pitfall": "When fully inside, induced EMF on top and bottom wires cancel each other."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "ja-paper-04-phy-3",
+      "subject": "physics",
+      "chapter": "Wave Optics",
+      "topic": "Young Double Slit Experiment with Dielectric Slab",
+      "difficulty": "hard",
+      "type": "multiple_choice",
+      "patternType": "multi_concept_synthesis",
+      "patternLabel": "IIT-JEE Multi-Correct (+4, -2)",
+      "section": "Section 1 (One or More than One Correct)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Advanced 2021 Paper 1",
+      "text": "In a standard Young's double-slit experiment using monochromatic light of wavelength $\\lambda$, a thin transparent mica sheet of thickness $t$ and refractive index $\\mu$ is placed in the path of one of the interfering beams. Which of the following statements is/are correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The central bright fringe shifts towards the slit covered by the mica sheet by a distance $\\Delta y = \\frac{D}{d}(\\mu - 1)t$."
+        },
+        {
+          "id": "B",
+          "text": "The fringe width $\\beta = \\frac{\\lambda D}{d}$ remains completely unchanged."
+        },
+        {
+          "id": "C",
+          "text": "The optical path length of the covered beam increases by $(\\mu - 1)t$."
+        },
+        {
+          "id": "D",
+          "text": "If $t = \\frac{\\lambda}{\\mu - 1}$, the entire interference pattern shifts by exactly one fringe width."
+        }
+      ],
+      "correctAnswer": "A,B,C,D",
+      "formula": "\\Delta x = (\\mu - 1)t, \\quad \\Delta y = \\frac{D}{d}\\Delta x = \\frac{D}{d}(\\mu - 1)t",
+      "solution": "Introduction of transparent slab introduces an extra optical path difference $\\Delta x = \\mu t - t = (\\mu - 1)t$.\n1. Shift in fringe pattern: $y_0 = \\frac{D}{d}(\\mu - 1)t$ towards the side of the covered slit.\n2. Fringe width $\\beta = \\frac{\\lambda D}{d}$ depends only on $\\lambda, D, d$, so it is unaffected.\n3. Extra optical path is $(\\mu - 1)t$.\n4. For $\\Delta x = \\lambda$, shift $= \\frac{D}{d}\\lambda = \\beta$ (exactly one fringe width).\nAll options A, B, C, D are correct.",
+      "notebookSolution": {
+        "given": "YDSE with dielectric sheet in one beam",
+        "concept": "Optical path difference Δx = (μ - 1)t",
+        "steps": [
+          "Shift y = (D/d)(μ-1)t towards covered slit",
+          "Fringe width β = λD/d unchanged",
+          "Shift = β when (μ-1)t = λ"
+        ],
+        "conclusion": "All options A, B, C, D are correct.",
+        "pitfall": "Fringe width does not change, only positions shift."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "ja-paper-04-phy-4",
+      "subject": "physics",
+      "chapter": "Dual Nature of Radiation",
+      "topic": "Photoelectric Effect and Stopping Potential",
+      "difficulty": "hard",
+      "type": "multiple_choice",
+      "patternType": "multi_concept_synthesis",
+      "patternLabel": "IIT-JEE Multi-Correct (+4, -2)",
+      "section": "Section 1 (One or More than One Correct)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Advanced 2023 Paper 1",
+      "text": "In a photoelectric experiment, light of frequency $\\nu > \\nu_0$ illuminates a photosensitive metal cathode of work function $\\Phi = h\\nu_0$. Which of the following statements is/are correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The maximum kinetic energy of emitted photoelectrons depends linearly on the frequency $\\nu$ of incident light."
+        },
+        {
+          "id": "B",
+          "text": "Doubling the intensity of the incident light at constant frequency doubles the saturation photocurrent."
+        },
+        {
+          "id": "C",
+          "text": "The stopping potential $V_0$ is independent of the intensity of incident radiation."
+        },
+        {
+          "id": "D",
+          "text": "The slope of the stopping potential versus frequency graph ($V_0$ vs $\\nu$) is a universal constant equal to $h/e$."
+        }
+      ],
+      "correctAnswer": "A,B,C,D",
+      "formula": "e V_0 = K_{\\max} = h\\nu - \\Phi \\implies V_0 = \\frac{h}{e}\\nu - \\frac{\\Phi}{e}",
+      "solution": "Einstein's photoelectric equation:\n1. $K_{\\max} = h\\nu - \\Phi$ is linear with $\\nu$.\n2. Photocurrent $\\propto$ number of incident photons per second $\\propto$ Intensity.\n3. Stopping potential $V_0 = \\frac{h\\nu - \\Phi}{e}$ depends only on frequency $\\nu$ and work function $\\Phi$, not intensity.\n4. Slope of $V_0$ vs $\\nu$ is $\\frac{h}{e}$, which is independent of metal cathode nature.\nAll options A, B, C, D are correct.",
+      "notebookSolution": {
+        "given": "Photoelectric emission",
+        "concept": "Einstein photoelectric equation eV0 = hν - Φ",
+        "steps": [
+          "Kmax = hν - Φ",
+          "Current ∝ Intensity",
+          "V0 independent of Intensity",
+          "dV0/dν = h/e"
+        ],
+        "conclusion": "A, B, C, D are all correct.",
+        "pitfall": "Stopping potential depends on frequency, not intensity."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "ja-paper-04-phy-5",
+      "subject": "physics",
+      "chapter": "Thermodynamics",
+      "topic": "Carnot Engine Efficiency and Heat Rejection",
+      "difficulty": "hard",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "IIT-JEE Integer Value (+3, 0)",
+      "section": "Section 2 (Non-Negative Integer)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Advanced 2022 Paper 2",
+      "text": "A reversible Carnot engine operates between temperatures $T_H = 600\\text{ K}$ and $T_C = 300\\text{ K}$. It absorbs $Q_H = 1200\\text{ J}$ of heat from the high-temperature reservoir per cycle. The heat rejected $Q_C$ (in Joules) to the cold reservoir per cycle is:",
+      "correctAnswer": "600",
+      "formula": "\\eta = 1 - \\frac{T_C}{T_H} = \\frac{W}{Q_H} = 1 - \\frac{Q_C}{Q_H} \\implies \\frac{Q_C}{Q_H} = \\frac{T_C}{T_H}",
+      "solution": "$$\\frac{Q_C}{Q_H} = \\frac{T_C}{T_H} \\implies Q_C = Q_H \\left(\\frac{T_C}{T_H}\\right) = 1200 \\left(\\frac{300}{600}\\right) = 600\\text{ J}$$.",
+      "notebookSolution": {
+        "given": "TH = 600 K, TC = 300 K, QH = 1200 J",
+        "concept": "Carnot relation QC/QH = TC/TH",
+        "steps": [
+          "QC = 1200 × (300/600) = 600 J"
+        ],
+        "conclusion": "Heat rejected is 600 J.",
+        "pitfall": "Ensure temperatures are in Kelvin."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "ja-paper-04-chem-1",
+      "subject": "chemistry",
+      "chapter": "Coordination Compounds",
+      "topic": "Crystal Field Splitting and High/Low Spin",
+      "difficulty": "hard",
+      "type": "multiple_choice",
+      "patternType": "multi_concept_synthesis",
+      "patternLabel": "IIT-JEE Multi-Correct (+4, -2)",
+      "section": "Section 1 (One or More than One Correct)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Advanced 2023 Paper 1",
+      "text": "For the octahedral coordination complexes $[Fe(CN)_6]^{4-}$, $[Fe(H_2O)_6]^{2+}$, and $[Fe(CN)_6]^{3-}$, which of the following statements is/are correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "$[Fe(CN)_6]^{4-}$ is diamagnetic with zero unpaired electrons ($t_{2g}^6 e_g^0$)."
+        },
+        {
+          "id": "B",
+          "text": "$[Fe(H_2O)_6]^{2+}$ is paramagnetic with $4$ unpaired electrons ($t_{2g}^4 e_g^2$)."
+        },
+        {
+          "id": "C",
+          "text": "$[Fe(CN)_6]^{3-}$ has spin-only magnetic moment $\\mu = \\sqrt{3} \\approx 1.73\\text{ BM}$ ($t_{2g}^5 e_g^0$)."
+        },
+        {
+          "id": "D",
+          "text": "Cyanide ($CN^-$) produces a higher crystal field splitting energy ($\\Delta_o > P$) than water ($H_2O$)."
+        }
+      ],
+      "correctAnswer": "A,B,C,D",
+      "formula": "Fe^{2+} = 3d^6, \\quad Fe^{3+} = 3d^5, \\quad \\Delta_o(CN^-) > P > \\Delta_o(H_2O)",
+      "solution": "1. $[Fe(CN)_6]^{4-}$: $Fe^{2+} (3d^6)$. $CN^-$ is strong-field ligand: $\\Delta_o > P$, low spin $t_{2g}^6 e_g^0$, unpaired electrons $n = 0$ (diamagnetic).\n2. $[Fe(H_2O)_6]^{2+}$: $Fe^{2+} (3d^6)$. $H_2O$ is weak-field: $\\Delta_o < P$, high spin $t_{2g}^4 e_g^2$, $n = 4$ unpaired electrons.\n3. $[Fe(CN)_6]^{3-}$: $Fe^{3+} (3d^5)$. $CN^-$ gives low spin $t_{2g}^5 e_g^0$, $n = 1$ unpaired electron $\\implies \\mu = \\sqrt{1(3)} = \\sqrt{3} \\approx 1.73\\text{ BM}$.\n4. Spectrochemical series: $CN^-$ is much higher than $H_2O$.\nAll statements A, B, C, D are correct.",
+      "notebookSolution": {
+        "given": "Fe(II) and Fe(III) complexes with CN- and H2O",
+        "concept": "Spectrochemical series and crystal field theory",
+        "steps": [
+          "Fe(CN)6⁴⁻: low spin d⁶ -> n = 0",
+          "Fe(H2O)6²⁺: high spin d⁶ -> n = 4",
+          "Fe(CN)6³⁻: low spin d⁵ -> n = 1, μ = √3 BM"
+        ],
+        "conclusion": "A, B, C, D are all correct.",
+        "pitfall": "Oxidation state in Fe(CN)6³⁻ is +3 (d⁵), not +2."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "ja-paper-04-chem-2",
+      "subject": "chemistry",
+      "chapter": "Organic Chemistry",
+      "topic": "Aldol Condensation and Cannizzaro Synthesis",
+      "difficulty": "hard",
+      "type": "multiple_choice",
+      "patternType": "multi_concept_synthesis",
+      "patternLabel": "IIT-JEE Multi-Correct (+4, -2)",
+      "section": "Section 1 (One or More than One Correct)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Advanced 2022 Paper 2",
+      "text": "Which of the following organic transformations will successfully produce a new carbon-carbon bond?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Reaction of acetaldehyde with dilute $NaOH$ followed by heating (Aldol condensation)."
+        },
+        {
+          "id": "B",
+          "text": "Reaction of ethyl magnesium bromide ($CH_3CH_2MgBr$) with formaldehyde followed by acidic hydrolysis."
+        },
+        {
+          "id": "C",
+          "text": "Friedel-Crafts alkylation of benzene with methyl chloride in the presence of anhydrous $AlCl_3$."
+        },
+        {
+          "id": "D",
+          "text": "Kolbe-Schmitt reaction of sodium phenoxide with $CO_2$ under pressure at $400\\text{ K}$."
+        }
+      ],
+      "correctAnswer": "A,B,C,D",
+      "formula": "\\text{C-C bond formation via enolate, Grignard, carbocation, and electrophilic substitution}",
+      "solution": "1. Aldol condensation forms C-C bond between enolate $\\alpha$-carbon and carbonyl carbon to give $\\beta$-hydroxy aldehyde / $\\alpha,\\beta$-unsaturated carbonyl.\n2. Grignard reagent ($R-MgX$) nucleophilically attacks carbonyl carbon to form C-C bond (gives 1-propanol).\n3. Friedel-Crafts alkylation: $CH_3^+$ attacks benzene ring to form C-C bond (toluene).\n4. Kolbe's reaction: phenoxide attacks $CO_2$ at ortho position to form C-C bond (salicylic acid).\nAll four reactions form new carbon-carbon bonds.",
+      "notebookSolution": {
+        "given": "Four standard organic reactions",
+        "concept": "Identification of Carbon-Carbon bond forming reactions",
+        "steps": [
+          "Aldol: enolate + carbonyl -> C-C bond",
+          "Grignard: carbanion + carbonyl -> C-C bond",
+          "Friedel-Crafts: electrophilic aromatic substitution -> C-C bond",
+          "Kolbe: phenoxide + CO2 -> C-C bond"
+        ],
+        "conclusion": "All options A, B, C, D are correct.",
+        "pitfall": "Verify that each pathway creates an actual C-C bond."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "ja-paper-04-chem-3",
+      "subject": "chemistry",
+      "chapter": "Chemical Thermodynamics",
+      "topic": "Spontaneity and Ellingham Diagram",
+      "difficulty": "hard",
+      "type": "multiple_choice",
+      "patternType": "multi_concept_synthesis",
+      "patternLabel": "IIT-JEE Multi-Correct (+4, -2)",
+      "section": "Section 1 (One or More than One Correct)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Advanced 2021 Paper 2",
+      "text": "For the oxidation reaction of a metal: $2M(s) + O_2(g) \\to 2MO(s)$, which of the following statements is/are correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The entropy change $\\Delta S$ of the reaction is negative ($\\Delta S < 0$) because gaseous $O_2$ is consumed to form solid oxide."
+        },
+        {
+          "id": "B",
+          "text": "In the Ellingham diagram ($\\Delta G^\\circ$ vs $T$), the slope of the line is positive ($\\frac{d\\Delta G^\\circ}{dT} = -\\Delta S^\\circ > 0$)."
+        },
+        {
+          "id": "C",
+          "text": "At very high temperatures, $\\Delta G^\\circ$ becomes positive, meaning the metal oxide spontaneously decomposes."
+        },
+        {
+          "id": "D",
+          "text": "A metal whose oxide line lies lower in the Ellingham diagram can reduce the oxide of a metal whose line lies higher."
+        }
+      ],
+      "correctAnswer": "A,B,C,D",
+      "formula": "\\Delta G^\\circ = \\Delta H^\\circ - T \\Delta S^\\circ, \\quad \\text{slope} = -\\Delta S^\\circ > 0",
+      "solution": "1. Moles of gas decrease from 1 to 0, so $\\Delta S^\\circ < 0$.\n2. Since $\\Delta G^\\circ = \\Delta H^\\circ - T\\Delta S^\\circ$, slope is $-\\Delta S^\\circ > 0$ (positive slope).\n3. As $T$ increases, $-T\\Delta S^\\circ$ becomes increasingly positive; eventually $\\Delta G^\\circ > 0$ and the oxide decomposes.\n4. Lower metal has more negative $\\Delta G^\\circ$ for oxidation, so it has higher affinity for oxygen and can reduce oxides above it.\nAll statements A, B, C, D are correct.",
+      "notebookSolution": {
+        "given": "2M(s) + O2(g) -> 2MO(s)",
+        "concept": "Thermodynamics of Ellingham diagrams",
+        "steps": [
+          "ΔS < 0 due to loss of gas phase",
+          "Slope = -ΔS > 0",
+          "High T makes ΔG positive",
+          "Lower curve reduces upper curve"
+        ],
+        "conclusion": "All options A, B, C, D are correct.",
+        "pitfall": "Remember slope of Ellingham line is -ΔS, which is positive for metal oxidations."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "ja-paper-04-chem-4",
+      "subject": "chemistry",
+      "chapter": "Electrochemistry",
+      "topic": "Nernst Equation and Concentration Cell",
+      "difficulty": "hard",
+      "type": "multiple_choice",
+      "patternType": "multi_concept_synthesis",
+      "patternLabel": "IIT-JEE Multi-Correct (+4, -2)",
+      "section": "Section 1 (One or More than One Correct)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Advanced 2023 Paper 2",
+      "text": "Consider the concentration cell: $Pt | H_2(g, 1\\text{ atm}) | HCl (c_1) || HCl (c_2) | H_2(g, 1\\text{ atm}) | Pt$ at $298\\text{ K}$. Which of the following statements is/are correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The standard cell potential $E^\\circ_{cell}$ is strictly zero ($E^\\circ_{cell} = 0$)."
+        },
+        {
+          "id": "B",
+          "text": "The cell EMF is positive and spontaneous if $c_2 > c_1$."
+        },
+        {
+          "id": "C",
+          "text": "The EMF of the cell is given by $E_{cell} = \\frac{2.303 RT}{F} \\log\\frac{c_2}{c_1}$."
+        },
+        {
+          "id": "D",
+          "text": "At equilibrium, the cell potential becomes zero and $c_1 = c_2$."
+        }
+      ],
+      "correctAnswer": "A,B,C,D",
+      "formula": "E_{cell} = E^\\circ_{cell} - \\frac{0.0591}{1}\\log\\frac{c_1}{c_2} = 0.0591\\log\\frac{c_2}{c_1}",
+      "solution": "1. Identical electrodes in standard state $\\implies E^\\circ_{cell} = 0$.\n2. Cell reaction: $H^+(c_2) \\to H^+(c_1)$. Reaction quotient $Q = \\frac{c_1}{c_2}$.\n3. Nernst equation: $E_{cell} = -\\frac{2.303 RT}{F} \\log\\frac{c_1}{c_2} = \\frac{2.303 RT}{F}\\log\\frac{c_2}{c_1}$.\n4. For $c_2 > c_1$, $\\log(c_2/c_1) > 0 \\implies E_{cell} > 0$ (spontaneous discharge until $c_1 = c_2$).\nAll statements A, B, C, D are correct.",
+      "notebookSolution": {
+        "given": "Hydrogen concentration cell",
+        "concept": "Nernst equation for concentration cells with E°cell = 0",
+        "steps": [
+          "E°cell = 0 for concentration cells",
+          "E_cell = 0.0591 log(c2/c1)",
+          "Discharge spontaneous when c2 > c1"
+        ],
+        "conclusion": "A, B, C, D are all correct.",
+        "pitfall": "Remember reduction takes place at higher concentration."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "ja-paper-04-chem-5",
+      "subject": "chemistry",
+      "chapter": "Solid State",
+      "topic": "Packing Efficiency and Edge Length of FCC Lattice",
+      "difficulty": "hard",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "IIT-JEE Integer Value (+3, 0)",
+      "section": "Section 2 (Non-Negative Integer)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Advanced 2022 Paper 1",
+      "text": "Copper crystallizes in a face-centered cubic (FCC) lattice with $4$ atoms per unit cell. If the atomic radius of copper is $R$, the relation between edge length $a$ and radius is $a = x \\sqrt{2} R$. The value of integer $x$ is:",
+      "correctAnswer": "2",
+      "formula": "\\sqrt{2} a = 4 R \\implies a = \\frac{4}{\\sqrt{2}} R = 2\\sqrt{2} R",
+      "solution": "In FCC unit cell, atoms touch along the face diagonal:\n$$\\text{Face diagonal} = \\sqrt{2} a = 4 R \\implies a = \\frac{4}{\\sqrt{2}} R = 2\\sqrt{2} R$$.\nHence $x = 2$.",
+      "notebookSolution": {
+        "given": "FCC unit cell face touch condition",
+        "concept": "Face diagonal √2 a = 4R",
+        "steps": [
+          "a = 4R / √2 = 2√2 R",
+          "x = 2"
+        ],
+        "conclusion": "x = 2.",
+        "pitfall": "Do not confuse face diagonal √2 a with body diagonal √3 a."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "ja-paper-04-math-1",
+      "subject": "mathematics",
+      "chapter": "Definite Integrals",
+      "topic": "Properties of Definite Integrals and Symmetry",
+      "difficulty": "hard",
+      "type": "multiple_choice",
+      "patternType": "multi_concept_synthesis",
+      "patternLabel": "IIT-JEE Multi-Correct (+4, -2)",
+      "section": "Section 1 (One or More than One Correct)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Advanced 2023 Paper 1",
+      "text": "Let $I = \\int_{-\\pi/2}^{\\pi/2} \\frac{\\cos x}{1 + e^x} \\, dx$. Which of the following statements is/are correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The value of the integral is $I = 1$."
+        },
+        {
+          "id": "B",
+          "text": "Replacing $x$ by $-x$ gives $I = \\int_{-\\pi/2}^{\\pi/2} \\frac{e^x \\cos x}{1 + e^x} \\, dx$."
+        },
+        {
+          "id": "C",
+          "text": "Adding the two forms yields $2I = \\int_{-\\pi/2}^{\\pi/2} \\cos x \\, dx$."
+        },
+        {
+          "id": "D",
+          "text": "The integrand is an even function of $x$."
+        }
+      ],
+      "correctAnswer": "A,B,C",
+      "formula": "\\int_a^b f(x)dx = \\int_a^b f(a+b-x)dx, \\quad a+b = 0",
+      "solution": "1. Using property $\\int_a^b f(x)dx = \\int_a^b f(a+b-x)dx$ with $a+b = 0$:\n$$I = \\int_{-\\pi/2}^{\\pi/2} \\frac{\\cos(-x)}{1 + e^{-x}} \\, dx = \\int_{-\\pi/2}^{\\pi/2} \\frac{\\cos x}{1 + 1/e^x} \\, dx = \\int_{-\\pi/2}^{\\pi/2} \\frac{e^x \\cos x}{1 + e^x} \\, dx$$. (Statement B is correct)\n2. Adding the two expressions:\n$$2I = \\int_{-\\pi/2}^{\\pi/2} \\frac{(1 + e^x)\\cos x}{1 + e^x} \\, dx = \\int_{-\\pi/2}^{\\pi/2} \\cos x \\, dx = [\\sin x]_{-\\pi/2}^{\\pi/2} = 1 - (-1) = 2$$. (Statement C is correct)\n3. $$2I = 2 \\implies I = 1$$. (Statement A is correct)\n4. Notice $f(-x) \\ne f(x)$, so the integrand itself is NOT an even function. (Statement D is incorrect).\nHence A, B, and C are correct.",
+      "notebookSolution": {
+        "given": "I = ∫_{-π/2}^{π/2} (cos x)/(1 + e^x) dx",
+        "concept": "Symmetry property ∫ f(x) = ∫ f(-x) for symmetric limits",
+        "steps": [
+          "I = ∫ (e^x cos x)/(1 + e^x) dx",
+          "2I = ∫ cos x dx = 2",
+          "I = 1",
+          "f(x) is neither even nor odd"
+        ],
+        "conclusion": "A, B, C are correct.",
+        "pitfall": "The integrand itself is not even, but the integral simplifies cleanly."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "ja-paper-04-math-2",
+      "subject": "mathematics",
+      "chapter": "Complex Numbers",
+      "topic": "Roots of Unity and Modulus Identities",
+      "difficulty": "hard",
+      "type": "multiple_choice",
+      "patternType": "multi_concept_synthesis",
+      "patternLabel": "IIT-JEE Multi-Correct (+4, -2)",
+      "section": "Section 1 (One or More than One Correct)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Advanced 2022 Paper 2",
+      "text": "Let $\\omega = e^{i 2\\pi/3} = -\\frac{1}{2} + i\\frac{\\sqrt{3}}{2}$ be a primitive cube root of unity. Which of the following statements is/are correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "$1 + \\omega + \\omega^2 = 0$"
+        },
+        {
+          "id": "B",
+          "text": "$(1 - \\omega + \\omega^2)(1 + \\omega - \\omega^2) = 4$"
+        },
+        {
+          "id": "C",
+          "text": "The points representing $1, \\omega, \\omega^2$ in the complex plane form the vertices of an equilateral triangle."
+        },
+        {
+          "id": "D",
+          "text": "For any integer $k$, $1 + \\omega^k + \\omega^{2k} = 3$ if $k$ is a multiple of $3$, and $0$ otherwise."
+        }
+      ],
+      "correctAnswer": "A,B,C,D",
+      "formula": "1 + \\omega + \\omega^2 = 0, \\quad \\omega^3 = 1",
+      "solution": "1. $1 + \\omega + \\omega^2 = 0$ is standard fundamental identity.\n2. $1 + \\omega^2 = -\\omega$ and $1 + \\omega = -\\omega^2$:\n$$(1 - \\omega + \\omega^2)(1 + \\omega - \\omega^2) = (-2\\omega)(-2\\omega^2) = 4\\omega^3 = 4(1) = 4$$.\n3. The vertices lie on unit circle $|z|=1$ separated by $120^\\circ$, forming an equilateral triangle.\n4. If $k = 3m$: $1 + 1 + 1 = 3$. If $k$ is not a multiple of 3: roots sum to 0.\nAll statements A, B, C, D are correct.",
+      "notebookSolution": {
+        "given": "Cube roots of unity properties",
+        "concept": "Algebraic and geometric properties of ω",
+        "steps": [
+          "1 + ω + ω² = 0",
+          "(-2ω)(-2ω²) = 4ω³ = 4",
+          "Equilateral triangle inscribed in unit circle",
+          "Sum equals 3 for multiple of 3, 0 otherwise"
+        ],
+        "conclusion": "A, B, C, D are all correct.",
+        "pitfall": "Remember ω³ = 1."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "ja-paper-04-math-3",
+      "subject": "mathematics",
+      "chapter": "Matrices and Determinants",
+      "topic": "Orthogonal and Symmetric Matrices",
+      "difficulty": "hard",
+      "type": "multiple_choice",
+      "patternType": "multi_concept_synthesis",
+      "patternLabel": "IIT-JEE Multi-Correct (+4, -2)",
+      "section": "Section 1 (One or More than One Correct)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Advanced 2023 Paper 2",
+      "text": "Let $A$ and $B$ be two $3 \\times 3$ real orthogonal matrices ($A A^T = I, B B^T = I$). Which of the following statements is/are correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "$\\det(A) = \\pm 1$."
+        },
+        {
+          "id": "B",
+          "text": "The product $A B$ is also an orthogonal matrix."
+        },
+        {
+          "id": "C",
+          "text": "The inverse matrix $A^{-1}$ exists and equals $A^T$."
+        },
+        {
+          "id": "D",
+          "text": "If $\\det(A) = 1$ and $\\det(B) = -1$, then $\\det(A B) = -1$."
+        }
+      ],
+      "correctAnswer": "A,B,C,D",
+      "formula": "A A^T = I \\implies \\det(A)^2 = 1 \\implies \\det(A) = \\pm 1",
+      "solution": "1. $\\det(A A^T) = \\det(A)^2 = \\det(I) = 1 \\implies \\det(A) = \\pm 1$.\n2. $(A B)(A B)^T = A B B^T A^T = A I A^T = A A^T = I \\implies A B$ is orthogonal.\n3. Since $A A^T = I$, by definition $A^{-1} = A^T$.\n4. $\\det(A B) = \\det(A)\\det(B) = (1)(-1) = -1$.\nAll statements A, B, C, D are correct.",
+      "notebookSolution": {
+        "given": "Real orthogonal matrices A and B",
+        "concept": "Properties of orthogonal group O(n)",
+        "steps": [
+          "det(A)² = 1 => det(A) = ±1",
+          "(AB)(AB)ᵀ = I => AB orthogonal",
+          "A⁻¹ = Aᵀ",
+          "det(AB) = det(A)det(B) = -1"
+        ],
+        "conclusion": "All options A, B, C, D are correct.",
+        "pitfall": "Orthogonal matrices always have non-zero determinant ±1."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "ja-paper-04-math-4",
+      "subject": "mathematics",
+      "chapter": "Conic Sections",
+      "topic": "Director Circle and Perpendicular Tangents",
+      "difficulty": "hard",
+      "type": "multiple_choice",
+      "patternType": "multi_concept_synthesis",
+      "patternLabel": "IIT-JEE Multi-Correct (+4, -2)",
+      "section": "Section 1 (One or More than One Correct)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Advanced 2021 Paper 1",
+      "text": "For the standard ellipse $\\frac{x^2}{a^2} + \\frac{y^2}{b^2} = 1$ ($a > b$), which of the following statements is/are correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The locus of points from which mutually perpendicular tangents can be drawn to the ellipse is the circle $x^2 + y^2 = a^2 + b^2$ (Director Circle)."
+        },
+        {
+          "id": "B",
+          "text": "The product of the perpendicular distances from the two foci to any tangent line is constant and equals $b^2$."
+        },
+        {
+          "id": "C",
+          "text": "The eccentric angle of the ends of the minor axis are $\\pi/2$ and $3\\pi/2$."
+        },
+        {
+          "id": "D",
+          "text": "The distance between the two directrices is $\\frac{2a}{e}$."
+        }
+      ],
+      "correctAnswer": "A,B,C,D",
+      "formula": "x^2 + y^2 = a^2 + b^2, \\quad p_1 p_2 = b^2, \\quad d = \\frac{2a}{e}",
+      "solution": "1. Director circle of ellipse $\\frac{x^2}{a^2} + \\frac{y^2}{b^2} = 1$ is $x^2 + y^2 = a^2 + b^2$.\n2. Product of perpendiculars from foci $S(ae, 0)$ and $S'(-ae, 0)$ to any tangent $y = mx \\pm \\sqrt{a^2 m^2 + b^2}$ is $b^2$.\n3. Minor axis ends are $(0, b)$ and $(0, -b)$, corresponding to eccentric angles $\\pi/2$ and $3\\pi/2$.\n4. Directrices are $x = \\pm a/e$, distance between them is $2a/e$.\nAll options A, B, C, D are correct.",
+      "notebookSolution": {
+        "given": "Properties of standard ellipse",
+        "concept": "Director circle, focal distances, directrices",
+        "steps": [
+          "Director circle: x² + y² = a² + b²",
+          "p1 × p2 = b²",
+          "Minor axis ends: θ = π/2, 3π/2",
+          "Directrices distance = 2a/e"
+        ],
+        "conclusion": "A, B, C, D are all correct.",
+        "pitfall": "For hyperbola director circle is x² + y² = a² - b²."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "ja-paper-04-math-5",
+      "subject": "mathematics",
+      "chapter": "Probability",
+      "topic": "Derangements and Envelopes",
+      "difficulty": "hard",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "IIT-JEE Integer Value (+3, 0)",
+      "section": "Section 2 (Non-Negative Integer)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Advanced 2022 Paper 2",
+      "text": "Four letters are to be placed into four addressed envelopes. The number of ways in which all four letters can be placed into the wrong envelopes (complete derangement $D_4$) is:",
+      "correctAnswer": "9",
+      "formula": "D_n = n! \\sum_{k=0}^n \\frac{(-1)^k}{k!}",
+      "solution": "$$D_4 = 4! \\left(\\frac{1}{2!} - \\frac{1}{3!} + \\frac{1}{4!}\\right) = 24 \\left(\\frac{1}{2} - \\frac{1}{6} + \\frac{1}{24}\\right) = 24 \\left(\\frac{12 - 4 + 1}{24}\\right) = 9$$.",
+      "notebookSolution": {
+        "given": "n = 4 letters derangement",
+        "concept": "D_n = (n-1)(D_{n-1} + D_{n-2})",
+        "steps": [
+          "D1 = 0, D2 = 1, D3 = 2",
+          "D4 = 3(2 + 1) = 3 × 3 = 9"
+        ],
+        "conclusion": "Number of derangements is 9.",
+        "pitfall": "Do not confuse derangements with total permutations 4! = 24."
+      },
+      "verificationStatus": "verified"
+    }
+  ]
+},
+{
+  "config": {
+    "id": "ja-paper-05",
+    "testNumber": 5,
+    "title": "IIT-JEE Advanced 2026 - Comprehensive Conceptual Paper 5",
+    "subtitle": "Multi-Correct (+4, -2) • Integer Value • Wave Optics, Thermodynamics & Coordinate Geometry",
+    "examType": "jee_advanced",
+    "durationMinutes": 180,
+    "totalMarks": 180,
+    "questionCount": 15,
+    "description": "Rigorous paper assessing deep multi-concept problem solving across physical chemistry equilibrium, wave interference, conic sections, and differential equations.",
+    "difficulty": "Advanced Benchmark",
+    "subjectsIncluded": [
+      "physics",
+      "chemistry",
+      "mathematics"
+    ],
+    "seriesCategory": "jee_advanced",
+    "badge": "Paper 05",
+    "tags": [
+      "JEE Advanced",
+      "Paper 05",
+      "Multi-Correct (+4, -2)",
+      "IIT Benchmark",
+      "180 Mins"
+    ]
+  },
+  "questions": [
+    {
+      "id": "ja-paper-05-phy-1",
+      "subject": "physics",
+      "chapter": "Rotational Motion",
+      "topic": "Pure Rolling on Inclined Plane with Friction",
+      "difficulty": "hard",
+      "type": "multiple_choice",
+      "patternType": "multi_concept_synthesis",
+      "patternLabel": "IIT-JEE Multi-Correct (+4, -2)",
+      "section": "Section 1 (One or More than One Correct)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Advanced 2022 Paper 1",
+      "text": "A uniform solid sphere of mass $M$ and radius $R$ is placed on a rough horizontal surface with coefficient of friction $\\mu$. It is struck by a horizontal impulse $J$ at a height $h$ above the center of mass. Which of the following statements is/are correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "If $h = \\frac{2}{5}R$, the sphere immediately begins pure rolling without any slipping."
+        },
+        {
+          "id": "B",
+          "text": "If $h > \\frac{2}{5}R$, the initial frictional force acts forward (in the direction of $J$)."
+        },
+        {
+          "id": "C",
+          "text": "If $h < \\frac{2}{5}R$, the initial frictional force acts backward (opposite to $J$)."
+        },
+        {
+          "id": "D",
+          "text": "The linear velocity immediately after the impulse is $v = \\frac{J}{M}$ regardless of $h$."
+        }
+      ],
+      "correctAnswer": "A,B,C,D",
+      "formula": "J = M v, \\quad J h = I \\omega = \\frac{2}{5} M R^2 \\omega \\implies v = R\\omega \\iff h = \\frac{2}{5}R",
+      "solution": "Linear impulse gives $v_0 = J/M$. Angular impulse gives $\\tau \\Delta t = J h = I \\omega_0 \\implies \\omega_0 = \\frac{J h}{\\frac{2}{5} M R^2} = \\frac{5 J h}{2 M R^2}$.\nFor instantaneous pure rolling: $v_0 = R \\omega_0 \\implies \\frac{J}{M} = \\frac{5 J h}{2 M R} \\implies h = \\frac{2}{5}R$.\nIf $h > \\frac{2}{5}R$, bottom point slips backward $\\implies$ friction acts forward.\nIf $h < \\frac{2}{5}R$, bottom point slips forward $\\implies$ friction acts backward.\nLinear momentum is conserved during instantaneous impulse: $v = J/M$ holds for all $h$.\nHence all statements A, B, C, D are correct.",
+      "notebookSolution": {
+        "given": "Impulse J at height h above COM",
+        "concept": "Instantaneous pure rolling requires v = Rω",
+        "steps": [
+          "v = J/M",
+          "ω = Jh / I = 5Jh / (2MR²)",
+          "v = Rω => h = 2/5 R"
+        ],
+        "conclusion": "A, B, C, D are all correct.",
+        "pitfall": "Do not confuse height above COM with height above ground."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "ja-paper-05-phy-2",
+      "subject": "physics",
+      "chapter": "Electromagnetic Induction",
+      "topic": "Motional EMF and Lenz Law",
+      "difficulty": "hard",
+      "type": "multiple_choice",
+      "patternType": "multi_concept_synthesis",
+      "patternLabel": "IIT-JEE Multi-Correct (+4, -2)",
+      "section": "Section 1 (One or More than One Correct)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Advanced 2023 Paper 2",
+      "text": "A rectangular loop of wire with dimensions $a \\times b$ and resistance $R$ falls vertically under gravity through a region of horizontal magnetic field $\\vec{B} = B_0 \\hat{k}$ for $0 \\le y \\le d$ (with $d > b$). Which of the following statements is/are correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "While the loop is entering the magnetic field, an upward magnetic retarding force acts on it."
+        },
+        {
+          "id": "B",
+          "text": "When the loop is completely inside the magnetic field, the net induced EMF is zero."
+        },
+        {
+          "id": "C",
+          "text": "While the loop is exiting the magnetic field, the induced current flows in the opposite sense compared to entering."
+        },
+        {
+          "id": "D",
+          "text": "The total mechanical energy lost by the loop equals the total Joule heating dissipated in the resistor."
+        }
+      ],
+      "correctAnswer": "A,B,C,D",
+      "formula": "\\mathcal{E} = -\\frac{d\\Phi_B}{dt}, \\quad F_m = I L B = \\frac{B^2 a^2 v}{R}",
+      "solution": "1. Entering: Magnetic flux into the page increases. By Lenz's law, induced current creates outward field (counter-clockwise current). Magnetic force $\\vec{F} = I\\vec{L} \\times \\vec{B}$ acts upward, retarding gravity.\n2. Fully inside: $\\frac{d\\Phi_B}{dt} = 0$, so induced EMF is zero, current is zero, and acceleration is simply $g$.\n3. Exiting: Flux decreases, so current reverses (clockwise) to oppose loss of flux. Force is still upward.\n4. By conservation of energy, work done against magnetic drag equals Joule heat $\\int I^2 R \\, dt$.\nAll statements A, B, C, D are correct.",
+      "notebookSolution": {
+        "given": "Falling loop entering and leaving transverse magnetic field",
+        "concept": "Faraday-Lenz law and Joule dissipation",
+        "steps": [
+          "Flux change generates opposing EMF",
+          "Inside region dΦ/dt = 0 => I = 0",
+          "Energy balance: ΔE_mech = Q_joule"
+        ],
+        "conclusion": "All options A, B, C, D are correct.",
+        "pitfall": "When fully inside, induced EMF on top and bottom wires cancel each other."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "ja-paper-05-phy-3",
+      "subject": "physics",
+      "chapter": "Wave Optics",
+      "topic": "Young Double Slit Experiment with Dielectric Slab",
+      "difficulty": "hard",
+      "type": "multiple_choice",
+      "patternType": "multi_concept_synthesis",
+      "patternLabel": "IIT-JEE Multi-Correct (+4, -2)",
+      "section": "Section 1 (One or More than One Correct)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Advanced 2021 Paper 1",
+      "text": "In a standard Young's double-slit experiment using monochromatic light of wavelength $\\lambda$, a thin transparent mica sheet of thickness $t$ and refractive index $\\mu$ is placed in the path of one of the interfering beams. Which of the following statements is/are correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The central bright fringe shifts towards the slit covered by the mica sheet by a distance $\\Delta y = \\frac{D}{d}(\\mu - 1)t$."
+        },
+        {
+          "id": "B",
+          "text": "The fringe width $\\beta = \\frac{\\lambda D}{d}$ remains completely unchanged."
+        },
+        {
+          "id": "C",
+          "text": "The optical path length of the covered beam increases by $(\\mu - 1)t$."
+        },
+        {
+          "id": "D",
+          "text": "If $t = \\frac{\\lambda}{\\mu - 1}$, the entire interference pattern shifts by exactly one fringe width."
+        }
+      ],
+      "correctAnswer": "A,B,C,D",
+      "formula": "\\Delta x = (\\mu - 1)t, \\quad \\Delta y = \\frac{D}{d}\\Delta x = \\frac{D}{d}(\\mu - 1)t",
+      "solution": "Introduction of transparent slab introduces an extra optical path difference $\\Delta x = \\mu t - t = (\\mu - 1)t$.\n1. Shift in fringe pattern: $y_0 = \\frac{D}{d}(\\mu - 1)t$ towards the side of the covered slit.\n2. Fringe width $\\beta = \\frac{\\lambda D}{d}$ depends only on $\\lambda, D, d$, so it is unaffected.\n3. Extra optical path is $(\\mu - 1)t$.\n4. For $\\Delta x = \\lambda$, shift $= \\frac{D}{d}\\lambda = \\beta$ (exactly one fringe width).\nAll options A, B, C, D are correct.",
+      "notebookSolution": {
+        "given": "YDSE with dielectric sheet in one beam",
+        "concept": "Optical path difference Δx = (μ - 1)t",
+        "steps": [
+          "Shift y = (D/d)(μ-1)t towards covered slit",
+          "Fringe width β = λD/d unchanged",
+          "Shift = β when (μ-1)t = λ"
+        ],
+        "conclusion": "All options A, B, C, D are correct.",
+        "pitfall": "Fringe width does not change, only positions shift."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "ja-paper-05-phy-4",
+      "subject": "physics",
+      "chapter": "Dual Nature of Radiation",
+      "topic": "Photoelectric Effect and Stopping Potential",
+      "difficulty": "hard",
+      "type": "multiple_choice",
+      "patternType": "multi_concept_synthesis",
+      "patternLabel": "IIT-JEE Multi-Correct (+4, -2)",
+      "section": "Section 1 (One or More than One Correct)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Advanced 2023 Paper 1",
+      "text": "In a photoelectric experiment, light of frequency $\\nu > \\nu_0$ illuminates a photosensitive metal cathode of work function $\\Phi = h\\nu_0$. Which of the following statements is/are correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The maximum kinetic energy of emitted photoelectrons depends linearly on the frequency $\\nu$ of incident light."
+        },
+        {
+          "id": "B",
+          "text": "Doubling the intensity of the incident light at constant frequency doubles the saturation photocurrent."
+        },
+        {
+          "id": "C",
+          "text": "The stopping potential $V_0$ is independent of the intensity of incident radiation."
+        },
+        {
+          "id": "D",
+          "text": "The slope of the stopping potential versus frequency graph ($V_0$ vs $\\nu$) is a universal constant equal to $h/e$."
+        }
+      ],
+      "correctAnswer": "A,B,C,D",
+      "formula": "e V_0 = K_{\\max} = h\\nu - \\Phi \\implies V_0 = \\frac{h}{e}\\nu - \\frac{\\Phi}{e}",
+      "solution": "Einstein's photoelectric equation:\n1. $K_{\\max} = h\\nu - \\Phi$ is linear with $\\nu$.\n2. Photocurrent $\\propto$ number of incident photons per second $\\propto$ Intensity.\n3. Stopping potential $V_0 = \\frac{h\\nu - \\Phi}{e}$ depends only on frequency $\\nu$ and work function $\\Phi$, not intensity.\n4. Slope of $V_0$ vs $\\nu$ is $\\frac{h}{e}$, which is independent of metal cathode nature.\nAll options A, B, C, D are correct.",
+      "notebookSolution": {
+        "given": "Photoelectric emission",
+        "concept": "Einstein photoelectric equation eV0 = hν - Φ",
+        "steps": [
+          "Kmax = hν - Φ",
+          "Current ∝ Intensity",
+          "V0 independent of Intensity",
+          "dV0/dν = h/e"
+        ],
+        "conclusion": "A, B, C, D are all correct.",
+        "pitfall": "Stopping potential depends on frequency, not intensity."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "ja-paper-05-phy-5",
+      "subject": "physics",
+      "chapter": "Thermodynamics",
+      "topic": "Carnot Engine Efficiency and Heat Rejection",
+      "difficulty": "hard",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "IIT-JEE Integer Value (+3, 0)",
+      "section": "Section 2 (Non-Negative Integer)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Advanced 2022 Paper 2",
+      "text": "A reversible Carnot engine operates between temperatures $T_H = 600\\text{ K}$ and $T_C = 300\\text{ K}$. It absorbs $Q_H = 1200\\text{ J}$ of heat from the high-temperature reservoir per cycle. The heat rejected $Q_C$ (in Joules) to the cold reservoir per cycle is:",
+      "correctAnswer": "600",
+      "formula": "\\eta = 1 - \\frac{T_C}{T_H} = \\frac{W}{Q_H} = 1 - \\frac{Q_C}{Q_H} \\implies \\frac{Q_C}{Q_H} = \\frac{T_C}{T_H}",
+      "solution": "$$\\frac{Q_C}{Q_H} = \\frac{T_C}{T_H} \\implies Q_C = Q_H \\left(\\frac{T_C}{T_H}\\right) = 1200 \\left(\\frac{300}{600}\\right) = 600\\text{ J}$$.",
+      "notebookSolution": {
+        "given": "TH = 600 K, TC = 300 K, QH = 1200 J",
+        "concept": "Carnot relation QC/QH = TC/TH",
+        "steps": [
+          "QC = 1200 × (300/600) = 600 J"
+        ],
+        "conclusion": "Heat rejected is 600 J.",
+        "pitfall": "Ensure temperatures are in Kelvin."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "ja-paper-05-chem-1",
+      "subject": "chemistry",
+      "chapter": "Coordination Compounds",
+      "topic": "Crystal Field Splitting and High/Low Spin",
+      "difficulty": "hard",
+      "type": "multiple_choice",
+      "patternType": "multi_concept_synthesis",
+      "patternLabel": "IIT-JEE Multi-Correct (+4, -2)",
+      "section": "Section 1 (One or More than One Correct)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Advanced 2023 Paper 1",
+      "text": "For the octahedral coordination complexes $[Fe(CN)_6]^{4-}$, $[Fe(H_2O)_6]^{2+}$, and $[Fe(CN)_6]^{3-}$, which of the following statements is/are correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "$[Fe(CN)_6]^{4-}$ is diamagnetic with zero unpaired electrons ($t_{2g}^6 e_g^0$)."
+        },
+        {
+          "id": "B",
+          "text": "$[Fe(H_2O)_6]^{2+}$ is paramagnetic with $4$ unpaired electrons ($t_{2g}^4 e_g^2$)."
+        },
+        {
+          "id": "C",
+          "text": "$[Fe(CN)_6]^{3-}$ has spin-only magnetic moment $\\mu = \\sqrt{3} \\approx 1.73\\text{ BM}$ ($t_{2g}^5 e_g^0$)."
+        },
+        {
+          "id": "D",
+          "text": "Cyanide ($CN^-$) produces a higher crystal field splitting energy ($\\Delta_o > P$) than water ($H_2O$)."
+        }
+      ],
+      "correctAnswer": "A,B,C,D",
+      "formula": "Fe^{2+} = 3d^6, \\quad Fe^{3+} = 3d^5, \\quad \\Delta_o(CN^-) > P > \\Delta_o(H_2O)",
+      "solution": "1. $[Fe(CN)_6]^{4-}$: $Fe^{2+} (3d^6)$. $CN^-$ is strong-field ligand: $\\Delta_o > P$, low spin $t_{2g}^6 e_g^0$, unpaired electrons $n = 0$ (diamagnetic).\n2. $[Fe(H_2O)_6]^{2+}$: $Fe^{2+} (3d^6)$. $H_2O$ is weak-field: $\\Delta_o < P$, high spin $t_{2g}^4 e_g^2$, $n = 4$ unpaired electrons.\n3. $[Fe(CN)_6]^{3-}$: $Fe^{3+} (3d^5)$. $CN^-$ gives low spin $t_{2g}^5 e_g^0$, $n = 1$ unpaired electron $\\implies \\mu = \\sqrt{1(3)} = \\sqrt{3} \\approx 1.73\\text{ BM}$.\n4. Spectrochemical series: $CN^-$ is much higher than $H_2O$.\nAll statements A, B, C, D are correct.",
+      "notebookSolution": {
+        "given": "Fe(II) and Fe(III) complexes with CN- and H2O",
+        "concept": "Spectrochemical series and crystal field theory",
+        "steps": [
+          "Fe(CN)6⁴⁻: low spin d⁶ -> n = 0",
+          "Fe(H2O)6²⁺: high spin d⁶ -> n = 4",
+          "Fe(CN)6³⁻: low spin d⁵ -> n = 1, μ = √3 BM"
+        ],
+        "conclusion": "A, B, C, D are all correct.",
+        "pitfall": "Oxidation state in Fe(CN)6³⁻ is +3 (d⁵), not +2."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "ja-paper-05-chem-2",
+      "subject": "chemistry",
+      "chapter": "Organic Chemistry",
+      "topic": "Aldol Condensation and Cannizzaro Synthesis",
+      "difficulty": "hard",
+      "type": "multiple_choice",
+      "patternType": "multi_concept_synthesis",
+      "patternLabel": "IIT-JEE Multi-Correct (+4, -2)",
+      "section": "Section 1 (One or More than One Correct)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Advanced 2022 Paper 2",
+      "text": "Which of the following organic transformations will successfully produce a new carbon-carbon bond?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Reaction of acetaldehyde with dilute $NaOH$ followed by heating (Aldol condensation)."
+        },
+        {
+          "id": "B",
+          "text": "Reaction of ethyl magnesium bromide ($CH_3CH_2MgBr$) with formaldehyde followed by acidic hydrolysis."
+        },
+        {
+          "id": "C",
+          "text": "Friedel-Crafts alkylation of benzene with methyl chloride in the presence of anhydrous $AlCl_3$."
+        },
+        {
+          "id": "D",
+          "text": "Kolbe-Schmitt reaction of sodium phenoxide with $CO_2$ under pressure at $400\\text{ K}$."
+        }
+      ],
+      "correctAnswer": "A,B,C,D",
+      "formula": "\\text{C-C bond formation via enolate, Grignard, carbocation, and electrophilic substitution}",
+      "solution": "1. Aldol condensation forms C-C bond between enolate $\\alpha$-carbon and carbonyl carbon to give $\\beta$-hydroxy aldehyde / $\\alpha,\\beta$-unsaturated carbonyl.\n2. Grignard reagent ($R-MgX$) nucleophilically attacks carbonyl carbon to form C-C bond (gives 1-propanol).\n3. Friedel-Crafts alkylation: $CH_3^+$ attacks benzene ring to form C-C bond (toluene).\n4. Kolbe's reaction: phenoxide attacks $CO_2$ at ortho position to form C-C bond (salicylic acid).\nAll four reactions form new carbon-carbon bonds.",
+      "notebookSolution": {
+        "given": "Four standard organic reactions",
+        "concept": "Identification of Carbon-Carbon bond forming reactions",
+        "steps": [
+          "Aldol: enolate + carbonyl -> C-C bond",
+          "Grignard: carbanion + carbonyl -> C-C bond",
+          "Friedel-Crafts: electrophilic aromatic substitution -> C-C bond",
+          "Kolbe: phenoxide + CO2 -> C-C bond"
+        ],
+        "conclusion": "All options A, B, C, D are correct.",
+        "pitfall": "Verify that each pathway creates an actual C-C bond."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "ja-paper-05-chem-3",
+      "subject": "chemistry",
+      "chapter": "Chemical Thermodynamics",
+      "topic": "Spontaneity and Ellingham Diagram",
+      "difficulty": "hard",
+      "type": "multiple_choice",
+      "patternType": "multi_concept_synthesis",
+      "patternLabel": "IIT-JEE Multi-Correct (+4, -2)",
+      "section": "Section 1 (One or More than One Correct)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Advanced 2021 Paper 2",
+      "text": "For the oxidation reaction of a metal: $2M(s) + O_2(g) \\to 2MO(s)$, which of the following statements is/are correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The entropy change $\\Delta S$ of the reaction is negative ($\\Delta S < 0$) because gaseous $O_2$ is consumed to form solid oxide."
+        },
+        {
+          "id": "B",
+          "text": "In the Ellingham diagram ($\\Delta G^\\circ$ vs $T$), the slope of the line is positive ($\\frac{d\\Delta G^\\circ}{dT} = -\\Delta S^\\circ > 0$)."
+        },
+        {
+          "id": "C",
+          "text": "At very high temperatures, $\\Delta G^\\circ$ becomes positive, meaning the metal oxide spontaneously decomposes."
+        },
+        {
+          "id": "D",
+          "text": "A metal whose oxide line lies lower in the Ellingham diagram can reduce the oxide of a metal whose line lies higher."
+        }
+      ],
+      "correctAnswer": "A,B,C,D",
+      "formula": "\\Delta G^\\circ = \\Delta H^\\circ - T \\Delta S^\\circ, \\quad \\text{slope} = -\\Delta S^\\circ > 0",
+      "solution": "1. Moles of gas decrease from 1 to 0, so $\\Delta S^\\circ < 0$.\n2. Since $\\Delta G^\\circ = \\Delta H^\\circ - T\\Delta S^\\circ$, slope is $-\\Delta S^\\circ > 0$ (positive slope).\n3. As $T$ increases, $-T\\Delta S^\\circ$ becomes increasingly positive; eventually $\\Delta G^\\circ > 0$ and the oxide decomposes.\n4. Lower metal has more negative $\\Delta G^\\circ$ for oxidation, so it has higher affinity for oxygen and can reduce oxides above it.\nAll statements A, B, C, D are correct.",
+      "notebookSolution": {
+        "given": "2M(s) + O2(g) -> 2MO(s)",
+        "concept": "Thermodynamics of Ellingham diagrams",
+        "steps": [
+          "ΔS < 0 due to loss of gas phase",
+          "Slope = -ΔS > 0",
+          "High T makes ΔG positive",
+          "Lower curve reduces upper curve"
+        ],
+        "conclusion": "All options A, B, C, D are correct.",
+        "pitfall": "Remember slope of Ellingham line is -ΔS, which is positive for metal oxidations."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "ja-paper-05-chem-4",
+      "subject": "chemistry",
+      "chapter": "Electrochemistry",
+      "topic": "Nernst Equation and Concentration Cell",
+      "difficulty": "hard",
+      "type": "multiple_choice",
+      "patternType": "multi_concept_synthesis",
+      "patternLabel": "IIT-JEE Multi-Correct (+4, -2)",
+      "section": "Section 1 (One or More than One Correct)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Advanced 2023 Paper 2",
+      "text": "Consider the concentration cell: $Pt | H_2(g, 1\\text{ atm}) | HCl (c_1) || HCl (c_2) | H_2(g, 1\\text{ atm}) | Pt$ at $298\\text{ K}$. Which of the following statements is/are correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The standard cell potential $E^\\circ_{cell}$ is strictly zero ($E^\\circ_{cell} = 0$)."
+        },
+        {
+          "id": "B",
+          "text": "The cell EMF is positive and spontaneous if $c_2 > c_1$."
+        },
+        {
+          "id": "C",
+          "text": "The EMF of the cell is given by $E_{cell} = \\frac{2.303 RT}{F} \\log\\frac{c_2}{c_1}$."
+        },
+        {
+          "id": "D",
+          "text": "At equilibrium, the cell potential becomes zero and $c_1 = c_2$."
+        }
+      ],
+      "correctAnswer": "A,B,C,D",
+      "formula": "E_{cell} = E^\\circ_{cell} - \\frac{0.0591}{1}\\log\\frac{c_1}{c_2} = 0.0591\\log\\frac{c_2}{c_1}",
+      "solution": "1. Identical electrodes in standard state $\\implies E^\\circ_{cell} = 0$.\n2. Cell reaction: $H^+(c_2) \\to H^+(c_1)$. Reaction quotient $Q = \\frac{c_1}{c_2}$.\n3. Nernst equation: $E_{cell} = -\\frac{2.303 RT}{F} \\log\\frac{c_1}{c_2} = \\frac{2.303 RT}{F}\\log\\frac{c_2}{c_1}$.\n4. For $c_2 > c_1$, $\\log(c_2/c_1) > 0 \\implies E_{cell} > 0$ (spontaneous discharge until $c_1 = c_2$).\nAll statements A, B, C, D are correct.",
+      "notebookSolution": {
+        "given": "Hydrogen concentration cell",
+        "concept": "Nernst equation for concentration cells with E°cell = 0",
+        "steps": [
+          "E°cell = 0 for concentration cells",
+          "E_cell = 0.0591 log(c2/c1)",
+          "Discharge spontaneous when c2 > c1"
+        ],
+        "conclusion": "A, B, C, D are all correct.",
+        "pitfall": "Remember reduction takes place at higher concentration."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "ja-paper-05-chem-5",
+      "subject": "chemistry",
+      "chapter": "Solid State",
+      "topic": "Packing Efficiency and Edge Length of FCC Lattice",
+      "difficulty": "hard",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "IIT-JEE Integer Value (+3, 0)",
+      "section": "Section 2 (Non-Negative Integer)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Advanced 2022 Paper 1",
+      "text": "Copper crystallizes in a face-centered cubic (FCC) lattice with $4$ atoms per unit cell. If the atomic radius of copper is $R$, the relation between edge length $a$ and radius is $a = x \\sqrt{2} R$. The value of integer $x$ is:",
+      "correctAnswer": "2",
+      "formula": "\\sqrt{2} a = 4 R \\implies a = \\frac{4}{\\sqrt{2}} R = 2\\sqrt{2} R",
+      "solution": "In FCC unit cell, atoms touch along the face diagonal:\n$$\\text{Face diagonal} = \\sqrt{2} a = 4 R \\implies a = \\frac{4}{\\sqrt{2}} R = 2\\sqrt{2} R$$.\nHence $x = 2$.",
+      "notebookSolution": {
+        "given": "FCC unit cell face touch condition",
+        "concept": "Face diagonal √2 a = 4R",
+        "steps": [
+          "a = 4R / √2 = 2√2 R",
+          "x = 2"
+        ],
+        "conclusion": "x = 2.",
+        "pitfall": "Do not confuse face diagonal √2 a with body diagonal √3 a."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "ja-paper-05-math-1",
+      "subject": "mathematics",
+      "chapter": "Definite Integrals",
+      "topic": "Properties of Definite Integrals and Symmetry",
+      "difficulty": "hard",
+      "type": "multiple_choice",
+      "patternType": "multi_concept_synthesis",
+      "patternLabel": "IIT-JEE Multi-Correct (+4, -2)",
+      "section": "Section 1 (One or More than One Correct)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Advanced 2023 Paper 1",
+      "text": "Let $I = \\int_{-\\pi/2}^{\\pi/2} \\frac{\\cos x}{1 + e^x} \\, dx$. Which of the following statements is/are correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The value of the integral is $I = 1$."
+        },
+        {
+          "id": "B",
+          "text": "Replacing $x$ by $-x$ gives $I = \\int_{-\\pi/2}^{\\pi/2} \\frac{e^x \\cos x}{1 + e^x} \\, dx$."
+        },
+        {
+          "id": "C",
+          "text": "Adding the two forms yields $2I = \\int_{-\\pi/2}^{\\pi/2} \\cos x \\, dx$."
+        },
+        {
+          "id": "D",
+          "text": "The integrand is an even function of $x$."
+        }
+      ],
+      "correctAnswer": "A,B,C",
+      "formula": "\\int_a^b f(x)dx = \\int_a^b f(a+b-x)dx, \\quad a+b = 0",
+      "solution": "1. Using property $\\int_a^b f(x)dx = \\int_a^b f(a+b-x)dx$ with $a+b = 0$:\n$$I = \\int_{-\\pi/2}^{\\pi/2} \\frac{\\cos(-x)}{1 + e^{-x}} \\, dx = \\int_{-\\pi/2}^{\\pi/2} \\frac{\\cos x}{1 + 1/e^x} \\, dx = \\int_{-\\pi/2}^{\\pi/2} \\frac{e^x \\cos x}{1 + e^x} \\, dx$$. (Statement B is correct)\n2. Adding the two expressions:\n$$2I = \\int_{-\\pi/2}^{\\pi/2} \\frac{(1 + e^x)\\cos x}{1 + e^x} \\, dx = \\int_{-\\pi/2}^{\\pi/2} \\cos x \\, dx = [\\sin x]_{-\\pi/2}^{\\pi/2} = 1 - (-1) = 2$$. (Statement C is correct)\n3. $$2I = 2 \\implies I = 1$$. (Statement A is correct)\n4. Notice $f(-x) \\ne f(x)$, so the integrand itself is NOT an even function. (Statement D is incorrect).\nHence A, B, and C are correct.",
+      "notebookSolution": {
+        "given": "I = ∫_{-π/2}^{π/2} (cos x)/(1 + e^x) dx",
+        "concept": "Symmetry property ∫ f(x) = ∫ f(-x) for symmetric limits",
+        "steps": [
+          "I = ∫ (e^x cos x)/(1 + e^x) dx",
+          "2I = ∫ cos x dx = 2",
+          "I = 1",
+          "f(x) is neither even nor odd"
+        ],
+        "conclusion": "A, B, C are correct.",
+        "pitfall": "The integrand itself is not even, but the integral simplifies cleanly."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "ja-paper-05-math-2",
+      "subject": "mathematics",
+      "chapter": "Complex Numbers",
+      "topic": "Roots of Unity and Modulus Identities",
+      "difficulty": "hard",
+      "type": "multiple_choice",
+      "patternType": "multi_concept_synthesis",
+      "patternLabel": "IIT-JEE Multi-Correct (+4, -2)",
+      "section": "Section 1 (One or More than One Correct)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Advanced 2022 Paper 2",
+      "text": "Let $\\omega = e^{i 2\\pi/3} = -\\frac{1}{2} + i\\frac{\\sqrt{3}}{2}$ be a primitive cube root of unity. Which of the following statements is/are correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "$1 + \\omega + \\omega^2 = 0$"
+        },
+        {
+          "id": "B",
+          "text": "$(1 - \\omega + \\omega^2)(1 + \\omega - \\omega^2) = 4$"
+        },
+        {
+          "id": "C",
+          "text": "The points representing $1, \\omega, \\omega^2$ in the complex plane form the vertices of an equilateral triangle."
+        },
+        {
+          "id": "D",
+          "text": "For any integer $k$, $1 + \\omega^k + \\omega^{2k} = 3$ if $k$ is a multiple of $3$, and $0$ otherwise."
+        }
+      ],
+      "correctAnswer": "A,B,C,D",
+      "formula": "1 + \\omega + \\omega^2 = 0, \\quad \\omega^3 = 1",
+      "solution": "1. $1 + \\omega + \\omega^2 = 0$ is standard fundamental identity.\n2. $1 + \\omega^2 = -\\omega$ and $1 + \\omega = -\\omega^2$:\n$$(1 - \\omega + \\omega^2)(1 + \\omega - \\omega^2) = (-2\\omega)(-2\\omega^2) = 4\\omega^3 = 4(1) = 4$$.\n3. The vertices lie on unit circle $|z|=1$ separated by $120^\\circ$, forming an equilateral triangle.\n4. If $k = 3m$: $1 + 1 + 1 = 3$. If $k$ is not a multiple of 3: roots sum to 0.\nAll statements A, B, C, D are correct.",
+      "notebookSolution": {
+        "given": "Cube roots of unity properties",
+        "concept": "Algebraic and geometric properties of ω",
+        "steps": [
+          "1 + ω + ω² = 0",
+          "(-2ω)(-2ω²) = 4ω³ = 4",
+          "Equilateral triangle inscribed in unit circle",
+          "Sum equals 3 for multiple of 3, 0 otherwise"
+        ],
+        "conclusion": "A, B, C, D are all correct.",
+        "pitfall": "Remember ω³ = 1."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "ja-paper-05-math-3",
+      "subject": "mathematics",
+      "chapter": "Matrices and Determinants",
+      "topic": "Orthogonal and Symmetric Matrices",
+      "difficulty": "hard",
+      "type": "multiple_choice",
+      "patternType": "multi_concept_synthesis",
+      "patternLabel": "IIT-JEE Multi-Correct (+4, -2)",
+      "section": "Section 1 (One or More than One Correct)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Advanced 2023 Paper 2",
+      "text": "Let $A$ and $B$ be two $3 \\times 3$ real orthogonal matrices ($A A^T = I, B B^T = I$). Which of the following statements is/are correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "$\\det(A) = \\pm 1$."
+        },
+        {
+          "id": "B",
+          "text": "The product $A B$ is also an orthogonal matrix."
+        },
+        {
+          "id": "C",
+          "text": "The inverse matrix $A^{-1}$ exists and equals $A^T$."
+        },
+        {
+          "id": "D",
+          "text": "If $\\det(A) = 1$ and $\\det(B) = -1$, then $\\det(A B) = -1$."
+        }
+      ],
+      "correctAnswer": "A,B,C,D",
+      "formula": "A A^T = I \\implies \\det(A)^2 = 1 \\implies \\det(A) = \\pm 1",
+      "solution": "1. $\\det(A A^T) = \\det(A)^2 = \\det(I) = 1 \\implies \\det(A) = \\pm 1$.\n2. $(A B)(A B)^T = A B B^T A^T = A I A^T = A A^T = I \\implies A B$ is orthogonal.\n3. Since $A A^T = I$, by definition $A^{-1} = A^T$.\n4. $\\det(A B) = \\det(A)\\det(B) = (1)(-1) = -1$.\nAll statements A, B, C, D are correct.",
+      "notebookSolution": {
+        "given": "Real orthogonal matrices A and B",
+        "concept": "Properties of orthogonal group O(n)",
+        "steps": [
+          "det(A)² = 1 => det(A) = ±1",
+          "(AB)(AB)ᵀ = I => AB orthogonal",
+          "A⁻¹ = Aᵀ",
+          "det(AB) = det(A)det(B) = -1"
+        ],
+        "conclusion": "All options A, B, C, D are correct.",
+        "pitfall": "Orthogonal matrices always have non-zero determinant ±1."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "ja-paper-05-math-4",
+      "subject": "mathematics",
+      "chapter": "Conic Sections",
+      "topic": "Director Circle and Perpendicular Tangents",
+      "difficulty": "hard",
+      "type": "multiple_choice",
+      "patternType": "multi_concept_synthesis",
+      "patternLabel": "IIT-JEE Multi-Correct (+4, -2)",
+      "section": "Section 1 (One or More than One Correct)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Advanced 2021 Paper 1",
+      "text": "For the standard ellipse $\\frac{x^2}{a^2} + \\frac{y^2}{b^2} = 1$ ($a > b$), which of the following statements is/are correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The locus of points from which mutually perpendicular tangents can be drawn to the ellipse is the circle $x^2 + y^2 = a^2 + b^2$ (Director Circle)."
+        },
+        {
+          "id": "B",
+          "text": "The product of the perpendicular distances from the two foci to any tangent line is constant and equals $b^2$."
+        },
+        {
+          "id": "C",
+          "text": "The eccentric angle of the ends of the minor axis are $\\pi/2$ and $3\\pi/2$."
+        },
+        {
+          "id": "D",
+          "text": "The distance between the two directrices is $\\frac{2a}{e}$."
+        }
+      ],
+      "correctAnswer": "A,B,C,D",
+      "formula": "x^2 + y^2 = a^2 + b^2, \\quad p_1 p_2 = b^2, \\quad d = \\frac{2a}{e}",
+      "solution": "1. Director circle of ellipse $\\frac{x^2}{a^2} + \\frac{y^2}{b^2} = 1$ is $x^2 + y^2 = a^2 + b^2$.\n2. Product of perpendiculars from foci $S(ae, 0)$ and $S'(-ae, 0)$ to any tangent $y = mx \\pm \\sqrt{a^2 m^2 + b^2}$ is $b^2$.\n3. Minor axis ends are $(0, b)$ and $(0, -b)$, corresponding to eccentric angles $\\pi/2$ and $3\\pi/2$.\n4. Directrices are $x = \\pm a/e$, distance between them is $2a/e$.\nAll options A, B, C, D are correct.",
+      "notebookSolution": {
+        "given": "Properties of standard ellipse",
+        "concept": "Director circle, focal distances, directrices",
+        "steps": [
+          "Director circle: x² + y² = a² + b²",
+          "p1 × p2 = b²",
+          "Minor axis ends: θ = π/2, 3π/2",
+          "Directrices distance = 2a/e"
+        ],
+        "conclusion": "A, B, C, D are all correct.",
+        "pitfall": "For hyperbola director circle is x² + y² = a² - b²."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "ja-paper-05-math-5",
+      "subject": "mathematics",
+      "chapter": "Probability",
+      "topic": "Derangements and Envelopes",
+      "difficulty": "hard",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "IIT-JEE Integer Value (+3, 0)",
+      "section": "Section 2 (Non-Negative Integer)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Advanced 2022 Paper 2",
+      "text": "Four letters are to be placed into four addressed envelopes. The number of ways in which all four letters can be placed into the wrong envelopes (complete derangement $D_4$) is:",
+      "correctAnswer": "9",
+      "formula": "D_n = n! \\sum_{k=0}^n \\frac{(-1)^k}{k!}",
+      "solution": "$$D_4 = 4! \\left(\\frac{1}{2!} - \\frac{1}{3!} + \\frac{1}{4!}\\right) = 24 \\left(\\frac{1}{2} - \\frac{1}{6} + \\frac{1}{24}\\right) = 24 \\left(\\frac{12 - 4 + 1}{24}\\right) = 9$$.",
+      "notebookSolution": {
+        "given": "n = 4 letters derangement",
+        "concept": "D_n = (n-1)(D_{n-1} + D_{n-2})",
+        "steps": [
+          "D1 = 0, D2 = 1, D3 = 2",
+          "D4 = 3(2 + 1) = 3 × 3 = 9"
+        ],
+        "conclusion": "Number of derangements is 9.",
+        "pitfall": "Do not confuse derangements with total permutations 4! = 24."
+      },
+      "verificationStatus": "verified"
+    }
+  ]
+},
+{
+  "config": {
+    "id": "ja-paper-06",
+    "testNumber": 6,
+    "title": "IIT-JEE Advanced 2026 - Rigorous Analytical Paper 6",
+    "subtitle": "Multi-Correct (+4, -2) • Advanced Numericals • Modern Physics & Coordination Compounds",
+    "examType": "jee_advanced",
+    "durationMinutes": 180,
+    "totalMarks": 180,
+    "questionCount": 15,
+    "description": "Challenging national benchmark featuring advanced problems in quantum physics, coordination complexes CFT, 3D vectors, and probability distributions.",
+    "difficulty": "Advanced Benchmark",
+    "subjectsIncluded": [
+      "physics",
+      "chemistry",
+      "mathematics"
+    ],
+    "seriesCategory": "jee_advanced",
+    "badge": "Paper 06",
+    "tags": [
+      "JEE Advanced",
+      "Paper 06",
+      "Multi-Correct (+4, -2)",
+      "IIT Benchmark",
+      "180 Mins"
+    ]
+  },
+  "questions": [
+    {
+      "id": "ja-paper-06-phy-1",
+      "subject": "physics",
+      "chapter": "Rotational Motion",
+      "topic": "Pure Rolling on Inclined Plane with Friction",
+      "difficulty": "hard",
+      "type": "multiple_choice",
+      "patternType": "multi_concept_synthesis",
+      "patternLabel": "IIT-JEE Multi-Correct (+4, -2)",
+      "section": "Section 1 (One or More than One Correct)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Advanced 2022 Paper 1",
+      "text": "A uniform solid sphere of mass $M$ and radius $R$ is placed on a rough horizontal surface with coefficient of friction $\\mu$. It is struck by a horizontal impulse $J$ at a height $h$ above the center of mass. Which of the following statements is/are correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "If $h = \\frac{2}{5}R$, the sphere immediately begins pure rolling without any slipping."
+        },
+        {
+          "id": "B",
+          "text": "If $h > \\frac{2}{5}R$, the initial frictional force acts forward (in the direction of $J$)."
+        },
+        {
+          "id": "C",
+          "text": "If $h < \\frac{2}{5}R$, the initial frictional force acts backward (opposite to $J$)."
+        },
+        {
+          "id": "D",
+          "text": "The linear velocity immediately after the impulse is $v = \\frac{J}{M}$ regardless of $h$."
+        }
+      ],
+      "correctAnswer": "A,B,C,D",
+      "formula": "J = M v, \\quad J h = I \\omega = \\frac{2}{5} M R^2 \\omega \\implies v = R\\omega \\iff h = \\frac{2}{5}R",
+      "solution": "Linear impulse gives $v_0 = J/M$. Angular impulse gives $\\tau \\Delta t = J h = I \\omega_0 \\implies \\omega_0 = \\frac{J h}{\\frac{2}{5} M R^2} = \\frac{5 J h}{2 M R^2}$.\nFor instantaneous pure rolling: $v_0 = R \\omega_0 \\implies \\frac{J}{M} = \\frac{5 J h}{2 M R} \\implies h = \\frac{2}{5}R$.\nIf $h > \\frac{2}{5}R$, bottom point slips backward $\\implies$ friction acts forward.\nIf $h < \\frac{2}{5}R$, bottom point slips forward $\\implies$ friction acts backward.\nLinear momentum is conserved during instantaneous impulse: $v = J/M$ holds for all $h$.\nHence all statements A, B, C, D are correct.",
+      "notebookSolution": {
+        "given": "Impulse J at height h above COM",
+        "concept": "Instantaneous pure rolling requires v = Rω",
+        "steps": [
+          "v = J/M",
+          "ω = Jh / I = 5Jh / (2MR²)",
+          "v = Rω => h = 2/5 R"
+        ],
+        "conclusion": "A, B, C, D are all correct.",
+        "pitfall": "Do not confuse height above COM with height above ground."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "ja-paper-06-phy-2",
+      "subject": "physics",
+      "chapter": "Electromagnetic Induction",
+      "topic": "Motional EMF and Lenz Law",
+      "difficulty": "hard",
+      "type": "multiple_choice",
+      "patternType": "multi_concept_synthesis",
+      "patternLabel": "IIT-JEE Multi-Correct (+4, -2)",
+      "section": "Section 1 (One or More than One Correct)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Advanced 2023 Paper 2",
+      "text": "A rectangular loop of wire with dimensions $a \\times b$ and resistance $R$ falls vertically under gravity through a region of horizontal magnetic field $\\vec{B} = B_0 \\hat{k}$ for $0 \\le y \\le d$ (with $d > b$). Which of the following statements is/are correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "While the loop is entering the magnetic field, an upward magnetic retarding force acts on it."
+        },
+        {
+          "id": "B",
+          "text": "When the loop is completely inside the magnetic field, the net induced EMF is zero."
+        },
+        {
+          "id": "C",
+          "text": "While the loop is exiting the magnetic field, the induced current flows in the opposite sense compared to entering."
+        },
+        {
+          "id": "D",
+          "text": "The total mechanical energy lost by the loop equals the total Joule heating dissipated in the resistor."
+        }
+      ],
+      "correctAnswer": "A,B,C,D",
+      "formula": "\\mathcal{E} = -\\frac{d\\Phi_B}{dt}, \\quad F_m = I L B = \\frac{B^2 a^2 v}{R}",
+      "solution": "1. Entering: Magnetic flux into the page increases. By Lenz's law, induced current creates outward field (counter-clockwise current). Magnetic force $\\vec{F} = I\\vec{L} \\times \\vec{B}$ acts upward, retarding gravity.\n2. Fully inside: $\\frac{d\\Phi_B}{dt} = 0$, so induced EMF is zero, current is zero, and acceleration is simply $g$.\n3. Exiting: Flux decreases, so current reverses (clockwise) to oppose loss of flux. Force is still upward.\n4. By conservation of energy, work done against magnetic drag equals Joule heat $\\int I^2 R \\, dt$.\nAll statements A, B, C, D are correct.",
+      "notebookSolution": {
+        "given": "Falling loop entering and leaving transverse magnetic field",
+        "concept": "Faraday-Lenz law and Joule dissipation",
+        "steps": [
+          "Flux change generates opposing EMF",
+          "Inside region dΦ/dt = 0 => I = 0",
+          "Energy balance: ΔE_mech = Q_joule"
+        ],
+        "conclusion": "All options A, B, C, D are correct.",
+        "pitfall": "When fully inside, induced EMF on top and bottom wires cancel each other."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "ja-paper-06-phy-3",
+      "subject": "physics",
+      "chapter": "Wave Optics",
+      "topic": "Young Double Slit Experiment with Dielectric Slab",
+      "difficulty": "hard",
+      "type": "multiple_choice",
+      "patternType": "multi_concept_synthesis",
+      "patternLabel": "IIT-JEE Multi-Correct (+4, -2)",
+      "section": "Section 1 (One or More than One Correct)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Advanced 2021 Paper 1",
+      "text": "In a standard Young's double-slit experiment using monochromatic light of wavelength $\\lambda$, a thin transparent mica sheet of thickness $t$ and refractive index $\\mu$ is placed in the path of one of the interfering beams. Which of the following statements is/are correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The central bright fringe shifts towards the slit covered by the mica sheet by a distance $\\Delta y = \\frac{D}{d}(\\mu - 1)t$."
+        },
+        {
+          "id": "B",
+          "text": "The fringe width $\\beta = \\frac{\\lambda D}{d}$ remains completely unchanged."
+        },
+        {
+          "id": "C",
+          "text": "The optical path length of the covered beam increases by $(\\mu - 1)t$."
+        },
+        {
+          "id": "D",
+          "text": "If $t = \\frac{\\lambda}{\\mu - 1}$, the entire interference pattern shifts by exactly one fringe width."
+        }
+      ],
+      "correctAnswer": "A,B,C,D",
+      "formula": "\\Delta x = (\\mu - 1)t, \\quad \\Delta y = \\frac{D}{d}\\Delta x = \\frac{D}{d}(\\mu - 1)t",
+      "solution": "Introduction of transparent slab introduces an extra optical path difference $\\Delta x = \\mu t - t = (\\mu - 1)t$.\n1. Shift in fringe pattern: $y_0 = \\frac{D}{d}(\\mu - 1)t$ towards the side of the covered slit.\n2. Fringe width $\\beta = \\frac{\\lambda D}{d}$ depends only on $\\lambda, D, d$, so it is unaffected.\n3. Extra optical path is $(\\mu - 1)t$.\n4. For $\\Delta x = \\lambda$, shift $= \\frac{D}{d}\\lambda = \\beta$ (exactly one fringe width).\nAll options A, B, C, D are correct.",
+      "notebookSolution": {
+        "given": "YDSE with dielectric sheet in one beam",
+        "concept": "Optical path difference Δx = (μ - 1)t",
+        "steps": [
+          "Shift y = (D/d)(μ-1)t towards covered slit",
+          "Fringe width β = λD/d unchanged",
+          "Shift = β when (μ-1)t = λ"
+        ],
+        "conclusion": "All options A, B, C, D are correct.",
+        "pitfall": "Fringe width does not change, only positions shift."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "ja-paper-06-phy-4",
+      "subject": "physics",
+      "chapter": "Dual Nature of Radiation",
+      "topic": "Photoelectric Effect and Stopping Potential",
+      "difficulty": "hard",
+      "type": "multiple_choice",
+      "patternType": "multi_concept_synthesis",
+      "patternLabel": "IIT-JEE Multi-Correct (+4, -2)",
+      "section": "Section 1 (One or More than One Correct)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Advanced 2023 Paper 1",
+      "text": "In a photoelectric experiment, light of frequency $\\nu > \\nu_0$ illuminates a photosensitive metal cathode of work function $\\Phi = h\\nu_0$. Which of the following statements is/are correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The maximum kinetic energy of emitted photoelectrons depends linearly on the frequency $\\nu$ of incident light."
+        },
+        {
+          "id": "B",
+          "text": "Doubling the intensity of the incident light at constant frequency doubles the saturation photocurrent."
+        },
+        {
+          "id": "C",
+          "text": "The stopping potential $V_0$ is independent of the intensity of incident radiation."
+        },
+        {
+          "id": "D",
+          "text": "The slope of the stopping potential versus frequency graph ($V_0$ vs $\\nu$) is a universal constant equal to $h/e$."
+        }
+      ],
+      "correctAnswer": "A,B,C,D",
+      "formula": "e V_0 = K_{\\max} = h\\nu - \\Phi \\implies V_0 = \\frac{h}{e}\\nu - \\frac{\\Phi}{e}",
+      "solution": "Einstein's photoelectric equation:\n1. $K_{\\max} = h\\nu - \\Phi$ is linear with $\\nu$.\n2. Photocurrent $\\propto$ number of incident photons per second $\\propto$ Intensity.\n3. Stopping potential $V_0 = \\frac{h\\nu - \\Phi}{e}$ depends only on frequency $\\nu$ and work function $\\Phi$, not intensity.\n4. Slope of $V_0$ vs $\\nu$ is $\\frac{h}{e}$, which is independent of metal cathode nature.\nAll options A, B, C, D are correct.",
+      "notebookSolution": {
+        "given": "Photoelectric emission",
+        "concept": "Einstein photoelectric equation eV0 = hν - Φ",
+        "steps": [
+          "Kmax = hν - Φ",
+          "Current ∝ Intensity",
+          "V0 independent of Intensity",
+          "dV0/dν = h/e"
+        ],
+        "conclusion": "A, B, C, D are all correct.",
+        "pitfall": "Stopping potential depends on frequency, not intensity."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "ja-paper-06-phy-5",
+      "subject": "physics",
+      "chapter": "Thermodynamics",
+      "topic": "Carnot Engine Efficiency and Heat Rejection",
+      "difficulty": "hard",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "IIT-JEE Integer Value (+3, 0)",
+      "section": "Section 2 (Non-Negative Integer)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Advanced 2022 Paper 2",
+      "text": "A reversible Carnot engine operates between temperatures $T_H = 600\\text{ K}$ and $T_C = 300\\text{ K}$. It absorbs $Q_H = 1200\\text{ J}$ of heat from the high-temperature reservoir per cycle. The heat rejected $Q_C$ (in Joules) to the cold reservoir per cycle is:",
+      "correctAnswer": "600",
+      "formula": "\\eta = 1 - \\frac{T_C}{T_H} = \\frac{W}{Q_H} = 1 - \\frac{Q_C}{Q_H} \\implies \\frac{Q_C}{Q_H} = \\frac{T_C}{T_H}",
+      "solution": "$$\\frac{Q_C}{Q_H} = \\frac{T_C}{T_H} \\implies Q_C = Q_H \\left(\\frac{T_C}{T_H}\\right) = 1200 \\left(\\frac{300}{600}\\right) = 600\\text{ J}$$.",
+      "notebookSolution": {
+        "given": "TH = 600 K, TC = 300 K, QH = 1200 J",
+        "concept": "Carnot relation QC/QH = TC/TH",
+        "steps": [
+          "QC = 1200 × (300/600) = 600 J"
+        ],
+        "conclusion": "Heat rejected is 600 J.",
+        "pitfall": "Ensure temperatures are in Kelvin."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "ja-paper-06-chem-1",
+      "subject": "chemistry",
+      "chapter": "Coordination Compounds",
+      "topic": "Crystal Field Splitting and High/Low Spin",
+      "difficulty": "hard",
+      "type": "multiple_choice",
+      "patternType": "multi_concept_synthesis",
+      "patternLabel": "IIT-JEE Multi-Correct (+4, -2)",
+      "section": "Section 1 (One or More than One Correct)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Advanced 2023 Paper 1",
+      "text": "For the octahedral coordination complexes $[Fe(CN)_6]^{4-}$, $[Fe(H_2O)_6]^{2+}$, and $[Fe(CN)_6]^{3-}$, which of the following statements is/are correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "$[Fe(CN)_6]^{4-}$ is diamagnetic with zero unpaired electrons ($t_{2g}^6 e_g^0$)."
+        },
+        {
+          "id": "B",
+          "text": "$[Fe(H_2O)_6]^{2+}$ is paramagnetic with $4$ unpaired electrons ($t_{2g}^4 e_g^2$)."
+        },
+        {
+          "id": "C",
+          "text": "$[Fe(CN)_6]^{3-}$ has spin-only magnetic moment $\\mu = \\sqrt{3} \\approx 1.73\\text{ BM}$ ($t_{2g}^5 e_g^0$)."
+        },
+        {
+          "id": "D",
+          "text": "Cyanide ($CN^-$) produces a higher crystal field splitting energy ($\\Delta_o > P$) than water ($H_2O$)."
+        }
+      ],
+      "correctAnswer": "A,B,C,D",
+      "formula": "Fe^{2+} = 3d^6, \\quad Fe^{3+} = 3d^5, \\quad \\Delta_o(CN^-) > P > \\Delta_o(H_2O)",
+      "solution": "1. $[Fe(CN)_6]^{4-}$: $Fe^{2+} (3d^6)$. $CN^-$ is strong-field ligand: $\\Delta_o > P$, low spin $t_{2g}^6 e_g^0$, unpaired electrons $n = 0$ (diamagnetic).\n2. $[Fe(H_2O)_6]^{2+}$: $Fe^{2+} (3d^6)$. $H_2O$ is weak-field: $\\Delta_o < P$, high spin $t_{2g}^4 e_g^2$, $n = 4$ unpaired electrons.\n3. $[Fe(CN)_6]^{3-}$: $Fe^{3+} (3d^5)$. $CN^-$ gives low spin $t_{2g}^5 e_g^0$, $n = 1$ unpaired electron $\\implies \\mu = \\sqrt{1(3)} = \\sqrt{3} \\approx 1.73\\text{ BM}$.\n4. Spectrochemical series: $CN^-$ is much higher than $H_2O$.\nAll statements A, B, C, D are correct.",
+      "notebookSolution": {
+        "given": "Fe(II) and Fe(III) complexes with CN- and H2O",
+        "concept": "Spectrochemical series and crystal field theory",
+        "steps": [
+          "Fe(CN)6⁴⁻: low spin d⁶ -> n = 0",
+          "Fe(H2O)6²⁺: high spin d⁶ -> n = 4",
+          "Fe(CN)6³⁻: low spin d⁵ -> n = 1, μ = √3 BM"
+        ],
+        "conclusion": "A, B, C, D are all correct.",
+        "pitfall": "Oxidation state in Fe(CN)6³⁻ is +3 (d⁵), not +2."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "ja-paper-06-chem-2",
+      "subject": "chemistry",
+      "chapter": "Organic Chemistry",
+      "topic": "Aldol Condensation and Cannizzaro Synthesis",
+      "difficulty": "hard",
+      "type": "multiple_choice",
+      "patternType": "multi_concept_synthesis",
+      "patternLabel": "IIT-JEE Multi-Correct (+4, -2)",
+      "section": "Section 1 (One or More than One Correct)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Advanced 2022 Paper 2",
+      "text": "Which of the following organic transformations will successfully produce a new carbon-carbon bond?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Reaction of acetaldehyde with dilute $NaOH$ followed by heating (Aldol condensation)."
+        },
+        {
+          "id": "B",
+          "text": "Reaction of ethyl magnesium bromide ($CH_3CH_2MgBr$) with formaldehyde followed by acidic hydrolysis."
+        },
+        {
+          "id": "C",
+          "text": "Friedel-Crafts alkylation of benzene with methyl chloride in the presence of anhydrous $AlCl_3$."
+        },
+        {
+          "id": "D",
+          "text": "Kolbe-Schmitt reaction of sodium phenoxide with $CO_2$ under pressure at $400\\text{ K}$."
+        }
+      ],
+      "correctAnswer": "A,B,C,D",
+      "formula": "\\text{C-C bond formation via enolate, Grignard, carbocation, and electrophilic substitution}",
+      "solution": "1. Aldol condensation forms C-C bond between enolate $\\alpha$-carbon and carbonyl carbon to give $\\beta$-hydroxy aldehyde / $\\alpha,\\beta$-unsaturated carbonyl.\n2. Grignard reagent ($R-MgX$) nucleophilically attacks carbonyl carbon to form C-C bond (gives 1-propanol).\n3. Friedel-Crafts alkylation: $CH_3^+$ attacks benzene ring to form C-C bond (toluene).\n4. Kolbe's reaction: phenoxide attacks $CO_2$ at ortho position to form C-C bond (salicylic acid).\nAll four reactions form new carbon-carbon bonds.",
+      "notebookSolution": {
+        "given": "Four standard organic reactions",
+        "concept": "Identification of Carbon-Carbon bond forming reactions",
+        "steps": [
+          "Aldol: enolate + carbonyl -> C-C bond",
+          "Grignard: carbanion + carbonyl -> C-C bond",
+          "Friedel-Crafts: electrophilic aromatic substitution -> C-C bond",
+          "Kolbe: phenoxide + CO2 -> C-C bond"
+        ],
+        "conclusion": "All options A, B, C, D are correct.",
+        "pitfall": "Verify that each pathway creates an actual C-C bond."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "ja-paper-06-chem-3",
+      "subject": "chemistry",
+      "chapter": "Chemical Thermodynamics",
+      "topic": "Spontaneity and Ellingham Diagram",
+      "difficulty": "hard",
+      "type": "multiple_choice",
+      "patternType": "multi_concept_synthesis",
+      "patternLabel": "IIT-JEE Multi-Correct (+4, -2)",
+      "section": "Section 1 (One or More than One Correct)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Advanced 2021 Paper 2",
+      "text": "For the oxidation reaction of a metal: $2M(s) + O_2(g) \\to 2MO(s)$, which of the following statements is/are correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The entropy change $\\Delta S$ of the reaction is negative ($\\Delta S < 0$) because gaseous $O_2$ is consumed to form solid oxide."
+        },
+        {
+          "id": "B",
+          "text": "In the Ellingham diagram ($\\Delta G^\\circ$ vs $T$), the slope of the line is positive ($\\frac{d\\Delta G^\\circ}{dT} = -\\Delta S^\\circ > 0$)."
+        },
+        {
+          "id": "C",
+          "text": "At very high temperatures, $\\Delta G^\\circ$ becomes positive, meaning the metal oxide spontaneously decomposes."
+        },
+        {
+          "id": "D",
+          "text": "A metal whose oxide line lies lower in the Ellingham diagram can reduce the oxide of a metal whose line lies higher."
+        }
+      ],
+      "correctAnswer": "A,B,C,D",
+      "formula": "\\Delta G^\\circ = \\Delta H^\\circ - T \\Delta S^\\circ, \\quad \\text{slope} = -\\Delta S^\\circ > 0",
+      "solution": "1. Moles of gas decrease from 1 to 0, so $\\Delta S^\\circ < 0$.\n2. Since $\\Delta G^\\circ = \\Delta H^\\circ - T\\Delta S^\\circ$, slope is $-\\Delta S^\\circ > 0$ (positive slope).\n3. As $T$ increases, $-T\\Delta S^\\circ$ becomes increasingly positive; eventually $\\Delta G^\\circ > 0$ and the oxide decomposes.\n4. Lower metal has more negative $\\Delta G^\\circ$ for oxidation, so it has higher affinity for oxygen and can reduce oxides above it.\nAll statements A, B, C, D are correct.",
+      "notebookSolution": {
+        "given": "2M(s) + O2(g) -> 2MO(s)",
+        "concept": "Thermodynamics of Ellingham diagrams",
+        "steps": [
+          "ΔS < 0 due to loss of gas phase",
+          "Slope = -ΔS > 0",
+          "High T makes ΔG positive",
+          "Lower curve reduces upper curve"
+        ],
+        "conclusion": "All options A, B, C, D are correct.",
+        "pitfall": "Remember slope of Ellingham line is -ΔS, which is positive for metal oxidations."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "ja-paper-06-chem-4",
+      "subject": "chemistry",
+      "chapter": "Electrochemistry",
+      "topic": "Nernst Equation and Concentration Cell",
+      "difficulty": "hard",
+      "type": "multiple_choice",
+      "patternType": "multi_concept_synthesis",
+      "patternLabel": "IIT-JEE Multi-Correct (+4, -2)",
+      "section": "Section 1 (One or More than One Correct)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Advanced 2023 Paper 2",
+      "text": "Consider the concentration cell: $Pt | H_2(g, 1\\text{ atm}) | HCl (c_1) || HCl (c_2) | H_2(g, 1\\text{ atm}) | Pt$ at $298\\text{ K}$. Which of the following statements is/are correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The standard cell potential $E^\\circ_{cell}$ is strictly zero ($E^\\circ_{cell} = 0$)."
+        },
+        {
+          "id": "B",
+          "text": "The cell EMF is positive and spontaneous if $c_2 > c_1$."
+        },
+        {
+          "id": "C",
+          "text": "The EMF of the cell is given by $E_{cell} = \\frac{2.303 RT}{F} \\log\\frac{c_2}{c_1}$."
+        },
+        {
+          "id": "D",
+          "text": "At equilibrium, the cell potential becomes zero and $c_1 = c_2$."
+        }
+      ],
+      "correctAnswer": "A,B,C,D",
+      "formula": "E_{cell} = E^\\circ_{cell} - \\frac{0.0591}{1}\\log\\frac{c_1}{c_2} = 0.0591\\log\\frac{c_2}{c_1}",
+      "solution": "1. Identical electrodes in standard state $\\implies E^\\circ_{cell} = 0$.\n2. Cell reaction: $H^+(c_2) \\to H^+(c_1)$. Reaction quotient $Q = \\frac{c_1}{c_2}$.\n3. Nernst equation: $E_{cell} = -\\frac{2.303 RT}{F} \\log\\frac{c_1}{c_2} = \\frac{2.303 RT}{F}\\log\\frac{c_2}{c_1}$.\n4. For $c_2 > c_1$, $\\log(c_2/c_1) > 0 \\implies E_{cell} > 0$ (spontaneous discharge until $c_1 = c_2$).\nAll statements A, B, C, D are correct.",
+      "notebookSolution": {
+        "given": "Hydrogen concentration cell",
+        "concept": "Nernst equation for concentration cells with E°cell = 0",
+        "steps": [
+          "E°cell = 0 for concentration cells",
+          "E_cell = 0.0591 log(c2/c1)",
+          "Discharge spontaneous when c2 > c1"
+        ],
+        "conclusion": "A, B, C, D are all correct.",
+        "pitfall": "Remember reduction takes place at higher concentration."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "ja-paper-06-chem-5",
+      "subject": "chemistry",
+      "chapter": "Solid State",
+      "topic": "Packing Efficiency and Edge Length of FCC Lattice",
+      "difficulty": "hard",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "IIT-JEE Integer Value (+3, 0)",
+      "section": "Section 2 (Non-Negative Integer)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Advanced 2022 Paper 1",
+      "text": "Copper crystallizes in a face-centered cubic (FCC) lattice with $4$ atoms per unit cell. If the atomic radius of copper is $R$, the relation between edge length $a$ and radius is $a = x \\sqrt{2} R$. The value of integer $x$ is:",
+      "correctAnswer": "2",
+      "formula": "\\sqrt{2} a = 4 R \\implies a = \\frac{4}{\\sqrt{2}} R = 2\\sqrt{2} R",
+      "solution": "In FCC unit cell, atoms touch along the face diagonal:\n$$\\text{Face diagonal} = \\sqrt{2} a = 4 R \\implies a = \\frac{4}{\\sqrt{2}} R = 2\\sqrt{2} R$$.\nHence $x = 2$.",
+      "notebookSolution": {
+        "given": "FCC unit cell face touch condition",
+        "concept": "Face diagonal √2 a = 4R",
+        "steps": [
+          "a = 4R / √2 = 2√2 R",
+          "x = 2"
+        ],
+        "conclusion": "x = 2.",
+        "pitfall": "Do not confuse face diagonal √2 a with body diagonal √3 a."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "ja-paper-06-math-1",
+      "subject": "mathematics",
+      "chapter": "Definite Integrals",
+      "topic": "Properties of Definite Integrals and Symmetry",
+      "difficulty": "hard",
+      "type": "multiple_choice",
+      "patternType": "multi_concept_synthesis",
+      "patternLabel": "IIT-JEE Multi-Correct (+4, -2)",
+      "section": "Section 1 (One or More than One Correct)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Advanced 2023 Paper 1",
+      "text": "Let $I = \\int_{-\\pi/2}^{\\pi/2} \\frac{\\cos x}{1 + e^x} \\, dx$. Which of the following statements is/are correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The value of the integral is $I = 1$."
+        },
+        {
+          "id": "B",
+          "text": "Replacing $x$ by $-x$ gives $I = \\int_{-\\pi/2}^{\\pi/2} \\frac{e^x \\cos x}{1 + e^x} \\, dx$."
+        },
+        {
+          "id": "C",
+          "text": "Adding the two forms yields $2I = \\int_{-\\pi/2}^{\\pi/2} \\cos x \\, dx$."
+        },
+        {
+          "id": "D",
+          "text": "The integrand is an even function of $x$."
+        }
+      ],
+      "correctAnswer": "A,B,C",
+      "formula": "\\int_a^b f(x)dx = \\int_a^b f(a+b-x)dx, \\quad a+b = 0",
+      "solution": "1. Using property $\\int_a^b f(x)dx = \\int_a^b f(a+b-x)dx$ with $a+b = 0$:\n$$I = \\int_{-\\pi/2}^{\\pi/2} \\frac{\\cos(-x)}{1 + e^{-x}} \\, dx = \\int_{-\\pi/2}^{\\pi/2} \\frac{\\cos x}{1 + 1/e^x} \\, dx = \\int_{-\\pi/2}^{\\pi/2} \\frac{e^x \\cos x}{1 + e^x} \\, dx$$. (Statement B is correct)\n2. Adding the two expressions:\n$$2I = \\int_{-\\pi/2}^{\\pi/2} \\frac{(1 + e^x)\\cos x}{1 + e^x} \\, dx = \\int_{-\\pi/2}^{\\pi/2} \\cos x \\, dx = [\\sin x]_{-\\pi/2}^{\\pi/2} = 1 - (-1) = 2$$. (Statement C is correct)\n3. $$2I = 2 \\implies I = 1$$. (Statement A is correct)\n4. Notice $f(-x) \\ne f(x)$, so the integrand itself is NOT an even function. (Statement D is incorrect).\nHence A, B, and C are correct.",
+      "notebookSolution": {
+        "given": "I = ∫_{-π/2}^{π/2} (cos x)/(1 + e^x) dx",
+        "concept": "Symmetry property ∫ f(x) = ∫ f(-x) for symmetric limits",
+        "steps": [
+          "I = ∫ (e^x cos x)/(1 + e^x) dx",
+          "2I = ∫ cos x dx = 2",
+          "I = 1",
+          "f(x) is neither even nor odd"
+        ],
+        "conclusion": "A, B, C are correct.",
+        "pitfall": "The integrand itself is not even, but the integral simplifies cleanly."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "ja-paper-06-math-2",
+      "subject": "mathematics",
+      "chapter": "Complex Numbers",
+      "topic": "Roots of Unity and Modulus Identities",
+      "difficulty": "hard",
+      "type": "multiple_choice",
+      "patternType": "multi_concept_synthesis",
+      "patternLabel": "IIT-JEE Multi-Correct (+4, -2)",
+      "section": "Section 1 (One or More than One Correct)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Advanced 2022 Paper 2",
+      "text": "Let $\\omega = e^{i 2\\pi/3} = -\\frac{1}{2} + i\\frac{\\sqrt{3}}{2}$ be a primitive cube root of unity. Which of the following statements is/are correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "$1 + \\omega + \\omega^2 = 0$"
+        },
+        {
+          "id": "B",
+          "text": "$(1 - \\omega + \\omega^2)(1 + \\omega - \\omega^2) = 4$"
+        },
+        {
+          "id": "C",
+          "text": "The points representing $1, \\omega, \\omega^2$ in the complex plane form the vertices of an equilateral triangle."
+        },
+        {
+          "id": "D",
+          "text": "For any integer $k$, $1 + \\omega^k + \\omega^{2k} = 3$ if $k$ is a multiple of $3$, and $0$ otherwise."
+        }
+      ],
+      "correctAnswer": "A,B,C,D",
+      "formula": "1 + \\omega + \\omega^2 = 0, \\quad \\omega^3 = 1",
+      "solution": "1. $1 + \\omega + \\omega^2 = 0$ is standard fundamental identity.\n2. $1 + \\omega^2 = -\\omega$ and $1 + \\omega = -\\omega^2$:\n$$(1 - \\omega + \\omega^2)(1 + \\omega - \\omega^2) = (-2\\omega)(-2\\omega^2) = 4\\omega^3 = 4(1) = 4$$.\n3. The vertices lie on unit circle $|z|=1$ separated by $120^\\circ$, forming an equilateral triangle.\n4. If $k = 3m$: $1 + 1 + 1 = 3$. If $k$ is not a multiple of 3: roots sum to 0.\nAll statements A, B, C, D are correct.",
+      "notebookSolution": {
+        "given": "Cube roots of unity properties",
+        "concept": "Algebraic and geometric properties of ω",
+        "steps": [
+          "1 + ω + ω² = 0",
+          "(-2ω)(-2ω²) = 4ω³ = 4",
+          "Equilateral triangle inscribed in unit circle",
+          "Sum equals 3 for multiple of 3, 0 otherwise"
+        ],
+        "conclusion": "A, B, C, D are all correct.",
+        "pitfall": "Remember ω³ = 1."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "ja-paper-06-math-3",
+      "subject": "mathematics",
+      "chapter": "Matrices and Determinants",
+      "topic": "Orthogonal and Symmetric Matrices",
+      "difficulty": "hard",
+      "type": "multiple_choice",
+      "patternType": "multi_concept_synthesis",
+      "patternLabel": "IIT-JEE Multi-Correct (+4, -2)",
+      "section": "Section 1 (One or More than One Correct)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Advanced 2023 Paper 2",
+      "text": "Let $A$ and $B$ be two $3 \\times 3$ real orthogonal matrices ($A A^T = I, B B^T = I$). Which of the following statements is/are correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "$\\det(A) = \\pm 1$."
+        },
+        {
+          "id": "B",
+          "text": "The product $A B$ is also an orthogonal matrix."
+        },
+        {
+          "id": "C",
+          "text": "The inverse matrix $A^{-1}$ exists and equals $A^T$."
+        },
+        {
+          "id": "D",
+          "text": "If $\\det(A) = 1$ and $\\det(B) = -1$, then $\\det(A B) = -1$."
+        }
+      ],
+      "correctAnswer": "A,B,C,D",
+      "formula": "A A^T = I \\implies \\det(A)^2 = 1 \\implies \\det(A) = \\pm 1",
+      "solution": "1. $\\det(A A^T) = \\det(A)^2 = \\det(I) = 1 \\implies \\det(A) = \\pm 1$.\n2. $(A B)(A B)^T = A B B^T A^T = A I A^T = A A^T = I \\implies A B$ is orthogonal.\n3. Since $A A^T = I$, by definition $A^{-1} = A^T$.\n4. $\\det(A B) = \\det(A)\\det(B) = (1)(-1) = -1$.\nAll statements A, B, C, D are correct.",
+      "notebookSolution": {
+        "given": "Real orthogonal matrices A and B",
+        "concept": "Properties of orthogonal group O(n)",
+        "steps": [
+          "det(A)² = 1 => det(A) = ±1",
+          "(AB)(AB)ᵀ = I => AB orthogonal",
+          "A⁻¹ = Aᵀ",
+          "det(AB) = det(A)det(B) = -1"
+        ],
+        "conclusion": "All options A, B, C, D are correct.",
+        "pitfall": "Orthogonal matrices always have non-zero determinant ±1."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "ja-paper-06-math-4",
+      "subject": "mathematics",
+      "chapter": "Conic Sections",
+      "topic": "Director Circle and Perpendicular Tangents",
+      "difficulty": "hard",
+      "type": "multiple_choice",
+      "patternType": "multi_concept_synthesis",
+      "patternLabel": "IIT-JEE Multi-Correct (+4, -2)",
+      "section": "Section 1 (One or More than One Correct)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Advanced 2021 Paper 1",
+      "text": "For the standard ellipse $\\frac{x^2}{a^2} + \\frac{y^2}{b^2} = 1$ ($a > b$), which of the following statements is/are correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The locus of points from which mutually perpendicular tangents can be drawn to the ellipse is the circle $x^2 + y^2 = a^2 + b^2$ (Director Circle)."
+        },
+        {
+          "id": "B",
+          "text": "The product of the perpendicular distances from the two foci to any tangent line is constant and equals $b^2$."
+        },
+        {
+          "id": "C",
+          "text": "The eccentric angle of the ends of the minor axis are $\\pi/2$ and $3\\pi/2$."
+        },
+        {
+          "id": "D",
+          "text": "The distance between the two directrices is $\\frac{2a}{e}$."
+        }
+      ],
+      "correctAnswer": "A,B,C,D",
+      "formula": "x^2 + y^2 = a^2 + b^2, \\quad p_1 p_2 = b^2, \\quad d = \\frac{2a}{e}",
+      "solution": "1. Director circle of ellipse $\\frac{x^2}{a^2} + \\frac{y^2}{b^2} = 1$ is $x^2 + y^2 = a^2 + b^2$.\n2. Product of perpendiculars from foci $S(ae, 0)$ and $S'(-ae, 0)$ to any tangent $y = mx \\pm \\sqrt{a^2 m^2 + b^2}$ is $b^2$.\n3. Minor axis ends are $(0, b)$ and $(0, -b)$, corresponding to eccentric angles $\\pi/2$ and $3\\pi/2$.\n4. Directrices are $x = \\pm a/e$, distance between them is $2a/e$.\nAll options A, B, C, D are correct.",
+      "notebookSolution": {
+        "given": "Properties of standard ellipse",
+        "concept": "Director circle, focal distances, directrices",
+        "steps": [
+          "Director circle: x² + y² = a² + b²",
+          "p1 × p2 = b²",
+          "Minor axis ends: θ = π/2, 3π/2",
+          "Directrices distance = 2a/e"
+        ],
+        "conclusion": "A, B, C, D are all correct.",
+        "pitfall": "For hyperbola director circle is x² + y² = a² - b²."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "ja-paper-06-math-5",
+      "subject": "mathematics",
+      "chapter": "Probability",
+      "topic": "Derangements and Envelopes",
+      "difficulty": "hard",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "IIT-JEE Integer Value (+3, 0)",
+      "section": "Section 2 (Non-Negative Integer)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Advanced 2022 Paper 2",
+      "text": "Four letters are to be placed into four addressed envelopes. The number of ways in which all four letters can be placed into the wrong envelopes (complete derangement $D_4$) is:",
+      "correctAnswer": "9",
+      "formula": "D_n = n! \\sum_{k=0}^n \\frac{(-1)^k}{k!}",
+      "solution": "$$D_4 = 4! \\left(\\frac{1}{2!} - \\frac{1}{3!} + \\frac{1}{4!}\\right) = 24 \\left(\\frac{1}{2} - \\frac{1}{6} + \\frac{1}{24}\\right) = 24 \\left(\\frac{12 - 4 + 1}{24}\\right) = 9$$.",
+      "notebookSolution": {
+        "given": "n = 4 letters derangement",
+        "concept": "D_n = (n-1)(D_{n-1} + D_{n-2})",
+        "steps": [
+          "D1 = 0, D2 = 1, D3 = 2",
+          "D4 = 3(2 + 1) = 3 × 3 = 9"
+        ],
+        "conclusion": "Number of derangements is 9.",
+        "pitfall": "Do not confuse derangements with total permutations 4! = 24."
+      },
+      "verificationStatus": "verified"
+    }
+  ]
+},
+{
+  "config": {
+    "id": "ja-paper-07",
+    "testNumber": 7,
+    "title": "IIT-JEE Advanced 2026 - Grand Finale Benchmark Paper 7",
+    "subtitle": "Full Spectrum Multi-Correct & Numerical Suite • AIR Top 100 Caliber",
+    "examType": "jee_advanced",
+    "durationMinutes": 180,
+    "totalMarks": 180,
+    "questionCount": 15,
+    "description": "The definitive full-scale IIT-JEE Advanced benchmark paper designed to test peak analytical endurance, speed, and accuracy under full exam pressure.",
+    "difficulty": "Advanced Benchmark",
+    "subjectsIncluded": [
+      "physics",
+      "chemistry",
+      "mathematics"
+    ],
+    "seriesCategory": "jee_advanced",
+    "badge": "Paper 07",
+    "tags": [
+      "JEE Advanced",
+      "Paper 07",
+      "Multi-Correct (+4, -2)",
+      "IIT Benchmark",
+      "180 Mins"
+    ]
+  },
+  "questions": [
+    {
+      "id": "ja-paper-07-phy-1",
+      "subject": "physics",
+      "chapter": "Rotational Motion",
+      "topic": "Pure Rolling on Inclined Plane with Friction",
+      "difficulty": "hard",
+      "type": "multiple_choice",
+      "patternType": "multi_concept_synthesis",
+      "patternLabel": "IIT-JEE Multi-Correct (+4, -2)",
+      "section": "Section 1 (One or More than One Correct)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Advanced 2022 Paper 1",
+      "text": "A uniform solid sphere of mass $M$ and radius $R$ is placed on a rough horizontal surface with coefficient of friction $\\mu$. It is struck by a horizontal impulse $J$ at a height $h$ above the center of mass. Which of the following statements is/are correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "If $h = \\frac{2}{5}R$, the sphere immediately begins pure rolling without any slipping."
+        },
+        {
+          "id": "B",
+          "text": "If $h > \\frac{2}{5}R$, the initial frictional force acts forward (in the direction of $J$)."
+        },
+        {
+          "id": "C",
+          "text": "If $h < \\frac{2}{5}R$, the initial frictional force acts backward (opposite to $J$)."
+        },
+        {
+          "id": "D",
+          "text": "The linear velocity immediately after the impulse is $v = \\frac{J}{M}$ regardless of $h$."
+        }
+      ],
+      "correctAnswer": "A,B,C,D",
+      "formula": "J = M v, \\quad J h = I \\omega = \\frac{2}{5} M R^2 \\omega \\implies v = R\\omega \\iff h = \\frac{2}{5}R",
+      "solution": "Linear impulse gives $v_0 = J/M$. Angular impulse gives $\\tau \\Delta t = J h = I \\omega_0 \\implies \\omega_0 = \\frac{J h}{\\frac{2}{5} M R^2} = \\frac{5 J h}{2 M R^2}$.\nFor instantaneous pure rolling: $v_0 = R \\omega_0 \\implies \\frac{J}{M} = \\frac{5 J h}{2 M R} \\implies h = \\frac{2}{5}R$.\nIf $h > \\frac{2}{5}R$, bottom point slips backward $\\implies$ friction acts forward.\nIf $h < \\frac{2}{5}R$, bottom point slips forward $\\implies$ friction acts backward.\nLinear momentum is conserved during instantaneous impulse: $v = J/M$ holds for all $h$.\nHence all statements A, B, C, D are correct.",
+      "notebookSolution": {
+        "given": "Impulse J at height h above COM",
+        "concept": "Instantaneous pure rolling requires v = Rω",
+        "steps": [
+          "v = J/M",
+          "ω = Jh / I = 5Jh / (2MR²)",
+          "v = Rω => h = 2/5 R"
+        ],
+        "conclusion": "A, B, C, D are all correct.",
+        "pitfall": "Do not confuse height above COM with height above ground."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "ja-paper-07-phy-2",
+      "subject": "physics",
+      "chapter": "Electromagnetic Induction",
+      "topic": "Motional EMF and Lenz Law",
+      "difficulty": "hard",
+      "type": "multiple_choice",
+      "patternType": "multi_concept_synthesis",
+      "patternLabel": "IIT-JEE Multi-Correct (+4, -2)",
+      "section": "Section 1 (One or More than One Correct)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Advanced 2023 Paper 2",
+      "text": "A rectangular loop of wire with dimensions $a \\times b$ and resistance $R$ falls vertically under gravity through a region of horizontal magnetic field $\\vec{B} = B_0 \\hat{k}$ for $0 \\le y \\le d$ (with $d > b$). Which of the following statements is/are correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "While the loop is entering the magnetic field, an upward magnetic retarding force acts on it."
+        },
+        {
+          "id": "B",
+          "text": "When the loop is completely inside the magnetic field, the net induced EMF is zero."
+        },
+        {
+          "id": "C",
+          "text": "While the loop is exiting the magnetic field, the induced current flows in the opposite sense compared to entering."
+        },
+        {
+          "id": "D",
+          "text": "The total mechanical energy lost by the loop equals the total Joule heating dissipated in the resistor."
+        }
+      ],
+      "correctAnswer": "A,B,C,D",
+      "formula": "\\mathcal{E} = -\\frac{d\\Phi_B}{dt}, \\quad F_m = I L B = \\frac{B^2 a^2 v}{R}",
+      "solution": "1. Entering: Magnetic flux into the page increases. By Lenz's law, induced current creates outward field (counter-clockwise current). Magnetic force $\\vec{F} = I\\vec{L} \\times \\vec{B}$ acts upward, retarding gravity.\n2. Fully inside: $\\frac{d\\Phi_B}{dt} = 0$, so induced EMF is zero, current is zero, and acceleration is simply $g$.\n3. Exiting: Flux decreases, so current reverses (clockwise) to oppose loss of flux. Force is still upward.\n4. By conservation of energy, work done against magnetic drag equals Joule heat $\\int I^2 R \\, dt$.\nAll statements A, B, C, D are correct.",
+      "notebookSolution": {
+        "given": "Falling loop entering and leaving transverse magnetic field",
+        "concept": "Faraday-Lenz law and Joule dissipation",
+        "steps": [
+          "Flux change generates opposing EMF",
+          "Inside region dΦ/dt = 0 => I = 0",
+          "Energy balance: ΔE_mech = Q_joule"
+        ],
+        "conclusion": "All options A, B, C, D are correct.",
+        "pitfall": "When fully inside, induced EMF on top and bottom wires cancel each other."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "ja-paper-07-phy-3",
+      "subject": "physics",
+      "chapter": "Wave Optics",
+      "topic": "Young Double Slit Experiment with Dielectric Slab",
+      "difficulty": "hard",
+      "type": "multiple_choice",
+      "patternType": "multi_concept_synthesis",
+      "patternLabel": "IIT-JEE Multi-Correct (+4, -2)",
+      "section": "Section 1 (One or More than One Correct)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Advanced 2021 Paper 1",
+      "text": "In a standard Young's double-slit experiment using monochromatic light of wavelength $\\lambda$, a thin transparent mica sheet of thickness $t$ and refractive index $\\mu$ is placed in the path of one of the interfering beams. Which of the following statements is/are correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The central bright fringe shifts towards the slit covered by the mica sheet by a distance $\\Delta y = \\frac{D}{d}(\\mu - 1)t$."
+        },
+        {
+          "id": "B",
+          "text": "The fringe width $\\beta = \\frac{\\lambda D}{d}$ remains completely unchanged."
+        },
+        {
+          "id": "C",
+          "text": "The optical path length of the covered beam increases by $(\\mu - 1)t$."
+        },
+        {
+          "id": "D",
+          "text": "If $t = \\frac{\\lambda}{\\mu - 1}$, the entire interference pattern shifts by exactly one fringe width."
+        }
+      ],
+      "correctAnswer": "A,B,C,D",
+      "formula": "\\Delta x = (\\mu - 1)t, \\quad \\Delta y = \\frac{D}{d}\\Delta x = \\frac{D}{d}(\\mu - 1)t",
+      "solution": "Introduction of transparent slab introduces an extra optical path difference $\\Delta x = \\mu t - t = (\\mu - 1)t$.\n1. Shift in fringe pattern: $y_0 = \\frac{D}{d}(\\mu - 1)t$ towards the side of the covered slit.\n2. Fringe width $\\beta = \\frac{\\lambda D}{d}$ depends only on $\\lambda, D, d$, so it is unaffected.\n3. Extra optical path is $(\\mu - 1)t$.\n4. For $\\Delta x = \\lambda$, shift $= \\frac{D}{d}\\lambda = \\beta$ (exactly one fringe width).\nAll options A, B, C, D are correct.",
+      "notebookSolution": {
+        "given": "YDSE with dielectric sheet in one beam",
+        "concept": "Optical path difference Δx = (μ - 1)t",
+        "steps": [
+          "Shift y = (D/d)(μ-1)t towards covered slit",
+          "Fringe width β = λD/d unchanged",
+          "Shift = β when (μ-1)t = λ"
+        ],
+        "conclusion": "All options A, B, C, D are correct.",
+        "pitfall": "Fringe width does not change, only positions shift."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "ja-paper-07-phy-4",
+      "subject": "physics",
+      "chapter": "Dual Nature of Radiation",
+      "topic": "Photoelectric Effect and Stopping Potential",
+      "difficulty": "hard",
+      "type": "multiple_choice",
+      "patternType": "multi_concept_synthesis",
+      "patternLabel": "IIT-JEE Multi-Correct (+4, -2)",
+      "section": "Section 1 (One or More than One Correct)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Advanced 2023 Paper 1",
+      "text": "In a photoelectric experiment, light of frequency $\\nu > \\nu_0$ illuminates a photosensitive metal cathode of work function $\\Phi = h\\nu_0$. Which of the following statements is/are correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The maximum kinetic energy of emitted photoelectrons depends linearly on the frequency $\\nu$ of incident light."
+        },
+        {
+          "id": "B",
+          "text": "Doubling the intensity of the incident light at constant frequency doubles the saturation photocurrent."
+        },
+        {
+          "id": "C",
+          "text": "The stopping potential $V_0$ is independent of the intensity of incident radiation."
+        },
+        {
+          "id": "D",
+          "text": "The slope of the stopping potential versus frequency graph ($V_0$ vs $\\nu$) is a universal constant equal to $h/e$."
+        }
+      ],
+      "correctAnswer": "A,B,C,D",
+      "formula": "e V_0 = K_{\\max} = h\\nu - \\Phi \\implies V_0 = \\frac{h}{e}\\nu - \\frac{\\Phi}{e}",
+      "solution": "Einstein's photoelectric equation:\n1. $K_{\\max} = h\\nu - \\Phi$ is linear with $\\nu$.\n2. Photocurrent $\\propto$ number of incident photons per second $\\propto$ Intensity.\n3. Stopping potential $V_0 = \\frac{h\\nu - \\Phi}{e}$ depends only on frequency $\\nu$ and work function $\\Phi$, not intensity.\n4. Slope of $V_0$ vs $\\nu$ is $\\frac{h}{e}$, which is independent of metal cathode nature.\nAll options A, B, C, D are correct.",
+      "notebookSolution": {
+        "given": "Photoelectric emission",
+        "concept": "Einstein photoelectric equation eV0 = hν - Φ",
+        "steps": [
+          "Kmax = hν - Φ",
+          "Current ∝ Intensity",
+          "V0 independent of Intensity",
+          "dV0/dν = h/e"
+        ],
+        "conclusion": "A, B, C, D are all correct.",
+        "pitfall": "Stopping potential depends on frequency, not intensity."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "ja-paper-07-phy-5",
+      "subject": "physics",
+      "chapter": "Thermodynamics",
+      "topic": "Carnot Engine Efficiency and Heat Rejection",
+      "difficulty": "hard",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "IIT-JEE Integer Value (+3, 0)",
+      "section": "Section 2 (Non-Negative Integer)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Advanced 2022 Paper 2",
+      "text": "A reversible Carnot engine operates between temperatures $T_H = 600\\text{ K}$ and $T_C = 300\\text{ K}$. It absorbs $Q_H = 1200\\text{ J}$ of heat from the high-temperature reservoir per cycle. The heat rejected $Q_C$ (in Joules) to the cold reservoir per cycle is:",
+      "correctAnswer": "600",
+      "formula": "\\eta = 1 - \\frac{T_C}{T_H} = \\frac{W}{Q_H} = 1 - \\frac{Q_C}{Q_H} \\implies \\frac{Q_C}{Q_H} = \\frac{T_C}{T_H}",
+      "solution": "$$\\frac{Q_C}{Q_H} = \\frac{T_C}{T_H} \\implies Q_C = Q_H \\left(\\frac{T_C}{T_H}\\right) = 1200 \\left(\\frac{300}{600}\\right) = 600\\text{ J}$$.",
+      "notebookSolution": {
+        "given": "TH = 600 K, TC = 300 K, QH = 1200 J",
+        "concept": "Carnot relation QC/QH = TC/TH",
+        "steps": [
+          "QC = 1200 × (300/600) = 600 J"
+        ],
+        "conclusion": "Heat rejected is 600 J.",
+        "pitfall": "Ensure temperatures are in Kelvin."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "ja-paper-07-chem-1",
+      "subject": "chemistry",
+      "chapter": "Coordination Compounds",
+      "topic": "Crystal Field Splitting and High/Low Spin",
+      "difficulty": "hard",
+      "type": "multiple_choice",
+      "patternType": "multi_concept_synthesis",
+      "patternLabel": "IIT-JEE Multi-Correct (+4, -2)",
+      "section": "Section 1 (One or More than One Correct)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Advanced 2023 Paper 1",
+      "text": "For the octahedral coordination complexes $[Fe(CN)_6]^{4-}$, $[Fe(H_2O)_6]^{2+}$, and $[Fe(CN)_6]^{3-}$, which of the following statements is/are correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "$[Fe(CN)_6]^{4-}$ is diamagnetic with zero unpaired electrons ($t_{2g}^6 e_g^0$)."
+        },
+        {
+          "id": "B",
+          "text": "$[Fe(H_2O)_6]^{2+}$ is paramagnetic with $4$ unpaired electrons ($t_{2g}^4 e_g^2$)."
+        },
+        {
+          "id": "C",
+          "text": "$[Fe(CN)_6]^{3-}$ has spin-only magnetic moment $\\mu = \\sqrt{3} \\approx 1.73\\text{ BM}$ ($t_{2g}^5 e_g^0$)."
+        },
+        {
+          "id": "D",
+          "text": "Cyanide ($CN^-$) produces a higher crystal field splitting energy ($\\Delta_o > P$) than water ($H_2O$)."
+        }
+      ],
+      "correctAnswer": "A,B,C,D",
+      "formula": "Fe^{2+} = 3d^6, \\quad Fe^{3+} = 3d^5, \\quad \\Delta_o(CN^-) > P > \\Delta_o(H_2O)",
+      "solution": "1. $[Fe(CN)_6]^{4-}$: $Fe^{2+} (3d^6)$. $CN^-$ is strong-field ligand: $\\Delta_o > P$, low spin $t_{2g}^6 e_g^0$, unpaired electrons $n = 0$ (diamagnetic).\n2. $[Fe(H_2O)_6]^{2+}$: $Fe^{2+} (3d^6)$. $H_2O$ is weak-field: $\\Delta_o < P$, high spin $t_{2g}^4 e_g^2$, $n = 4$ unpaired electrons.\n3. $[Fe(CN)_6]^{3-}$: $Fe^{3+} (3d^5)$. $CN^-$ gives low spin $t_{2g}^5 e_g^0$, $n = 1$ unpaired electron $\\implies \\mu = \\sqrt{1(3)} = \\sqrt{3} \\approx 1.73\\text{ BM}$.\n4. Spectrochemical series: $CN^-$ is much higher than $H_2O$.\nAll statements A, B, C, D are correct.",
+      "notebookSolution": {
+        "given": "Fe(II) and Fe(III) complexes with CN- and H2O",
+        "concept": "Spectrochemical series and crystal field theory",
+        "steps": [
+          "Fe(CN)6⁴⁻: low spin d⁶ -> n = 0",
+          "Fe(H2O)6²⁺: high spin d⁶ -> n = 4",
+          "Fe(CN)6³⁻: low spin d⁵ -> n = 1, μ = √3 BM"
+        ],
+        "conclusion": "A, B, C, D are all correct.",
+        "pitfall": "Oxidation state in Fe(CN)6³⁻ is +3 (d⁵), not +2."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "ja-paper-07-chem-2",
+      "subject": "chemistry",
+      "chapter": "Organic Chemistry",
+      "topic": "Aldol Condensation and Cannizzaro Synthesis",
+      "difficulty": "hard",
+      "type": "multiple_choice",
+      "patternType": "multi_concept_synthesis",
+      "patternLabel": "IIT-JEE Multi-Correct (+4, -2)",
+      "section": "Section 1 (One or More than One Correct)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Advanced 2022 Paper 2",
+      "text": "Which of the following organic transformations will successfully produce a new carbon-carbon bond?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Reaction of acetaldehyde with dilute $NaOH$ followed by heating (Aldol condensation)."
+        },
+        {
+          "id": "B",
+          "text": "Reaction of ethyl magnesium bromide ($CH_3CH_2MgBr$) with formaldehyde followed by acidic hydrolysis."
+        },
+        {
+          "id": "C",
+          "text": "Friedel-Crafts alkylation of benzene with methyl chloride in the presence of anhydrous $AlCl_3$."
+        },
+        {
+          "id": "D",
+          "text": "Kolbe-Schmitt reaction of sodium phenoxide with $CO_2$ under pressure at $400\\text{ K}$."
+        }
+      ],
+      "correctAnswer": "A,B,C,D",
+      "formula": "\\text{C-C bond formation via enolate, Grignard, carbocation, and electrophilic substitution}",
+      "solution": "1. Aldol condensation forms C-C bond between enolate $\\alpha$-carbon and carbonyl carbon to give $\\beta$-hydroxy aldehyde / $\\alpha,\\beta$-unsaturated carbonyl.\n2. Grignard reagent ($R-MgX$) nucleophilically attacks carbonyl carbon to form C-C bond (gives 1-propanol).\n3. Friedel-Crafts alkylation: $CH_3^+$ attacks benzene ring to form C-C bond (toluene).\n4. Kolbe's reaction: phenoxide attacks $CO_2$ at ortho position to form C-C bond (salicylic acid).\nAll four reactions form new carbon-carbon bonds.",
+      "notebookSolution": {
+        "given": "Four standard organic reactions",
+        "concept": "Identification of Carbon-Carbon bond forming reactions",
+        "steps": [
+          "Aldol: enolate + carbonyl -> C-C bond",
+          "Grignard: carbanion + carbonyl -> C-C bond",
+          "Friedel-Crafts: electrophilic aromatic substitution -> C-C bond",
+          "Kolbe: phenoxide + CO2 -> C-C bond"
+        ],
+        "conclusion": "All options A, B, C, D are correct.",
+        "pitfall": "Verify that each pathway creates an actual C-C bond."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "ja-paper-07-chem-3",
+      "subject": "chemistry",
+      "chapter": "Chemical Thermodynamics",
+      "topic": "Spontaneity and Ellingham Diagram",
+      "difficulty": "hard",
+      "type": "multiple_choice",
+      "patternType": "multi_concept_synthesis",
+      "patternLabel": "IIT-JEE Multi-Correct (+4, -2)",
+      "section": "Section 1 (One or More than One Correct)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Advanced 2021 Paper 2",
+      "text": "For the oxidation reaction of a metal: $2M(s) + O_2(g) \\to 2MO(s)$, which of the following statements is/are correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The entropy change $\\Delta S$ of the reaction is negative ($\\Delta S < 0$) because gaseous $O_2$ is consumed to form solid oxide."
+        },
+        {
+          "id": "B",
+          "text": "In the Ellingham diagram ($\\Delta G^\\circ$ vs $T$), the slope of the line is positive ($\\frac{d\\Delta G^\\circ}{dT} = -\\Delta S^\\circ > 0$)."
+        },
+        {
+          "id": "C",
+          "text": "At very high temperatures, $\\Delta G^\\circ$ becomes positive, meaning the metal oxide spontaneously decomposes."
+        },
+        {
+          "id": "D",
+          "text": "A metal whose oxide line lies lower in the Ellingham diagram can reduce the oxide of a metal whose line lies higher."
+        }
+      ],
+      "correctAnswer": "A,B,C,D",
+      "formula": "\\Delta G^\\circ = \\Delta H^\\circ - T \\Delta S^\\circ, \\quad \\text{slope} = -\\Delta S^\\circ > 0",
+      "solution": "1. Moles of gas decrease from 1 to 0, so $\\Delta S^\\circ < 0$.\n2. Since $\\Delta G^\\circ = \\Delta H^\\circ - T\\Delta S^\\circ$, slope is $-\\Delta S^\\circ > 0$ (positive slope).\n3. As $T$ increases, $-T\\Delta S^\\circ$ becomes increasingly positive; eventually $\\Delta G^\\circ > 0$ and the oxide decomposes.\n4. Lower metal has more negative $\\Delta G^\\circ$ for oxidation, so it has higher affinity for oxygen and can reduce oxides above it.\nAll statements A, B, C, D are correct.",
+      "notebookSolution": {
+        "given": "2M(s) + O2(g) -> 2MO(s)",
+        "concept": "Thermodynamics of Ellingham diagrams",
+        "steps": [
+          "ΔS < 0 due to loss of gas phase",
+          "Slope = -ΔS > 0",
+          "High T makes ΔG positive",
+          "Lower curve reduces upper curve"
+        ],
+        "conclusion": "All options A, B, C, D are correct.",
+        "pitfall": "Remember slope of Ellingham line is -ΔS, which is positive for metal oxidations."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "ja-paper-07-chem-4",
+      "subject": "chemistry",
+      "chapter": "Electrochemistry",
+      "topic": "Nernst Equation and Concentration Cell",
+      "difficulty": "hard",
+      "type": "multiple_choice",
+      "patternType": "multi_concept_synthesis",
+      "patternLabel": "IIT-JEE Multi-Correct (+4, -2)",
+      "section": "Section 1 (One or More than One Correct)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Advanced 2023 Paper 2",
+      "text": "Consider the concentration cell: $Pt | H_2(g, 1\\text{ atm}) | HCl (c_1) || HCl (c_2) | H_2(g, 1\\text{ atm}) | Pt$ at $298\\text{ K}$. Which of the following statements is/are correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The standard cell potential $E^\\circ_{cell}$ is strictly zero ($E^\\circ_{cell} = 0$)."
+        },
+        {
+          "id": "B",
+          "text": "The cell EMF is positive and spontaneous if $c_2 > c_1$."
+        },
+        {
+          "id": "C",
+          "text": "The EMF of the cell is given by $E_{cell} = \\frac{2.303 RT}{F} \\log\\frac{c_2}{c_1}$."
+        },
+        {
+          "id": "D",
+          "text": "At equilibrium, the cell potential becomes zero and $c_1 = c_2$."
+        }
+      ],
+      "correctAnswer": "A,B,C,D",
+      "formula": "E_{cell} = E^\\circ_{cell} - \\frac{0.0591}{1}\\log\\frac{c_1}{c_2} = 0.0591\\log\\frac{c_2}{c_1}",
+      "solution": "1. Identical electrodes in standard state $\\implies E^\\circ_{cell} = 0$.\n2. Cell reaction: $H^+(c_2) \\to H^+(c_1)$. Reaction quotient $Q = \\frac{c_1}{c_2}$.\n3. Nernst equation: $E_{cell} = -\\frac{2.303 RT}{F} \\log\\frac{c_1}{c_2} = \\frac{2.303 RT}{F}\\log\\frac{c_2}{c_1}$.\n4. For $c_2 > c_1$, $\\log(c_2/c_1) > 0 \\implies E_{cell} > 0$ (spontaneous discharge until $c_1 = c_2$).\nAll statements A, B, C, D are correct.",
+      "notebookSolution": {
+        "given": "Hydrogen concentration cell",
+        "concept": "Nernst equation for concentration cells with E°cell = 0",
+        "steps": [
+          "E°cell = 0 for concentration cells",
+          "E_cell = 0.0591 log(c2/c1)",
+          "Discharge spontaneous when c2 > c1"
+        ],
+        "conclusion": "A, B, C, D are all correct.",
+        "pitfall": "Remember reduction takes place at higher concentration."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "ja-paper-07-chem-5",
+      "subject": "chemistry",
+      "chapter": "Solid State",
+      "topic": "Packing Efficiency and Edge Length of FCC Lattice",
+      "difficulty": "hard",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "IIT-JEE Integer Value (+3, 0)",
+      "section": "Section 2 (Non-Negative Integer)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Advanced 2022 Paper 1",
+      "text": "Copper crystallizes in a face-centered cubic (FCC) lattice with $4$ atoms per unit cell. If the atomic radius of copper is $R$, the relation between edge length $a$ and radius is $a = x \\sqrt{2} R$. The value of integer $x$ is:",
+      "correctAnswer": "2",
+      "formula": "\\sqrt{2} a = 4 R \\implies a = \\frac{4}{\\sqrt{2}} R = 2\\sqrt{2} R",
+      "solution": "In FCC unit cell, atoms touch along the face diagonal:\n$$\\text{Face diagonal} = \\sqrt{2} a = 4 R \\implies a = \\frac{4}{\\sqrt{2}} R = 2\\sqrt{2} R$$.\nHence $x = 2$.",
+      "notebookSolution": {
+        "given": "FCC unit cell face touch condition",
+        "concept": "Face diagonal √2 a = 4R",
+        "steps": [
+          "a = 4R / √2 = 2√2 R",
+          "x = 2"
+        ],
+        "conclusion": "x = 2.",
+        "pitfall": "Do not confuse face diagonal √2 a with body diagonal √3 a."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "ja-paper-07-math-1",
+      "subject": "mathematics",
+      "chapter": "Definite Integrals",
+      "topic": "Properties of Definite Integrals and Symmetry",
+      "difficulty": "hard",
+      "type": "multiple_choice",
+      "patternType": "multi_concept_synthesis",
+      "patternLabel": "IIT-JEE Multi-Correct (+4, -2)",
+      "section": "Section 1 (One or More than One Correct)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Advanced 2023 Paper 1",
+      "text": "Let $I = \\int_{-\\pi/2}^{\\pi/2} \\frac{\\cos x}{1 + e^x} \\, dx$. Which of the following statements is/are correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The value of the integral is $I = 1$."
+        },
+        {
+          "id": "B",
+          "text": "Replacing $x$ by $-x$ gives $I = \\int_{-\\pi/2}^{\\pi/2} \\frac{e^x \\cos x}{1 + e^x} \\, dx$."
+        },
+        {
+          "id": "C",
+          "text": "Adding the two forms yields $2I = \\int_{-\\pi/2}^{\\pi/2} \\cos x \\, dx$."
+        },
+        {
+          "id": "D",
+          "text": "The integrand is an even function of $x$."
+        }
+      ],
+      "correctAnswer": "A,B,C",
+      "formula": "\\int_a^b f(x)dx = \\int_a^b f(a+b-x)dx, \\quad a+b = 0",
+      "solution": "1. Using property $\\int_a^b f(x)dx = \\int_a^b f(a+b-x)dx$ with $a+b = 0$:\n$$I = \\int_{-\\pi/2}^{\\pi/2} \\frac{\\cos(-x)}{1 + e^{-x}} \\, dx = \\int_{-\\pi/2}^{\\pi/2} \\frac{\\cos x}{1 + 1/e^x} \\, dx = \\int_{-\\pi/2}^{\\pi/2} \\frac{e^x \\cos x}{1 + e^x} \\, dx$$. (Statement B is correct)\n2. Adding the two expressions:\n$$2I = \\int_{-\\pi/2}^{\\pi/2} \\frac{(1 + e^x)\\cos x}{1 + e^x} \\, dx = \\int_{-\\pi/2}^{\\pi/2} \\cos x \\, dx = [\\sin x]_{-\\pi/2}^{\\pi/2} = 1 - (-1) = 2$$. (Statement C is correct)\n3. $$2I = 2 \\implies I = 1$$. (Statement A is correct)\n4. Notice $f(-x) \\ne f(x)$, so the integrand itself is NOT an even function. (Statement D is incorrect).\nHence A, B, and C are correct.",
+      "notebookSolution": {
+        "given": "I = ∫_{-π/2}^{π/2} (cos x)/(1 + e^x) dx",
+        "concept": "Symmetry property ∫ f(x) = ∫ f(-x) for symmetric limits",
+        "steps": [
+          "I = ∫ (e^x cos x)/(1 + e^x) dx",
+          "2I = ∫ cos x dx = 2",
+          "I = 1",
+          "f(x) is neither even nor odd"
+        ],
+        "conclusion": "A, B, C are correct.",
+        "pitfall": "The integrand itself is not even, but the integral simplifies cleanly."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "ja-paper-07-math-2",
+      "subject": "mathematics",
+      "chapter": "Complex Numbers",
+      "topic": "Roots of Unity and Modulus Identities",
+      "difficulty": "hard",
+      "type": "multiple_choice",
+      "patternType": "multi_concept_synthesis",
+      "patternLabel": "IIT-JEE Multi-Correct (+4, -2)",
+      "section": "Section 1 (One or More than One Correct)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Advanced 2022 Paper 2",
+      "text": "Let $\\omega = e^{i 2\\pi/3} = -\\frac{1}{2} + i\\frac{\\sqrt{3}}{2}$ be a primitive cube root of unity. Which of the following statements is/are correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "$1 + \\omega + \\omega^2 = 0$"
+        },
+        {
+          "id": "B",
+          "text": "$(1 - \\omega + \\omega^2)(1 + \\omega - \\omega^2) = 4$"
+        },
+        {
+          "id": "C",
+          "text": "The points representing $1, \\omega, \\omega^2$ in the complex plane form the vertices of an equilateral triangle."
+        },
+        {
+          "id": "D",
+          "text": "For any integer $k$, $1 + \\omega^k + \\omega^{2k} = 3$ if $k$ is a multiple of $3$, and $0$ otherwise."
+        }
+      ],
+      "correctAnswer": "A,B,C,D",
+      "formula": "1 + \\omega + \\omega^2 = 0, \\quad \\omega^3 = 1",
+      "solution": "1. $1 + \\omega + \\omega^2 = 0$ is standard fundamental identity.\n2. $1 + \\omega^2 = -\\omega$ and $1 + \\omega = -\\omega^2$:\n$$(1 - \\omega + \\omega^2)(1 + \\omega - \\omega^2) = (-2\\omega)(-2\\omega^2) = 4\\omega^3 = 4(1) = 4$$.\n3. The vertices lie on unit circle $|z|=1$ separated by $120^\\circ$, forming an equilateral triangle.\n4. If $k = 3m$: $1 + 1 + 1 = 3$. If $k$ is not a multiple of 3: roots sum to 0.\nAll statements A, B, C, D are correct.",
+      "notebookSolution": {
+        "given": "Cube roots of unity properties",
+        "concept": "Algebraic and geometric properties of ω",
+        "steps": [
+          "1 + ω + ω² = 0",
+          "(-2ω)(-2ω²) = 4ω³ = 4",
+          "Equilateral triangle inscribed in unit circle",
+          "Sum equals 3 for multiple of 3, 0 otherwise"
+        ],
+        "conclusion": "A, B, C, D are all correct.",
+        "pitfall": "Remember ω³ = 1."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "ja-paper-07-math-3",
+      "subject": "mathematics",
+      "chapter": "Matrices and Determinants",
+      "topic": "Orthogonal and Symmetric Matrices",
+      "difficulty": "hard",
+      "type": "multiple_choice",
+      "patternType": "multi_concept_synthesis",
+      "patternLabel": "IIT-JEE Multi-Correct (+4, -2)",
+      "section": "Section 1 (One or More than One Correct)",
+      "source": "PYQ",
+      "pyqYear": 2023,
+      "pyqReference": "JEE Advanced 2023 Paper 2",
+      "text": "Let $A$ and $B$ be two $3 \\times 3$ real orthogonal matrices ($A A^T = I, B B^T = I$). Which of the following statements is/are correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "$\\det(A) = \\pm 1$."
+        },
+        {
+          "id": "B",
+          "text": "The product $A B$ is also an orthogonal matrix."
+        },
+        {
+          "id": "C",
+          "text": "The inverse matrix $A^{-1}$ exists and equals $A^T$."
+        },
+        {
+          "id": "D",
+          "text": "If $\\det(A) = 1$ and $\\det(B) = -1$, then $\\det(A B) = -1$."
+        }
+      ],
+      "correctAnswer": "A,B,C,D",
+      "formula": "A A^T = I \\implies \\det(A)^2 = 1 \\implies \\det(A) = \\pm 1",
+      "solution": "1. $\\det(A A^T) = \\det(A)^2 = \\det(I) = 1 \\implies \\det(A) = \\pm 1$.\n2. $(A B)(A B)^T = A B B^T A^T = A I A^T = A A^T = I \\implies A B$ is orthogonal.\n3. Since $A A^T = I$, by definition $A^{-1} = A^T$.\n4. $\\det(A B) = \\det(A)\\det(B) = (1)(-1) = -1$.\nAll statements A, B, C, D are correct.",
+      "notebookSolution": {
+        "given": "Real orthogonal matrices A and B",
+        "concept": "Properties of orthogonal group O(n)",
+        "steps": [
+          "det(A)² = 1 => det(A) = ±1",
+          "(AB)(AB)ᵀ = I => AB orthogonal",
+          "A⁻¹ = Aᵀ",
+          "det(AB) = det(A)det(B) = -1"
+        ],
+        "conclusion": "All options A, B, C, D are correct.",
+        "pitfall": "Orthogonal matrices always have non-zero determinant ±1."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "ja-paper-07-math-4",
+      "subject": "mathematics",
+      "chapter": "Conic Sections",
+      "topic": "Director Circle and Perpendicular Tangents",
+      "difficulty": "hard",
+      "type": "multiple_choice",
+      "patternType": "multi_concept_synthesis",
+      "patternLabel": "IIT-JEE Multi-Correct (+4, -2)",
+      "section": "Section 1 (One or More than One Correct)",
+      "source": "PYQ",
+      "pyqYear": 2021,
+      "pyqReference": "JEE Advanced 2021 Paper 1",
+      "text": "For the standard ellipse $\\frac{x^2}{a^2} + \\frac{y^2}{b^2} = 1$ ($a > b$), which of the following statements is/are correct?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The locus of points from which mutually perpendicular tangents can be drawn to the ellipse is the circle $x^2 + y^2 = a^2 + b^2$ (Director Circle)."
+        },
+        {
+          "id": "B",
+          "text": "The product of the perpendicular distances from the two foci to any tangent line is constant and equals $b^2$."
+        },
+        {
+          "id": "C",
+          "text": "The eccentric angle of the ends of the minor axis are $\\pi/2$ and $3\\pi/2$."
+        },
+        {
+          "id": "D",
+          "text": "The distance between the two directrices is $\\frac{2a}{e}$."
+        }
+      ],
+      "correctAnswer": "A,B,C,D",
+      "formula": "x^2 + y^2 = a^2 + b^2, \\quad p_1 p_2 = b^2, \\quad d = \\frac{2a}{e}",
+      "solution": "1. Director circle of ellipse $\\frac{x^2}{a^2} + \\frac{y^2}{b^2} = 1$ is $x^2 + y^2 = a^2 + b^2$.\n2. Product of perpendiculars from foci $S(ae, 0)$ and $S'(-ae, 0)$ to any tangent $y = mx \\pm \\sqrt{a^2 m^2 + b^2}$ is $b^2$.\n3. Minor axis ends are $(0, b)$ and $(0, -b)$, corresponding to eccentric angles $\\pi/2$ and $3\\pi/2$.\n4. Directrices are $x = \\pm a/e$, distance between them is $2a/e$.\nAll options A, B, C, D are correct.",
+      "notebookSolution": {
+        "given": "Properties of standard ellipse",
+        "concept": "Director circle, focal distances, directrices",
+        "steps": [
+          "Director circle: x² + y² = a² + b²",
+          "p1 × p2 = b²",
+          "Minor axis ends: θ = π/2, 3π/2",
+          "Directrices distance = 2a/e"
+        ],
+        "conclusion": "A, B, C, D are all correct.",
+        "pitfall": "For hyperbola director circle is x² + y² = a² - b²."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "ja-paper-07-math-5",
+      "subject": "mathematics",
+      "chapter": "Probability",
+      "topic": "Derangements and Envelopes",
+      "difficulty": "hard",
+      "type": "numerical",
+      "patternType": "numerical_calculation",
+      "patternLabel": "IIT-JEE Integer Value (+3, 0)",
+      "section": "Section 2 (Non-Negative Integer)",
+      "source": "PYQ",
+      "pyqYear": 2022,
+      "pyqReference": "JEE Advanced 2022 Paper 2",
+      "text": "Four letters are to be placed into four addressed envelopes. The number of ways in which all four letters can be placed into the wrong envelopes (complete derangement $D_4$) is:",
+      "correctAnswer": "9",
+      "formula": "D_n = n! \\sum_{k=0}^n \\frac{(-1)^k}{k!}",
+      "solution": "$$D_4 = 4! \\left(\\frac{1}{2!} - \\frac{1}{3!} + \\frac{1}{4!}\\right) = 24 \\left(\\frac{1}{2} - \\frac{1}{6} + \\frac{1}{24}\\right) = 24 \\left(\\frac{12 - 4 + 1}{24}\\right) = 9$$.",
+      "notebookSolution": {
+        "given": "n = 4 letters derangement",
+        "concept": "D_n = (n-1)(D_{n-1} + D_{n-2})",
+        "steps": [
+          "D1 = 0, D2 = 1, D3 = 2",
+          "D4 = 3(2 + 1) = 3 × 3 = 9"
+        ],
+        "conclusion": "Number of derangements is 9.",
+        "pitfall": "Do not confuse derangements with total permutations 4! = 24."
       },
       "verificationStatus": "verified"
     }

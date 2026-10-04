@@ -8,7 +8,7 @@ interface AiDoubtTutorModalProps {
   question: Question | null;
   isOpen: boolean;
   onClose: () => void;
-  onOpenApiKeyModal: () => void;
+  onOpenApiKeyModal?: () => void;
 }
 
 interface Message {

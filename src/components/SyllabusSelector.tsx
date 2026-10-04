@@ -18,6 +18,7 @@ import {
   Zap,
   Target,
   ArrowRight,
+  Folder,
 } from 'lucide-react';
 import { Subject, ExamType, CustomSyllabusConfig, StreamType, PersistentPerformanceRecord } from '../types';
 import { NCERT_SYLLABUS } from '../data/ncertSyllabus';
@@ -48,8 +49,8 @@ export const SyllabusSelector: React.FC<SyllabusSelectorProps> = ({
   const quota = getWeeklyTestQuota(pastRecords);
   const isNeet = userStream === 'neet';
 
-  // Primary view mode: 'custom' (Default - Custom Creation as requested) vs 'curated'
-  const [activeTabMode, setActiveTabMode] = useState<'custom' | 'curated'>('custom');
+  // Primary view mode: 'curated' (Default - Pre-Loaded Curated Test Series) vs 'custom'
+  const [activeTabMode, setActiveTabMode] = useState<'custom' | 'curated'>('curated');
 
   // Curated series track: 'jee_main' vs 'jee_advanced'
   const [selectedSeriesTrack, setSelectedSeriesTrack] = useState<'jee_main' | 'jee_advanced'>('jee_main');
@@ -230,59 +231,59 @@ export const SyllabusSelector: React.FC<SyllabusSelectorProps> = ({
 
   return (
     <div className="space-y-6 font-sans">
-      {/* ================= PRIMARY NAVIGATION: CUSTOM CREATION (DEFAULT) vs CURATED ================= */}
+      {/* ================= PRIMARY NAVIGATION: PRE-LOADED CURATED (DEFAULT) vs CUSTOM ================= */}
       <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-4 sm:p-5 shadow-xs flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-3 w-full md:w-auto">
-          {/* Custom Test Creation Tab (Primary Default) */}
-          <button
-            type="button"
-            onClick={() => setActiveTabMode('custom')}
-            className={`flex-1 md:flex-none px-6 py-3.5 rounded-xl text-xs font-black transition flex items-center justify-center gap-2.5 cursor-pointer ${
-              activeTabMode === 'custom'
-                ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/25 ring-2 ring-blue-500/30'
-                : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'
-            }`}
-          >
-            <Sliders size={18} />
-            <span className="text-sm">Custom Test Creation</span>
-            <span
-              className={`text-[10px] px-2 py-0.5 rounded-full font-black ${
-                activeTabMode === 'custom'
-                  ? 'bg-blue-800 text-white'
-                  : 'bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300'
-              }`}
-            >
-              Gemini AI • {totalQuestions} Qs
-            </span>
-          </button>
-
-          {/* Curated Mocks Tab */}
+          {/* Curated Mocks Tab (Default) */}
           <button
             type="button"
             onClick={() => setActiveTabMode('curated')}
             className={`flex-1 md:flex-none px-6 py-3.5 rounded-xl text-xs font-black transition flex items-center justify-center gap-2.5 cursor-pointer ${
               activeTabMode === 'curated'
-                ? 'bg-purple-600 text-white shadow-lg shadow-purple-500/25 ring-2 ring-purple-500/30'
+                ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/25 ring-2 ring-blue-500/30'
                 : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'
             }`}
           >
             <Trophy size={18} />
-            <span className="text-sm">Curated Mock Series</span>
+            <span className="text-sm">Pre-Loaded Test Series</span>
             <span
               className={`text-[10px] px-2 py-0.5 rounded-full font-black ${
                 activeTabMode === 'curated'
-                  ? 'bg-purple-800 text-white'
+                  ? 'bg-blue-800 text-white'
                   : 'bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300'
               }`}
             >
-              5 Mocks Pre-Loaded
+              10 Mains + 7 Adv
+            </span>
+          </button>
+
+          {/* Custom Test Creation Tab */}
+          <button
+            type="button"
+            onClick={() => setActiveTabMode('custom')}
+            className={`flex-1 md:flex-none px-6 py-3.5 rounded-xl text-xs font-black transition flex items-center justify-center gap-2.5 cursor-pointer ${
+              activeTabMode === 'custom'
+                ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-500/25 ring-2 ring-indigo-500/30'
+                : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'
+            }`}
+          >
+            <Sliders size={18} />
+            <span className="text-sm">Custom Chapter Tests</span>
+            <span
+              className={`text-[10px] px-2 py-0.5 rounded-full font-black ${
+                activeTabMode === 'custom'
+                  ? 'bg-indigo-800 text-white'
+                  : 'bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300'
+              }`}
+            >
+              Custom Syllabus
             </span>
           </button>
         </div>
 
         <div className="flex items-center gap-2 text-xs font-semibold text-slate-500">
           <ShieldCheck size={16} className="text-emerald-500 shrink-0" />
-          <span>All 75 Questions & Solutions Verified Before Exam Starts</span>
+          <span>Real PYQs • 100% Pre-Loaded & Verified Questions</span>
         </div>
       </div>
 
@@ -586,93 +587,62 @@ export const SyllabusSelector: React.FC<SyllabusSelectorProps> = ({
         </div>
       )}
 
-      {/* ================= VIEW 2: CURATED TEST SERIES (5 MOCKS PRE-LOADED) ================= */}
+      {/* ================= VIEW 2: CURATED TEST SERIES (10 MAINS + 7 ADVANCED) ================= */}
       {activeTabMode === 'curated' && (
-        <div className="space-y-6">
+        <div className="space-y-5">
           {/* Track Switcher */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5">
             <button
               type="button"
               onClick={() => setSelectedSeriesTrack('jee_main')}
-              className={`px-5 py-2.5 rounded-xl text-xs font-black transition flex items-center gap-2 cursor-pointer ${
+              className={`px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2 cursor-pointer ${
                 selectedSeriesTrack === 'jee_main'
-                  ? 'bg-blue-600 text-white shadow-md'
-                  : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300'
+                  ? 'bg-blue-600 text-white shadow-xs'
+                  : 'bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800'
               }`}
             >
-              <Target size={16} />
-              <span>JEE Main Series (5 Mocks)</span>
+              <Target size={15} />
+              <span>JEE Main Mocks (10 Tests)</span>
             </button>
 
             <button
               type="button"
               onClick={() => setSelectedSeriesTrack('jee_advanced')}
-              className={`px-5 py-2.5 rounded-xl text-xs font-black transition flex items-center gap-2 cursor-pointer ${
+              className={`px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2 cursor-pointer ${
                 selectedSeriesTrack === 'jee_advanced'
-                  ? 'bg-purple-600 text-white shadow-md'
-                  : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300'
+                  ? 'bg-purple-600 text-white shadow-xs'
+                  : 'bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800'
               }`}
             >
-              <Zap size={16} />
-              <span>JEE Advanced Series (3 Papers)</span>
+              <Zap size={15} />
+              <span>JEE Advanced Papers (7 Tests)</span>
             </button>
           </div>
 
-          {/* Active Track Banner */}
-          <div
-            className={`p-6 rounded-2xl border text-white shadow-md relative overflow-hidden ${
-              selectedSeriesTrack === 'jee_main'
-                ? 'bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 border-blue-500/30'
-                : 'bg-gradient-to-r from-purple-950 via-indigo-950 to-slate-900 border-purple-500/30'
-            }`}
-          >
-            <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
-              <div className="space-y-1.5">
-                <div className="flex items-center gap-2">
-                  <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-amber-400 text-slate-950">
-                    {selectedSeriesTrack === 'jee_main' ? 'All-India Grand Test Series' : 'National IIT-JEE Benchmark Series'}
-                  </span>
-                  <span className="text-xs text-blue-200 font-medium">
-                    {selectedSeriesTrack === 'jee_main' ? '300 Marks • 180 Mins • Exact NTA Section A/B' : '180 Marks • 180 Mins • Multi-Correct (+4, -2)'}
-                  </span>
-                </div>
-                <h2 className="text-xl sm:text-2xl font-black tracking-tight text-white">
-                  {selectedSeriesTrack === 'jee_main'
-                    ? 'JEE Mains Official Pattern Mock Test Series'
-                    : 'IIT-JEE Advanced National Benchmark Papers'}
-                </h2>
-                <p className="text-xs text-slate-300 max-w-2xl leading-relaxed">
-                  {selectedSeriesTrack === 'jee_main'
-                    ? 'Complete test series containing 5 full-scale mocks covering full syllabus, Class 11th & 12th benchmarks, and high-yield NTA PYQs with full step-by-step KaTeX solutions.'
-                    : 'Rigorous multi-concept examination series designed after official IIT Bombay / Madras papers with multi-correct questions, partial markings, and high-difficulty numericals.'}
-                </p>
+          {/* Clean Sub-header Bar */}
+          <div className="p-4 rounded-xl bg-slate-900 text-white flex flex-col sm:flex-row sm:items-center justify-between gap-3 border border-slate-800">
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded bg-amber-400 text-slate-950">
+                  {selectedSeriesTrack === 'jee_main' ? 'JEE Main 2026' : 'IIT-JEE Advanced'}
+                </span>
+                <span className="text-xs text-slate-300 font-medium">
+                  {selectedSeriesTrack === 'jee_main' ? '10 Full-Scale Mocks • 75 Qs / 300 Marks • Exact Section A & B' : '7 Elite Benchmark Papers • Multi-Correct (+4, -2) • Advanced Numericals'}
+                </span>
               </div>
+            </div>
 
-              <div className="flex items-center gap-3 bg-white/10 backdrop-blur-xs p-3 rounded-xl border border-white/15 self-start md:self-auto shrink-0">
-                <div className="text-center px-2">
-                  <div className="text-[10px] uppercase font-bold text-slate-300">Total Tests</div>
-                  <div className="text-base font-black text-white mt-0.5">
-                    {selectedSeriesTrack === 'jee_main' ? '5 Mocks' : '3 Papers'}
-                  </div>
-                </div>
-                <div className="w-px h-8 bg-white/20" />
-                <div className="text-center px-2">
-                  <div className="text-[10px] uppercase font-bold text-slate-300">Questions</div>
-                  <div className="text-base font-black text-white mt-0.5">
-                    {selectedSeriesTrack === 'jee_main' ? '75 Qs' : '54 Qs'}
-                  </div>
-                </div>
-                <div className="w-px h-8 bg-white/20" />
-                <div className="text-center px-2">
-                  <div className="text-[10px] uppercase font-bold text-slate-300">Launch Mode</div>
-                  <div className="text-base font-black text-emerald-400 mt-0.5">Instant</div>
-                </div>
-              </div>
+            <div className="flex items-center gap-2 text-xs font-bold text-slate-300">
+              <span className="text-emerald-400 flex items-center gap-1">
+                <CheckCircle2 size={13} /> 100% Pre-Loaded
+              </span>
+              <span>•</span>
+              <span>Instant Launch</span>
             </div>
           </div>
 
-          {/* Curated Package Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          {/* Clean Test Folders Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {currentSeriesPackages.map((pkg) => {
               const { config, questions } = pkg;
               const isAdvanced = config.seriesCategory === 'jee_advanced';
@@ -683,80 +653,74 @@ export const SyllabusSelector: React.FC<SyllabusSelectorProps> = ({
               return (
                 <div
                   key={config.id}
-                  className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-xs hover:shadow-md transition flex flex-col justify-between group"
+                  className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-blue-500 dark:hover:border-blue-500 rounded-2xl p-5 shadow-xs hover:shadow-md transition-all flex flex-col justify-between group"
                 >
                   <div>
-                    {/* Top Badges */}
-                    <div className="flex items-center justify-between gap-2 mb-3">
-                      <div className="flex items-center gap-2">
-                        <span
-                          className={`text-[10px] px-2.5 py-1 rounded-md font-black tracking-wider uppercase ${
+                    {/* Folder Icon + Header Badge */}
+                    <div className="flex items-center justify-between gap-3 mb-2.5">
+                      <div className="flex items-center gap-2.5">
+                        <div
+                          className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 ${
                             isAdvanced
-                              ? 'bg-purple-100 dark:bg-purple-950/70 text-purple-700 dark:text-purple-300 border border-purple-300 dark:border-purple-800'
-                              : 'bg-blue-100 dark:bg-blue-950/70 text-blue-700 dark:text-blue-300 border border-blue-300 dark:border-blue-800'
+                              ? 'bg-purple-100 dark:bg-purple-950/80 text-purple-600 dark:text-purple-400'
+                              : 'bg-blue-100 dark:bg-blue-950/80 text-blue-600 dark:text-blue-400'
                           }`}
                         >
-                          {config.badge || `Mock ${config.testNumber}`}
-                        </span>
-
-                        <span className="text-[10px] font-bold text-slate-500 bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded-md">
-                          {config.difficulty}
-                        </span>
+                          <Folder size={18} />
+                        </div>
+                        <div>
+                          <span
+                            className={`text-[10px] px-2 py-0.5 rounded font-black tracking-wider uppercase ${
+                              isAdvanced
+                                ? 'bg-purple-50 dark:bg-purple-950 text-purple-700 dark:text-purple-300'
+                                : 'bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300'
+                            }`}
+                          >
+                            {config.badge || `Test ${config.testNumber}`}
+                          </span>
+                          <span className="text-[10px] font-semibold text-slate-500 ml-2">
+                            {isAdvanced ? 'IIT Benchmark' : 'NTA Pattern'}
+                          </span>
+                        </div>
                       </div>
 
-                      <div className="flex items-center gap-1.5 text-xs font-bold text-emerald-600 dark:text-emerald-400">
-                        <CheckCircle2 size={14} />
-                        <span>100% Pre-Loaded</span>
-                      </div>
+                      <span className="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-2 py-0.5 rounded-full flex items-center gap-1">
+                        <CheckCircle2 size={11} /> Ready
+                      </span>
                     </div>
 
-                    {/* Title & Subtitle */}
-                    <h3 className="text-base sm:text-lg font-black text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition leading-snug">
+                    {/* Test Title */}
+                    <h3 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition leading-snug">
                       {config.title}
                     </h3>
-                    <p className="text-xs font-medium text-slate-500 mt-1 line-clamp-1">
-                      {config.subtitle}
-                    </p>
-                    <p className="text-xs text-slate-600 dark:text-slate-400 mt-2.5 leading-relaxed">
-                      {config.description}
-                    </p>
 
-                    {/* Exam Stats Grid */}
-                    <div className="grid grid-cols-3 gap-2 py-3.5 my-3.5 border-y border-slate-100 dark:border-slate-800/80 text-center">
-                      <div className="bg-slate-50 dark:bg-slate-800/50 p-2 rounded-xl">
-                        <div className="text-[10px] font-bold text-slate-400 uppercase">Questions</div>
-                        <div className="text-sm font-black text-slate-900 dark:text-white mt-0.5">
-                          {config.questionCount} Qs
-                        </div>
-                      </div>
-                      <div className="bg-slate-50 dark:bg-slate-800/50 p-2 rounded-xl">
-                        <div className="text-[10px] font-bold text-slate-400 uppercase">Duration</div>
-                        <div className="text-sm font-black text-slate-900 dark:text-white mt-0.5">
-                          {config.durationMinutes}m
-                        </div>
-                      </div>
-                      <div className="bg-slate-50 dark:bg-slate-800/50 p-2 rounded-xl">
-                        <div className="text-[10px] font-bold text-slate-400 uppercase">Marks</div>
-                        <div className="text-sm font-black text-slate-900 dark:text-white mt-0.5">
-                          {config.totalMarks} M
-                        </div>
-                      </div>
+                    {/* Minimal Metrics Pills */}
+                    <div className="flex flex-wrap items-center gap-1.5 my-3 text-[11px] font-bold text-slate-600 dark:text-slate-300">
+                      <span className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800">
+                        {config.questionCount} Questions
+                      </span>
+                      <span className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800">
+                        {config.totalMarks} Marks
+                      </span>
+                      <span className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800">
+                        {config.durationMinutes} Mins
+                      </span>
+                      <span className="px-2.5 py-1 rounded-lg bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border border-amber-200/50 dark:border-amber-800/40">
+                        Real PYQs
+                      </span>
                     </div>
 
-                    {/* Subject Distribution */}
-                    <div className="flex items-center gap-2 mb-4 text-xs font-semibold text-slate-600 dark:text-slate-400">
-                      <span className="px-2.5 py-1 rounded-md bg-blue-50 dark:bg-blue-950/50 text-blue-700 dark:text-blue-300">
-                        Phys: {phyCount}
-                      </span>
-                      <span className="px-2.5 py-1 rounded-md bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-300">
-                        Chem: {chemCount}
-                      </span>
-                      <span className="px-2.5 py-1 rounded-md bg-indigo-50 dark:bg-indigo-950/50 text-indigo-700 dark:text-indigo-300">
-                        Math: {mathCount}
-                      </span>
+                    {/* Subject counts */}
+                    <div className="flex items-center gap-2 mb-3.5 text-[11px] font-medium text-slate-500">
+                      <span>Physics: <strong className="text-slate-700 dark:text-slate-200">{phyCount}</strong></span>
+                      <span>•</span>
+                      <span>Chemistry: <strong className="text-slate-700 dark:text-slate-200">{chemCount}</strong></span>
+                      <span>•</span>
+                      <span>Maths: <strong className="text-slate-700 dark:text-slate-200">{mathCount}</strong></span>
                     </div>
                   </div>
 
+                  {/* Start Test Button */}
                   <button
                     type="button"
                     onClick={() => {
@@ -764,14 +728,15 @@ export const SyllabusSelector: React.FC<SyllabusSelectorProps> = ({
                         onStartCuratedTest(pkg);
                       }
                     }}
-                    className={`w-full py-3 px-4 rounded-xl font-black text-xs transition flex items-center justify-center gap-2 cursor-pointer shadow-xs ${
+                    className={`w-full py-2.5 px-4 rounded-xl font-bold text-xs transition flex items-center justify-center gap-2 cursor-pointer shadow-xs ${
                       isAdvanced
                         ? 'bg-purple-600 hover:bg-purple-700 text-white shadow-purple-500/20'
                         : 'bg-blue-600 hover:bg-blue-700 text-white shadow-blue-500/20'
                     }`}
                   >
-                    <Play size={14} fill="currentColor" />
-                    <span>Launch This Pre-Loaded Mock Now</span>
+                    <Play size={13} fill="currentColor" />
+                    <span>Start Test</span>
+                    <ArrowRight size={13} />
                   </button>
                 </div>
               );

@@ -33,12 +33,10 @@ import { ProfileView } from './components/ProfileView';
 import { CbtExamView } from './components/CbtExamView';
 import { TestResultView } from './components/TestResultView';
 import { GenerationProgressModal } from './components/GenerationProgressModal';
-import { ApiKeyModal } from './components/ApiKeyModal';
 import { CuratedTestPackage } from './data/curatedTestSeries';
 
 export function App() {
-  const [showApiKeyModal, setShowApiKeyModal] = useState(false);
-  const [activeTab, setActiveTab] = useState<ActiveNavTab>('arsenal');
+  const [activeTab, setActiveTab] = useState<ActiveNavTab>('series');
   const [currentView, setCurrentView] = useState<'login' | 'app' | 'exam' | 'results'>(() => {
     try {
       const saved = sessionStorage.getItem('drona_active_exam_state');
@@ -449,7 +447,6 @@ export function App() {
               onToggleDarkMode={() => setDarkMode(!darkMode)}
               userProfile={userProfile}
               onOpenProfile={() => setActiveTab('profile')}
-              onOpenApiKeyModal={() => setShowApiKeyModal(true)}
               onSignOut={handleSignOut}
             />
 
@@ -494,12 +491,6 @@ export function App() {
       <GenerationProgressModal
         isOpen={isGenerating}
         progress={pipelineProgress}
-      />
-
-      {/* Google Gemini API Key Configuration Modal */}
-      <ApiKeyModal
-        isOpen={showApiKeyModal}
-        onClose={() => setShowApiKeyModal(false)}
       />
     </div>
   );
