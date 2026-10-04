@@ -758,31 +758,3 @@ export function subscribeAuthState(callback: (user: any) => void): () => void {
     return () => {};
   }
 }
-
-/**
- * Sign in / Sign up with Google OAuth via Supabase
- */
-export async function signInWithGoogle(): Promise<{ data?: any; error?: Error | null }> {
-  const supabase = getSupabaseClient();
-  if (!supabase) return { error: new Error('Supabase client is not initialized') };
-
-  try {
-    const { data, error } = await supabase.auth.signInWithOAuth({
-      provider: 'google',
-      options: {
-        redirectTo: window.location.origin,
-        queryParams: {
-          access_type: 'offline',
-          prompt: 'consent',
-        },
-      },
-    });
-    if (error) return { error: new Error(error.message) };
-    return { data, error: null };
-  } catch (err: any) {
-    return { error: err };
-  }
-}
-
-
-
