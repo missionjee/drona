@@ -432,66 +432,96 @@ export const TestResultView: React.FC<TestResultViewProps> = ({
                     </button>
                   </div>
 
-                  {/* ================= NOTEBOOK-STYLE SOLUTION CARD ================= */}
-                  <div className="bg-amber-50/40 dark:bg-slate-900/90 p-5 rounded-2xl border border-amber-200/80 dark:border-slate-700 space-y-3.5 shadow-xs">
-                    <div className="flex items-center justify-between border-b border-amber-200/60 dark:border-slate-800 pb-2">
-                      <span className="text-xs font-extrabold text-amber-900 dark:text-amber-400 uppercase tracking-wider flex items-center gap-1.5">
-                        📝 Official Notebook Derivation
-                      </span>
+                  {/* ================= NOTEBOOK-STYLE SOLUTION FLOW ================= */}
+                  <div className="relative bg-[#faf9f6] dark:bg-slate-900/90 rounded-2xl border border-slate-200/90 dark:border-slate-800 p-5 sm:p-6 shadow-xs overflow-hidden">
+                    {/* Left Notebook Red Margin Line */}
+                    <div className="absolute top-0 bottom-0 left-0 w-1.5 bg-rose-400/80 dark:bg-rose-500/70" />
+
+                    {/* Notebook Header */}
+                    <div className="flex items-center justify-between border-b border-slate-200/70 dark:border-slate-800 pb-3 mb-4">
+                      <div className="flex items-center gap-2">
+                        <div className="w-6 h-6 rounded-lg bg-amber-100 dark:bg-amber-950/70 text-amber-800 dark:text-amber-300 flex items-center justify-center">
+                          <BookOpen size={13} />
+                        </div>
+                        <span className="text-xs font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider font-serif">
+                          Notebook Derivation & Solution Flow
+                        </span>
+                      </div>
+
                       {q.formula && (
-                        <div className="text-[11px] font-mono text-blue-600 dark:text-blue-400 font-bold flex items-center gap-1">
-                          <span>Formula:</span>
+                        <div className="text-[11px] font-mono text-blue-700 dark:text-blue-300 font-semibold flex items-center gap-1.5 bg-blue-50/80 dark:bg-blue-950/60 px-2.5 py-1 rounded-lg border border-blue-200/50 dark:border-blue-900/50">
+                          <span className="text-[10px] uppercase font-bold text-slate-500">Key Formula:</span>
                           <MathRenderer latex={`$${q.formula.replace(/^\$+|\$+$/g, '')}$`} inline />
                         </div>
                       )}
                     </div>
 
+                    {/* Flowing Notebook Body */}
                     {q.notebookSolution ? (
-                      <div className="space-y-3 text-xs text-slate-800 dark:text-slate-200">
-                        <div className="p-2.5 bg-white/80 dark:bg-slate-800/60 rounded-xl border border-amber-100 dark:border-slate-700">
-                          <span className="font-bold text-slate-900 dark:text-white block mb-0.5">
-                            📌 Given Data & Boundary Conditions:
-                          </span>
-                          <div className="font-mono text-slate-700 dark:text-slate-300">
-                            <MathRenderer latex={q.notebookSolution.given} />
-                          </div>
-                        </div>
-
-                        <div className="p-2.5 bg-white/80 dark:bg-slate-800/60 rounded-xl border border-amber-100 dark:border-slate-700">
-                          <span className="font-bold text-slate-900 dark:text-white block mb-0.5">
-                            📐 Governing Law & Core Concept:
-                          </span>
-                          <div className="text-slate-700 dark:text-slate-300">
-                            <MathRenderer latex={q.notebookSolution.concept} />
-                          </div>
-                        </div>
-
-                        <div className="p-3 bg-white/90 dark:bg-slate-800/80 rounded-xl border border-amber-200 dark:border-slate-700 space-y-1.5 font-mono">
-                          <span className="font-bold text-slate-900 dark:text-white block font-sans">
-                            🔢 Step-by-Step Derivation:
-                          </span>
-                          {q.notebookSolution.steps.map((step, sIdx) => (
-                            <div key={sIdx} className="text-slate-800 dark:text-slate-200 flex items-start gap-2">
-                              <span className="font-bold text-blue-600 shrink-0">[{sIdx + 1}]</span>
-                              <div className="flex-1">
-                                <MathRenderer latex={step} />
+                      <div className="space-y-4 text-xs text-slate-800 dark:text-slate-200 font-sans leading-relaxed">
+                        {/* Given & Governing Concept (Seamless Flow) */}
+                        <div className="space-y-1.5 pb-3 border-b border-slate-200/50 dark:border-slate-800/60">
+                          {q.notebookSolution.given && (
+                            <div className="flex items-baseline gap-2">
+                              <span className="font-bold text-slate-500 dark:text-slate-400 shrink-0 text-[11px] uppercase tracking-wider">
+                                Given:
+                              </span>
+                              <div className="font-mono text-slate-900 dark:text-slate-100">
+                                <MathRenderer latex={q.notebookSolution.given} inline />
                               </div>
                             </div>
-                          ))}
+                          )}
+
+                          {q.notebookSolution.concept && (
+                            <div className="flex items-baseline gap-2">
+                              <span className="font-bold text-slate-500 dark:text-slate-400 shrink-0 text-[11px] uppercase tracking-wider">
+                                Concept:
+                              </span>
+                              <div className="text-slate-800 dark:text-slate-200 font-medium">
+                                <MathRenderer latex={q.notebookSolution.concept} inline />
+                              </div>
+                            </div>
+                          )}
                         </div>
 
-                        <div className="p-2.5 bg-emerald-50/80 dark:bg-emerald-950/40 rounded-xl border border-emerald-200 dark:border-emerald-900 text-emerald-900 dark:text-emerald-200 font-bold">
-                          ✅ Conclusion: <MathRenderer latex={q.notebookSolution.conclusion} inline />
+                        {/* Step-by-Step Derivation Flow (Not boxed! Continuous notebook derivation) */}
+                        <div className="space-y-2.5 py-1">
+                          <span className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider block">
+                            Derivation & Working:
+                          </span>
+                          <div className="space-y-2 pl-3 border-l-2 border-slate-300 dark:border-slate-700">
+                            {q.notebookSolution.steps.map((step, sIdx) => (
+                              <div key={sIdx} className="text-xs text-slate-800 dark:text-slate-200 leading-relaxed font-mono flex items-start gap-2">
+                                <span className="text-blue-600 dark:text-blue-400 font-bold shrink-0 font-sans">
+                                  ({sIdx + 1})
+                                </span>
+                                <div className="flex-1">
+                                  <MathRenderer latex={step} />
+                                </div>
+                              </div>
+                            ))}
+                          </div>
                         </div>
 
+                        {/* Clean Highlighted Final Conclusion */}
+                        <div className="pt-3 border-t border-slate-200/60 dark:border-slate-800/60 flex items-baseline gap-2 text-xs font-bold text-emerald-700 dark:text-emerald-400">
+                          <span className="text-base font-serif font-black leading-none">∴</span>
+                          <span className="uppercase tracking-wider text-[11px] text-slate-500 dark:text-slate-400">Result:</span>
+                          <div className="text-emerald-800 dark:text-emerald-300 font-bold">
+                            <MathRenderer latex={q.notebookSolution.conclusion} inline />
+                          </div>
+                        </div>
+
+                        {/* Gentle Pitfall / Margin Note */}
                         {q.notebookSolution.pitfall && (
-                          <div className="p-2.5 bg-red-50/80 dark:bg-red-950/40 rounded-xl border border-red-200 dark:border-red-900 text-red-900 dark:text-red-200 text-[11px]">
-                            ⚠️ Common Trap / Misconception: <MathRenderer latex={q.notebookSolution.pitfall} inline />
+                          <div className="mt-2 text-[11px] text-amber-800 dark:text-amber-300/90 pl-3 border-l-2 border-amber-400/80 dark:border-amber-600 bg-amber-50/50 dark:bg-amber-950/20 py-1.5 rounded-r-lg">
+                            <span className="font-bold">⚠️ Note: </span>
+                            <MathRenderer latex={q.notebookSolution.pitfall} inline />
                           </div>
                         )}
                       </div>
                     ) : (
-                      <div className="text-xs text-slate-800 dark:text-slate-200 leading-relaxed font-mono whitespace-pre-line">
+                      <div className="text-xs text-slate-800 dark:text-slate-200 leading-relaxed font-mono whitespace-pre-line pl-3 border-l-2 border-slate-300 dark:border-slate-700">
                         <MathRenderer latex={q.solution} />
                       </div>
                     )}

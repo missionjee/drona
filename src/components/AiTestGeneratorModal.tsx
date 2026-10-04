@@ -85,7 +85,7 @@ export const AiTestGeneratorModal: React.FC<AiTestGeneratorModalProps> = ({
       const config: MockTestConfig = {
         id: `custom-ai-${Date.now()}`,
         title: `AI Sprint: ${selectedTopic}`,
-        subtitle: `${examType === 'jee_advanced' ? 'JEE Advanced' : 'JEE Main'} • ${difficulty.toUpperCase()} • ${count} Questions`,
+        subtitle: `JEE Main • ${difficulty.toUpperCase()} • ${count} Questions`,
         examType,
         durationMinutes,
         totalMarks: count * 4,
@@ -141,32 +141,12 @@ export const AiTestGeneratorModal: React.FC<AiTestGeneratorModalProps> = ({
             <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-2">
               Target Exam
             </label>
-            <div className="grid grid-cols-2 gap-3">
-              <button
-                type="button"
-                onClick={() => setExamType('jee_main')}
-                className={`p-3 rounded-xl border text-sm font-semibold flex items-center justify-between transition ${
-                  examType === 'jee_main'
-                    ? 'border-blue-600 bg-blue-50 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 shadow-sm'
-                    : 'border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800'
-                }`}
-              >
-                <span>JEE Main 2025</span>
-                {examType === 'jee_main' && <Check size={16} className="text-blue-600" />}
-              </button>
-
-              <button
-                type="button"
-                onClick={() => setExamType('jee_advanced')}
-                className={`p-3 rounded-xl border text-sm font-semibold flex items-center justify-between transition ${
-                  examType === 'jee_advanced'
-                    ? 'border-purple-600 bg-purple-50 dark:bg-purple-950/40 text-purple-700 dark:text-purple-300 shadow-sm'
-                    : 'border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800'
-                }`}
-              >
-                <span>JEE Advanced 2025</span>
-                {examType === 'jee_advanced' && <Check size={16} className="text-purple-600" />}
-              </button>
+            <div className="p-3 rounded-xl border border-blue-500/40 bg-blue-50 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 text-xs sm:text-sm font-bold flex items-center justify-between shadow-xs">
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse" />
+                <span>JEE Main 2026 (NTA Pattern & Real PYQs)</span>
+              </div>
+              <Check size={16} className="text-blue-600" />
             </div>
           </div>
 

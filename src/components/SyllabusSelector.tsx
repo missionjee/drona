@@ -25,7 +25,6 @@ import { NCERT_SYLLABUS } from '../data/ncertSyllabus';
 import { getWeeklyTestQuota } from '../utils/testLimit';
 import {
   JEE_MAIN_TEST_SERIES,
-  JEE_ADVANCED_TEST_SERIES,
   CuratedTestPackage,
 } from '../data/curatedTestSeries';
 
@@ -51,9 +50,6 @@ export const SyllabusSelector: React.FC<SyllabusSelectorProps> = ({
 
   // Primary view mode: 'curated' (Default - Pre-Loaded Curated Test Series) vs 'custom'
   const [activeTabMode, setActiveTabMode] = useState<'custom' | 'curated'>('curated');
-
-  // Curated series track: 'jee_main' vs 'jee_advanced'
-  const [selectedSeriesTrack, setSelectedSeriesTrack] = useState<'jee_main' | 'jee_advanced'>('jee_main');
 
   // Allowed subjects based on user stream
   const availableSubjects: Subject[] = isNeet
@@ -93,12 +89,12 @@ export const SyllabusSelector: React.FC<SyllabusSelectorProps> = ({
       setDurationMinutes(200);
       if (activeSubject === 'mathematics') setActiveSubject('biology');
     } else {
-      if (examType === 'neet') setExamType('jee_main');
-      setTotalQuestions(examType === 'jee_advanced' ? 54 : 75);
+      setExamType('jee_main');
+      setTotalQuestions(75);
       setDurationMinutes(180);
       if (activeSubject === 'biology') setActiveSubject('mathematics');
     }
-  }, [userStream, isNeet, examType]);
+  }, [userStream, isNeet]);
 
   const toggleChapter = (subject: Subject, chapterName: string) => {
     setSelectedChapters((prev) => {
@@ -226,8 +222,7 @@ export const SyllabusSelector: React.FC<SyllabusSelectorProps> = ({
     });
   };
 
-  const currentSeriesPackages =
-    selectedSeriesTrack === 'jee_main' ? JEE_MAIN_TEST_SERIES : JEE_ADVANCED_TEST_SERIES;
+  const currentSeriesPackages = JEE_MAIN_TEST_SERIES;
 
   return (
     <div className="space-y-6 font-sans">
@@ -253,7 +248,7 @@ export const SyllabusSelector: React.FC<SyllabusSelectorProps> = ({
                   : 'bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300'
               }`}
             >
-              10 Mains + 7 Adv
+              10 Full Mocks
             </span>
           </button>
 
@@ -309,49 +304,9 @@ export const SyllabusSelector: React.FC<SyllabusSelectorProps> = ({
               </p>
             </div>
 
-            {/* Pill Segmented Exam Switch */}
-            <div className="flex items-center bg-slate-200 dark:bg-slate-800 p-1.5 rounded-xl text-xs font-semibold self-start sm:self-auto border border-slate-300 dark:border-slate-700">
-              {!isNeet ? (
-                <>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setExamType('jee_main');
-                      setTotalQuestions(75);
-                      setDurationMinutes(180);
-                    }}
-                    className={`px-4 py-2 rounded-lg transition cursor-pointer ${
-                      examType === 'jee_main'
-                        ? 'bg-blue-600 text-white shadow-xs font-bold'
-                        : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
-                    }`}
-                  >
-                    JEE Main (75 Qs)
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setExamType('jee_advanced');
-                      setTotalQuestions(54);
-                      setDurationMinutes(180);
-                    }}
-                    className={`px-4 py-2 rounded-lg transition cursor-pointer ${
-                      examType === 'jee_advanced'
-                        ? 'bg-purple-600 text-white shadow-xs font-bold'
-                        : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
-                    }`}
-                  >
-                    JEE Advanced (54 Qs)
-                  </button>
-                </>
-              ) : (
-                <button
-                  type="button"
-                  className="px-4 py-2 rounded-lg bg-emerald-600 text-white font-bold shadow-xs cursor-default"
-                >
-                  NEET-UG (180 Qs)
-                </button>
-              )}
+            {/* Exam Specification Badge */}
+            <div className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-blue-50 dark:bg-blue-950/60 border border-blue-200/60 dark:border-blue-800/60 text-blue-700 dark:text-blue-300 font-bold text-xs self-start sm:self-auto">
+              <span>{isNeet ? 'NEET-UG (180 Qs • 720 Marks)' : 'JEE Main 2026 (75 Qs • 300 Marks • 180 Mins)'}</span>
             </div>
           </div>
 
@@ -558,7 +513,7 @@ export const SyllabusSelector: React.FC<SyllabusSelectorProps> = ({
                 <div className="text-sm font-black text-slate-900 dark:text-white flex items-center gap-2">
                   <span>{totalSelectedCount} Chapters Selected</span>
                   <span className="text-xs font-medium text-slate-500">
-                    ({totalQuestions} Questions • {durationMinutes} Mins • {examType === 'jee_advanced' ? '180 Marks' : examType === 'neet' ? '720 Marks' : '300 Marks'})
+                    ({totalQuestions} Questions • {durationMinutes} Mins • {examType === 'neet' ? '720 Marks' : '300 Marks'})
                   </span>
                 </div>
                 <div className="text-[11px] text-slate-500 flex items-center gap-2 mt-0.5">
@@ -587,57 +542,32 @@ export const SyllabusSelector: React.FC<SyllabusSelectorProps> = ({
         </div>
       )}
 
-      {/* ================= VIEW 2: CURATED TEST SERIES (10 MAINS + 7 ADVANCED) ================= */}
+      {/* ================= VIEW 2: CURATED TEST SERIES (10 JEE MAIN MOCKS) ================= */}
       {activeTabMode === 'curated' && (
         <div className="space-y-5">
-          {/* Track Switcher */}
-          <div className="flex items-center gap-2.5">
-            <button
-              type="button"
-              onClick={() => setSelectedSeriesTrack('jee_main')}
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2 cursor-pointer ${
-                selectedSeriesTrack === 'jee_main'
-                  ? 'bg-blue-600 text-white shadow-xs'
-                  : 'bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800'
-              }`}
-            >
-              <Target size={15} />
-              <span>JEE Main Mocks (10 Tests)</span>
-            </button>
-
-            <button
-              type="button"
-              onClick={() => setSelectedSeriesTrack('jee_advanced')}
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2 cursor-pointer ${
-                selectedSeriesTrack === 'jee_advanced'
-                  ? 'bg-purple-600 text-white shadow-xs'
-                  : 'bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800'
-              }`}
-            >
-              <Zap size={15} />
-              <span>JEE Advanced Papers (7 Tests)</span>
-            </button>
-          </div>
-
           {/* Clean Sub-header Bar */}
-          <div className="p-4 rounded-xl bg-slate-900 text-white flex flex-col sm:flex-row sm:items-center justify-between gap-3 border border-slate-800">
-            <div>
+          <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white flex flex-col sm:flex-row sm:items-center justify-between gap-4 border border-slate-700/60 shadow-sm">
+            <div className="space-y-1">
               <div className="flex items-center gap-2">
                 <span className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded bg-amber-400 text-slate-950">
-                  {selectedSeriesTrack === 'jee_main' ? 'JEE Main 2026' : 'IIT-JEE Advanced'}
+                  JEE Main 2026 Official Pattern
                 </span>
-                <span className="text-xs text-slate-300 font-medium">
-                  {selectedSeriesTrack === 'jee_main' ? '10 Full-Scale Mocks • 75 Qs / 300 Marks • Exact Section A & B' : '7 Elite Benchmark Papers • Multi-Correct (+4, -2) • Advanced Numericals'}
+                <span className="text-xs text-blue-300 font-bold flex items-center gap-1">
+                  <Target size={13} />
+                  All-India Grand Mock Test Series
                 </span>
               </div>
+              <p className="text-xs text-slate-300 font-medium">
+                10 Full-Scale National Mocks • 75 Qs / 300 Marks • Exact Section A & B • Real PYQs & Formulas
+              </p>
             </div>
 
-            <div className="flex items-center gap-2 text-xs font-bold text-slate-300">
+            <div className="flex items-center gap-2 text-xs font-bold text-slate-300 bg-slate-800/80 px-3 py-1.5 rounded-xl border border-slate-700">
               <span className="text-emerald-400 flex items-center gap-1">
-                <CheckCircle2 size={13} /> 100% Pre-Loaded
+                <CheckCircle2 size={13} /> 10 Full Mocks Pre-Loaded
               </span>
               <span>•</span>
-              <span>Instant Launch</span>
+              <span className="text-slate-200">Instant Launch</span>
             </div>
           </div>
 
@@ -645,7 +575,6 @@ export const SyllabusSelector: React.FC<SyllabusSelectorProps> = ({
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {currentSeriesPackages.map((pkg) => {
               const { config, questions } = pkg;
-              const isAdvanced = config.seriesCategory === 'jee_advanced';
               const phyCount = questions.filter((q) => q.subject === 'physics').length;
               const chemCount = questions.filter((q) => q.subject === 'chemistry').length;
               const mathCount = questions.filter((q) => q.subject === 'mathematics').length;
@@ -659,27 +588,15 @@ export const SyllabusSelector: React.FC<SyllabusSelectorProps> = ({
                     {/* Folder Icon + Header Badge */}
                     <div className="flex items-center justify-between gap-3 mb-2.5">
                       <div className="flex items-center gap-2.5">
-                        <div
-                          className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 ${
-                            isAdvanced
-                              ? 'bg-purple-100 dark:bg-purple-950/80 text-purple-600 dark:text-purple-400'
-                              : 'bg-blue-100 dark:bg-blue-950/80 text-blue-600 dark:text-blue-400'
-                          }`}
-                        >
+                        <div className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0 bg-blue-100 dark:bg-blue-950/80 text-blue-600 dark:text-blue-400">
                           <Folder size={18} />
                         </div>
                         <div>
-                          <span
-                            className={`text-[10px] px-2 py-0.5 rounded font-black tracking-wider uppercase ${
-                              isAdvanced
-                                ? 'bg-purple-50 dark:bg-purple-950 text-purple-700 dark:text-purple-300'
-                                : 'bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300'
-                            }`}
-                          >
+                          <span className="text-[10px] px-2 py-0.5 rounded font-black tracking-wider uppercase bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300">
                             {config.badge || `Test ${config.testNumber}`}
                           </span>
                           <span className="text-[10px] font-semibold text-slate-500 ml-2">
-                            {isAdvanced ? 'IIT Benchmark' : 'NTA Pattern'}
+                            NTA Pattern
                           </span>
                         </div>
                       </div>
@@ -728,11 +645,7 @@ export const SyllabusSelector: React.FC<SyllabusSelectorProps> = ({
                         onStartCuratedTest(pkg);
                       }
                     }}
-                    className={`w-full py-2.5 px-4 rounded-xl font-bold text-xs transition flex items-center justify-center gap-2 cursor-pointer shadow-xs ${
-                      isAdvanced
-                        ? 'bg-purple-600 hover:bg-purple-700 text-white shadow-purple-500/20'
-                        : 'bg-blue-600 hover:bg-blue-700 text-white shadow-blue-500/20'
-                    }`}
+                    className="w-full py-2.5 px-4 rounded-xl font-bold text-xs transition flex items-center justify-center gap-2 cursor-pointer shadow-xs bg-blue-600 hover:bg-blue-700 text-white shadow-blue-500/20"
                   >
                     <Play size={13} fill="currentColor" />
                     <span>Start Test</span>
